@@ -1,0 +1,134 @@
+{
+  "project_info": {
+    "project_number": "401022448274",
+    "project_id": "sensiblebizpro",
+    "storage_bucket": "sensiblebizpro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401022448274:android:943aa3377c11b13e762c4b",
+        "android_client_info": {
+          "package_name": "com.mycompany.adminpanelnsiblepos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401022448274-nt9p243ikm4mb16sbghg3r4b23rq1n8f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.adminpanelnsiblepos",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "401022448274-bb0ohhb258t2nqmsp0mfjimuffff4huv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfaYoVSSiTIhv9AC19tpHWkM59fX_wrI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401022448274-bb0ohhb258t2nqmsp0mfjimuffff4huv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "401022448274-4ppc8hrnk24ag7drh5q5844dlgllp6d4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sensibleconnect.sensiblebizpro"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401022448274:android:bbb41a363ff15466762c4b",
+        "android_client_info": {
+          "package_name": "com.sensibleconnect.adminpanelpos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401022448274-qg0sl9r6mekb0hegkt2cm4em5paha36r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sensibleconnect.adminpanelpos",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "401022448274-bb0ohhb258t2nqmsp0mfjimuffff4huv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfaYoVSSiTIhv9AC19tpHWkM59fX_wrI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401022448274-bb0ohhb258t2nqmsp0mfjimuffff4huv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "401022448274-4ppc8hrnk24ag7drh5q5844dlgllp6d4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sensibleconnect.sensiblebizpro"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401022448274:android:662b30ee58a6fda0762c4b",
+        "android_client_info": {
+          "package_name": "com.sensibleconnect.sensiblebizpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401022448274-bb0ohhb258t2nqmsp0mfjimuffff4huv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfaYoVSSiTIhv9AC19tpHWkM59fX_wrI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401022448274-bb0ohhb258t2nqmsp0mfjimuffff4huv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "401022448274-4ppc8hrnk24ag7drh5q5844dlgllp6d4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sensibleconnect.sensiblebizpro"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
