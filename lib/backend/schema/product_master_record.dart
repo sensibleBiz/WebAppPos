@@ -1,119 +1,210 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
+
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'product_master_record.g.dart';
+class ProductMasterRecord extends FirestoreRecord {
+  ProductMasterRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class ProductMasterRecord
-    implements Built<ProductMasterRecord, ProductMasterRecordBuilder> {
-  static Serializer<ProductMasterRecord> get serializer =>
-      _$productMasterRecordSerializer;
+  // "id" field.
+  String? _id;
+  String get id => _id ?? '';
+  bool hasId() => _id != null;
 
-  @nullable
-  String get id;
+  // "name" field.
+  String? _name;
+  String get name => _name ?? '';
+  bool hasName() => _name != null;
 
-  @nullable
-  String get name;
+  // "hsnCode" field.
+  int? _hsnCode;
+  int get hsnCode => _hsnCode ?? 0;
+  bool hasHsnCode() => _hsnCode != null;
 
-  @nullable
-  BuiltList<String> get imageUrl;
+  // "barcode" field.
+  String? _barcode;
+  String get barcode => _barcode ?? '';
+  bool hasBarcode() => _barcode != null;
 
-  @nullable
-  int get hsnCode;
+  // "categoryRef" field.
+  DocumentReference? _categoryRef;
+  DocumentReference? get categoryRef => _categoryRef;
+  bool hasCategoryRef() => _categoryRef != null;
 
-  @nullable
-  String get barcode;
+  // "subCategoryRef" field.
+  DocumentReference? _subCategoryRef;
+  DocumentReference? get subCategoryRef => _subCategoryRef;
+  bool hasSubCategoryRef() => _subCategoryRef != null;
 
-  @nullable
-  DocumentReference get categoryRef;
+  // "code" field.
+  int? _code;
+  int get code => _code ?? 0;
+  bool hasCode() => _code != null;
 
-  @nullable
-  DocumentReference get subCategoryRef;
+  // "regionalName" field.
+  String? _regionalName;
+  String get regionalName => _regionalName ?? '';
+  bool hasRegionalName() => _regionalName != null;
 
-  @nullable
-  int get code;
+  // "createdDate" field.
+  int? _createdDate;
+  int get createdDate => _createdDate ?? 0;
+  bool hasCreatedDate() => _createdDate != null;
 
-  @nullable
-  String get regionalName;
+  // "createdBy" field.
+  DocumentReference? _createdBy;
+  DocumentReference? get createdBy => _createdBy;
+  bool hasCreatedBy() => _createdBy != null;
 
-  @nullable
-  int get createdDate;
+  // "updatedDate" field.
+  int? _updatedDate;
+  int get updatedDate => _updatedDate ?? 0;
+  bool hasUpdatedDate() => _updatedDate != null;
 
-  @nullable
-  DocumentReference get createdBy;
+  // "updatedBy" field.
+  DocumentReference? _updatedBy;
+  DocumentReference? get updatedBy => _updatedBy;
+  bool hasUpdatedBy() => _updatedBy != null;
 
-  @nullable
-  int get updatedDate;
+  // "imageUrl" field.
+  String? _imageUrl;
+  String get imageUrl => _imageUrl ?? '';
+  bool hasImageUrl() => _imageUrl != null;
 
-  @nullable
-  DocumentReference get updatedBy;
-
-  @nullable
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
-
-  static void _initializeBuilder(ProductMasterRecordBuilder builder) => builder
-    ..id = ''
-    ..name = ''
-    ..imageUrl = ListBuilder()
-    ..hsnCode = 0
-    ..barcode = ''
-    ..code = 0
-    ..regionalName = ''
-    ..createdDate = 0
-    ..updatedDate = 0;
+  void _initializeFields() {
+    _id = snapshotData['id'] as String?;
+    _name = snapshotData['name'] as String?;
+    _hsnCode = castToType<int>(snapshotData['hsnCode']);
+    _barcode = snapshotData['barcode'] as String?;
+    _categoryRef = snapshotData['categoryRef'] as DocumentReference?;
+    _subCategoryRef = snapshotData['subCategoryRef'] as DocumentReference?;
+    _code = castToType<int>(snapshotData['code']);
+    _regionalName = snapshotData['regionalName'] as String?;
+    _createdDate = castToType<int>(snapshotData['createdDate']);
+    _createdBy = snapshotData['createdBy'] as DocumentReference?;
+    _updatedDate = castToType<int>(snapshotData['updatedDate']);
+    _updatedBy = snapshotData['updatedBy'] as DocumentReference?;
+    _imageUrl = snapshotData['imageUrl'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('PRODUCT_MASTER');
 
-  static Stream<ProductMasterRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+  static Stream<ProductMasterRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => ProductMasterRecord.fromSnapshot(s));
 
   static Future<ProductMasterRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s)));
+      ref.get().then((s) => ProductMasterRecord.fromSnapshot(s));
 
-  ProductMasterRecord._();
-  factory ProductMasterRecord(
-          [void Function(ProductMasterRecordBuilder) updates]) =
-      _$ProductMasterRecord;
+  static ProductMasterRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      ProductMasterRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static ProductMasterRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      ProductMasterRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'ProductMasterRecord(reference: ${reference.path}, data: $snapshotData)';
+
+  @override
+  int get hashCode => reference.path.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      other is ProductMasterRecord &&
+      reference.path.hashCode == other.reference.path.hashCode;
 }
 
 Map<String, dynamic> createProductMasterRecordData({
-  String id,
-  String name,
-  int hsnCode,
-  String barcode,
-  DocumentReference categoryRef,
-  DocumentReference subCategoryRef,
-  int code,
-  String regionalName,
-  int createdDate,
-  DocumentReference createdBy,
-  int updatedDate,
-  DocumentReference updatedBy,
-}) =>
-    serializers.toFirestore(
-        ProductMasterRecord.serializer,
-        ProductMasterRecord((p) => p
-          ..id = id
-          ..name = name
-          ..imageUrl = null
-          ..hsnCode = hsnCode
-          ..barcode = barcode
-          ..categoryRef = categoryRef
-          ..subCategoryRef = subCategoryRef
-          ..code = code
-          ..regionalName = regionalName
-          ..createdDate = createdDate
-          ..createdBy = createdBy
-          ..updatedDate = updatedDate
-          ..updatedBy = updatedBy));
+  String? id,
+  String? name,
+  int? hsnCode,
+  String? barcode,
+  DocumentReference? categoryRef,
+  DocumentReference? subCategoryRef,
+  int? code,
+  String? regionalName,
+  int? createdDate,
+  DocumentReference? createdBy,
+  int? updatedDate,
+  DocumentReference? updatedBy,
+  String? imageUrl,
+}) {
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'id': id,
+      'name': name,
+      'hsnCode': hsnCode,
+      'barcode': barcode,
+      'categoryRef': categoryRef,
+      'subCategoryRef': subCategoryRef,
+      'code': code,
+      'regionalName': regionalName,
+      'createdDate': createdDate,
+      'createdBy': createdBy,
+      'updatedDate': updatedDate,
+      'updatedBy': updatedBy,
+      'imageUrl': imageUrl,
+    }.withoutNulls,
+  );
+
+  return firestoreData;
+}
+
+class ProductMasterRecordDocumentEquality
+    implements Equality<ProductMasterRecord> {
+  const ProductMasterRecordDocumentEquality();
+
+  @override
+  bool equals(ProductMasterRecord? e1, ProductMasterRecord? e2) {
+    return e1?.id == e2?.id &&
+        e1?.name == e2?.name &&
+        e1?.hsnCode == e2?.hsnCode &&
+        e1?.barcode == e2?.barcode &&
+        e1?.categoryRef == e2?.categoryRef &&
+        e1?.subCategoryRef == e2?.subCategoryRef &&
+        e1?.code == e2?.code &&
+        e1?.regionalName == e2?.regionalName &&
+        e1?.createdDate == e2?.createdDate &&
+        e1?.createdBy == e2?.createdBy &&
+        e1?.updatedDate == e2?.updatedDate &&
+        e1?.updatedBy == e2?.updatedBy &&
+        e1?.imageUrl == e2?.imageUrl;
+  }
+
+  @override
+  int hash(ProductMasterRecord? e) => const ListEquality().hash([
+        e?.id,
+        e?.name,
+        e?.hsnCode,
+        e?.barcode,
+        e?.categoryRef,
+        e?.subCategoryRef,
+        e?.code,
+        e?.regionalName,
+        e?.createdDate,
+        e?.createdBy,
+        e?.updatedDate,
+        e?.updatedBy,
+        e?.imageUrl
+      ]);
+
+  @override
+  bool isValidKey(Object? o) => o is ProductMasterRecord;
+}

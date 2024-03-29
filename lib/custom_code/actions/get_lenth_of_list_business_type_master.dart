@@ -1,17 +1,27 @@
 // Automatic FlutterFlow imports
-import '../../backend/backend.dart';
-import '../../flutter_flow/flutter_flow_theme.dart';
-import '../../flutter_flow/flutter_flow_util.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
-import '../../flutter_flow/custom_functions.dart'; // Imports custom functions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
-
 // Begin custom action code
-Future<int> getLenthOfListBusinessTypeMaster(
-    List<DocumentReference> list) async {
-  int count;
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-  count = list.length;
-  return count + 1;
-  // Add your function code here!
+Future<int> getLenthOfListBusinessTypeMaster(
+    List<BusinessTypeRecord>? list) async {
+  // List myList = list;
+  // print(myList);
+  int nextCode;
+  if (list!.isNotEmpty) {
+    list.sort((a, b) => b.code!.compareTo(a.code!));
+    int maxCode = list[0].code!;
+    print(list);
+    nextCode = maxCode + 1;
+  } else {
+    nextCode = 1;
+  }
+  print(nextCode);
+  return nextCode;
 }

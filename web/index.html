@@ -15,53 +15,67 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="WebAppPOS">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  
+
+  
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>WebAppPOS</title>
+  <!-- Open Graph & SEO tags -->
+  <meta property="og:title" content="Sensible Biz Web" />
+  <meta property="og:description" content="Business transactions communication web application for smart enterprise retail solutions" />
+  <meta property="og:image" content="/assets/assets/images/Sensible_Logo_Large.png" /> 
+  <meta name="twitter:title" content="Sensible Biz Web" />
+  <meta name="twitter:description" content="Business transactions communication web application for smart enterprise retail solutions" />
+  <meta name="twitter:image" content="/assets/assets/images/Sensible_Logo_Large.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <title> Sensible Biz Web </title>
+  <meta name="description" content="Business transactions communication web application for smart enterprise retail solutions" />
+    
+
+  <!-- Status Bar color in Safari browser (iOS) and PWA -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f3f8">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#131517">
+
   <link rel="manifest" href="manifest.json">
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = null;
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
 </head>
 <body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
+  
+  
+  
+  
+  
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('flutter-first-frame', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js');
+    window.addEventListener('load', function (ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        entrypointUrl: 'main.dart.js',
+        serviceWorker: {
+          serviceWorkerUrl: 'flutter_service_worker.js?v=',
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: async function(engineInitializer) {
+          // Initialize the Flutter engine
+          let appRunner = await engineInitializer.initializeEngine({});
+          // Run the app
+          await appRunner.runApp();
+        }
       });
-    }
+    });
   </script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-  
-  
-
-  <script>
-    const firebaseConfig = {
-    apiKey: "AIzaSyDFp96VcVzE6-vKUabjbu7XI3YddD6L2O4",
-      authDomain: "sensiblebizpro.firebaseapp.com",
-      projectId: "sensiblebizpro",
-      storageBucket: "sensiblebizpro.appspot.com",
-      messagingSenderId: "401022448274",
-      appId: "1:401022448274:web:dfbafb032f107409762c4b",
-      measurementId: "G-RSNL2E5GQK"
-    }
-    firebase.initializeApp(firebaseConfig);
-  </script>
-  
-  
-  <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>

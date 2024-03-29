@@ -1,0 +1,15 @@
+export '/backend/schema/util/schema_util.dart';
+
+export 'call_log_list_struct.dart';
+export 'demo_list_struct.dart';
+export 'hold_list_struct.dart';
+export 'language_data_struct.dart';
+export 'lead_tag_list_struct.dart';
+export 'location_details_struct.dart';
+export 'payment_mode_struct.dart';
+export 'product_sale_list_struct.dart';
+export 'purchase_sale_item_list_struct.dart';
+export 'recipe_item_list_struct.dart';
+export 'selltem_list_struct.dart';
+export 'user_acces_c_struct.dart';
+export 'user_access_struct.dart';

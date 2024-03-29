@@ -1,108 +1,210 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
+
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'sub_category_record.g.dart';
+class SubCategoryRecord extends FirestoreRecord {
+  SubCategoryRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class SubCategoryRecord
-    implements Built<SubCategoryRecord, SubCategoryRecordBuilder> {
-  static Serializer<SubCategoryRecord> get serializer =>
-      _$subCategoryRecordSerializer;
+  // "id" field.
+  String? _id;
+  String get id => _id ?? '';
+  bool hasId() => _id != null;
 
-  @nullable
-  String get id;
+  // "name" field.
+  String? _name;
+  String get name => _name ?? '';
+  bool hasName() => _name != null;
 
-  @nullable
-  String get name;
+  // "code" field.
+  int? _code;
+  int get code => _code ?? 0;
+  bool hasCode() => _code != null;
 
-  @nullable
-  int get code;
+  // "active" field.
+  bool? _active;
+  bool get active => _active ?? false;
+  bool hasActive() => _active != null;
 
-  @nullable
-  bool get active;
+  // "image" field.
+  String? _image;
+  String get image => _image ?? '';
+  bool hasImage() => _image != null;
 
-  @nullable
-  String get image;
+  // "categoryMasterRef" field.
+  DocumentReference? _categoryMasterRef;
+  DocumentReference? get categoryMasterRef => _categoryMasterRef;
+  bool hasCategoryMasterRef() => _categoryMasterRef != null;
 
-  @nullable
-  DocumentReference get categoryMasterRef;
+  // "regionalName" field.
+  String? _regionalName;
+  String get regionalName => _regionalName ?? '';
+  bool hasRegionalName() => _regionalName != null;
 
-  @nullable
-  String get regionalName;
+  // "createdDate" field.
+  int? _createdDate;
+  int get createdDate => _createdDate ?? 0;
+  bool hasCreatedDate() => _createdDate != null;
 
-  @nullable
-  int get createdDate;
+  // "createdBy" field.
+  DocumentReference? _createdBy;
+  DocumentReference? get createdBy => _createdBy;
+  bool hasCreatedBy() => _createdBy != null;
 
-  @nullable
-  DocumentReference get createdBy;
+  // "updatedDate" field.
+  int? _updatedDate;
+  int get updatedDate => _updatedDate ?? 0;
+  bool hasUpdatedDate() => _updatedDate != null;
 
-  @nullable
-  int get updatedDate;
+  // "updatedBy" field.
+  DocumentReference? _updatedBy;
+  DocumentReference? get updatedBy => _updatedBy;
+  bool hasUpdatedBy() => _updatedBy != null;
 
-  @nullable
-  DocumentReference get updatedBy;
+  // "imageUrl" field.
+  String? _imageUrl;
+  String get imageUrl => _imageUrl ?? '';
+  bool hasImageUrl() => _imageUrl != null;
 
-  @nullable
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  // "categoryMasterRefId" field.
+  String? _categoryMasterRefId;
+  String get categoryMasterRefId => _categoryMasterRefId ?? '';
+  bool hasCategoryMasterRefId() => _categoryMasterRefId != null;
 
-  static void _initializeBuilder(SubCategoryRecordBuilder builder) => builder
-    ..id = ''
-    ..name = ''
-    ..code = 0
-    ..active = false
-    ..image = ''
-    ..regionalName = ''
-    ..createdDate = 0
-    ..updatedDate = 0;
+  void _initializeFields() {
+    _id = snapshotData['id'] as String?;
+    _name = snapshotData['name'] as String?;
+    _code = castToType<int>(snapshotData['code']);
+    _active = snapshotData['active'] as bool?;
+    _image = snapshotData['image'] as String?;
+    _categoryMasterRef =
+        snapshotData['categoryMasterRef'] as DocumentReference?;
+    _regionalName = snapshotData['regionalName'] as String?;
+    _createdDate = castToType<int>(snapshotData['createdDate']);
+    _createdBy = snapshotData['createdBy'] as DocumentReference?;
+    _updatedDate = castToType<int>(snapshotData['updatedDate']);
+    _updatedBy = snapshotData['updatedBy'] as DocumentReference?;
+    _imageUrl = snapshotData['imageUrl'] as String?;
+    _categoryMasterRefId = snapshotData['categoryMasterRefId'] as String?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('SUB_CATEGORY');
 
-  static Stream<SubCategoryRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+  static Stream<SubCategoryRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => SubCategoryRecord.fromSnapshot(s));
 
-  static Future<SubCategoryRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+  static Future<SubCategoryRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => SubCategoryRecord.fromSnapshot(s));
 
-  SubCategoryRecord._();
-  factory SubCategoryRecord([void Function(SubCategoryRecordBuilder) updates]) =
-      _$SubCategoryRecord;
+  static SubCategoryRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      SubCategoryRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static SubCategoryRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      SubCategoryRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'SubCategoryRecord(reference: ${reference.path}, data: $snapshotData)';
+
+  @override
+  int get hashCode => reference.path.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      other is SubCategoryRecord &&
+      reference.path.hashCode == other.reference.path.hashCode;
 }
 
 Map<String, dynamic> createSubCategoryRecordData({
-  String id,
-  String name,
-  int code,
-  bool active,
-  String image,
-  DocumentReference categoryMasterRef,
-  String regionalName,
-  int createdDate,
-  DocumentReference createdBy,
-  int updatedDate,
-  DocumentReference updatedBy,
-}) =>
-    serializers.toFirestore(
-        SubCategoryRecord.serializer,
-        SubCategoryRecord((s) => s
-          ..id = id
-          ..name = name
-          ..code = code
-          ..active = active
-          ..image = image
-          ..categoryMasterRef = categoryMasterRef
-          ..regionalName = regionalName
-          ..createdDate = createdDate
-          ..createdBy = createdBy
-          ..updatedDate = updatedDate
-          ..updatedBy = updatedBy));
+  String? id,
+  String? name,
+  int? code,
+  bool? active,
+  String? image,
+  DocumentReference? categoryMasterRef,
+  String? regionalName,
+  int? createdDate,
+  DocumentReference? createdBy,
+  int? updatedDate,
+  DocumentReference? updatedBy,
+  String? imageUrl,
+  String? categoryMasterRefId,
+}) {
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'id': id,
+      'name': name,
+      'code': code,
+      'active': active,
+      'image': image,
+      'categoryMasterRef': categoryMasterRef,
+      'regionalName': regionalName,
+      'createdDate': createdDate,
+      'createdBy': createdBy,
+      'updatedDate': updatedDate,
+      'updatedBy': updatedBy,
+      'imageUrl': imageUrl,
+      'categoryMasterRefId': categoryMasterRefId,
+    }.withoutNulls,
+  );
+
+  return firestoreData;
+}
+
+class SubCategoryRecordDocumentEquality implements Equality<SubCategoryRecord> {
+  const SubCategoryRecordDocumentEquality();
+
+  @override
+  bool equals(SubCategoryRecord? e1, SubCategoryRecord? e2) {
+    return e1?.id == e2?.id &&
+        e1?.name == e2?.name &&
+        e1?.code == e2?.code &&
+        e1?.active == e2?.active &&
+        e1?.image == e2?.image &&
+        e1?.categoryMasterRef == e2?.categoryMasterRef &&
+        e1?.regionalName == e2?.regionalName &&
+        e1?.createdDate == e2?.createdDate &&
+        e1?.createdBy == e2?.createdBy &&
+        e1?.updatedDate == e2?.updatedDate &&
+        e1?.updatedBy == e2?.updatedBy &&
+        e1?.imageUrl == e2?.imageUrl &&
+        e1?.categoryMasterRefId == e2?.categoryMasterRefId;
+  }
+
+  @override
+  int hash(SubCategoryRecord? e) => const ListEquality().hash([
+        e?.id,
+        e?.name,
+        e?.code,
+        e?.active,
+        e?.image,
+        e?.categoryMasterRef,
+        e?.regionalName,
+        e?.createdDate,
+        e?.createdBy,
+        e?.updatedDate,
+        e?.updatedBy,
+        e?.imageUrl,
+        e?.categoryMasterRefId
+      ]);
+
+  @override
+  bool isValidKey(Object? o) => o is SubCategoryRecord;
+}

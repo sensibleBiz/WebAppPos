@@ -1,148 +1,388 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
+
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'device_record.g.dart';
+class DeviceRecord extends FirestoreRecord {
+  DeviceRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class DeviceRecord
-    implements Built<DeviceRecord, DeviceRecordBuilder> {
-  static Serializer<DeviceRecord> get serializer => _$deviceRecordSerializer;
+  // "id" field.
+  String? _id;
+  String get id => _id ?? '';
+  bool hasId() => _id != null;
 
-  @nullable
-  String get id;
+  // "deviceId" field.
+  String? _deviceId;
+  String get deviceId => _deviceId ?? '';
+  bool hasDeviceId() => _deviceId != null;
 
-  @nullable
-  String get deviceId;
+  // "active" field.
+  bool? _active;
+  bool get active => _active ?? false;
+  bool hasActive() => _active != null;
 
-  @nullable
-  bool get active;
+  // "board" field.
+  String? _board;
+  String get board => _board ?? '';
+  bool hasBoard() => _board != null;
 
-  @nullable
-  String get board;
+  // "brand" field.
+  String? _brand;
+  String get brand => _brand ?? '';
+  bool hasBrand() => _brand != null;
 
-  @nullable
-  String get brand;
+  // "connectedToNetwork" field.
+  bool? _connectedToNetwork;
+  bool get connectedToNetwork => _connectedToNetwork ?? false;
+  bool hasConnectedToNetwork() => _connectedToNetwork != null;
 
-  @nullable
-  bool get connectedToNetwork;
+  // "createdDate" field.
+  int? _createdDate;
+  int get createdDate => _createdDate ?? 0;
+  bool hasCreatedDate() => _createdDate != null;
 
-  @nullable
-  int get createdDate;
+  // "manufacture" field.
+  String? _manufacture;
+  String get manufacture => _manufacture ?? '';
+  bool hasManufacture() => _manufacture != null;
 
-  @nullable
-  LatLng get address;
+  // "model" field.
+  String? _model;
+  String get model => _model ?? '';
+  bool hasModel() => _model != null;
 
-  @nullable
-  String get manufacture;
+  // "serial" field.
+  String? _serial;
+  String get serial => _serial ?? '';
+  bool hasSerial() => _serial != null;
 
-  @nullable
-  String get model;
+  // "posModel" field.
+  String? _posModel;
+  String get posModel => _posModel ?? '';
+  bool hasPosModel() => _posModel != null;
 
-  @nullable
-  String get serial;
+  // "posSerial" field.
+  String? _posSerial;
+  String get posSerial => _posSerial ?? '';
+  bool hasPosSerial() => _posSerial != null;
 
-  @nullable
-  String get posModel;
+  // "userRef" field.
+  DocumentReference? _userRef;
+  DocumentReference? get userRef => _userRef;
+  bool hasUserRef() => _userRef != null;
 
-  @nullable
-  String get posSerial;
+  // "outletRef" field.
+  DocumentReference? _outletRef;
+  DocumentReference? get outletRef => _outletRef;
+  bool hasOutletRef() => _outletRef != null;
 
-  @nullable
-  DocumentReference get userRef;
+  // "versionCode" field.
+  String? _versionCode;
+  String get versionCode => _versionCode ?? '';
+  bool hasVersionCode() => _versionCode != null;
 
-  @nullable
-  DocumentReference get outletRef;
+  // "versionName" field.
+  String? _versionName;
+  String get versionName => _versionName ?? '';
+  bool hasVersionName() => _versionName != null;
 
-  @nullable
-  String get versionCode;
+  // "createdBy" field.
+  DocumentReference? _createdBy;
+  DocumentReference? get createdBy => _createdBy;
+  bool hasCreatedBy() => _createdBy != null;
 
-  @nullable
-  String get versionName;
+  // "address" field.
+  String? _address;
+  String get address => _address ?? '';
+  bool hasAddress() => _address != null;
 
-  @nullable
-  DocumentReference get createdBy;
+  // "updatedDate" field.
+  int? _updatedDate;
+  int get updatedDate => _updatedDate ?? 0;
+  bool hasUpdatedDate() => _updatedDate != null;
 
-  @nullable
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  // "updatedBy" field.
+  DocumentReference? _updatedBy;
+  DocumentReference? get updatedBy => _updatedBy;
+  bool hasUpdatedBy() => _updatedBy != null;
 
-  static void _initializeBuilder(DeviceRecordBuilder builder) => builder
-    ..id = ''
-    ..deviceId = ''
-    ..active = false
-    ..board = ''
-    ..brand = ''
-    ..connectedToNetwork = false
-    ..createdDate = 0
-    ..manufacture = ''
-    ..model = ''
-    ..serial = ''
-    ..posModel = ''
-    ..posSerial = ''
-    ..versionCode = ''
-    ..versionName = '';
+  // "roundOff" field.
+  double? _roundOff;
+  double get roundOff => _roundOff ?? 0.0;
+  bool hasRoundOff() => _roundOff != null;
+
+  // "code" field.
+  int? _code;
+  int get code => _code ?? 0;
+  bool hasCode() => _code != null;
+
+  // "outletName" field.
+  String? _outletName;
+  String get outletName => _outletName ?? '';
+  bool hasOutletName() => _outletName != null;
+
+  // "outletNumber" field.
+  String? _outletNumber;
+  String get outletNumber => _outletNumber ?? '';
+  bool hasOutletNumber() => _outletNumber != null;
+
+  // "branch" field.
+  String? _branch;
+  String get branch => _branch ?? '';
+  bool hasBranch() => _branch != null;
+
+  // "outletId" field.
+  String? _outletId;
+  String get outletId => _outletId ?? '';
+  bool hasOutletId() => _outletId != null;
+
+  // "userId" field.
+  String? _userId;
+  String get userId => _userId ?? '';
+  bool hasUserId() => _userId != null;
+
+  // "latitude" field.
+  double? _latitude;
+  double get latitude => _latitude ?? 0.0;
+  bool hasLatitude() => _latitude != null;
+
+  // "longitude" field.
+  double? _longitude;
+  double get longitude => _longitude ?? 0.0;
+  bool hasLongitude() => _longitude != null;
+
+  // "latlong" field.
+  LatLng? _latlong;
+  LatLng? get latlong => _latlong;
+  bool hasLatlong() => _latlong != null;
+
+  // "loggedIn" field.
+  bool? _loggedIn;
+  bool get loggedIn => _loggedIn ?? false;
+  bool hasLoggedIn() => _loggedIn != null;
+
+  void _initializeFields() {
+    _id = snapshotData['id'] as String?;
+    _deviceId = snapshotData['deviceId'] as String?;
+    _active = snapshotData['active'] as bool?;
+    _board = snapshotData['board'] as String?;
+    _brand = snapshotData['brand'] as String?;
+    _connectedToNetwork = snapshotData['connectedToNetwork'] as bool?;
+    _createdDate = castToType<int>(snapshotData['createdDate']);
+    _manufacture = snapshotData['manufacture'] as String?;
+    _model = snapshotData['model'] as String?;
+    _serial = snapshotData['serial'] as String?;
+    _posModel = snapshotData['posModel'] as String?;
+    _posSerial = snapshotData['posSerial'] as String?;
+    _userRef = snapshotData['userRef'] as DocumentReference?;
+    _outletRef = snapshotData['outletRef'] as DocumentReference?;
+    _versionCode = snapshotData['versionCode'] as String?;
+    _versionName = snapshotData['versionName'] as String?;
+    _createdBy = snapshotData['createdBy'] as DocumentReference?;
+    _address = snapshotData['address'] as String?;
+    _updatedDate = castToType<int>(snapshotData['updatedDate']);
+    _updatedBy = snapshotData['updatedBy'] as DocumentReference?;
+    _roundOff = castToType<double>(snapshotData['roundOff']);
+    _code = castToType<int>(snapshotData['code']);
+    _outletName = snapshotData['outletName'] as String?;
+    _outletNumber = snapshotData['outletNumber'] as String?;
+    _branch = snapshotData['branch'] as String?;
+    _outletId = snapshotData['outletId'] as String?;
+    _userId = snapshotData['userId'] as String?;
+    _latitude = castToType<double>(snapshotData['latitude']);
+    _longitude = castToType<double>(snapshotData['longitude']);
+    _latlong = snapshotData['latlong'] as LatLng?;
+    _loggedIn = snapshotData['loggedIn'] as bool?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('DEVICE');
 
-  static Stream<DeviceRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+  static Stream<DeviceRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => DeviceRecord.fromSnapshot(s));
 
-  static Future<DeviceRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+  static Future<DeviceRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => DeviceRecord.fromSnapshot(s));
 
-  DeviceRecord._();
-  factory DeviceRecord([void Function(DeviceRecordBuilder) updates]) =
-      _$DeviceRecord;
+  static DeviceRecord fromSnapshot(DocumentSnapshot snapshot) => DeviceRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static DeviceRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      DeviceRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'DeviceRecord(reference: ${reference.path}, data: $snapshotData)';
+
+  @override
+  int get hashCode => reference.path.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      other is DeviceRecord &&
+      reference.path.hashCode == other.reference.path.hashCode;
 }
 
 Map<String, dynamic> createDeviceRecordData({
-  String id,
-  String deviceId,
-  bool active,
-  String board,
-  String brand,
-  bool connectedToNetwork,
-  int createdDate,
-  LatLng address,
-  String manufacture,
-  String model,
-  String serial,
-  String posModel,
-  String posSerial,
-  DocumentReference userRef,
-  DocumentReference outletRef,
-  String versionCode,
-  String versionName,
-  DocumentReference createdBy,
-}) =>
-    serializers.toFirestore(
-        DeviceRecord.serializer,
-        DeviceRecord((d) => d
-          ..id = id
-          ..deviceId = deviceId
-          ..active = active
-          ..board = board
-          ..brand = brand
-          ..connectedToNetwork = connectedToNetwork
-          ..createdDate = createdDate
-          ..address = address
-          ..manufacture = manufacture
-          ..model = model
-          ..serial = serial
-          ..posModel = posModel
-          ..posSerial = posSerial
-          ..userRef = userRef
-          ..outletRef = outletRef
-          ..versionCode = versionCode
-          ..versionName = versionName
-          ..createdBy = createdBy));
+  String? id,
+  String? deviceId,
+  bool? active,
+  String? board,
+  String? brand,
+  bool? connectedToNetwork,
+  int? createdDate,
+  String? manufacture,
+  String? model,
+  String? serial,
+  String? posModel,
+  String? posSerial,
+  DocumentReference? userRef,
+  DocumentReference? outletRef,
+  String? versionCode,
+  String? versionName,
+  DocumentReference? createdBy,
+  String? address,
+  int? updatedDate,
+  DocumentReference? updatedBy,
+  double? roundOff,
+  int? code,
+  String? outletName,
+  String? outletNumber,
+  String? branch,
+  String? outletId,
+  String? userId,
+  double? latitude,
+  double? longitude,
+  LatLng? latlong,
+  bool? loggedIn,
+}) {
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'id': id,
+      'deviceId': deviceId,
+      'active': active,
+      'board': board,
+      'brand': brand,
+      'connectedToNetwork': connectedToNetwork,
+      'createdDate': createdDate,
+      'manufacture': manufacture,
+      'model': model,
+      'serial': serial,
+      'posModel': posModel,
+      'posSerial': posSerial,
+      'userRef': userRef,
+      'outletRef': outletRef,
+      'versionCode': versionCode,
+      'versionName': versionName,
+      'createdBy': createdBy,
+      'address': address,
+      'updatedDate': updatedDate,
+      'updatedBy': updatedBy,
+      'roundOff': roundOff,
+      'code': code,
+      'outletName': outletName,
+      'outletNumber': outletNumber,
+      'branch': branch,
+      'outletId': outletId,
+      'userId': userId,
+      'latitude': latitude,
+      'longitude': longitude,
+      'latlong': latlong,
+      'loggedIn': loggedIn,
+    }.withoutNulls,
+  );
+
+  return firestoreData;
+}
+
+class DeviceRecordDocumentEquality implements Equality<DeviceRecord> {
+  const DeviceRecordDocumentEquality();
+
+  @override
+  bool equals(DeviceRecord? e1, DeviceRecord? e2) {
+    return e1?.id == e2?.id &&
+        e1?.deviceId == e2?.deviceId &&
+        e1?.active == e2?.active &&
+        e1?.board == e2?.board &&
+        e1?.brand == e2?.brand &&
+        e1?.connectedToNetwork == e2?.connectedToNetwork &&
+        e1?.createdDate == e2?.createdDate &&
+        e1?.manufacture == e2?.manufacture &&
+        e1?.model == e2?.model &&
+        e1?.serial == e2?.serial &&
+        e1?.posModel == e2?.posModel &&
+        e1?.posSerial == e2?.posSerial &&
+        e1?.userRef == e2?.userRef &&
+        e1?.outletRef == e2?.outletRef &&
+        e1?.versionCode == e2?.versionCode &&
+        e1?.versionName == e2?.versionName &&
+        e1?.createdBy == e2?.createdBy &&
+        e1?.address == e2?.address &&
+        e1?.updatedDate == e2?.updatedDate &&
+        e1?.updatedBy == e2?.updatedBy &&
+        e1?.roundOff == e2?.roundOff &&
+        e1?.code == e2?.code &&
+        e1?.outletName == e2?.outletName &&
+        e1?.outletNumber == e2?.outletNumber &&
+        e1?.branch == e2?.branch &&
+        e1?.outletId == e2?.outletId &&
+        e1?.userId == e2?.userId &&
+        e1?.latitude == e2?.latitude &&
+        e1?.longitude == e2?.longitude &&
+        e1?.latlong == e2?.latlong &&
+        e1?.loggedIn == e2?.loggedIn;
+  }
+
+  @override
+  int hash(DeviceRecord? e) => const ListEquality().hash([
+        e?.id,
+        e?.deviceId,
+        e?.active,
+        e?.board,
+        e?.brand,
+        e?.connectedToNetwork,
+        e?.createdDate,
+        e?.manufacture,
+        e?.model,
+        e?.serial,
+        e?.posModel,
+        e?.posSerial,
+        e?.userRef,
+        e?.outletRef,
+        e?.versionCode,
+        e?.versionName,
+        e?.createdBy,
+        e?.address,
+        e?.updatedDate,
+        e?.updatedBy,
+        e?.roundOff,
+        e?.code,
+        e?.outletName,
+        e?.outletNumber,
+        e?.branch,
+        e?.outletId,
+        e?.userId,
+        e?.latitude,
+        e?.longitude,
+        e?.latlong,
+        e?.loggedIn
+      ]);
+
+  @override
+  bool isValidKey(Object? o) => o is DeviceRecord;
+}

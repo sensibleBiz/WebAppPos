@@ -1,0 +1,511 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /BUSINESS_TYPE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /BUSINESSS_MASTER/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /OUTLET/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /UNIT_TYPE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /CATEGORY_MASTER/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /PRODUCT_MASTER/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /USER_PROFILE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /DEVICE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /SERVICE_POINT/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /OUTLET/{parent}/INVOICE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/INVOICE/{document} {
+      allow read: if true;
+    }
+
+
+    match /TAX_MASTER/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /SUB_CATEGORY/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /LANGUAGE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /PAYMENT_MODE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /USER_ROLL_TYPE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /SUBSCRIPTION/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /OUTLET/{parent}/APP_SETTINGS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/APP_SETTINGS/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/PRINT_SETTINGS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/PRINT_SETTINGS/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/PAYMENT/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/PAYMENT/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/PARTY/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/PARTY/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/SHIFT/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/SHIFT/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/CATEGORY/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/CATEGORY/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/PRODUCT/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/PRODUCT/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/RECIPE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/RECIPE/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/PREMISES/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/PREMISES/{document} {
+      allow read: if true;
+    }
+
+
+    match /COMPANY_DETAILS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /COMPANY_DETAILS/{parent}/ABOUT_US/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/ABOUT_US/{document} {
+      allow read: if true;
+    }
+
+
+    match /COMPANY_DETAILS/{parent}/CONTACT_US/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/CONTACT_US/{document} {
+      allow read: if true;
+    }
+
+
+    match /COMPANY_DETAILS/{parent}/TERMS_AND_CONDITIONS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/TERMS_AND_CONDITIONS/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/SERVICE_POINT_OUTLET/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/SERVICE_POINT_OUTLET/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/HEADER/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/HEADER/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/PURCHASE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/PURCHASE/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/SALE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/SALE/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/EXPENSE_HEADER/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/EXPENSE_HEADER/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/ATTENDANCE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/ATTENDANCE/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/LEADS_CUSTOMER/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/LEADS_CUSTOMER/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/LEADS_MANAGEMENT/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/LEADS_MANAGEMENT/{document} {
+      allow read: if true;
+    }
+
+
+    match /LEADS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /USER_ROLE_TYPE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /OUTLET/{parent}/LEAD_CALL_LOGS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/LEAD_CALL_LOGS/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/LEAD_FOLLOW_UP/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/LEAD_FOLLOW_UP/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/LEAD_TAG/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/LEAD_TAG/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/LEAD_DEMO/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/LEAD_DEMO/{document} {
+      allow read: if true;
+    }
+
+
+    match /STATE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /CITIES/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /OUTLET/{parent}/SERVICE_MANAGEMENT/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/SERVICE_MANAGEMENT/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/OUTLET_LEADS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/OUTLET_LEADS/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/DEALERS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/DEALERS/{document} {
+      allow read: if true;
+    }
+
+
+    match /USER_MANUAL/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /USER_MANUAL/{parent}/SUB_HEADER/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/SUB_HEADER/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/LEAD_ACTIVITIES/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/LEAD_ACTIVITIES/{document} {
+      allow read: if true;
+    }
+
+  }
+}
