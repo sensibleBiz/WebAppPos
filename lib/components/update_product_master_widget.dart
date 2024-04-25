@@ -220,7 +220,7 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                 ),
                                                 child: TextFormField(
                                                   controller: _model
-                                                          .textProductNameController ??=
+                                                          .textProductNameTextController ??=
                                                       TextEditingController(
                                                     text:
                                                         container1ProductMasterRecord
@@ -230,7 +230,7 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                       .textProductNameFocusNode,
                                                   onChanged: (_) =>
                                                       EasyDebounce.debounce(
-                                                    '_model.textProductNameController',
+                                                    '_model.textProductNameTextController',
                                                     Duration(
                                                         milliseconds: 2000),
                                                     () => setState(() {}),
@@ -345,9 +345,8 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                                     .titleMediumFamily),
                                                       ),
                                                   textAlign: TextAlign.start,
-                                                  minLines: null,
                                                   validator: _model
-                                                      .textProductNameControllerValidator
+                                                      .textProductNameTextControllerValidator
                                                       .asValidator(context),
                                                 ),
                                               ),
@@ -793,7 +792,7 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                 ),
                                                 child: TextFormField(
                                                   controller: _model
-                                                          .textProductBarcodeController ??=
+                                                          .textProductBarcodeTextController ??=
                                                       TextEditingController(
                                                     text:
                                                         container1ProductMasterRecord
@@ -803,7 +802,7 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                       .textProductBarcodeFocusNode,
                                                   onChanged: (_) =>
                                                       EasyDebounce.debounce(
-                                                    '_model.textProductBarcodeController',
+                                                    '_model.textProductBarcodeTextController',
                                                     Duration(
                                                         milliseconds: 2000),
                                                     () => setState(() {}),
@@ -918,11 +917,10 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                                     .titleMediumFamily),
                                                       ),
                                                   textAlign: TextAlign.start,
-                                                  minLines: null,
                                                   keyboardType:
                                                       TextInputType.number,
                                                   validator: _model
-                                                      .textProductBarcodeControllerValidator
+                                                      .textProductBarcodeTextControllerValidator
                                                       .asValidator(context),
                                                 ),
                                               ),
@@ -986,7 +984,7 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                               ),
                                               child: TextFormField(
                                                 controller: _model
-                                                        .textProductHSNCodeController ??=
+                                                        .textProductHSNCodeTextController ??=
                                                     TextEditingController(
                                                   text:
                                                       container1ProductMasterRecord
@@ -997,7 +995,7 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                     .textProductHSNCodeFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.textProductHSNCodeController',
+                                                  '_model.textProductHSNCodeTextController',
                                                   Duration(milliseconds: 2000),
                                                   () => setState(() {}),
                                                 ),
@@ -1096,11 +1094,10 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                                       .titleMediumFamily),
                                                         ),
                                                 textAlign: TextAlign.start,
-                                                minLines: null,
                                                 keyboardType:
                                                     TextInputType.number,
                                                 validator: _model
-                                                    .textProductHSNCodeControllerValidator
+                                                    .textProductHSNCodeTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -1254,7 +1251,7 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                 ),
                                                 child: TextFormField(
                                                   controller: _model
-                                                          .textProductMasterCodeController ??=
+                                                          .textProductMasterCodeTextController ??=
                                                       TextEditingController(
                                                     text:
                                                         container1ProductMasterRecord
@@ -1265,7 +1262,7 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                       .textProductMasterCodeFocusNode,
                                                   onChanged: (_) =>
                                                       EasyDebounce.debounce(
-                                                    '_model.textProductMasterCodeController',
+                                                    '_model.textProductMasterCodeTextController',
                                                     Duration(
                                                         milliseconds: 2000),
                                                     () => setState(() {}),
@@ -1381,9 +1378,8 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                                     .titleMediumFamily),
                                                       ),
                                                   textAlign: TextAlign.start,
-                                                  minLines: null,
                                                   validator: _model
-                                                      .textProductMasterCodeControllerValidator
+                                                      .textProductMasterCodeTextControllerValidator
                                                       .asValidator(context),
                                                 ),
                                               ),
@@ -1952,7 +1948,6 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                                           context)
                                                                       .bodyMediumFamily),
                                                         ),
-                                                minLines: null,
                                                 validator: _model
                                                     .textController5Validator
                                                     .asValidator(context),
@@ -2160,10 +2155,10 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           var _shouldSetState = false;
-                                          if (_model.textProductNameController
+                                          if (_model.textProductNameTextController
                                                       .text !=
                                                   null &&
-                                              _model.textProductNameController
+                                              _model.textProductNameTextController
                                                       .text !=
                                                   '') {
                                             if (_model.formKey.currentState ==
@@ -2197,7 +2192,8 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                               singleRecord: true,
                                             ).then((s) => s.firstOrNull);
                                             _shouldSetState = true;
-                                            if (_model.textProductNameController
+                                            if (_model
+                                                    .textProductNameTextController
                                                     .text ==
                                                 container1ProductMasterRecord
                                                     .name) {
@@ -2207,13 +2203,13 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                       createProductMasterRecordData(
                                                 name: functions.toCapitalLetter(
                                                     _model
-                                                        .textProductNameController
+                                                        .textProductNameTextController
                                                         .text),
                                                 hsnCode: int.tryParse(_model
-                                                    .textProductHSNCodeController
+                                                    .textProductHSNCodeTextController
                                                     .text),
                                                 barcode: _model
-                                                    .textProductBarcodeController
+                                                    .textProductBarcodeTextController
                                                     .text,
                                                 subCategoryRef:
                                                     _model.subDoc?.reference,
@@ -2260,7 +2256,7 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                               _model.notSame = await actions
                                                   .dupProductMaster(
                                                 functions.toCapitalLetter(_model
-                                                    .textProductNameController
+                                                    .textProductNameTextController
                                                     .text),
                                                 container5ProductMasterRecordList
                                                     .toList(),
@@ -2273,13 +2269,13 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                         createProductMasterRecordData(
                                                   name: functions
                                                       .toCapitalLetter(_model
-                                                          .textProductNameController
+                                                          .textProductNameTextController
                                                           .text),
                                                   hsnCode: int.tryParse(_model
-                                                      .textProductHSNCodeController
+                                                      .textProductHSNCodeTextController
                                                       .text),
                                                   barcode: _model
-                                                      .textProductBarcodeController
+                                                      .textProductBarcodeTextController
                                                       .text,
                                                   subCategoryRef:
                                                       _model.subDoc?.reference,

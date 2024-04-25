@@ -46,10 +46,10 @@ class _AddBusinessTypeMasterWidgetState
     super.initState();
     _model = createModel(context, () => AddBusinessTypeMasterModel());
 
-    _model.textBusinessTypeNameController ??= TextEditingController();
+    _model.textBusinessTypeNameTextController ??= TextEditingController();
     _model.textBusinessTypeNameFocusNode ??= FocusNode();
 
-    _model.textBusinessTypeCodeController ??=
+    _model.textBusinessTypeCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textBusinessTypeCodeFocusNode ??= FocusNode();
 
@@ -154,10 +154,10 @@ class _AddBusinessTypeMasterWidgetState
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textBusinessTypeNameController,
+                        controller: _model.textBusinessTypeNameTextController,
                         focusNode: _model.textBusinessTypeNameFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textBusinessTypeNameController',
+                          '_model.textBusinessTypeNameTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -226,9 +226,8 @@ class _AddBusinessTypeMasterWidgetState
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
                         validator: _model
-                            .textBusinessTypeNameControllerValidator
+                            .textBusinessTypeNameTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -446,12 +445,12 @@ class _AddBusinessTypeMasterWidgetState
                                       ),
                                     ),
                                     child: TextFormField(
-                                      controller:
-                                          _model.textBusinessTypeCodeController,
+                                      controller: _model
+                                          .textBusinessTypeCodeTextController,
                                       focusNode:
                                           _model.textBusinessTypeCodeFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
-                                        '_model.textBusinessTypeCodeController',
+                                        '_model.textBusinessTypeCodeTextController',
                                         Duration(milliseconds: 2000),
                                         () => setState(() {}),
                                       ),
@@ -528,9 +527,8 @@ class _AddBusinessTypeMasterWidgetState
                                                         .titleMediumFamily),
                                           ),
                                       textAlign: TextAlign.start,
-                                      minLines: null,
                                       validator: _model
-                                          .textBusinessTypeCodeControllerValidator
+                                          .textBusinessTypeCodeTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -836,9 +834,11 @@ class _AddBusinessTypeMasterWidgetState
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             var _shouldSetState = false;
-                            if (_model.textBusinessTypeNameController.text !=
+                            if (_model.textBusinessTypeNameTextController
+                                        .text !=
                                     null &&
-                                _model.textBusinessTypeNameController.text !=
+                                _model.textBusinessTypeNameTextController
+                                        .text !=
                                     '') {
                               if (_model.dropDownSubsciptionTypeValue != null &&
                                   _model.dropDownSubsciptionTypeValue != '') {
@@ -859,11 +859,11 @@ class _AddBusinessTypeMasterWidgetState
                                 await businessTypeRecordReference
                                     .set(createBusinessTypeRecordData(
                                   name: functions.toCapitalLetter(_model
-                                      .textBusinessTypeNameController.text),
+                                      .textBusinessTypeNameTextController.text),
                                   createdDate: functions.getcreatedDate(),
                                   active: true,
                                   code: int.tryParse(_model
-                                      .textBusinessTypeCodeController.text),
+                                      .textBusinessTypeCodeTextController.text),
                                   createdBy: currentUserReference,
                                   updatedDate: functions.getUpdatedDate(),
                                   updatedBy: currentUserReference,
@@ -876,13 +876,13 @@ class _AddBusinessTypeMasterWidgetState
                                     BusinessTypeRecord.getDocumentFromData(
                                         createBusinessTypeRecordData(
                                           name: functions.toCapitalLetter(_model
-                                              .textBusinessTypeNameController
+                                              .textBusinessTypeNameTextController
                                               .text),
                                           createdDate:
                                               functions.getcreatedDate(),
                                           active: true,
                                           code: int.tryParse(_model
-                                              .textBusinessTypeCodeController
+                                              .textBusinessTypeCodeTextController
                                               .text),
                                           createdBy: currentUserReference,
                                           updatedDate:

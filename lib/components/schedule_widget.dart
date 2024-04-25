@@ -55,11 +55,11 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
       });
     });
 
-    _model.textFieldUsernameController ??=
+    _model.textFieldUsernameTextController ??=
         TextEditingController(text: widget.username);
     _model.textFieldUsernameFocusNode ??= FocusNode();
 
-    _model.textFieldDecsController ??= TextEditingController();
+    _model.textFieldDecsTextController ??= TextEditingController();
     _model.textFieldDecsFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -581,7 +581,7 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                 .secondaryBackground,
                           ),
                           child: TextFormField(
-                            controller: _model.textFieldUsernameController,
+                            controller: _model.textFieldUsernameTextController,
                             focusNode: _model.textFieldUsernameFocusNode,
                             autofocus: false,
                             readOnly: true,
@@ -638,9 +638,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .bodyMediumFamily),
                                 ),
-                            minLines: null,
                             validator: _model
-                                .textFieldUsernameControllerValidator
+                                .textFieldUsernameTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -862,7 +861,7 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                     children: [
                       Expanded(
                         child: TextFormField(
-                          controller: _model.textFieldDecsController,
+                          controller: _model.textFieldDecsTextController,
                           focusNode: _model.textFieldDecsFocusNode,
                           autofocus: false,
                           obscureText: false,
@@ -918,8 +917,7 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                         .bodyMediumFamily),
                               ),
                           maxLines: 2,
-                          minLines: null,
-                          validator: _model.textFieldDecsControllerValidator
+                          validator: _model.textFieldDecsTextControllerValidator
                               .asValidator(context),
                         ),
                       ),
@@ -1114,7 +1112,7 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                           leadName: buttonLeadsManagementRecord
                                               ?.username,
                                           description: _model
-                                              .textFieldDecsController.text,
+                                              .textFieldDecsTextController.text,
                                           leadRefId:
                                               buttonLeadsManagementRecord?.id,
                                           createdDate: getCurrentTimestamp,
@@ -1142,7 +1140,7 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                                       buttonLeadsManagementRecord
                                                           ?.username,
                                                   description: _model
-                                                      .textFieldDecsController
+                                                      .textFieldDecsTextController
                                                       .text,
                                                   leadRefId:
                                                       buttonLeadsManagementRecord
@@ -1180,14 +1178,15 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                             time: functions.timestampToMili(
                                                 getCurrentTimestamp),
                                             followUpName: _model
-                                                .textFieldUsernameController
+                                                .textFieldUsernameTextController
                                                 .text,
                                             leadPriority:
                                                 _model.priorityDropDownValue,
                                             assignedTo:
                                                 rowUserProfileRecord?.id,
                                             discription: _model
-                                                .textFieldDecsController.text,
+                                                .textFieldDecsTextController
+                                                .text,
                                             leadMRefId: widget.leadMRefid,
                                             mobile: widget.mobile,
                                             timestamp: getCurrentTimestamp,
@@ -1202,7 +1201,7 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                                         .timestampToMili(
                                                             getCurrentTimestamp),
                                                     followUpName: _model
-                                                        .textFieldUsernameController
+                                                        .textFieldUsernameTextController
                                                         .text,
                                                     leadPriority: _model
                                                         .priorityDropDownValue,
@@ -1210,7 +1209,7 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                                         rowUserProfileRecord
                                                             ?.id,
                                                     discription: _model
-                                                        .textFieldDecsController
+                                                        .textFieldDecsTextController
                                                         .text,
                                                     leadMRefId:
                                                         widget.leadMRefid,

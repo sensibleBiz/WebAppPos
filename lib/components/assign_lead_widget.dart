@@ -601,9 +601,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                           ),
                                                           comments:
                                                               widget.comments,
-                                                          date: functions
-                                                              .dateFormat(
-                                                                  getCurrentTimestamp),
+                                                          date:
+                                                              container66OutletLeadsRecord
+                                                                  ?.date,
                                                           email: widget.email,
                                                           logId:
                                                               container66OutletLeadsRecord
@@ -615,7 +615,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                           requirement: widget
                                                               .requirement,
                                                           source: widget.source,
-                                                          time: widget.time,
+                                                          time:
+                                                              container66OutletLeadsRecord
+                                                                  ?.time,
                                                           username:
                                                               widget.username,
                                                           state: valueOrDefault<
@@ -714,9 +716,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                           ),
                                                           comments:
                                                               widget.comments,
-                                                          date: functions
-                                                              .dateFormat(
-                                                                  getCurrentTimestamp),
+                                                          date:
+                                                              container66OutletLeadsRecord
+                                                                  ?.date,
                                                           email: widget.email,
                                                           logId:
                                                               container66OutletLeadsRecord
@@ -728,7 +730,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                           requirement: widget
                                                               .requirement,
                                                           source: widget.source,
-                                                          time: widget.time,
+                                                          time:
+                                                              container66OutletLeadsRecord
+                                                                  ?.time,
                                                           username:
                                                               widget.username,
                                                           state: valueOrDefault<

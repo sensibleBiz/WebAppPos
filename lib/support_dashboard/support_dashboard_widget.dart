@@ -26,28 +26,7 @@ class _SupportDashboardWidgetState extends State<SupportDashboardWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'containerOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 1200.ms,
-          begin: 0.2,
-          end: 2.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 1200.ms,
-          begin: Offset(0.93, 0.93),
-          end: Offset(1.03, 1.03),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -63,6 +42,28 @@ class _SupportDashboardWidgetState extends State<SupportDashboardWidget>
     _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
 
+    animationsMap.addAll({
+      'containerOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          SaturateEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: 0.2,
+            end: 2.0,
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: Offset(0.93, 0.93),
+            end: Offset(1.03, 1.03),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -1781,7 +1782,6 @@ class _SupportDashboardWidgetState extends State<SupportDashboardWidget>
                                                                         .containsKey(
                                                                             FlutterFlowTheme.of(context).headlineLargeFamily),
                                                                   ),
-                                                              minLines: null,
                                                               validator: _model
                                                                   .textController1Validator
                                                                   .asValidator(
@@ -1934,7 +1934,6 @@ class _SupportDashboardWidgetState extends State<SupportDashboardWidget>
                                                                           FlutterFlowTheme.of(context)
                                                                               .headlineLargeFamily),
                                                                 ),
-                                                            minLines: null,
                                                             validator: _model
                                                                 .textController2Validator
                                                                 .asValidator(
@@ -2137,7 +2136,6 @@ class _SupportDashboardWidgetState extends State<SupportDashboardWidget>
                                                                           FlutterFlowTheme.of(context)
                                                                               .titleMediumFamily),
                                                                 ),
-                                                            minLines: null,
                                                             validator: _model
                                                                 .textController3Validator
                                                                 .asValidator(

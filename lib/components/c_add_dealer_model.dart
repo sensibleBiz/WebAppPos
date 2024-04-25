@@ -20,30 +20,34 @@ class CAddDealerModel extends FlutterFlowModel<CAddDealerWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for SearchMobileTextField widget.
   FocusNode? searchMobileTextFieldFocusNode;
-  TextEditingController? searchMobileTextFieldController;
+  TextEditingController? searchMobileTextFieldTextController;
   String? Function(BuildContext, String?)?
-      searchMobileTextFieldControllerValidator;
+      searchMobileTextFieldTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   UserProfileRecord? checkUser;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   DealersRecord? checkDuplicate;
   // State field(s) for TextFieldMobile widget.
   FocusNode? textFieldMobileFocusNode1;
-  TextEditingController? textFieldMobileController1;
-  String? Function(BuildContext, String?)? textFieldMobileController1Validator;
+  TextEditingController? textFieldMobileTextController1;
+  String? Function(BuildContext, String?)?
+      textFieldMobileTextController1Validator;
   // State field(s) for TextFieldMobile widget.
   FocusNode? textFieldMobileFocusNode2;
-  TextEditingController? textFieldMobileController2;
-  String? Function(BuildContext, String?)? textFieldMobileController2Validator;
+  TextEditingController? textFieldMobileTextController2;
+  String? Function(BuildContext, String?)?
+      textFieldMobileTextController2Validator;
   // State field(s) for TextFieldEmailId widget.
   FocusNode? textFieldEmailIdFocusNode;
-  TextEditingController? textFieldEmailIdController;
-  String? Function(BuildContext, String?)? textFieldEmailIdControllerValidator;
+  TextEditingController? textFieldEmailIdTextController;
+  String? Function(BuildContext, String?)?
+      textFieldEmailIdTextControllerValidator;
   // State field(s) for companyName widget.
   FocusNode? companyNameFocusNode;
-  TextEditingController? companyNameController;
-  String? Function(BuildContext, String?)? companyNameControllerValidator;
-  String? _companyNameControllerValidator(BuildContext context, String? val) {
+  TextEditingController? companyNameTextController;
+  String? Function(BuildContext, String?)? companyNameTextControllerValidator;
+  String? _companyNameTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -53,8 +57,8 @@ class CAddDealerModel extends FlutterFlowModel<CAddDealerWidget> {
 
   // State field(s) for gstNumber widget.
   FocusNode? gstNumberFocusNode;
-  TextEditingController? gstNumberController;
-  String? Function(BuildContext, String?)? gstNumberControllerValidator;
+  TextEditingController? gstNumberTextController;
+  String? Function(BuildContext, String?)? gstNumberTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
   DealersRecord? fetchedDuplicateDealer;
   // Stores action output result for [Backend Call - Create Document] action in Container widget.
@@ -62,27 +66,27 @@ class CAddDealerModel extends FlutterFlowModel<CAddDealerWidget> {
 
   @override
   void initState(BuildContext context) {
-    companyNameControllerValidator = _companyNameControllerValidator;
+    companyNameTextControllerValidator = _companyNameTextControllerValidator;
   }
 
   @override
   void dispose() {
     searchMobileTextFieldFocusNode?.dispose();
-    searchMobileTextFieldController?.dispose();
+    searchMobileTextFieldTextController?.dispose();
 
     textFieldMobileFocusNode1?.dispose();
-    textFieldMobileController1?.dispose();
+    textFieldMobileTextController1?.dispose();
 
     textFieldMobileFocusNode2?.dispose();
-    textFieldMobileController2?.dispose();
+    textFieldMobileTextController2?.dispose();
 
     textFieldEmailIdFocusNode?.dispose();
-    textFieldEmailIdController?.dispose();
+    textFieldEmailIdTextController?.dispose();
 
     companyNameFocusNode?.dispose();
-    companyNameController?.dispose();
+    companyNameTextController?.dispose();
 
     gstNumberFocusNode?.dispose();
-    gstNumberController?.dispose();
+    gstNumberTextController?.dispose();
   }
 }

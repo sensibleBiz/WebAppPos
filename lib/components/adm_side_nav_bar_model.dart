@@ -15,10 +15,10 @@ class AdmSideNavBarModel extends FlutterFlowModel<AdmSideNavBarWidget> {
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Expandable widget.
-  late ExpandableController expandableController1;
+  late ExpandableController expandableExpandableController1;
 
   // State field(s) for Expandable widget.
-  late ExpandableController expandableController2;
+  late ExpandableController expandableExpandableController2;
 
   // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
   UserProfileRecord? getEmail;
@@ -28,7 +28,7 @@ class AdmSideNavBarModel extends FlutterFlowModel<AdmSideNavBarWidget> {
 
   @override
   void dispose() {
-    expandableController1.dispose();
-    expandableController2.dispose();
+    expandableExpandableController1.dispose();
+    expandableExpandableController2.dispose();
   }
 }

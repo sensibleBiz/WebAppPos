@@ -15,8 +15,9 @@ class AboutUsNewModel extends FlutterFlowModel<AboutUsNewWidget> {
 
   // State field(s) for TextFieldDetails widget.
   FocusNode? textFieldDetailsFocusNode;
-  TextEditingController? textFieldDetailsController;
-  String? Function(BuildContext, String?)? textFieldDetailsControllerValidator;
+  TextEditingController? textFieldDetailsTextController;
+  String? Function(BuildContext, String?)?
+      textFieldDetailsTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -24,6 +25,6 @@ class AboutUsNewModel extends FlutterFlowModel<AboutUsNewWidget> {
   @override
   void dispose() {
     textFieldDetailsFocusNode?.dispose();
-    textFieldDetailsController?.dispose();
+    textFieldDetailsTextController?.dispose();
   }
 }

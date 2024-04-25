@@ -15,9 +15,9 @@ class COTPverificationModel extends FlutterFlowModel<COTPverificationWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for TextFieldMobileNumber widget.
   FocusNode? textFieldMobileNumberFocusNode;
-  TextEditingController? textFieldMobileNumberController;
+  TextEditingController? textFieldMobileNumberTextController;
   String? Function(BuildContext, String?)?
-      textFieldMobileNumberControllerValidator;
+      textFieldMobileNumberTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -26,6 +26,6 @@ class COTPverificationModel extends FlutterFlowModel<COTPverificationWidget> {
   void dispose() {
     unfocusNode.dispose();
     textFieldMobileNumberFocusNode?.dispose();
-    textFieldMobileNumberController?.dispose();
+    textFieldMobileNumberTextController?.dispose();
   }
 }

@@ -255,7 +255,6 @@ class _AddTagWidgetState extends State<AddTagWidget> {
                                                   .titleMediumFamily),
                                     ),
                                 maxLines: null,
-                                minLines: null,
                                 validator: _model.textControllerValidator
                                     .asValidator(context),
                               ),

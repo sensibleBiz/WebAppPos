@@ -44,8 +44,9 @@ class LeadLogModel extends FlutterFlowModel<LeadLogWidget> {
 
   // State field(s) for TextFielduname widget.
   FocusNode? textFieldunameFocusNode;
-  TextEditingController? textFieldunameController;
-  String? Function(BuildContext, String?)? textFieldunameControllerValidator;
+  TextEditingController? textFieldunameTextController;
+  String? Function(BuildContext, String?)?
+      textFieldunameTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController2;
@@ -76,9 +77,9 @@ class LeadLogModel extends FlutterFlowModel<LeadLogWidget> {
   // State field(s) for TextFieldtag widget.
   final textFieldtagKey = GlobalKey();
   FocusNode? textFieldtagFocusNode;
-  TextEditingController? textFieldtagController;
+  TextEditingController? textFieldtagTextController;
   String? textFieldtagSelectedOption;
-  String? Function(BuildContext, String?)? textFieldtagControllerValidator;
+  String? Function(BuildContext, String?)? textFieldtagTextControllerValidator;
   List<LeadTagRecord> simpleSearchResults = [];
   // Stores action output result for [Custom Action - generateTagCode] action in Button widget.
   int? tag;
@@ -103,7 +104,7 @@ class LeadLogModel extends FlutterFlowModel<LeadLogWidget> {
     adminHeaderModel.dispose();
     tabBarController?.dispose();
     textFieldunameFocusNode?.dispose();
-    textFieldunameController?.dispose();
+    textFieldunameTextController?.dispose();
 
     textFieldFocusNode1?.dispose();
     textController2?.dispose();

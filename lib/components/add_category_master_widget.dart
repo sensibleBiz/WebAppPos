@@ -44,10 +44,10 @@ class _AddCategoryMasterWidgetState extends State<AddCategoryMasterWidget> {
     super.initState();
     _model = createModel(context, () => AddCategoryMasterModel());
 
-    _model.textCategoryMasterTypeNameController ??= TextEditingController();
+    _model.textCategoryMasterTypeNameTextController ??= TextEditingController();
     _model.textCategoryMasterTypeNameFocusNode ??= FocusNode();
 
-    _model.textCategoryMasterTypeCodeController ??=
+    _model.textCategoryMasterTypeCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textCategoryMasterTypeCodeFocusNode ??= FocusNode();
 
@@ -204,12 +204,12 @@ class _AddCategoryMasterWidgetState extends State<AddCategoryMasterWidget> {
                                         ),
                                         child: TextFormField(
                                           controller: _model
-                                              .textCategoryMasterTypeNameController,
+                                              .textCategoryMasterTypeNameTextController,
                                           focusNode: _model
                                               .textCategoryMasterTypeNameFocusNode,
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
-                                            '_model.textCategoryMasterTypeNameController',
+                                            '_model.textCategoryMasterTypeNameTextController',
                                             Duration(milliseconds: 2000),
                                             () => setState(() {}),
                                           ),
@@ -294,9 +294,8 @@ class _AddCategoryMasterWidgetState extends State<AddCategoryMasterWidget> {
                                                             .titleMediumFamily),
                                               ),
                                           textAlign: TextAlign.start,
-                                          minLines: null,
                                           validator: _model
-                                              .textCategoryMasterTypeNameControllerValidator
+                                              .textCategoryMasterTypeNameTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -358,12 +357,12 @@ class _AddCategoryMasterWidgetState extends State<AddCategoryMasterWidget> {
                                             ),
                                             child: TextFormField(
                                               controller: _model
-                                                  .textCategoryMasterTypeCodeController,
+                                                  .textCategoryMasterTypeCodeTextController,
                                               focusNode: _model
                                                   .textCategoryMasterTypeCodeFocusNode,
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
-                                                '_model.textCategoryMasterTypeCodeController',
+                                                '_model.textCategoryMasterTypeCodeTextController',
                                                 Duration(milliseconds: 2000),
                                                 () => setState(() {}),
                                               ),
@@ -461,9 +460,8 @@ class _AddCategoryMasterWidgetState extends State<AddCategoryMasterWidget> {
                                                                     .titleMediumFamily),
                                                       ),
                                               textAlign: TextAlign.start,
-                                              minLines: null,
                                               validator: _model
-                                                  .textCategoryMasterTypeCodeControllerValidator
+                                                  .textCategoryMasterTypeCodeTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -1027,7 +1025,6 @@ class _AddCategoryMasterWidgetState extends State<AddCategoryMasterWidget> {
                                                                 context)
                                                             .bodyMediumFamily),
                                               ),
-                                          minLines: null,
                                           validator: _model
                                               .textController3Validator
                                               .asValidator(context),
@@ -1167,16 +1164,16 @@ class _AddCategoryMasterWidgetState extends State<AddCategoryMasterWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               var _shouldSetState = false;
-                              if (_model.textCategoryMasterTypeNameController
+                              if (_model.textCategoryMasterTypeNameTextController
                                           .text !=
                                       null &&
-                                  _model.textCategoryMasterTypeNameController
+                                  _model.textCategoryMasterTypeNameTextController
                                           .text !=
                                       '') {
                                 _model.dupCategoryMasterRef =
                                     await actions.dupCategoryMaster(
                                   functions.toCapitalLetter(_model
-                                      .textCategoryMasterTypeNameController
+                                      .textCategoryMasterTypeNameTextController
                                       .text),
                                   containerCategoryMasterRecordList.toList(),
                                 );
@@ -1187,11 +1184,11 @@ class _AddCategoryMasterWidgetState extends State<AddCategoryMasterWidget> {
                                   await categoryMasterRecordReference
                                       .set(createCategoryMasterRecordData(
                                     name: functions.toCapitalLetter(_model
-                                        .textCategoryMasterTypeNameController
+                                        .textCategoryMasterTypeNameTextController
                                         .text),
                                     active: true,
                                     code: int.tryParse(_model
-                                        .textCategoryMasterTypeCodeController
+                                        .textCategoryMasterTypeCodeTextController
                                         .text),
                                     createdDate: functions.getcreatedDate(),
                                     createdBy: currentUserReference,
@@ -1206,11 +1203,11 @@ class _AddCategoryMasterWidgetState extends State<AddCategoryMasterWidget> {
                                       CategoryMasterRecord.getDocumentFromData(
                                           createCategoryMasterRecordData(
                                             name: functions.toCapitalLetter(_model
-                                                .textCategoryMasterTypeNameController
+                                                .textCategoryMasterTypeNameTextController
                                                 .text),
                                             active: true,
                                             code: int.tryParse(_model
-                                                .textCategoryMasterTypeCodeController
+                                                .textCategoryMasterTypeCodeTextController
                                                 .text),
                                             createdDate:
                                                 functions.getcreatedDate(),

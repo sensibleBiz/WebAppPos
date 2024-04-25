@@ -120,7 +120,6 @@ class _TestDropdownWidgetState extends State<TestDropdownWidget> {
               useGoogleFonts: GoogleFonts.asMap()
                   .containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
             ),
-        hintText: 'Please select...',
         fillColor: FlutterFlowTheme.of(context).secondaryBackground,
         elevation: 2.0,
         borderColor: Colors.transparent,

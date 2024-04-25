@@ -41,23 +41,23 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
     super.initState();
     _model = createModel(context, () => AddSubscriptionModel());
 
-    _model.textPlanTypeNameController ??= TextEditingController();
+    _model.textPlanTypeNameTextController ??= TextEditingController();
     _model.textPlanTypeNameFocusNode ??= FocusNode();
 
-    _model.textDiscriptionController ??= TextEditingController();
+    _model.textDiscriptionTextController ??= TextEditingController();
     _model.textDiscriptionFocusNode ??= FocusNode();
 
-    _model.textSubscriptionTypeCodeController ??=
+    _model.textSubscriptionTypeCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textSubscriptionTypeCodeFocusNode ??= FocusNode();
 
-    _model.textValidityController ??= TextEditingController();
+    _model.textValidityTextController ??= TextEditingController();
     _model.textValidityFocusNode ??= FocusNode();
 
-    _model.textAmountController ??= TextEditingController();
+    _model.textAmountTextController ??= TextEditingController();
     _model.textAmountFocusNode ??= FocusNode();
 
-    _model.textUpiLinkController ??= TextEditingController();
+    _model.textUpiLinkTextController ??= TextEditingController();
     _model.textUpiLinkFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -161,10 +161,10 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textPlanTypeNameController,
+                        controller: _model.textPlanTypeNameTextController,
                         focusNode: _model.textPlanTypeNameFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textPlanTypeNameController',
+                          '_model.textPlanTypeNameTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -234,8 +234,8 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
-                        validator: _model.textPlanTypeNameControllerValidator
+                        validator: _model
+                            .textPlanTypeNameTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -281,10 +281,10 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textDiscriptionController,
+                        controller: _model.textDiscriptionTextController,
                         focusNode: _model.textDiscriptionFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textDiscriptionController',
+                          '_model.textDiscriptionTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -343,11 +343,12 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                               topRight: Radius.circular(4.0),
                             ),
                           ),
-                          suffixIcon: _model
-                                  .textDiscriptionController!.text.isNotEmpty
+                          suffixIcon: _model.textDiscriptionTextController!.text
+                                  .isNotEmpty
                               ? InkWell(
                                   onTap: () async {
-                                    _model.textDiscriptionController?.clear();
+                                    _model.textDiscriptionTextController
+                                        ?.clear();
                                     setState(() {});
                                   },
                                   child: Icon(
@@ -370,8 +371,7 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                                 ),
                         textAlign: TextAlign.start,
                         maxLines: 3,
-                        minLines: null,
-                        validator: _model.textDiscriptionControllerValidator
+                        validator: _model.textDiscriptionTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -467,10 +467,10 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                           ),
                           child: TextFormField(
                             controller:
-                                _model.textSubscriptionTypeCodeController,
+                                _model.textSubscriptionTypeCodeTextController,
                             focusNode: _model.textSubscriptionTypeCodeFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
-                              '_model.textSubscriptionTypeCodeController',
+                              '_model.textSubscriptionTypeCodeTextController',
                               Duration(milliseconds: 2000),
                               () => setState(() {}),
                             ),
@@ -543,9 +543,8 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                                           .titleMediumFamily),
                                 ),
                             textAlign: TextAlign.start,
-                            minLines: null,
                             validator: _model
-                                .textSubscriptionTypeCodeControllerValidator
+                                .textSubscriptionTypeCodeTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -563,10 +562,10 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                             ),
                           ),
                           child: TextFormField(
-                            controller: _model.textValidityController,
+                            controller: _model.textValidityTextController,
                             focusNode: _model.textValidityFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
-                              '_model.textValidityController',
+                              '_model.textValidityTextController',
                               Duration(milliseconds: 2000),
                               () => setState(() {}),
                             ),
@@ -638,9 +637,9 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                                           .titleMediumFamily),
                                 ),
                             textAlign: TextAlign.start,
-                            minLines: null,
                             keyboardType: TextInputType.number,
-                            validator: _model.textValidityControllerValidator
+                            validator: _model
+                                .textValidityTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -739,10 +738,10 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                             ),
                           ),
                           child: TextFormField(
-                            controller: _model.textAmountController,
+                            controller: _model.textAmountTextController,
                             focusNode: _model.textAmountFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
-                              '_model.textAmountController',
+                              '_model.textAmountTextController',
                               Duration(milliseconds: 2000),
                               () => setState(() {}),
                             ),
@@ -814,9 +813,8 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                                           .titleMediumFamily),
                                 ),
                             textAlign: TextAlign.start,
-                            minLines: null,
                             keyboardType: TextInputType.number,
-                            validator: _model.textAmountControllerValidator
+                            validator: _model.textAmountTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -939,10 +937,10 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: _model.textUpiLinkController,
+                              controller: _model.textUpiLinkTextController,
                               focusNode: _model.textUpiLinkFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textUpiLinkController',
+                                '_model.textUpiLinkTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -1017,9 +1015,9 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                                   ),
                               textAlign: TextAlign.start,
                               maxLines: 3,
-                              minLines: null,
                               keyboardType: TextInputType.url,
-                              validator: _model.textUpiLinkControllerValidator
+                              validator: _model
+                                  .textUpiLinkTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -1087,23 +1085,24 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             var _shouldSetState = false;
-                            if (_model.textUpiLinkController.text != null &&
-                                _model.textUpiLinkController.text != '') {
+                            if (_model.textUpiLinkTextController.text != null &&
+                                _model.textUpiLinkTextController.text != '') {
                               var subscriptionRecordReference =
                                   SubscriptionRecord.collection.doc();
                               await subscriptionRecordReference
                                   .set(createSubscriptionRecordData(
                                 code: int.tryParse(_model
-                                    .textSubscriptionTypeCodeController.text),
+                                    .textSubscriptionTypeCodeTextController
+                                    .text),
                                 planName: functions.toCapitalLetter(
-                                    _model.textPlanTypeNameController.text),
+                                    _model.textPlanTypeNameTextController.text),
                                 description:
-                                    _model.textDiscriptionController.text,
+                                    _model.textDiscriptionTextController.text,
                                 amount: double.tryParse(
-                                    _model.textAmountController.text),
-                                link: _model.textUpiLinkController.text,
+                                    _model.textAmountTextController.text),
+                                link: _model.textUpiLinkTextController.text,
                                 validity: int.tryParse(
-                                    _model.textValidityController.text),
+                                    _model.textValidityTextController.text),
                                 createdBy: currentUserReference,
                                 updatedBy: currentUserReference,
                                 createdDate: functions.getcreatedDate(),
@@ -1113,18 +1112,20 @@ class _AddSubscriptionWidgetState extends State<AddSubscriptionWidget> {
                                   SubscriptionRecord.getDocumentFromData(
                                       createSubscriptionRecordData(
                                         code: int.tryParse(_model
-                                            .textSubscriptionTypeCodeController
+                                            .textSubscriptionTypeCodeTextController
                                             .text),
                                         planName: functions.toCapitalLetter(
-                                            _model.textPlanTypeNameController
+                                            _model
+                                                .textPlanTypeNameTextController
                                                 .text),
                                         description: _model
-                                            .textDiscriptionController.text,
-                                        amount: double.tryParse(
-                                            _model.textAmountController.text),
-                                        link: _model.textUpiLinkController.text,
-                                        validity: int.tryParse(
-                                            _model.textValidityController.text),
+                                            .textDiscriptionTextController.text,
+                                        amount: double.tryParse(_model
+                                            .textAmountTextController.text),
+                                        link: _model
+                                            .textUpiLinkTextController.text,
+                                        validity: int.tryParse(_model
+                                            .textValidityTextController.text),
                                         createdBy: currentUserReference,
                                         updatedBy: currentUserReference,
                                         createdDate: functions.getcreatedDate(),

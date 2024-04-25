@@ -18,10 +18,10 @@ class AddUserRoleTypeModel extends FlutterFlowModel<AddUserRoleTypeWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextUserRollTypeName widget.
   FocusNode? textUserRollTypeNameFocusNode;
-  TextEditingController? textUserRollTypeNameController;
+  TextEditingController? textUserRollTypeNameTextController;
   String? Function(BuildContext, String?)?
-      textUserRollTypeNameControllerValidator;
-  String? _textUserRollTypeNameControllerValidator(
+      textUserRollTypeNameTextControllerValidator;
+  String? _textUserRollTypeNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -35,10 +35,10 @@ class AddUserRoleTypeModel extends FlutterFlowModel<AddUserRoleTypeWidget> {
 
   // State field(s) for TextUserRollTypeCode widget.
   FocusNode? textUserRollTypeCodeFocusNode;
-  TextEditingController? textUserRollTypeCodeController;
+  TextEditingController? textUserRollTypeCodeTextController;
   String? Function(BuildContext, String?)?
-      textUserRollTypeCodeControllerValidator;
-  String? _textUserRollTypeCodeControllerValidator(
+      textUserRollTypeCodeTextControllerValidator;
+  String? _textUserRollTypeCodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -55,18 +55,18 @@ class AddUserRoleTypeModel extends FlutterFlowModel<AddUserRoleTypeWidget> {
 
   @override
   void initState(BuildContext context) {
-    textUserRollTypeNameControllerValidator =
-        _textUserRollTypeNameControllerValidator;
-    textUserRollTypeCodeControllerValidator =
-        _textUserRollTypeCodeControllerValidator;
+    textUserRollTypeNameTextControllerValidator =
+        _textUserRollTypeNameTextControllerValidator;
+    textUserRollTypeCodeTextControllerValidator =
+        _textUserRollTypeCodeTextControllerValidator;
   }
 
   @override
   void dispose() {
     textUserRollTypeNameFocusNode?.dispose();
-    textUserRollTypeNameController?.dispose();
+    textUserRollTypeNameTextController?.dispose();
 
     textUserRollTypeCodeFocusNode?.dispose();
-    textUserRollTypeCodeController?.dispose();
+    textUserRollTypeCodeTextController?.dispose();
   }
 }

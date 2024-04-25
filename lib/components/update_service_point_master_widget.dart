@@ -173,14 +173,14 @@ class _UpdateServicePointMasterWidgetState
                             ),
                             child: TextFormField(
                               controller: _model
-                                      .textServicePointMasterNameController ??=
+                                      .textServicePointMasterNameTextController ??=
                                   TextEditingController(
                                 text: containerServicePointRecord.name,
                               ),
                               focusNode:
                                   _model.textServicePointMasterNameFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textServicePointMasterNameController',
+                                '_model.textServicePointMasterNameTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -253,9 +253,8 @@ class _UpdateServicePointMasterWidgetState
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
                               validator: _model
-                                  .textServicePointMasterNameControllerValidator
+                                  .textServicePointMasterNameTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -401,7 +400,7 @@ class _UpdateServicePointMasterWidgetState
                                         ),
                                         child: TextFormField(
                                           controller: _model
-                                                  .textServicePointMasterCodeController ??=
+                                                  .textServicePointMasterCodeTextController ??=
                                               TextEditingController(
                                             text: containerServicePointRecord
                                                 .code
@@ -411,7 +410,7 @@ class _UpdateServicePointMasterWidgetState
                                               .textServicePointMasterCodeFocusNode,
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
-                                            '_model.textServicePointMasterCodeController',
+                                            '_model.textServicePointMasterCodeTextController',
                                             Duration(milliseconds: 2000),
                                             () => setState(() {}),
                                           ),
@@ -497,9 +496,8 @@ class _UpdateServicePointMasterWidgetState
                                                             .titleMediumFamily),
                                               ),
                                           textAlign: TextAlign.start,
-                                          minLines: null,
                                           validator: _model
-                                              .textServicePointMasterCodeControllerValidator
+                                              .textServicePointMasterCodeTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -573,10 +571,10 @@ class _UpdateServicePointMasterWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (_model.textServicePointMasterNameController
+                                  if (_model.textServicePointMasterNameTextController
                                               .text !=
                                           null &&
-                                      _model.textServicePointMasterNameController
+                                      _model.textServicePointMasterNameTextController
                                               .text !=
                                           '') {
                                     if (_model.formKey.currentState == null ||
@@ -588,7 +586,7 @@ class _UpdateServicePointMasterWidgetState
                                     await containerServicePointRecord.reference
                                         .update(createServicePointRecordData(
                                       name: functions.toCapitalLetter(_model
-                                          .textServicePointMasterNameController
+                                          .textServicePointMasterNameTextController
                                           .text),
                                       updatedDate: functions.getUpdatedDate(),
                                       updatedBy: FFAppState().userProfileRef,

@@ -79,9 +79,10 @@ class CEditUserModel extends FlutterFlowModel<CEditUserWidget> {
 
   // State field(s) for TextFieldCode widget.
   FocusNode? textFieldCodeFocusNode;
-  TextEditingController? textFieldCodeController;
-  String? Function(BuildContext, String?)? textFieldCodeControllerValidator;
-  String? _textFieldCodeControllerValidator(BuildContext context, String? val) {
+  TextEditingController? textFieldCodeTextController;
+  String? Function(BuildContext, String?)? textFieldCodeTextControllerValidator;
+  String? _textFieldCodeTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -105,7 +106,8 @@ class CEditUserModel extends FlutterFlowModel<CEditUserWidget> {
     textController2Validator = _textController2Validator;
     textController3Validator = _textController3Validator;
     textController4Validator = _textController4Validator;
-    textFieldCodeControllerValidator = _textFieldCodeControllerValidator;
+    textFieldCodeTextControllerValidator =
+        _textFieldCodeTextControllerValidator;
   }
 
   @override
@@ -123,6 +125,6 @@ class CEditUserModel extends FlutterFlowModel<CEditUserWidget> {
     textController4?.dispose();
 
     textFieldCodeFocusNode?.dispose();
-    textFieldCodeController?.dispose();
+    textFieldCodeTextController?.dispose();
   }
 }

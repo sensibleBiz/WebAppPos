@@ -390,7 +390,7 @@ class _FollowUpsWidgetState extends State<FollowUpsWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Discription',
+                                      'Description',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium

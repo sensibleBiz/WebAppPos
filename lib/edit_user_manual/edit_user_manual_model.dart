@@ -45,12 +45,13 @@ class EditUserManualModel extends FlutterFlowModel<EditUserManualWidget> {
   String? Function(BuildContext, String?)? textController4Validator;
   // State field(s) for TextFieldSteps widget.
   FocusNode? textFieldStepsFocusNode;
-  TextEditingController? textFieldStepsController;
-  String? Function(BuildContext, String?)? textFieldStepsControllerValidator;
+  TextEditingController? textFieldStepsTextController;
+  String? Function(BuildContext, String?)?
+      textFieldStepsTextControllerValidator;
   // State field(s) for imgList widget.
   FocusNode? imgListFocusNode;
-  TextEditingController? imgListController;
-  String? Function(BuildContext, String?)? imgListControllerValidator;
+  TextEditingController? imgListTextController;
+  String? Function(BuildContext, String?)? imgListTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController7;
@@ -79,10 +80,10 @@ class EditUserManualModel extends FlutterFlowModel<EditUserManualWidget> {
     textController4?.dispose();
 
     textFieldStepsFocusNode?.dispose();
-    textFieldStepsController?.dispose();
+    textFieldStepsTextController?.dispose();
 
     imgListFocusNode?.dispose();
-    imgListController?.dispose();
+    imgListTextController?.dispose();
 
     textFieldFocusNode5?.dispose();
     textController7?.dispose();

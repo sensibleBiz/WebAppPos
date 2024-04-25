@@ -33,9 +33,9 @@ class AddNewLeadModel extends FlutterFlowModel<AddNewLeadWidget> {
   late AdminHeaderModel adminHeaderModel;
   // State field(s) for username widget.
   FocusNode? usernameFocusNode;
-  TextEditingController? usernameController;
-  String? Function(BuildContext, String?)? usernameControllerValidator;
-  String? _usernameControllerValidator(BuildContext context, String? val) {
+  TextEditingController? usernameTextController;
+  String? Function(BuildContext, String?)? usernameTextControllerValidator;
+  String? _usernameTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -45,9 +45,9 @@ class AddNewLeadModel extends FlutterFlowModel<AddNewLeadWidget> {
 
   // State field(s) for mobile widget.
   FocusNode? mobileFocusNode;
-  TextEditingController? mobileController;
-  String? Function(BuildContext, String?)? mobileControllerValidator;
-  String? _mobileControllerValidator(BuildContext context, String? val) {
+  TextEditingController? mobileTextController;
+  String? Function(BuildContext, String?)? mobileTextControllerValidator;
+  String? _mobileTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -64,12 +64,12 @@ class AddNewLeadModel extends FlutterFlowModel<AddNewLeadWidget> {
 
   // State field(s) for mobileAlt widget.
   FocusNode? mobileAltFocusNode;
-  TextEditingController? mobileAltController;
-  String? Function(BuildContext, String?)? mobileAltControllerValidator;
+  TextEditingController? mobileAltTextController;
+  String? Function(BuildContext, String?)? mobileAltTextControllerValidator;
   // State field(s) for email widget.
   FocusNode? emailFocusNode;
-  TextEditingController? emailController;
-  String? Function(BuildContext, String?)? emailControllerValidator;
+  TextEditingController? emailTextController;
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
   // State field(s) for DropDownstate widget.
   String? dropDownstateValue;
   FormFieldController<String>? dropDownstateValueController;
@@ -78,19 +78,19 @@ class AddNewLeadModel extends FlutterFlowModel<AddNewLeadWidget> {
   FormFieldController<String>? dropDownCitiesValueController;
   // State field(s) for area widget.
   FocusNode? areaFocusNode;
-  TextEditingController? areaController;
-  String? Function(BuildContext, String?)? areaControllerValidator;
+  TextEditingController? areaTextController;
+  String? Function(BuildContext, String?)? areaTextControllerValidator;
   // State field(s) for DropDownBType widget.
   String? dropDownBTypeValue;
   FormFieldController<String>? dropDownBTypeValueController;
   // State field(s) for BName widget.
   FocusNode? bNameFocusNode;
-  TextEditingController? bNameController;
-  String? Function(BuildContext, String?)? bNameControllerValidator;
+  TextEditingController? bNameTextController;
+  String? Function(BuildContext, String?)? bNameTextControllerValidator;
   // State field(s) for phone widget.
   FocusNode? phoneFocusNode;
-  TextEditingController? phoneController;
-  String? Function(BuildContext, String?)? phoneControllerValidator;
+  TextEditingController? phoneTextController;
+  String? Function(BuildContext, String?)? phoneTextControllerValidator;
   // State field(s) for DropDownSource widget.
   String? dropDownSourceValue;
   FormFieldController<String>? dropDownSourceValueController;
@@ -99,13 +99,14 @@ class AddNewLeadModel extends FlutterFlowModel<AddNewLeadWidget> {
   FormFieldController<String>? dropDownPriorityValueController;
   // State field(s) for comments widget.
   FocusNode? commentsFocusNode;
-  TextEditingController? commentsController;
-  String? Function(BuildContext, String?)? commentsControllerValidator;
+  TextEditingController? commentsTextController;
+  String? Function(BuildContext, String?)? commentsTextControllerValidator;
   // State field(s) for requirement widget.
   FocusNode? requirementFocusNode;
-  TextEditingController? requirementController;
-  String? Function(BuildContext, String?)? requirementControllerValidator;
-  String? _requirementControllerValidator(BuildContext context, String? val) {
+  TextEditingController? requirementTextController;
+  String? Function(BuildContext, String?)? requirementTextControllerValidator;
+  String? _requirementTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -123,9 +124,9 @@ class AddNewLeadModel extends FlutterFlowModel<AddNewLeadWidget> {
   @override
   void initState(BuildContext context) {
     adminHeaderModel = createModel(context, () => AdminHeaderModel());
-    usernameControllerValidator = _usernameControllerValidator;
-    mobileControllerValidator = _mobileControllerValidator;
-    requirementControllerValidator = _requirementControllerValidator;
+    usernameTextControllerValidator = _usernameTextControllerValidator;
+    mobileTextControllerValidator = _mobileTextControllerValidator;
+    requirementTextControllerValidator = _requirementTextControllerValidator;
   }
 
   @override
@@ -133,30 +134,30 @@ class AddNewLeadModel extends FlutterFlowModel<AddNewLeadWidget> {
     unfocusNode.dispose();
     adminHeaderModel.dispose();
     usernameFocusNode?.dispose();
-    usernameController?.dispose();
+    usernameTextController?.dispose();
 
     mobileFocusNode?.dispose();
-    mobileController?.dispose();
+    mobileTextController?.dispose();
 
     mobileAltFocusNode?.dispose();
-    mobileAltController?.dispose();
+    mobileAltTextController?.dispose();
 
     emailFocusNode?.dispose();
-    emailController?.dispose();
+    emailTextController?.dispose();
 
     areaFocusNode?.dispose();
-    areaController?.dispose();
+    areaTextController?.dispose();
 
     bNameFocusNode?.dispose();
-    bNameController?.dispose();
+    bNameTextController?.dispose();
 
     phoneFocusNode?.dispose();
-    phoneController?.dispose();
+    phoneTextController?.dispose();
 
     commentsFocusNode?.dispose();
-    commentsController?.dispose();
+    commentsTextController?.dispose();
 
     requirementFocusNode?.dispose();
-    requirementController?.dispose();
+    requirementTextController?.dispose();
   }
 }

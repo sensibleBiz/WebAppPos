@@ -34,7 +34,7 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
     super.initState();
     _model = createModel(context, () => UserManualAdminModel());
 
-    _model.textFieldTopicController ??= TextEditingController();
+    _model.textFieldTopicTextController ??= TextEditingController();
     _model.textFieldTopicFocusNode ??= FocusNode();
 
     _model.textController2 ??= TextEditingController();
@@ -47,10 +47,10 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
     _model.textController4 ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
 
-    _model.textFieldStepsController ??= TextEditingController();
+    _model.textFieldStepsTextController ??= TextEditingController();
     _model.textFieldStepsFocusNode ??= FocusNode();
 
-    _model.imgListController ??= TextEditingController();
+    _model.imgListTextController ??= TextEditingController();
     _model.imgListFocusNode ??= FocusNode();
 
     _model.textController7 ??= TextEditingController();
@@ -365,16 +365,16 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                   });
                                                   setState(() {
                                                     _model
-                                                        .textFieldStepsController
+                                                        .textFieldStepsTextController
                                                         ?.clear();
-                                                    _model.imgListController
+                                                    _model.imgListTextController
                                                         ?.clear();
                                                     _model.textController7
                                                         ?.clear();
                                                     _model.textController8
                                                         ?.clear();
                                                     _model
-                                                        .textFieldTopicController
+                                                        .textFieldTopicTextController
                                                         ?.clear();
                                                     _model.textController2
                                                         ?.clear();
@@ -508,7 +508,7 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                         0.0, 0.0, 0.0, 15.0),
                                                 child: TextFormField(
                                                   controller: _model
-                                                      .textFieldTopicController,
+                                                      .textFieldTopicTextController,
                                                   focusNode: _model
                                                       .textFieldTopicFocusNode,
                                                   onFieldSubmitted: (_) async {
@@ -518,7 +518,7 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                         .set(
                                                             createUserManualRecordData(
                                                           headerName: _model
-                                                              .textFieldTopicController
+                                                              .textFieldTopicTextController
                                                               .text,
                                                         ));
                                                   },
@@ -645,9 +645,8 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                                         context)
                                                                     .headlineMediumFamily),
                                                       ),
-                                                  minLines: null,
                                                   validator: _model
-                                                      .textFieldTopicControllerValidator
+                                                      .textFieldTopicTextControllerValidator
                                                       .asValidator(context),
                                                 ),
                                               ),
@@ -789,7 +788,6 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                                         context)
                                                                     .labelLargeFamily),
                                                       ),
-                                                  minLines: null,
                                                   validator: _model
                                                       .textController2Validator
                                                       .asValidator(context),
@@ -922,7 +920,6 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                                         context)
                                                                     .titleLargeFamily),
                                                       ),
-                                                  minLines: null,
                                                   validator: _model
                                                       .textController3Validator
                                                       .asValidator(context),
@@ -1051,7 +1048,6 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                                         context)
                                                                     .titleLargeFamily),
                                                       ),
-                                                  minLines: null,
                                                   validator: _model
                                                       .textController4Validator
                                                       .asValidator(context),
@@ -1268,7 +1264,7 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                    .textFieldStepsController,
+                                                                    .textFieldStepsTextController,
                                                                 focusNode: _model
                                                                     .textFieldStepsFocusNode,
                                                                 autofocus: true,
@@ -1373,9 +1369,8 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
-                                                                    .textFieldStepsControllerValidator
+                                                                    .textFieldStepsTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -1392,12 +1387,12 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                             setState(() {
                                                               FFAppState()
                                                                   .addToSteps(_model
-                                                                      .textFieldStepsController
+                                                                      .textFieldStepsTextController
                                                                       .text);
                                                             });
                                                             setState(() {
                                                               _model
-                                                                  .textFieldStepsController
+                                                                  .textFieldStepsTextController
                                                                   ?.clear();
                                                             });
                                                           },
@@ -1662,7 +1657,7 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                    .imgListController,
+                                                                    .imgListTextController,
                                                                 focusNode: _model
                                                                     .imgListFocusNode,
                                                                 autofocus: true,
@@ -1767,9 +1762,8 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
-                                                                    .imgListControllerValidator
+                                                                    .imgListTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -1787,12 +1781,12 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                               FFAppState()
                                                                   .addToImgList(
                                                                       _model
-                                                                          .imgListController
+                                                                          .imgListTextController
                                                                           .text);
                                                             });
                                                             setState(() {
                                                               _model
-                                                                  .imgListController
+                                                                  .imgListTextController
                                                                   ?.clear();
                                                             });
                                                           },
@@ -1984,7 +1978,6 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                                         context)
                                                                     .bodyMediumFamily),
                                                       ),
-                                                  minLines: null,
                                                   validator: _model
                                                       .textController7Validator
                                                       .asValidator(context),
@@ -2116,7 +2109,6 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                                                       .titleSmallFamily),
                                                         ),
                                                 maxLines: null,
-                                                minLines: null,
                                                 validator: _model
                                                     .textController8Validator
                                                     .asValidator(context),
@@ -2133,9 +2125,11 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                 onPressed: () async {
                                   if (_model.headlineDropDownValue != null &&
                                       _model.headlineDropDownValue != '') {
-                                    if (_model.textFieldTopicController.text !=
+                                    if (_model.textFieldTopicTextController
+                                                .text !=
                                             null &&
-                                        _model.textFieldTopicController.text !=
+                                        _model.textFieldTopicTextController
+                                                .text !=
                                             '') {
                                       var subHeaderRecordReference =
                                           SubHeaderRecord.createDoc(
@@ -2150,7 +2144,8 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                       await subHeaderRecordReference.set({
                                         ...createSubHeaderRecordData(
                                           topicName: _model
-                                              .textFieldTopicController.text,
+                                              .textFieldTopicTextController
+                                              .text,
                                           videoURL: _model.textController2.text,
                                           headLine: _model.textController3.text,
                                           subHeadLine:
@@ -2177,7 +2172,8 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                           SubHeaderRecord.getDocumentFromData({
                                         ...createSubHeaderRecordData(
                                           topicName: _model
-                                              .textFieldTopicController.text,
+                                              .textFieldTopicTextController
+                                              .text,
                                           videoURL: _model.textController2.text,
                                           headLine: _model.textController3.text,
                                           subHeadLine:
@@ -2224,7 +2220,7 @@ class _UserManualAdminWidgetState extends State<UserManualAdminWidget> {
                                         },
                                       );
                                       setState(() {
-                                        _model.textFieldStepsController
+                                        _model.textFieldStepsTextController
                                             ?.clear();
                                       });
                                       setState(() {

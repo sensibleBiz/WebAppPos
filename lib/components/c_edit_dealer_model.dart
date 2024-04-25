@@ -18,29 +18,29 @@ class CEditDealerModel extends FlutterFlowModel<CEditDealerWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for dealersCompanyName widget.
   FocusNode? dealersCompanyNameFocusNode;
-  TextEditingController? dealersCompanyNameController;
+  TextEditingController? dealersCompanyNameTextController;
   String? Function(BuildContext, String?)?
-      dealersCompanyNameControllerValidator;
+      dealersCompanyNameTextControllerValidator;
   // State field(s) for GST_Number widget.
   FocusNode? gSTNumberFocusNode;
-  TextEditingController? gSTNumberController;
-  String? Function(BuildContext, String?)? gSTNumberControllerValidator;
+  TextEditingController? gSTNumberTextController;
+  String? Function(BuildContext, String?)? gSTNumberTextControllerValidator;
   // State field(s) for emailIdDealer widget.
   FocusNode? emailIdDealerFocusNode;
-  TextEditingController? emailIdDealerController;
-  String? Function(BuildContext, String?)? emailIdDealerControllerValidator;
+  TextEditingController? emailIdDealerTextController;
+  String? Function(BuildContext, String?)? emailIdDealerTextControllerValidator;
   // State field(s) for websiteDealer widget.
   FocusNode? websiteDealerFocusNode;
-  TextEditingController? websiteDealerController;
-  String? Function(BuildContext, String?)? websiteDealerControllerValidator;
+  TextEditingController? websiteDealerTextController;
+  String? Function(BuildContext, String?)? websiteDealerTextControllerValidator;
   // State field(s) for stateDealer widget.
   FocusNode? stateDealerFocusNode;
-  TextEditingController? stateDealerController;
-  String? Function(BuildContext, String?)? stateDealerControllerValidator;
+  TextEditingController? stateDealerTextController;
+  String? Function(BuildContext, String?)? stateDealerTextControllerValidator;
   // State field(s) for addressDealer widget.
   FocusNode? addressDealerFocusNode;
-  TextEditingController? addressDealerController;
-  String? Function(BuildContext, String?)? addressDealerControllerValidator;
+  TextEditingController? addressDealerTextController;
+  String? Function(BuildContext, String?)? addressDealerTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -48,21 +48,21 @@ class CEditDealerModel extends FlutterFlowModel<CEditDealerWidget> {
   @override
   void dispose() {
     dealersCompanyNameFocusNode?.dispose();
-    dealersCompanyNameController?.dispose();
+    dealersCompanyNameTextController?.dispose();
 
     gSTNumberFocusNode?.dispose();
-    gSTNumberController?.dispose();
+    gSTNumberTextController?.dispose();
 
     emailIdDealerFocusNode?.dispose();
-    emailIdDealerController?.dispose();
+    emailIdDealerTextController?.dispose();
 
     websiteDealerFocusNode?.dispose();
-    websiteDealerController?.dispose();
+    websiteDealerTextController?.dispose();
 
     stateDealerFocusNode?.dispose();
-    stateDealerController?.dispose();
+    stateDealerTextController?.dispose();
 
     addressDealerFocusNode?.dispose();
-    addressDealerController?.dispose();
+    addressDealerTextController?.dispose();
   }
 }

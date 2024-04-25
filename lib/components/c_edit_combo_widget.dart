@@ -209,7 +209,6 @@ class _CEditComboWidgetState extends State<CEditComboWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .titleMediumFamily),
                                   ),
-                              minLines: null,
                               validator: _model.textController1Validator
                                   .asValidator(context),
                             ),
@@ -336,7 +335,6 @@ class _CEditComboWidgetState extends State<CEditComboWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .titleMediumFamily),
                                   ),
-                              minLines: null,
                               validator: _model.textController2Validator
                                   .asValidator(context),
                             ),
@@ -522,7 +520,6 @@ class _CEditComboWidgetState extends State<CEditComboWidget> {
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .titleMediumFamily),
                                 ),
-                            minLines: null,
                             validator: _model.textController3Validator
                                 .asValidator(context),
                           ),
@@ -608,7 +605,6 @@ class _CEditComboWidgetState extends State<CEditComboWidget> {
                                     FlutterFlowTheme.of(context)
                                         .titleMediumFamily),
                               ),
-                          minLines: null,
                           validator: _model.textController4Validator
                               .asValidator(context),
                         ),

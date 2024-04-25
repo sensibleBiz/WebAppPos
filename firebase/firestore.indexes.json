@@ -75,6 +75,24 @@
       ]
     },
     {
+      "collectionGroup": "LEADS_MANAGEMENT",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "assignedTo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "stage",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdDate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "USER_MANUAL",
       "queryScope": "COLLECTION",
       "fields": [
@@ -92,24 +110,6 @@
       "collectionGroup": "LEADS_MANAGEMENT",
       "queryScope": "COLLECTION",
       "fields": [
-        {
-          "fieldPath": "assignedTo",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "createdDate",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
-      "collectionGroup": "LEADS_MANAGEMENT",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "stage",
-          "order": "ASCENDING"
-        },
         {
           "fieldPath": "assignedTo",
           "order": "ASCENDING"

@@ -50,11 +50,11 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
-    _model.textFieldfollowUpNameController ??=
+    _model.textFieldfollowUpNameTextController ??=
         TextEditingController(text: widget.username);
     _model.textFieldfollowUpNameFocusNode ??= FocusNode();
 
-    _model.textFieldDiscriptionController ??= TextEditingController();
+    _model.textFieldDiscriptionTextController ??= TextEditingController();
     _model.textFieldDiscriptionFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -78,7 +78,7 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
         children: [
           Container(
             width: 400.0,
-            height: 650.0,
+            height: 550.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).primaryBackground,
               borderRadius: BorderRadius.only(
@@ -279,7 +279,7 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                     child: TextFormField(
-                      controller: _model.textFieldfollowUpNameController,
+                      controller: _model.textFieldfollowUpNameTextController,
                       focusNode: _model.textFieldfollowUpNameFocusNode,
                       autofocus: true,
                       readOnly: true,
@@ -332,8 +332,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyMediumFamily),
                           ),
-                      minLines: null,
-                      validator: _model.textFieldfollowUpNameControllerValidator
+                      validator: _model
+                          .textFieldfollowUpNameTextControllerValidator
                           .asValidator(context),
                     ),
                   ),
@@ -441,6 +441,12 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                   .map((e) => e.id)
                                   .toList()),
                           optionLabels: dropDownAssgToUserProfileRecordList
+                              .where((e) => e.permissionList
+                                  .where((e) =>
+                                      (e.title == 'Leads') && (e.value != 0))
+                                  .toList()
+                                  .isNotEmpty)
+                              .toList()
                               .map((e) => e.name)
                               .toList(),
                           onChanged: (val) =>
@@ -495,7 +501,7 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                     child: TextFormField(
-                      controller: _model.textFieldDiscriptionController,
+                      controller: _model.textFieldDiscriptionTextController,
                       focusNode: _model.textFieldDiscriptionFocusNode,
                       autofocus: true,
                       obscureText: false,
@@ -546,8 +552,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                 FlutterFlowTheme.of(context).bodyMediumFamily),
                           ),
                       maxLines: 4,
-                      minLines: null,
-                      validator: _model.textFieldDiscriptionControllerValidator
+                      validator: _model
+                          .textFieldDiscriptionTextControllerValidator
                           .asValidator(context),
                     ),
                   ),
@@ -606,15 +612,15 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                   functions.timestampToMili(_model.datePicked1),
                               time:
                                   functions.timestampToMili(_model.datePicked2),
-                              followUpName:
-                                  _model.textFieldfollowUpNameController.text,
+                              followUpName: _model
+                                  .textFieldfollowUpNameTextController.text,
                               leadPriority: _model.dropDownLeadPriorityValue,
                               assignedTo: valueOrDefault<String>(
                                 _model.dropDownAssgToValue,
                                 '0',
                               ),
-                              discription:
-                                  _model.textFieldDiscriptionController.text,
+                              discription: _model
+                                  .textFieldDiscriptionTextController.text,
                               leadMRefId: widget.leadMRefid,
                               mobile: widget.mobile,
                               timestamp: getCurrentTimestamp,
@@ -626,7 +632,7 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                   time: functions
                                       .timestampToMili(_model.datePicked2),
                                   followUpName: _model
-                                      .textFieldfollowUpNameController.text,
+                                      .textFieldfollowUpNameTextController.text,
                                   leadPriority:
                                       _model.dropDownLeadPriorityValue,
                                   assignedTo: valueOrDefault<String>(
@@ -634,7 +640,7 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                     '0',
                                   ),
                                   discription: _model
-                                      .textFieldDiscriptionController.text,
+                                      .textFieldDiscriptionTextController.text,
                                   leadMRefId: widget.leadMRefid,
                                   mobile: widget.mobile,
                                   timestamp: getCurrentTimestamp,

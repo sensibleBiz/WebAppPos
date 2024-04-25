@@ -49,25 +49,26 @@ class CEditProductDetailsNewModel
   bool? notSame;
   // State field(s) for TextFieldCode widget.
   FocusNode? textFieldCodeFocusNode;
-  TextEditingController? textFieldCodeController;
-  String? Function(BuildContext, String?)? textFieldCodeControllerValidator;
+  TextEditingController? textFieldCodeTextController;
+  String? Function(BuildContext, String?)? textFieldCodeTextControllerValidator;
   // State field(s) for DropDowProdMasPM2 widget.
   String? dropDowProdMasPM2Value;
   FormFieldController<String>? dropDowProdMasPM2ValueController;
   // State field(s) for TextFieldSellingPrice widget.
   FocusNode? textFieldSellingPriceFocusNode;
-  TextEditingController? textFieldSellingPriceController;
+  TextEditingController? textFieldSellingPriceTextController;
   String? Function(BuildContext, String?)?
-      textFieldSellingPriceControllerValidator;
+      textFieldSellingPriceTextControllerValidator;
   // State field(s) for TextFieldMrpPrice widget.
   FocusNode? textFieldMrpPriceFocusNode;
-  TextEditingController? textFieldMrpPriceController;
-  String? Function(BuildContext, String?)? textFieldMrpPriceControllerValidator;
+  TextEditingController? textFieldMrpPriceTextController;
+  String? Function(BuildContext, String?)?
+      textFieldMrpPriceTextControllerValidator;
   // State field(s) for TextFieldPurchasePrice widget.
   FocusNode? textFieldPurchasePriceFocusNode;
-  TextEditingController? textFieldPurchasePriceController;
+  TextEditingController? textFieldPurchasePriceTextController;
   String? Function(BuildContext, String?)?
-      textFieldPurchasePriceControllerValidator;
+      textFieldPurchasePriceTextControllerValidator;
   // State field(s) for DropDownCate widget.
   String? dropDownCateValue;
   FormFieldController<String>? dropDownCateValueController;
@@ -85,49 +86,51 @@ class CEditProductDetailsNewModel
   FormFieldController<String>? dropDownServiceValueController;
   // State field(s) for TextFieldRegionalname widget.
   FocusNode? textFieldRegionalnameFocusNode;
-  TextEditingController? textFieldRegionalnameController;
+  TextEditingController? textFieldRegionalnameTextController;
   String? Function(BuildContext, String?)?
-      textFieldRegionalnameControllerValidator;
+      textFieldRegionalnameTextControllerValidator;
   // State field(s) for TextFieldReorderLevel widget.
   FocusNode? textFieldReorderLevelFocusNode;
-  TextEditingController? textFieldReorderLevelController;
+  TextEditingController? textFieldReorderLevelTextController;
   String? Function(BuildContext, String?)?
-      textFieldReorderLevelControllerValidator;
+      textFieldReorderLevelTextControllerValidator;
   // State field(s) for TextFieldShortName widget.
   FocusNode? textFieldShortNameFocusNode;
-  TextEditingController? textFieldShortNameController;
+  TextEditingController? textFieldShortNameTextController;
   String? Function(BuildContext, String?)?
-      textFieldShortNameControllerValidator;
+      textFieldShortNameTextControllerValidator;
   // State field(s) for TextFieldHsnCode widget.
   FocusNode? textFieldHsnCodeFocusNode;
-  TextEditingController? textFieldHsnCodeController;
-  String? Function(BuildContext, String?)? textFieldHsnCodeControllerValidator;
+  TextEditingController? textFieldHsnCodeTextController;
+  String? Function(BuildContext, String?)?
+      textFieldHsnCodeTextControllerValidator;
   // Stores action output result for [Custom Action - barcodeRandom] action in IconButton widget.
   String? barcode;
   // State field(s) for TextFieldBarcode widget.
   FocusNode? textFieldBarcodeFocusNode;
-  TextEditingController? textFieldBarcodeController;
-  String? Function(BuildContext, String?)? textFieldBarcodeControllerValidator;
+  TextEditingController? textFieldBarcodeTextController;
+  String? Function(BuildContext, String?)?
+      textFieldBarcodeTextControllerValidator;
   var barcode1 = '';
   // State field(s) for TextFieldSearchCode widget.
   FocusNode? textFieldSearchCodeFocusNode;
-  TextEditingController? textFieldSearchCodeController;
+  TextEditingController? textFieldSearchCodeTextController;
   String? Function(BuildContext, String?)?
-      textFieldSearchCodeControllerValidator;
+      textFieldSearchCodeTextControllerValidator;
   // State field(s) for CheckboxListTile widget.
   bool? checkboxListTileValue1;
   // State field(s) for CheckboxListTile widget.
   bool? checkboxListTileValue2;
   // State field(s) for TextFieldDiscountPer widget.
   FocusNode? textFieldDiscountPerFocusNode;
-  TextEditingController? textFieldDiscountPerController;
+  TextEditingController? textFieldDiscountPerTextController;
   String? Function(BuildContext, String?)?
-      textFieldDiscountPerControllerValidator;
+      textFieldDiscountPerTextControllerValidator;
   // State field(s) for TextFieldDiscountAmt widget.
   FocusNode? textFieldDiscountAmtFocusNode;
-  TextEditingController? textFieldDiscountAmtController;
+  TextEditingController? textFieldDiscountAmtTextController;
   String? Function(BuildContext, String?)?
-      textFieldDiscountAmtControllerValidator;
+      textFieldDiscountAmtTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController13;
@@ -161,40 +164,40 @@ class CEditProductDetailsNewModel
     cstmSideNavBarModel.dispose();
     cHeaderModel.dispose();
     textFieldCodeFocusNode?.dispose();
-    textFieldCodeController?.dispose();
+    textFieldCodeTextController?.dispose();
 
     textFieldSellingPriceFocusNode?.dispose();
-    textFieldSellingPriceController?.dispose();
+    textFieldSellingPriceTextController?.dispose();
 
     textFieldMrpPriceFocusNode?.dispose();
-    textFieldMrpPriceController?.dispose();
+    textFieldMrpPriceTextController?.dispose();
 
     textFieldPurchasePriceFocusNode?.dispose();
-    textFieldPurchasePriceController?.dispose();
+    textFieldPurchasePriceTextController?.dispose();
 
     textFieldRegionalnameFocusNode?.dispose();
-    textFieldRegionalnameController?.dispose();
+    textFieldRegionalnameTextController?.dispose();
 
     textFieldReorderLevelFocusNode?.dispose();
-    textFieldReorderLevelController?.dispose();
+    textFieldReorderLevelTextController?.dispose();
 
     textFieldShortNameFocusNode?.dispose();
-    textFieldShortNameController?.dispose();
+    textFieldShortNameTextController?.dispose();
 
     textFieldHsnCodeFocusNode?.dispose();
-    textFieldHsnCodeController?.dispose();
+    textFieldHsnCodeTextController?.dispose();
 
     textFieldBarcodeFocusNode?.dispose();
-    textFieldBarcodeController?.dispose();
+    textFieldBarcodeTextController?.dispose();
 
     textFieldSearchCodeFocusNode?.dispose();
-    textFieldSearchCodeController?.dispose();
+    textFieldSearchCodeTextController?.dispose();
 
     textFieldDiscountPerFocusNode?.dispose();
-    textFieldDiscountPerController?.dispose();
+    textFieldDiscountPerTextController?.dispose();
 
     textFieldDiscountAmtFocusNode?.dispose();
-    textFieldDiscountAmtController?.dispose();
+    textFieldDiscountAmtTextController?.dispose();
 
     textFieldFocusNode1?.dispose();
     textController13?.dispose();

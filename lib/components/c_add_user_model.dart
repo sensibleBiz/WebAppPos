@@ -20,9 +20,10 @@ class CAddUserModel extends FlutterFlowModel<CAddUserWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextFieldName widget.
   FocusNode? textFieldNameFocusNode;
-  TextEditingController? textFieldNameController;
-  String? Function(BuildContext, String?)? textFieldNameControllerValidator;
-  String? _textFieldNameControllerValidator(BuildContext context, String? val) {
+  TextEditingController? textFieldNameTextController;
+  String? Function(BuildContext, String?)? textFieldNameTextControllerValidator;
+  String? _textFieldNameTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -35,9 +36,10 @@ class CAddUserModel extends FlutterFlowModel<CAddUserWidget> {
 
   // State field(s) for TextFieldMobile widget.
   FocusNode? textFieldMobileFocusNode;
-  TextEditingController? textFieldMobileController;
-  String? Function(BuildContext, String?)? textFieldMobileControllerValidator;
-  String? _textFieldMobileControllerValidator(
+  TextEditingController? textFieldMobileTextController;
+  String? Function(BuildContext, String?)?
+      textFieldMobileTextControllerValidator;
+  String? _textFieldMobileTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -51,9 +53,10 @@ class CAddUserModel extends FlutterFlowModel<CAddUserWidget> {
 
   // State field(s) for TextFieldEmailId widget.
   FocusNode? textFieldEmailIdFocusNode;
-  TextEditingController? textFieldEmailIdController;
-  String? Function(BuildContext, String?)? textFieldEmailIdControllerValidator;
-  String? _textFieldEmailIdControllerValidator(
+  TextEditingController? textFieldEmailIdTextController;
+  String? Function(BuildContext, String?)?
+      textFieldEmailIdTextControllerValidator;
+  String? _textFieldEmailIdTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -64,17 +67,19 @@ class CAddUserModel extends FlutterFlowModel<CAddUserWidget> {
 
   // State field(s) for TextFieldPassword widget.
   FocusNode? textFieldPasswordFocusNode;
-  TextEditingController? textFieldPasswordController;
+  TextEditingController? textFieldPasswordTextController;
   late bool textFieldPasswordVisibility;
-  String? Function(BuildContext, String?)? textFieldPasswordControllerValidator;
+  String? Function(BuildContext, String?)?
+      textFieldPasswordTextControllerValidator;
   // State field(s) for TextFieldQuickPin widget.
   FocusNode? textFieldQuickPinFocusNode;
-  TextEditingController? textFieldQuickPinController;
-  String? Function(BuildContext, String?)? textFieldQuickPinControllerValidator;
+  TextEditingController? textFieldQuickPinTextController;
+  String? Function(BuildContext, String?)?
+      textFieldQuickPinTextControllerValidator;
   // State field(s) for TextFieldCode widget.
   FocusNode? textFieldCodeFocusNode;
-  TextEditingController? textFieldCodeController;
-  String? Function(BuildContext, String?)? textFieldCodeControllerValidator;
+  TextEditingController? textFieldCodeTextController;
+  String? Function(BuildContext, String?)? textFieldCodeTextControllerValidator;
   // State field(s) for CheckboxGroup1 widget.
   List<String>? checkboxGroup1Values;
   FormFieldController<List<String>>? checkboxGroup1ValueController;
@@ -84,30 +89,33 @@ class CAddUserModel extends FlutterFlowModel<CAddUserWidget> {
 
   @override
   void initState(BuildContext context) {
-    textFieldNameControllerValidator = _textFieldNameControllerValidator;
-    textFieldMobileControllerValidator = _textFieldMobileControllerValidator;
-    textFieldEmailIdControllerValidator = _textFieldEmailIdControllerValidator;
+    textFieldNameTextControllerValidator =
+        _textFieldNameTextControllerValidator;
+    textFieldMobileTextControllerValidator =
+        _textFieldMobileTextControllerValidator;
+    textFieldEmailIdTextControllerValidator =
+        _textFieldEmailIdTextControllerValidator;
     textFieldPasswordVisibility = false;
   }
 
   @override
   void dispose() {
     textFieldNameFocusNode?.dispose();
-    textFieldNameController?.dispose();
+    textFieldNameTextController?.dispose();
 
     textFieldMobileFocusNode?.dispose();
-    textFieldMobileController?.dispose();
+    textFieldMobileTextController?.dispose();
 
     textFieldEmailIdFocusNode?.dispose();
-    textFieldEmailIdController?.dispose();
+    textFieldEmailIdTextController?.dispose();
 
     textFieldPasswordFocusNode?.dispose();
-    textFieldPasswordController?.dispose();
+    textFieldPasswordTextController?.dispose();
 
     textFieldQuickPinFocusNode?.dispose();
-    textFieldQuickPinController?.dispose();
+    textFieldQuickPinTextController?.dispose();
 
     textFieldCodeFocusNode?.dispose();
-    textFieldCodeController?.dispose();
+    textFieldCodeTextController?.dispose();
   }
 }

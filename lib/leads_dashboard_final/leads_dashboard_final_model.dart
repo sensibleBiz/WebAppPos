@@ -47,22 +47,22 @@ class LeadsDashboardFinalModel
   // Model for cHeader component.
   late CHeaderModel cHeaderModel;
   // State field(s) for Expandable widget.
-  late ExpandableController expandableController1;
+  late ExpandableController expandableExpandableController1;
 
   // Stores action output result for [Custom Action - leadDocRefCopy] action in Container widget.
   List<dynamic>? res333;
   // State field(s) for Expandable widget.
-  late ExpandableController expandableController2;
+  late ExpandableController expandableExpandableController2;
 
   // Stores action output result for [Custom Action - leadDocRefCopy] action in Container widget.
   List<dynamic>? res2;
   // State field(s) for Expandable widget.
-  late ExpandableController expandableController3;
+  late ExpandableController expandableExpandableController3;
 
   // Stores action output result for [Custom Action - leadDocRefCopy] action in Container widget.
   List<dynamic>? res5;
   // State field(s) for Expandable widget.
-  late ExpandableController expandableController4;
+  late ExpandableController expandableExpandableController4;
 
   // Stores action output result for [Custom Action - leadDocRefCopy] action in Container widget.
   List<dynamic>? resLost;
@@ -75,8 +75,9 @@ class LeadsDashboardFinalModel
   List<dynamic>? allLeadSearchRes;
   // State field(s) for TextFieldMobile widget.
   FocusNode? textFieldMobileFocusNode;
-  TextEditingController? textFieldMobileController;
-  String? Function(BuildContext, String?)? textFieldMobileControllerValidator;
+  TextEditingController? textFieldMobileTextController;
+  String? Function(BuildContext, String?)?
+      textFieldMobileTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in TextFieldMobile widget.
   List<LeadsManagementRecord>? res1;
   // Stores action output result for [Custom Action - leadDocToLeadJson] action in TextFieldMobile widget.
@@ -87,8 +88,8 @@ class LeadsDashboardFinalModel
   List<dynamic>? allLeadSearchRes12;
   // State field(s) for TextFieldCity widget.
   FocusNode? textFieldCityFocusNode;
-  TextEditingController? textFieldCityController;
-  String? Function(BuildContext, String?)? textFieldCityControllerValidator;
+  TextEditingController? textFieldCityTextController;
+  String? Function(BuildContext, String?)? textFieldCityTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in TextFieldCity widget.
   List<LeadsManagementRecord>? resCity;
   // Stores action output result for [Custom Action - leadDocToLeadJson] action in TextFieldCity widget.
@@ -114,14 +115,14 @@ class LeadsDashboardFinalModel
   void dispose() {
     unfocusNode.dispose();
     cHeaderModel.dispose();
-    expandableController1.dispose();
-    expandableController2.dispose();
-    expandableController3.dispose();
-    expandableController4.dispose();
+    expandableExpandableController1.dispose();
+    expandableExpandableController2.dispose();
+    expandableExpandableController3.dispose();
+    expandableExpandableController4.dispose();
     textFieldMobileFocusNode?.dispose();
-    textFieldMobileController?.dispose();
+    textFieldMobileTextController?.dispose();
 
     textFieldCityFocusNode?.dispose();
-    textFieldCityController?.dispose();
+    textFieldCityTextController?.dispose();
   }
 }

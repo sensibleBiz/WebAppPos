@@ -172,13 +172,13 @@ class _UpdateTaxWidgetState extends State<UpdateTaxWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: _model.textTaxNameController ??=
+                              controller: _model.textTaxNameTextController ??=
                                   TextEditingController(
                                 text: containerTaxMasterRecord.name,
                               ),
                               focusNode: _model.textTaxNameFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textTaxNameController',
+                                '_model.textTaxNameTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -251,8 +251,8 @@ class _UpdateTaxWidgetState extends State<UpdateTaxWidget> {
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
-                              validator: _model.textTaxNameControllerValidator
+                              validator: _model
+                                  .textTaxNameTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -302,16 +302,16 @@ class _UpdateTaxWidgetState extends State<UpdateTaxWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller:
-                                  _model.textTaxPercentageNumberController ??=
-                                      TextEditingController(
+                              controller: _model
+                                      .textTaxPercentageNumberTextController ??=
+                                  TextEditingController(
                                 text: containerTaxMasterRecord.percentage
                                     .toString(),
                               ),
                               focusNode:
                                   _model.textTaxPercentageNumberFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textTaxPercentageNumberController',
+                                '_model.textTaxPercentageNumberTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -384,10 +384,9 @@ class _UpdateTaxWidgetState extends State<UpdateTaxWidget> {
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
                               keyboardType: TextInputType.number,
                               validator: _model
-                                  .textTaxPercentageNumberControllerValidator
+                                  .textTaxPercentageNumberTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -437,13 +436,14 @@ class _UpdateTaxWidgetState extends State<UpdateTaxWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: _model.textTaxTypeCodeController ??=
-                                  TextEditingController(
+                              controller:
+                                  _model.textTaxTypeCodeTextController ??=
+                                      TextEditingController(
                                 text: containerTaxMasterRecord.code.toString(),
                               ),
                               focusNode: _model.textTaxTypeCodeFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textTaxTypeCodeController',
+                                '_model.textTaxTypeCodeTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -517,9 +517,8 @@ class _UpdateTaxWidgetState extends State<UpdateTaxWidget> {
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
                               validator: _model
-                                  .textTaxTypeCodeControllerValidator
+                                  .textTaxTypeCodeTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -587,9 +586,10 @@ class _UpdateTaxWidgetState extends State<UpdateTaxWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (_model.textTaxNameController.text !=
+                                  if (_model.textTaxNameTextController.text !=
                                           null &&
-                                      _model.textTaxNameController.text != '') {
+                                      _model.textTaxNameTextController.text !=
+                                          '') {
                                     if (_model.formKey.currentState == null ||
                                         !_model.formKey.currentState!
                                             .validate()) {
@@ -598,12 +598,12 @@ class _UpdateTaxWidgetState extends State<UpdateTaxWidget> {
 
                                     await containerTaxMasterRecord.reference
                                         .update(createTaxMasterRecordData(
-                                      name: functions.toCapitalLetter(
-                                          _model.textTaxNameController.text),
+                                      name: functions.toCapitalLetter(_model
+                                          .textTaxNameTextController.text),
                                       code: int.tryParse(_model
-                                          .textTaxTypeCodeController.text),
+                                          .textTaxTypeCodeTextController.text),
                                       percentage: double.tryParse(_model
-                                          .textTaxPercentageNumberController
+                                          .textTaxPercentageNumberTextController
                                           .text),
                                       updatedDate: functions.getUpdatedDate(),
                                       updatedBy: FFAppState().userProfileRef,

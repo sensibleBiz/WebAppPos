@@ -21,14 +21,14 @@ class AddCategoryMasterModel extends FlutterFlowModel<AddCategoryMasterWidget> {
 
   // State field(s) for TextCategoryMasterTypeName widget.
   FocusNode? textCategoryMasterTypeNameFocusNode;
-  TextEditingController? textCategoryMasterTypeNameController;
+  TextEditingController? textCategoryMasterTypeNameTextController;
   String? Function(BuildContext, String?)?
-      textCategoryMasterTypeNameControllerValidator;
+      textCategoryMasterTypeNameTextControllerValidator;
   // State field(s) for TextCategoryMasterTypeCode widget.
   FocusNode? textCategoryMasterTypeCodeFocusNode;
-  TextEditingController? textCategoryMasterTypeCodeController;
+  TextEditingController? textCategoryMasterTypeCodeTextController;
   String? Function(BuildContext, String?)?
-      textCategoryMasterTypeCodeControllerValidator;
+      textCategoryMasterTypeCodeTextControllerValidator;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -51,10 +51,10 @@ class AddCategoryMasterModel extends FlutterFlowModel<AddCategoryMasterWidget> {
   @override
   void dispose() {
     textCategoryMasterTypeNameFocusNode?.dispose();
-    textCategoryMasterTypeNameController?.dispose();
+    textCategoryMasterTypeNameTextController?.dispose();
 
     textCategoryMasterTypeCodeFocusNode?.dispose();
-    textCategoryMasterTypeCodeController?.dispose();
+    textCategoryMasterTypeCodeTextController?.dispose();
 
     textFieldFocusNode?.dispose();
     textController3?.dispose();

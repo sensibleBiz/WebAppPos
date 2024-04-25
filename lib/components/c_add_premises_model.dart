@@ -20,10 +20,10 @@ class CAddPremisesModel extends FlutterFlowModel<CAddPremisesWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextFieldPremisesName widget.
   FocusNode? textFieldPremisesNameFocusNode;
-  TextEditingController? textFieldPremisesNameController;
+  TextEditingController? textFieldPremisesNameTextController;
   String? Function(BuildContext, String?)?
-      textFieldPremisesNameControllerValidator;
-  String? _textFieldPremisesNameControllerValidator(
+      textFieldPremisesNameTextControllerValidator;
+  String? _textFieldPremisesNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -37,17 +37,17 @@ class CAddPremisesModel extends FlutterFlowModel<CAddPremisesWidget> {
 
   // State field(s) for TextFieldCode widget.
   FocusNode? textFieldCodeFocusNode;
-  TextEditingController? textFieldCodeController;
-  String? Function(BuildContext, String?)? textFieldCodeControllerValidator;
+  TextEditingController? textFieldCodeTextController;
+  String? Function(BuildContext, String?)? textFieldCodeTextControllerValidator;
   // State field(s) for DropDownPremisesType widget.
   String? dropDownPremisesTypeValue;
   FormFieldController<String>? dropDownPremisesTypeValueController;
   // State field(s) for TextFieldNoOfTable widget.
   FocusNode? textFieldNoOfTableFocusNode;
-  TextEditingController? textFieldNoOfTableController;
+  TextEditingController? textFieldNoOfTableTextController;
   String? Function(BuildContext, String?)?
-      textFieldNoOfTableControllerValidator;
-  String? _textFieldNoOfTableControllerValidator(
+      textFieldNoOfTableTextControllerValidator;
+  String? _textFieldNoOfTableTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -61,10 +61,10 @@ class CAddPremisesModel extends FlutterFlowModel<CAddPremisesWidget> {
 
   // State field(s) for TextFieldRangStartWith widget.
   FocusNode? textFieldRangStartWithFocusNode;
-  TextEditingController? textFieldRangStartWithController;
+  TextEditingController? textFieldRangStartWithTextController;
   String? Function(BuildContext, String?)?
-      textFieldRangStartWithControllerValidator;
-  String? _textFieldRangStartWithControllerValidator(
+      textFieldRangStartWithTextControllerValidator;
+  String? _textFieldRangStartWithTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -81,26 +81,26 @@ class CAddPremisesModel extends FlutterFlowModel<CAddPremisesWidget> {
 
   @override
   void initState(BuildContext context) {
-    textFieldPremisesNameControllerValidator =
-        _textFieldPremisesNameControllerValidator;
-    textFieldNoOfTableControllerValidator =
-        _textFieldNoOfTableControllerValidator;
-    textFieldRangStartWithControllerValidator =
-        _textFieldRangStartWithControllerValidator;
+    textFieldPremisesNameTextControllerValidator =
+        _textFieldPremisesNameTextControllerValidator;
+    textFieldNoOfTableTextControllerValidator =
+        _textFieldNoOfTableTextControllerValidator;
+    textFieldRangStartWithTextControllerValidator =
+        _textFieldRangStartWithTextControllerValidator;
   }
 
   @override
   void dispose() {
     textFieldPremisesNameFocusNode?.dispose();
-    textFieldPremisesNameController?.dispose();
+    textFieldPremisesNameTextController?.dispose();
 
     textFieldCodeFocusNode?.dispose();
-    textFieldCodeController?.dispose();
+    textFieldCodeTextController?.dispose();
 
     textFieldNoOfTableFocusNode?.dispose();
-    textFieldNoOfTableController?.dispose();
+    textFieldNoOfTableTextController?.dispose();
 
     textFieldRangStartWithFocusNode?.dispose();
-    textFieldRangStartWithController?.dispose();
+    textFieldRangStartWithTextController?.dispose();
   }
 }

@@ -43,22 +43,22 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
     super.initState();
     _model = createModel(context, () => CAddDealerModel());
 
-    _model.searchMobileTextFieldController ??= TextEditingController();
+    _model.searchMobileTextFieldTextController ??= TextEditingController();
     _model.searchMobileTextFieldFocusNode ??= FocusNode();
 
-    _model.textFieldMobileController1 ??= TextEditingController();
+    _model.textFieldMobileTextController1 ??= TextEditingController();
     _model.textFieldMobileFocusNode1 ??= FocusNode();
 
-    _model.textFieldMobileController2 ??= TextEditingController();
+    _model.textFieldMobileTextController2 ??= TextEditingController();
     _model.textFieldMobileFocusNode2 ??= FocusNode();
 
-    _model.textFieldEmailIdController ??= TextEditingController();
+    _model.textFieldEmailIdTextController ??= TextEditingController();
     _model.textFieldEmailIdFocusNode ??= FocusNode();
 
-    _model.companyNameController ??= TextEditingController();
+    _model.companyNameTextController ??= TextEditingController();
     _model.companyNameFocusNode ??= FocusNode();
 
-    _model.gstNumberController ??= TextEditingController();
+    _model.gstNumberTextController ??= TextEditingController();
     _model.gstNumberFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -109,7 +109,7 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                 8.0, 0.0, 8.0, 0.0),
                             child: TextFormField(
                               controller:
-                                  _model.searchMobileTextFieldController,
+                                  _model.searchMobileTextFieldTextController,
                               focusNode: _model.searchMobileTextFieldFocusNode,
                               autofocus: true,
                               obscureText: false,
@@ -178,9 +178,8 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .bodyMediumFamily),
                                   ),
-                              minLines: null,
                               validator: _model
-                                  .searchMobileTextFieldControllerValidator
+                                  .searchMobileTextFieldTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -206,7 +205,7 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                 onPressed: () async {
                                   setState(() {
                                     FFAppState().userMobileNumberAddDealer =
-                                        '+91${_model.searchMobileTextFieldController.text}';
+                                        '+91${_model.searchMobileTextFieldTextController.text}';
                                   });
                                   _model.checkUser =
                                       await queryUserProfileRecordOnce(
@@ -362,8 +361,8 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 0.0),
                                         child: TextFormField(
-                                          controller:
-                                              _model.textFieldMobileController1,
+                                          controller: _model
+                                              .textFieldMobileTextController1,
                                           focusNode:
                                               _model.textFieldMobileFocusNode1,
                                           autofocus: true,
@@ -448,7 +447,6 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                                                 context)
                                                             .titleMediumFamily),
                                               ),
-                                          minLines: null,
                                           maxLength: 10,
                                           maxLengthEnforcement:
                                               MaxLengthEnforcement.enforced,
@@ -459,7 +457,7 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                               null,
                                           keyboardType: TextInputType.number,
                                           validator: _model
-                                              .textFieldMobileController1Validator
+                                              .textFieldMobileTextController1Validator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -522,8 +520,8 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 0.0),
                                         child: TextFormField(
-                                          controller:
-                                              _model.textFieldMobileController2,
+                                          controller: _model
+                                              .textFieldMobileTextController2,
                                           focusNode:
                                               _model.textFieldMobileFocusNode2,
                                           autofocus: true,
@@ -608,7 +606,6 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                                                 context)
                                                             .titleMediumFamily),
                                               ),
-                                          minLines: null,
                                           maxLength: 10,
                                           maxLengthEnforcement:
                                               MaxLengthEnforcement.enforced,
@@ -619,7 +616,7 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                               null,
                                           keyboardType: TextInputType.number,
                                           validator: _model
-                                              .textFieldMobileController2Validator
+                                              .textFieldMobileTextController2Validator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -682,8 +679,8 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 0.0),
                                         child: TextFormField(
-                                          controller:
-                                              _model.textFieldEmailIdController,
+                                          controller: _model
+                                              .textFieldEmailIdTextController,
                                           focusNode:
                                               _model.textFieldEmailIdFocusNode,
                                           autofocus: true,
@@ -768,11 +765,10 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                                                 context)
                                                             .titleMediumFamily),
                                               ),
-                                          minLines: null,
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           validator: _model
-                                              .textFieldEmailIdControllerValidator
+                                              .textFieldEmailIdTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -836,7 +832,7 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                             5.0, 0.0, 0.0, 0.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.companyNameController,
+                                              _model.companyNameTextController,
                                           focusNode:
                                               _model.companyNameFocusNode,
                                           autofocus: true,
@@ -919,9 +915,8 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                                                 context)
                                                             .titleMediumFamily),
                                               ),
-                                          minLines: null,
                                           validator: _model
-                                              .companyNameControllerValidator
+                                              .companyNameTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -985,7 +980,7 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                             5.0, 0.0, 0.0, 0.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.gstNumberController,
+                                              _model.gstNumberTextController,
                                           focusNode: _model.gstNumberFocusNode,
                                           autofocus: true,
                                           obscureText: false,
@@ -1067,10 +1062,9 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                                                 context)
                                                             .titleMediumFamily),
                                               ),
-                                          minLines: null,
                                           keyboardType: TextInputType.number,
                                           validator: _model
-                                              .gstNumberControllerValidator
+                                              .gstNumberTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -1200,10 +1194,10 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                               .set(createDealersRecordData(
                                             address: _model.checkUser?.address,
                                             companyName: _model
-                                                .companyNameController.text,
+                                                .companyNameTextController.text,
                                             emailId: _model.checkUser?.email,
-                                            gstNumber:
-                                                _model.gstNumberController.text,
+                                            gstNumber: _model
+                                                .gstNumberTextController.text,
                                             isActive: true,
                                             name: _model.checkUser?.name,
                                             state: _model.checkUser?.state,
@@ -1217,12 +1211,12 @@ class _CAddDealerWidgetState extends State<CAddDealerWidget> {
                                                     address: _model
                                                         .checkUser?.address,
                                                     companyName: _model
-                                                        .companyNameController
+                                                        .companyNameTextController
                                                         .text,
                                                     emailId:
                                                         _model.checkUser?.email,
                                                     gstNumber: _model
-                                                        .gstNumberController
+                                                        .gstNumberTextController
                                                         .text,
                                                     isActive: true,
                                                     name:

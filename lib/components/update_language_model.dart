@@ -18,9 +18,10 @@ class UpdateLanguageModel extends FlutterFlowModel<UpdateLanguageWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextLanguageName widget.
   FocusNode? textLanguageNameFocusNode;
-  TextEditingController? textLanguageNameController;
-  String? Function(BuildContext, String?)? textLanguageNameControllerValidator;
-  String? _textLanguageNameControllerValidator(
+  TextEditingController? textLanguageNameTextController;
+  String? Function(BuildContext, String?)?
+      textLanguageNameTextControllerValidator;
+  String? _textLanguageNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -34,9 +35,10 @@ class UpdateLanguageModel extends FlutterFlowModel<UpdateLanguageWidget> {
 
   // State field(s) for TextLanguageCode widget.
   FocusNode? textLanguageCodeFocusNode;
-  TextEditingController? textLanguageCodeController;
-  String? Function(BuildContext, String?)? textLanguageCodeControllerValidator;
-  String? _textLanguageCodeControllerValidator(
+  TextEditingController? textLanguageCodeTextController;
+  String? Function(BuildContext, String?)?
+      textLanguageCodeTextControllerValidator;
+  String? _textLanguageCodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -50,16 +52,18 @@ class UpdateLanguageModel extends FlutterFlowModel<UpdateLanguageWidget> {
 
   @override
   void initState(BuildContext context) {
-    textLanguageNameControllerValidator = _textLanguageNameControllerValidator;
-    textLanguageCodeControllerValidator = _textLanguageCodeControllerValidator;
+    textLanguageNameTextControllerValidator =
+        _textLanguageNameTextControllerValidator;
+    textLanguageCodeTextControllerValidator =
+        _textLanguageCodeTextControllerValidator;
   }
 
   @override
   void dispose() {
     textLanguageNameFocusNode?.dispose();
-    textLanguageNameController?.dispose();
+    textLanguageNameTextController?.dispose();
 
     textLanguageCodeFocusNode?.dispose();
-    textLanguageCodeController?.dispose();
+    textLanguageCodeTextController?.dispose();
   }
 }

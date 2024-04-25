@@ -16,8 +16,9 @@ class CategoryPopUpModel extends FlutterFlowModel<CategoryPopUpWidget> {
 
   // State field(s) for TextFieldsearch widget.
   FocusNode? textFieldsearchFocusNode;
-  TextEditingController? textFieldsearchController;
-  String? Function(BuildContext, String?)? textFieldsearchControllerValidator;
+  TextEditingController? textFieldsearchTextController;
+  String? Function(BuildContext, String?)?
+      textFieldsearchTextControllerValidator;
   List<CategoryMasterRecord> simpleSearchResults = [];
 
   @override
@@ -26,6 +27,6 @@ class CategoryPopUpModel extends FlutterFlowModel<CategoryPopUpWidget> {
   @override
   void dispose() {
     textFieldsearchFocusNode?.dispose();
-    textFieldsearchController?.dispose();
+    textFieldsearchTextController?.dispose();
   }
 }

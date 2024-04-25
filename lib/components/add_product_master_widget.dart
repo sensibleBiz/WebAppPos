@@ -56,16 +56,16 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
       ).then((s) => s.firstOrNull);
     });
 
-    _model.textProductNameController ??= TextEditingController();
+    _model.textProductNameTextController ??= TextEditingController();
     _model.textProductNameFocusNode ??= FocusNode();
 
-    _model.textProductBarcodeController ??= TextEditingController();
+    _model.textProductBarcodeTextController ??= TextEditingController();
     _model.textProductBarcodeFocusNode ??= FocusNode();
 
-    _model.textProductHSNCodeController ??= TextEditingController();
+    _model.textProductHSNCodeTextController ??= TextEditingController();
     _model.textProductHSNCodeFocusNode ??= FocusNode();
 
-    _model.textProductMasterCodeController ??=
+    _model.textProductMasterCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textProductMasterCodeFocusNode ??= FocusNode();
 
@@ -230,12 +230,12 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                               ),
                                               child: TextFormField(
                                                 controller: _model
-                                                    .textProductNameController,
+                                                    .textProductNameTextController,
                                                 focusNode: _model
                                                     .textProductNameFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.textProductNameController',
+                                                  '_model.textProductNameTextController',
                                                   Duration(milliseconds: 2000),
                                                   () => setState(() {}),
                                                 ),
@@ -333,9 +333,8 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                                                       .titleMediumFamily),
                                                         ),
                                                 textAlign: TextAlign.start,
-                                                minLines: null,
                                                 validator: _model
-                                                    .textProductNameControllerValidator
+                                                    .textProductNameTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -688,12 +687,12 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                               ),
                                               child: TextFormField(
                                                 controller: _model
-                                                    .textProductBarcodeController,
+                                                    .textProductBarcodeTextController,
                                                 focusNode: _model
                                                     .textProductBarcodeFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.textProductBarcodeController',
+                                                  '_model.textProductBarcodeTextController',
                                                   Duration(milliseconds: 2000),
                                                   () => setState(() {}),
                                                 ),
@@ -791,9 +790,8 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                                                       .titleMediumFamily),
                                                         ),
                                                 textAlign: TextAlign.start,
-                                                minLines: null,
                                                 validator: _model
-                                                    .textProductBarcodeControllerValidator
+                                                    .textProductBarcodeTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -857,12 +855,12 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                             ),
                                             child: TextFormField(
                                               controller: _model
-                                                  .textProductHSNCodeController,
+                                                  .textProductHSNCodeTextController,
                                               focusNode: _model
                                                   .textProductHSNCodeFocusNode,
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
-                                                '_model.textProductHSNCodeController',
+                                                '_model.textProductHSNCodeTextController',
                                                 Duration(milliseconds: 2000),
                                                 () => setState(() {}),
                                               ),
@@ -958,9 +956,8 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                                                     .titleMediumFamily),
                                                       ),
                                               textAlign: TextAlign.start,
-                                              minLines: null,
                                               validator: _model
-                                                  .textProductHSNCodeControllerValidator
+                                                  .textProductHSNCodeTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -1113,12 +1110,12 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                               ),
                                               child: TextFormField(
                                                 controller: _model
-                                                    .textProductMasterCodeController,
+                                                    .textProductMasterCodeTextController,
                                                 focusNode: _model
                                                     .textProductMasterCodeFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.textProductMasterCodeController',
+                                                  '_model.textProductMasterCodeTextController',
                                                   Duration(milliseconds: 2000),
                                                   () => setState(() {}),
                                                 ),
@@ -1218,9 +1215,8 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                                                       .titleMediumFamily),
                                                         ),
                                                 textAlign: TextAlign.start,
-                                                minLines: null,
                                                 validator: _model
-                                                    .textProductMasterCodeControllerValidator
+                                                    .textProductMasterCodeTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -1674,7 +1670,6 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                                                           context)
                                                                       .bodyMediumFamily),
                                                         ),
-                                                    minLines: null,
                                                     validator: _model
                                                         .textController5Validator
                                                         .asValidator(context),
@@ -1862,9 +1857,11 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     var _shouldSetState = false;
-                                    if (_model.textProductNameController.text !=
+                                    if (_model.textProductNameTextController
+                                                .text !=
                                             null &&
-                                        _model.textProductNameController.text !=
+                                        _model.textProductNameTextController
+                                                .text !=
                                             '') {
                                       if (_model.dropDownCategoryValue !=
                                               null &&
@@ -1954,7 +1951,7 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                           _model.dupProductMasterRef =
                                               await actions.dupProductMaster(
                                             functions.toCapitalLetter(_model
-                                                .textProductNameController
+                                                .textProductNameTextController
                                                 .text),
                                             containerProductMasterRecordList
                                                 .toList(),
@@ -1967,18 +1964,17 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                             await productMasterRecordReference
                                                 .set(
                                                     createProductMasterRecordData(
-                                              name: functions.toCapitalLetter(
-                                                  _model
-                                                      .textProductNameController
-                                                      .text),
+                                              name: functions.toCapitalLetter(_model
+                                                  .textProductNameTextController
+                                                  .text),
                                               code: int.tryParse(_model
-                                                  .textProductMasterCodeController
+                                                  .textProductMasterCodeTextController
                                                   .text),
                                               hsnCode: int.tryParse(_model
-                                                  .textProductHSNCodeController
+                                                  .textProductHSNCodeTextController
                                                   .text),
                                               barcode: _model
-                                                  .textProductBarcodeController
+                                                  .textProductBarcodeTextController
                                                   .text,
                                               createdDate:
                                                   functions.getcreatedDate(),
@@ -2000,16 +1996,16 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                                     createProductMasterRecordData(
                                                       name: functions
                                                           .toCapitalLetter(_model
-                                                              .textProductNameController
+                                                              .textProductNameTextController
                                                               .text),
                                                       code: int.tryParse(_model
-                                                          .textProductMasterCodeController
+                                                          .textProductMasterCodeTextController
                                                           .text),
                                                       hsnCode: int.tryParse(_model
-                                                          .textProductHSNCodeController
+                                                          .textProductHSNCodeTextController
                                                           .text),
                                                       barcode: _model
-                                                          .textProductBarcodeController
+                                                          .textProductBarcodeTextController
                                                           .text,
                                                       createdDate: functions
                                                           .getcreatedDate(),

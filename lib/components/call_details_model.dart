@@ -19,12 +19,12 @@ class CallDetailsModel extends FlutterFlowModel<CallDetailsWidget> {
 
   // State field(s) for TextFieldDate widget.
   FocusNode? textFieldDateFocusNode;
-  TextEditingController? textFieldDateController;
-  String? Function(BuildContext, String?)? textFieldDateControllerValidator;
+  TextEditingController? textFieldDateTextController;
+  String? Function(BuildContext, String?)? textFieldDateTextControllerValidator;
   // State field(s) for TextFieldTime widget.
   FocusNode? textFieldTimeFocusNode;
-  TextEditingController? textFieldTimeController;
-  String? Function(BuildContext, String?)? textFieldTimeControllerValidator;
+  TextEditingController? textFieldTimeTextController;
+  String? Function(BuildContext, String?)? textFieldTimeTextControllerValidator;
   // State field(s) for DropDowntype widget.
   String? dropDowntypeValue;
   FormFieldController<String>? dropDowntypeValueController;
@@ -47,10 +47,10 @@ class CallDetailsModel extends FlutterFlowModel<CallDetailsWidget> {
   @override
   void dispose() {
     textFieldDateFocusNode?.dispose();
-    textFieldDateController?.dispose();
+    textFieldDateTextController?.dispose();
 
     textFieldTimeFocusNode?.dispose();
-    textFieldTimeController?.dispose();
+    textFieldTimeTextController?.dispose();
 
     textFieldFocusNode?.dispose();
     textController3?.dispose();

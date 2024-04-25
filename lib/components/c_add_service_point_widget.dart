@@ -44,7 +44,7 @@ class _CAddServicePointWidgetState extends State<CAddServicePointWidget> {
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
-    _model.codeController ??=
+    _model.codeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.codeFocusNode ??= FocusNode();
 
@@ -237,7 +237,6 @@ class _CAddServicePointWidgetState extends State<CAddServicePointWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 validator: _model.textController1Validator
                                     .asValidator(context),
                               ),
@@ -264,7 +263,7 @@ class _CAddServicePointWidgetState extends State<CAddServicePointWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 5.0),
                           child: TextFormField(
-                            controller: _model.codeController,
+                            controller: _model.codeTextController,
                             focusNode: _model.codeFocusNode,
                             autofocus: true,
                             readOnly: true,
@@ -334,9 +333,8 @@ class _CAddServicePointWidgetState extends State<CAddServicePointWidget> {
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .bodyMediumFamily),
                                 ),
-                            minLines: null,
                             keyboardType: TextInputType.number,
-                            validator: _model.codeControllerValidator
+                            validator: _model.codeTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -578,7 +576,6 @@ class _CAddServicePointWidgetState extends State<CAddServicePointWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 validator: _model.textController3Validator
                                     .asValidator(context),
                               ),
@@ -715,7 +712,6 @@ class _CAddServicePointWidgetState extends State<CAddServicePointWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .titleMediumFamily),
                                   ),
-                              minLines: null,
                               validator: _model.textController4Validator
                                   .asValidator(context),
                             ),
@@ -876,7 +872,6 @@ class _CAddServicePointWidgetState extends State<CAddServicePointWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 validator: _model.textController5Validator
                                     .asValidator(context),
                               ),
@@ -1007,7 +1002,6 @@ class _CAddServicePointWidgetState extends State<CAddServicePointWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 validator: _model.textController6Validator
                                     .asValidator(context),
                               ),
@@ -1138,7 +1132,6 @@ class _CAddServicePointWidgetState extends State<CAddServicePointWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 validator: _model.textController7Validator
                                     .asValidator(context),
                               ),
@@ -1222,7 +1215,8 @@ class _CAddServicePointWidgetState extends State<CAddServicePointWidget> {
                                   .set(createServicePointOutletRecordData(
                                 name: functions.toCapitalLetter(
                                     _model.textController1.text),
-                                code: int.tryParse(_model.codeController.text),
+                                code: int.tryParse(
+                                    _model.codeTextController.text),
                                 printerPaperSize:
                                     _model.dropDownPrinterPaperSizeValue,
                                 servicePointHeader: '',
@@ -1238,7 +1232,7 @@ class _CAddServicePointWidgetState extends State<CAddServicePointWidget> {
                                         name: functions.toCapitalLetter(
                                             _model.textController1.text),
                                         code: int.tryParse(
-                                            _model.codeController.text),
+                                            _model.codeTextController.text),
                                         printerPaperSize: _model
                                             .dropDownPrinterPaperSizeValue,
                                         servicePointHeader: '',

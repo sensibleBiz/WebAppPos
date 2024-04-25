@@ -263,7 +263,6 @@ class _CEditServicePointWidgetState extends State<CEditServicePointWidget> {
                                                               context)
                                                           .titleMediumFamily),
                                             ),
-                                        minLines: null,
                                         validator: _model
                                             .textController1Validator
                                             .asValidator(context),
@@ -416,7 +415,6 @@ class _CEditServicePointWidgetState extends State<CEditServicePointWidget> {
                                                               context)
                                                           .titleMediumFamily),
                                             ),
-                                        minLines: null,
                                         validator: _model
                                             .textController2Validator
                                             .asValidator(context),

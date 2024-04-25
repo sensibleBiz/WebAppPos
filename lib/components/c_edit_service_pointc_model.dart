@@ -25,8 +25,8 @@ class CEditServicePointcModel
   String? Function(BuildContext, String?)? textController1Validator;
   // State field(s) for Code widget.
   FocusNode? codeFocusNode;
-  TextEditingController? codeController;
-  String? Function(BuildContext, String?)? codeControllerValidator;
+  TextEditingController? codeTextController;
+  String? Function(BuildContext, String?)? codeTextControllerValidator;
   // State field(s) for DropDown widget.
   String? dropDownValue1;
   FormFieldController<String>? dropDownValueController1;
@@ -63,7 +63,7 @@ class CEditServicePointcModel
     textController1?.dispose();
 
     codeFocusNode?.dispose();
-    codeController?.dispose();
+    codeTextController?.dispose();
 
     textFieldFocusNode2?.dispose();
     textController3?.dispose();

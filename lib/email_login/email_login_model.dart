@@ -18,17 +18,18 @@ class EmailLoginModel extends FlutterFlowModel<EmailLoginWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for TextFieldEmail widget.
   FocusNode? textFieldEmailFocusNode;
-  TextEditingController? textFieldEmailController;
-  String? Function(BuildContext, String?)? textFieldEmailControllerValidator;
+  TextEditingController? textFieldEmailTextController;
+  String? Function(BuildContext, String?)?
+      textFieldEmailTextControllerValidator;
   // State field(s) for TextFieldPwd widget.
   FocusNode? textFieldPwdFocusNode;
-  TextEditingController? textFieldPwdController;
+  TextEditingController? textFieldPwdTextController;
   late bool textFieldPwdVisibility;
-  String? Function(BuildContext, String?)? textFieldPwdControllerValidator;
+  String? Function(BuildContext, String?)? textFieldPwdTextControllerValidator;
   // State field(s) for TextFieldPwd1 widget.
   FocusNode? textFieldPwd1FocusNode;
-  TextEditingController? textFieldPwd1Controller;
-  String? Function(BuildContext, String?)? textFieldPwd1ControllerValidator;
+  TextEditingController? textFieldPwd1TextController;
+  String? Function(BuildContext, String?)? textFieldPwd1TextControllerValidator;
   // Stores action output result for [Custom Action - validUser] action in Container widget.
   bool? isProfile;
 
@@ -41,12 +42,12 @@ class EmailLoginModel extends FlutterFlowModel<EmailLoginWidget> {
   void dispose() {
     unfocusNode.dispose();
     textFieldEmailFocusNode?.dispose();
-    textFieldEmailController?.dispose();
+    textFieldEmailTextController?.dispose();
 
     textFieldPwdFocusNode?.dispose();
-    textFieldPwdController?.dispose();
+    textFieldPwdTextController?.dispose();
 
     textFieldPwd1FocusNode?.dispose();
-    textFieldPwd1Controller?.dispose();
+    textFieldPwd1TextController?.dispose();
   }
 }

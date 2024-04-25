@@ -41,10 +41,10 @@ class _AddServicePointMasterWidgetState
     super.initState();
     _model = createModel(context, () => AddServicePointMasterModel());
 
-    _model.textServicePointMasterNameController ??= TextEditingController();
+    _model.textServicePointMasterNameTextController ??= TextEditingController();
     _model.textServicePointMasterNameFocusNode ??= FocusNode();
 
-    _model.textServicePointMasterCodeController ??=
+    _model.textServicePointMasterCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textServicePointMasterCodeFocusNode ??= FocusNode();
 
@@ -149,10 +149,11 @@ class _AddServicePointMasterWidgetState
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textServicePointMasterNameController,
+                        controller:
+                            _model.textServicePointMasterNameTextController,
                         focusNode: _model.textServicePointMasterNameFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textServicePointMasterNameController',
+                          '_model.textServicePointMasterNameTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -222,9 +223,8 @@ class _AddServicePointMasterWidgetState
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
                         validator: _model
-                            .textServicePointMasterNameControllerValidator
+                            .textServicePointMasterNameTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -363,11 +363,11 @@ class _AddServicePointMasterWidgetState
                                   ),
                                   child: TextFormField(
                                     controller: _model
-                                        .textServicePointMasterCodeController,
+                                        .textServicePointMasterCodeTextController,
                                     focusNode: _model
                                         .textServicePointMasterCodeFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.textServicePointMasterCodeController',
+                                      '_model.textServicePointMasterCodeTextController',
                                       Duration(milliseconds: 2000),
                                       () => setState(() {}),
                                     ),
@@ -442,9 +442,8 @@ class _AddServicePointMasterWidgetState
                                                       .titleMediumFamily),
                                         ),
                                     textAlign: TextAlign.start,
-                                    minLines: null,
                                     validator: _model
-                                        .textServicePointMasterCodeControllerValidator
+                                        .textServicePointMasterCodeTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -515,10 +514,10 @@ class _AddServicePointMasterWidgetState
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             var _shouldSetState = false;
-                            if (_model.textServicePointMasterNameController
+                            if (_model.textServicePointMasterNameTextController
                                         .text !=
                                     null &&
-                                _model.textServicePointMasterNameController
+                                _model.textServicePointMasterNameTextController
                                         .text !=
                                     '') {
                               if (_model.formKey.currentState == null ||
@@ -531,9 +530,11 @@ class _AddServicePointMasterWidgetState
                               await servicePointRecordReference
                                   .set(createServicePointRecordData(
                                 name: functions.toCapitalLetter(_model
-                                    .textServicePointMasterNameController.text),
+                                    .textServicePointMasterNameTextController
+                                    .text),
                                 code: int.tryParse(_model
-                                    .textServicePointMasterCodeController.text),
+                                    .textServicePointMasterCodeTextController
+                                    .text),
                                 createdDate: functions.getcreatedDate(),
                                 createdBy: currentUserReference,
                                 updatedDate: functions.getUpdatedDate(),
@@ -545,10 +546,10 @@ class _AddServicePointMasterWidgetState
                                   ServicePointRecord.getDocumentFromData(
                                       createServicePointRecordData(
                                         name: functions.toCapitalLetter(_model
-                                            .textServicePointMasterNameController
+                                            .textServicePointMasterNameTextController
                                             .text),
                                         code: int.tryParse(_model
-                                            .textServicePointMasterCodeController
+                                            .textServicePointMasterCodeTextController
                                             .text),
                                         createdDate: functions.getcreatedDate(),
                                         createdBy: currentUserReference,

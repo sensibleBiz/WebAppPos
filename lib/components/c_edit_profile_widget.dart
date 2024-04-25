@@ -248,7 +248,6 @@ class _CEditProfileWidgetState extends State<CEditProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleMediumFamily),
                                         ),
-                                    minLines: null,
                                     validator: _model.textController1Validator
                                         .asValidator(context),
                                   ),
@@ -386,7 +385,6 @@ class _CEditProfileWidgetState extends State<CEditProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleMediumFamily),
                                         ),
-                                    minLines: null,
                                     validator: _model.textController2Validator
                                         .asValidator(context),
                                   ),
@@ -524,7 +522,6 @@ class _CEditProfileWidgetState extends State<CEditProfileWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleMediumFamily),
                                         ),
-                                    minLines: null,
                                     validator: _model.textController3Validator
                                         .asValidator(context),
                                   ),
@@ -696,7 +693,6 @@ class _CEditProfileWidgetState extends State<CEditProfileWidget> {
                                                                   context)
                                                               .titleMediumFamily),
                                                 ),
-                                            minLines: null,
                                             validator: _model
                                                 .textController4Validator
                                                 .asValidator(context),
@@ -884,7 +880,6 @@ class _CEditProfileWidgetState extends State<CEditProfileWidget> {
                                                                   context)
                                                               .titleMediumFamily),
                                                 ),
-                                            minLines: null,
                                             validator: _model
                                                 .textController5Validator
                                                 .asValidator(context),

@@ -21,9 +21,10 @@ class UpdateSubscriptionModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextPlanName widget.
   FocusNode? textPlanNameFocusNode;
-  TextEditingController? textPlanNameController;
-  String? Function(BuildContext, String?)? textPlanNameControllerValidator;
-  String? _textPlanNameControllerValidator(BuildContext context, String? val) {
+  TextEditingController? textPlanNameTextController;
+  String? Function(BuildContext, String?)? textPlanNameTextControllerValidator;
+  String? _textPlanNameTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -36,9 +37,10 @@ class UpdateSubscriptionModel
 
   // State field(s) for TextDiscription widget.
   FocusNode? textDiscriptionFocusNode;
-  TextEditingController? textDiscriptionController;
-  String? Function(BuildContext, String?)? textDiscriptionControllerValidator;
-  String? _textDiscriptionControllerValidator(
+  TextEditingController? textDiscriptionTextController;
+  String? Function(BuildContext, String?)?
+      textDiscriptionTextControllerValidator;
+  String? _textDiscriptionTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -52,10 +54,10 @@ class UpdateSubscriptionModel
 
   // State field(s) for TextSubscriptionTypeCode widget.
   FocusNode? textSubscriptionTypeCodeFocusNode;
-  TextEditingController? textSubscriptionTypeCodeController;
+  TextEditingController? textSubscriptionTypeCodeTextController;
   String? Function(BuildContext, String?)?
-      textSubscriptionTypeCodeControllerValidator;
-  String? _textSubscriptionTypeCodeControllerValidator(
+      textSubscriptionTypeCodeTextControllerValidator;
+  String? _textSubscriptionTypeCodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -69,9 +71,10 @@ class UpdateSubscriptionModel
 
   // State field(s) for TextValidity widget.
   FocusNode? textValidityFocusNode;
-  TextEditingController? textValidityController;
-  String? Function(BuildContext, String?)? textValidityControllerValidator;
-  String? _textValidityControllerValidator(BuildContext context, String? val) {
+  TextEditingController? textValidityTextController;
+  String? Function(BuildContext, String?)? textValidityTextControllerValidator;
+  String? _textValidityTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -84,17 +87,18 @@ class UpdateSubscriptionModel
 
   // State field(s) for TextSubscriptionAmount widget.
   FocusNode? textSubscriptionAmountFocusNode;
-  TextEditingController? textSubscriptionAmountController;
+  TextEditingController? textSubscriptionAmountTextController;
   String? Function(BuildContext, String?)?
-      textSubscriptionAmountControllerValidator;
+      textSubscriptionAmountTextControllerValidator;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
   // State field(s) for TextUpiLink widget.
   FocusNode? textUpiLinkFocusNode;
-  TextEditingController? textUpiLinkController;
-  String? Function(BuildContext, String?)? textUpiLinkControllerValidator;
-  String? _textUpiLinkControllerValidator(BuildContext context, String? val) {
+  TextEditingController? textUpiLinkTextController;
+  String? Function(BuildContext, String?)? textUpiLinkTextControllerValidator;
+  String? _textUpiLinkTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -104,32 +108,33 @@ class UpdateSubscriptionModel
 
   @override
   void initState(BuildContext context) {
-    textPlanNameControllerValidator = _textPlanNameControllerValidator;
-    textDiscriptionControllerValidator = _textDiscriptionControllerValidator;
-    textSubscriptionTypeCodeControllerValidator =
-        _textSubscriptionTypeCodeControllerValidator;
-    textValidityControllerValidator = _textValidityControllerValidator;
-    textUpiLinkControllerValidator = _textUpiLinkControllerValidator;
+    textPlanNameTextControllerValidator = _textPlanNameTextControllerValidator;
+    textDiscriptionTextControllerValidator =
+        _textDiscriptionTextControllerValidator;
+    textSubscriptionTypeCodeTextControllerValidator =
+        _textSubscriptionTypeCodeTextControllerValidator;
+    textValidityTextControllerValidator = _textValidityTextControllerValidator;
+    textUpiLinkTextControllerValidator = _textUpiLinkTextControllerValidator;
   }
 
   @override
   void dispose() {
     textPlanNameFocusNode?.dispose();
-    textPlanNameController?.dispose();
+    textPlanNameTextController?.dispose();
 
     textDiscriptionFocusNode?.dispose();
-    textDiscriptionController?.dispose();
+    textDiscriptionTextController?.dispose();
 
     textSubscriptionTypeCodeFocusNode?.dispose();
-    textSubscriptionTypeCodeController?.dispose();
+    textSubscriptionTypeCodeTextController?.dispose();
 
     textValidityFocusNode?.dispose();
-    textValidityController?.dispose();
+    textValidityTextController?.dispose();
 
     textSubscriptionAmountFocusNode?.dispose();
-    textSubscriptionAmountController?.dispose();
+    textSubscriptionAmountTextController?.dispose();
 
     textUpiLinkFocusNode?.dispose();
-    textUpiLinkController?.dispose();
+    textUpiLinkTextController?.dispose();
   }
 }

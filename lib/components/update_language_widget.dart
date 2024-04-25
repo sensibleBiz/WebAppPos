@@ -170,13 +170,14 @@ class _UpdateLanguageWidgetState extends State<UpdateLanguageWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: _model.textLanguageNameController ??=
-                                  TextEditingController(
+                              controller:
+                                  _model.textLanguageNameTextController ??=
+                                      TextEditingController(
                                 text: containerLanguageRecord.name,
                               ),
                               focusNode: _model.textLanguageNameFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textLanguageNameController',
+                                '_model.textLanguageNameTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -249,9 +250,8 @@ class _UpdateLanguageWidgetState extends State<UpdateLanguageWidget> {
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
                               validator: _model
-                                  .textLanguageNameControllerValidator
+                                  .textLanguageNameTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -301,13 +301,14 @@ class _UpdateLanguageWidgetState extends State<UpdateLanguageWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: _model.textLanguageCodeController ??=
-                                  TextEditingController(
+                              controller:
+                                  _model.textLanguageCodeTextController ??=
+                                      TextEditingController(
                                 text: containerLanguageRecord.code.toString(),
                               ),
                               focusNode: _model.textLanguageCodeFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textLanguageCodeController',
+                                '_model.textLanguageCodeTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -380,9 +381,8 @@ class _UpdateLanguageWidgetState extends State<UpdateLanguageWidget> {
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
                               validator: _model
-                                  .textLanguageCodeControllerValidator
+                                  .textLanguageCodeTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -450,9 +450,11 @@ class _UpdateLanguageWidgetState extends State<UpdateLanguageWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (_model.textLanguageNameController.text !=
+                                  if (_model.textLanguageNameTextController
+                                              .text !=
                                           null &&
-                                      _model.textLanguageNameController.text !=
+                                      _model.textLanguageNameTextController
+                                              .text !=
                                           '') {
                                     if (_model.formKey.currentState == null ||
                                         !_model.formKey.currentState!
@@ -463,7 +465,7 @@ class _UpdateLanguageWidgetState extends State<UpdateLanguageWidget> {
                                     await containerLanguageRecord.reference
                                         .update(createLanguageRecordData(
                                       name: functions.toCapitalLetter(_model
-                                          .textLanguageNameController.text),
+                                          .textLanguageNameTextController.text),
                                       updatedDate: functions.getUpdatedDate(),
                                       updatedBy: FFAppState().userProfileRef,
                                       createdBy:

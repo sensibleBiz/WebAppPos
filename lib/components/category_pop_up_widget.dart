@@ -33,7 +33,7 @@ class _CategoryPopUpWidgetState extends State<CategoryPopUpWidget> {
     super.initState();
     _model = createModel(context, () => CategoryPopUpModel());
 
-    _model.textFieldsearchController ??= TextEditingController();
+    _model.textFieldsearchTextController ??= TextEditingController();
     _model.textFieldsearchFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -164,10 +164,11 @@ class _CategoryPopUpWidgetState extends State<CategoryPopUpWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 0.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.textFieldsearchController,
+                                  controller:
+                                      _model.textFieldsearchTextController,
                                   focusNode: _model.textFieldsearchFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.textFieldsearchController',
+                                    '_model.textFieldsearchTextController',
                                     Duration(milliseconds: 100),
                                     () async {
                                       await queryCategoryMasterRecordOnce()
@@ -184,7 +185,7 @@ class _CategoryPopUpWidgetState extends State<CategoryPopUpWidget> {
                                                   .toList(),
                                             )
                                                     .search(_model
-                                                        .textFieldsearchController
+                                                        .textFieldsearchTextController
                                                         .text)
                                                     .map((r) => r.object)
                                                     .take(8)
@@ -270,9 +271,8 @@ class _CategoryPopUpWidgetState extends State<CategoryPopUpWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodySmallFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model
-                                      .textFieldsearchControllerValidator
+                                      .textFieldsearchTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),

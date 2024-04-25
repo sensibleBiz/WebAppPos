@@ -170,13 +170,13 @@ class _UpdateUnitTypeWidgetState extends State<UpdateUnitTypeWidget> {
                             ),
                           ),
                           child: TextFormField(
-                            controller: _model.textUnitNameController ??=
+                            controller: _model.textUnitNameTextController ??=
                                 TextEditingController(
                               text: containerUnitTypeRecord.name,
                             ),
                             focusNode: _model.textUnitNameFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
-                              '_model.textUnitNameController',
+                              '_model.textUnitNameTextController',
                               Duration(milliseconds: 2000),
                               () => setState(() {}),
                             ),
@@ -246,8 +246,8 @@ class _UpdateUnitTypeWidgetState extends State<UpdateUnitTypeWidget> {
                                           .titleMediumFamily),
                                 ),
                             textAlign: TextAlign.start,
-                            minLines: null,
-                            validator: _model.textUnitNameControllerValidator
+                            validator: _model
+                                .textUnitNameTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -293,13 +293,14 @@ class _UpdateUnitTypeWidgetState extends State<UpdateUnitTypeWidget> {
                             ),
                           ),
                           child: TextFormField(
-                            controller: _model.textUnitTypeNameController ??=
-                                TextEditingController(
+                            controller:
+                                _model.textUnitTypeNameTextController ??=
+                                    TextEditingController(
                               text: containerUnitTypeRecord.unitType,
                             ),
                             focusNode: _model.textUnitTypeNameFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
-                              '_model.textUnitTypeNameController',
+                              '_model.textUnitTypeNameTextController',
                               Duration(milliseconds: 2000),
                               () => setState(() {}),
                             ),
@@ -369,9 +370,8 @@ class _UpdateUnitTypeWidgetState extends State<UpdateUnitTypeWidget> {
                                           .titleMediumFamily),
                                 ),
                             textAlign: TextAlign.start,
-                            minLines: null,
                             validator: _model
-                                .textUnitTypeNameControllerValidator
+                                .textUnitTypeNameTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -417,13 +417,13 @@ class _UpdateUnitTypeWidgetState extends State<UpdateUnitTypeWidget> {
                             ),
                           ),
                           child: TextFormField(
-                            controller: _model.textFactorNameController ??=
+                            controller: _model.textFactorNameTextController ??=
                                 TextEditingController(
                               text: containerUnitTypeRecord.factor.toString(),
                             ),
                             focusNode: _model.textFactorNameFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
-                              '_model.textFactorNameController',
+                              '_model.textFactorNameTextController',
                               Duration(milliseconds: 2000),
                               () => setState(() {}),
                             ),
@@ -493,9 +493,9 @@ class _UpdateUnitTypeWidgetState extends State<UpdateUnitTypeWidget> {
                                           .titleMediumFamily),
                                 ),
                             textAlign: TextAlign.start,
-                            minLines: null,
                             keyboardType: TextInputType.number,
-                            validator: _model.textFactorNameControllerValidator
+                            validator: _model
+                                .textFactorNameTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -544,13 +544,14 @@ class _UpdateUnitTypeWidgetState extends State<UpdateUnitTypeWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: _model.textUnitTypeCodeController ??=
-                                  TextEditingController(
+                              controller:
+                                  _model.textUnitTypeCodeTextController ??=
+                                      TextEditingController(
                                 text: containerUnitTypeRecord.code.toString(),
                               ),
                               focusNode: _model.textUnitTypeCodeFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textUnitTypeCodeController',
+                                '_model.textUnitTypeCodeTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -622,9 +623,8 @@ class _UpdateUnitTypeWidgetState extends State<UpdateUnitTypeWidget> {
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
                               validator: _model
-                                  .textUnitTypeCodeControllerValidator
+                                  .textUnitTypeCodeTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -692,9 +692,9 @@ class _UpdateUnitTypeWidgetState extends State<UpdateUnitTypeWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (_model.textUnitNameController.text !=
+                                  if (_model.textUnitNameTextController.text !=
                                           null &&
-                                      _model.textUnitNameController.text !=
+                                      _model.textUnitNameTextController.text !=
                                           '') {
                                     if (_model.formKey.currentState == null ||
                                         !_model.formKey.currentState!
@@ -704,14 +704,14 @@ class _UpdateUnitTypeWidgetState extends State<UpdateUnitTypeWidget> {
 
                                     await containerUnitTypeRecord.reference
                                         .update(createUnitTypeRecordData(
-                                      name: functions.toCapitalLetter(
-                                          _model.textUnitNameController.text),
+                                      name: functions.toCapitalLetter(_model
+                                          .textUnitNameTextController.text),
                                       code: int.tryParse(_model
-                                          .textUnitTypeCodeController.text),
+                                          .textUnitTypeCodeTextController.text),
                                       unitType: _model
-                                          .textUnitTypeNameController.text,
-                                      factor: int.tryParse(
-                                          _model.textFactorNameController.text),
+                                          .textUnitTypeNameTextController.text,
+                                      factor: int.tryParse(_model
+                                          .textFactorNameTextController.text),
                                       updatedDate: functions.getUpdatedDate(),
                                       updatedBy: FFAppState().userProfileRef,
                                       createdBy:

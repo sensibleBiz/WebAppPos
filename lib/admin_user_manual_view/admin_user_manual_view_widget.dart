@@ -48,7 +48,7 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
       });
     });
 
-    _model.searchTextFieldController ??= TextEditingController();
+    _model.searchTextFieldTextController ??= TextEditingController();
     _model.searchTextFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -385,12 +385,12 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                                                     8.0, 8.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller: _model
-                                                  .searchTextFieldController,
+                                                  .searchTextFieldTextController,
                                               focusNode: _model
                                                   .searchTextFieldFocusNode,
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
-                                                '_model.searchTextFieldController',
+                                                '_model.searchTextFieldTextController',
                                                 Duration(milliseconds: 2000),
                                                 () async {
                                                   await queryUserManualRecordOnce()
@@ -412,7 +412,7 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                                                               .toList(),
                                                         )
                                                                 .search(_model
-                                                                    .searchTextFieldController
+                                                                    .searchTextFieldTextController
                                                                     .text)
                                                                 .map((r) =>
                                                                     r.object)
@@ -543,9 +543,8 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                                                                         context)
                                                                     .bodyMediumFamily),
                                                       ),
-                                              minLines: null,
                                               validator: _model
-                                                  .searchTextFieldControllerValidator
+                                                  .searchTextFieldTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -597,7 +596,7 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                                         ),
                                         onPressed: () async {
                                           setState(() {
-                                            _model.searchTextFieldController
+                                            _model.searchTextFieldTextController
                                                 ?.clear();
                                           });
                                           setState(() {

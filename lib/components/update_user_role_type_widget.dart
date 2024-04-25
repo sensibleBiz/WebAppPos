@@ -172,13 +172,13 @@ class _UpdateUserRoleTypeWidgetState extends State<UpdateUserRoleTypeWidget> {
                             ),
                             child: TextFormField(
                               controller:
-                                  _model.textUserRollTypeNameController ??=
+                                  _model.textUserRollTypeNameTextController ??=
                                       TextEditingController(
                                 text: containerUserRoleTypeRecord.name,
                               ),
                               focusNode: _model.textUserRollTypeNameFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textUserRollTypeNameController',
+                                '_model.textUserRollTypeNameTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -250,9 +250,8 @@ class _UpdateUserRoleTypeWidgetState extends State<UpdateUserRoleTypeWidget> {
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
                               validator: _model
-                                  .textUserRollTypeNameControllerValidator
+                                  .textUserRollTypeNameTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -302,14 +301,15 @@ class _UpdateUserRoleTypeWidgetState extends State<UpdateUserRoleTypeWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: _model.textUserRollCodeController ??=
-                                  TextEditingController(
+                              controller:
+                                  _model.textUserRollCodeTextController ??=
+                                      TextEditingController(
                                 text:
                                     containerUserRoleTypeRecord.code.toString(),
                               ),
                               focusNode: _model.textUserRollCodeFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textUserRollCodeController',
+                                '_model.textUserRollCodeTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -382,9 +382,8 @@ class _UpdateUserRoleTypeWidgetState extends State<UpdateUserRoleTypeWidget> {
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
                               validator: _model
-                                  .textUserRollCodeControllerValidator
+                                  .textUserRollCodeTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -452,16 +451,17 @@ class _UpdateUserRoleTypeWidgetState extends State<UpdateUserRoleTypeWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (_model.textUserRollTypeNameController
+                                  if (_model.textUserRollTypeNameTextController
                                               .text !=
                                           null &&
-                                      _model.textUserRollTypeNameController
+                                      _model.textUserRollTypeNameTextController
                                               .text !=
                                           '') {
                                     await containerUserRoleTypeRecord.reference
                                         .update(createUserRoleTypeRecordData(
                                       name: functions.toCapitalLetter(_model
-                                          .textUserRollTypeNameController.text),
+                                          .textUserRollTypeNameTextController
+                                          .text),
                                       updatedDate: functions.getUpdatedDate(),
                                       updatedBy: FFAppState().userProfileRef,
                                       createdBy:

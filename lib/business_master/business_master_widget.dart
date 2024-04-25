@@ -879,6 +879,10 @@ class _BusinessMasterWidgetState extends State<BusinessMasterWidget> {
                                                                                       onChanged: (newValue) async {
                                                                                         setState(() => _model.checkboxValueMap[listItem] = newValue!);
                                                                                       },
+                                                                                      side: BorderSide(
+                                                                                        width: 2,
+                                                                                        color: Color(0xFFF5F5F5),
+                                                                                      ),
                                                                                       activeColor: FlutterFlowTheme.of(context).primary,
                                                                                     ),
                                                                                   ),

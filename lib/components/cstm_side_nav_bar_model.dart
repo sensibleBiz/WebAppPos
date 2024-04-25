@@ -15,7 +15,7 @@ class CstmSideNavBarModel extends FlutterFlowModel<CstmSideNavBarWidget> {
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Expandable widget.
-  late ExpandableController expandableController;
+  late ExpandableController expandableExpandableController;
 
   // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
   UserProfileRecord? getEmail;
@@ -25,6 +25,6 @@ class CstmSideNavBarModel extends FlutterFlowModel<CstmSideNavBarWidget> {
 
   @override
   void dispose() {
-    expandableController.dispose();
+    expandableExpandableController.dispose();
   }
 }

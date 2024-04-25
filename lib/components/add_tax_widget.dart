@@ -39,13 +39,13 @@ class _AddTaxWidgetState extends State<AddTaxWidget> {
     super.initState();
     _model = createModel(context, () => AddTaxModel());
 
-    _model.textTaxTypeNameController ??= TextEditingController();
+    _model.textTaxTypeNameTextController ??= TextEditingController();
     _model.textTaxTypeNameFocusNode ??= FocusNode();
 
-    _model.textTaxPercentageNumberController ??= TextEditingController();
+    _model.textTaxPercentageNumberTextController ??= TextEditingController();
     _model.textTaxPercentageNumberFocusNode ??= FocusNode();
 
-    _model.textTaxTypeCodeController ??=
+    _model.textTaxTypeCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textTaxTypeCodeFocusNode ??= FocusNode();
 
@@ -150,10 +150,10 @@ class _AddTaxWidgetState extends State<AddTaxWidget> {
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textTaxTypeNameController,
+                        controller: _model.textTaxTypeNameTextController,
                         focusNode: _model.textTaxTypeNameFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textTaxTypeNameController',
+                          '_model.textTaxTypeNameTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -223,8 +223,7 @@ class _AddTaxWidgetState extends State<AddTaxWidget> {
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
-                        validator: _model.textTaxTypeNameControllerValidator
+                        validator: _model.textTaxTypeNameTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -270,10 +269,11 @@ class _AddTaxWidgetState extends State<AddTaxWidget> {
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textTaxPercentageNumberController,
+                        controller:
+                            _model.textTaxPercentageNumberTextController,
                         focusNode: _model.textTaxPercentageNumberFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textTaxPercentageNumberController',
+                          '_model.textTaxPercentageNumberTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -343,10 +343,9 @@ class _AddTaxWidgetState extends State<AddTaxWidget> {
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
                         keyboardType: TextInputType.number,
                         validator: _model
-                            .textTaxPercentageNumberControllerValidator
+                            .textTaxPercentageNumberTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -392,10 +391,10 @@ class _AddTaxWidgetState extends State<AddTaxWidget> {
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textTaxTypeCodeController,
+                        controller: _model.textTaxTypeCodeTextController,
                         focusNode: _model.textTaxTypeCodeFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textTaxTypeCodeController',
+                          '_model.textTaxTypeCodeTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -465,9 +464,8 @@ class _AddTaxWidgetState extends State<AddTaxWidget> {
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
                         keyboardType: TextInputType.number,
-                        validator: _model.textTaxTypeCodeControllerValidator
+                        validator: _model.textTaxTypeCodeTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -532,8 +530,10 @@ class _AddTaxWidgetState extends State<AddTaxWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             var _shouldSetState = false;
-                            if (_model.textTaxTypeNameController.text != null &&
-                                _model.textTaxTypeNameController.text != '') {
+                            if (_model.textTaxTypeNameTextController.text !=
+                                    null &&
+                                _model.textTaxTypeNameTextController.text !=
+                                    '') {
                               if (_model.formKey.currentState == null ||
                                   !_model.formKey.currentState!.validate()) {
                                 return;
@@ -544,12 +544,12 @@ class _AddTaxWidgetState extends State<AddTaxWidget> {
                               await taxMasterRecordReference
                                   .set(createTaxMasterRecordData(
                                 name: functions.toCapitalLetter(
-                                    _model.textTaxTypeNameController.text),
+                                    _model.textTaxTypeNameTextController.text),
                                 code: int.tryParse(
-                                    _model.textTaxTypeCodeController.text),
+                                    _model.textTaxTypeCodeTextController.text),
                                 percentage: functions.toPercentageNumber(
                                     double.tryParse(_model
-                                        .textTaxPercentageNumberController
+                                        .textTaxPercentageNumberTextController
                                         .text)),
                                 createdDate: functions.getcreatedDate(),
                                 createdBy: currentUserReference,
@@ -558,13 +558,13 @@ class _AddTaxWidgetState extends State<AddTaxWidget> {
                               ));
                               _model.doc = TaxMasterRecord.getDocumentFromData(
                                   createTaxMasterRecordData(
-                                    name: functions.toCapitalLetter(
-                                        _model.textTaxTypeNameController.text),
-                                    code: int.tryParse(
-                                        _model.textTaxTypeCodeController.text),
+                                    name: functions.toCapitalLetter(_model
+                                        .textTaxTypeNameTextController.text),
+                                    code: int.tryParse(_model
+                                        .textTaxTypeCodeTextController.text),
                                     percentage: functions.toPercentageNumber(
                                         double.tryParse(_model
-                                            .textTaxPercentageNumberController
+                                            .textTaxPercentageNumberTextController
                                             .text)),
                                     createdDate: functions.getcreatedDate(),
                                     createdBy: currentUserReference,

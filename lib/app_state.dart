@@ -2387,6 +2387,64 @@ class FFAppState extends ChangeNotifier {
     _lleads = _value;
     prefs.setInt('ff_lleads', _value.value);
   }
+
+  List<int> _leadValues = [1, 2, 3, 4];
+  List<int> get leadValues => _leadValues;
+  set leadValues(List<int> _value) {
+    _leadValues = _value;
+  }
+
+  void addToLeadValues(int _value) {
+    _leadValues.add(_value);
+  }
+
+  void removeFromLeadValues(int _value) {
+    _leadValues.remove(_value);
+  }
+
+  void removeAtIndexFromLeadValues(int _index) {
+    _leadValues.removeAt(_index);
+  }
+
+  void updateLeadValuesAtIndex(
+    int _index,
+    int Function(int) updateFn,
+  ) {
+    _leadValues[_index] = updateFn(_leadValues[_index]);
+  }
+
+  void insertAtIndexInLeadValues(int _index, int _value) {
+    _leadValues.insert(_index, _value);
+  }
+
+  List<dynamic> _leadCount = [];
+  List<dynamic> get leadCount => _leadCount;
+  set leadCount(List<dynamic> _value) {
+    _leadCount = _value;
+  }
+
+  void addToLeadCount(dynamic _value) {
+    _leadCount.add(_value);
+  }
+
+  void removeFromLeadCount(dynamic _value) {
+    _leadCount.remove(_value);
+  }
+
+  void removeAtIndexFromLeadCount(int _index) {
+    _leadCount.removeAt(_index);
+  }
+
+  void updateLeadCountAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _leadCount[_index] = updateFn(_leadCount[_index]);
+  }
+
+  void insertAtIndexInLeadCount(int _index, dynamic _value) {
+    _leadCount.insert(_index, _value);
+  }
 }
 
 void _safeInit(Function() initializeField) {

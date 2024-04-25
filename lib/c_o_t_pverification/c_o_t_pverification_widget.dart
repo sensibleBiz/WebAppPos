@@ -27,7 +27,7 @@ class _COTPverificationWidgetState extends State<COTPverificationWidget> {
     super.initState();
     _model = createModel(context, () => COTPverificationModel());
 
-    _model.textFieldMobileNumberController ??= TextEditingController();
+    _model.textFieldMobileNumberTextController ??= TextEditingController();
     _model.textFieldMobileNumberFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -128,12 +128,12 @@ class _COTPverificationWidgetState extends State<COTPverificationWidget> {
                                 child: Align(
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: TextFormField(
-                                    controller:
-                                        _model.textFieldMobileNumberController,
+                                    controller: _model
+                                        .textFieldMobileNumberTextController,
                                     focusNode:
                                         _model.textFieldMobileNumberFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.textFieldMobileNumberController',
+                                      '_model.textFieldMobileNumberTextController',
                                       Duration(milliseconds: 2000),
                                       () => setState(() {}),
                                     ),
@@ -207,9 +207,8 @@ class _COTPverificationWidgetState extends State<COTPverificationWidget> {
                                                       .titleMediumFamily),
                                         ),
                                     textAlign: TextAlign.center,
-                                    minLines: null,
                                     validator: _model
-                                        .textFieldMobileNumberControllerValidator
+                                        .textFieldMobileNumberTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),

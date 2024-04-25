@@ -25,9 +25,9 @@ class DisQualifyLeadModel extends FlutterFlowModel<DisQualifyLeadWidget> {
   // State field(s) for TextFieldtag widget.
   final textFieldtagKey = GlobalKey();
   FocusNode? textFieldtagFocusNode;
-  TextEditingController? textFieldtagController;
+  TextEditingController? textFieldtagTextController;
   String? textFieldtagSelectedOption;
-  String? Function(BuildContext, String?)? textFieldtagControllerValidator;
+  String? Function(BuildContext, String?)? textFieldtagTextControllerValidator;
   List<LeadTagRecord> simpleSearchResults = [];
   // Stores action output result for [Custom Action - generateTagCode] action in Button widget.
   int? tag;

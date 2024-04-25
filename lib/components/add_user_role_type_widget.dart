@@ -39,10 +39,10 @@ class _AddUserRoleTypeWidgetState extends State<AddUserRoleTypeWidget> {
     super.initState();
     _model = createModel(context, () => AddUserRoleTypeModel());
 
-    _model.textUserRollTypeNameController ??= TextEditingController();
+    _model.textUserRollTypeNameTextController ??= TextEditingController();
     _model.textUserRollTypeNameFocusNode ??= FocusNode();
 
-    _model.textUserRollTypeCodeController ??=
+    _model.textUserRollTypeCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textUserRollTypeCodeFocusNode ??= FocusNode();
 
@@ -149,10 +149,10 @@ class _AddUserRoleTypeWidgetState extends State<AddUserRoleTypeWidget> {
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textUserRollTypeNameController,
+                        controller: _model.textUserRollTypeNameTextController,
                         focusNode: _model.textUserRollTypeNameFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textUserRollTypeNameController',
+                          '_model.textUserRollTypeNameTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -221,9 +221,8 @@ class _AddUserRoleTypeWidgetState extends State<AddUserRoleTypeWidget> {
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
                         validator: _model
-                            .textUserRollTypeNameControllerValidator
+                            .textUserRollTypeNameTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -269,10 +268,10 @@ class _AddUserRoleTypeWidgetState extends State<AddUserRoleTypeWidget> {
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textUserRollTypeCodeController,
+                        controller: _model.textUserRollTypeCodeTextController,
                         focusNode: _model.textUserRollTypeCodeFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textUserRollTypeCodeController',
+                          '_model.textUserRollTypeCodeTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -342,9 +341,8 @@ class _AddUserRoleTypeWidgetState extends State<AddUserRoleTypeWidget> {
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
                         validator: _model
-                            .textUserRollTypeCodeControllerValidator
+                            .textUserRollTypeCodeTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -409,18 +407,20 @@ class _AddUserRoleTypeWidgetState extends State<AddUserRoleTypeWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             var _shouldSetState = false;
-                            if (_model.textUserRollTypeNameController.text !=
+                            if (_model.textUserRollTypeNameTextController
+                                        .text !=
                                     null &&
-                                _model.textUserRollTypeNameController.text !=
+                                _model.textUserRollTypeNameTextController
+                                        .text !=
                                     '') {
                               var userRoleTypeRecordReference =
                                   UserRoleTypeRecord.collection.doc();
                               await userRoleTypeRecordReference
                                   .set(createUserRoleTypeRecordData(
-                                name: functions.toCapitalLetter(
-                                    _model.textUserRollTypeNameController.text),
-                                code: int.tryParse(
-                                    _model.textUserRollTypeCodeController.text),
+                                name: functions.toCapitalLetter(_model
+                                    .textUserRollTypeNameTextController.text),
+                                code: int.tryParse(_model
+                                    .textUserRollTypeCodeTextController.text),
                                 createdDate: functions.getcreatedDate(),
                                 createdBy: FFAppState().userProfileRef,
                                 updatedDate: functions.getUpdatedDate(),
@@ -430,10 +430,10 @@ class _AddUserRoleTypeWidgetState extends State<AddUserRoleTypeWidget> {
                                   UserRoleTypeRecord.getDocumentFromData(
                                       createUserRoleTypeRecordData(
                                         name: functions.toCapitalLetter(_model
-                                            .textUserRollTypeNameController
+                                            .textUserRollTypeNameTextController
                                             .text),
                                         code: int.tryParse(_model
-                                            .textUserRollTypeCodeController
+                                            .textUserRollTypeCodeTextController
                                             .text),
                                         createdDate: functions.getcreatedDate(),
                                         createdBy: FFAppState().userProfileRef,

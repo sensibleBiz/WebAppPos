@@ -18,9 +18,10 @@ class UpdatePaymentModel extends FlutterFlowModel<UpdatePaymentWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextPaymentName widget.
   FocusNode? textPaymentNameFocusNode;
-  TextEditingController? textPaymentNameController;
-  String? Function(BuildContext, String?)? textPaymentNameControllerValidator;
-  String? _textPaymentNameControllerValidator(
+  TextEditingController? textPaymentNameTextController;
+  String? Function(BuildContext, String?)?
+      textPaymentNameTextControllerValidator;
+  String? _textPaymentNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -34,9 +35,10 @@ class UpdatePaymentModel extends FlutterFlowModel<UpdatePaymentWidget> {
 
   // State field(s) for TextPaymentCode widget.
   FocusNode? textPaymentCodeFocusNode;
-  TextEditingController? textPaymentCodeController;
-  String? Function(BuildContext, String?)? textPaymentCodeControllerValidator;
-  String? _textPaymentCodeControllerValidator(
+  TextEditingController? textPaymentCodeTextController;
+  String? Function(BuildContext, String?)?
+      textPaymentCodeTextControllerValidator;
+  String? _textPaymentCodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -50,16 +52,18 @@ class UpdatePaymentModel extends FlutterFlowModel<UpdatePaymentWidget> {
 
   @override
   void initState(BuildContext context) {
-    textPaymentNameControllerValidator = _textPaymentNameControllerValidator;
-    textPaymentCodeControllerValidator = _textPaymentCodeControllerValidator;
+    textPaymentNameTextControllerValidator =
+        _textPaymentNameTextControllerValidator;
+    textPaymentCodeTextControllerValidator =
+        _textPaymentCodeTextControllerValidator;
   }
 
   @override
   void dispose() {
     textPaymentNameFocusNode?.dispose();
-    textPaymentNameController?.dispose();
+    textPaymentNameTextController?.dispose();
 
     textPaymentCodeFocusNode?.dispose();
-    textPaymentCodeController?.dispose();
+    textPaymentCodeTextController?.dispose();
   }
 }

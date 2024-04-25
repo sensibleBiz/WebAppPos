@@ -41,17 +41,17 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
     super.initState();
     _model = createModel(context, () => CAddPremisesModel());
 
-    _model.textFieldPremisesNameController ??= TextEditingController();
+    _model.textFieldPremisesNameTextController ??= TextEditingController();
     _model.textFieldPremisesNameFocusNode ??= FocusNode();
 
-    _model.textFieldCodeController ??=
+    _model.textFieldCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textFieldCodeFocusNode ??= FocusNode();
 
-    _model.textFieldNoOfTableController ??= TextEditingController();
+    _model.textFieldNoOfTableTextController ??= TextEditingController();
     _model.textFieldNoOfTableFocusNode ??= FocusNode();
 
-    _model.textFieldRangStartWithController ??= TextEditingController();
+    _model.textFieldRangStartWithTextController ??= TextEditingController();
     _model.textFieldRangStartWithFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -174,12 +174,12 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 0.0, 0.0),
                                 child: TextFormField(
-                                  controller:
-                                      _model.textFieldPremisesNameController,
+                                  controller: _model
+                                      .textFieldPremisesNameTextController,
                                   focusNode:
                                       _model.textFieldPremisesNameFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.textFieldPremisesNameController',
+                                    '_model.textFieldPremisesNameTextController',
                                     Duration(milliseconds: 2000),
                                     () => setState(() {}),
                                   ),
@@ -251,9 +251,8 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleMediumFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model
-                                      .textFieldPremisesNameControllerValidator
+                                      .textFieldPremisesNameTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -309,10 +308,11 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 0.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.textFieldCodeController,
+                                  controller:
+                                      _model.textFieldCodeTextController,
                                   focusNode: _model.textFieldCodeFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.textFieldCodeController',
+                                    '_model.textFieldCodeTextController',
                                     Duration(milliseconds: 2000),
                                     () => setState(() {}),
                                   ),
@@ -386,10 +386,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleMediumFamily),
                                       ),
-                                  minLines: null,
                                   keyboardType: TextInputType.number,
                                   validator: _model
-                                      .textFieldCodeControllerValidator
+                                      .textFieldCodeTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -567,10 +566,10 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                 ),
                                 child: TextFormField(
                                   controller:
-                                      _model.textFieldNoOfTableController,
+                                      _model.textFieldNoOfTableTextController,
                                   focusNode: _model.textFieldNoOfTableFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.textFieldNoOfTableController',
+                                    '_model.textFieldNoOfTableTextController',
                                     Duration(milliseconds: 2000),
                                     () => setState(() {}),
                                   ),
@@ -642,10 +641,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleMediumFamily),
                                       ),
-                                  minLines: null,
                                   keyboardType: TextInputType.number,
                                   validator: _model
-                                      .textFieldNoOfTableControllerValidator
+                                      .textFieldNoOfTableTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -661,11 +659,11 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                               ),
                               child: TextFormField(
                                 controller:
-                                    _model.textFieldRangStartWithController,
+                                    _model.textFieldRangStartWithTextController,
                                 focusNode:
                                     _model.textFieldRangStartWithFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
-                                  '_model.textFieldRangStartWithController',
+                                  '_model.textFieldRangStartWithTextController',
                                   Duration(milliseconds: 2000),
                                   () => setState(() {}),
                                 ),
@@ -736,10 +734,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 keyboardType: TextInputType.number,
                                 validator: _model
-                                    .textFieldRangStartWithControllerValidator
+                                    .textFieldRangStartWithTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -809,9 +806,11 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               var _shouldSetState = false;
-                              if (_model.textFieldPremisesNameController.text !=
+                              if (_model.textFieldPremisesNameTextController
+                                          .text !=
                                       null &&
-                                  _model.textFieldPremisesNameController.text !=
+                                  _model.textFieldPremisesNameTextController
+                                          .text !=
                                       '') {
                                 if (_model.formKey.currentState == null ||
                                     !_model.formKey.currentState!.validate()) {
@@ -846,28 +845,31 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                 await premisesRecordReference
                                     .set(createPremisesRecordData(
                                   name: functions.toCapitalLetter(_model
-                                      .textFieldPremisesNameController.text),
-                                  tables: int.tryParse(
-                                      _model.textFieldNoOfTableController.text),
+                                      .textFieldPremisesNameTextController
+                                      .text),
+                                  tables: int.tryParse(_model
+                                      .textFieldNoOfTableTextController.text),
                                   code: int.tryParse(
-                                      _model.textFieldCodeController.text),
+                                      _model.textFieldCodeTextController.text),
                                   range: int.tryParse(_model
-                                      .textFieldRangStartWithController.text),
+                                      .textFieldRangStartWithTextController
+                                      .text),
                                   type: _model.dropDownPremisesTypeValue,
                                 ));
                                 _model.catDoc =
                                     PremisesRecord.getDocumentFromData(
                                         createPremisesRecordData(
                                           name: functions.toCapitalLetter(_model
-                                              .textFieldPremisesNameController
+                                              .textFieldPremisesNameTextController
                                               .text),
                                           tables: int.tryParse(_model
-                                              .textFieldNoOfTableController
+                                              .textFieldNoOfTableTextController
                                               .text),
                                           code: int.tryParse(_model
-                                              .textFieldCodeController.text),
+                                              .textFieldCodeTextController
+                                              .text),
                                           range: int.tryParse(_model
-                                              .textFieldRangStartWithController
+                                              .textFieldRangStartWithTextController
                                               .text),
                                           type:
                                               _model.dropDownPremisesTypeValue,

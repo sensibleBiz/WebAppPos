@@ -18,9 +18,10 @@ class AddTaxModel extends FlutterFlowModel<AddTaxWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextTaxTypeName widget.
   FocusNode? textTaxTypeNameFocusNode;
-  TextEditingController? textTaxTypeNameController;
-  String? Function(BuildContext, String?)? textTaxTypeNameControllerValidator;
-  String? _textTaxTypeNameControllerValidator(
+  TextEditingController? textTaxTypeNameTextController;
+  String? Function(BuildContext, String?)?
+      textTaxTypeNameTextControllerValidator;
+  String? _textTaxTypeNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -34,10 +35,10 @@ class AddTaxModel extends FlutterFlowModel<AddTaxWidget> {
 
   // State field(s) for TextTaxPercentageNumber widget.
   FocusNode? textTaxPercentageNumberFocusNode;
-  TextEditingController? textTaxPercentageNumberController;
+  TextEditingController? textTaxPercentageNumberTextController;
   String? Function(BuildContext, String?)?
-      textTaxPercentageNumberControllerValidator;
-  String? _textTaxPercentageNumberControllerValidator(
+      textTaxPercentageNumberTextControllerValidator;
+  String? _textTaxPercentageNumberTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -51,9 +52,10 @@ class AddTaxModel extends FlutterFlowModel<AddTaxWidget> {
 
   // State field(s) for TextTaxTypeCode widget.
   FocusNode? textTaxTypeCodeFocusNode;
-  TextEditingController? textTaxTypeCodeController;
-  String? Function(BuildContext, String?)? textTaxTypeCodeControllerValidator;
-  String? _textTaxTypeCodeControllerValidator(
+  TextEditingController? textTaxTypeCodeTextController;
+  String? Function(BuildContext, String?)?
+      textTaxTypeCodeTextControllerValidator;
+  String? _textTaxTypeCodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -70,21 +72,23 @@ class AddTaxModel extends FlutterFlowModel<AddTaxWidget> {
 
   @override
   void initState(BuildContext context) {
-    textTaxTypeNameControllerValidator = _textTaxTypeNameControllerValidator;
-    textTaxPercentageNumberControllerValidator =
-        _textTaxPercentageNumberControllerValidator;
-    textTaxTypeCodeControllerValidator = _textTaxTypeCodeControllerValidator;
+    textTaxTypeNameTextControllerValidator =
+        _textTaxTypeNameTextControllerValidator;
+    textTaxPercentageNumberTextControllerValidator =
+        _textTaxPercentageNumberTextControllerValidator;
+    textTaxTypeCodeTextControllerValidator =
+        _textTaxTypeCodeTextControllerValidator;
   }
 
   @override
   void dispose() {
     textTaxTypeNameFocusNode?.dispose();
-    textTaxTypeNameController?.dispose();
+    textTaxTypeNameTextController?.dispose();
 
     textTaxPercentageNumberFocusNode?.dispose();
-    textTaxPercentageNumberController?.dispose();
+    textTaxPercentageNumberTextController?.dispose();
 
     textTaxTypeCodeFocusNode?.dispose();
-    textTaxTypeCodeController?.dispose();
+    textTaxTypeCodeTextController?.dispose();
   }
 }

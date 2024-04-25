@@ -68,21 +68,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'containerOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 900.ms,
-          begin: Offset(1000.0, 0.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -110,8 +96,23 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
 
     _model.textFieldFocusNode3 ??= FocusNode();
 
-    _model.textFieldtagController ??= TextEditingController();
+    _model.textFieldtagTextController ??= TextEditingController();
 
+    animationsMap.addAll({
+      'containerOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 900.0.ms,
+            begin: Offset(1000.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -1046,7 +1047,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                       children: [
                                                                                         Expanded(
                                                                                           child: TextFormField(
-                                                                                            controller: _model.textFieldunameController ??= TextEditingController(
+                                                                                            controller: _model.textFieldunameTextController ??= TextEditingController(
                                                                                               text: containerLeadsManagementRecord?.username,
                                                                                             ),
                                                                                             focusNode: _model.textFieldunameFocusNode,
@@ -1096,8 +1097,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                   letterSpacing: 0.0,
                                                                                                   useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                                 ),
-                                                                                            minLines: null,
-                                                                                            validator: _model.textFieldunameControllerValidator.asValidator(context),
+                                                                                            validator: _model.textFieldunameTextControllerValidator.asValidator(context),
                                                                                           ),
                                                                                         ),
                                                                                         Padding(
@@ -1309,7 +1309,6 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                         letterSpacing: 0.0,
                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
                                                                                       ),
-                                                                                  minLines: null,
                                                                                   validator: _model.textController2Validator.asValidator(context),
                                                                                 ),
                                                                               ),
@@ -1514,7 +1513,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 1.0),
                                                                                   child: Text(
                                                                                     valueOrDefault<String>(
-                                                                                      containerLeadsManagementRecord?.source == 'JustDail' ? 'JustDial' : _model.dropDownSourceValue,
+                                                                                      containerLeadsManagementRecord?.source == 'JustDail' ? 'JustDial' : containerLeadsManagementRecord?.source,
                                                                                       'source',
                                                                                     ),
                                                                                     style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -1538,7 +1537,9 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                   'Walk-in',
                                                                                   'Reference',
                                                                                   'Facebook',
-                                                                                  'Other'
+                                                                                  'Other',
+                                                                                  'JustDial',
+                                                                                  'Indiamart'
                                                                                 ],
                                                                                 onChanged: (val) => setState(() => _model.dropDownSourceValue = val),
                                                                                 width: double.infinity,
@@ -1743,7 +1744,6 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                       letterSpacing: 0.0,
                                                                                       useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
                                                                                     ),
-                                                                                minLines: null,
                                                                                 validator: _model.textController3Validator.asValidator(context),
                                                                               ),
                                                                             ],
@@ -2022,7 +2022,6 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                         useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
                                                                                                       ),
                                                                                                   maxLines: null,
-                                                                                                  minLines: null,
                                                                                                   validator: _model.textController4Validator.asValidator(context),
                                                                                                 ),
                                                                                               ],
@@ -2064,7 +2063,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                       optionsViewBuilder: (context, onSelected, options) {
                                                                                                         return AutocompleteOptionsList(
                                                                                                           textFieldKey: _model.textFieldtagKey,
-                                                                                                          textController: _model.textFieldtagController!,
+                                                                                                          textController: _model.textFieldtagTextController!,
                                                                                                           options: options.toList(),
                                                                                                           onSelected: onSelected,
                                                                                                           textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -2091,14 +2090,14 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                       ) {
                                                                                                         _model.textFieldtagFocusNode = focusNode;
 
-                                                                                                        _model.textFieldtagController = textEditingController;
+                                                                                                        _model.textFieldtagTextController = textEditingController;
                                                                                                         return TextFormField(
                                                                                                           key: _model.textFieldtagKey,
                                                                                                           controller: textEditingController,
                                                                                                           focusNode: focusNode,
                                                                                                           onEditingComplete: onEditingComplete,
                                                                                                           onChanged: (_) => EasyDebounce.debounce(
-                                                                                                            '_model.textFieldtagController',
+                                                                                                            '_model.textFieldtagTextController',
                                                                                                             Duration(milliseconds: 2000),
                                                                                                             () async {
                                                                                                               safeSetState(() {
@@ -2108,7 +2107,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                         (record) => TextSearchItem.fromTerms(record, [record.leadTagName!]),
                                                                                                                       )
                                                                                                                       .toList(),
-                                                                                                                ).search(_model.textFieldtagController.text).map((r) => r.object).toList();
+                                                                                                                ).search(_model.textFieldtagTextController.text).map((r) => r.object).toList();
                                                                                                                 ;
                                                                                                               });
                                                                                                               setState(() {
@@ -2163,8 +2162,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                 useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
                                                                                                               ),
                                                                                                           maxLines: null,
-                                                                                                          minLines: null,
-                                                                                                          validator: _model.textFieldtagControllerValidator.asValidator(context),
+                                                                                                          validator: _model.textFieldtagTextControllerValidator.asValidator(context),
                                                                                                         );
                                                                                                       },
                                                                                                     ),
@@ -2184,7 +2182,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                     ),
                                                                                                     onPressed: () async {
                                                                                                       setState(() {
-                                                                                                        _model.textFieldtagController?.clear();
+                                                                                                        _model.textFieldtagTextController?.clear();
                                                                                                       });
                                                                                                       setState(() {
                                                                                                         FFAppState().tagSearch = false;
@@ -2694,188 +2692,190 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                     );
                                                                                                   },
                                                                                                 ),
-                                                                                                Builder(
-                                                                                                  builder: (context) {
-                                                                                                    final tagL = containerLeadsManagementRecord?.leadTag?.toList() ?? [];
-                                                                                                    return Wrap(
-                                                                                                      spacing: 0.0,
-                                                                                                      runSpacing: 0.0,
-                                                                                                      alignment: WrapAlignment.start,
-                                                                                                      crossAxisAlignment: WrapCrossAlignment.start,
-                                                                                                      direction: Axis.horizontal,
-                                                                                                      runAlignment: WrapAlignment.start,
-                                                                                                      verticalDirection: VerticalDirection.down,
-                                                                                                      clipBehavior: Clip.antiAlias,
-                                                                                                      children: List.generate(tagL.length, (tagLIndex) {
-                                                                                                        final tagLItem = tagL[tagLIndex];
-                                                                                                        return Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 5.0),
-                                                                                                          child: Container(
-                                                                                                            height: MediaQuery.sizeOf(context).height * 0.035,
-                                                                                                            decoration: BoxDecoration(
-                                                                                                              color: FlutterFlowTheme.of(context).secondary,
-                                                                                                              borderRadius: BorderRadius.circular(5.0),
-                                                                                                            ),
-                                                                                                            child: Padding(
-                                                                                                              padding: EdgeInsets.all(1.0),
-                                                                                                              child: Row(
-                                                                                                                mainAxisSize: MainAxisSize.min,
-                                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                                children: [
-                                                                                                                  Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 5.0, 0.0),
-                                                                                                                    child: Text(
-                                                                                                                      tagLItem.leadTagName,
-                                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                            fontSize: 11.0,
-                                                                                                                            letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                          ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                  if (FFAppState().hide)
-                                                                                                                    FlutterFlowIconButton(
-                                                                                                                      borderColor: Colors.transparent,
-                                                                                                                      borderRadius: 5.0,
-                                                                                                                      buttonSize: 22.0,
-                                                                                                                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                                                      icon: Icon(
-                                                                                                                        Icons.close,
-                                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                                        size: 7.0,
+                                                                                                if (FFAppState().hide)
+                                                                                                  Builder(
+                                                                                                    builder: (context) {
+                                                                                                      final tagL = containerLeadsManagementRecord?.leadTag?.toList() ?? [];
+                                                                                                      return Wrap(
+                                                                                                        spacing: 0.0,
+                                                                                                        runSpacing: 0.0,
+                                                                                                        alignment: WrapAlignment.start,
+                                                                                                        crossAxisAlignment: WrapCrossAlignment.start,
+                                                                                                        direction: Axis.horizontal,
+                                                                                                        runAlignment: WrapAlignment.start,
+                                                                                                        verticalDirection: VerticalDirection.down,
+                                                                                                        clipBehavior: Clip.antiAlias,
+                                                                                                        children: List.generate(tagL.length, (tagLIndex) {
+                                                                                                          final tagLItem = tagL[tagLIndex];
+                                                                                                          return Padding(
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 5.0),
+                                                                                                            child: Container(
+                                                                                                              height: MediaQuery.sizeOf(context).height * 0.035,
+                                                                                                              decoration: BoxDecoration(
+                                                                                                                color: FlutterFlowTheme.of(context).secondary,
+                                                                                                                borderRadius: BorderRadius.circular(5.0),
+                                                                                                              ),
+                                                                                                              child: Padding(
+                                                                                                                padding: EdgeInsets.all(1.0),
+                                                                                                                child: Row(
+                                                                                                                  mainAxisSize: MainAxisSize.min,
+                                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                                  children: [
+                                                                                                                    Padding(
+                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 5.0, 0.0),
+                                                                                                                      child: Text(
+                                                                                                                        tagLItem.leadTagName,
+                                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                              fontSize: 11.0,
+                                                                                                                              letterSpacing: 0.0,
+                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            ),
                                                                                                                       ),
-                                                                                                                      onPressed: () async {
-                                                                                                                        var confirmDialogResponse = await showDialog<bool>(
-                                                                                                                              context: context,
-                                                                                                                              builder: (alertDialogContext) {
-                                                                                                                                return WebViewAware(
-                                                                                                                                  child: AlertDialog(
-                                                                                                                                    title: Text('Delete Item...?'),
-                                                                                                                                    actions: [
-                                                                                                                                      TextButton(
-                                                                                                                                        onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                                        child: Text('Cancel'),
-                                                                                                                                      ),
-                                                                                                                                      TextButton(
-                                                                                                                                        onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                                        child: Text('Confirm'),
-                                                                                                                                      ),
-                                                                                                                                    ],
-                                                                                                                                  ),
-                                                                                                                                );
-                                                                                                                              },
-                                                                                                                            ) ??
-                                                                                                                            false;
-                                                                                                                        if (confirmDialogResponse) {
-                                                                                                                          await FirebaseStorage.instance.refFromURL(containerLeadsManagementRecord!.leadTag.length.toString()).delete();
-                                                                                                                        } else {
-                                                                                                                          context.pushNamed('LeadLog');
-
-                                                                                                                          return;
-                                                                                                                        }
-                                                                                                                      },
                                                                                                                     ),
-                                                                                                                ],
+                                                                                                                    if (FFAppState().hide)
+                                                                                                                      FlutterFlowIconButton(
+                                                                                                                        borderColor: Colors.transparent,
+                                                                                                                        borderRadius: 5.0,
+                                                                                                                        buttonSize: 22.0,
+                                                                                                                        fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                                        icon: Icon(
+                                                                                                                          Icons.close,
+                                                                                                                          color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                                          size: 7.0,
+                                                                                                                        ),
+                                                                                                                        onPressed: () async {
+                                                                                                                          var confirmDialogResponse = await showDialog<bool>(
+                                                                                                                                context: context,
+                                                                                                                                builder: (alertDialogContext) {
+                                                                                                                                  return WebViewAware(
+                                                                                                                                    child: AlertDialog(
+                                                                                                                                      title: Text('Delete Item...?'),
+                                                                                                                                      actions: [
+                                                                                                                                        TextButton(
+                                                                                                                                          onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                                                                          child: Text('Cancel'),
+                                                                                                                                        ),
+                                                                                                                                        TextButton(
+                                                                                                                                          onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                                                                          child: Text('Confirm'),
+                                                                                                                                        ),
+                                                                                                                                      ],
+                                                                                                                                    ),
+                                                                                                                                  );
+                                                                                                                                },
+                                                                                                                              ) ??
+                                                                                                                              false;
+                                                                                                                          if (confirmDialogResponse) {
+                                                                                                                            await FirebaseStorage.instance.refFromURL(containerLeadsManagementRecord!.leadTag.length.toString()).delete();
+                                                                                                                          } else {
+                                                                                                                            context.pushNamed('LeadLog');
+
+                                                                                                                            return;
+                                                                                                                          }
+                                                                                                                        },
+                                                                                                                      ),
+                                                                                                                  ],
+                                                                                                                ),
                                                                                                               ),
                                                                                                             ),
-                                                                                                          ),
-                                                                                                        );
-                                                                                                      }),
-                                                                                                    );
-                                                                                                  },
-                                                                                                ),
-                                                                                                Builder(
-                                                                                                  builder: (context) {
-                                                                                                    final tagL = containerLeadsManagementRecord?.leadTag?.toList() ?? [];
-                                                                                                    return Wrap(
-                                                                                                      spacing: 0.0,
-                                                                                                      runSpacing: 0.0,
-                                                                                                      alignment: WrapAlignment.start,
-                                                                                                      crossAxisAlignment: WrapCrossAlignment.start,
-                                                                                                      direction: Axis.horizontal,
-                                                                                                      runAlignment: WrapAlignment.start,
-                                                                                                      verticalDirection: VerticalDirection.down,
-                                                                                                      clipBehavior: Clip.antiAlias,
-                                                                                                      children: List.generate(tagL.length, (tagLIndex) {
-                                                                                                        final tagLItem = tagL[tagLIndex];
-                                                                                                        return Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 5.0),
-                                                                                                          child: Container(
-                                                                                                            height: MediaQuery.sizeOf(context).height * 0.035,
-                                                                                                            decoration: BoxDecoration(
-                                                                                                              color: FlutterFlowTheme.of(context).secondary,
-                                                                                                              borderRadius: BorderRadius.circular(5.0),
-                                                                                                            ),
-                                                                                                            child: Padding(
-                                                                                                              padding: EdgeInsets.all(1.0),
-                                                                                                              child: Row(
-                                                                                                                mainAxisSize: MainAxisSize.min,
-                                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                                children: [
-                                                                                                                  Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 5.0, 0.0),
-                                                                                                                    child: Text(
-                                                                                                                      tagLItem.leadTagName,
-                                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                            fontSize: 11.0,
-                                                                                                                            letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                          ),
-                                                                                                                    ),
-                                                                                                                  ),
-                                                                                                                  if (FFAppState().hide)
-                                                                                                                    FlutterFlowIconButton(
-                                                                                                                      borderColor: Colors.transparent,
-                                                                                                                      borderRadius: 5.0,
-                                                                                                                      buttonSize: 22.0,
-                                                                                                                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                                                      icon: Icon(
-                                                                                                                        Icons.close,
-                                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                                        size: 7.0,
+                                                                                                          );
+                                                                                                        }),
+                                                                                                      );
+                                                                                                    },
+                                                                                                  ),
+                                                                                                if (FFAppState().hide)
+                                                                                                  Builder(
+                                                                                                    builder: (context) {
+                                                                                                      final tagL = containerLeadsManagementRecord?.leadTag?.toList() ?? [];
+                                                                                                      return Wrap(
+                                                                                                        spacing: 0.0,
+                                                                                                        runSpacing: 0.0,
+                                                                                                        alignment: WrapAlignment.start,
+                                                                                                        crossAxisAlignment: WrapCrossAlignment.start,
+                                                                                                        direction: Axis.horizontal,
+                                                                                                        runAlignment: WrapAlignment.start,
+                                                                                                        verticalDirection: VerticalDirection.down,
+                                                                                                        clipBehavior: Clip.antiAlias,
+                                                                                                        children: List.generate(tagL.length, (tagLIndex) {
+                                                                                                          final tagLItem = tagL[tagLIndex];
+                                                                                                          return Padding(
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 5.0),
+                                                                                                            child: Container(
+                                                                                                              height: MediaQuery.sizeOf(context).height * 0.035,
+                                                                                                              decoration: BoxDecoration(
+                                                                                                                color: FlutterFlowTheme.of(context).secondary,
+                                                                                                                borderRadius: BorderRadius.circular(5.0),
+                                                                                                              ),
+                                                                                                              child: Padding(
+                                                                                                                padding: EdgeInsets.all(1.0),
+                                                                                                                child: Row(
+                                                                                                                  mainAxisSize: MainAxisSize.min,
+                                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                                  children: [
+                                                                                                                    Padding(
+                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 5.0, 0.0),
+                                                                                                                      child: Text(
+                                                                                                                        tagLItem.leadTagName,
+                                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                              fontSize: 11.0,
+                                                                                                                              letterSpacing: 0.0,
+                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            ),
                                                                                                                       ),
-                                                                                                                      onPressed: () async {
-                                                                                                                        var confirmDialogResponse = await showDialog<bool>(
-                                                                                                                              context: context,
-                                                                                                                              builder: (alertDialogContext) {
-                                                                                                                                return WebViewAware(
-                                                                                                                                  child: AlertDialog(
-                                                                                                                                    title: Text('Delete Item...?'),
-                                                                                                                                    actions: [
-                                                                                                                                      TextButton(
-                                                                                                                                        onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                                        child: Text('Cancel'),
-                                                                                                                                      ),
-                                                                                                                                      TextButton(
-                                                                                                                                        onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                                        child: Text('Confirm'),
-                                                                                                                                      ),
-                                                                                                                                    ],
-                                                                                                                                  ),
-                                                                                                                                );
-                                                                                                                              },
-                                                                                                                            ) ??
-                                                                                                                            false;
-                                                                                                                        if (confirmDialogResponse) {
-                                                                                                                          await FirebaseStorage.instance.refFromURL(containerLeadsManagementRecord!.leadTag.length.toString()).delete();
-                                                                                                                        } else {
-                                                                                                                          context.pushNamed('LeadLog');
-
-                                                                                                                          return;
-                                                                                                                        }
-                                                                                                                      },
                                                                                                                     ),
-                                                                                                                ],
+                                                                                                                    if (FFAppState().hide)
+                                                                                                                      FlutterFlowIconButton(
+                                                                                                                        borderColor: Colors.transparent,
+                                                                                                                        borderRadius: 5.0,
+                                                                                                                        buttonSize: 22.0,
+                                                                                                                        fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                                        icon: Icon(
+                                                                                                                          Icons.close,
+                                                                                                                          color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                                          size: 7.0,
+                                                                                                                        ),
+                                                                                                                        onPressed: () async {
+                                                                                                                          var confirmDialogResponse = await showDialog<bool>(
+                                                                                                                                context: context,
+                                                                                                                                builder: (alertDialogContext) {
+                                                                                                                                  return WebViewAware(
+                                                                                                                                    child: AlertDialog(
+                                                                                                                                      title: Text('Delete Item...?'),
+                                                                                                                                      actions: [
+                                                                                                                                        TextButton(
+                                                                                                                                          onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                                                                          child: Text('Cancel'),
+                                                                                                                                        ),
+                                                                                                                                        TextButton(
+                                                                                                                                          onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                                                                          child: Text('Confirm'),
+                                                                                                                                        ),
+                                                                                                                                      ],
+                                                                                                                                    ),
+                                                                                                                                  );
+                                                                                                                                },
+                                                                                                                              ) ??
+                                                                                                                              false;
+                                                                                                                          if (confirmDialogResponse) {
+                                                                                                                            await FirebaseStorage.instance.refFromURL(containerLeadsManagementRecord!.leadTag.length.toString()).delete();
+                                                                                                                          } else {
+                                                                                                                            context.pushNamed('LeadLog');
+
+                                                                                                                            return;
+                                                                                                                          }
+                                                                                                                        },
+                                                                                                                      ),
+                                                                                                                  ],
+                                                                                                                ),
                                                                                                               ),
                                                                                                             ),
-                                                                                                          ),
-                                                                                                        );
-                                                                                                      }),
-                                                                                                    );
-                                                                                                  },
-                                                                                                ),
+                                                                                                          );
+                                                                                                        }),
+                                                                                                      );
+                                                                                                    },
+                                                                                                  ),
                                                                                               ],
                                                                                             ),
                                                                                           ),
@@ -3010,8 +3010,6 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                               letterSpacing: 0.0,
                                                                               useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                             ),
-                                                                        hintText:
-                                                                            'Please select...',
                                                                         icon:
                                                                             Icon(
                                                                           Icons
@@ -3097,7 +3095,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
 
                                                                                   await containerLeadsManagementRecord!.reference.update({
                                                                                     ...createLeadsManagementRecordData(
-                                                                                      username: _model.textFieldunameController.text,
+                                                                                      username: _model.textFieldunameTextController.text,
                                                                                       businessName: _model.textController3.text,
                                                                                       businessType: _model.dropDownBTypeValue == null || _model.dropDownBTypeValue == ''
                                                                                           ? valueOrDefault<String>(
@@ -3111,6 +3109,8 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                       updatedDate: functions.timestampToMili(getCurrentTimestamp),
                                                                                       status: _model.dropDownValue,
                                                                                       stage: functions.statusForStage(_model.dropDownValue!),
+                                                                                      source: _model.dropDownSourceValue,
+                                                                                      area: _model.textController2.text,
                                                                                     ),
                                                                                     ...mapToFirestore(
                                                                                       {
@@ -3143,6 +3143,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                     businessName: _model.textController3.text,
                                                                                     businessType: _model.dropDownBTypeValue == null || _model.dropDownBTypeValue == '' ? '' : _model.dropDownBTypeValue,
                                                                                     priority: _model.dropDownPriorityValue == null || _model.dropDownPriorityValue == '' ? '' : _model.dropDownPriorityValue,
+                                                                                    area: _model.textController2.text,
                                                                                   ));
                                                                                   await Future.delayed(const Duration(milliseconds: 2000));
                                                                                   setState(() {

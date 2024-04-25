@@ -19,10 +19,10 @@ class UpdateUserRoleTypeModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextUserRollTypeName widget.
   FocusNode? textUserRollTypeNameFocusNode;
-  TextEditingController? textUserRollTypeNameController;
+  TextEditingController? textUserRollTypeNameTextController;
   String? Function(BuildContext, String?)?
-      textUserRollTypeNameControllerValidator;
-  String? _textUserRollTypeNameControllerValidator(
+      textUserRollTypeNameTextControllerValidator;
+  String? _textUserRollTypeNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -36,9 +36,10 @@ class UpdateUserRoleTypeModel
 
   // State field(s) for TextUserRollCode widget.
   FocusNode? textUserRollCodeFocusNode;
-  TextEditingController? textUserRollCodeController;
-  String? Function(BuildContext, String?)? textUserRollCodeControllerValidator;
-  String? _textUserRollCodeControllerValidator(
+  TextEditingController? textUserRollCodeTextController;
+  String? Function(BuildContext, String?)?
+      textUserRollCodeTextControllerValidator;
+  String? _textUserRollCodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -52,17 +53,18 @@ class UpdateUserRoleTypeModel
 
   @override
   void initState(BuildContext context) {
-    textUserRollTypeNameControllerValidator =
-        _textUserRollTypeNameControllerValidator;
-    textUserRollCodeControllerValidator = _textUserRollCodeControllerValidator;
+    textUserRollTypeNameTextControllerValidator =
+        _textUserRollTypeNameTextControllerValidator;
+    textUserRollCodeTextControllerValidator =
+        _textUserRollCodeTextControllerValidator;
   }
 
   @override
   void dispose() {
     textUserRollTypeNameFocusNode?.dispose();
-    textUserRollTypeNameController?.dispose();
+    textUserRollTypeNameTextController?.dispose();
 
     textUserRollCodeFocusNode?.dispose();
-    textUserRollCodeController?.dispose();
+    textUserRollCodeTextController?.dispose();
   }
 }

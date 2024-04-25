@@ -18,9 +18,10 @@ class UpdateUnitTypeModel extends FlutterFlowModel<UpdateUnitTypeWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextUnitName widget.
   FocusNode? textUnitNameFocusNode;
-  TextEditingController? textUnitNameController;
-  String? Function(BuildContext, String?)? textUnitNameControllerValidator;
-  String? _textUnitNameControllerValidator(BuildContext context, String? val) {
+  TextEditingController? textUnitNameTextController;
+  String? Function(BuildContext, String?)? textUnitNameTextControllerValidator;
+  String? _textUnitNameTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -33,9 +34,10 @@ class UpdateUnitTypeModel extends FlutterFlowModel<UpdateUnitTypeWidget> {
 
   // State field(s) for TextUnitTypeName widget.
   FocusNode? textUnitTypeNameFocusNode;
-  TextEditingController? textUnitTypeNameController;
-  String? Function(BuildContext, String?)? textUnitTypeNameControllerValidator;
-  String? _textUnitTypeNameControllerValidator(
+  TextEditingController? textUnitTypeNameTextController;
+  String? Function(BuildContext, String?)?
+      textUnitTypeNameTextControllerValidator;
+  String? _textUnitTypeNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -46,9 +48,10 @@ class UpdateUnitTypeModel extends FlutterFlowModel<UpdateUnitTypeWidget> {
 
   // State field(s) for TextFactorName widget.
   FocusNode? textFactorNameFocusNode;
-  TextEditingController? textFactorNameController;
-  String? Function(BuildContext, String?)? textFactorNameControllerValidator;
-  String? _textFactorNameControllerValidator(
+  TextEditingController? textFactorNameTextController;
+  String? Function(BuildContext, String?)?
+      textFactorNameTextControllerValidator;
+  String? _textFactorNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -62,9 +65,10 @@ class UpdateUnitTypeModel extends FlutterFlowModel<UpdateUnitTypeWidget> {
 
   // State field(s) for TextUnitTypeCode widget.
   FocusNode? textUnitTypeCodeFocusNode;
-  TextEditingController? textUnitTypeCodeController;
-  String? Function(BuildContext, String?)? textUnitTypeCodeControllerValidator;
-  String? _textUnitTypeCodeControllerValidator(
+  TextEditingController? textUnitTypeCodeTextController;
+  String? Function(BuildContext, String?)?
+      textUnitTypeCodeTextControllerValidator;
+  String? _textUnitTypeCodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -78,24 +82,27 @@ class UpdateUnitTypeModel extends FlutterFlowModel<UpdateUnitTypeWidget> {
 
   @override
   void initState(BuildContext context) {
-    textUnitNameControllerValidator = _textUnitNameControllerValidator;
-    textUnitTypeNameControllerValidator = _textUnitTypeNameControllerValidator;
-    textFactorNameControllerValidator = _textFactorNameControllerValidator;
-    textUnitTypeCodeControllerValidator = _textUnitTypeCodeControllerValidator;
+    textUnitNameTextControllerValidator = _textUnitNameTextControllerValidator;
+    textUnitTypeNameTextControllerValidator =
+        _textUnitTypeNameTextControllerValidator;
+    textFactorNameTextControllerValidator =
+        _textFactorNameTextControllerValidator;
+    textUnitTypeCodeTextControllerValidator =
+        _textUnitTypeCodeTextControllerValidator;
   }
 
   @override
   void dispose() {
     textUnitNameFocusNode?.dispose();
-    textUnitNameController?.dispose();
+    textUnitNameTextController?.dispose();
 
     textUnitTypeNameFocusNode?.dispose();
-    textUnitTypeNameController?.dispose();
+    textUnitTypeNameTextController?.dispose();
 
     textFactorNameFocusNode?.dispose();
-    textFactorNameController?.dispose();
+    textFactorNameTextController?.dispose();
 
     textUnitTypeCodeFocusNode?.dispose();
-    textUnitTypeCodeController?.dispose();
+    textUnitTypeCodeTextController?.dispose();
   }
 }

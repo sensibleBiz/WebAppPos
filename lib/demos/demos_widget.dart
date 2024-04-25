@@ -480,7 +480,7 @@ class _DemosWidgetState extends State<DemosWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Discription',
+                                    'Description',
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(

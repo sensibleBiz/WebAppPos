@@ -35,9 +35,9 @@ class CAddServicePointModel extends FlutterFlowModel<CAddServicePointWidget> {
 
   // State field(s) for Code widget.
   FocusNode? codeFocusNode;
-  TextEditingController? codeController;
-  String? Function(BuildContext, String?)? codeControllerValidator;
-  String? _codeControllerValidator(BuildContext context, String? val) {
+  TextEditingController? codeTextController;
+  String? Function(BuildContext, String?)? codeTextControllerValidator;
+  String? _codeTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -135,7 +135,7 @@ class CAddServicePointModel extends FlutterFlowModel<CAddServicePointWidget> {
   @override
   void initState(BuildContext context) {
     textController1Validator = _textController1Validator;
-    codeControllerValidator = _codeControllerValidator;
+    codeTextControllerValidator = _codeTextControllerValidator;
     textController3Validator = _textController3Validator;
     textController4Validator = _textController4Validator;
     textController5Validator = _textController5Validator;
@@ -149,7 +149,7 @@ class CAddServicePointModel extends FlutterFlowModel<CAddServicePointWidget> {
     textController1?.dispose();
 
     codeFocusNode?.dispose();
-    codeController?.dispose();
+    codeTextController?.dispose();
 
     textFieldFocusNode2?.dispose();
     textController3?.dispose();

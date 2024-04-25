@@ -202,7 +202,7 @@ class _UpdateCategoryMasterWidgetState
                                           ),
                                           child: TextFormField(
                                             controller: _model
-                                                    .textCategoryMasterTypeNameController ??=
+                                                    .textCategoryMasterTypeNameTextController ??=
                                                 TextEditingController(
                                               text:
                                                   container1CategoryMasterRecord
@@ -212,7 +212,7 @@ class _UpdateCategoryMasterWidgetState
                                                 .textCategoryMasterTypeNameFocusNode,
                                             onChanged: (_) =>
                                                 EasyDebounce.debounce(
-                                              '_model.textCategoryMasterTypeNameController',
+                                              '_model.textCategoryMasterTypeNameTextController',
                                               Duration(milliseconds: 2000),
                                               () => setState(() {}),
                                             ),
@@ -301,9 +301,8 @@ class _UpdateCategoryMasterWidgetState
                                                               .titleMediumFamily),
                                                 ),
                                             textAlign: TextAlign.start,
-                                            minLines: null,
                                             validator: _model
-                                                .textCategoryMasterTypeNameControllerValidator
+                                                .textCategoryMasterTypeNameTextControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -364,7 +363,7 @@ class _UpdateCategoryMasterWidgetState
                                               ),
                                               child: TextFormField(
                                                 controller: _model
-                                                        .textCategoryTypeCodeController ??=
+                                                        .textCategoryTypeCodeTextController ??=
                                                     TextEditingController(
                                                   text:
                                                       container1CategoryMasterRecord
@@ -375,7 +374,7 @@ class _UpdateCategoryMasterWidgetState
                                                     .textCategoryTypeCodeFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.textCategoryTypeCodeController',
+                                                  '_model.textCategoryTypeCodeTextController',
                                                   Duration(milliseconds: 2000),
                                                   () => setState(() {}),
                                                 ),
@@ -475,9 +474,8 @@ class _UpdateCategoryMasterWidgetState
                                                                       .titleMediumFamily),
                                                         ),
                                                 textAlign: TextAlign.start,
-                                                minLines: null,
                                                 validator: _model
-                                                    .textCategoryTypeCodeControllerValidator
+                                                    .textCategoryTypeCodeTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -1133,7 +1131,6 @@ class _UpdateCategoryMasterWidgetState
                                                                   context)
                                                               .bodyMediumFamily),
                                                 ),
-                                            minLines: null,
                                             validator: _model
                                                 .textController3Validator
                                                 .asValidator(context),
@@ -1294,16 +1291,16 @@ class _UpdateCategoryMasterWidgetState
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     var _shouldSetState = false;
-                                    if (_model.textCategoryMasterTypeNameController
+                                    if (_model.textCategoryMasterTypeNameTextController
                                                 .text !=
                                             null &&
-                                        _model.textCategoryMasterTypeNameController
+                                        _model.textCategoryMasterTypeNameTextController
                                                 .text !=
                                             '') {
                                       _model.notSame =
                                           await actions.dupCategoryMaster(
                                         functions.toCapitalLetter(_model
-                                            .textCategoryMasterTypeNameController
+                                            .textCategoryMasterTypeNameTextController
                                             .text),
                                         containerCategoryMasterRecordList
                                             .toList(),
@@ -1315,7 +1312,7 @@ class _UpdateCategoryMasterWidgetState
                                             .update(
                                                 createCategoryMasterRecordData(
                                           name: functions.toCapitalLetter(_model
-                                              .textCategoryMasterTypeNameController
+                                              .textCategoryMasterTypeNameTextController
                                               .text),
                                           updatedDate:
                                               functions.getUpdatedDate(),

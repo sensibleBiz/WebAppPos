@@ -24,10 +24,10 @@ class UpdateSubCategoryMasterModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextSubCategoryTypeName widget.
   FocusNode? textSubCategoryTypeNameFocusNode;
-  TextEditingController? textSubCategoryTypeNameController;
+  TextEditingController? textSubCategoryTypeNameTextController;
   String? Function(BuildContext, String?)?
-      textSubCategoryTypeNameControllerValidator;
-  String? _textSubCategoryTypeNameControllerValidator(
+      textSubCategoryTypeNameTextControllerValidator;
+  String? _textSubCategoryTypeNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -44,9 +44,9 @@ class UpdateSubCategoryMasterModel
   FormFieldController<String>? dropDownCategoryNameValueController;
   // State field(s) for TextCategoryMasterTypeCode widget.
   FocusNode? textCategoryMasterTypeCodeFocusNode;
-  TextEditingController? textCategoryMasterTypeCodeController;
+  TextEditingController? textCategoryMasterTypeCodeTextController;
   String? Function(BuildContext, String?)?
-      textCategoryMasterTypeCodeControllerValidator;
+      textCategoryMasterTypeCodeTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController3;
@@ -58,17 +58,17 @@ class UpdateSubCategoryMasterModel
 
   @override
   void initState(BuildContext context) {
-    textSubCategoryTypeNameControllerValidator =
-        _textSubCategoryTypeNameControllerValidator;
+    textSubCategoryTypeNameTextControllerValidator =
+        _textSubCategoryTypeNameTextControllerValidator;
   }
 
   @override
   void dispose() {
     textSubCategoryTypeNameFocusNode?.dispose();
-    textSubCategoryTypeNameController?.dispose();
+    textSubCategoryTypeNameTextController?.dispose();
 
     textCategoryMasterTypeCodeFocusNode?.dispose();
-    textCategoryMasterTypeCodeController?.dispose();
+    textCategoryMasterTypeCodeTextController?.dispose();
 
     textFieldFocusNode?.dispose();
     textController3?.dispose();

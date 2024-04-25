@@ -172,7 +172,6 @@ class _HeaderComponentWidgetState extends State<HeaderComponentWidget> {
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
-                    minLines: null,
                     validator:
                         _model.textController1Validator.asValidator(context),
                   ),
@@ -256,7 +255,6 @@ class _HeaderComponentWidgetState extends State<HeaderComponentWidget> {
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
-                    minLines: null,
                     validator:
                         _model.textController2Validator.asValidator(context),
                   ),

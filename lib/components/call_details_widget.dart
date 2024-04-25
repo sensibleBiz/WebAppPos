@@ -45,11 +45,11 @@ class _CallDetailsWidgetState extends State<CallDetailsWidget> {
     super.initState();
     _model = createModel(context, () => CallDetailsModel());
 
-    _model.textFieldDateController ??= TextEditingController(
+    _model.textFieldDateTextController ??= TextEditingController(
         text: dateTimeFormat('yMMMd', getCurrentTimestamp));
     _model.textFieldDateFocusNode ??= FocusNode();
 
-    _model.textFieldTimeController ??=
+    _model.textFieldTimeTextController ??=
         TextEditingController(text: dateTimeFormat('jm', getCurrentTimestamp));
     _model.textFieldTimeFocusNode ??= FocusNode();
 
@@ -212,8 +212,8 @@ class _CallDetailsWidgetState extends State<CallDetailsWidget> {
                                       child: Container(
                                         width: 250.0,
                                         child: TextFormField(
-                                          controller:
-                                              _model.textFieldDateController,
+                                          controller: _model
+                                              .textFieldDateTextController,
                                           focusNode:
                                               _model.textFieldDateFocusNode,
                                           autofocus: false,
@@ -302,9 +302,8 @@ class _CallDetailsWidgetState extends State<CallDetailsWidget> {
                                                                 context)
                                                             .bodyMediumFamily),
                                               ),
-                                          minLines: null,
                                           validator: _model
-                                              .textFieldDateControllerValidator
+                                              .textFieldDateTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -375,8 +374,8 @@ class _CallDetailsWidgetState extends State<CallDetailsWidget> {
                                       child: Container(
                                         width: 250.0,
                                         child: TextFormField(
-                                          controller:
-                                              _model.textFieldTimeController,
+                                          controller: _model
+                                              .textFieldTimeTextController,
                                           focusNode:
                                               _model.textFieldTimeFocusNode,
                                           autofocus: false,
@@ -465,9 +464,8 @@ class _CallDetailsWidgetState extends State<CallDetailsWidget> {
                                                                 context)
                                                             .bodyMediumFamily),
                                               ),
-                                          minLines: null,
                                           validator: _model
-                                              .textFieldTimeControllerValidator
+                                              .textFieldTimeTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -981,7 +979,6 @@ class _CallDetailsWidgetState extends State<CallDetailsWidget> {
                                                           .bodyMediumFamily),
                                             ),
                                         maxLines: 3,
-                                        minLines: null,
                                         validator: _model
                                             .textController3Validator
                                             .asValidator(context),

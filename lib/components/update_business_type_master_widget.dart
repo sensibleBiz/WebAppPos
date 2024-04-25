@@ -177,13 +177,13 @@ class _UpdateBusinessTypeMasterWidgetState
                             ),
                             child: TextFormField(
                               controller:
-                                  _model.textBusinessTypeNameController ??=
+                                  _model.textBusinessTypeNameTextController ??=
                                       TextEditingController(
                                 text: containerBusinessTypeRecord.name,
                               ),
                               focusNode: _model.textBusinessTypeNameFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textBusinessTypeNameController',
+                                '_model.textBusinessTypeNameTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -254,9 +254,8 @@ class _UpdateBusinessTypeMasterWidgetState
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
                               validator: _model
-                                  .textBusinessTypeNameControllerValidator
+                                  .textBusinessTypeNameTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -415,7 +414,7 @@ class _UpdateBusinessTypeMasterWidgetState
                                           ),
                                           child: TextFormField(
                                             controller: _model
-                                                    .textBusinessTypeCodeController ??=
+                                                    .textBusinessTypeCodeTextController ??=
                                                 TextEditingController(
                                               text: containerBusinessTypeRecord
                                                   .code
@@ -425,7 +424,7 @@ class _UpdateBusinessTypeMasterWidgetState
                                                 .textBusinessTypeCodeFocusNode,
                                             onChanged: (_) =>
                                                 EasyDebounce.debounce(
-                                              '_model.textBusinessTypeCodeController',
+                                              '_model.textBusinessTypeCodeTextController',
                                               Duration(milliseconds: 2000),
                                               () => setState(() {}),
                                             ),
@@ -515,9 +514,8 @@ class _UpdateBusinessTypeMasterWidgetState
                                                               .titleMediumFamily),
                                                 ),
                                             textAlign: TextAlign.start,
-                                            minLines: null,
                                             validator: _model
-                                                .textBusinessTypeCodeControllerValidator
+                                                .textBusinessTypeCodeTextControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -971,10 +969,10 @@ class _UpdateBusinessTypeMasterWidgetState
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      if (_model.textBusinessTypeNameController
+                                      if (_model.textBusinessTypeNameTextController
                                                   .text !=
                                               null &&
-                                          _model.textBusinessTypeNameController
+                                          _model.textBusinessTypeNameTextController
                                                   .text !=
                                               '') {
                                         if (_model.formKey.currentState ==
@@ -989,7 +987,7 @@ class _UpdateBusinessTypeMasterWidgetState
                                             .update(
                                                 createBusinessTypeRecordData(
                                           name: functions.toCapitalLetter(_model
-                                              .textBusinessTypeNameController
+                                              .textBusinessTypeNameTextController
                                               .text),
                                           updatedDate:
                                               functions.getUpdatedDate(),

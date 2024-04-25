@@ -94,7 +94,7 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
     super.initState();
     _model = createModel(context, () => DisQualifyLeadModel());
 
-    _model.textFieldtagController ??= TextEditingController();
+    _model.textFieldtagTextController ??= TextEditingController();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -244,7 +244,7 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                       return AutocompleteOptionsList(
                                         textFieldKey: _model.textFieldtagKey,
                                         textController:
-                                            _model.textFieldtagController!,
+                                            _model.textFieldtagTextController!,
                                         options: options.toList(),
                                         onSelected: onSelected,
                                         textStyle: FlutterFlowTheme.of(context)
@@ -286,7 +286,7 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                     ) {
                                       _model.textFieldtagFocusNode = focusNode;
 
-                                      _model.textFieldtagController =
+                                      _model.textFieldtagTextController =
                                           textEditingController;
                                       return TextFormField(
                                         key: _model.textFieldtagKey,
@@ -294,7 +294,7 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                         focusNode: focusNode,
                                         onEditingComplete: onEditingComplete,
                                         onChanged: (_) => EasyDebounce.debounce(
-                                          '_model.textFieldtagController',
+                                          '_model.textFieldtagTextController',
                                           Duration(milliseconds: 2000),
                                           () async {
                                             safeSetState(() {
@@ -310,7 +310,7 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                     .toList(),
                                               )
                                                       .search(_model
-                                                          .textFieldtagController
+                                                          .textFieldtagTextController
                                                           .text)
                                                       .map((r) => r.object)
                                                       .toList();
@@ -402,9 +402,8 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                           .titleMediumFamily),
                                             ),
                                         maxLines: null,
-                                        minLines: null,
                                         validator: _model
-                                            .textFieldtagControllerValidator
+                                            .textFieldtagTextControllerValidator
                                             .asValidator(context),
                                       );
                                     },
@@ -428,7 +427,8 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                   ),
                                   onPressed: () async {
                                     setState(() {
-                                      _model.textFieldtagController?.clear();
+                                      _model.textFieldtagTextController
+                                          ?.clear();
                                     });
                                     setState(() {
                                       FFAppState().tagSearch = false;

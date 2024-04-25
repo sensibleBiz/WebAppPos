@@ -39,10 +39,10 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget> {
     super.initState();
     _model = createModel(context, () => AddPaymentModel());
 
-    _model.textPaymentNameController ??= TextEditingController();
+    _model.textPaymentNameTextController ??= TextEditingController();
     _model.textPaymentNameFocusNode ??= FocusNode();
 
-    _model.textPaymentCodeController ??=
+    _model.textPaymentCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textPaymentCodeFocusNode ??= FocusNode();
 
@@ -147,10 +147,10 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget> {
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textPaymentNameController,
+                        controller: _model.textPaymentNameTextController,
                         focusNode: _model.textPaymentNameFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textPaymentNameController',
+                          '_model.textPaymentNameTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -219,8 +219,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget> {
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
-                        validator: _model.textPaymentNameControllerValidator
+                        validator: _model.textPaymentNameTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -266,10 +265,10 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget> {
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textPaymentCodeController,
+                        controller: _model.textPaymentCodeTextController,
                         focusNode: _model.textPaymentCodeFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textPaymentCodeController',
+                          '_model.textPaymentCodeTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -339,8 +338,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget> {
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
-                        validator: _model.textPaymentCodeControllerValidator
+                        validator: _model.textPaymentCodeTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -405,16 +403,18 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             var _shouldSetState = false;
-                            if (_model.textPaymentNameController.text != null &&
-                                _model.textPaymentNameController.text != '') {
+                            if (_model.textPaymentNameTextController.text !=
+                                    null &&
+                                _model.textPaymentNameTextController.text !=
+                                    '') {
                               var paymentModeRecordReference =
                                   PaymentModeRecord.collection.doc();
                               await paymentModeRecordReference
                                   .set(createPaymentModeRecordData(
                                 name: functions.toCapitalLetter(
-                                    _model.textPaymentNameController.text),
+                                    _model.textPaymentNameTextController.text),
                                 code: int.tryParse(
-                                    _model.textPaymentCodeController.text),
+                                    _model.textPaymentCodeTextController.text),
                                 createdDate: functions.getcreatedDate(),
                                 createdBy: currentUserReference,
                                 updatedDate: functions.getUpdatedDate(),
@@ -424,9 +424,11 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget> {
                                   PaymentModeRecord.getDocumentFromData(
                                       createPaymentModeRecordData(
                                         name: functions.toCapitalLetter(_model
-                                            .textPaymentNameController.text),
+                                            .textPaymentNameTextController
+                                            .text),
                                         code: int.tryParse(_model
-                                            .textPaymentCodeController.text),
+                                            .textPaymentCodeTextController
+                                            .text),
                                         createdDate: functions.getcreatedDate(),
                                         createdBy: currentUserReference,
                                         updatedDate: functions.getUpdatedDate(),

@@ -179,14 +179,14 @@ class _CEditPremiseWidgetState extends State<CEditPremiseWidget> {
                                         5.0, 0.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller: _model
-                                              .textFieldPremiseNameController ??=
+                                              .textFieldPremiseNameTextController ??=
                                           TextEditingController(
                                         text: containerPremisesRecord.name,
                                       ),
                                       focusNode:
                                           _model.textFieldPremiseNameFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
-                                        '_model.textFieldPremiseNameController',
+                                        '_model.textFieldPremiseNameTextController',
                                         Duration(milliseconds: 2000),
                                         () => setState(() {}),
                                       ),
@@ -261,9 +261,8 @@ class _CEditPremiseWidgetState extends State<CEditPremiseWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       validator: _model
-                                          .textFieldPremiseNameControllerValidator
+                                          .textFieldPremiseNameTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -403,7 +402,6 @@ class _CEditPremiseWidgetState extends State<CEditPremiseWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       keyboardType: TextInputType.number,
                                       validator: _model.textController2Validator
                                           .asValidator(context),
@@ -595,7 +593,7 @@ class _CEditPremiseWidgetState extends State<CEditPremiseWidget> {
                                     ),
                                     child: TextFormField(
                                       controller: _model
-                                              .textFieldNoOfTablesController ??=
+                                              .textFieldNoOfTablesTextController ??=
                                           TextEditingController(
                                         text: containerPremisesRecord.tables
                                             .toString(),
@@ -603,7 +601,7 @@ class _CEditPremiseWidgetState extends State<CEditPremiseWidget> {
                                       focusNode:
                                           _model.textFieldNoOfTablesFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
-                                        '_model.textFieldNoOfTablesController',
+                                        '_model.textFieldNoOfTablesTextController',
                                         Duration(milliseconds: 2000),
                                         () => setState(() {}),
                                       ),
@@ -678,10 +676,9 @@ class _CEditPremiseWidgetState extends State<CEditPremiseWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       keyboardType: TextInputType.number,
                                       validator: _model
-                                          .textFieldNoOfTablesControllerValidator
+                                          .textFieldNoOfTablesTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -697,7 +694,7 @@ class _CEditPremiseWidgetState extends State<CEditPremiseWidget> {
                                   ),
                                   child: TextFormField(
                                     controller: _model
-                                            .textFieldRangStartWithController ??=
+                                            .textFieldRangStartWithTextController ??=
                                         TextEditingController(
                                       text: containerPremisesRecord.range
                                           .toString(),
@@ -705,7 +702,7 @@ class _CEditPremiseWidgetState extends State<CEditPremiseWidget> {
                                     focusNode:
                                         _model.textFieldRangStartWithFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.textFieldRangStartWithController',
+                                      '_model.textFieldRangStartWithTextController',
                                       Duration(milliseconds: 2000),
                                       () => setState(() {}),
                                     ),
@@ -778,10 +775,9 @@ class _CEditPremiseWidgetState extends State<CEditPremiseWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleMediumFamily),
                                         ),
-                                    minLines: null,
                                     keyboardType: TextInputType.number,
                                     validator: _model
-                                        .textFieldRangStartWithControllerValidator
+                                        .textFieldRangStartWithTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -852,10 +848,10 @@ class _CEditPremiseWidgetState extends State<CEditPremiseWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (_model.textFieldPremiseNameController
+                                  if (_model.textFieldPremiseNameTextController
                                               .text !=
                                           null &&
-                                      _model.textFieldPremiseNameController
+                                      _model.textFieldPremiseNameTextController
                                               .text !=
                                           '') {
                                     if (_model.formKey.currentState == null ||
@@ -867,13 +863,15 @@ class _CEditPremiseWidgetState extends State<CEditPremiseWidget> {
                                     await containerPremisesRecord.reference
                                         .update(createPremisesRecordData(
                                       name: functions.toCapitalLetter(_model
-                                          .textFieldPremiseNameController.text),
+                                          .textFieldPremiseNameTextController
+                                          .text),
                                       tables: int.tryParse(_model
-                                          .textFieldNoOfTablesController.text),
+                                          .textFieldNoOfTablesTextController
+                                          .text),
                                       code: int.tryParse(
                                           _model.textController2.text),
                                       range: int.tryParse(_model
-                                          .textFieldRangStartWithController
+                                          .textFieldRangStartWithTextController
                                           .text),
                                       type: _model.dropDownPremisesTypeValue,
                                     ));

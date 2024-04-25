@@ -22,10 +22,10 @@ class UpdateBusinessTypeMasterModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextBusinessTypeName widget.
   FocusNode? textBusinessTypeNameFocusNode;
-  TextEditingController? textBusinessTypeNameController;
+  TextEditingController? textBusinessTypeNameTextController;
   String? Function(BuildContext, String?)?
-      textBusinessTypeNameControllerValidator;
-  String? _textBusinessTypeNameControllerValidator(
+      textBusinessTypeNameTextControllerValidator;
+  String? _textBusinessTypeNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -39,25 +39,25 @@ class UpdateBusinessTypeMasterModel
 
   // State field(s) for TextBusinessTypeCode widget.
   FocusNode? textBusinessTypeCodeFocusNode;
-  TextEditingController? textBusinessTypeCodeController;
+  TextEditingController? textBusinessTypeCodeTextController;
   String? Function(BuildContext, String?)?
-      textBusinessTypeCodeControllerValidator;
+      textBusinessTypeCodeTextControllerValidator;
   // State field(s) for DropDownSubscriptionType widget.
   String? dropDownSubscriptionTypeValue;
   FormFieldController<String>? dropDownSubscriptionTypeValueController;
 
   @override
   void initState(BuildContext context) {
-    textBusinessTypeNameControllerValidator =
-        _textBusinessTypeNameControllerValidator;
+    textBusinessTypeNameTextControllerValidator =
+        _textBusinessTypeNameTextControllerValidator;
   }
 
   @override
   void dispose() {
     textBusinessTypeNameFocusNode?.dispose();
-    textBusinessTypeNameController?.dispose();
+    textBusinessTypeNameTextController?.dispose();
 
     textBusinessTypeCodeFocusNode?.dispose();
-    textBusinessTypeCodeController?.dispose();
+    textBusinessTypeCodeTextController?.dispose();
   }
 }

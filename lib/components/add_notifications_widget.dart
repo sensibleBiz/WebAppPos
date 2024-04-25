@@ -210,7 +210,6 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .titleMediumFamily),
                                   ),
-                              minLines: null,
                               validator: _model.textController1Validator
                                   .asValidator(context),
                             ),
@@ -339,7 +338,6 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                     lineHeight: 1.0,
                                   ),
                               maxLines: 5,
-                              minLines: null,
                               validator: _model.textController2Validator
                                   .asValidator(context),
                             ),
@@ -466,7 +464,6 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .titleMediumFamily),
                                   ),
-                              minLines: null,
                               validator: _model.textController3Validator
                                   .asValidator(context),
                             ),
@@ -651,7 +648,6 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 validator: _model.textController4Validator
                                     .asValidator(context),
                               ),

@@ -20,10 +20,10 @@ class UpdateServicePointMasterModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextServicePointMasterName widget.
   FocusNode? textServicePointMasterNameFocusNode;
-  TextEditingController? textServicePointMasterNameController;
+  TextEditingController? textServicePointMasterNameTextController;
   String? Function(BuildContext, String?)?
-      textServicePointMasterNameControllerValidator;
-  String? _textServicePointMasterNameControllerValidator(
+      textServicePointMasterNameTextControllerValidator;
+  String? _textServicePointMasterNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -37,10 +37,10 @@ class UpdateServicePointMasterModel
 
   // State field(s) for TextServicePointMasterCode widget.
   FocusNode? textServicePointMasterCodeFocusNode;
-  TextEditingController? textServicePointMasterCodeController;
+  TextEditingController? textServicePointMasterCodeTextController;
   String? Function(BuildContext, String?)?
-      textServicePointMasterCodeControllerValidator;
-  String? _textServicePointMasterCodeControllerValidator(
+      textServicePointMasterCodeTextControllerValidator;
+  String? _textServicePointMasterCodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -54,18 +54,18 @@ class UpdateServicePointMasterModel
 
   @override
   void initState(BuildContext context) {
-    textServicePointMasterNameControllerValidator =
-        _textServicePointMasterNameControllerValidator;
-    textServicePointMasterCodeControllerValidator =
-        _textServicePointMasterCodeControllerValidator;
+    textServicePointMasterNameTextControllerValidator =
+        _textServicePointMasterNameTextControllerValidator;
+    textServicePointMasterCodeTextControllerValidator =
+        _textServicePointMasterCodeTextControllerValidator;
   }
 
   @override
   void dispose() {
     textServicePointMasterNameFocusNode?.dispose();
-    textServicePointMasterNameController?.dispose();
+    textServicePointMasterNameTextController?.dispose();
 
     textServicePointMasterCodeFocusNode?.dispose();
-    textServicePointMasterCodeController?.dispose();
+    textServicePointMasterCodeTextController?.dispose();
   }
 }

@@ -19,9 +19,10 @@ class CAddCategoryModel extends FlutterFlowModel<CAddCategoryWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextFieldName widget.
   FocusNode? textFieldNameFocusNode;
-  TextEditingController? textFieldNameController;
-  String? Function(BuildContext, String?)? textFieldNameControllerValidator;
-  String? _textFieldNameControllerValidator(BuildContext context, String? val) {
+  TextEditingController? textFieldNameTextController;
+  String? Function(BuildContext, String?)? textFieldNameTextControllerValidator;
+  String? _textFieldNameTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -34,9 +35,10 @@ class CAddCategoryModel extends FlutterFlowModel<CAddCategoryWidget> {
 
   // State field(s) for categoryNo widget.
   FocusNode? categoryNoFocusNode;
-  TextEditingController? categoryNoController;
-  String? Function(BuildContext, String?)? categoryNoControllerValidator;
-  String? _categoryNoControllerValidator(BuildContext context, String? val) {
+  TextEditingController? categoryNoTextController;
+  String? Function(BuildContext, String?)? categoryNoTextControllerValidator;
+  String? _categoryNoTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -54,16 +56,17 @@ class CAddCategoryModel extends FlutterFlowModel<CAddCategoryWidget> {
 
   @override
   void initState(BuildContext context) {
-    textFieldNameControllerValidator = _textFieldNameControllerValidator;
-    categoryNoControllerValidator = _categoryNoControllerValidator;
+    textFieldNameTextControllerValidator =
+        _textFieldNameTextControllerValidator;
+    categoryNoTextControllerValidator = _categoryNoTextControllerValidator;
   }
 
   @override
   void dispose() {
     textFieldNameFocusNode?.dispose();
-    textFieldNameController?.dispose();
+    textFieldNameTextController?.dispose();
 
     categoryNoFocusNode?.dispose();
-    categoryNoController?.dispose();
+    categoryNoTextController?.dispose();
   }
 }

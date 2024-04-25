@@ -20,14 +20,14 @@ class UpdateCategoryMasterModel
 
   // State field(s) for TextCategoryMasterTypeName widget.
   FocusNode? textCategoryMasterTypeNameFocusNode;
-  TextEditingController? textCategoryMasterTypeNameController;
+  TextEditingController? textCategoryMasterTypeNameTextController;
   String? Function(BuildContext, String?)?
-      textCategoryMasterTypeNameControllerValidator;
+      textCategoryMasterTypeNameTextControllerValidator;
   // State field(s) for TextCategoryTypeCode widget.
   FocusNode? textCategoryTypeCodeFocusNode;
-  TextEditingController? textCategoryTypeCodeController;
+  TextEditingController? textCategoryTypeCodeTextController;
   String? Function(BuildContext, String?)?
-      textCategoryTypeCodeControllerValidator;
+      textCategoryTypeCodeTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController3;
@@ -41,10 +41,10 @@ class UpdateCategoryMasterModel
   @override
   void dispose() {
     textCategoryMasterTypeNameFocusNode?.dispose();
-    textCategoryMasterTypeNameController?.dispose();
+    textCategoryMasterTypeNameTextController?.dispose();
 
     textCategoryTypeCodeFocusNode?.dispose();
-    textCategoryTypeCodeController?.dispose();
+    textCategoryTypeCodeTextController?.dispose();
 
     textFieldFocusNode?.dispose();
     textController3?.dispose();

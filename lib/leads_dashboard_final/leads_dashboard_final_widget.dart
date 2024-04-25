@@ -46,107 +46,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   var hasContainerTriggered1 = false;
-  final animationsMap = {
-    'containerOnActionTriggerAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: false,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(2000.0, 0.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
-        ),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation4': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 10.ms,
-          duration: 200.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
-        ),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 10.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation5': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 20.ms,
-          duration: 200.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
-        ),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 20.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation6': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -189,16 +89,121 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
       });
     });
 
-    _model.expandableController1 = ExpandableController(initialExpanded: false);
-    _model.expandableController2 = ExpandableController(initialExpanded: false);
-    _model.expandableController3 = ExpandableController(initialExpanded: false);
-    _model.expandableController4 = ExpandableController(initialExpanded: false);
-    _model.textFieldMobileController ??= TextEditingController();
+    _model.expandableExpandableController1 =
+        ExpandableController(initialExpanded: false);
+    _model.expandableExpandableController2 =
+        ExpandableController(initialExpanded: false);
+    _model.expandableExpandableController3 =
+        ExpandableController(initialExpanded: false);
+    _model.expandableExpandableController4 =
+        ExpandableController(initialExpanded: false);
+    _model.textFieldMobileTextController ??= TextEditingController();
     _model.textFieldMobileFocusNode ??= FocusNode();
 
-    _model.textFieldCityController ??= TextEditingController();
+    _model.textFieldCityTextController ??= TextEditingController();
     _model.textFieldCityFocusNode ??= FocusNode();
 
+    animationsMap.addAll({
+      'containerOnActionTriggerAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: false,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(2000.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 200.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation4': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 10.0.ms,
+            duration: 200.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 10.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation5': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 20.0.ms,
+            duration: 200.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 20.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation6': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -324,6 +329,36 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                         },
                                         child: Text(
                                           'Leads Dashboard',
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineLarge
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineLargeFamily,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(FlutterFlowTheme
+                                                            .of(context)
+                                                        .headlineLargeFamily),
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 25.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context
+                                              .pushNamed('DashboardAdminCopy');
+                                        },
+                                        child: Text(
+                                          'Chart',
                                           style: FlutterFlowTheme.of(context)
                                               .headlineLarge
                                               .override(
@@ -492,7 +527,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                         child:
                                                             ExpandableNotifier(
                                                           controller: _model
-                                                              .expandableController1,
+                                                              .expandableExpandableController1,
                                                           child:
                                                               ExpandablePanel(
                                                             header: Padding(
@@ -874,7 +909,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                         child:
                                                             ExpandableNotifier(
                                                           controller: _model
-                                                              .expandableController2,
+                                                              .expandableExpandableController2,
                                                           child:
                                                               ExpandablePanel(
                                                             header: Padding(
@@ -1239,7 +1274,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                         child:
                                                             ExpandableNotifier(
                                                           controller: _model
-                                                              .expandableController3,
+                                                              .expandableExpandableController3,
                                                           child:
                                                               ExpandablePanel(
                                                             header: Padding(
@@ -1598,7 +1633,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                       color: Color(0x00000000),
                                                       child: ExpandableNotifier(
                                                         controller: _model
-                                                            .expandableController4,
+                                                            .expandableExpandableController4,
                                                         child: ExpandablePanel(
                                                           header: Padding(
                                                             padding:
@@ -2529,10 +2564,10 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                                   child: TextFormField(
-                                                                                    controller: _model.textFieldMobileController,
+                                                                                    controller: _model.textFieldMobileTextController,
                                                                                     focusNode: _model.textFieldMobileFocusNode,
                                                                                     onChanged: (_) => EasyDebounce.debounce(
-                                                                                      '_model.textFieldMobileController',
+                                                                                      '_model.textFieldMobileTextController',
                                                                                       Duration(milliseconds: 2000),
                                                                                       () async {
                                                                                         _model.res1 = await queryLeadsManagementRecordOnce(
@@ -2540,11 +2575,11 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                           queryBuilder: (leadsManagementRecord) => leadsManagementRecord
                                                                                               .where(
                                                                                                 'mobile',
-                                                                                                isGreaterThanOrEqualTo: _model.textFieldMobileController.text,
+                                                                                                isGreaterThanOrEqualTo: _model.textFieldMobileTextController.text,
                                                                                               )
                                                                                               .where(
                                                                                                 'mobile',
-                                                                                                isLessThanOrEqualTo: '${_model.textFieldMobileController.text}~',
+                                                                                                isLessThanOrEqualTo: '${_model.textFieldMobileTextController.text}~',
                                                                                               ),
                                                                                         );
                                                                                         _model.allLeadSearchRes1 = await actions.leadDocToLeadJson(
@@ -2605,8 +2640,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                           letterSpacing: 0.0,
                                                                                           useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                         ),
-                                                                                    minLines: null,
-                                                                                    validator: _model.textFieldMobileControllerValidator.asValidator(context),
+                                                                                    validator: _model.textFieldMobileTextControllerValidator.asValidator(context),
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -2621,11 +2655,11 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     queryBuilder: (leadsManagementRecord) => leadsManagementRecord
                                                                                         .where(
                                                                                           'mobile',
-                                                                                          isGreaterThanOrEqualTo: _model.textFieldMobileController.text,
+                                                                                          isGreaterThanOrEqualTo: _model.textFieldMobileTextController.text,
                                                                                         )
                                                                                         .where(
                                                                                           'mobile',
-                                                                                          isLessThanOrEqualTo: '${_model.textFieldMobileController.text}~',
+                                                                                          isLessThanOrEqualTo: '${_model.textFieldMobileTextController.text}~',
                                                                                         ),
                                                                                   );
                                                                                   _model.allLeadSearchRes12 = await actions.leadDocToLeadJson(
@@ -2682,10 +2716,10 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                                                                                   child: TextFormField(
-                                                                                    controller: _model.textFieldCityController,
+                                                                                    controller: _model.textFieldCityTextController,
                                                                                     focusNode: _model.textFieldCityFocusNode,
                                                                                     onChanged: (_) => EasyDebounce.debounce(
-                                                                                      '_model.textFieldCityController',
+                                                                                      '_model.textFieldCityTextController',
                                                                                       Duration(milliseconds: 2000),
                                                                                       () async {
                                                                                         _model.resCity = await queryLeadsManagementRecordOnce(
@@ -2693,11 +2727,11 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                           queryBuilder: (leadsManagementRecord) => leadsManagementRecord
                                                                                               .where(
                                                                                                 'city',
-                                                                                                isGreaterThanOrEqualTo: _model.textFieldCityController.text,
+                                                                                                isGreaterThanOrEqualTo: _model.textFieldCityTextController.text,
                                                                                               )
                                                                                               .where(
                                                                                                 'city',
-                                                                                                isLessThanOrEqualTo: '${_model.textFieldCityController.text}~',
+                                                                                                isLessThanOrEqualTo: '${_model.textFieldCityTextController.text}~',
                                                                                               ),
                                                                                         );
                                                                                         _model.allLeadSearchRes2 = await actions.leadDocToLeadJson(
@@ -2758,8 +2792,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                           letterSpacing: 0.0,
                                                                                           useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                         ),
-                                                                                    minLines: null,
-                                                                                    validator: _model.textFieldCityControllerValidator.asValidator(context),
+                                                                                    validator: _model.textFieldCityTextControllerValidator.asValidator(context),
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -2774,11 +2807,11 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     queryBuilder: (leadsManagementRecord) => leadsManagementRecord
                                                                                         .where(
                                                                                           'city',
-                                                                                          isGreaterThanOrEqualTo: _model.textFieldCityController.text,
+                                                                                          isGreaterThanOrEqualTo: _model.textFieldCityTextController.text,
                                                                                         )
                                                                                         .where(
                                                                                           'city',
-                                                                                          isLessThanOrEqualTo: '${_model.textFieldCityController.text}~',
+                                                                                          isLessThanOrEqualTo: '${_model.textFieldCityTextController.text}~',
                                                                                         ),
                                                                                   );
                                                                                   _model.allLeadSearchRes13 = await actions.leadDocToLeadJson(
@@ -2834,7 +2867,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                               'JustDail',
                                                                               'Exhibition',
                                                                               'WalkIn',
-                                                                              'Self Generated'
+                                                                              'Self Generated',
+                                                                              'Other'
                                                                             ],
                                                                             onChanged:
                                                                                 (val) async {

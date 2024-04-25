@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 Future<List<dynamic>> leadDocToLeadJson(
     List<LeadsManagementRecord> docs) async {
   List<dynamic> leadDocs = [];
+  List<dynamic> leadCount = [];
+  int aCount = 0, fCount = 0, cCount = 0, lCount = 0;
 
   for (int i = 0; i < docs.length; i++) {
     print(docs[i]);
@@ -44,7 +46,19 @@ Future<List<dynamic>> leadDocToLeadJson(
       "remarks": docs[i].remarks,
       "stage": docs[i].stage,
     });
+    if (docs[i].stage == "assigned") {
+      aCount++;
+    } else if (docs[i].stage == "followup") {
+      fCount++;
+    } else if (docs[i].stage == "completed") {
+      cCount++;
+    } else if (docs[i].stage == "lost") {
+      lCount++;
+    }
   }
+  leadCount.add(
+      {"aCount": aCount, "fCount": fCount, "cCount": cCount, "lCount": lCount});
+  FFAppState().leadCount = leadCount;
   // Add your function code here!
   return leadDocs;
 }

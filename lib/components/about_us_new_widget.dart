@@ -32,7 +32,7 @@ class _AboutUsNewWidgetState extends State<AboutUsNewWidget> {
     super.initState();
     _model = createModel(context, () => AboutUsNewModel());
 
-    _model.textFieldDetailsController ??= TextEditingController();
+    _model.textFieldDetailsTextController ??= TextEditingController();
     _model.textFieldDetailsFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -92,7 +92,7 @@ class _AboutUsNewWidgetState extends State<AboutUsNewWidget> {
                     ),
                   ),
                   child: TextFormField(
-                    controller: _model.textFieldDetailsController,
+                    controller: _model.textFieldDetailsTextController,
                     focusNode: _model.textFieldDetailsFocusNode,
                     autofocus: true,
                     obscureText: false,
@@ -123,8 +123,7 @@ class _AboutUsNewWidgetState extends State<AboutUsNewWidget> {
                           lineHeight: 1.5,
                         ),
                     maxLines: 200,
-                    minLines: null,
-                    validator: _model.textFieldDetailsControllerValidator
+                    validator: _model.textFieldDetailsTextControllerValidator
                         .asValidator(context),
                   ),
                 ),
@@ -210,7 +209,7 @@ class _AboutUsNewWidgetState extends State<AboutUsNewWidget> {
                         await AboutUsRecord.createDoc(
                                 FFAppState().CompanyDetailsRef!)
                             .set(createAboutUsRecordData(
-                          contains: _model.textFieldDetailsController.text,
+                          contains: _model.textFieldDetailsTextController.text,
                         ));
                       },
                       child: Container(

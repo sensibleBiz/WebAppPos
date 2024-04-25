@@ -182,13 +182,13 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: _model.textPlanNameController ??=
+                              controller: _model.textPlanNameTextController ??=
                                   TextEditingController(
                                 text: containerSubscriptionRecord.planName,
                               ),
                               focusNode: _model.textPlanNameFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textPlanNameController',
+                                '_model.textPlanNameTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -261,8 +261,8 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
-                              validator: _model.textPlanNameControllerValidator
+                              validator: _model
+                                  .textPlanNameTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -312,13 +312,14 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: _model.textDiscriptionController ??=
-                                  TextEditingController(
+                              controller:
+                                  _model.textDiscriptionTextController ??=
+                                      TextEditingController(
                                 text: containerSubscriptionRecord.description,
                               ),
                               focusNode: _model.textDiscriptionFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textDiscriptionController',
+                                '_model.textDiscriptionTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -393,9 +394,8 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                   ),
                               textAlign: TextAlign.start,
                               maxLines: 3,
-                              minLines: null,
                               validator: _model
-                                  .textDiscriptionControllerValidator
+                                  .textDiscriptionTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -498,7 +498,7 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                 ),
                                 child: TextFormField(
                                   controller: _model
-                                          .textSubscriptionTypeCodeController ??=
+                                          .textSubscriptionTypeCodeTextController ??=
                                       TextEditingController(
                                     text: containerSubscriptionRecord.code
                                         .toString(),
@@ -506,7 +506,7 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                   focusNode:
                                       _model.textSubscriptionTypeCodeFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.textSubscriptionTypeCodeController',
+                                    '_model.textSubscriptionTypeCodeTextController',
                                     Duration(milliseconds: 2000),
                                     () => setState(() {}),
                                   ),
@@ -581,9 +581,8 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                                     .titleMediumFamily),
                                       ),
                                   textAlign: TextAlign.start,
-                                  minLines: null,
                                   validator: _model
-                                      .textSubscriptionTypeCodeControllerValidator
+                                      .textSubscriptionTypeCodeTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -601,14 +600,15 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                   ),
                                 ),
                                 child: TextFormField(
-                                  controller: _model.textValidityController ??=
-                                      TextEditingController(
+                                  controller:
+                                      _model.textValidityTextController ??=
+                                          TextEditingController(
                                     text: containerSubscriptionRecord.validity
                                         .toString(),
                                   ),
                                   focusNode: _model.textValidityFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.textValidityController',
+                                    '_model.textValidityTextController',
                                     Duration(milliseconds: 2000),
                                     () => setState(() {}),
                                   ),
@@ -682,9 +682,8 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                                     .titleMediumFamily),
                                       ),
                                   textAlign: TextAlign.start,
-                                  minLines: null,
                                   validator: _model
-                                      .textValidityControllerValidator
+                                      .textValidityTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -792,7 +791,7 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                 ),
                                 child: TextFormField(
                                   controller: _model
-                                          .textSubscriptionAmountController ??=
+                                          .textSubscriptionAmountTextController ??=
                                       TextEditingController(
                                     text: containerSubscriptionRecord.amount
                                         .toString(),
@@ -800,7 +799,7 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                   focusNode:
                                       _model.textSubscriptionAmountFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.textSubscriptionAmountController',
+                                    '_model.textSubscriptionAmountTextController',
                                     Duration(milliseconds: 2000),
                                     () => setState(() {}),
                                   ),
@@ -874,9 +873,8 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                                     .titleMediumFamily),
                                       ),
                                   textAlign: TextAlign.start,
-                                  minLines: null,
                                   validator: _model
-                                      .textSubscriptionAmountControllerValidator
+                                      .textSubscriptionAmountTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -989,13 +987,14 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                     ),
                                   ),
                                   child: TextFormField(
-                                    controller: _model.textUpiLinkController ??=
-                                        TextEditingController(
+                                    controller:
+                                        _model.textUpiLinkTextController ??=
+                                            TextEditingController(
                                       text: containerSubscriptionRecord.link,
                                     ),
                                     focusNode: _model.textUpiLinkFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.textUpiLinkController',
+                                      '_model.textUpiLinkTextController',
                                       Duration(milliseconds: 2000),
                                       () => setState(() {}),
                                     ),
@@ -1070,10 +1069,9 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
                                                       .titleMediumFamily),
                                         ),
                                     textAlign: TextAlign.start,
-                                    minLines: null,
                                     keyboardType: TextInputType.url,
                                     validator: _model
-                                        .textUpiLinkControllerValidator
+                                        .textUpiLinkTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1155,21 +1153,22 @@ class _UpdateSubscriptionWidgetState extends State<UpdateSubscriptionWidget> {
 
                                     await containerSubscriptionRecord.reference
                                         .update(createSubscriptionRecordData(
-                                      planName: functions.toCapitalLetter(
-                                          _model.textPlanNameController.text),
-                                      description:
-                                          _model.textDiscriptionController.text,
+                                      planName: functions.toCapitalLetter(_model
+                                          .textPlanNameTextController.text),
+                                      description: _model
+                                          .textDiscriptionTextController.text,
                                       amount: double.tryParse(_model
-                                          .textSubscriptionAmountController
+                                          .textSubscriptionAmountTextController
                                           .text),
                                       code: int.tryParse(_model
-                                          .textSubscriptionTypeCodeController
+                                          .textSubscriptionTypeCodeTextController
                                           .text),
-                                      validity: int.tryParse(
-                                          _model.textValidityController.text),
+                                      validity: int.tryParse(_model
+                                          .textValidityTextController.text),
                                       updateDate: functions.getUpdatedDate(),
                                       updatedBy: FFAppState().userProfileRef,
-                                      link: _model.textUpiLinkController.text,
+                                      link:
+                                          _model.textUpiLinkTextController.text,
                                       createdBy:
                                           containerSubscriptionRecord.createdBy,
                                     ));

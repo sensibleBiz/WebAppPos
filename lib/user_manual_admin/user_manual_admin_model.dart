@@ -27,8 +27,9 @@ class UserManualAdminModel extends FlutterFlowModel<UserManualAdminWidget> {
   FormFieldController<String>? headlineDropDownValueController;
   // State field(s) for TextFieldTopic widget.
   FocusNode? textFieldTopicFocusNode;
-  TextEditingController? textFieldTopicController;
-  String? Function(BuildContext, String?)? textFieldTopicControllerValidator;
+  TextEditingController? textFieldTopicTextController;
+  String? Function(BuildContext, String?)?
+      textFieldTopicTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController2;
@@ -43,12 +44,13 @@ class UserManualAdminModel extends FlutterFlowModel<UserManualAdminWidget> {
   String? Function(BuildContext, String?)? textController4Validator;
   // State field(s) for TextFieldSteps widget.
   FocusNode? textFieldStepsFocusNode;
-  TextEditingController? textFieldStepsController;
-  String? Function(BuildContext, String?)? textFieldStepsControllerValidator;
+  TextEditingController? textFieldStepsTextController;
+  String? Function(BuildContext, String?)?
+      textFieldStepsTextControllerValidator;
   // State field(s) for imgList widget.
   FocusNode? imgListFocusNode;
-  TextEditingController? imgListController;
-  String? Function(BuildContext, String?)? imgListControllerValidator;
+  TextEditingController? imgListTextController;
+  String? Function(BuildContext, String?)? imgListTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode4;
   TextEditingController? textController7;
@@ -67,7 +69,7 @@ class UserManualAdminModel extends FlutterFlowModel<UserManualAdminWidget> {
   void dispose() {
     unfocusNode.dispose();
     textFieldTopicFocusNode?.dispose();
-    textFieldTopicController?.dispose();
+    textFieldTopicTextController?.dispose();
 
     textFieldFocusNode1?.dispose();
     textController2?.dispose();
@@ -79,10 +81,10 @@ class UserManualAdminModel extends FlutterFlowModel<UserManualAdminWidget> {
     textController4?.dispose();
 
     textFieldStepsFocusNode?.dispose();
-    textFieldStepsController?.dispose();
+    textFieldStepsTextController?.dispose();
 
     imgListFocusNode?.dispose();
-    imgListController?.dispose();
+    imgListTextController?.dispose();
 
     textFieldFocusNode4?.dispose();
     textController7?.dispose();

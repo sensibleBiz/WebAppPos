@@ -20,9 +20,10 @@ class AddSubscriptionModel extends FlutterFlowModel<AddSubscriptionWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextPlanTypeName widget.
   FocusNode? textPlanTypeNameFocusNode;
-  TextEditingController? textPlanTypeNameController;
-  String? Function(BuildContext, String?)? textPlanTypeNameControllerValidator;
-  String? _textPlanTypeNameControllerValidator(
+  TextEditingController? textPlanTypeNameTextController;
+  String? Function(BuildContext, String?)?
+      textPlanTypeNameTextControllerValidator;
+  String? _textPlanTypeNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -36,9 +37,10 @@ class AddSubscriptionModel extends FlutterFlowModel<AddSubscriptionWidget> {
 
   // State field(s) for TextDiscription widget.
   FocusNode? textDiscriptionFocusNode;
-  TextEditingController? textDiscriptionController;
-  String? Function(BuildContext, String?)? textDiscriptionControllerValidator;
-  String? _textDiscriptionControllerValidator(
+  TextEditingController? textDiscriptionTextController;
+  String? Function(BuildContext, String?)?
+      textDiscriptionTextControllerValidator;
+  String? _textDiscriptionTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -52,10 +54,10 @@ class AddSubscriptionModel extends FlutterFlowModel<AddSubscriptionWidget> {
 
   // State field(s) for TextSubscriptionTypeCode widget.
   FocusNode? textSubscriptionTypeCodeFocusNode;
-  TextEditingController? textSubscriptionTypeCodeController;
+  TextEditingController? textSubscriptionTypeCodeTextController;
   String? Function(BuildContext, String?)?
-      textSubscriptionTypeCodeControllerValidator;
-  String? _textSubscriptionTypeCodeControllerValidator(
+      textSubscriptionTypeCodeTextControllerValidator;
+  String? _textSubscriptionTypeCodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -69,9 +71,10 @@ class AddSubscriptionModel extends FlutterFlowModel<AddSubscriptionWidget> {
 
   // State field(s) for TextValidity widget.
   FocusNode? textValidityFocusNode;
-  TextEditingController? textValidityController;
-  String? Function(BuildContext, String?)? textValidityControllerValidator;
-  String? _textValidityControllerValidator(BuildContext context, String? val) {
+  TextEditingController? textValidityTextController;
+  String? Function(BuildContext, String?)? textValidityTextControllerValidator;
+  String? _textValidityTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -84,9 +87,10 @@ class AddSubscriptionModel extends FlutterFlowModel<AddSubscriptionWidget> {
 
   // State field(s) for TextAmount widget.
   FocusNode? textAmountFocusNode;
-  TextEditingController? textAmountController;
-  String? Function(BuildContext, String?)? textAmountControllerValidator;
-  String? _textAmountControllerValidator(BuildContext context, String? val) {
+  TextEditingController? textAmountTextController;
+  String? Function(BuildContext, String?)? textAmountTextControllerValidator;
+  String? _textAmountTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -102,9 +106,10 @@ class AddSubscriptionModel extends FlutterFlowModel<AddSubscriptionWidget> {
   FormFieldController<String>? dropDownValueController;
   // State field(s) for TextUpiLink widget.
   FocusNode? textUpiLinkFocusNode;
-  TextEditingController? textUpiLinkController;
-  String? Function(BuildContext, String?)? textUpiLinkControllerValidator;
-  String? _textUpiLinkControllerValidator(BuildContext context, String? val) {
+  TextEditingController? textUpiLinkTextController;
+  String? Function(BuildContext, String?)? textUpiLinkTextControllerValidator;
+  String? _textUpiLinkTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -120,33 +125,35 @@ class AddSubscriptionModel extends FlutterFlowModel<AddSubscriptionWidget> {
 
   @override
   void initState(BuildContext context) {
-    textPlanTypeNameControllerValidator = _textPlanTypeNameControllerValidator;
-    textDiscriptionControllerValidator = _textDiscriptionControllerValidator;
-    textSubscriptionTypeCodeControllerValidator =
-        _textSubscriptionTypeCodeControllerValidator;
-    textValidityControllerValidator = _textValidityControllerValidator;
-    textAmountControllerValidator = _textAmountControllerValidator;
-    textUpiLinkControllerValidator = _textUpiLinkControllerValidator;
+    textPlanTypeNameTextControllerValidator =
+        _textPlanTypeNameTextControllerValidator;
+    textDiscriptionTextControllerValidator =
+        _textDiscriptionTextControllerValidator;
+    textSubscriptionTypeCodeTextControllerValidator =
+        _textSubscriptionTypeCodeTextControllerValidator;
+    textValidityTextControllerValidator = _textValidityTextControllerValidator;
+    textAmountTextControllerValidator = _textAmountTextControllerValidator;
+    textUpiLinkTextControllerValidator = _textUpiLinkTextControllerValidator;
   }
 
   @override
   void dispose() {
     textPlanTypeNameFocusNode?.dispose();
-    textPlanTypeNameController?.dispose();
+    textPlanTypeNameTextController?.dispose();
 
     textDiscriptionFocusNode?.dispose();
-    textDiscriptionController?.dispose();
+    textDiscriptionTextController?.dispose();
 
     textSubscriptionTypeCodeFocusNode?.dispose();
-    textSubscriptionTypeCodeController?.dispose();
+    textSubscriptionTypeCodeTextController?.dispose();
 
     textValidityFocusNode?.dispose();
-    textValidityController?.dispose();
+    textValidityTextController?.dispose();
 
     textAmountFocusNode?.dispose();
-    textAmountController?.dispose();
+    textAmountTextController?.dispose();
 
     textUpiLinkFocusNode?.dispose();
-    textUpiLinkController?.dispose();
+    textUpiLinkTextController?.dispose();
   }
 }

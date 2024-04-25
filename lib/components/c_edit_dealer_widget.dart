@@ -45,7 +45,7 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
 
     _model.emailIdDealerFocusNode ??= FocusNode();
 
-    _model.websiteDealerController ??= TextEditingController();
+    _model.websiteDealerTextController ??= TextEditingController();
     _model.websiteDealerFocusNode ??= FocusNode();
 
     _model.stateDealerFocusNode ??= FocusNode();
@@ -325,7 +325,7 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                        .dealersCompanyNameController ??=
+                                                                        .dealersCompanyNameTextController ??=
                                                                     TextEditingController(
                                                                   text: containerDealersRecord
                                                                       ?.companyName,
@@ -432,9 +432,8 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
-                                                                    .dealersCompanyNameControllerValidator
+                                                                    .dealersCompanyNameTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -450,7 +449,7 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                        .gSTNumberController ??=
+                                                                        .gSTNumberTextController ??=
                                                                     TextEditingController(
                                                                   text: containerDealersRecord
                                                                       ?.gstNumber,
@@ -557,9 +556,8 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
-                                                                    .gSTNumberControllerValidator
+                                                                    .gSTNumberTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -575,7 +573,7 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                        .emailIdDealerController ??=
+                                                                        .emailIdDealerTextController ??=
                                                                     TextEditingController(
                                                                   text: containerDealersRecord
                                                                       ?.emailId,
@@ -682,9 +680,8 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
-                                                                    .emailIdDealerControllerValidator
+                                                                    .emailIdDealerTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -700,7 +697,7 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                    .websiteDealerController,
+                                                                    .websiteDealerTextController,
                                                                 focusNode: _model
                                                                     .websiteDealerFocusNode,
                                                                 autofocus: true,
@@ -803,9 +800,8 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
-                                                                    .websiteDealerControllerValidator
+                                                                    .websiteDealerTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -821,7 +817,7 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                        .stateDealerController ??=
+                                                                        .stateDealerTextController ??=
                                                                     TextEditingController(
                                                                   text: containerDealersRecord
                                                                       ?.state,
@@ -928,9 +924,8 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
-                                                                    .stateDealerControllerValidator
+                                                                    .stateDealerTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -946,7 +941,7 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                        .addressDealerController ??=
+                                                                        .addressDealerTextController ??=
                                                                     TextEditingController(
                                                                   text: containerDealersRecord
                                                                       ?.address,
@@ -1053,9 +1048,8 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
-                                                                    .addressDealerControllerValidator
+                                                                    .addressDealerTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -1110,22 +1104,22 @@ class _CEditDealerWidgetState extends State<CEditDealerWidget> {
                                                                         createDealersRecordData(
                                                                   companyName:
                                                                       _model
-                                                                          .dealersCompanyNameController
+                                                                          .dealersCompanyNameTextController
                                                                           .text,
                                                                   contactNumber:
                                                                       containerDealersRecord
                                                                           ?.contactNumber,
                                                                   gstNumber: _model
-                                                                      .gSTNumberController
+                                                                      .gSTNumberTextController
                                                                       .text,
                                                                   address: _model
-                                                                      .addressDealerController
+                                                                      .addressDealerTextController
                                                                       .text,
                                                                   state: _model
-                                                                      .stateDealerController
+                                                                      .stateDealerTextController
                                                                       .text,
                                                                   emailId: _model
-                                                                      .emailIdDealerController
+                                                                      .emailIdDealerTextController
                                                                       .text,
                                                                 ));
                                                                 ScaffoldMessenger.of(

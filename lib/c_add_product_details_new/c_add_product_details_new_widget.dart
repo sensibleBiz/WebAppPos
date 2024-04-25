@@ -48,38 +48,38 @@ class _CAddProductDetailsNewWidgetState
     super.initState();
     _model = createModel(context, () => CAddProductDetailsNewModel());
 
-    _model.codeController ??=
+    _model.codeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.codeFocusNode ??= FocusNode();
 
-    _model.textFieldSellingPriceController ??= TextEditingController();
+    _model.textFieldSellingPriceTextController ??= TextEditingController();
     _model.textFieldSellingPriceFocusNode ??= FocusNode();
 
-    _model.textFieldMrpPriceController ??= TextEditingController();
+    _model.textFieldMrpPriceTextController ??= TextEditingController();
     _model.textFieldMrpPriceFocusNode ??= FocusNode();
 
-    _model.textFieldPurchasePriceController ??= TextEditingController();
+    _model.textFieldPurchasePriceTextController ??= TextEditingController();
     _model.textFieldPurchasePriceFocusNode ??= FocusNode();
 
-    _model.textFieldRegionalNameController ??= TextEditingController();
+    _model.textFieldRegionalNameTextController ??= TextEditingController();
     _model.textFieldRegionalNameFocusNode ??= FocusNode();
 
-    _model.textFieldReorderLevelController ??= TextEditingController();
+    _model.textFieldReorderLevelTextController ??= TextEditingController();
     _model.textFieldReorderLevelFocusNode ??= FocusNode();
 
-    _model.textFieldShortNameController ??= TextEditingController();
+    _model.textFieldShortNameTextController ??= TextEditingController();
     _model.textFieldShortNameFocusNode ??= FocusNode();
 
-    _model.textFieldHsnCodeController ??= TextEditingController();
+    _model.textFieldHsnCodeTextController ??= TextEditingController();
     _model.textFieldHsnCodeFocusNode ??= FocusNode();
 
-    _model.textFieldSearchCodeController ??= TextEditingController();
+    _model.textFieldSearchCodeTextController ??= TextEditingController();
     _model.textFieldSearchCodeFocusNode ??= FocusNode();
 
-    _model.textFieldDiscountPerController ??= TextEditingController();
+    _model.textFieldDiscountPerTextController ??= TextEditingController();
     _model.textFieldDiscountPerFocusNode ??= FocusNode();
 
-    _model.textFieldDiscountAmtController ??= TextEditingController();
+    _model.textFieldDiscountAmtTextController ??= TextEditingController();
     _model.textFieldDiscountAmtFocusNode ??= FocusNode();
 
     _model.textController12 ??= TextEditingController();
@@ -339,7 +339,7 @@ class _CAddProductDetailsNewWidgetState
                                                                         _model.jsonData =
                                                                             await actions.productDetails(
                                                                           _model
-                                                                              .textFieldRegionalNameController
+                                                                              .textFieldRegionalNameTextController
                                                                               .text,
                                                                           _model
                                                                               .subCatDropDownValue,
@@ -350,13 +350,13 @@ class _CAddProductDetailsNewWidgetState
                                                                           _model
                                                                               .taxDropDownValue,
                                                                           _model
-                                                                              .textFieldReorderLevelController
+                                                                              .textFieldReorderLevelTextController
                                                                               .text,
                                                                           double.tryParse(_model
-                                                                              .textFieldDiscountPerController
+                                                                              .textFieldDiscountPerTextController
                                                                               .text),
                                                                           double.tryParse(_model
-                                                                              .textFieldDiscountAmtController
+                                                                              .textFieldDiscountAmtTextController
                                                                               .text),
                                                                           _model
                                                                               .catDropDownValue,
@@ -457,24 +457,24 @@ class _CAddProductDetailsNewWidgetState
                                                                         await productRecordReference
                                                                             .set(createProductRecordData(
                                                                           sellingPrice: double.tryParse(_model
-                                                                              .textFieldSellingPriceController
+                                                                              .textFieldSellingPriceTextController
                                                                               .text),
                                                                           mrpPrice: double.tryParse(_model
-                                                                              .textFieldMrpPriceController
+                                                                              .textFieldMrpPriceTextController
                                                                               .text),
                                                                           purchasePrice: double.tryParse(_model
-                                                                              .textFieldPurchasePriceController
+                                                                              .textFieldPurchasePriceTextController
                                                                               .text),
                                                                           barcode:
                                                                               FFAppState().barcode,
                                                                           hsncode: int.tryParse(_model
-                                                                              .textFieldHsnCodeController
+                                                                              .textFieldHsnCodeTextController
                                                                               .text),
                                                                           shortName: _model
-                                                                              .textFieldShortNameController
+                                                                              .textFieldShortNameTextController
                                                                               .text,
                                                                           searchcode: int.tryParse(_model
-                                                                              .textFieldSearchCodeController
+                                                                              .textFieldSearchCodeTextController
                                                                               .text),
                                                                           discountPer:
                                                                               valueOrDefault<double>(
@@ -494,7 +494,7 @@ class _CAddProductDetailsNewWidgetState
                                                                           ),
                                                                           reorderLevel:
                                                                               valueOrDefault<int>(
-                                                                            int.tryParse(_model.textFieldReorderLevelController.text),
+                                                                            int.tryParse(_model.textFieldReorderLevelTextController.text),
                                                                             0,
                                                                           ),
                                                                           weightable:
@@ -507,7 +507,7 @@ class _CAddProductDetailsNewWidgetState
                                                                           name:
                                                                               _model.productDropDownValue,
                                                                           code: int.tryParse(_model
-                                                                              .codeController
+                                                                              .codeTextController
                                                                               .text),
                                                                           regionalName:
                                                                               functions.toCapitalLetter(getJsonField(
@@ -573,13 +573,13 @@ class _CAddProductDetailsNewWidgetState
                                                                         ));
                                                                         _model.proDoc = ProductRecord.getDocumentFromData(
                                                                             createProductRecordData(
-                                                                              sellingPrice: double.tryParse(_model.textFieldSellingPriceController.text),
-                                                                              mrpPrice: double.tryParse(_model.textFieldMrpPriceController.text),
-                                                                              purchasePrice: double.tryParse(_model.textFieldPurchasePriceController.text),
+                                                                              sellingPrice: double.tryParse(_model.textFieldSellingPriceTextController.text),
+                                                                              mrpPrice: double.tryParse(_model.textFieldMrpPriceTextController.text),
+                                                                              purchasePrice: double.tryParse(_model.textFieldPurchasePriceTextController.text),
                                                                               barcode: FFAppState().barcode,
-                                                                              hsncode: int.tryParse(_model.textFieldHsnCodeController.text),
-                                                                              shortName: _model.textFieldShortNameController.text,
-                                                                              searchcode: int.tryParse(_model.textFieldSearchCodeController.text),
+                                                                              hsncode: int.tryParse(_model.textFieldHsnCodeTextController.text),
+                                                                              shortName: _model.textFieldShortNameTextController.text,
+                                                                              searchcode: int.tryParse(_model.textFieldSearchCodeTextController.text),
                                                                               discountPer: valueOrDefault<double>(
                                                                                 getJsonField(
                                                                                   _model.jsonData,
@@ -595,14 +595,14 @@ class _CAddProductDetailsNewWidgetState
                                                                                 0.0,
                                                                               ),
                                                                               reorderLevel: valueOrDefault<int>(
-                                                                                int.tryParse(_model.textFieldReorderLevelController.text),
+                                                                                int.tryParse(_model.textFieldReorderLevelTextController.text),
                                                                                 0,
                                                                               ),
                                                                               weightable: _model.weightableValue,
                                                                               stockable: _model.stockableValue,
                                                                               categoryRef: functions.getCatDocRefFroMId(_model.catDoc?.id, FFAppState().outletRef),
                                                                               name: _model.productDropDownValue,
-                                                                              code: int.tryParse(_model.codeController.text),
+                                                                              code: int.tryParse(_model.codeTextController.text),
                                                                               regionalName: functions.toCapitalLetter(getJsonField(
                                                                                 _model.jsonData,
                                                                                 r'''$.regional''',
@@ -834,7 +834,7 @@ class _CAddProductDetailsNewWidgetState
                                                           ),
                                                           child: TextFormField(
                                                             controller: _model
-                                                                .codeController,
+                                                                .codeTextController,
                                                             focusNode: _model
                                                                 .codeFocusNode,
                                                             autofocus: true,
@@ -951,9 +951,8 @@ class _CAddProductDetailsNewWidgetState
                                                                 ),
                                                             textAlign: TextAlign
                                                                 .center,
-                                                            minLines: null,
                                                             validator: _model
-                                                                .codeControllerValidator
+                                                                .codeTextControllerValidator
                                                                 .asValidator(
                                                                     context),
                                                           ),
@@ -1345,7 +1344,7 @@ class _CAddProductDetailsNewWidgetState
                                                         ),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textFieldSellingPriceController,
+                                                              .textFieldSellingPriceTextController,
                                                           focusNode: _model
                                                               .textFieldSellingPriceFocusNode,
                                                           autofocus: false,
@@ -1460,9 +1459,8 @@ class _CAddProductDetailsNewWidgetState
                                                                         FlutterFlowTheme.of(context)
                                                                             .titleMediumFamily),
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .textFieldSellingPriceControllerValidator
+                                                              .textFieldSellingPriceTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -1499,7 +1497,7 @@ class _CAddProductDetailsNewWidgetState
                                                         ),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textFieldMrpPriceController,
+                                                              .textFieldMrpPriceTextController,
                                                           focusNode: _model
                                                               .textFieldMrpPriceFocusNode,
                                                           autofocus: false,
@@ -1614,9 +1612,8 @@ class _CAddProductDetailsNewWidgetState
                                                                         FlutterFlowTheme.of(context)
                                                                             .titleMediumFamily),
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .textFieldMrpPriceControllerValidator
+                                                              .textFieldMrpPriceTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -1641,7 +1638,7 @@ class _CAddProductDetailsNewWidgetState
                                                       ),
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .textFieldPurchasePriceController,
+                                                            .textFieldPurchasePriceTextController,
                                                         focusNode: _model
                                                             .textFieldPurchasePriceFocusNode,
                                                         autofocus: false,
@@ -1757,9 +1754,8 @@ class _CAddProductDetailsNewWidgetState
                                                                           FlutterFlowTheme.of(context)
                                                                               .titleMediumFamily),
                                                                 ),
-                                                        minLines: null,
                                                         validator: _model
-                                                            .textFieldPurchasePriceControllerValidator
+                                                            .textFieldPurchasePriceTextControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -2968,13 +2964,13 @@ class _CAddProductDetailsNewWidgetState
                                                         ),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textFieldRegionalNameController,
+                                                              .textFieldRegionalNameTextController,
                                                           focusNode: _model
                                                               .textFieldRegionalNameFocusNode,
                                                           onChanged: (_) =>
                                                               EasyDebounce
                                                                   .debounce(
-                                                            '_model.textFieldRegionalNameController',
+                                                            '_model.textFieldRegionalNameTextController',
                                                             Duration(
                                                                 milliseconds:
                                                                     2000),
@@ -3092,9 +3088,8 @@ class _CAddProductDetailsNewWidgetState
                                                                         FlutterFlowTheme.of(context)
                                                                             .titleMediumFamily),
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .textFieldRegionalNameControllerValidator
+                                                              .textFieldRegionalNameTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -3131,13 +3126,13 @@ class _CAddProductDetailsNewWidgetState
                                                         ),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textFieldReorderLevelController,
+                                                              .textFieldReorderLevelTextController,
                                                           focusNode: _model
                                                               .textFieldReorderLevelFocusNode,
                                                           onChanged: (_) =>
                                                               EasyDebounce
                                                                   .debounce(
-                                                            '_model.textFieldReorderLevelController',
+                                                            '_model.textFieldReorderLevelTextController',
                                                             Duration(
                                                                 milliseconds:
                                                                     2000),
@@ -3255,9 +3250,8 @@ class _CAddProductDetailsNewWidgetState
                                                                         FlutterFlowTheme.of(context)
                                                                             .titleMediumFamily),
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .textFieldReorderLevelControllerValidator
+                                                              .textFieldReorderLevelTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -3287,13 +3281,13 @@ class _CAddProductDetailsNewWidgetState
                                                         ),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textFieldShortNameController,
+                                                              .textFieldShortNameTextController,
                                                           focusNode: _model
                                                               .textFieldShortNameFocusNode,
                                                           onChanged: (_) =>
                                                               EasyDebounce
                                                                   .debounce(
-                                                            '_model.textFieldShortNameController',
+                                                            '_model.textFieldShortNameTextController',
                                                             Duration(
                                                                 milliseconds:
                                                                     2000),
@@ -3411,9 +3405,8 @@ class _CAddProductDetailsNewWidgetState
                                                                         FlutterFlowTheme.of(context)
                                                                             .titleMediumFamily),
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .textFieldShortNameControllerValidator
+                                                              .textFieldShortNameTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -3655,7 +3648,7 @@ class _CAddProductDetailsNewWidgetState
                                                         ),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textFieldHsnCodeController,
+                                                              .textFieldHsnCodeTextController,
                                                           focusNode: _model
                                                               .textFieldHsnCodeFocusNode,
                                                           autofocus: true,
@@ -3769,9 +3762,8 @@ class _CAddProductDetailsNewWidgetState
                                                                         FlutterFlowTheme.of(context)
                                                                             .titleMediumFamily),
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .textFieldHsnCodeControllerValidator
+                                                              .textFieldHsnCodeTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -3956,7 +3948,7 @@ class _CAddProductDetailsNewWidgetState
                                                           ),
                                                           child: TextFormField(
                                                             controller: _model
-                                                                .textFieldSearchCodeController,
+                                                                .textFieldSearchCodeTextController,
                                                             focusNode: _model
                                                                 .textFieldSearchCodeFocusNode,
                                                             autofocus: true,
@@ -4067,9 +4059,8 @@ class _CAddProductDetailsNewWidgetState
                                                                           FlutterFlowTheme.of(context)
                                                                               .titleMediumFamily),
                                                                 ),
-                                                            minLines: null,
                                                             validator: _model
-                                                                .textFieldSearchCodeControllerValidator
+                                                                .textFieldSearchCodeTextControllerValidator
                                                                 .asValidator(
                                                                     context),
                                                           ),
@@ -4421,13 +4412,13 @@ class _CAddProductDetailsNewWidgetState
                                                         ),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textFieldDiscountPerController,
+                                                              .textFieldDiscountPerTextController,
                                                           focusNode: _model
                                                               .textFieldDiscountPerFocusNode,
                                                           onChanged: (_) =>
                                                               EasyDebounce
                                                                   .debounce(
-                                                            '_model.textFieldDiscountPerController',
+                                                            '_model.textFieldDiscountPerTextController',
                                                             Duration(
                                                                 milliseconds:
                                                                     2000),
@@ -4545,9 +4536,8 @@ class _CAddProductDetailsNewWidgetState
                                                                         FlutterFlowTheme.of(context)
                                                                             .titleMediumFamily),
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .textFieldDiscountPerControllerValidator
+                                                              .textFieldDiscountPerTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -4584,13 +4574,13 @@ class _CAddProductDetailsNewWidgetState
                                                         ),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textFieldDiscountAmtController,
+                                                              .textFieldDiscountAmtTextController,
                                                           focusNode: _model
                                                               .textFieldDiscountAmtFocusNode,
                                                           onChanged: (_) =>
                                                               EasyDebounce
                                                                   .debounce(
-                                                            '_model.textFieldDiscountAmtController',
+                                                            '_model.textFieldDiscountAmtTextController',
                                                             Duration(
                                                                 milliseconds:
                                                                     2000),
@@ -4708,9 +4698,8 @@ class _CAddProductDetailsNewWidgetState
                                                                         FlutterFlowTheme.of(context)
                                                                             .titleMediumFamily),
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .textFieldDiscountAmtControllerValidator
+                                                              .textFieldDiscountAmtTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -5178,7 +5167,6 @@ class _CAddProductDetailsNewWidgetState
                                                                           FlutterFlowTheme.of(context)
                                                                               .titleMediumFamily),
                                                                 ),
-                                                            minLines: null,
                                                             validator: _model
                                                                 .textController12Validator
                                                                 .asValidator(
@@ -5329,7 +5317,6 @@ class _CAddProductDetailsNewWidgetState
                                                                           FlutterFlowTheme.of(context)
                                                                               .titleMediumFamily),
                                                                 ),
-                                                            minLines: null,
                                                             validator: _model
                                                                 .textController13Validator
                                                                 .asValidator(
@@ -5480,7 +5467,6 @@ class _CAddProductDetailsNewWidgetState
                                                                           FlutterFlowTheme.of(context)
                                                                               .titleMediumFamily),
                                                                 ),
-                                                            minLines: null,
                                                             validator: _model
                                                                 .textController14Validator
                                                                 .asValidator(
@@ -5631,7 +5617,6 @@ class _CAddProductDetailsNewWidgetState
                                                                           FlutterFlowTheme.of(context)
                                                                               .titleMediumFamily),
                                                                 ),
-                                                            minLines: null,
                                                             validator: _model
                                                                 .textController15Validator
                                                                 .asValidator(
@@ -5782,7 +5767,6 @@ class _CAddProductDetailsNewWidgetState
                                                                           FlutterFlowTheme.of(context)
                                                                               .titleMediumFamily),
                                                                 ),
-                                                            minLines: null,
                                                             validator: _model
                                                                 .textController16Validator
                                                                 .asValidator(

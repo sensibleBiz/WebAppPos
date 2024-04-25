@@ -1,18 +1,21 @@
 import '/backend/backend.dart';
+import '/components/custom_date_range_widget.dart';
 import '/components/list_view_msg_widget.dart';
 import '/components/status_dropdown_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'dealer_assignment_model.dart';
 export 'dealer_assignment_model.dart';
 
@@ -37,6 +40,10 @@ class _DealerAssignmentWidgetState extends State<DealerAssignmentWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         FFAppState().demoListDate = functions.dateFormat(getCurrentTimestamp);
+      });
+      setState(() {
+        FFAppState().selectedDate =
+            functions.timestampToMili(getCurrentTimestamp);
       });
     });
 
@@ -147,15 +154,261 @@ class _DealerAssignmentWidgetState extends State<DealerAssignmentWidget> {
                                         ),
                                   ),
                                 ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      100.0, 0.0, 0.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            'StartDate : ',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
+                                          ),
+                                          Text(
+                                            functions.milisecToTimestamp(
+                                                FFAppState().startDate),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallFamily,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmallFamily),
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            'EndDate :',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
+                                          ),
+                                          Text(
+                                            functions.milisecToTimestamp(
+                                                FFAppState().endDate),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallFamily,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmallFamily),
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
-                                  width: MediaQuery.sizeOf(context).width * 0.6,
+                                  width: MediaQuery.sizeOf(context).width * 0.3,
                                   height: 100.0,
                                   decoration: BoxDecoration(),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 50.0, 0.0),
+                                                  child: FlutterFlowIconButton(
+                                                    borderColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    borderRadius: 20.0,
+                                                    borderWidth: 1.0,
+                                                    buttonSize: 60.0,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondary,
+                                                    icon: Icon(
+                                                      Icons.add,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      size: 24.0,
+                                                    ),
+                                                    onPressed: () async {
+                                                      context.pushNamed(
+                                                        'cDealerAccount',
+                                                        queryParameters: {
+                                                          'outletId':
+                                                              serializeParam(
+                                                            FFAppState()
+                                                                .outletIdRef,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                Builder(
+                                                  builder: (context) => Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                50.0, 0.0),
+                                                    child:
+                                                        FlutterFlowIconButton(
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      borderRadius: 20.0,
+                                                      borderWidth: 1.0,
+                                                      buttonSize: 60.0,
+                                                      fillColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
+                                                      icon: Icon(
+                                                        Icons
+                                                            .calendar_month_outlined,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                      onPressed: () async {
+                                                        setState(() {
+                                                          FFAppState()
+                                                                  .startDate =
+                                                              functions
+                                                                  .currentMonth(
+                                                                      'first');
+                                                          FFAppState().endDate =
+                                                              functions
+                                                                  .currentMonth(
+                                                                      'last');
+                                                        });
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Dialog(
+                                                              elevation: 0,
+                                                              insetPadding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              alignment: AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                              child:
+                                                                  WebViewAware(
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () => _model
+                                                                          .unfocusNode
+                                                                          .canRequestFocus
+                                                                      ? FocusScope.of(
+                                                                              context)
+                                                                          .requestFocus(_model
+                                                                              .unfocusNode)
+                                                                      : FocusScope.of(
+                                                                              context)
+                                                                          .unfocus(),
+                                                                  child:
+                                                                      CustomDateRangeWidget(),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -179,7 +432,7 @@ class _DealerAssignmentWidgetState extends State<DealerAssignmentWidget> {
                             Expanded(
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 15.0, 0.0),
+                                    0.0, 100.0, 15.0, 0.0),
                                 child: Container(
                                   decoration: BoxDecoration(),
                                   child: Column(
@@ -298,470 +551,544 @@ class _DealerAssignmentWidgetState extends State<DealerAssignmentWidget> {
                             ),
                             Expanded(
                               flex: 7,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(1.0, -1.0),
-                                    child: Row(
+                              child: StreamBuilder<List<LeadsManagementRecord>>(
+                                stream: queryLeadsManagementRecord(
+                                  parent: FFAppState().outletRef,
+                                  queryBuilder: (leadsManagementRecord) =>
+                                      leadsManagementRecord
+                                          .where(
+                                            'assignedTo',
+                                            isEqualTo: FFAppState()
+                                                        .selectedDealer !=
+                                                    ''
+                                                ? FFAppState().selectedDealer
+                                                : null,
+                                          )
+                                          .where(
+                                            'createdDate',
+                                            isGreaterThanOrEqualTo:
+                                                FFAppState().startDate,
+                                          )
+                                          .where(
+                                            'createdDate',
+                                            isLessThan: FFAppState().endDate,
+                                          )
+                                          .where(
+                                            'stage',
+                                            isEqualTo:
+                                                _model.dropDownValue != ''
+                                                    ? _model.dropDownValue
+                                                    : null,
+                                          ),
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 35.0,
+                                        height: 35.0,
+                                        child: SpinKitPulse(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          size: 35.0,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  List<LeadsManagementRecord>
+                                      containerLeadsManagementRecordList =
+                                      snapshot.data!;
+                                  return Container(
+                                    decoration: BoxDecoration(),
+                                    child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Flexible(
-                                          child: Align(
-                                            alignment:
-                                                AlignmentDirectional(1.0, -1.5),
-                                            child: Text(
-                                              valueOrDefault<String>(
-                                                dateTimeFormat(
-                                                    'yMMMd', _model.datePicked),
-                                                '-',
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(1.0, -1.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              FlutterFlowDropDown<String>(
+                                                controller: _model
+                                                        .dropDownValueController ??=
+                                                    FormFieldController<String>(
+                                                  _model.dropDownValue ??=
+                                                      'assigned',
+                                                ),
+                                                options: [
+                                                  'assigned',
+                                                  'followup',
+                                                  'completed',
+                                                  'lost'
+                                                ],
+                                                onChanged: (val) => setState(
+                                                    () => _model.dropDownValue =
+                                                        val),
+                                                width: 300.0,
+                                                height: 56.0,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                hintText: 'Please select...',
+                                                icon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24.0,
+                                                ),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                elevation: 2.0,
+                                                borderColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                borderWidth: 2.0,
+                                                borderRadius: 8.0,
+                                                margin: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 4.0, 16.0, 4.0),
+                                                hidesUnderline: true,
+                                                isOverButton: true,
+                                                isSearchable: false,
+                                                isMultiSelect: false,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        240.0, 0.0, 0.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.05,
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.05,
+                                                      decoration: BoxDecoration(
+                                                        color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMediumFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
+                                                                .secondary,
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  10.0),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  10.0),
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  10.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  10.0),
+                                                        ),
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
                                                       ),
-                                            ),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              containerLeadsManagementRecordList
+                                                                  .length
+                                                                  .toString(),
+                                                              '0',
+                                                            ),
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  fontSize:
+                                                                      15.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                        Flexible(
-                                          child: Align(
-                                            alignment:
-                                                AlignmentDirectional(1.0, -1.0),
-                                            child: FlutterFlowIconButton(
-                                              borderColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              borderRadius: 20.0,
-                                              borderWidth: 0.5,
-                                              buttonSize: 45.0,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                              icon: Icon(
-                                                Icons.calendar_today_outlined,
+                                        Expanded(
+                                          flex: 5,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              border: Border.all(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                size: 20.0,
+                                                        .customColor1,
                                               ),
-                                              onPressed: () async {
-                                                final _datePickedDate =
-                                                    await showDatePicker(
-                                                  context: context,
-                                                  initialDate:
-                                                      getCurrentTimestamp,
-                                                  firstDate: DateTime(1900),
-                                                  lastDate: DateTime(2050),
-                                                );
-
-                                                if (_datePickedDate != null) {
-                                                  safeSetState(() {
-                                                    _model.datePicked =
-                                                        DateTime(
-                                                      _datePickedDate.year,
-                                                      _datePickedDate.month,
-                                                      _datePickedDate.day,
-                                                    );
-                                                  });
-                                                }
-                                                setState(() {
-                                                  FFAppState().demoListDate =
-                                                      functions.dateFormat(
-                                                          _model.datePicked);
-                                                });
-                                              },
+                                            ),
+                                            child: Stack(
+                                              children: [
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsets.all(7.0),
+                                                    child: Builder(
+                                                      builder: (context) {
+                                                        final list =
+                                                            containerLeadsManagementRecordList
+                                                                .toList();
+                                                        if (list.isEmpty) {
+                                                          return Center(
+                                                            child: Container(
+                                                              width: double
+                                                                  .infinity,
+                                                              height: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .height *
+                                                                  1.0,
+                                                              child:
+                                                                  ListViewMsgWidget(),
+                                                            ),
+                                                          );
+                                                        }
+                                                        return ListView.builder(
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          scrollDirection:
+                                                              Axis.vertical,
+                                                          itemCount:
+                                                              list.length,
+                                                          itemBuilder: (context,
+                                                              listIndex) {
+                                                            final listItem =
+                                                                list[listIndex];
+                                                            return Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0),
+                                                              child: InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'LeadLog',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'id':
+                                                                          serializeParam(
+                                                                        listItem
+                                                                            .id,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'username':
+                                                                          serializeParam(
+                                                                        listItem
+                                                                            .username,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'mobile':
+                                                                          serializeParam(
+                                                                        listItem
+                                                                            .mobile,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'state':
+                                                                          serializeParam(
+                                                                        listItem
+                                                                            .state,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'source':
+                                                                          serializeParam(
+                                                                        listItem
+                                                                            .source,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'priority':
+                                                                          serializeParam(
+                                                                        listItem
+                                                                            .priority,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'requirement':
+                                                                          serializeParam(
+                                                                        listItem
+                                                                            .requirement,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'area':
+                                                                          serializeParam(
+                                                                        listItem
+                                                                            .area,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'city':
+                                                                          serializeParam(
+                                                                        listItem
+                                                                            .city,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
+                                                                },
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10.0),
+                                                                  child:
+                                                                      Container(
+                                                                    width:
+                                                                        100.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              10.0),
+                                                                    ),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          5.0,
+                                                                          8.0,
+                                                                          5.0,
+                                                                          8.0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.spaceBetween,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Column(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.center,
+                                                                            children: [
+                                                                              ToggleIcon(
+                                                                                onPressed: () async {
+                                                                                  setState(() => FFAppState().showList = !FFAppState().showList);
+                                                                                },
+                                                                                value: FFAppState().showList,
+                                                                                onIcon: Icon(
+                                                                                  Icons.offline_bolt_sharp,
+                                                                                  color: Color(0xFFFF0A00),
+                                                                                  size: 20.0,
+                                                                                ),
+                                                                                offIcon: Icon(
+                                                                                  Icons.offline_bolt_sharp,
+                                                                                  color: Color(0xFFFFAAC0),
+                                                                                  size: 19.0,
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                          Expanded(
+                                                                            flex:
+                                                                                8,
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(5.0, 3.0, 10.0, 0.0),
+                                                                              child: Column(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                children: [
+                                                                                  Padding(
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                                                                                    child: Row(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                                                                      children: [
+                                                                                        Expanded(
+                                                                                          flex: 4,
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                            child: Text(
+                                                                                              listItem.username,
+                                                                                              style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                    fontSize: 14.0,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                  ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                        Expanded(
+                                                                                          flex: 3,
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                            child: Text(
+                                                                                              listItem.mobile,
+                                                                                              style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                    color: FlutterFlowTheme.of(context).info,
+                                                                                                    fontSize: 12.0,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                  ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                        Expanded(
+                                                                                          flex: 2,
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                            child: Text(
+                                                                                              listItem.city,
+                                                                                              style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                    fontSize: 12.0,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                  ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                        Expanded(
+                                                                                          flex: 2,
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                            child: Text(
+                                                                                              listItem.source,
+                                                                                              style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                    fontSize: 12.0,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                  ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                        Align(
+                                                                                          alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                          child: StatusDropdownWidget(
+                                                                                            key: Key('Key1mf_${listIndex}_of_${list.length}'),
+                                                                                            parameter1: listItem.stage,
+                                                                                            parameter2: listItem.stage,
+                                                                                            parameter3: listItem.reference,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ],
+                                                                                    ),
+                                                                                  ),
+                                                                                  Text(
+                                                                                    listItem.requirement,
+                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                          color: Color(0xFF5283EB),
+                                                                                          fontSize: 12.0,
+                                                                                          letterSpacing: 0.0,
+                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                        ),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ),
                                       ],
                                     ),
-                                  ),
-                                  Expanded(
-                                    flex: 5,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .customColor1,
-                                        ),
-                                      ),
-                                      child: Stack(
-                                        children: [
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsets.all(7.0),
-                                              child: StreamBuilder<
-                                                  List<LeadsManagementRecord>>(
-                                                stream:
-                                                    queryLeadsManagementRecord(
-                                                  parent:
-                                                      FFAppState().outletRef,
-                                                  queryBuilder:
-                                                      (leadsManagementRecord) =>
-                                                          leadsManagementRecord
-                                                              .where(
-                                                                'assignedTo',
-                                                                isEqualTo:
-                                                                    FFAppState()
-                                                                        .selectedDealer,
-                                                              )
-                                                              .where(
-                                                                'date',
-                                                                isEqualTo:
-                                                                    FFAppState()
-                                                                        .demoListDate,
-                                                              ),
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 35.0,
-                                                        height: 35.0,
-                                                        child: SpinKitPulse(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          size: 35.0,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }
-                                                  List<LeadsManagementRecord>
-                                                      listViewAllLeadsManagementRecordList =
-                                                      snapshot.data!;
-                                                  if (listViewAllLeadsManagementRecordList
-                                                      .isEmpty) {
-                                                    return Center(
-                                                      child: Container(
-                                                        width: double.infinity,
-                                                        height:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .height *
-                                                                1.0,
-                                                        child:
-                                                            ListViewMsgWidget(),
-                                                      ),
-                                                    );
-                                                  }
-                                                  return ListView.builder(
-                                                    padding: EdgeInsets.zero,
-                                                    scrollDirection:
-                                                        Axis.vertical,
-                                                    itemCount:
-                                                        listViewAllLeadsManagementRecordList
-                                                            .length,
-                                                    itemBuilder: (context,
-                                                        listViewAllIndex) {
-                                                      final listViewAllLeadsManagementRecord =
-                                                          listViewAllLeadsManagementRecordList[
-                                                              listViewAllIndex];
-                                                      return Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    5.0,
-                                                                    0.0,
-                                                                    5.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            context.pushNamed(
-                                                              'LeadLog',
-                                                              queryParameters: {
-                                                                'id':
-                                                                    serializeParam(
-                                                                  listViewAllLeadsManagementRecord
-                                                                      .id,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'username':
-                                                                    serializeParam(
-                                                                  listViewAllLeadsManagementRecord
-                                                                      .username,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'mobile':
-                                                                    serializeParam(
-                                                                  listViewAllLeadsManagementRecord
-                                                                      .mobile,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'state':
-                                                                    serializeParam(
-                                                                  listViewAllLeadsManagementRecord
-                                                                      .state,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'source':
-                                                                    serializeParam(
-                                                                  listViewAllLeadsManagementRecord
-                                                                      .source,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'priority':
-                                                                    serializeParam(
-                                                                  listViewAllLeadsManagementRecord
-                                                                      .priority,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'requirement':
-                                                                    serializeParam(
-                                                                  listViewAllLeadsManagementRecord
-                                                                      .requirement,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'area':
-                                                                    serializeParam(
-                                                                  listViewAllLeadsManagementRecord
-                                                                      .area,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'city':
-                                                                    serializeParam(
-                                                                  listViewAllLeadsManagementRecord
-                                                                      .city,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                              }.withoutNulls,
-                                                            );
-                                                          },
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10.0),
-                                                            child: Container(
-                                                              width: 100.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10.0),
-                                                              ),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            5.0,
-                                                                            8.0,
-                                                                            5.0,
-                                                                            8.0),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .spaceBetween,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      children: [
-                                                                        ToggleIcon(
-                                                                          onPressed:
-                                                                              () async {
-                                                                            setState(() =>
-                                                                                FFAppState().showList = !FFAppState().showList);
-                                                                          },
-                                                                          value:
-                                                                              FFAppState().showList,
-                                                                          onIcon:
-                                                                              Icon(
-                                                                            Icons.offline_bolt_sharp,
-                                                                            color:
-                                                                                Color(0xFFFF0A00),
-                                                                            size:
-                                                                                20.0,
-                                                                          ),
-                                                                          offIcon:
-                                                                              Icon(
-                                                                            Icons.offline_bolt_sharp,
-                                                                            color:
-                                                                                Color(0xFFFFAAC0),
-                                                                            size:
-                                                                                19.0,
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                    Expanded(
-                                                                      flex: 8,
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            5.0,
-                                                                            3.0,
-                                                                            10.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Column(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.spaceAround,
-                                                                          crossAxisAlignment:
-                                                                              CrossAxisAlignment.start,
-                                                                          children: [
-                                                                            Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
-                                                                              child: Row(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                crossAxisAlignment: CrossAxisAlignment.end,
-                                                                                children: [
-                                                                                  Expanded(
-                                                                                    flex: 4,
-                                                                                    child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                      child: Text(
-                                                                                        listViewAllLeadsManagementRecord.username,
-                                                                                        style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                              fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                              fontSize: 14.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Expanded(
-                                                                                    flex: 3,
-                                                                                    child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                      child: Text(
-                                                                                        listViewAllLeadsManagementRecord.mobile,
-                                                                                        style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                              fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                              color: FlutterFlowTheme.of(context).info,
-                                                                                              fontSize: 12.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Expanded(
-                                                                                    flex: 2,
-                                                                                    child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                      child: Text(
-                                                                                        listViewAllLeadsManagementRecord.city,
-                                                                                        style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                              fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                              fontSize: 12.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Expanded(
-                                                                                    flex: 2,
-                                                                                    child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                      child: Text(
-                                                                                        listViewAllLeadsManagementRecord.source,
-                                                                                        style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                              fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                              fontSize: 12.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Align(
-                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                    child: StatusDropdownWidget(
-                                                                                      key: Key('Key1mf_${listViewAllIndex}_of_${listViewAllLeadsManagementRecordList.length}'),
-                                                                                      parameter1: listViewAllLeadsManagementRecord.status,
-                                                                                      parameter2: listViewAllLeadsManagementRecord.status,
-                                                                                      parameter3: listViewAllLeadsManagementRecord.reference,
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                            Text(
-                                                                              listViewAllLeadsManagementRecord.requirement,
-                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                    color: Color(0xFF5283EB),
-                                                                                    fontSize: 12.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                  ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                  );
+                                },
                               ),
                             ),
                           ],

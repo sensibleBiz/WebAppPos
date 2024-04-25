@@ -179,7 +179,6 @@ class _AddContactUsWidgetState extends State<AddContactUsWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 validator: _model.textControllerValidator
                                     .asValidator(context),
                               ),

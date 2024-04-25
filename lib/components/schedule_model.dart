@@ -28,8 +28,9 @@ class ScheduleModel extends FlutterFlowModel<ScheduleWidget> {
   DateTime? datePicked;
   // State field(s) for TextFieldUsername widget.
   FocusNode? textFieldUsernameFocusNode;
-  TextEditingController? textFieldUsernameController;
-  String? Function(BuildContext, String?)? textFieldUsernameControllerValidator;
+  TextEditingController? textFieldUsernameTextController;
+  String? Function(BuildContext, String?)?
+      textFieldUsernameTextControllerValidator;
   // State field(s) for PriorityDropDown widget.
   String? priorityDropDownValue;
   FormFieldController<String>? priorityDropDownValueController;
@@ -38,8 +39,8 @@ class ScheduleModel extends FlutterFlowModel<ScheduleWidget> {
   FormFieldController<String>? userDropDownValueController;
   // State field(s) for TextFieldDecs widget.
   FocusNode? textFieldDecsFocusNode;
-  TextEditingController? textFieldDecsController;
-  String? Function(BuildContext, String?)? textFieldDecsControllerValidator;
+  TextEditingController? textFieldDecsTextController;
+  String? Function(BuildContext, String?)? textFieldDecsTextControllerValidator;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   LeadActivitiesRecord? activityDoc;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
@@ -51,10 +52,10 @@ class ScheduleModel extends FlutterFlowModel<ScheduleWidget> {
   @override
   void dispose() {
     textFieldUsernameFocusNode?.dispose();
-    textFieldUsernameController?.dispose();
+    textFieldUsernameTextController?.dispose();
 
     textFieldDecsFocusNode?.dispose();
-    textFieldDecsController?.dispose();
+    textFieldDecsTextController?.dispose();
   }
 
   /// Additional helper methods.

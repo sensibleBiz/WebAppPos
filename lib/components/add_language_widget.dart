@@ -39,10 +39,10 @@ class _AddLanguageWidgetState extends State<AddLanguageWidget> {
     super.initState();
     _model = createModel(context, () => AddLanguageModel());
 
-    _model.textLanguageNameController ??= TextEditingController();
+    _model.textLanguageNameTextController ??= TextEditingController();
     _model.textLanguageNameFocusNode ??= FocusNode();
 
-    _model.textLanguageCodeController ??=
+    _model.textLanguageCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textLanguageCodeFocusNode ??= FocusNode();
 
@@ -147,10 +147,10 @@ class _AddLanguageWidgetState extends State<AddLanguageWidget> {
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textLanguageNameController,
+                        controller: _model.textLanguageNameTextController,
                         focusNode: _model.textLanguageNameFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textLanguageNameController',
+                          '_model.textLanguageNameTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -220,8 +220,8 @@ class _AddLanguageWidgetState extends State<AddLanguageWidget> {
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
-                        validator: _model.textLanguageNameControllerValidator
+                        validator: _model
+                            .textLanguageNameTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -267,10 +267,10 @@ class _AddLanguageWidgetState extends State<AddLanguageWidget> {
                         ),
                       ),
                       child: TextFormField(
-                        controller: _model.textLanguageCodeController,
+                        controller: _model.textLanguageCodeTextController,
                         focusNode: _model.textLanguageCodeFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
-                          '_model.textLanguageCodeController',
+                          '_model.textLanguageCodeTextController',
                           Duration(milliseconds: 2000),
                           () => setState(() {}),
                         ),
@@ -340,8 +340,8 @@ class _AddLanguageWidgetState extends State<AddLanguageWidget> {
                                           .titleMediumFamily),
                                 ),
                         textAlign: TextAlign.start,
-                        minLines: null,
-                        validator: _model.textLanguageCodeControllerValidator
+                        validator: _model
+                            .textLanguageCodeTextControllerValidator
                             .asValidator(context),
                       ),
                     ),
@@ -406,17 +406,18 @@ class _AddLanguageWidgetState extends State<AddLanguageWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             var _shouldSetState = false;
-                            if (_model.textLanguageNameController.text !=
+                            if (_model.textLanguageNameTextController.text !=
                                     null &&
-                                _model.textLanguageNameController.text != '') {
+                                _model.textLanguageNameTextController.text !=
+                                    '') {
                               var languageRecordReference =
                                   LanguageRecord.collection.doc();
                               await languageRecordReference
                                   .set(createLanguageRecordData(
                                 name: functions.toCapitalLetter1(
-                                    _model.textLanguageNameController.text),
+                                    _model.textLanguageNameTextController.text),
                                 code: int.tryParse(
-                                    _model.textLanguageCodeController.text),
+                                    _model.textLanguageCodeTextController.text),
                                 createdDate: functions.getcreatedDate(),
                                 createdBy: currentUserReference,
                                 updatedDate: functions.getUpdatedDate(),
@@ -424,10 +425,10 @@ class _AddLanguageWidgetState extends State<AddLanguageWidget> {
                               ));
                               _model.doc = LanguageRecord.getDocumentFromData(
                                   createLanguageRecordData(
-                                    name: functions.toCapitalLetter1(
-                                        _model.textLanguageNameController.text),
-                                    code: int.tryParse(
-                                        _model.textLanguageCodeController.text),
+                                    name: functions.toCapitalLetter1(_model
+                                        .textLanguageNameTextController.text),
+                                    code: int.tryParse(_model
+                                        .textLanguageCodeTextController.text),
                                     createdDate: functions.getcreatedDate(),
                                     createdBy: currentUserReference,
                                     updatedDate: functions.getUpdatedDate(),

@@ -32,10 +32,10 @@ class _LoginNewFinalWidgetState extends State<LoginNewFinalWidget> {
     super.initState();
     _model = createModel(context, () => LoginNewFinalModel());
 
-    _model.textFieldEmailController ??= TextEditingController();
+    _model.textFieldEmailTextController ??= TextEditingController();
     _model.textFieldEmailFocusNode ??= FocusNode();
 
-    _model.textFieldPwdController ??= TextEditingController();
+    _model.textFieldPwdTextController ??= TextEditingController();
     _model.textFieldPwdFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -137,12 +137,12 @@ class _LoginNewFinalWidgetState extends State<LoginNewFinalWidget> {
                                                       0.0, 0.0, 0.0, 15.0),
                                               child: TextFormField(
                                                 controller: _model
-                                                    .textFieldEmailController,
+                                                    .textFieldEmailTextController,
                                                 focusNode: _model
                                                     .textFieldEmailFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.textFieldEmailController',
+                                                  '_model.textFieldEmailTextController',
                                                   Duration(milliseconds: 2000),
                                                   () => setState(() {}),
                                                 ),
@@ -242,9 +242,8 @@ class _LoginNewFinalWidgetState extends State<LoginNewFinalWidget> {
                                                                           context)
                                                                       .titleMediumFamily),
                                                         ),
-                                                minLines: null,
                                                 validator: _model
-                                                    .textFieldEmailControllerValidator
+                                                    .textFieldEmailTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -254,12 +253,12 @@ class _LoginNewFinalWidgetState extends State<LoginNewFinalWidget> {
                                                       0.0, 0.0, 0.0, 30.0),
                                               child: TextFormField(
                                                 controller: _model
-                                                    .textFieldPwdController,
+                                                    .textFieldPwdTextController,
                                                 focusNode: _model
                                                     .textFieldPwdFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.textFieldPwdController',
+                                                  '_model.textFieldPwdTextController',
                                                   Duration(milliseconds: 2000),
                                                   () => setState(() {}),
                                                 ),
@@ -382,25 +381,24 @@ class _LoginNewFinalWidgetState extends State<LoginNewFinalWidget> {
                                                                           context)
                                                                       .titleMediumFamily),
                                                         ),
-                                                minLines: null,
                                                 validator: _model
-                                                    .textFieldPwdControllerValidator
+                                                    .textFieldPwdTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
                                             FFButtonWidget(
                                               onPressed: () async {
                                                 var _shouldSetState = false;
-                                                if (_model.textFieldEmailController
+                                                if (_model.textFieldEmailTextController
                                                             .text !=
                                                         null &&
-                                                    _model.textFieldEmailController
+                                                    _model.textFieldEmailTextController
                                                             .text !=
                                                         '') {
                                                   FFAppState().update(() {
                                                     FFAppState().currentEmail =
                                                         _model
-                                                            .textFieldEmailController
+                                                            .textFieldEmailTextController
                                                             .text;
                                                   });
                                                   _model.fetchedRecordUserProfile =
@@ -488,7 +486,7 @@ class _LoginNewFinalWidgetState extends State<LoginNewFinalWidget> {
                                                               'emailId':
                                                                   serializeParam(
                                                                 _model
-                                                                    .textFieldEmailController
+                                                                    .textFieldEmailTextController
                                                                     .text,
                                                                 ParamType
                                                                     .String,

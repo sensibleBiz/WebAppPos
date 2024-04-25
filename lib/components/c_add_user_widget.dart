@@ -43,22 +43,22 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
     super.initState();
     _model = createModel(context, () => CAddUserModel());
 
-    _model.textFieldNameController ??= TextEditingController();
+    _model.textFieldNameTextController ??= TextEditingController();
     _model.textFieldNameFocusNode ??= FocusNode();
 
-    _model.textFieldMobileController ??= TextEditingController();
+    _model.textFieldMobileTextController ??= TextEditingController();
     _model.textFieldMobileFocusNode ??= FocusNode();
 
-    _model.textFieldEmailIdController ??= TextEditingController();
+    _model.textFieldEmailIdTextController ??= TextEditingController();
     _model.textFieldEmailIdFocusNode ??= FocusNode();
 
-    _model.textFieldPasswordController ??= TextEditingController();
+    _model.textFieldPasswordTextController ??= TextEditingController();
     _model.textFieldPasswordFocusNode ??= FocusNode();
 
-    _model.textFieldQuickPinController ??= TextEditingController();
+    _model.textFieldQuickPinTextController ??= TextEditingController();
     _model.textFieldQuickPinFocusNode ??= FocusNode();
 
-    _model.textFieldCodeController ??=
+    _model.textFieldCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textFieldCodeFocusNode ??= FocusNode();
 
@@ -167,7 +167,7 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   5.0, 0.0, 0.0, 0.0),
                               child: TextFormField(
-                                controller: _model.textFieldNameController,
+                                controller: _model.textFieldNameTextController,
                                 focusNode: _model.textFieldNameFocusNode,
                                 autofocus: true,
                                 obscureText: false,
@@ -237,9 +237,8 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 validator: _model
-                                    .textFieldNameControllerValidator
+                                    .textFieldNameTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -298,7 +297,8 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   5.0, 0.0, 0.0, 0.0),
                               child: TextFormField(
-                                controller: _model.textFieldMobileController,
+                                controller:
+                                    _model.textFieldMobileTextController,
                                 focusNode: _model.textFieldMobileFocusNode,
                                 autofocus: true,
                                 obscureText: false,
@@ -368,10 +368,9 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 keyboardType: TextInputType.number,
                                 validator: _model
-                                    .textFieldMobileControllerValidator
+                                    .textFieldMobileTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -430,7 +429,8 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   5.0, 0.0, 0.0, 0.0),
                               child: TextFormField(
-                                controller: _model.textFieldEmailIdController,
+                                controller:
+                                    _model.textFieldEmailIdTextController,
                                 focusNode: _model.textFieldEmailIdFocusNode,
                                 autofocus: true,
                                 obscureText: false,
@@ -500,10 +500,9 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 keyboardType: TextInputType.emailAddress,
                                 validator: _model
-                                    .textFieldEmailIdControllerValidator
+                                    .textFieldEmailIdTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -562,7 +561,8 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   5.0, 0.0, 0.0, 0.0),
                               child: TextFormField(
-                                controller: _model.textFieldPasswordController,
+                                controller:
+                                    _model.textFieldPasswordTextController,
                                 focusNode: _model.textFieldPasswordFocusNode,
                                 autofocus: true,
                                 obscureText:
@@ -647,9 +647,8 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 validator: _model
-                                    .textFieldPasswordControllerValidator
+                                    .textFieldPasswordTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -708,7 +707,8 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   5.0, 0.0, 0.0, 0.0),
                               child: TextFormField(
-                                controller: _model.textFieldQuickPinController,
+                                controller:
+                                    _model.textFieldQuickPinTextController,
                                 focusNode: _model.textFieldQuickPinFocusNode,
                                 autofocus: true,
                                 obscureText: false,
@@ -778,10 +778,9 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 keyboardType: TextInputType.number,
                                 validator: _model
-                                    .textFieldQuickPinControllerValidator
+                                    .textFieldQuickPinTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -819,7 +818,7 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                                   Expanded(
                                     child: TextFormField(
                                       controller:
-                                          _model.textFieldCodeController,
+                                          _model.textFieldCodeTextController,
                                       focusNode: _model.textFieldCodeFocusNode,
                                       autofocus: true,
                                       readOnly: true,
@@ -895,10 +894,9 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMediumFamily),
                                           ),
-                                      minLines: null,
                                       keyboardType: TextInputType.number,
                                       validator: _model
-                                          .textFieldCodeControllerValidator
+                                          .textFieldCodeTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -1042,8 +1040,9 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            if (_model.textFieldNameController.text != null &&
-                                _model.textFieldNameController.text != '') {
+                            if (_model.textFieldNameTextController.text !=
+                                    null &&
+                                _model.textFieldNameTextController.text != '') {
                               await queryOutletRecordOnce(
                                 queryBuilder: (outletRecord) =>
                                     outletRecord.where(
@@ -1057,8 +1056,8 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                               final user =
                                   await authManager.createAccountWithEmail(
                                 context,
-                                _model.textFieldEmailIdController.text,
-                                _model.textFieldPasswordController.text,
+                                _model.textFieldEmailIdTextController.text,
+                                _model.textFieldPasswordTextController.text,
                               );
                               if (user == null) {
                                 return;
@@ -1092,10 +1091,10 @@ class _CAddUserWidgetState extends State<CAddUserWidget> {
                                   'cUserAccount', context.mounted);
 
                               setState(() {
-                                _model.textFieldNameController?.clear();
-                                _model.textFieldMobileController?.clear();
-                                _model.textFieldEmailIdController?.clear();
-                                _model.textFieldQuickPinController?.clear();
+                                _model.textFieldNameTextController?.clear();
+                                _model.textFieldMobileTextController?.clear();
+                                _model.textFieldEmailIdTextController?.clear();
+                                _model.textFieldQuickPinTextController?.clear();
                               });
                             } else {
                               return;

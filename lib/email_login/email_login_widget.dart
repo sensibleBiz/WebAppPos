@@ -30,13 +30,13 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
     super.initState();
     _model = createModel(context, () => EmailLoginModel());
 
-    _model.textFieldEmailController ??= TextEditingController();
+    _model.textFieldEmailTextController ??= TextEditingController();
     _model.textFieldEmailFocusNode ??= FocusNode();
 
-    _model.textFieldPwdController ??= TextEditingController();
+    _model.textFieldPwdTextController ??= TextEditingController();
     _model.textFieldPwdFocusNode ??= FocusNode();
 
-    _model.textFieldPwd1Controller ??= TextEditingController();
+    _model.textFieldPwd1TextController ??= TextEditingController();
     _model.textFieldPwd1FocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -330,13 +330,13 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
                                                                     15.0),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textFieldEmailController,
+                                                              .textFieldEmailTextController,
                                                           focusNode: _model
                                                               .textFieldEmailFocusNode,
                                                           onChanged: (_) =>
                                                               EasyDebounce
                                                                   .debounce(
-                                                            '_model.textFieldEmailController',
+                                                            '_model.textFieldEmailTextController',
                                                             Duration(
                                                                 milliseconds:
                                                                     2000),
@@ -436,9 +436,8 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .textFieldEmailControllerValidator
+                                                              .textFieldEmailTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -453,13 +452,13 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
                                                                     15.0),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textFieldPwdController,
+                                                              .textFieldPwdTextController,
                                                           focusNode: _model
                                                               .textFieldPwdFocusNode,
                                                           onChanged: (_) =>
                                                               EasyDebounce
                                                                   .debounce(
-                                                            '_model.textFieldPwdController',
+                                                            '_model.textFieldPwdTextController',
                                                             Duration(
                                                                 milliseconds:
                                                                     2000),
@@ -583,9 +582,8 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .textFieldPwdControllerValidator
+                                                              .textFieldPwdTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -600,13 +598,13 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
                                                                     15.0),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textFieldPwd1Controller,
+                                                              .textFieldPwd1TextController,
                                                           focusNode: _model
                                                               .textFieldPwd1FocusNode,
                                                           onChanged: (_) =>
                                                               EasyDebounce
                                                                   .debounce(
-                                                            '_model.textFieldPwd1Controller',
+                                                            '_model.textFieldPwd1TextController',
                                                             Duration(
                                                                 milliseconds:
                                                                     2000),
@@ -706,9 +704,8 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .textFieldPwd1ControllerValidator
+                                                              .textFieldPwd1TextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -738,7 +735,7 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
                                                               FFAppState()
                                                                       .currentEmail =
                                                                   _model
-                                                                      .textFieldEmailController
+                                                                      .textFieldEmailTextController
                                                                       .text;
                                                             });
                                                             _model.isProfile =
@@ -760,10 +757,10 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
                                                                       .signInWithEmail(
                                                                 context,
                                                                 _model
-                                                                    .textFieldEmailController
+                                                                    .textFieldEmailTextController
                                                                     .text,
                                                                 _model
-                                                                    .textFieldPwdController
+                                                                    .textFieldPwdTextController
                                                                     .text,
                                                               );
                                                               if (user ==
@@ -1047,10 +1044,10 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
                                                                       context)
                                                                   .prepareAuthEvent();
                                                               if (_model
-                                                                      .textFieldPwdController
+                                                                      .textFieldPwdTextController
                                                                       .text !=
                                                                   _model
-                                                                      .textFieldPwd1Controller
+                                                                      .textFieldPwd1TextController
                                                                       .text) {
                                                                 ScaffoldMessenger.of(
                                                                         context)
@@ -1070,10 +1067,10 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
                                                                       .createAccountWithEmail(
                                                                 context,
                                                                 _model
-                                                                    .textFieldEmailController
+                                                                    .textFieldEmailTextController
                                                                     .text,
                                                                 _model
-                                                                    .textFieldPwdController
+                                                                    .textFieldPwdTextController
                                                                     .text,
                                                               );
                                                               if (user ==

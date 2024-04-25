@@ -971,7 +971,6 @@ class _LeadDetailsWidgetState extends State<LeadDetailsWidget> {
                                                                       .headlineSmallFamily),
                                                         ),
                                                 textAlign: TextAlign.start,
-                                                minLines: null,
                                                 validator: _model
                                                     .textControllerValidator
                                                     .asValidator(context),

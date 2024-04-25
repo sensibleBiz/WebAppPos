@@ -882,7 +882,10 @@ String statusForStage(String status) {
   } else if (status.toUpperCase() == "COMPLETED" ||
       status.toUpperCase() == "INSTALLATION") {
     stage = "completed";
-  } else {
+  } // else  {
+  // stage = "lost";
+  // }
+  else if (status.toUpperCase() == "LOST") {
     stage = "lost";
   }
   print(stage);

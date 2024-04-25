@@ -170,13 +170,14 @@ class _UpdatePaymentWidgetState extends State<UpdatePaymentWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: _model.textPaymentNameController ??=
-                                  TextEditingController(
+                              controller:
+                                  _model.textPaymentNameTextController ??=
+                                      TextEditingController(
                                 text: containerPaymentModeRecord.name,
                               ),
                               focusNode: _model.textPaymentNameFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textPaymentNameController',
+                                '_model.textPaymentNameTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -248,9 +249,8 @@ class _UpdatePaymentWidgetState extends State<UpdatePaymentWidget> {
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
                               validator: _model
-                                  .textPaymentNameControllerValidator
+                                  .textPaymentNameTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -300,14 +300,15 @@ class _UpdatePaymentWidgetState extends State<UpdatePaymentWidget> {
                               ),
                             ),
                             child: TextFormField(
-                              controller: _model.textPaymentCodeController ??=
-                                  TextEditingController(
+                              controller:
+                                  _model.textPaymentCodeTextController ??=
+                                      TextEditingController(
                                 text:
                                     containerPaymentModeRecord.code.toString(),
                               ),
                               focusNode: _model.textPaymentCodeFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textPaymentCodeController',
+                                '_model.textPaymentCodeTextController',
                                 Duration(milliseconds: 2000),
                                 () => setState(() {}),
                               ),
@@ -380,9 +381,8 @@ class _UpdatePaymentWidgetState extends State<UpdatePaymentWidget> {
                                                 .titleMediumFamily),
                                   ),
                               textAlign: TextAlign.start,
-                              minLines: null,
                               validator: _model
-                                  .textPaymentCodeControllerValidator
+                                  .textPaymentCodeTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -450,14 +450,16 @@ class _UpdatePaymentWidgetState extends State<UpdatePaymentWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (_model.textPaymentNameController.text !=
+                                  if (_model.textPaymentNameTextController
+                                              .text !=
                                           null &&
-                                      _model.textPaymentNameController.text !=
+                                      _model.textPaymentNameTextController
+                                              .text !=
                                           '') {
                                     await containerPaymentModeRecord.reference
                                         .update(createPaymentModeRecordData(
                                       name: functions.toCapitalLetter(_model
-                                          .textPaymentNameController.text),
+                                          .textPaymentNameTextController.text),
                                       updatedDate: functions.getUpdatedDate(),
                                       updatedBy: FFAppState().userProfileRef,
                                       createdBy:

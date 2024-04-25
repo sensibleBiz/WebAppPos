@@ -56,10 +56,10 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
 
     _model.textFieldCustomerNameFocusNode ??= FocusNode();
 
-    _model.textFieldNoteController ??= TextEditingController();
+    _model.textFieldNoteTextController ??= TextEditingController();
     _model.textFieldNoteFocusNode ??= FocusNode();
 
-    _model.textFieldCheckInLocController ??=
+    _model.textFieldCheckInLocTextController ??=
         TextEditingController(text: currentUserLocationValue?.toString());
     _model.textFieldCheckInLocFocusNode ??= FocusNode();
 
@@ -239,9 +239,9 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
                                   ),
                                 ),
                                 TextFormField(
-                                  controller:
-                                      _model.textFieldCustomerNameController ??=
-                                          TextEditingController(
+                                  controller: _model
+                                          .textFieldCustomerNameTextController ??=
+                                      TextEditingController(
                                     text: containerLeadsManagementRecord
                                         ?.username,
                                   ),
@@ -308,9 +308,8 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmallFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model
-                                      .textFieldCustomerNameControllerValidator
+                                      .textFieldCustomerNameTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ],
@@ -343,7 +342,8 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
                                   ),
                                 ),
                                 TextFormField(
-                                  controller: _model.textFieldNoteController,
+                                  controller:
+                                      _model.textFieldNoteTextController,
                                   focusNode: _model.textFieldNoteFocusNode,
                                   autofocus: true,
                                   obscureText: false,
@@ -406,9 +406,8 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmallFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model
-                                      .textFieldNoteControllerValidator
+                                      .textFieldNoteTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ],
@@ -659,7 +658,7 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
                                 ),
                                 TextFormField(
                                   controller:
-                                      _model.textFieldCheckInLocController,
+                                      _model.textFieldCheckInLocTextController,
                                   focusNode:
                                       _model.textFieldCheckInLocFocusNode,
                                   autofocus: true,
@@ -723,9 +722,8 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmallFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model
-                                      .textFieldCheckInLocControllerValidator
+                                      .textFieldCheckInLocTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ],
@@ -1038,7 +1036,7 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
                                                       checkInLocation:
                                                           currentUserLocationValue,
                                                       note: _model
-                                                          .textFieldNoteController
+                                                          .textFieldNoteTextController
                                                           .text,
                                                       travelMode:
                                                           _model.dropDownValue,
@@ -1082,7 +1080,7 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
                                           await leadDemoRecordReference.set({
                                             ...createLeadDemoRecordData(
                                               leadsCustomerName: _model
-                                                  .textFieldCustomerNameController
+                                                  .textFieldCustomerNameTextController
                                                   .text,
                                               leadRefM:
                                                   widget.leadManagementDoc?.id,
@@ -1115,7 +1113,7 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
                                                       checkInLocation:
                                                           currentUserLocationValue,
                                                       note: _model
-                                                          .textFieldNoteController
+                                                          .textFieldNoteTextController
                                                           .text,
                                                       travelMode:
                                                           _model.dropDownValue,
@@ -1137,7 +1135,7 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
                                               .getDocumentFromData({
                                             ...createLeadDemoRecordData(
                                               leadsCustomerName: _model
-                                                  .textFieldCustomerNameController
+                                                  .textFieldCustomerNameTextController
                                                   .text,
                                               leadRefM:
                                                   widget.leadManagementDoc?.id,
@@ -1170,7 +1168,7 @@ class _AddNewDemoWidgetState extends State<AddNewDemoWidget> {
                                                       checkInLocation:
                                                           currentUserLocationValue,
                                                       note: _model
-                                                          .textFieldNoteController
+                                                          .textFieldNoteTextController
                                                           .text,
                                                       travelMode:
                                                           _model.dropDownValue,

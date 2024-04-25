@@ -23,19 +23,19 @@ class AddNewDemoModel extends FlutterFlowModel<AddNewDemoWidget> {
 
   // State field(s) for TextFieldCustomerName widget.
   FocusNode? textFieldCustomerNameFocusNode;
-  TextEditingController? textFieldCustomerNameController;
+  TextEditingController? textFieldCustomerNameTextController;
   String? Function(BuildContext, String?)?
-      textFieldCustomerNameControllerValidator;
+      textFieldCustomerNameTextControllerValidator;
   // State field(s) for TextFieldNote widget.
   FocusNode? textFieldNoteFocusNode;
-  TextEditingController? textFieldNoteController;
-  String? Function(BuildContext, String?)? textFieldNoteControllerValidator;
+  TextEditingController? textFieldNoteTextController;
+  String? Function(BuildContext, String?)? textFieldNoteTextControllerValidator;
   DateTime? datePicked;
   // State field(s) for TextFieldCheckInLoc widget.
   FocusNode? textFieldCheckInLocFocusNode;
-  TextEditingController? textFieldCheckInLocController;
+  TextEditingController? textFieldCheckInLocTextController;
   String? Function(BuildContext, String?)?
-      textFieldCheckInLocControllerValidator;
+      textFieldCheckInLocTextControllerValidator;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -53,12 +53,12 @@ class AddNewDemoModel extends FlutterFlowModel<AddNewDemoWidget> {
   @override
   void dispose() {
     textFieldCustomerNameFocusNode?.dispose();
-    textFieldCustomerNameController?.dispose();
+    textFieldCustomerNameTextController?.dispose();
 
     textFieldNoteFocusNode?.dispose();
-    textFieldNoteController?.dispose();
+    textFieldNoteTextController?.dispose();
 
     textFieldCheckInLocFocusNode?.dispose();
-    textFieldCheckInLocController?.dispose();
+    textFieldCheckInLocTextController?.dispose();
   }
 }

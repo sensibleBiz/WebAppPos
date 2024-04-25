@@ -20,10 +20,10 @@ class CEditPremiseModel extends FlutterFlowModel<CEditPremiseWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextFieldPremiseName widget.
   FocusNode? textFieldPremiseNameFocusNode;
-  TextEditingController? textFieldPremiseNameController;
+  TextEditingController? textFieldPremiseNameTextController;
   String? Function(BuildContext, String?)?
-      textFieldPremiseNameControllerValidator;
-  String? _textFieldPremiseNameControllerValidator(
+      textFieldPremiseNameTextControllerValidator;
+  String? _textFieldPremiseNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -55,10 +55,10 @@ class CEditPremiseModel extends FlutterFlowModel<CEditPremiseWidget> {
   FormFieldController<String>? dropDownPremisesTypeValueController;
   // State field(s) for TextFieldNoOfTables widget.
   FocusNode? textFieldNoOfTablesFocusNode;
-  TextEditingController? textFieldNoOfTablesController;
+  TextEditingController? textFieldNoOfTablesTextController;
   String? Function(BuildContext, String?)?
-      textFieldNoOfTablesControllerValidator;
-  String? _textFieldNoOfTablesControllerValidator(
+      textFieldNoOfTablesTextControllerValidator;
+  String? _textFieldNoOfTablesTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -72,10 +72,10 @@ class CEditPremiseModel extends FlutterFlowModel<CEditPremiseWidget> {
 
   // State field(s) for TextFieldRangStartWith widget.
   FocusNode? textFieldRangStartWithFocusNode;
-  TextEditingController? textFieldRangStartWithController;
+  TextEditingController? textFieldRangStartWithTextController;
   String? Function(BuildContext, String?)?
-      textFieldRangStartWithControllerValidator;
-  String? _textFieldRangStartWithControllerValidator(
+      textFieldRangStartWithTextControllerValidator;
+  String? _textFieldRangStartWithTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -89,27 +89,27 @@ class CEditPremiseModel extends FlutterFlowModel<CEditPremiseWidget> {
 
   @override
   void initState(BuildContext context) {
-    textFieldPremiseNameControllerValidator =
-        _textFieldPremiseNameControllerValidator;
+    textFieldPremiseNameTextControllerValidator =
+        _textFieldPremiseNameTextControllerValidator;
     textController2Validator = _textController2Validator;
-    textFieldNoOfTablesControllerValidator =
-        _textFieldNoOfTablesControllerValidator;
-    textFieldRangStartWithControllerValidator =
-        _textFieldRangStartWithControllerValidator;
+    textFieldNoOfTablesTextControllerValidator =
+        _textFieldNoOfTablesTextControllerValidator;
+    textFieldRangStartWithTextControllerValidator =
+        _textFieldRangStartWithTextControllerValidator;
   }
 
   @override
   void dispose() {
     textFieldPremiseNameFocusNode?.dispose();
-    textFieldPremiseNameController?.dispose();
+    textFieldPremiseNameTextController?.dispose();
 
     textFieldFocusNode?.dispose();
     textController2?.dispose();
 
     textFieldNoOfTablesFocusNode?.dispose();
-    textFieldNoOfTablesController?.dispose();
+    textFieldNoOfTablesTextController?.dispose();
 
     textFieldRangStartWithFocusNode?.dispose();
-    textFieldRangStartWithController?.dispose();
+    textFieldRangStartWithTextController?.dispose();
   }
 }

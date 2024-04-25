@@ -40,11 +40,11 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
     super.initState();
     _model = createModel(context, () => CAddCategoryModel());
 
-    _model.textFieldNameController ??=
+    _model.textFieldNameTextController ??=
         TextEditingController(text: FFAppState().setCategoryMasterName);
     _model.textFieldNameFocusNode ??= FocusNode();
 
-    _model.categoryNoController ??=
+    _model.categoryNoTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.categoryNoFocusNode ??= FocusNode();
 
@@ -164,7 +164,7 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
                           children: [
                             Expanded(
                               child: TextFormField(
-                                controller: _model.textFieldNameController,
+                                controller: _model.textFieldNameTextController,
                                 focusNode: _model.textFieldNameFocusNode,
                                 onFieldSubmitted: (_) async {
                                   FFAppState().update(() {
@@ -243,9 +243,8 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 validator: _model
-                                    .textFieldNameControllerValidator
+                                    .textFieldNameTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -322,7 +321,7 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
                           children: [
                             Expanded(
                               child: TextFormField(
-                                controller: _model.categoryNoController,
+                                controller: _model.categoryNoTextController,
                                 focusNode: _model.categoryNoFocusNode,
                                 autofocus: true,
                                 readOnly: true,
@@ -396,9 +395,9 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily),
                                     ),
-                                minLines: null,
                                 keyboardType: TextInputType.number,
-                                validator: _model.categoryNoControllerValidator
+                                validator: _model
+                                    .categoryNoTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -470,13 +469,14 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 var _shouldSetState = false;
-                                if (_model.textFieldNameController.text !=
+                                if (_model.textFieldNameTextController.text !=
                                         null &&
-                                    _model.textFieldNameController.text != '') {
+                                    _model.textFieldNameTextController.text !=
+                                        '') {
                                   _model.dupRef =
                                       await actions.checkDupCategory(
-                                    functions.toCapitalLetter(
-                                        _model.textFieldNameController.text),
+                                    functions.toCapitalLetter(_model
+                                        .textFieldNameTextController.text),
                                     containerCategoryRecordList.toList(),
                                   );
                                   _shouldSetState = true;
@@ -487,9 +487,9 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
                                     await categoryRecordReference
                                         .set(createCategoryRecordData(
                                       categoryNo: int.tryParse(
-                                          _model.categoryNoController.text),
-                                      name: functions.toCapitalLetter(
-                                          _model.textFieldNameController.text),
+                                          _model.categoryNoTextController.text),
+                                      name: functions.toCapitalLetter(_model
+                                          .textFieldNameTextController.text),
                                       categoryRf:
                                           FFAppState().selectCategoryMasterRef,
                                       type: 0,
@@ -499,9 +499,11 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
                                         CategoryRecord.getDocumentFromData(
                                             createCategoryRecordData(
                                               categoryNo: int.tryParse(_model
-                                                  .categoryNoController.text),
+                                                  .categoryNoTextController
+                                                  .text),
                                               name: functions.toCapitalLetter(
-                                                  _model.textFieldNameController
+                                                  _model
+                                                      .textFieldNameTextController
                                                       .text),
                                               categoryRf: FFAppState()
                                                   .selectCategoryMasterRef,
@@ -543,7 +545,8 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
                                       FFAppState().setCategoryMasterName = '';
                                     });
                                     setState(() {
-                                      _model.textFieldNameController?.clear();
+                                      _model.textFieldNameTextController
+                                          ?.clear();
                                     });
                                   } else {
                                     await showDialog(

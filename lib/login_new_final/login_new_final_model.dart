@@ -20,13 +20,14 @@ class LoginNewFinalModel extends FlutterFlowModel<LoginNewFinalWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for TextFieldEmail widget.
   FocusNode? textFieldEmailFocusNode;
-  TextEditingController? textFieldEmailController;
-  String? Function(BuildContext, String?)? textFieldEmailControllerValidator;
+  TextEditingController? textFieldEmailTextController;
+  String? Function(BuildContext, String?)?
+      textFieldEmailTextControllerValidator;
   // State field(s) for TextFieldPwd widget.
   FocusNode? textFieldPwdFocusNode;
-  TextEditingController? textFieldPwdController;
+  TextEditingController? textFieldPwdTextController;
   late bool textFieldPwdVisibility;
-  String? Function(BuildContext, String?)? textFieldPwdControllerValidator;
+  String? Function(BuildContext, String?)? textFieldPwdTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   UserProfileRecord? fetchedRecordUserProfile;
 
@@ -39,9 +40,9 @@ class LoginNewFinalModel extends FlutterFlowModel<LoginNewFinalWidget> {
   void dispose() {
     unfocusNode.dispose();
     textFieldEmailFocusNode?.dispose();
-    textFieldEmailController?.dispose();
+    textFieldEmailTextController?.dispose();
 
     textFieldPwdFocusNode?.dispose();
-    textFieldPwdController?.dispose();
+    textFieldPwdTextController?.dispose();
   }
 }

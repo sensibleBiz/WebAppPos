@@ -137,7 +137,6 @@ class _LanguagePopUpWidgetState extends State<LanguagePopUpWidget> {
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
                             ),
-                        minLines: null,
                         validator:
                             _model.textControllerValidator.asValidator(context),
                       ),

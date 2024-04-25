@@ -33,8 +33,10 @@ class _AdmSideNavBarWidgetState extends State<AdmSideNavBarWidget> {
     super.initState();
     _model = createModel(context, () => AdmSideNavBarModel());
 
-    _model.expandableController1 = ExpandableController(initialExpanded: false);
-    _model.expandableController2 = ExpandableController(initialExpanded: false);
+    _model.expandableExpandableController1 =
+        ExpandableController(initialExpanded: false);
+    _model.expandableExpandableController2 =
+        ExpandableController(initialExpanded: false);
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -128,7 +130,7 @@ class _AdmSideNavBarWidgetState extends State<AdmSideNavBarWidget> {
                     width: double.infinity,
                     color: Color(0x00000000),
                     child: ExpandableNotifier(
-                      controller: _model.expandableController1,
+                      controller: _model.expandableExpandableController1,
                       child: ExpandablePanel(
                         header: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -777,7 +779,7 @@ class _AdmSideNavBarWidgetState extends State<AdmSideNavBarWidget> {
                     width: double.infinity,
                     color: Color(0x00000000),
                     child: ExpandableNotifier(
-                      controller: _model.expandableController2,
+                      controller: _model.expandableExpandableController2,
                       child: ExpandablePanel(
                         header: Row(
                           mainAxisSize: MainAxisSize.max,

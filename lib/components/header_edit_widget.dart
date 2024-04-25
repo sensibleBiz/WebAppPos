@@ -186,7 +186,6 @@ class _HeaderEditWidgetState extends State<HeaderEditWidget> {
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
-                    minLines: null,
                     validator:
                         _model.textController1Validator.asValidator(context),
                   ),
@@ -264,7 +263,6 @@ class _HeaderEditWidgetState extends State<HeaderEditWidget> {
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
-                    minLines: null,
                     validator:
                         _model.textController2Validator.asValidator(context),
                   ),
@@ -294,6 +292,10 @@ class _HeaderEditWidgetState extends State<HeaderEditWidget> {
                         onChanged: (newValue) async {
                           setState(() => _model.checkboxValue = newValue!);
                         },
+                        side: BorderSide(
+                          width: 2,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                        ),
                         activeColor: FlutterFlowTheme.of(context).primary,
                         checkColor: FlutterFlowTheme.of(context).info,
                       ),

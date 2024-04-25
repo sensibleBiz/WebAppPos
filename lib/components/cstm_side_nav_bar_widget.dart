@@ -33,7 +33,8 @@ class _CstmSideNavBarWidgetState extends State<CstmSideNavBarWidget> {
     super.initState();
     _model = createModel(context, () => CstmSideNavBarModel());
 
-    _model.expandableController = ExpandableController(initialExpanded: false);
+    _model.expandableExpandableController =
+        ExpandableController(initialExpanded: false);
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -144,7 +145,8 @@ class _CstmSideNavBarWidgetState extends State<CstmSideNavBarWidget> {
                               width: double.infinity,
                               color: Color(0x00000000),
                               child: ExpandableNotifier(
-                                controller: _model.expandableController,
+                                controller:
+                                    _model.expandableExpandableController,
                                 child: ExpandablePanel(
                                   header: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -883,6 +885,64 @@ class _CstmSideNavBarWidgetState extends State<CstmSideNavBarWidget> {
                                     ),
                                     Text(
                                       'Leads',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMediumFamily,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMediumFamily),
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 2.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('DealerDasboard');
+                              },
+                              onDoubleTap: () async {},
+                              child: Container(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                height: 50.0,
+                                decoration: BoxDecoration(),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 5.0, 0.0),
+                                      child: Container(
+                                        width: 40.0,
+                                        height: 40.0,
+                                        decoration: BoxDecoration(),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Icon(
+                                            Icons.mark_chat_unread_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 23.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      'Dealers',
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(

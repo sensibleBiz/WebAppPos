@@ -186,7 +186,6 @@ class _AddTnCWidgetState extends State<AddTnCWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMediumFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model.textControllerValidator
                                       .asValidator(context),
                                 ),

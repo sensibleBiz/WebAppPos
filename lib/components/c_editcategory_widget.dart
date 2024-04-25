@@ -239,7 +239,6 @@ class _CEditcategoryWidgetState extends State<CEditcategoryWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleMediumFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model.textController1Validator
                                       .asValidator(context),
                                 ),
@@ -366,7 +365,6 @@ class _CEditcategoryWidgetState extends State<CEditcategoryWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleMediumFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model.textController2Validator
                                       .asValidator(context),
                                 ),

@@ -44,10 +44,11 @@ class _AddSubCategoryMasterWidgetState
     super.initState();
     _model = createModel(context, () => AddSubCategoryMasterModel());
 
-    _model.textSubCategoryMasterTypeNameController ??= TextEditingController();
+    _model.textSubCategoryMasterTypeNameTextController ??=
+        TextEditingController();
     _model.textSubCategoryMasterTypeNameFocusNode ??= FocusNode();
 
-    _model.textCategoryMasterTypeCodeController ??=
+    _model.textCategoryMasterTypeCodeTextController ??=
         TextEditingController(text: widget.codeLen?.toString());
     _model.textCategoryMasterTypeCodeFocusNode ??= FocusNode();
 
@@ -207,12 +208,12 @@ class _AddSubCategoryMasterWidgetState
                                           ),
                                           child: TextFormField(
                                             controller: _model
-                                                .textSubCategoryMasterTypeNameController,
+                                                .textSubCategoryMasterTypeNameTextController,
                                             focusNode: _model
                                                 .textSubCategoryMasterTypeNameFocusNode,
                                             onChanged: (_) =>
                                                 EasyDebounce.debounce(
-                                              '_model.textSubCategoryMasterTypeNameController',
+                                              '_model.textSubCategoryMasterTypeNameTextController',
                                               Duration(milliseconds: 2000),
                                               () => setState(() {}),
                                             ),
@@ -302,9 +303,8 @@ class _AddSubCategoryMasterWidgetState
                                                               .titleMediumFamily),
                                                 ),
                                             textAlign: TextAlign.start,
-                                            minLines: null,
                                             validator: _model
-                                                .textSubCategoryMasterTypeNameControllerValidator
+                                                .textSubCategoryMasterTypeNameTextControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -497,12 +497,12 @@ class _AddSubCategoryMasterWidgetState
                                               ),
                                               child: TextFormField(
                                                 controller: _model
-                                                    .textCategoryMasterTypeCodeController,
+                                                    .textCategoryMasterTypeCodeTextController,
                                                 focusNode: _model
                                                     .textCategoryMasterTypeCodeFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.textCategoryMasterTypeCodeController',
+                                                  '_model.textCategoryMasterTypeCodeTextController',
                                                   Duration(milliseconds: 2000),
                                                   () => setState(() {}),
                                                 ),
@@ -602,9 +602,8 @@ class _AddSubCategoryMasterWidgetState
                                                                       .titleMediumFamily),
                                                         ),
                                                 textAlign: TextAlign.start,
-                                                minLines: null,
                                                 validator: _model
-                                                    .textCategoryMasterTypeCodeControllerValidator
+                                                    .textCategoryMasterTypeCodeTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -801,10 +800,10 @@ class _AddSubCategoryMasterWidgetState
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     var _shouldSetState = false;
-                                    if (_model.textSubCategoryMasterTypeNameController
+                                    if (_model.textSubCategoryMasterTypeNameTextController
                                                 .text !=
                                             null &&
-                                        _model.textSubCategoryMasterTypeNameController
+                                        _model.textSubCategoryMasterTypeNameTextController
                                                 .text !=
                                             '') {
                                       if (_model.dropDownCategoryNameValue !=
@@ -814,7 +813,7 @@ class _AddSubCategoryMasterWidgetState
                                         _model.notSame =
                                             await actions.dupSubCategory(
                                           functions.toCapitalLetter(_model
-                                              .textSubCategoryMasterTypeNameController
+                                              .textSubCategoryMasterTypeNameTextController
                                               .text),
                                           containerSubCategoryRecordList
                                               .toList(),
@@ -827,11 +826,11 @@ class _AddSubCategoryMasterWidgetState
                                           await subCategoryRecordReference
                                               .set(createSubCategoryRecordData(
                                             name: functions.toCapitalLetter(_model
-                                                .textSubCategoryMasterTypeNameController
+                                                .textSubCategoryMasterTypeNameTextController
                                                 .text),
                                             active: true,
                                             code: int.tryParse(_model
-                                                .textCategoryMasterTypeCodeController
+                                                .textCategoryMasterTypeCodeTextController
                                                 .text),
                                             createdDate:
                                                 functions.getcreatedDate(),
@@ -855,11 +854,11 @@ class _AddSubCategoryMasterWidgetState
                                                   createSubCategoryRecordData(
                                                     name: functions
                                                         .toCapitalLetter(_model
-                                                            .textSubCategoryMasterTypeNameController
+                                                            .textSubCategoryMasterTypeNameTextController
                                                             .text),
                                                     active: true,
                                                     code: int.tryParse(_model
-                                                        .textCategoryMasterTypeCodeController
+                                                        .textCategoryMasterTypeCodeTextController
                                                         .text),
                                                     createdDate: functions
                                                         .getcreatedDate(),

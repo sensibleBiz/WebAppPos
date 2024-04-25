@@ -210,7 +210,6 @@ class _CRecipeDetailsWidgetState extends State<CRecipeDetailsWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .titleMediumFamily),
                                   ),
-                              minLines: null,
                               validator: _model.textController1Validator
                                   .asValidator(context),
                             ),
@@ -371,7 +370,6 @@ class _CRecipeDetailsWidgetState extends State<CRecipeDetailsWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .titleMediumFamily),
                                   ),
-                              minLines: null,
                               validator: _model.textController2Validator
                                   .asValidator(context),
                             ),
@@ -557,7 +555,6 @@ class _CRecipeDetailsWidgetState extends State<CRecipeDetailsWidget> {
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .titleMediumFamily),
                                 ),
-                            minLines: null,
                             validator: _model.textController3Validator
                                 .asValidator(context),
                           ),
@@ -643,7 +640,6 @@ class _CRecipeDetailsWidgetState extends State<CRecipeDetailsWidget> {
                                     FlutterFlowTheme.of(context)
                                         .titleMediumFamily),
                               ),
-                          minLines: null,
                           validator: _model.textController4Validator
                               .asValidator(context),
                         ),

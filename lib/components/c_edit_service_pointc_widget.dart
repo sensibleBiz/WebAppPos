@@ -261,7 +261,6 @@ class _CEditServicePointcWidgetState extends State<CEditServicePointcWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       validator: _model.textController1Validator
                                           .asValidator(context),
                                     ),
@@ -286,7 +285,7 @@ class _CEditServicePointcWidgetState extends State<CEditServicePointcWidget> {
                           children: [
                             Expanded(
                               child: TextFormField(
-                                controller: _model.codeController ??=
+                                controller: _model.codeTextController ??=
                                     TextEditingController(
                                   text: containerServicePointOutletRecord.code
                                       .toString(),
@@ -361,9 +360,8 @@ class _CEditServicePointcWidgetState extends State<CEditServicePointcWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 keyboardType: TextInputType.number,
-                                validator: _model.codeControllerValidator
+                                validator: _model.codeTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -665,7 +663,6 @@ class _CEditServicePointcWidgetState extends State<CEditServicePointcWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       validator: _model.textController3Validator
                                           .asValidator(context),
                                     ),
@@ -816,7 +813,6 @@ class _CEditServicePointcWidgetState extends State<CEditServicePointcWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleMediumFamily),
                                         ),
-                                    minLines: null,
                                     validator: _model.textController4Validator
                                         .asValidator(context),
                                   ),
@@ -993,7 +989,6 @@ class _CEditServicePointcWidgetState extends State<CEditServicePointcWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       validator: _model.textController5Validator
                                           .asValidator(context),
                                     ),
@@ -1138,7 +1133,6 @@ class _CEditServicePointcWidgetState extends State<CEditServicePointcWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       validator: _model.textController6Validator
                                           .asValidator(context),
                                     ),
@@ -1283,7 +1277,6 @@ class _CEditServicePointcWidgetState extends State<CEditServicePointcWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       validator: _model.textController7Validator
                                           .asValidator(context),
                                     ),
@@ -1371,7 +1364,7 @@ class _CEditServicePointcWidgetState extends State<CEditServicePointcWidget> {
                                       name: functions.toCapitalLetter(
                                           _model.textController1.text),
                                       code: int.tryParse(
-                                          _model.codeController.text),
+                                          _model.codeTextController.text),
                                       printerPaperSize: _model.dropDownValue1,
                                       printerIpAddress: 1,
                                       printerPortNumber: 1,

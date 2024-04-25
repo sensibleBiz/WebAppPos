@@ -24,9 +24,10 @@ class UpdateProductMasterModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextProductName widget.
   FocusNode? textProductNameFocusNode;
-  TextEditingController? textProductNameController;
-  String? Function(BuildContext, String?)? textProductNameControllerValidator;
-  String? _textProductNameControllerValidator(
+  TextEditingController? textProductNameTextController;
+  String? Function(BuildContext, String?)?
+      textProductNameTextControllerValidator;
+  String? _textProductNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -46,10 +47,10 @@ class UpdateProductMasterModel
   FormFieldController<String>? dropDownSubCategoryValueController;
   // State field(s) for TextProductBarcode widget.
   FocusNode? textProductBarcodeFocusNode;
-  TextEditingController? textProductBarcodeController;
+  TextEditingController? textProductBarcodeTextController;
   String? Function(BuildContext, String?)?
-      textProductBarcodeControllerValidator;
-  String? _textProductBarcodeControllerValidator(
+      textProductBarcodeTextControllerValidator;
+  String? _textProductBarcodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -63,10 +64,10 @@ class UpdateProductMasterModel
 
   // State field(s) for TextProductHSNCode widget.
   FocusNode? textProductHSNCodeFocusNode;
-  TextEditingController? textProductHSNCodeController;
+  TextEditingController? textProductHSNCodeTextController;
   String? Function(BuildContext, String?)?
-      textProductHSNCodeControllerValidator;
-  String? _textProductHSNCodeControllerValidator(
+      textProductHSNCodeTextControllerValidator;
+  String? _textProductHSNCodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -80,9 +81,9 @@ class UpdateProductMasterModel
 
   // State field(s) for TextProductMasterCode widget.
   FocusNode? textProductMasterCodeFocusNode;
-  TextEditingController? textProductMasterCodeController;
+  TextEditingController? textProductMasterCodeTextController;
   String? Function(BuildContext, String?)?
-      textProductMasterCodeControllerValidator;
+      textProductMasterCodeTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController5;
@@ -98,26 +99,27 @@ class UpdateProductMasterModel
 
   @override
   void initState(BuildContext context) {
-    textProductNameControllerValidator = _textProductNameControllerValidator;
-    textProductBarcodeControllerValidator =
-        _textProductBarcodeControllerValidator;
-    textProductHSNCodeControllerValidator =
-        _textProductHSNCodeControllerValidator;
+    textProductNameTextControllerValidator =
+        _textProductNameTextControllerValidator;
+    textProductBarcodeTextControllerValidator =
+        _textProductBarcodeTextControllerValidator;
+    textProductHSNCodeTextControllerValidator =
+        _textProductHSNCodeTextControllerValidator;
   }
 
   @override
   void dispose() {
     textProductNameFocusNode?.dispose();
-    textProductNameController?.dispose();
+    textProductNameTextController?.dispose();
 
     textProductBarcodeFocusNode?.dispose();
-    textProductBarcodeController?.dispose();
+    textProductBarcodeTextController?.dispose();
 
     textProductHSNCodeFocusNode?.dispose();
-    textProductHSNCodeController?.dispose();
+    textProductHSNCodeTextController?.dispose();
 
     textProductMasterCodeFocusNode?.dispose();
-    textProductMasterCodeController?.dispose();
+    textProductMasterCodeTextController?.dispose();
 
     textFieldFocusNode?.dispose();
     textController5?.dispose();

@@ -778,6 +778,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Demos',
               path: 'Demos',
               builder: (context, params) => DemosWidget(),
+            ),
+            FFRoute(
+              name: 'DashboardAdminCopy',
+              path: 'dashboardAdminCopy',
+              builder: (context, params) => DashboardAdminCopyWidget(),
+            ),
+            FFRoute(
+              name: 'UserManualDocReqKiosk',
+              path: 'userManualDocReqKiosk',
+              builder: (context, params) => UserManualDocReqKioskWidget(),
+            ),
+            FFRoute(
+              name: 'DealerDasboard',
+              path: 'dealerDasboard',
+              builder: (context, params) => DealerDasboardWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -857,7 +872,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -952,7 +967,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/loginNewFinal';
           }
           return null;
@@ -1034,7 +1049,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;

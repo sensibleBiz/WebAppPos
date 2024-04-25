@@ -23,9 +23,9 @@ class AddFollowUpModel extends FlutterFlowModel<AddFollowUpWidget> {
   DateTime? datePicked2;
   // State field(s) for TextFieldfollowUpName widget.
   FocusNode? textFieldfollowUpNameFocusNode;
-  TextEditingController? textFieldfollowUpNameController;
+  TextEditingController? textFieldfollowUpNameTextController;
   String? Function(BuildContext, String?)?
-      textFieldfollowUpNameControllerValidator;
+      textFieldfollowUpNameTextControllerValidator;
   // State field(s) for DropDownLeadPriority widget.
   String? dropDownLeadPriorityValue;
   FormFieldController<String>? dropDownLeadPriorityValueController;
@@ -34,9 +34,9 @@ class AddFollowUpModel extends FlutterFlowModel<AddFollowUpWidget> {
   FormFieldController<String>? dropDownAssgToValueController;
   // State field(s) for TextFieldDiscription widget.
   FocusNode? textFieldDiscriptionFocusNode;
-  TextEditingController? textFieldDiscriptionController;
+  TextEditingController? textFieldDiscriptionTextController;
   String? Function(BuildContext, String?)?
-      textFieldDiscriptionControllerValidator;
+      textFieldDiscriptionTextControllerValidator;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   LeadFollowUpRecord? doc;
 
@@ -46,9 +46,9 @@ class AddFollowUpModel extends FlutterFlowModel<AddFollowUpWidget> {
   @override
   void dispose() {
     textFieldfollowUpNameFocusNode?.dispose();
-    textFieldfollowUpNameController?.dispose();
+    textFieldfollowUpNameTextController?.dispose();
 
     textFieldDiscriptionFocusNode?.dispose();
-    textFieldDiscriptionController?.dispose();
+    textFieldDiscriptionTextController?.dispose();
   }
 }

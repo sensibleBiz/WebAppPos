@@ -199,7 +199,6 @@ class _CEditRecipeWidgetState extends State<CEditRecipeWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .titleMediumFamily),
                                   ),
-                              minLines: null,
                               validator: _model.textControllerValidator
                                   .asValidator(context),
                             ),

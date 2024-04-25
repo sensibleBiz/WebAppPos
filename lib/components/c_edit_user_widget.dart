@@ -255,7 +255,6 @@ class _CEditUserWidgetState extends State<CEditUserWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       validator: _model.textController1Validator
                                           .asValidator(context),
                                     ),
@@ -393,7 +392,6 @@ class _CEditUserWidgetState extends State<CEditUserWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       keyboardType: TextInputType.number,
                                       validator: _model.textController2Validator
                                           .asValidator(context),
@@ -532,7 +530,6 @@ class _CEditUserWidgetState extends State<CEditUserWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       keyboardType: TextInputType.emailAddress,
                                       validator: _model.textController3Validator
                                           .asValidator(context),
@@ -672,7 +669,6 @@ class _CEditUserWidgetState extends State<CEditUserWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily),
                                           ),
-                                      minLines: null,
                                       keyboardType: TextInputType.number,
                                       validator: _model.textController4Validator
                                           .asValidator(context),
@@ -712,7 +708,7 @@ class _CEditUserWidgetState extends State<CEditUserWidget> {
                                         Expanded(
                                           child: TextFormField(
                                             controller: _model
-                                                    .textFieldCodeController ??=
+                                                    .textFieldCodeTextController ??=
                                                 TextEditingController(
                                               text: containerUserProfileRecord
                                                   .code
@@ -807,10 +803,9 @@ class _CEditUserWidgetState extends State<CEditUserWidget> {
                                                                   context)
                                                               .bodyMediumFamily),
                                                 ),
-                                            minLines: null,
                                             keyboardType: TextInputType.number,
                                             validator: _model
-                                                .textFieldCodeControllerValidator
+                                                .textFieldCodeTextControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -992,8 +987,8 @@ class _CEditUserWidgetState extends State<CEditUserWidget> {
                                       mobile: _model.textController2.text,
                                       email: _model.textController3.text,
                                       quickPin: _model.textController4.text,
-                                      code: int.tryParse(
-                                          _model.textFieldCodeController.text),
+                                      code: int.tryParse(_model
+                                          .textFieldCodeTextController.text),
                                     ));
                                     await showDialog(
                                       context: context,

@@ -22,10 +22,10 @@ class AddSubCategoryMasterModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextSubCategoryMasterTypeName widget.
   FocusNode? textSubCategoryMasterTypeNameFocusNode;
-  TextEditingController? textSubCategoryMasterTypeNameController;
+  TextEditingController? textSubCategoryMasterTypeNameTextController;
   String? Function(BuildContext, String?)?
-      textSubCategoryMasterTypeNameControllerValidator;
-  String? _textSubCategoryMasterTypeNameControllerValidator(
+      textSubCategoryMasterTypeNameTextControllerValidator;
+  String? _textSubCategoryMasterTypeNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -42,9 +42,9 @@ class AddSubCategoryMasterModel
   FormFieldController<String>? dropDownCategoryNameValueController;
   // State field(s) for TextCategoryMasterTypeCode widget.
   FocusNode? textCategoryMasterTypeCodeFocusNode;
-  TextEditingController? textCategoryMasterTypeCodeController;
+  TextEditingController? textCategoryMasterTypeCodeTextController;
   String? Function(BuildContext, String?)?
-      textCategoryMasterTypeCodeControllerValidator;
+      textCategoryMasterTypeCodeTextControllerValidator;
   // Stores action output result for [Custom Action - dupSubCategory] action in Container widget.
   bool? notSame;
   // Stores action output result for [Backend Call - Create Document] action in Container widget.
@@ -52,16 +52,16 @@ class AddSubCategoryMasterModel
 
   @override
   void initState(BuildContext context) {
-    textSubCategoryMasterTypeNameControllerValidator =
-        _textSubCategoryMasterTypeNameControllerValidator;
+    textSubCategoryMasterTypeNameTextControllerValidator =
+        _textSubCategoryMasterTypeNameTextControllerValidator;
   }
 
   @override
   void dispose() {
     textSubCategoryMasterTypeNameFocusNode?.dispose();
-    textSubCategoryMasterTypeNameController?.dispose();
+    textSubCategoryMasterTypeNameTextController?.dispose();
 
     textCategoryMasterTypeCodeFocusNode?.dispose();
-    textCategoryMasterTypeCodeController?.dispose();
+    textCategoryMasterTypeCodeTextController?.dispose();
   }
 }

@@ -66,7 +66,7 @@ class _CEditProductDetailsNewWidgetState
 
     _model.textFieldHsnCodeFocusNode ??= FocusNode();
 
-    _model.textFieldBarcodeController ??=
+    _model.textFieldBarcodeTextController ??=
         TextEditingController(text: FFAppState().barcode);
     _model.textFieldBarcodeFocusNode ??= FocusNode();
 
@@ -348,14 +348,14 @@ class _CEditProductDetailsNewWidgetState
                                                                               onPressed: () async {
                                                                                 var _shouldSetState = false;
                                                                                 _model.prodJson2 = await actions.productDetails(
-                                                                                  _model.textFieldRegionalnameController.text,
+                                                                                  _model.textFieldRegionalnameTextController.text,
                                                                                   _model.dropDownSubValue,
                                                                                   _model.dropDownUnitValue,
                                                                                   _model.dropDownServiceValue,
                                                                                   _model.dropDownTaxValue,
-                                                                                  _model.textFieldReorderLevelController.text,
-                                                                                  double.tryParse(_model.textFieldDiscountPerController.text),
-                                                                                  double.tryParse(_model.textFieldDiscountAmtController.text),
+                                                                                  _model.textFieldReorderLevelTextController.text,
+                                                                                  double.tryParse(_model.textFieldDiscountPerTextController.text),
+                                                                                  double.tryParse(_model.textFieldDiscountAmtTextController.text),
                                                                                   _model.dropDownCateValue,
                                                                                 );
                                                                                 _shouldSetState = true;
@@ -429,12 +429,12 @@ class _CEditProductDetailsNewWidgetState
 
                                                                                   await containerP1ProductRecord!.reference.update(createProductRecordData(
                                                                                     name: _model.dropDowProdMasPM2Value,
-                                                                                    sellingPrice: double.tryParse(_model.textFieldSellingPriceController.text),
-                                                                                    mrpPrice: double.tryParse(_model.textFieldMrpPriceController.text),
-                                                                                    purchasePrice: double.tryParse(_model.textFieldPurchasePriceController.text),
+                                                                                    sellingPrice: double.tryParse(_model.textFieldSellingPriceTextController.text),
+                                                                                    mrpPrice: double.tryParse(_model.textFieldMrpPriceTextController.text),
+                                                                                    purchasePrice: double.tryParse(_model.textFieldPurchasePriceTextController.text),
                                                                                     categoryRef: functions.getCatDocRefFroMId(_model.catDoc?.id, _model.catDoc?.parentReference),
                                                                                     productMasterRef: _model.productDoc?.reference,
-                                                                                    code: int.tryParse(_model.textFieldCodeController.text),
+                                                                                    code: int.tryParse(_model.textFieldCodeTextController.text),
                                                                                     reorderLevel: valueOrDefault<int>(
                                                                                       getJsonField(
                                                                                         _model.prodJson2,
@@ -442,8 +442,8 @@ class _CEditProductDetailsNewWidgetState
                                                                                       ),
                                                                                       0,
                                                                                     ),
-                                                                                    hsncode: int.tryParse(_model.textFieldHsnCodeController.text),
-                                                                                    searchcode: int.tryParse(_model.textFieldSearchCodeController.text),
+                                                                                    hsncode: int.tryParse(_model.textFieldHsnCodeTextController.text),
+                                                                                    searchcode: int.tryParse(_model.textFieldSearchCodeTextController.text),
                                                                                     shortName: containerP1ProductRecord?.shortName,
                                                                                     weightable: _model.checkboxListTileValue1,
                                                                                     stockable: _model.checkboxListTileValue2,
@@ -492,7 +492,7 @@ class _CEditProductDetailsNewWidgetState
                                                                                             '#'
                                                                                         ? _model.taxDoc?.id
                                                                                         : '',
-                                                                                    barcode: _model.textFieldBarcodeController.text,
+                                                                                    barcode: _model.textFieldBarcodeTextController.text,
                                                                                     category: _model.catDoc?.id,
                                                                                     taxRef: _model.taxDoc?.reference,
                                                                                     unitRef: _model.unitDoc?.reference,
@@ -567,12 +567,12 @@ class _CEditProductDetailsNewWidgetState
                                                                                   if (!_model.notSame!) {
                                                                                     await containerP1ProductRecord!.reference.update(createProductRecordData(
                                                                                       name: _model.dropDowProdMasPM2Value,
-                                                                                      sellingPrice: double.tryParse(_model.textFieldSellingPriceController.text),
-                                                                                      mrpPrice: double.tryParse(_model.textFieldMrpPriceController.text),
-                                                                                      purchasePrice: double.tryParse(_model.textFieldPurchasePriceController.text),
+                                                                                      sellingPrice: double.tryParse(_model.textFieldSellingPriceTextController.text),
+                                                                                      mrpPrice: double.tryParse(_model.textFieldMrpPriceTextController.text),
+                                                                                      purchasePrice: double.tryParse(_model.textFieldPurchasePriceTextController.text),
                                                                                       categoryRef: functions.getCatDocRefFroMId(_model.catDoc?.id, _model.catDoc?.parentReference),
                                                                                       productMasterRef: _model.productDoc?.reference,
-                                                                                      code: int.tryParse(_model.textFieldCodeController.text),
+                                                                                      code: int.tryParse(_model.textFieldCodeTextController.text),
                                                                                       reorderLevel: valueOrDefault<int>(
                                                                                         getJsonField(
                                                                                           _model.prodJson2,
@@ -580,8 +580,8 @@ class _CEditProductDetailsNewWidgetState
                                                                                         ),
                                                                                         0,
                                                                                       ),
-                                                                                      hsncode: int.tryParse(_model.textFieldHsnCodeController.text),
-                                                                                      searchcode: int.tryParse(_model.textFieldSearchCodeController.text),
+                                                                                      hsncode: int.tryParse(_model.textFieldHsnCodeTextController.text),
+                                                                                      searchcode: int.tryParse(_model.textFieldSearchCodeTextController.text),
                                                                                       shortName: containerP1ProductRecord?.shortName,
                                                                                       weightable: _model.checkboxListTileValue1,
                                                                                       stockable: _model.checkboxListTileValue2,
@@ -630,7 +630,7 @@ class _CEditProductDetailsNewWidgetState
                                                                                               '#'
                                                                                           ? _model.taxDoc?.id
                                                                                           : '',
-                                                                                      barcode: _model.textFieldBarcodeController.text,
+                                                                                      barcode: _model.textFieldBarcodeTextController.text,
                                                                                       category: _model.catDoc?.id,
                                                                                       taxRef: _model.taxDoc?.reference,
                                                                                       unitRef: _model.unitDoc?.reference,
@@ -789,7 +789,7 @@ class _CEditProductDetailsNewWidgetState
                                                                   child:
                                                                       TextFormField(
                                                                     controller:
-                                                                        _model.textFieldCodeController ??=
+                                                                        _model.textFieldCodeTextController ??=
                                                                             TextEditingController(
                                                                       text: containerP1ProductRecord
                                                                           ?.code
@@ -902,10 +902,8 @@ class _CEditProductDetailsNewWidgetState
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,
-                                                                    minLines:
-                                                                        null,
                                                                     validator: _model
-                                                                        .textFieldCodeControllerValidator
+                                                                        .textFieldCodeTextControllerValidator
                                                                         .asValidator(
                                                                             context),
                                                                   ),
@@ -1274,7 +1272,7 @@ class _CEditProductDetailsNewWidgetState
                                                             child:
                                                                 TextFormField(
                                                               controller: _model
-                                                                      .textFieldSellingPriceController ??=
+                                                                      .textFieldSellingPriceTextController ??=
                                                                   TextEditingController(
                                                                 text: containerP1ProductRecord
                                                                     ?.sellingPrice
@@ -1394,9 +1392,8 @@ class _CEditProductDetailsNewWidgetState
                                                                         .containsKey(
                                                                             FlutterFlowTheme.of(context).titleMediumFamily),
                                                                   ),
-                                                              minLines: null,
                                                               validator: _model
-                                                                  .textFieldSellingPriceControllerValidator
+                                                                  .textFieldSellingPriceTextControllerValidator
                                                                   .asValidator(
                                                                       context),
                                                             ),
@@ -1434,7 +1431,7 @@ class _CEditProductDetailsNewWidgetState
                                                             child:
                                                                 TextFormField(
                                                               controller: _model
-                                                                      .textFieldMrpPriceController ??=
+                                                                      .textFieldMrpPriceTextController ??=
                                                                   TextEditingController(
                                                                 text: containerP1ProductRecord
                                                                     ?.mrpPrice
@@ -1554,9 +1551,8 @@ class _CEditProductDetailsNewWidgetState
                                                                         .containsKey(
                                                                             FlutterFlowTheme.of(context).titleMediumFamily),
                                                                   ),
-                                                              minLines: null,
                                                               validator: _model
-                                                                  .textFieldMrpPriceControllerValidator
+                                                                  .textFieldMrpPriceTextControllerValidator
                                                                   .asValidator(
                                                                       context),
                                                             ),
@@ -1585,7 +1581,7 @@ class _CEditProductDetailsNewWidgetState
                                                           ),
                                                           child: TextFormField(
                                                             controller: _model
-                                                                    .textFieldPurchasePriceController ??=
+                                                                    .textFieldPurchasePriceTextController ??=
                                                                 TextEditingController(
                                                               text: containerP1ProductRecord
                                                                   ?.purchasePrice
@@ -1703,9 +1699,8 @@ class _CEditProductDetailsNewWidgetState
                                                                           FlutterFlowTheme.of(context)
                                                                               .titleMediumFamily),
                                                                 ),
-                                                            minLines: null,
                                                             validator: _model
-                                                                .textFieldPurchasePriceControllerValidator
+                                                                .textFieldPurchasePriceTextControllerValidator
                                                                 .asValidator(
                                                                     context),
                                                           ),
@@ -3167,7 +3162,7 @@ class _CEditProductDetailsNewWidgetState
                                                             child:
                                                                 TextFormField(
                                                               controller: _model
-                                                                      .textFieldRegionalnameController ??=
+                                                                      .textFieldRegionalnameTextController ??=
                                                                   TextEditingController(
                                                                 text: containerP1ProductRecord
                                                                     ?.regionalName,
@@ -3177,7 +3172,7 @@ class _CEditProductDetailsNewWidgetState
                                                               onChanged: (_) =>
                                                                   EasyDebounce
                                                                       .debounce(
-                                                                '_model.textFieldRegionalnameController',
+                                                                '_model.textFieldRegionalnameTextController',
                                                                 Duration(
                                                                     milliseconds:
                                                                         2000),
@@ -3296,9 +3291,8 @@ class _CEditProductDetailsNewWidgetState
                                                                         .containsKey(
                                                                             FlutterFlowTheme.of(context).titleMediumFamily),
                                                                   ),
-                                                              minLines: null,
                                                               validator: _model
-                                                                  .textFieldRegionalnameControllerValidator
+                                                                  .textFieldRegionalnameTextControllerValidator
                                                                   .asValidator(
                                                                       context),
                                                             ),
@@ -3336,7 +3330,7 @@ class _CEditProductDetailsNewWidgetState
                                                             child:
                                                                 TextFormField(
                                                               controller: _model
-                                                                      .textFieldReorderLevelController ??=
+                                                                      .textFieldReorderLevelTextController ??=
                                                                   TextEditingController(
                                                                 text: containerP1ProductRecord
                                                                     ?.reorderLevel
@@ -3347,7 +3341,7 @@ class _CEditProductDetailsNewWidgetState
                                                               onChanged: (_) =>
                                                                   EasyDebounce
                                                                       .debounce(
-                                                                '_model.textFieldReorderLevelController',
+                                                                '_model.textFieldReorderLevelTextController',
                                                                 Duration(
                                                                     milliseconds:
                                                                         2000),
@@ -3466,9 +3460,8 @@ class _CEditProductDetailsNewWidgetState
                                                                         .containsKey(
                                                                             FlutterFlowTheme.of(context).titleMediumFamily),
                                                                   ),
-                                                              minLines: null,
                                                               validator: _model
-                                                                  .textFieldReorderLevelControllerValidator
+                                                                  .textFieldReorderLevelTextControllerValidator
                                                                   .asValidator(
                                                                       context),
                                                             ),
@@ -3507,7 +3500,7 @@ class _CEditProductDetailsNewWidgetState
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                        .textFieldShortNameController ??=
+                                                                        .textFieldShortNameTextController ??=
                                                                     TextEditingController(
                                                                   text: containerP1ProductRecord
                                                                       ?.shortName,
@@ -3627,9 +3620,8 @@ class _CEditProductDetailsNewWidgetState
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).titleMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
-                                                                    .textFieldShortNameControllerValidator
+                                                                    .textFieldShortNameTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -3875,7 +3867,7 @@ class _CEditProductDetailsNewWidgetState
                                                             child:
                                                                 TextFormField(
                                                               controller: _model
-                                                                      .textFieldHsnCodeController ??=
+                                                                      .textFieldHsnCodeTextController ??=
                                                                   TextEditingController(
                                                                 text: containerP1ProductRecord
                                                                     ?.hsncode
@@ -3995,9 +3987,8 @@ class _CEditProductDetailsNewWidgetState
                                                                         .containsKey(
                                                                             FlutterFlowTheme.of(context).titleMediumFamily),
                                                                   ),
-                                                              minLines: null,
                                                               validator: _model
-                                                                  .textFieldHsnCodeControllerValidator
+                                                                  .textFieldHsnCodeTextControllerValidator
                                                                   .asValidator(
                                                                       context),
                                                             ),
@@ -4072,7 +4063,7 @@ class _CEditProductDetailsNewWidgetState
                                                                 child:
                                                                     TextFormField(
                                                                   controller: _model
-                                                                      .textFieldBarcodeController,
+                                                                      .textFieldBarcodeTextController,
                                                                   focusNode: _model
                                                                       .textFieldBarcodeFocusNode,
                                                                   autofocus:
@@ -4179,10 +4170,8 @@ class _CEditProductDetailsNewWidgetState
                                                                         useGoogleFonts:
                                                                             GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                       ),
-                                                                  minLines:
-                                                                      null,
                                                                   validator: _model
-                                                                      .textFieldBarcodeControllerValidator
+                                                                      .textFieldBarcodeTextControllerValidator
                                                                       .asValidator(
                                                                           context),
                                                                 ),
@@ -4269,7 +4258,7 @@ class _CEditProductDetailsNewWidgetState
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                        .textFieldSearchCodeController ??=
+                                                                        .textFieldSearchCodeTextController ??=
                                                                     TextEditingController(
                                                                   text: containerP1ProductRecord
                                                                       ?.searchcode
@@ -4390,9 +4379,8 @@ class _CEditProductDetailsNewWidgetState
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).titleMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
-                                                                    .textFieldSearchCodeControllerValidator
+                                                                    .textFieldSearchCodeTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -4748,7 +4736,7 @@ class _CEditProductDetailsNewWidgetState
                                                             child:
                                                                 TextFormField(
                                                               controller: _model
-                                                                      .textFieldDiscountPerController ??=
+                                                                      .textFieldDiscountPerTextController ??=
                                                                   TextEditingController(
                                                                 text: containerP1ProductRecord
                                                                     ?.discountPer
@@ -4868,9 +4856,8 @@ class _CEditProductDetailsNewWidgetState
                                                                         .containsKey(
                                                                             FlutterFlowTheme.of(context).titleMediumFamily),
                                                                   ),
-                                                              minLines: null,
                                                               validator: _model
-                                                                  .textFieldDiscountPerControllerValidator
+                                                                  .textFieldDiscountPerTextControllerValidator
                                                                   .asValidator(
                                                                       context),
                                                             ),
@@ -4908,7 +4895,7 @@ class _CEditProductDetailsNewWidgetState
                                                             child:
                                                                 TextFormField(
                                                               controller: _model
-                                                                      .textFieldDiscountAmtController ??=
+                                                                      .textFieldDiscountAmtTextController ??=
                                                                   TextEditingController(
                                                                 text: containerP1ProductRecord
                                                                     ?.discountAmt
@@ -5028,9 +5015,8 @@ class _CEditProductDetailsNewWidgetState
                                                                         .containsKey(
                                                                             FlutterFlowTheme.of(context).titleMediumFamily),
                                                                   ),
-                                                              minLines: null,
                                                               validator: _model
-                                                                  .textFieldDiscountAmtControllerValidator
+                                                                  .textFieldDiscountAmtTextControllerValidator
                                                                   .asValidator(
                                                                       context),
                                                             ),
@@ -5522,7 +5508,6 @@ class _CEditProductDetailsNewWidgetState
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).titleMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
                                                                     .textController13Validator
                                                                     .asValidator(
@@ -5679,7 +5664,6 @@ class _CEditProductDetailsNewWidgetState
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).titleMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
                                                                     .textController14Validator
                                                                     .asValidator(
@@ -5836,7 +5820,6 @@ class _CEditProductDetailsNewWidgetState
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).titleMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
                                                                     .textController15Validator
                                                                     .asValidator(
@@ -5993,7 +5976,6 @@ class _CEditProductDetailsNewWidgetState
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).titleMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
                                                                     .textController16Validator
                                                                     .asValidator(
@@ -6150,7 +6132,6 @@ class _CEditProductDetailsNewWidgetState
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).titleMediumFamily),
                                                                     ),
-                                                                minLines: null,
                                                                 validator: _model
                                                                     .textController17Validator
                                                                     .asValidator(

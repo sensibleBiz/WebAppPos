@@ -32,8 +32,9 @@ class AdminUserManualViewModel
   final unfocusNode = FocusNode();
   // State field(s) for SearchTextField widget.
   FocusNode? searchTextFieldFocusNode;
-  TextEditingController? searchTextFieldController;
-  String? Function(BuildContext, String?)? searchTextFieldControllerValidator;
+  TextEditingController? searchTextFieldTextController;
+  String? Function(BuildContext, String?)?
+      searchTextFieldTextControllerValidator;
   List<UserManualRecord> simpleSearchResults = [];
 
   @override
@@ -43,6 +44,6 @@ class AdminUserManualViewModel
   void dispose() {
     unfocusNode.dispose();
     searchTextFieldFocusNode?.dispose();
-    searchTextFieldController?.dispose();
+    searchTextFieldTextController?.dispose();
   }
 }
