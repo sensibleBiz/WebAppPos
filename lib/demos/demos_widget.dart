@@ -34,14 +34,13 @@ class _DemosWidgetState extends State<DemosWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().startDate = functions.currentMonth('first');
-        FFAppState().endDate = functions.currentMonth('last');
-        FFAppState().startDate1 =
-            DateTime.fromMillisecondsSinceEpoch(FFAppState().startDate);
-        FFAppState().endDate1 =
-            DateTime.fromMillisecondsSinceEpoch(FFAppState().endDate);
-      });
+      FFAppState().startDate = functions.currentMonth('first');
+      FFAppState().endDate = functions.currentMonth('last');
+      FFAppState().startDate1 =
+          DateTime.fromMillisecondsSinceEpoch(FFAppState().startDate);
+      FFAppState().endDate1 =
+          DateTime.fromMillisecondsSinceEpoch(FFAppState().endDate);
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));

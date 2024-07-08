@@ -601,13 +601,12 @@ class _EmailLoginNewWidgetState extends State<EmailLoginNewWidget> {
                                                                       .text !=
                                                                   '') {
                                                             FFAppState()
-                                                                .update(() {
-                                                              FFAppState()
-                                                                      .currentEmail =
-                                                                  _model
-                                                                      .textFieldEmailTextController
-                                                                      .text;
-                                                            });
+                                                                    .currentEmail =
+                                                                _model
+                                                                    .textFieldEmailTextController
+                                                                    .text;
+                                                            FFAppState()
+                                                                .update(() {});
                                                             _model.isProfile =
                                                                 await actions
                                                                     .validUser(
@@ -661,12 +660,12 @@ class _EmailLoginNewWidgetState extends State<EmailLoginNewWidget> {
                                                                   );
                                                                   _shouldSetState =
                                                                       true;
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .outletRef =
-                                                                        _model
-                                                                            .ref;
-                                                                  });
+                                                                  FFAppState()
+                                                                          .outletRef =
+                                                                      _model
+                                                                          .ref;
+                                                                  setState(
+                                                                      () {});
                                                                   if (_model
                                                                       .isAdmin!) {
                                                                     context.pushNamed(

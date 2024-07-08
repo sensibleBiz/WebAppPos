@@ -191,10 +191,9 @@ class _CPremisesWidgetState extends State<CPremisesWidget> {
                                             containerPremisesRecordList
                                                 .toList(),
                                           );
-                                          FFAppState().update(() {
-                                            FFAppState().premisesCodeLength =
-                                                _model.len!;
-                                          });
+                                          FFAppState().premisesCodeLength =
+                                              _model.len!;
+                                          FFAppState().update(() {});
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,

@@ -198,10 +198,9 @@ class _CProductsWidgetState extends State<CProductsWidget> {
                                               containerProductRecordList
                                                   .toList(),
                                             );
-                                            FFAppState().update(() {
-                                              FFAppState().catCodeLengtH =
-                                                  _model.len!;
-                                            });
+                                            FFAppState().catCodeLengtH =
+                                                _model.len!;
+                                            FFAppState().update(() {});
 
                                             context.pushNamed(
                                               'cAddProductDetailsNew',

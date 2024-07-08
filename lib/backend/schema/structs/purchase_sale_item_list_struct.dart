@@ -37,70 +37,87 @@ class PurchaseSaleItemListStruct extends FFFirebaseStruct {
   String? _name;
   String get name => _name ?? '';
   set name(String? val) => _name = val;
+
   bool hasName() => _name != null;
 
   // "quantity" field.
   double? _quantity;
   double get quantity => _quantity ?? 0.0;
   set quantity(double? val) => _quantity = val;
-  void incrementQuantity(double amount) => _quantity = quantity + amount;
+
+  void incrementQuantity(double amount) => quantity = quantity + amount;
+
   bool hasQuantity() => _quantity != null;
 
   // "price" field.
   double? _price;
   double get price => _price ?? 0.0;
   set price(double? val) => _price = val;
-  void incrementPrice(double amount) => _price = price + amount;
+
+  void incrementPrice(double amount) => price = price + amount;
+
   bool hasPrice() => _price != null;
 
   // "total" field.
   double? _total;
   double get total => _total ?? 0.0;
   set total(double? val) => _total = val;
-  void incrementTotal(double amount) => _total = total + amount;
+
+  void incrementTotal(double amount) => total = total + amount;
+
   bool hasTotal() => _total != null;
 
   // "id" field.
   String? _id;
   String get id => _id ?? '';
   set id(String? val) => _id = val;
+
   bool hasId() => _id != null;
 
   // "catId" field.
   String? _catId;
   String get catId => _catId ?? '';
   set catId(String? val) => _catId = val;
+
   bool hasCatId() => _catId != null;
 
   // "discount" field.
   double? _discount;
   double get discount => _discount ?? 0.0;
   set discount(double? val) => _discount = val;
-  void incrementDiscount(double amount) => _discount = discount + amount;
+
+  void incrementDiscount(double amount) => discount = discount + amount;
+
   bool hasDiscount() => _discount != null;
 
   // "delliveryChrg" field.
   double? _delliveryChrg;
   double get delliveryChrg => _delliveryChrg ?? 0.0;
   set delliveryChrg(double? val) => _delliveryChrg = val;
+
   void incrementDelliveryChrg(double amount) =>
-      _delliveryChrg = delliveryChrg + amount;
+      delliveryChrg = delliveryChrg + amount;
+
   bool hasDelliveryChrg() => _delliveryChrg != null;
 
   // "acceptedQuantity" field.
   int? _acceptedQuantity;
   int get acceptedQuantity => _acceptedQuantity ?? 0;
   set acceptedQuantity(int? val) => _acceptedQuantity = val;
+
   void incrementAcceptedQuantity(int amount) =>
-      _acceptedQuantity = acceptedQuantity + amount;
+      acceptedQuantity = acceptedQuantity + amount;
+
   bool hasAcceptedQuantity() => _acceptedQuantity != null;
 
   // "rejectedQuantity" field.
   int? _rejectedQuantity;
   int get rejectedQuantity => _rejectedQuantity ?? 0;
   set rejectedQuantity(int? val) => _rejectedQuantity = val;
+
   void incrementRejectedQuantity(int amount) =>
-      _rejectedQuantity = rejectedQuantity + amount;
+      rejectedQuantity = rejectedQuantity + amount;
+
   bool hasRejectedQuantity() => _rejectedQuantity != null;
 
   static PurchaseSaleItemListStruct fromMap(Map<String, dynamic> data) =>

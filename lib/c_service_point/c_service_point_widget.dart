@@ -194,11 +194,10 @@ class _CServicePointWidgetState extends State<CServicePointWidget> {
                                               containerServicePointOutletRecordList
                                                   .toList(),
                                             );
-                                            FFAppState().update(() {
-                                              FFAppState()
-                                                      .servicePointOutletCodeLength =
-                                                  _model.len!;
-                                            });
+                                            FFAppState()
+                                                    .servicePointOutletCodeLength =
+                                                _model.len!;
+                                            FFAppState().update(() {});
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:

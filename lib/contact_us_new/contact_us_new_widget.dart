@@ -298,9 +298,8 @@ class _ContactUsNewWidgetState extends State<ContactUsNewWidget> {
                                                     data:
                                                         containerContactUsRecord!
                                                             .contains,
-                                                    onLinkTap:
-                                                        (url, _, __, ___) =>
-                                                            launchURL(url!),
+                                                    onLinkTap: (url, _, __) =>
+                                                        launchURL(url!),
                                                   ),
                                                 ],
                                               ),

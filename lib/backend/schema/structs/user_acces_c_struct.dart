@@ -21,13 +21,16 @@ class UserAccesCStruct extends FFFirebaseStruct {
   String? _title;
   String get title => _title ?? '';
   set title(String? val) => _title = val;
+
   bool hasTitle() => _title != null;
 
   // "value" field.
   int? _value;
   int get value => _value ?? 0;
   set value(int? val) => _value = val;
-  void incrementValue(int amount) => _value = value + amount;
+
+  void incrementValue(int amount) => value = value + amount;
+
   bool hasValue() => _value != null;
 
   static UserAccesCStruct fromMap(Map<String, dynamic> data) =>

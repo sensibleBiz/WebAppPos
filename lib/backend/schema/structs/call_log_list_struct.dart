@@ -27,34 +27,42 @@ class CallLogListStruct extends FFFirebaseStruct {
   int? _date;
   int get date => _date ?? 0;
   set date(int? val) => _date = val;
-  void incrementDate(int amount) => _date = date + amount;
+
+  void incrementDate(int amount) => date = date + amount;
+
   bool hasDate() => _date != null;
 
   // "time" field.
   int? _time;
   int get time => _time ?? 0;
   set time(int? val) => _time = val;
-  void incrementTime(int amount) => _time = time + amount;
+
+  void incrementTime(int amount) => time = time + amount;
+
   bool hasTime() => _time != null;
 
   // "type" field.
   String? _type;
   String get type => _type ?? '';
   set type(String? val) => _type = val;
+
   bool hasType() => _type != null;
 
   // "call_duration" field.
   int? _callDuration;
   int get callDuration => _callDuration ?? 0;
   set callDuration(int? val) => _callDuration = val;
+
   void incrementCallDuration(int amount) =>
-      _callDuration = callDuration + amount;
+      callDuration = callDuration + amount;
+
   bool hasCallDuration() => _callDuration != null;
 
   // "call_note" field.
   String? _callNote;
   String get callNote => _callNote ?? '';
   set callNote(String? val) => _callNote = val;
+
   bool hasCallNote() => _callNote != null;
 
   static CallLogListStruct fromMap(Map<String, dynamic> data) =>

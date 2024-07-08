@@ -330,9 +330,7 @@ class _AboutUsWidgetState extends State<AboutUsWidget> {
                                                                   containerAboutUsRecord!
                                                                       .contains,
                                                               onLinkTap: (url,
-                                                                      _,
-                                                                      __,
-                                                                      ___) =>
+                                                                      _, __) =>
                                                                   launchURL(
                                                                       url!),
                                                             ),

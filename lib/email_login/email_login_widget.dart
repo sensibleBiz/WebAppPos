@@ -731,13 +731,12 @@ class _EmailLoginWidgetState extends State<EmailLoginWidget> {
                                                             var _shouldSetState =
                                                                 false;
                                                             FFAppState()
-                                                                .update(() {
-                                                              FFAppState()
-                                                                      .currentEmail =
-                                                                  _model
-                                                                      .textFieldEmailTextController
-                                                                      .text;
-                                                            });
+                                                                    .currentEmail =
+                                                                _model
+                                                                    .textFieldEmailTextController
+                                                                    .text;
+                                                            FFAppState()
+                                                                .update(() {});
                                                             _model.isProfile =
                                                                 await actions
                                                                     .validUser(

@@ -4048,12 +4048,12 @@ class _CEditProductDetailsNewWidgetState
                                                                   _model.barcode =
                                                                       await actions
                                                                           .barcodeRandom();
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .barcode =
-                                                                        _model
-                                                                            .barcode!;
-                                                                  });
+                                                                  FFAppState()
+                                                                          .barcode =
+                                                                      _model
+                                                                          .barcode!;
+                                                                  setState(
+                                                                      () {});
 
                                                                   setState(
                                                                       () {});
@@ -4210,13 +4210,12 @@ class _CEditProductDetailsNewWidgetState
                                                                   );
 
                                                                   FFAppState()
+                                                                          .barcode =
+                                                                      _model
+                                                                          .barcode1!;
+                                                                  FFAppState()
                                                                       .update(
-                                                                          () {
-                                                                    FFAppState()
-                                                                            .barcode =
-                                                                        _model
-                                                                            .barcode1!;
-                                                                  });
+                                                                          () {});
 
                                                                   setState(
                                                                       () {});

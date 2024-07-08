@@ -207,10 +207,9 @@ class _CategoryMasterWidgetState extends State<CategoryMasterWidget> {
                                                     containerCategoryMasterRecordList
                                                         .toList(),
                                                   );
-                                                  FFAppState().update(() {
-                                                    FFAppState().names = [];
-                                                    FFAppState().regName = '';
-                                                  });
+                                                  FFAppState().names = [];
+                                                  FFAppState().regName = '';
+                                                  FFAppState().update(() {});
                                                   await showModalBottomSheet(
                                                     isScrollControlled: true,
                                                     backgroundColor:
@@ -252,9 +251,8 @@ class _CategoryMasterWidgetState extends State<CategoryMasterWidget> {
                                                   ).then((value) =>
                                                       safeSetState(() {}));
 
-                                                  FFAppState().update(() {
-                                                    FFAppState().names = [];
-                                                  });
+                                                  FFAppState().names = [];
+                                                  FFAppState().update(() {});
 
                                                   setState(() {});
                                                 },
@@ -892,9 +890,8 @@ class _CategoryMasterWidgetState extends State<CategoryMasterWidget> {
                                                                                                 hoverColor: Colors.transparent,
                                                                                                 highlightColor: Colors.transparent,
                                                                                                 onTap: () async {
-                                                                                                  FFAppState().update(() {
-                                                                                                    FFAppState().activeInactiveFlag = false;
-                                                                                                  });
+                                                                                                  FFAppState().activeInactiveFlag = false;
+                                                                                                  FFAppState().update(() {});
                                                                                                   var confirmDialogResponse = await showDialog<bool>(
                                                                                                         context: context,
                                                                                                         builder: (alertDialogContext) {
@@ -956,9 +953,8 @@ class _CategoryMasterWidgetState extends State<CategoryMasterWidget> {
                                                                                                 hoverColor: Colors.transparent,
                                                                                                 highlightColor: Colors.transparent,
                                                                                                 onTap: () async {
-                                                                                                  FFAppState().update(() {
-                                                                                                    FFAppState().activeInactiveFlag = true;
-                                                                                                  });
+                                                                                                  FFAppState().activeInactiveFlag = true;
+                                                                                                  FFAppState().update(() {});
                                                                                                   var confirmDialogResponse = await showDialog<bool>(
                                                                                                         context: context,
                                                                                                         builder: (alertDialogContext) {
@@ -1048,10 +1044,9 @@ class _CategoryMasterWidgetState extends State<CategoryMasterWidget> {
                                                                                       },
                                                                                     ).then((value) => safeSetState(() {}));
 
-                                                                                    FFAppState().update(() {
-                                                                                      FFAppState().names = [];
-                                                                                      FFAppState().regName = '';
-                                                                                    });
+                                                                                    FFAppState().names = [];
+                                                                                    FFAppState().regName = '';
+                                                                                    FFAppState().update(() {});
                                                                                   },
                                                                                   child: Container(
                                                                                     width: MediaQuery.sizeOf(context).width * 0.04,

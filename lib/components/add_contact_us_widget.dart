@@ -108,7 +108,7 @@ class _AddContactUsWidgetState extends State<AddContactUsWidget> {
                               Html(
                                 data:
                                     '<h1><span style=\"font-size:18px\">Contact Us :</span></h1>\n\n<h4><span style=\"font-size:14px\">Contact Person:</span> <span style=\"font-size:12px\">Amrut Nerlikar (Founder)</span><br />\n<span style=\"font-size:14px\">Contact Numbers:</span> <strong><span style=\"font-size:12px\"><span style=\"color:#2c3e50\">+91-9561673253</span> ,<span style=\"color:#2c3e50\">+91-8669695333</span></span></strong></h4>\n\n<h3><span style=\"font-size:14px\">Address : </span></h3>\n\n<h4><span style=\"font-size:12px\">&nbsp; &nbsp; &nbsp; 4 Anand Complex Alkapuri Society,<br />\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Opposite Kinara Hotel Near Vanaz Factory<br />\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Paud Road<br />\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kothrud<br />\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pune, Maharashtra 411038<br />\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; India</span></h4>\n\n<h4><span style=\"font-size:14px\">Website :&nbsp;&nbsp;</span><span style=\"color:#2c3e50\"><strong> <span style=\"font-size:12px\">https://www.sensibleconnect.com</span></strong></span></h4>',
-                                onLinkTap: (url, _, __, ___) => launchURL(url!),
+                                onLinkTap: (url, _, __) => launchURL(url!),
                               ),
                               TextFormField(
                                 controller: _model.textController,

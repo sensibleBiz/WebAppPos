@@ -1,14 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/c_add_dealer_widget.dart';
-import '/components/c_edit_dealer_widget.dart';
+import '/components/c_edit_dealer_data_widget.dart';
 import '/components/c_header_widget.dart';
 import '/components/cstm_side_nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'c_dealer_account_widget.dart' show CDealerAccountWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';

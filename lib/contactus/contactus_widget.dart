@@ -309,7 +309,7 @@ class _ContactusWidgetState extends State<ContactusWidget> {
                                                             containerContactUsRecord!
                                                                 .contains,
                                                         onLinkTap:
-                                                            (url, _, __, ___) =>
+                                                            (url, _, __) =>
                                                                 launchURL(url!),
                                                       ),
                                                     ],

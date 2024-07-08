@@ -482,11 +482,10 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                                     .dropDownCategoryValue =
                                                                 val);
                                                             FFAppState()
-                                                                .update(() {
-                                                              FFAppState()
-                                                                      .dropdown =
-                                                                  true;
-                                                            });
+                                                                    .dropdown =
+                                                                true;
+                                                            FFAppState()
+                                                                .update(() {});
                                                           },
                                                           width: 180.0,
                                                           height: 50.0,
@@ -671,11 +670,10 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                                     .dropDownSubCategoryValue =
                                                                 val);
                                                             FFAppState()
-                                                                .update(() {
-                                                              FFAppState()
-                                                                      .dropdown1 =
-                                                                  true;
-                                                            });
+                                                                    .dropdown1 =
+                                                                true;
+                                                            FFAppState()
+                                                                .update(() {});
                                                           },
                                                           width: 180.0,
                                                           height: 50.0,
@@ -1441,24 +1439,23 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
-                                                      FFAppState().update(() {
-                                                        FFAppState().regName =
-                                                            getJsonField(
-                                                          list2Item,
-                                                          r'''$.title''',
-                                                        ).toString();
-                                                        FFAppState()
-                                                                .showNameList =
-                                                            true;
-                                                      });
-                                                      FFAppState().update(() {
-                                                        FFAppState().names = functions
-                                                            .stringToList(
-                                                                container1ProductMasterRecord
-                                                                    .regionalName)
-                                                            .toList()
-                                                            .cast<dynamic>();
-                                                      });
+                                                      FFAppState().regName =
+                                                          getJsonField(
+                                                        list2Item,
+                                                        r'''$.title''',
+                                                      ).toString();
+                                                      FFAppState()
+                                                          .showNameList = true;
+                                                      FFAppState()
+                                                          .update(() {});
+                                                      FFAppState().names = functions
+                                                          .stringToList(
+                                                              container1ProductMasterRecord
+                                                                  .regionalName)
+                                                          .toList()
+                                                          .cast<dynamic>();
+                                                      FFAppState()
+                                                          .update(() {});
                                                     },
                                                     child: Row(
                                                       mainAxisSize:
@@ -1630,13 +1627,13 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        FFAppState().update(() {
-                                                          FFAppState().regName =
-                                                              getJsonField(
-                                                            list3Item,
-                                                            r'''$.title''',
-                                                          ).toString();
-                                                        });
+                                                        FFAppState().regName =
+                                                            getJsonField(
+                                                          list3Item,
+                                                          r'''$.title''',
+                                                        ).toString();
+                                                        FFAppState()
+                                                            .update(() {});
                                                       },
                                                       child: Row(
                                                         mainAxisSize:
@@ -2073,12 +2070,10 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      FFAppState().update(() {
-                                        FFAppState().dropdown = false;
-                                      });
-                                      FFAppState().update(() {
-                                        FFAppState().dropdown1 = false;
-                                      });
+                                      FFAppState().dropdown = false;
+                                      FFAppState().update(() {});
+                                      FFAppState().dropdown1 = false;
+                                      FFAppState().update(() {});
                                       Navigator.pop(context);
                                     },
                                     child: Container(
@@ -2221,6 +2216,19 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                     _model.catDoc?.reference,
                                                 imageUrl:
                                                     'https://unsplash.com/photos/s5kTY-Ve1c0',
+                                                type: () {
+                                                  if (_model
+                                                          .dropDownCategoryValue ==
+                                                      'FG') {
+                                                    return 1;
+                                                  } else if (_model
+                                                          .dropDownCategoryValue ==
+                                                      'RAW MATERIAL ') {
+                                                    return 1;
+                                                  } else {
+                                                    return 0;
+                                                  }
+                                                }(),
                                               ));
                                               await showDialog(
                                                 context: context,
@@ -2246,12 +2254,10 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                               context
                                                   .pushNamed('ProductMaster');
 
-                                              FFAppState().update(() {
-                                                FFAppState().dropdown = false;
-                                              });
-                                              FFAppState().update(() {
-                                                FFAppState().dropdown1 = false;
-                                              });
+                                              FFAppState().dropdown = false;
+                                              FFAppState().update(() {});
+                                              FFAppState().dropdown1 = false;
+                                              FFAppState().update(() {});
                                             } else {
                                               _model.notSame = await actions
                                                   .dupProductMaster(
@@ -2313,13 +2319,10 @@ class _UpdateProductMasterWidgetState extends State<UpdateProductMasterWidget> {
                                                 context
                                                     .pushNamed('ProductMaster');
 
-                                                FFAppState().update(() {
-                                                  FFAppState().dropdown = false;
-                                                });
-                                                FFAppState().update(() {
-                                                  FFAppState().dropdown1 =
-                                                      false;
-                                                });
+                                                FFAppState().dropdown = false;
+                                                FFAppState().update(() {});
+                                                FFAppState().dropdown1 = false;
+                                                FFAppState().update(() {});
                                                 if (_shouldSetState)
                                                   setState(() {});
                                                 return;

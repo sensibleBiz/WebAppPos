@@ -21,13 +21,16 @@ class PaymentModeStruct extends FFFirebaseStruct {
   String? _name;
   String get name => _name ?? '';
   set name(String? val) => _name = val;
+
   bool hasName() => _name != null;
 
   // "amount" field.
   double? _amount;
   double get amount => _amount ?? 0.0;
   set amount(double? val) => _amount = val;
-  void incrementAmount(double amount) => _amount = amount + amount;
+
+  void incrementAmount(double amount) => amount = amount + amount;
+
   bool hasAmount() => _amount != null;
 
   static PaymentModeStruct fromMap(Map<String, dynamic> data) =>

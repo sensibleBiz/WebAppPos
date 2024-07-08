@@ -167,9 +167,8 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
                                 controller: _model.textFieldNameTextController,
                                 focusNode: _model.textFieldNameFocusNode,
                                 onFieldSubmitted: (_) async {
-                                  FFAppState().update(() {
-                                    FFAppState().setCategoryMasterName = '';
-                                  });
+                                  FFAppState().setCategoryMasterName = '';
+                                  FFAppState().update(() {});
                                 },
                                 autofocus: false,
                                 readOnly: true,
@@ -414,9 +413,8 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              FFAppState().update(() {
-                                FFAppState().setCategoryMasterName = '';
-                              });
+                              FFAppState().setCategoryMasterName = '';
+                              FFAppState().update(() {});
                               Navigator.pop(context);
                             },
                             child: Container(
@@ -540,10 +538,9 @@ class _CAddCategoryWidgetState extends State<CAddCategoryWidget> {
 
                                     context.pushNamed('cCategory');
 
-                                    FFAppState().update(() {
-                                      FFAppState().catCodeLengtH = 0;
-                                      FFAppState().setCategoryMasterName = '';
-                                    });
+                                    FFAppState().catCodeLengtH = 0;
+                                    FFAppState().setCategoryMasterName = '';
+                                    FFAppState().update(() {});
                                     setState(() {
                                       _model.textFieldNameTextController
                                           ?.clear();

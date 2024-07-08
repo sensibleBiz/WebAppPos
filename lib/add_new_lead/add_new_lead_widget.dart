@@ -40,9 +40,8 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.wait = false;
-      });
+      _model.wait = false;
+      setState(() {});
     });
 
     _model.usernameTextController ??= TextEditingController();
@@ -2310,9 +2309,8 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                   if (_model.leadRecords
                                                           ?.length ==
                                                       0) {
-                                                    setState(() {
-                                                      _model.wait = true;
-                                                    });
+                                                    _model.wait = true;
+                                                    setState(() {});
 
                                                     var leadsRecordReference =
                                                         LeadsRecord.collection
@@ -2668,9 +2666,8 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                         const Duration(
                                                             milliseconds:
                                                                 2000));
-                                                    setState(() {
-                                                      _model.wait = false;
-                                                    });
+                                                    _model.wait = false;
+                                                    setState(() {});
 
                                                     context.pushNamed(
                                                         'LeadsDashboardFinal');

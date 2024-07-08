@@ -81,6 +81,11 @@ class ProductMasterRecord extends FirestoreRecord {
   String get imageUrl => _imageUrl ?? '';
   bool hasImageUrl() => _imageUrl != null;
 
+  // "type" field.
+  int? _type;
+  int get type => _type ?? 0;
+  bool hasType() => _type != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _name = snapshotData['name'] as String?;
@@ -95,6 +100,7 @@ class ProductMasterRecord extends FirestoreRecord {
     _updatedDate = castToType<int>(snapshotData['updatedDate']);
     _updatedBy = snapshotData['updatedBy'] as DocumentReference?;
     _imageUrl = snapshotData['imageUrl'] as String?;
+    _type = castToType<int>(snapshotData['type']);
   }
 
   static CollectionReference get collection =>
@@ -145,6 +151,7 @@ Map<String, dynamic> createProductMasterRecordData({
   int? updatedDate,
   DocumentReference? updatedBy,
   String? imageUrl,
+  int? type,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -161,6 +168,7 @@ Map<String, dynamic> createProductMasterRecordData({
       'updatedDate': updatedDate,
       'updatedBy': updatedBy,
       'imageUrl': imageUrl,
+      'type': type,
     }.withoutNulls,
   );
 
@@ -185,7 +193,8 @@ class ProductMasterRecordDocumentEquality
         e1?.createdBy == e2?.createdBy &&
         e1?.updatedDate == e2?.updatedDate &&
         e1?.updatedBy == e2?.updatedBy &&
-        e1?.imageUrl == e2?.imageUrl;
+        e1?.imageUrl == e2?.imageUrl &&
+        e1?.type == e2?.type;
   }
 
   @override
@@ -202,7 +211,8 @@ class ProductMasterRecordDocumentEquality
         e?.createdBy,
         e?.updatedDate,
         e?.updatedBy,
-        e?.imageUrl
+        e?.imageUrl,
+        e?.type
       ]);
 
   @override

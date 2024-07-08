@@ -29,39 +29,47 @@ class DemoListStruct extends FFFirebaseStruct {
   int? _checkInTime;
   int get checkInTime => _checkInTime ?? 0;
   set checkInTime(int? val) => _checkInTime = val;
-  void incrementCheckInTime(int amount) => _checkInTime = checkInTime + amount;
+
+  void incrementCheckInTime(int amount) => checkInTime = checkInTime + amount;
+
   bool hasCheckInTime() => _checkInTime != null;
 
   // "checkOutTime" field.
   int? _checkOutTime;
   int get checkOutTime => _checkOutTime ?? 0;
   set checkOutTime(int? val) => _checkOutTime = val;
+
   void incrementCheckOutTime(int amount) =>
-      _checkOutTime = checkOutTime + amount;
+      checkOutTime = checkOutTime + amount;
+
   bool hasCheckOutTime() => _checkOutTime != null;
 
   // "checkInLocation" field.
   LatLng? _checkInLocation;
   LatLng? get checkInLocation => _checkInLocation;
   set checkInLocation(LatLng? val) => _checkInLocation = val;
+
   bool hasCheckInLocation() => _checkInLocation != null;
 
   // "checkOutLocation" field.
   LatLng? _checkOutLocation;
   LatLng? get checkOutLocation => _checkOutLocation;
   set checkOutLocation(LatLng? val) => _checkOutLocation = val;
+
   bool hasCheckOutLocation() => _checkOutLocation != null;
 
   // "note" field.
   String? _note;
   String get note => _note ?? '';
   set note(String? val) => _note = val;
+
   bool hasNote() => _note != null;
 
   // "travelMode" field.
   String? _travelMode;
   String get travelMode => _travelMode ?? '';
   set travelMode(String? val) => _travelMode = val;
+
   bool hasTravelMode() => _travelMode != null;
 
   static DemoListStruct fromMap(Map<String, dynamic> data) => DemoListStruct(

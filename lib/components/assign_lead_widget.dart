@@ -88,6 +88,7 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
     super.initState();
     _model = createModel(context, () => AssignLeadModel());
 
+    _model.dealerSwitchValue = false;
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -189,7 +190,7 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Switch.adaptive(
-                          value: _model.dealerSwitchValue ??= false,
+                          value: _model.dealerSwitchValue!,
                           onChanged: (newValue) async {
                             setState(
                                 () => _model.dealerSwitchValue = newValue!);
@@ -409,8 +410,15 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                       child: FlutterFlowDropDown<String>(
                                         controller: _model
                                                 .assigneDealerDropDownValueController ??=
-                                            FormFieldController<String>(null),
-                                        options: containerDealersRecordList
+                                            FormFieldController<String>(
+                                          _model.assigneDealerDropDownValue ??=
+                                              '',
+                                        ),
+                                        options: List<String>.from(
+                                            containerDealersRecordList
+                                                .map((e) => e.id)
+                                                .toList()),
+                                        optionLabels: containerDealersRecordList
                                             .map((e) => e.name)
                                             .toList(),
                                         onChanged: (val) => setState(() =>
@@ -1010,40 +1018,33 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                             getCurrentTimestamp),
                                                       );
                                                       _shouldSetState = true;
-                                                      setState(() {
-                                                        FFAppState()
-                                                                .assignedExec =
-                                                            true;
-                                                        FFAppState().allLeads =
-                                                            _model.res3!
-                                                                .toList()
-                                                                .cast<
-                                                                    dynamic>();
-                                                      });
-                                                      setState(() {
-                                                        FFAppState()
-                                                            .leadCreateValue = '';
-                                                      });
-                                                      setState(() {
-                                                        FFAppState()
-                                                                .leadCreateValue =
-                                                            'Assigned';
-                                                        FFAppState()
-                                                                .lostLeadIcon =
-                                                            false;
-                                                      });
-                                                      setState(() {
-                                                        FFAppState().nleads =
-                                                            Colors.transparent;
-                                                        FFAppState().aleads =
-                                                            Color(0xFFCC0404);
-                                                        FFAppState().fLeads =
-                                                            Colors.transparent;
-                                                        FFAppState().cLeads =
-                                                            Colors.transparent;
-                                                        FFAppState().dLead =
-                                                            Colors.transparent;
-                                                      });
+                                                      FFAppState()
+                                                          .assignedExec = true;
+                                                      FFAppState().allLeads =
+                                                          _model.res3!
+                                                              .toList()
+                                                              .cast<dynamic>();
+                                                      setState(() {});
+                                                      FFAppState()
+                                                          .leadCreateValue = '';
+                                                      setState(() {});
+                                                      FFAppState()
+                                                              .leadCreateValue =
+                                                          'Assigned';
+                                                      FFAppState()
+                                                          .lostLeadIcon = false;
+                                                      setState(() {});
+                                                      FFAppState().nleads =
+                                                          Colors.transparent;
+                                                      FFAppState().aleads =
+                                                          Color(0xFFCC0404);
+                                                      FFAppState().fLeads =
+                                                          Colors.transparent;
+                                                      FFAppState().cLeads =
+                                                          Colors.transparent;
+                                                      FFAppState().dLead =
+                                                          Colors.transparent;
+                                                      setState(() {});
                                                       Navigator.pop(context);
                                                     } else {
                                                       await showDialog(

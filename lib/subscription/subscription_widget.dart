@@ -1049,9 +1049,8 @@ class _SubscriptionWidgetState extends State<SubscriptionWidget> {
                                                                                                       hoverColor: Colors.transparent,
                                                                                                       highlightColor: Colors.transparent,
                                                                                                       onTap: () async {
-                                                                                                        FFAppState().update(() {
-                                                                                                          FFAppState().activeInactiveFlag = false;
-                                                                                                        });
+                                                                                                        FFAppState().activeInactiveFlag = false;
+                                                                                                        FFAppState().update(() {});
                                                                                                         var confirmDialogResponse = await showDialog<bool>(
                                                                                                               context: context,
                                                                                                               builder: (alertDialogContext) {
@@ -1113,9 +1112,8 @@ class _SubscriptionWidgetState extends State<SubscriptionWidget> {
                                                                                                       hoverColor: Colors.transparent,
                                                                                                       highlightColor: Colors.transparent,
                                                                                                       onTap: () async {
-                                                                                                        FFAppState().update(() {
-                                                                                                          FFAppState().activeInactiveFlag = true;
-                                                                                                        });
+                                                                                                        FFAppState().activeInactiveFlag = true;
+                                                                                                        FFAppState().update(() {});
                                                                                                         var confirmDialogResponse = await showDialog<bool>(
                                                                                                               context: context,
                                                                                                               builder: (alertDialogContext) {

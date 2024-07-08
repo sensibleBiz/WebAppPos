@@ -633,24 +633,23 @@ class _UpdateCategoryMasterWidgetState
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
-                                                      FFAppState().update(() {
-                                                        FFAppState().regName =
-                                                            getJsonField(
-                                                          list2Item,
-                                                          r'''$.title''',
-                                                        ).toString();
-                                                        FFAppState()
-                                                                .showNameList =
-                                                            true;
-                                                      });
-                                                      FFAppState().update(() {
-                                                        FFAppState().names = functions
-                                                            .stringToList(
-                                                                container1CategoryMasterRecord
-                                                                    .regionalName)
-                                                            .toList()
-                                                            .cast<dynamic>();
-                                                      });
+                                                      FFAppState().regName =
+                                                          getJsonField(
+                                                        list2Item,
+                                                        r'''$.title''',
+                                                      ).toString();
+                                                      FFAppState()
+                                                          .showNameList = true;
+                                                      FFAppState()
+                                                          .update(() {});
+                                                      FFAppState().names = functions
+                                                          .stringToList(
+                                                              container1CategoryMasterRecord
+                                                                  .regionalName)
+                                                          .toList()
+                                                          .cast<dynamic>();
+                                                      FFAppState()
+                                                          .update(() {});
                                                     },
                                                     child: Row(
                                                       mainAxisSize:
@@ -828,13 +827,13 @@ class _UpdateCategoryMasterWidgetState
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        FFAppState().update(() {
-                                                          FFAppState().regName =
-                                                              getJsonField(
-                                                            list3Item,
-                                                            r'''$.title''',
-                                                          ).toString();
-                                                        });
+                                                        FFAppState().regName =
+                                                            getJsonField(
+                                                          list3Item,
+                                                          r'''$.title''',
+                                                        ).toString();
+                                                        FFAppState()
+                                                            .update(() {});
                                                       },
                                                       child: Row(
                                                         mainAxisSize:

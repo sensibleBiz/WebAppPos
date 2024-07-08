@@ -40,12 +40,10 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().isPresentInSearch = false;
-      });
-      setState(() {
-        _model.deletedBool = false;
-      });
+      FFAppState().isPresentInSearch = false;
+      setState(() {});
+      _model.deletedBool = false;
+      setState(() {});
     });
 
     _model.searchTextFieldTextController ??= TextEditingController();
@@ -85,34 +83,147 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                     width: double.infinity,
                     height: double.infinity,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      color: Color(0x00FFFFFF),
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Container(
                           width: double.infinity,
-                          height: 50.0,
                           decoration: BoxDecoration(
                             color: Color(0xFAB6001A),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: EdgeInsets.all(15.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed('LoginNewFinal');
-                                  },
-                                  child: Icon(
-                                    Icons.chevron_left,
-                                    color: Colors.white,
-                                    size: 32.0,
+                                Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed('LoginNewFinal');
+                                        },
+                                        child: Icon(
+                                          Icons.chevron_left,
+                                          color: Colors.white,
+                                          size: 32.0,
+                                        ),
+                                      ),
+                                      Text(
+                                        'User Manual Headers',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBtnText,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMediumFamily),
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(1.0, -1.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      context.pushNamed('UploadfilegetLink');
+                                    },
+                                    text: 'Upload FIle',
+                                    options: FFButtonOptions(
+                                      height: 40.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily),
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(1.0, -1.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      FFAppState().subHeaderId = '';
+                                      FFAppState().usermanBackFlag = true;
+                                      setState(() {});
+
+                                      context.pushNamed('UserManualUserView');
+                                    },
+                                    text: 'User Manual',
+                                    options: FFButtonOptions(
+                                      height: 40.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily),
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -121,27 +232,10 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 15.0, 0.0, 0.0),
+                              20.0, 15.0, 20.0, 15.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Expanded(
-                                child: Text(
-                                  'User Manual Headers',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .titleMediumFamily,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily),
-                                      ),
-                                ),
-                              ),
                               Expanded(
                                 child: Align(
                                   alignment: AlignmentDirectional(1.0, -1.0),
@@ -265,100 +359,45 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                               ),
                               Align(
                                 alignment: AlignmentDirectional(1.0, -1.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 20.0, 0.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      setState(() {
-                                        FFAppState().subHeaderId = '';
-                                        FFAppState().usermanBackFlag = true;
-                                      });
-
-                                      context.pushNamed('UserManualUserView');
-                                    },
-                                    text: 'User Manual',
-                                    options: FFButtonOptions(
-                                      height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmallFamily,
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmallFamily),
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    if (_model.deletedBool) {
+                                      _model.deletedBool = false;
+                                      setState(() {});
+                                    } else {
+                                      _model.deletedBool = true;
+                                      setState(() {});
+                                    }
+                                  },
+                                  text: _model.deletedBool
+                                      ? 'Not Deleted'
+                                      : 'Deleted',
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily),
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
                                     ),
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(1.0, -1.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 20.0, 0.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      if (_model.deletedBool) {
-                                        setState(() {
-                                          _model.deletedBool = false;
-                                        });
-                                      } else {
-                                        setState(() {
-                                          _model.deletedBool = true;
-                                        });
-                                      }
-                                    },
-                                    text: _model.deletedBool
-                                        ? 'Not Deleted'
-                                        : 'Deleted',
-                                    options: FFButtonOptions(
-                                      height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmallFamily,
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmallFamily),
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
                                 ),
                               ),
@@ -366,292 +405,233 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                           ),
                         ),
                         Expanded(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Flexible(
-                                      child: Stack(
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 8.0, 8.0, 0.0),
-                                            child: TextFormField(
-                                              controller: _model
-                                                  .searchTextFieldTextController,
-                                              focusNode: _model
-                                                  .searchTextFieldFocusNode,
-                                              onChanged: (_) =>
-                                                  EasyDebounce.debounce(
-                                                '_model.searchTextFieldTextController',
-                                                Duration(milliseconds: 2000),
-                                                () async {
-                                                  await queryUserManualRecordOnce()
-                                                      .then(
-                                                        (records) => _model
-                                                                .simpleSearchResults =
-                                                            TextSearch(
-                                                          records
-                                                              .map(
-                                                                (record) =>
-                                                                    TextSearchItem
-                                                                        .fromTerms(
-                                                                            record,
-                                                                            [
-                                                                      record
-                                                                          .headerName!
-                                                                    ]),
-                                                              )
-                                                              .toList(),
-                                                        )
-                                                                .search(_model
-                                                                    .searchTextFieldTextController
-                                                                    .text)
-                                                                .map((r) =>
-                                                                    r.object)
-                                                                .toList(),
-                                                      )
-                                                      .onError((_, __) => _model
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 0.0, 15.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 5.0, 0.0),
+                                          child: TextFormField(
+                                            controller: _model
+                                                .searchTextFieldTextController,
+                                            focusNode:
+                                                _model.searchTextFieldFocusNode,
+                                            onChanged: (_) =>
+                                                EasyDebounce.debounce(
+                                              '_model.searchTextFieldTextController',
+                                              Duration(milliseconds: 2000),
+                                              () async {
+                                                await queryUserManualRecordOnce()
+                                                    .then(
+                                                      (records) => _model
                                                               .simpleSearchResults =
-                                                          [])
-                                                      .whenComplete(() =>
-                                                          setState(() {}));
+                                                          TextSearch(
+                                                        records
+                                                            .map(
+                                                              (record) =>
+                                                                  TextSearchItem
+                                                                      .fromTerms(
+                                                                          record,
+                                                                          [
+                                                                    record
+                                                                        .headerName!
+                                                                  ]),
+                                                            )
+                                                            .toList(),
+                                                      )
+                                                              .search(_model
+                                                                  .searchTextFieldTextController
+                                                                  .text)
+                                                              .map((r) =>
+                                                                  r.object)
+                                                              .toList(),
+                                                    )
+                                                    .onError((_, __) => _model
+                                                            .simpleSearchResults =
+                                                        [])
+                                                    .whenComplete(
+                                                        () => setState(() {}));
 
-                                                  if ((_model
-                                                          .simpleSearchResults
-                                                          .isNotEmpty) ==
-                                                      true) {
-                                                    setState(() {
-                                                      FFAppState()
-                                                              .isPresentInSearch =
-                                                          true;
-                                                    });
-                                                  } else {
-                                                    setState(() {
-                                                      FFAppState()
-                                                              .isPresentInSearch =
-                                                          false;
-                                                    });
-                                                  }
-                                                },
-                                              ),
-                                              autofocus: true,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                labelText: 'Label here...',
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMediumFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMediumFamily),
-                                                        ),
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMediumFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMediumFamily),
-                                                        ),
-                                                enabledBorder:
-                                                    UnderlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20.0),
-                                                ),
-                                                focusedBorder:
-                                                    UnderlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20.0),
-                                                ),
-                                                errorBorder:
-                                                    UnderlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20.0),
-                                                ),
-                                                focusedErrorBorder:
-                                                    UnderlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20.0),
-                                                ),
-                                              ),
-                                              style:
+                                                if ((_model.simpleSearchResults
+                                                        .isNotEmpty) ==
+                                                    true) {
+                                                  FFAppState()
+                                                      .isPresentInSearch = true;
+                                                  setState(() {});
+                                                } else {
+                                                  FFAppState()
+                                                          .isPresentInSearch =
+                                                      false;
+                                                  setState(() {});
+                                                }
+                                              },
+                                            ),
+                                            autofocus: true,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              labelText: 'Search Header',
+                                              labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
+                                                      .labelMedium
                                                       .override(
                                                         fontFamily:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMediumFamily,
+                                                                .labelMediumFamily,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
                                                             .containsKey(
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMediumFamily),
+                                                                    .labelMediumFamily),
                                                       ),
-                                              validator: _model
-                                                  .searchTextFieldTextControllerValidator
-                                                  .asValidator(context),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.91, -0.02),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                              child: FlutterFlowIconButton(
-                                                borderColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent4,
-                                                borderRadius: 20.0,
-                                                borderWidth: 1.0,
-                                                buttonSize: 40.0,
-                                                icon: Icon(
-                                                  Icons.search,
+                                              hintStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily),
+                                                      ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
-                                                  size: 24.0,
+                                                      .customColor3,
+                                                  width: 1.0,
                                                 ),
-                                                onPressed: () {
-                                                  print(
-                                                      'IconButton pressed ...');
-                                                },
+                                                borderRadius:
+                                                    BorderRadius.circular(20.0),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(20.0),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(20.0),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(20.0),
+                                              ),
+                                              prefixIcon: Icon(
+                                                Icons.search_rounded,
+                                                size: 24.0,
                                               ),
                                             ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelLarge
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLargeFamily,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelLargeFamily),
+                                                ),
+                                            validator: _model
+                                                .searchTextFieldTextControllerValidator
+                                                .asValidator(context),
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 8.0, 0.0),
-                                      child: FlutterFlowIconButton(
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .accent4,
-                                        borderRadius: 20.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 40.0,
-                                        icon: Icon(
-                                          Icons.close,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 24.0,
                                         ),
-                                        onPressed: () async {
-                                          setState(() {
-                                            _model.searchTextFieldTextController
-                                                ?.clear();
-                                          });
-                                          setState(() {
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 8.0, 0.0),
+                                        child: FlutterFlowIconButton(
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .customColor3,
+                                          borderRadius: 10.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 45.0,
+                                          icon: Icon(
+                                            Icons.close,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 24.0,
+                                          ),
+                                          onPressed: () async {
+                                            setState(() {
+                                              _model
+                                                  .searchTextFieldTextController
+                                                  ?.clear();
+                                            });
                                             FFAppState().isPresentInSearch =
                                                 false;
-                                          });
-                                        },
+                                            setState(() {});
+                                          },
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 15.0, 0.0, 0.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 60.0,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFAB6001A),
+                                    ],
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        40.0, 0.0, 0.0, 0.0),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 15.0, 0.0, 0.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 60.0,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFAB6001A),
+                                    ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Text(
-                                          'Code',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelSmall
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmallFamily,
-                                                color: Colors.white,
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelSmallFamily),
-                                              ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(-1.0, 0.0),
+                                        Expanded(
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    48.0, 0.0, 0.0, 0.0),
+                                                    0.0, 0.0, 15.0, 0.0),
                                             child: Text(
-                                              'Name',
+                                              'Code',
+                                              textAlign: TextAlign.center,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelSmall
@@ -674,17 +654,19 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                                           ),
                                         ),
                                         Expanded(
-                                          child: Align(
-                                            alignment:
-                                                AlignmentDirectional(1.0, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 30.0, 0.0),
-                                              child: Text(
-                                                'Edit',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                          flex: 15,
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Text(
+                                                    'Name',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .labelSmall
                                                         .override(
                                                           fontFamily:
@@ -701,151 +683,187 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                                                                           context)
                                                                       .labelSmallFamily),
                                                         ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 20.0, 0.0),
-                                          child: Text(
-                                            'Delete',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelSmall
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelSmallFamily,
-                                                  color: Colors.white,
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelSmallFamily),
+                                                  ),
                                                 ),
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    1.0, 0.0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 30.0, 0.0),
+                                                  child: Text(
+                                                    'Edit',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmallFamily,
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmallFamily),
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 20.0, 0.0),
+                                                child: Text(
+                                                  'Delete',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelSmallFamily,
+                                                        color: Colors.white,
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily),
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
-                              ),
-                              Expanded(
-                                child: Builder(
-                                  builder: (context) {
-                                    if (FFAppState().isPresentInSearch !=
-                                        false) {
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Builder(
-                                          builder: (context) {
-                                            final headLineResult = _model
-                                                .simpleSearchResults
-                                                .sortedList((e) => e.code)
-                                                .toList();
-                                            return SingleChildScrollView(
-                                              primary: false,
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: List.generate(
-                                                    headLineResult.length,
-                                                    (headLineResultIndex) {
-                                                  final headLineResultItem =
-                                                      headLineResult[
-                                                          headLineResultIndex];
-                                                  return Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(20.0, 0.0,
-                                                                20.0, 15.0),
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
-                                                        border: Border.all(
+                                Expanded(
+                                  child: Builder(
+                                    builder: (context) {
+                                      if (FFAppState().isPresentInSearch !=
+                                          false) {
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 10.0, 0.0, 0.0),
+                                          child: Builder(
+                                            builder: (context) {
+                                              final headLineResult = _model
+                                                  .simpleSearchResults
+                                                  .sortedList((e) => e.code)
+                                                  .toList();
+                                              return SingleChildScrollView(
+                                                primary: false,
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: List.generate(
+                                                      headLineResult.length,
+                                                      (headLineResultIndex) {
+                                                    final headLineResultItem =
+                                                        headLineResult[
+                                                            headLineResultIndex];
+                                                    return Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  25.0),
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .customColor1,
+                                                              .secondaryBackground,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0),
+                                                          border: Border.all(
+                                                            color: Color(
+                                                                0x00D8D5E5),
+                                                          ),
                                                         ),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    20.0,
-                                                                    10.0,
-                                                                    20.0,
-                                                                    2.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      0.0,
-                                                                      -1.0),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  10.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          -1.0),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
-                                                                            10.0,
                                                                             0.0,
+                                                                            15.0,
                                                                             0.0),
-                                                                child: Text(
-                                                                  functions
-                                                                      .genSrno(
-                                                                          headLineResultIndex)
-                                                                      .toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                        fontSize:
-                                                                            18.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                      ),
+                                                                    child: Text(
+                                                                      functions
+                                                                          .genSrno(
+                                                                              headLineResultIndex)
+                                                                          .toString(),
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .center,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                            fontSize:
+                                                                                18.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                          ),
+                                                                    ),
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                            Expanded(
-                                                              child:
-                                                                  SingleChildScrollView(
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              1.0,
-                                                                              -1.0),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            20.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
+                                                              Expanded(
+                                                                flex: 15,
+                                                                child:
+                                                                    SingleChildScrollView(
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            1.0,
+                                                                            -1.0),
                                                                         child:
                                                                             Container(
                                                                           width:
@@ -858,60 +876,66 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                                                                                 false,
                                                                             child:
                                                                                 ExpandablePanel(
-                                                                              header: Container(
-                                                                                height: 36.0,
-                                                                                decoration: BoxDecoration(),
-                                                                                child: Row(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                  children: [
-                                                                                    Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                                                                      child: Text(
-                                                                                        headLineResultItem.headerName,
-                                                                                        style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                              fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                              fontSize: 18.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.w600,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Builder(
-                                                                                      builder: (context) => FlutterFlowIconButton(
-                                                                                        borderRadius: 20.0,
-                                                                                        borderWidth: 1.0,
-                                                                                        buttonSize: 40.0,
-                                                                                        icon: Icon(
-                                                                                          Icons.edit,
-                                                                                          color: FlutterFlowTheme.of(context).primaryText,
-                                                                                          size: 24.0,
+                                                                              header: Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                child: Container(
+                                                                                  height: 50.0,
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: Color(0xFFE8EBF2),
+                                                                                    borderRadius: BorderRadius.circular(10.0),
+                                                                                  ),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                                                                                        child: Text(
+                                                                                          headLineResultItem.headerName,
+                                                                                          style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                fontSize: 18.0,
+                                                                                                letterSpacing: 0.0,
+                                                                                                fontWeight: FontWeight.w600,
+                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              ),
                                                                                         ),
-                                                                                        onPressed: () async {
-                                                                                          await showDialog(
-                                                                                            context: context,
-                                                                                            builder: (dialogContext) {
-                                                                                              return Dialog(
-                                                                                                elevation: 0,
-                                                                                                insetPadding: EdgeInsets.zero,
-                                                                                                backgroundColor: Colors.transparent,
-                                                                                                alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                                                child: WebViewAware(
-                                                                                                  child: GestureDetector(
-                                                                                                    onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                                    child: HeaderEditWidget(
-                                                                                                      id: headLineResultItem.id,
+                                                                                      ),
+                                                                                      Builder(
+                                                                                        builder: (context) => FlutterFlowIconButton(
+                                                                                          borderRadius: 16.0,
+                                                                                          borderWidth: 1.0,
+                                                                                          buttonSize: 45.0,
+                                                                                          icon: Icon(
+                                                                                            Icons.edit,
+                                                                                            color: FlutterFlowTheme.of(context).primaryText,
+                                                                                            size: 24.0,
+                                                                                          ),
+                                                                                          onPressed: () async {
+                                                                                            await showDialog(
+                                                                                              context: context,
+                                                                                              builder: (dialogContext) {
+                                                                                                return Dialog(
+                                                                                                  elevation: 0,
+                                                                                                  insetPadding: EdgeInsets.zero,
+                                                                                                  backgroundColor: Colors.transparent,
+                                                                                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                                  child: WebViewAware(
+                                                                                                    child: GestureDetector(
+                                                                                                      onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                                      child: HeaderEditWidget(
+                                                                                                        id: headLineResultItem.id,
+                                                                                                      ),
                                                                                                     ),
                                                                                                   ),
-                                                                                                ),
-                                                                                              );
-                                                                                            },
-                                                                                          ).then((value) => setState(() {}));
-                                                                                        },
+                                                                                                );
+                                                                                              },
+                                                                                            ).then((value) => setState(() {}));
+                                                                                          },
+                                                                                        ),
                                                                                       ),
-                                                                                    ),
-                                                                                  ],
+                                                                                    ],
+                                                                                  ),
                                                                                 ),
                                                                               ),
                                                                               collapsed: StreamBuilder<List<SubHeaderRecord>>(
@@ -943,488 +967,99 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                                                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                                                       children: List.generate(columnSubHeaderRecordList.length, (columnIndex) {
                                                                                         final columnSubHeaderRecord = columnSubHeaderRecordList[columnIndex];
-                                                                                        return Column(
-                                                                                          mainAxisSize: MainAxisSize.max,
-                                                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                          children: [
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                                                                                              child: Row(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                children: [
-                                                                                                  Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                                                                                    child: Text(
-                                                                                                      columnSubHeaderRecord.topicName,
-                                                                                                      style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                            fontSize: 16.0,
-                                                                                                            letterSpacing: 0.0,
-                                                                                                            fontWeight: FontWeight.w500,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                          ),
+                                                                                        return Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 0.0, 10.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            children: [
+                                                                                              Text(
+                                                                                                columnSubHeaderRecord.topicName,
+                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                      fontSize: 16.0,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      fontWeight: FontWeight.w500,
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
                                                                                                     ),
-                                                                                                  ),
-                                                                                                  Expanded(
-                                                                                                    child: Align(
-                                                                                                      alignment: AlignmentDirectional(1.0, -1.0),
-                                                                                                      child: InkWell(
-                                                                                                        splashColor: Colors.transparent,
-                                                                                                        focusColor: Colors.transparent,
-                                                                                                        hoverColor: Colors.transparent,
-                                                                                                        highlightColor: Colors.transparent,
-                                                                                                        onTap: () async {
-                                                                                                          context.pushNamed(
-                                                                                                            'EditUserManual',
-                                                                                                            queryParameters: {
-                                                                                                              'subHeaderDoc': serializeParam(
-                                                                                                                columnSubHeaderRecord,
-                                                                                                                ParamType.Document,
-                                                                                                              ),
-                                                                                                              'userDoc': serializeParam(
-                                                                                                                headLineResultItem,
-                                                                                                                ParamType.Document,
-                                                                                                              ),
-                                                                                                            }.withoutNulls,
-                                                                                                            extra: <String, dynamic>{
-                                                                                                              'subHeaderDoc': columnSubHeaderRecord,
-                                                                                                              'userDoc': headLineResultItem,
-                                                                                                            },
-                                                                                                          );
-                                                                                                        },
-                                                                                                        child: Icon(
-                                                                                                          Icons.edit_sharp,
-                                                                                                          color: Colors.black,
-                                                                                                          size: 24.0,
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                  Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 15.0, 0.0),
-                                                                                                    child: InkWell(
-                                                                                                      splashColor: Colors.transparent,
-                                                                                                      focusColor: Colors.transparent,
-                                                                                                      hoverColor: Colors.transparent,
-                                                                                                      highlightColor: Colors.transparent,
-                                                                                                      onTap: () async {
-                                                                                                        var confirmDialogResponse = await showDialog<bool>(
-                                                                                                              context: context,
-                                                                                                              builder: (alertDialogContext) {
-                                                                                                                return WebViewAware(
-                                                                                                                  child: AlertDialog(
-                                                                                                                    title: Text('Warning'),
-                                                                                                                    content: Text('Are you sure, you want to delete Subheader?'),
-                                                                                                                    actions: [
-                                                                                                                      TextButton(
-                                                                                                                        onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                        child: Text('No'),
-                                                                                                                      ),
-                                                                                                                      TextButton(
-                                                                                                                        onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                        child: Text('Yes'),
-                                                                                                                      ),
-                                                                                                                    ],
-                                                                                                                  ),
-                                                                                                                );
-                                                                                                              },
-                                                                                                            ) ??
-                                                                                                            false;
-                                                                                                        if (confirmDialogResponse) {
-                                                                                                          await columnSubHeaderRecord.reference.update(createSubHeaderRecordData(
-                                                                                                            isDeleted: true,
-                                                                                                            deletedBy: FFAppState().userId,
-                                                                                                          ));
-                                                                                                        }
-                                                                                                      },
-                                                                                                      child: Icon(
-                                                                                                        Icons.delete,
-                                                                                                        color: Colors.black,
-                                                                                                        size: 24.0,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ],
                                                                                               ),
-                                                                                            ),
-                                                                                            Divider(
-                                                                                              thickness: 1.0,
-                                                                                              color: FlutterFlowTheme.of(context).accent4,
-                                                                                            ),
-                                                                                          ],
-                                                                                        );
-                                                                                      }),
-                                                                                    ),
-                                                                                  );
-                                                                                },
-                                                                              ),
-                                                                              expanded: Container(
-                                                                                width: 1.0,
-                                                                                height: 1.0,
-                                                                                decoration: BoxDecoration(
-                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                ),
-                                                                              ),
-                                                                              theme: ExpandableThemeData(
-                                                                                tapHeaderToExpand: true,
-                                                                                tapBodyToExpand: false,
-                                                                                tapBodyToCollapse: false,
-                                                                                headerAlignment: ExpandablePanelHeaderAlignment.center,
-                                                                                hasIcon: true,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  );
-                                                }),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      );
-                                    } else {
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: StreamBuilder<
-                                            List<UserManualRecord>>(
-                                          stream: queryUserManualRecord(
-                                            queryBuilder: (userManualRecord) =>
-                                                userManualRecord
-                                                    .orderBy('code'),
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 35.0,
-                                                  height: 35.0,
-                                                  child: SpinKitPulse(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    size: 35.0,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<UserManualRecord>
-                                                column2UserManualRecordList =
-                                                snapshot.data!;
-                                            return SingleChildScrollView(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: List.generate(
-                                                    column2UserManualRecordList
-                                                        .length,
-                                                    (column2Index) {
-                                                  final column2UserManualRecord =
-                                                      column2UserManualRecordList[
-                                                          column2Index];
-                                                  return Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(20.0, 0.0,
-                                                                20.0, 15.0),
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .customColor1,
-                                                        ),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    20.0,
-                                                                    10.0,
-                                                                    20.0,
-                                                                    2.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      0.0,
-                                                                      -1.0),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  column2UserManualRecord
-                                                                      .code
-                                                                      .toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                        fontSize:
-                                                                            18.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              child:
-                                                                  SingleChildScrollView(
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              1.0,
-                                                                              -1.0),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            20.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Container(
-                                                                          width:
-                                                                              double.infinity,
-                                                                          color:
-                                                                              Color(0x00000000),
-                                                                          child:
-                                                                              ExpandableNotifier(
-                                                                            initialExpanded:
-                                                                                false,
-                                                                            child:
-                                                                                ExpandablePanel(
-                                                                              header: Container(
-                                                                                height: 36.0,
-                                                                                decoration: BoxDecoration(),
-                                                                                child: Row(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                  children: [
-                                                                                    Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                                                                      child: Text(
-                                                                                        column2UserManualRecord.headerName,
-                                                                                        style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                              fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                              fontSize: 18.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.w600,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Builder(
-                                                                                      builder: (context) => FlutterFlowIconButton(
-                                                                                        borderColor: Colors.transparent,
-                                                                                        borderRadius: 20.0,
-                                                                                        borderWidth: 1.0,
-                                                                                        buttonSize: 40.0,
-                                                                                        icon: Icon(
-                                                                                          Icons.edit,
-                                                                                          color: FlutterFlowTheme.of(context).primaryText,
-                                                                                          size: 24.0,
-                                                                                        ),
-                                                                                        onPressed: () async {
-                                                                                          await showDialog(
-                                                                                            context: context,
-                                                                                            builder: (dialogContext) {
-                                                                                              return Dialog(
-                                                                                                elevation: 0,
-                                                                                                insetPadding: EdgeInsets.zero,
-                                                                                                backgroundColor: Colors.transparent,
-                                                                                                alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                                                child: WebViewAware(
-                                                                                                  child: GestureDetector(
-                                                                                                    onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                                    child: HeaderEditWidget(
-                                                                                                      id: column2UserManualRecord.id,
+                                                                                              Expanded(
+                                                                                                child: Align(
+                                                                                                  alignment: AlignmentDirectional(1.0, -1.0),
+                                                                                                  child: InkWell(
+                                                                                                    splashColor: Colors.transparent,
+                                                                                                    focusColor: Colors.transparent,
+                                                                                                    hoverColor: Colors.transparent,
+                                                                                                    highlightColor: Colors.transparent,
+                                                                                                    onTap: () async {
+                                                                                                      context.pushNamed(
+                                                                                                        'EditUserManual',
+                                                                                                        queryParameters: {
+                                                                                                          'subHeaderDoc': serializeParam(
+                                                                                                            columnSubHeaderRecord,
+                                                                                                            ParamType.Document,
+                                                                                                          ),
+                                                                                                          'userDoc': serializeParam(
+                                                                                                            headLineResultItem,
+                                                                                                            ParamType.Document,
+                                                                                                          ),
+                                                                                                        }.withoutNulls,
+                                                                                                        extra: <String, dynamic>{
+                                                                                                          'subHeaderDoc': columnSubHeaderRecord,
+                                                                                                          'userDoc': headLineResultItem,
+                                                                                                        },
+                                                                                                      );
+                                                                                                    },
+                                                                                                    child: Icon(
+                                                                                                      Icons.edit_sharp,
+                                                                                                      color: Colors.black,
+                                                                                                      size: 24.0,
                                                                                                     ),
                                                                                                   ),
                                                                                                 ),
-                                                                                              );
-                                                                                            },
-                                                                                          ).then((value) => setState(() {}));
-                                                                                        },
-                                                                                      ),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              ),
-                                                                              collapsed: StreamBuilder<List<SubHeaderRecord>>(
-                                                                                stream: querySubHeaderRecord(
-                                                                                  parent: column2UserManualRecord.reference,
-                                                                                  queryBuilder: (subHeaderRecord) => subHeaderRecord.where(
-                                                                                    'isDeleted',
-                                                                                    isEqualTo: _model.deletedBool,
-                                                                                  ),
-                                                                                ),
-                                                                                builder: (context, snapshot) {
-                                                                                  // Customize what your widget looks like when it's loading.
-                                                                                  if (!snapshot.hasData) {
-                                                                                    return Center(
-                                                                                      child: SizedBox(
-                                                                                        width: 35.0,
-                                                                                        height: 35.0,
-                                                                                        child: SpinKitPulse(
-                                                                                          color: FlutterFlowTheme.of(context).primary,
-                                                                                          size: 35.0,
-                                                                                        ),
-                                                                                      ),
-                                                                                    );
-                                                                                  }
-                                                                                  List<SubHeaderRecord> columnSubHeaderRecordList = snapshot.data!;
-                                                                                  return SingleChildScrollView(
-                                                                                    child: Column(
-                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                                      children: List.generate(columnSubHeaderRecordList.length, (columnIndex) {
-                                                                                        final columnSubHeaderRecord = columnSubHeaderRecordList[columnIndex];
-                                                                                        return SingleChildScrollView(
-                                                                                          child: Column(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                            children: [
+                                                                                              ),
                                                                                               Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                                                                                                child: Row(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  children: [
-                                                                                                    Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                                                                                      child: Text(
-                                                                                                        columnSubHeaderRecord.topicName,
-                                                                                                        style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                              fontSize: 16.0,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              fontWeight: FontWeight.w500,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    Expanded(
-                                                                                                      child: Align(
-                                                                                                        alignment: AlignmentDirectional(1.0, -1.0),
-                                                                                                        child: InkWell(
-                                                                                                          splashColor: Colors.transparent,
-                                                                                                          focusColor: Colors.transparent,
-                                                                                                          hoverColor: Colors.transparent,
-                                                                                                          highlightColor: Colors.transparent,
-                                                                                                          onTap: () async {
-                                                                                                            context.pushNamed(
-                                                                                                              'EditUserManual',
-                                                                                                              queryParameters: {
-                                                                                                                'subHeaderDoc': serializeParam(
-                                                                                                                  columnSubHeaderRecord,
-                                                                                                                  ParamType.Document,
-                                                                                                                ),
-                                                                                                                'userDoc': serializeParam(
-                                                                                                                  column2UserManualRecord,
-                                                                                                                  ParamType.Document,
-                                                                                                                ),
-                                                                                                              }.withoutNulls,
-                                                                                                              extra: <String, dynamic>{
-                                                                                                                'subHeaderDoc': columnSubHeaderRecord,
-                                                                                                                'userDoc': column2UserManualRecord,
-                                                                                                              },
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 15.0, 0.0),
+                                                                                                child: InkWell(
+                                                                                                  splashColor: Colors.transparent,
+                                                                                                  focusColor: Colors.transparent,
+                                                                                                  hoverColor: Colors.transparent,
+                                                                                                  highlightColor: Colors.transparent,
+                                                                                                  onTap: () async {
+                                                                                                    var confirmDialogResponse = await showDialog<bool>(
+                                                                                                          context: context,
+                                                                                                          builder: (alertDialogContext) {
+                                                                                                            return WebViewAware(
+                                                                                                              child: AlertDialog(
+                                                                                                                title: Text('Warning'),
+                                                                                                                content: Text('Are you sure, you want to delete Subheader?'),
+                                                                                                                actions: [
+                                                                                                                  TextButton(
+                                                                                                                    onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                                                    child: Text('No'),
+                                                                                                                  ),
+                                                                                                                  TextButton(
+                                                                                                                    onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                                                    child: Text('Yes'),
+                                                                                                                  ),
+                                                                                                                ],
+                                                                                                              ),
                                                                                                             );
                                                                                                           },
-                                                                                                          child: Icon(
-                                                                                                            Icons.edit_sharp,
-                                                                                                            color: Colors.black,
-                                                                                                            size: 24.0,
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 15.0, 0.0),
-                                                                                                      child: InkWell(
-                                                                                                        splashColor: Colors.transparent,
-                                                                                                        focusColor: Colors.transparent,
-                                                                                                        hoverColor: Colors.transparent,
-                                                                                                        highlightColor: Colors.transparent,
-                                                                                                        onTap: () async {
-                                                                                                          var confirmDialogResponse = await showDialog<bool>(
-                                                                                                                context: context,
-                                                                                                                builder: (alertDialogContext) {
-                                                                                                                  return WebViewAware(
-                                                                                                                    child: AlertDialog(
-                                                                                                                      title: Text('Warning'),
-                                                                                                                      content: Text('Are you sure, you want to delete Subheader?'),
-                                                                                                                      actions: [
-                                                                                                                        TextButton(
-                                                                                                                          onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                                                          child: Text('No'),
-                                                                                                                        ),
-                                                                                                                        TextButton(
-                                                                                                                          onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                                                          child: Text('Yes'),
-                                                                                                                        ),
-                                                                                                                      ],
-                                                                                                                    ),
-                                                                                                                  );
-                                                                                                                },
-                                                                                                              ) ??
-                                                                                                              false;
-                                                                                                          if (confirmDialogResponse) {
-                                                                                                            await columnSubHeaderRecord.reference.update(createSubHeaderRecordData(
-                                                                                                              isDeleted: true,
-                                                                                                            ));
-                                                                                                          }
-                                                                                                        },
-                                                                                                        child: Icon(
-                                                                                                          Icons.delete,
-                                                                                                          color: Colors.black,
-                                                                                                          size: 24.0,
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ],
+                                                                                                        ) ??
+                                                                                                        false;
+                                                                                                    if (confirmDialogResponse) {
+                                                                                                      await columnSubHeaderRecord.reference.update(createSubHeaderRecordData(
+                                                                                                        isDeleted: true,
+                                                                                                        deletedBy: FFAppState().userId,
+                                                                                                      ));
+                                                                                                    }
+                                                                                                  },
+                                                                                                  child: Icon(
+                                                                                                    Icons.delete,
+                                                                                                    color: Colors.black,
+                                                                                                    size: 24.0,
+                                                                                                  ),
                                                                                                 ),
-                                                                                              ),
-                                                                                              Divider(
-                                                                                                thickness: 1.0,
-                                                                                                color: FlutterFlowTheme.of(context).accent4,
                                                                                               ),
                                                                                             ],
                                                                                           ),
@@ -1452,27 +1087,408 @@ class _AdminUserManualViewWidgetState extends State<AdminUserManualViewWidget> {
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ),
-                                                                  ],
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
+                                                    );
+                                                  }),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        );
+                                      } else {
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 10.0, 0.0, 0.0),
+                                          child: StreamBuilder<
+                                              List<UserManualRecord>>(
+                                            stream: queryUserManualRecord(
+                                              queryBuilder:
+                                                  (userManualRecord) =>
+                                                      userManualRecord
+                                                          .orderBy('code'),
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 35.0,
+                                                    height: 35.0,
+                                                    child: SpinKitPulse(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      size: 35.0,
                                                     ),
-                                                  );
-                                                }),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      );
-                                    }
-                                  },
+                                                  ),
+                                                );
+                                              }
+                                              List<UserManualRecord>
+                                                  column2UserManualRecordList =
+                                                  snapshot.data!;
+                                              return SingleChildScrollView(
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: List.generate(
+                                                      column2UserManualRecordList
+                                                          .length,
+                                                      (column2Index) {
+                                                    final column2UserManualRecord =
+                                                        column2UserManualRecordList[
+                                                            column2Index];
+                                                    return Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  20.0,
+                                                                  0.0,
+                                                                  20.0,
+                                                                  15.0),
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0),
+                                                          border: Border.all(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .customColor1,
+                                                          ),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      20.0,
+                                                                      10.0,
+                                                                      20.0,
+                                                                      2.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.0,
+                                                                        -1.0),
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    column2UserManualRecord
+                                                                        .code
+                                                                        .toString(),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                          fontSize:
+                                                                              18.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                child:
+                                                                    SingleChildScrollView(
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            1.0,
+                                                                            -1.0),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              20.0,
+                                                                              0.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                double.infinity,
+                                                                            color:
+                                                                                Color(0x00000000),
+                                                                            child:
+                                                                                ExpandableNotifier(
+                                                                              initialExpanded: false,
+                                                                              child: ExpandablePanel(
+                                                                                header: Container(
+                                                                                  height: 36.0,
+                                                                                  decoration: BoxDecoration(),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                        child: Text(
+                                                                                          column2UserManualRecord.headerName,
+                                                                                          style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                fontSize: 18.0,
+                                                                                                letterSpacing: 0.0,
+                                                                                                fontWeight: FontWeight.w600,
+                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              ),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Builder(
+                                                                                        builder: (context) => FlutterFlowIconButton(
+                                                                                          borderColor: Colors.transparent,
+                                                                                          borderRadius: 20.0,
+                                                                                          borderWidth: 1.0,
+                                                                                          buttonSize: 40.0,
+                                                                                          icon: Icon(
+                                                                                            Icons.edit,
+                                                                                            color: FlutterFlowTheme.of(context).primaryText,
+                                                                                            size: 24.0,
+                                                                                          ),
+                                                                                          onPressed: () async {
+                                                                                            await showDialog(
+                                                                                              context: context,
+                                                                                              builder: (dialogContext) {
+                                                                                                return Dialog(
+                                                                                                  elevation: 0,
+                                                                                                  insetPadding: EdgeInsets.zero,
+                                                                                                  backgroundColor: Colors.transparent,
+                                                                                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                                  child: WebViewAware(
+                                                                                                    child: GestureDetector(
+                                                                                                      onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                                      child: HeaderEditWidget(
+                                                                                                        id: column2UserManualRecord.id,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                );
+                                                                                              },
+                                                                                            ).then((value) => setState(() {}));
+                                                                                          },
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                                collapsed: StreamBuilder<List<SubHeaderRecord>>(
+                                                                                  stream: querySubHeaderRecord(
+                                                                                    parent: column2UserManualRecord.reference,
+                                                                                    queryBuilder: (subHeaderRecord) => subHeaderRecord.where(
+                                                                                      'isDeleted',
+                                                                                      isEqualTo: _model.deletedBool,
+                                                                                    ),
+                                                                                  ),
+                                                                                  builder: (context, snapshot) {
+                                                                                    // Customize what your widget looks like when it's loading.
+                                                                                    if (!snapshot.hasData) {
+                                                                                      return Center(
+                                                                                        child: SizedBox(
+                                                                                          width: 35.0,
+                                                                                          height: 35.0,
+                                                                                          child: SpinKitPulse(
+                                                                                            color: FlutterFlowTheme.of(context).primary,
+                                                                                            size: 35.0,
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }
+                                                                                    List<SubHeaderRecord> columnSubHeaderRecordList = snapshot.data!;
+                                                                                    return SingleChildScrollView(
+                                                                                      child: Column(
+                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                                                        children: List.generate(columnSubHeaderRecordList.length, (columnIndex) {
+                                                                                          final columnSubHeaderRecord = columnSubHeaderRecordList[columnIndex];
+                                                                                          return SingleChildScrollView(
+                                                                                            child: Column(
+                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                              children: [
+                                                                                                Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                                                                                                  child: Row(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    children: [
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                                        child: Text(
+                                                                                                          columnSubHeaderRecord.topicName,
+                                                                                                          style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                fontSize: 16.0,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                fontWeight: FontWeight.w500,
+                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                              ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      Expanded(
+                                                                                                        child: Align(
+                                                                                                          alignment: AlignmentDirectional(1.0, -1.0),
+                                                                                                          child: InkWell(
+                                                                                                            splashColor: Colors.transparent,
+                                                                                                            focusColor: Colors.transparent,
+                                                                                                            hoverColor: Colors.transparent,
+                                                                                                            highlightColor: Colors.transparent,
+                                                                                                            onTap: () async {
+                                                                                                              context.pushNamed(
+                                                                                                                'EditUserManual',
+                                                                                                                queryParameters: {
+                                                                                                                  'subHeaderDoc': serializeParam(
+                                                                                                                    columnSubHeaderRecord,
+                                                                                                                    ParamType.Document,
+                                                                                                                  ),
+                                                                                                                  'userDoc': serializeParam(
+                                                                                                                    column2UserManualRecord,
+                                                                                                                    ParamType.Document,
+                                                                                                                  ),
+                                                                                                                }.withoutNulls,
+                                                                                                                extra: <String, dynamic>{
+                                                                                                                  'subHeaderDoc': columnSubHeaderRecord,
+                                                                                                                  'userDoc': column2UserManualRecord,
+                                                                                                                },
+                                                                                                              );
+                                                                                                            },
+                                                                                                            child: Icon(
+                                                                                                              Icons.edit_sharp,
+                                                                                                              color: Colors.black,
+                                                                                                              size: 24.0,
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 15.0, 0.0),
+                                                                                                        child: InkWell(
+                                                                                                          splashColor: Colors.transparent,
+                                                                                                          focusColor: Colors.transparent,
+                                                                                                          hoverColor: Colors.transparent,
+                                                                                                          highlightColor: Colors.transparent,
+                                                                                                          onTap: () async {
+                                                                                                            var confirmDialogResponse = await showDialog<bool>(
+                                                                                                                  context: context,
+                                                                                                                  builder: (alertDialogContext) {
+                                                                                                                    return WebViewAware(
+                                                                                                                      child: AlertDialog(
+                                                                                                                        title: Text('Warning'),
+                                                                                                                        content: Text('Are you sure, you want to delete Subheader?'),
+                                                                                                                        actions: [
+                                                                                                                          TextButton(
+                                                                                                                            onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                                                            child: Text('No'),
+                                                                                                                          ),
+                                                                                                                          TextButton(
+                                                                                                                            onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                                                            child: Text('Yes'),
+                                                                                                                          ),
+                                                                                                                        ],
+                                                                                                                      ),
+                                                                                                                    );
+                                                                                                                  },
+                                                                                                                ) ??
+                                                                                                                false;
+                                                                                                            if (confirmDialogResponse) {
+                                                                                                              await columnSubHeaderRecord.reference.update(createSubHeaderRecordData(
+                                                                                                                isDeleted: true,
+                                                                                                              ));
+                                                                                                            }
+                                                                                                          },
+                                                                                                          child: Icon(
+                                                                                                            Icons.delete,
+                                                                                                            color: Colors.black,
+                                                                                                            size: 24.0,
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ),
+                                                                                                Divider(
+                                                                                                  thickness: 1.0,
+                                                                                                  color: FlutterFlowTheme.of(context).accent4,
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          );
+                                                                                        }),
+                                                                                      ),
+                                                                                    );
+                                                                                  },
+                                                                                ),
+                                                                                expanded: Container(
+                                                                                  width: 1.0,
+                                                                                  height: 1.0,
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                  ),
+                                                                                ),
+                                                                                theme: ExpandableThemeData(
+                                                                                  tapHeaderToExpand: true,
+                                                                                  tapBodyToExpand: false,
+                                                                                  tapBodyToCollapse: false,
+                                                                                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                                                                                  hasIcon: true,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        );
+                                      }
+                                    },
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ],

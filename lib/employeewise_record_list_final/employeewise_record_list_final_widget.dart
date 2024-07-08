@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -53,10 +54,9 @@ class _EmployeewiseRecordListFinalWidgetState
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().selectedDate =
-            functions.timestampToMili(getCurrentTimestamp);
-      });
+      FFAppState().selectedDate =
+          functions.timestampToMili(getCurrentTimestamp);
+      setState(() {});
     });
 
     animationsMap.addAll({
@@ -467,12 +467,11 @@ class _EmployeewiseRecordListFinalWidgetState
                                           size: 20.0,
                                         ),
                                         onPressed: () async {
-                                          setState(() {
-                                            FFAppState().startDate =
-                                                functions.currentMonth('first');
-                                            FFAppState().endDate =
-                                                functions.currentMonth('last');
-                                          });
+                                          FFAppState().startDate =
+                                              functions.currentMonth('first');
+                                          FFAppState().endDate =
+                                              functions.currentMonth('last');
+                                          setState(() {});
                                           await showDialog(
                                             context: context,
                                             builder: (dialogContext) {
@@ -590,26 +589,24 @@ class _EmployeewiseRecordListFinalWidgetState
                                           2.0, 0.0, 3.0, 10.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          setState(() {
-                                            FFAppState().showStatus = false;
-                                          });
-                                          setState(() {
-                                            FFAppState().cAll =
-                                                FlutterFlowTheme.of(context)
-                                                    .primary;
-                                            FFAppState().cDemoDone =
-                                                Colors.transparent;
-                                            FFAppState().cDemoResch =
-                                                Colors.transparent;
-                                            FFAppState().cFollowUp =
-                                                Colors.transparent;
-                                            FFAppState().cInstallation =
-                                                Colors.transparent;
-                                            FFAppState().cHold =
-                                                Colors.transparent;
-                                            FFAppState().cLost =
-                                                Colors.transparent;
-                                          });
+                                          FFAppState().showStatus = false;
+                                          setState(() {});
+                                          FFAppState().cAll =
+                                              FlutterFlowTheme.of(context)
+                                                  .primary;
+                                          FFAppState().cDemoDone =
+                                              Colors.transparent;
+                                          FFAppState().cDemoResch =
+                                              Colors.transparent;
+                                          FFAppState().cFollowUp =
+                                              Colors.transparent;
+                                          FFAppState().cInstallation =
+                                              Colors.transparent;
+                                          FFAppState().cHold =
+                                              Colors.transparent;
+                                          FFAppState().cLost =
+                                              Colors.transparent;
+                                          setState(() {});
                                         },
                                         text: 'All',
                                         options: FFButtonOptions(
@@ -666,30 +663,26 @@ class _EmployeewiseRecordListFinalWidgetState
                                                     2.0, 5.0, 3.0, 5.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().dropDownStatus =
-                                                      'assigned';
-                                                  FFAppState().showStatus =
-                                                      true;
-                                                });
-                                                setState(() {
-                                                  FFAppState().cAll =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoDone =
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary;
-                                                  FFAppState().cDemoResch =
-                                                      Colors.transparent;
-                                                  FFAppState().cFollowUp =
-                                                      Colors.transparent;
-                                                  FFAppState().cInstallation =
-                                                      Colors.transparent;
-                                                  FFAppState().cHold =
-                                                      Colors.transparent;
-                                                  FFAppState().cLost =
-                                                      Colors.transparent;
-                                                });
+                                                FFAppState().dropDownStatus =
+                                                    'assigned';
+                                                FFAppState().showStatus = true;
+                                                setState(() {});
+                                                FFAppState().cAll =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoDone =
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary;
+                                                FFAppState().cDemoResch =
+                                                    Colors.transparent;
+                                                FFAppState().cFollowUp =
+                                                    Colors.transparent;
+                                                FFAppState().cInstallation =
+                                                    Colors.transparent;
+                                                FFAppState().cHold =
+                                                    Colors.transparent;
+                                                FFAppState().cLost =
+                                                    Colors.transparent;
+                                                setState(() {});
                                               },
                                               text: 'Qualified',
                                               options: FFButtonOptions(
@@ -739,30 +732,26 @@ class _EmployeewiseRecordListFinalWidgetState
                                                     2.0, 5.0, 3.0, 5.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().dropDownStatus =
-                                                      'followup';
-                                                  FFAppState().showStatus =
-                                                      true;
-                                                });
-                                                setState(() {
-                                                  FFAppState().cAll =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoDone =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoResch =
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary;
-                                                  FFAppState().cFollowUp =
-                                                      Colors.transparent;
-                                                  FFAppState().cInstallation =
-                                                      Colors.transparent;
-                                                  FFAppState().cHold =
-                                                      Colors.transparent;
-                                                  FFAppState().cLost =
-                                                      Colors.transparent;
-                                                });
+                                                FFAppState().dropDownStatus =
+                                                    'followup';
+                                                FFAppState().showStatus = true;
+                                                setState(() {});
+                                                FFAppState().cAll =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoDone =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoResch =
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary;
+                                                FFAppState().cFollowUp =
+                                                    Colors.transparent;
+                                                FFAppState().cInstallation =
+                                                    Colors.transparent;
+                                                FFAppState().cHold =
+                                                    Colors.transparent;
+                                                FFAppState().cLost =
+                                                    Colors.transparent;
+                                                setState(() {});
                                               },
                                               text: 'Nurturing',
                                               options: FFButtonOptions(
@@ -812,30 +801,26 @@ class _EmployeewiseRecordListFinalWidgetState
                                                     2.0, 5.0, 3.0, 5.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().dropDownStatus =
-                                                      'completed';
-                                                  FFAppState().showStatus =
-                                                      true;
-                                                });
-                                                setState(() {
-                                                  FFAppState().cAll =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoDone =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoResch =
-                                                      Colors.transparent;
-                                                  FFAppState().cFollowUp =
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary;
-                                                  FFAppState().cInstallation =
-                                                      Colors.transparent;
-                                                  FFAppState().cHold =
-                                                      Colors.transparent;
-                                                  FFAppState().cLost =
-                                                      Colors.transparent;
-                                                });
+                                                FFAppState().dropDownStatus =
+                                                    'completed';
+                                                FFAppState().showStatus = true;
+                                                setState(() {});
+                                                FFAppState().cAll =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoDone =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoResch =
+                                                    Colors.transparent;
+                                                FFAppState().cFollowUp =
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary;
+                                                FFAppState().cInstallation =
+                                                    Colors.transparent;
+                                                FFAppState().cHold =
+                                                    Colors.transparent;
+                                                FFAppState().cLost =
+                                                    Colors.transparent;
+                                                setState(() {});
                                               },
                                               text: 'Completed',
                                               options: FFButtonOptions(
@@ -885,30 +870,26 @@ class _EmployeewiseRecordListFinalWidgetState
                                                     2.0, 5.0, 3.0, 5.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().dropDownStatus =
-                                                      'lost';
-                                                  FFAppState().showStatus =
-                                                      true;
-                                                });
-                                                setState(() {
-                                                  FFAppState().cAll =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoDone =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoResch =
-                                                      Colors.transparent;
-                                                  FFAppState().cFollowUp =
-                                                      Colors.transparent;
-                                                  FFAppState().cInstallation =
-                                                      Colors.transparent;
-                                                  FFAppState().cHold =
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary;
-                                                  FFAppState().cLost =
-                                                      Colors.transparent;
-                                                });
+                                                FFAppState().dropDownStatus =
+                                                    'lost';
+                                                FFAppState().showStatus = true;
+                                                setState(() {});
+                                                FFAppState().cAll =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoDone =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoResch =
+                                                    Colors.transparent;
+                                                FFAppState().cFollowUp =
+                                                    Colors.transparent;
+                                                FFAppState().cInstallation =
+                                                    Colors.transparent;
+                                                FFAppState().cHold =
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary;
+                                                FFAppState().cLost =
+                                                    Colors.transparent;
+                                                setState(() {});
                                               },
                                               text: 'Lost',
                                               options: FFButtonOptions(
@@ -2365,32 +2346,40 @@ class _EmployeewiseRecordListFinalWidgetState
                                                                     MainAxisAlignment
                                                                         .center,
                                                                 children: [
-                                                                  Text(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      statusLeadLeadsManagementRecordList
-                                                                          .length
-                                                                          .toString(),
-                                                                      '0',
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            15.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        statusLeadLeadsManagementRecordList
+                                                                            .length
+                                                                            .toString(),
+                                                                        '0',
+                                                                      ),
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .center,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                          ),
                                                                     ),
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                        ),
                                                                   ),
                                                                 ],
                                                               ),

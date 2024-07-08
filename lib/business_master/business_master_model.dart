@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'business_master_widget.dart' show BusinessMasterWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,11 +24,8 @@ class BusinessMasterModel extends FlutterFlowModel<BusinessMasterWidget> {
   late AdmSideNavBarModel admSideNavBarModel;
   // Model for adminHeader component.
   late AdminHeaderModel adminHeaderModel;
-  // State field(s) for Checkbox widget.
-
-  Map<BusinesssMasterRecord, bool> checkboxValueMap = {};
-  List<BusinesssMasterRecord> get checkboxCheckedItems =>
-      checkboxValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  int? outletCount;
 
   @override
   void initState(BuildContext context) {

@@ -186,10 +186,9 @@ class _CustLeadsWidgetState extends State<CustLeadsWidget> {
                                               containerLeadsCustomerRecordList
                                                   .toList(),
                                             );
-                                            FFAppState().update(() {
-                                              FFAppState().catCodeLength =
-                                                  _model.len!.toString();
-                                            });
+                                            FFAppState().catCodeLength =
+                                                _model.len!.toString();
+                                            FFAppState().update(() {});
 
                                             setState(() {});
                                           },

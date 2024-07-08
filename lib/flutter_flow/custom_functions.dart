@@ -51,6 +51,25 @@ List<OutletLeadsRecord> groupByCitiesCopy3(List<OutletLeadsRecord> list) {
   return returnList;
 }
 
+String? monthCopy(int date) {
+  DateTime date = DateTime.now();
+  //var day;
+  //if (date.day.toString().length == 1) {
+  //day = "0" + date.day.toString();
+  //} else {
+  //  day = date.day.toString();
+  //}
+  var month;
+  if (date.month.toString().length == 1) {
+    month = "0" + date.month.toString();
+  } else {
+    month = date.month.toString();
+  }
+  var invNum = date.year.toString() + "-" + month;
+  print(invNum);
+  return invNum;
+}
+
 List<LeadsRecord> groupByCitiesCopy2(List<LeadsRecord> list) {
   List<LeadsRecord> returnList = [];
 
@@ -248,6 +267,105 @@ String getMonthId() {
   var invNum = date.year.toString() + "-" + month;
   print(invNum);
   return invNum;
+}
+
+List<dynamic> dealerChartDataCopy(
+  List<LeadsManagementRecord> docs,
+  String filter,
+) {
+  List<dynamic> list1 = [];
+  String stage;
+  int acount = 0, fcount = 0, ccount = 0, lcount = 0;
+  if (docs.length > 0) {
+    if (filter == "today") {
+      for (int i = 0; i <= docs.length - 1; i++) {
+        if (docs[i].date == dateFormat(DateTime.now())) {
+          stage = docs[i].stage;
+          print(stage);
+          switch (stage) {
+            case "assigned":
+              acount++;
+              break;
+            case "followup":
+              fcount++;
+              break;
+            case "completed":
+              ccount++;
+              break;
+            case "lost":
+              lcount++;
+              break;
+          }
+        }
+      }
+
+      list1 = [
+        {"label": "Assigned", "value": acount},
+        {"label": "Followup", "value": fcount},
+        {"label": "Completed", "value": ccount},
+        {"label": "Lost", "value": lcount}
+      ];
+    } else if (filter == "cmonth") {
+      for (int i = 0; i <= docs.length - 1; i++) {
+        if (docs[i].monthId == monthCopy(1)) {
+          stage = docs[i].stage;
+          print(stage);
+          switch (stage) {
+            case "assigned":
+              acount++;
+              break;
+            case "followup":
+              fcount++;
+              break;
+            case "completed":
+              ccount++;
+              break;
+            case "lost":
+              lcount++;
+              break;
+          }
+        }
+      }
+
+      list1 = [
+        {"label": "Assigned", "value": acount},
+        {"label": "Followup", "value": fcount},
+        {"label": "Completed", "value": ccount},
+        {"label": "Lost", "value": lcount}
+      ];
+    } else if (filter == "lmonth") {
+      for (int i = 0; i <= docs.length - 1; i++) {
+        if (docs[i].monthId == getLastMonthId(1)) {
+          stage = docs[i].stage;
+          print(stage);
+          switch (stage) {
+            case "assigned":
+              acount++;
+              break;
+            case "followup":
+              fcount++;
+              break;
+            case "completed":
+              ccount++;
+              break;
+            case "lost":
+              lcount++;
+              break;
+          }
+        }
+      }
+
+      list1 = [
+        {"label": "Assigned", "value": acount},
+        {"label": "Followup", "value": fcount},
+        {"label": "Completed", "value": ccount},
+        {"label": "Lost", "value": lcount}
+      ];
+    }
+  }
+
+  print(list1);
+  return list1;
 }
 
 List<dynamic> demoListLastObjCopy(List<dynamic> list) {
@@ -1014,7 +1132,7 @@ List<LeadsManagementRecord> filterTagName(
   return returnList;
 }
 
-String? month(int date) {
+String? getLastMonthId(int date) {
   DateTime date = DateTime.now();
   //var day;
   //if (date.day.toString().length == 1) {
@@ -1023,10 +1141,11 @@ String? month(int date) {
   //  day = date.day.toString();
   //}
   var month;
-  if (date.month.toString().length == 1) {
-    month = "0" + date.month.toString();
+  var x = date.month - 1;
+  if (x.toString().length == 1) {
+    month = "0" + x.toString();
   } else {
-    month = date.month.toString();
+    month = x.toString();
   }
   var invNum = date.year.toString() + "-" + month;
   print(invNum);
@@ -1216,14 +1335,7 @@ List<String>? stringtourl(List<String>? stringurl) {
   if (stringurl == null) {
     return null;
   }
-  return stringurl
-      .map((url) => url
-          .replaceAll(
-              'https://firebasestorage.googleapis.com/v0/b/flutterflow-1.appspot.com/o/',
-              '')
-          .replaceAll('%2F', '/')
-          .replaceAll('?alt=media', ''))
-      .toList();
+  return stringurl.map((url) => url).toList();
 }
 
 double upiTotalcount(String jsonString) {
@@ -1300,4 +1412,76 @@ int currentMonth(String index) {
     result = lastInMilli;
   }
   return result;
+}
+
+String? imgtostring(String? link) {
+  return link;
+}
+
+List<dynamic> dealerChartData(
+  List<LeadsManagementRecord> docs,
+  String id,
+) {
+  List<dynamic> list1 = [];
+  String stage;
+  int acount = 0, fcount = 0, ccount = 0, lcount = 0;
+
+  if (docs.length > 0) {
+    for (int i = 0; i <= docs.length - 1; i++) {
+      print("assignedto ");
+      print(docs[i].assignedTo);
+      if (docs[i].assignedTo == id) {
+        stage = docs[i].stage;
+        print(stage);
+        switch (stage) {
+          case "assigned":
+            acount++;
+            break;
+          case "followup":
+            fcount++;
+            break;
+          case "completed":
+            ccount++;
+            break;
+          case "lost":
+            lcount++;
+            break;
+        }
+      }
+    }
+  }
+
+  list1 = [
+    {"label": "Assigned", "value": acount},
+    {"label": "Followup", "value": fcount},
+    {"label": "Completed", "value": ccount},
+    {"label": "Lost", "value": lcount}
+  ];
+  print(list1);
+  return list1;
+}
+
+String? createDealerCode() {
+  var code;
+  int curDateTimeInMili = new DateTime.now().millisecondsSinceEpoch;
+  code = "SCSPLDC-" + curDateTimeInMili.toString();
+
+  return code;
+}
+
+List<dynamic> top3Products(List<InvoiceRecord> invoice) {
+  List<dynamic> list = [];
+
+  List<dynamic> prdList = [];
+  for (int i = 0; i < invoice.length; i++) {
+    invoice[i].productList.forEach((item) {
+      var index = prdList.indexOf(item.id);
+      if (index == -1) {
+        prdList.add(invoice[i].productList);
+      } else {
+        prdList[index]["quantity"] = prdList[index]["quantity"] + item.quantity;
+      }
+    });
+  }
+  return list;
 }

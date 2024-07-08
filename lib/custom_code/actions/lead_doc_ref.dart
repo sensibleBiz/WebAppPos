@@ -104,6 +104,7 @@ Future<List<dynamic>> leadDocRef(String dayId, String outletId, String stage,
         .doc(outletId)
         .collection('LEADS_MANAGEMENT')
         .where('stage', isEqualTo: stage)
+        .where('isDealerLead', isEqualTo: false)
         .where('createdDate', isGreaterThan: yesterday)
         .where('createdDate', isLessThanOrEqualTo: today)
         .orderBy('createdDate', descending: true)

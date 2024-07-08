@@ -48,9 +48,8 @@ class _CItemWiseSaleReportWidgetState extends State<CItemWiseSaleReportWidget> {
         FFAppState().outletId,
         widget.shiftId!,
       );
-      setState(() {
-        FFAppState().resultList = _model.result!.toList().cast<dynamic>();
-      });
+      FFAppState().resultList = _model.result!.toList().cast<dynamic>();
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));

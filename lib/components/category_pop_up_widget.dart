@@ -195,9 +195,8 @@ class _CategoryPopUpWidgetState extends State<CategoryPopUpWidget> {
                                               _model.simpleSearchResults = [])
                                           .whenComplete(() => setState(() {}));
 
-                                      FFAppState().update(() {
-                                        FFAppState().isFullListShown = false;
-                                      });
+                                      FFAppState().isFullListShown = false;
+                                      FFAppState().update(() {});
                                     },
                                   ),
                                   autofocus: true,
@@ -333,19 +332,17 @@ class _CategoryPopUpWidgetState extends State<CategoryPopUpWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              FFAppState().update(() {
-                                                FFAppState()
-                                                        .setCategoryMasterName =
-                                                    categorymasterlistItem.name;
-                                                FFAppState()
-                                                        .selectCategoryMasterRef =
-                                                    categorymasterlistItem
-                                                        .reference;
-                                              });
-                                              FFAppState().update(() {
-                                                FFAppState().isFullListShown =
-                                                    true;
-                                              });
+                                              FFAppState()
+                                                      .setCategoryMasterName =
+                                                  categorymasterlistItem.name;
+                                              FFAppState()
+                                                      .selectCategoryMasterRef =
+                                                  categorymasterlistItem
+                                                      .reference;
+                                              FFAppState().update(() {});
+                                              FFAppState().isFullListShown =
+                                                  true;
+                                              FFAppState().update(() {});
                                               Navigator.pop(context);
                                               await showModalBottomSheet(
                                                 isScrollControlled: true,
@@ -449,18 +446,16 @@ class _CategoryPopUpWidgetState extends State<CategoryPopUpWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              FFAppState().update(() {
-                                                FFAppState()
-                                                        .setCategoryMasterName =
-                                                    searchresultsItem.name;
-                                                FFAppState()
-                                                        .selectCategoryMasterRef =
-                                                    searchresultsItem.reference;
-                                              });
-                                              FFAppState().update(() {
-                                                FFAppState().isFullListShown =
-                                                    true;
-                                              });
+                                              FFAppState()
+                                                      .setCategoryMasterName =
+                                                  searchresultsItem.name;
+                                              FFAppState()
+                                                      .selectCategoryMasterRef =
+                                                  searchresultsItem.reference;
+                                              FFAppState().update(() {});
+                                              FFAppState().isFullListShown =
+                                                  true;
+                                              FFAppState().update(() {});
                                               Navigator.pop(context);
                                               await showModalBottomSheet(
                                                 isScrollControlled: true,

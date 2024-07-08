@@ -685,13 +685,12 @@ class _CAddProductDetailsNewWidgetState
                                                                         context.pushNamed(
                                                                             'cProducts');
 
+                                                                        FFAppState().codeUpdate = FFAppState()
+                                                                            .codeUpdate
+                                                                            .toList()
+                                                                            .cast<int>();
                                                                         FFAppState()
-                                                                            .update(() {
-                                                                          FFAppState().codeUpdate = FFAppState()
-                                                                              .codeUpdate
-                                                                              .toList()
-                                                                              .cast<int>();
-                                                                        });
+                                                                            .update(() {});
                                                                       } else {
                                                                         await showDialog(
                                                                           context:
@@ -3832,12 +3831,12 @@ class _CAddProductDetailsNewWidgetState
                                                                   _model.barcode =
                                                                       await actions
                                                                           .barcodeRandom();
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .barcode =
-                                                                        _model
-                                                                            .barcode!;
-                                                                  });
+                                                                  FFAppState()
+                                                                          .barcode =
+                                                                      _model
+                                                                          .barcode!;
+                                                                  setState(
+                                                                      () {});
 
                                                                   setState(
                                                                       () {});
@@ -3900,12 +3899,12 @@ class _CAddProductDetailsNewWidgetState
                                                                     ScanMode.QR,
                                                                   );
 
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .barcode =
-                                                                        _model
-                                                                            .barcode1!;
-                                                                  });
+                                                                  FFAppState()
+                                                                          .barcode =
+                                                                      _model
+                                                                          .barcode1!;
+                                                                  setState(
+                                                                      () {});
 
                                                                   setState(
                                                                       () {});

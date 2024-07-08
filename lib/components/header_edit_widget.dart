@@ -350,7 +350,7 @@ class _HeaderEditWidgetState extends State<HeaderEditWidget> {
                                   child: Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
-                                      'Cancle',
+                                      'Cancel',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

@@ -51,9 +51,8 @@ class _CDashWidgetState extends State<CDashWidget> {
         FFAppState().outletId,
         functions.getDayId(),
       );
-      setState(() {
-        FFAppState().isVisible = _model.shiftResult!;
-      });
+      FFAppState().isVisible = _model.shiftResult!;
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -1980,13 +1979,12 @@ class _CDashWidgetState extends State<CDashWidget> {
                                                       FFAppState().outletId,
                                                       '0',
                                                     );
-                                                    setState(() {
-                                                      FFAppState()
-                                                              .dashProductList =
-                                                          _model.result!
-                                                              .toList()
-                                                              .cast<dynamic>();
-                                                    });
+                                                    FFAppState()
+                                                            .dashProductList =
+                                                        _model.result!
+                                                            .toList()
+                                                            .cast<dynamic>();
+                                                    setState(() {});
 
                                                     setState(() {});
                                                   },

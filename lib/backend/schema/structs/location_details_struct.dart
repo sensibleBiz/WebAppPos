@@ -27,30 +27,35 @@ class LocationDetailsStruct extends FFFirebaseStruct {
   String? _name;
   String get name => _name ?? '';
   set name(String? val) => _name = val;
+
   bool hasName() => _name != null;
 
   // "street" field.
   String? _street;
   String get street => _street ?? '';
   set street(String? val) => _street = val;
+
   bool hasStreet() => _street != null;
 
   // "locality" field.
   String? _locality;
   String get locality => _locality ?? '';
   set locality(String? val) => _locality = val;
+
   bool hasLocality() => _locality != null;
 
   // "subLocality" field.
   String? _subLocality;
   String get subLocality => _subLocality ?? '';
   set subLocality(String? val) => _subLocality = val;
+
   bool hasSubLocality() => _subLocality != null;
 
   // "postalCode" field.
   String? _postalCode;
   String get postalCode => _postalCode ?? '';
   set postalCode(String? val) => _postalCode = val;
+
   bool hasPostalCode() => _postalCode != null;
 
   static LocationDetailsStruct fromMap(Map<String, dynamic> data) =>

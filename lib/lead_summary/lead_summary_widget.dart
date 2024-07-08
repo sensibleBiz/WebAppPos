@@ -707,18 +707,15 @@ class _LeadSummaryWidgetState extends State<LeadSummaryWidget>
                                               children: [
                                                 FFButtonWidget(
                                                   onPressed: () async {
-                                                    setState(() {
-                                                      FFAppState().allLostLead =
-                                                          true;
-                                                      FFAppState().tagColor =
-                                                          '';
-                                                    });
-                                                    setState(() {
-                                                      FFAppState().allTagBtn =
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary;
-                                                    });
+                                                    FFAppState().allLostLead =
+                                                        true;
+                                                    FFAppState().tagColor = '';
+                                                    setState(() {});
+                                                    FFAppState().allTagBtn =
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary;
+                                                    setState(() {});
                                                   },
                                                   text: 'All',
                                                   options: FFButtonOptions(
@@ -838,19 +835,17 @@ class _LeadSummaryWidgetState extends State<LeadSummaryWidget>
                                                                     FFButtonWidget(
                                                                   onPressed:
                                                                       () async {
+                                                                    FFAppState()
+                                                                            .allLostLead =
+                                                                        false;
                                                                     setState(
-                                                                        () {
-                                                                      FFAppState()
-                                                                              .allLostLead =
-                                                                          false;
-                                                                    });
+                                                                        () {});
+                                                                    FFAppState()
+                                                                            .selectedTag =
+                                                                        listViewLeadTagRecord
+                                                                            .leadTagName;
                                                                     setState(
-                                                                        () {
-                                                                      FFAppState()
-                                                                              .selectedTag =
-                                                                          listViewLeadTagRecord
-                                                                              .leadTagName;
-                                                                    });
+                                                                        () {});
                                                                   },
                                                                   text: listViewLeadTagRecord
                                                                       .leadTagName,

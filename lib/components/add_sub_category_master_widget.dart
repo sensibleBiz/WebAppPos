@@ -910,11 +910,10 @@ class _AddSubCategoryMasterWidgetState
                                           context
                                               .pushNamed('SubCategoryMaster');
 
-                                          FFAppState().update(() {
-                                            FFAppState().catCodeLength = '';
-                                            FFAppState().setCategoryMasterName =
-                                                '';
-                                          });
+                                          FFAppState().catCodeLength = '';
+                                          FFAppState().setCategoryMasterName =
+                                              '';
+                                          FFAppState().update(() {});
                                         } else {
                                           await showDialog(
                                             context: context,

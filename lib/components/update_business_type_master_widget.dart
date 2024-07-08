@@ -638,10 +638,10 @@ class _UpdateBusinessTypeMasterWidgetState
                                                       setState(() => _model
                                                               .dropDownSubscriptionTypeValue =
                                                           val);
-                                                      FFAppState().update(() {
-                                                        FFAppState().dropdown =
-                                                            true;
-                                                      });
+                                                      FFAppState().dropdown =
+                                                          true;
+                                                      FFAppState()
+                                                          .update(() {});
                                                     },
                                                     width: 180.0,
                                                     height: 50.0,
@@ -911,9 +911,8 @@ class _UpdateBusinessTypeMasterWidgetState
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    FFAppState().update(() {
-                                      FFAppState().dropdown = false;
-                                    });
+                                    FFAppState().dropdown = false;
+                                    FFAppState().update(() {});
                                     Navigator.pop(context);
                                   },
                                   child: Container(
@@ -1026,9 +1025,8 @@ class _UpdateBusinessTypeMasterWidgetState
 
                                         context.pushNamed('BusinessTypeMaster');
 
-                                        FFAppState().update(() {
-                                          FFAppState().dropdown = false;
-                                        });
+                                        FFAppState().dropdown = false;
+                                        FFAppState().update(() {});
                                       } else {
                                         if (_model.formKey.currentState ==
                                                 null ||

@@ -35,10 +35,9 @@ class _LeadEmployeeReportFinalWidgetState
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().startDate = functions.currentMonth('first');
-        FFAppState().endDate = functions.currentMonth('last');
-      });
+      FFAppState().startDate = functions.currentMonth('first');
+      FFAppState().endDate = functions.currentMonth('last');
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -346,14 +345,13 @@ class _LeadEmployeeReportFinalWidgetState
                                                   size: 24.0,
                                                 ),
                                                 onPressed: () async {
-                                                  setState(() {
-                                                    FFAppState().startDate =
-                                                        functions.currentMonth(
-                                                            'first');
-                                                    FFAppState().endDate =
-                                                        functions.currentMonth(
-                                                            'last');
-                                                  });
+                                                  FFAppState().startDate =
+                                                      functions.currentMonth(
+                                                          'first');
+                                                  FFAppState().endDate =
+                                                      functions
+                                                          .currentMonth('last');
+                                                  setState(() {});
                                                   await showDialog(
                                                     context: context,
                                                     builder: (dialogContext) {

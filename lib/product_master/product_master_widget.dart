@@ -251,9 +251,8 @@ class _ProductMasterWidgetState extends State<ProductMasterWidget> {
                                                   ).then((value) =>
                                                       safeSetState(() {}));
 
-                                                  FFAppState().update(() {
-                                                    FFAppState().names = [];
-                                                  });
+                                                  FFAppState().names = [];
+                                                  FFAppState().update(() {});
 
                                                   setState(() {});
                                                 },
@@ -948,9 +947,8 @@ class _ProductMasterWidgetState extends State<ProductMasterWidget> {
                                                                                       },
                                                                                     ).then((value) => safeSetState(() {}));
 
-                                                                                    FFAppState().update(() {
-                                                                                      FFAppState().names = [];
-                                                                                    });
+                                                                                    FFAppState().names = [];
+                                                                                    FFAppState().update(() {});
                                                                                   },
                                                                                   child: Container(
                                                                                     width: MediaQuery.sizeOf(context).width * 0.06,

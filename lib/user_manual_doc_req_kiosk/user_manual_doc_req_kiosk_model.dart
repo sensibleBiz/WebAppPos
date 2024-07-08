@@ -1,4 +1,5 @@
 import '/components/topic_search_user_manual_widget.dart';
+import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -18,6 +19,11 @@ class UserManualDocReqKioskModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // State field(s) for TabBar widget.
+  TabController? tabBarController;
+  int get tabBarCurrentIndex =>
+      tabBarController != null ? tabBarController!.index : 0;
+
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -28,5 +34,6 @@ class UserManualDocReqKioskModel
   @override
   void dispose() {
     unfocusNode.dispose();
+    tabBarController?.dispose();
   }
 }

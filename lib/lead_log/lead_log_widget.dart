@@ -1,12 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/add_follow_up_widget.dart';
 import '/components/add_new_demo_widget.dart';
 import '/components/add_tag_widget.dart';
 import '/components/admin_header_widget.dart';
 import '/components/call_details_widget.dart';
 import '/components/list_view_msg_widget.dart';
+import '/components/schedule_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -15,6 +15,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -77,9 +78,8 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().tagSearch = false;
-      });
+      FFAppState().tagSearch = false;
+      setState(() {});
     });
 
     _model.tabBarController = TabController(
@@ -784,9 +784,6 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                       backgroundColor:
                                                                           Colors
                                                                               .transparent,
-                                                                      barrierColor:
-                                                                          Color(
-                                                                              0x00000000),
                                                                       enableDrag:
                                                                           false,
                                                                       context:
@@ -802,8 +799,8 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                             child:
                                                                                 Padding(
                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                              child: AddFollowUpWidget(
-                                                                                leadMRefid: widget.id,
+                                                                              child: ScheduleWidget(
+                                                                                leadMRefid: widget.leadRefId,
                                                                                 username: widget.username,
                                                                                 mobile: widget.mobile,
                                                                               ),
@@ -2110,9 +2107,8 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                 ).search(_model.textFieldtagTextController.text).map((r) => r.object).toList();
                                                                                                                 ;
                                                                                                               });
-                                                                                                              setState(() {
-                                                                                                                FFAppState().tagSearch = true;
-                                                                                                              });
+                                                                                                              FFAppState().tagSearch = true;
+                                                                                                              setState(() {});
                                                                                                             },
                                                                                                           ),
                                                                                                           autofocus: true,
@@ -2184,9 +2180,8 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                       setState(() {
                                                                                                         _model.textFieldtagTextController?.clear();
                                                                                                       });
-                                                                                                      setState(() {
-                                                                                                        FFAppState().tagSearch = false;
-                                                                                                      });
+                                                                                                      FFAppState().tagSearch = false;
+                                                                                                      setState(() {});
                                                                                                     },
                                                                                                   ),
                                                                                                 ),
@@ -2195,9 +2190,8 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                     _model.tag = await actions.generateTagCode(
                                                                                                       containerLeadTagRecordList.toList(),
                                                                                                     );
-                                                                                                    setState(() {
-                                                                                                      FFAppState().leadtagCode = _model.tag!;
-                                                                                                    });
+                                                                                                    FFAppState().leadtagCode = _model.tag!;
+                                                                                                    setState(() {});
                                                                                                     await showModalBottomSheet(
                                                                                                       isScrollControlled: true,
                                                                                                       backgroundColor: Colors.transparent,
@@ -2337,12 +2331,11 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                               setState(() {});
                                                                                                                             },
                                                                                                                             onDoubleTap: () async {
-                                                                                                                              setState(() {
-                                                                                                                                FFAppState().addToTagList(getJsonField(
-                                                                                                                                  functions.generateTaglDetailsJson(tagLIstFromDBItem.leadTagName, tagLIstFromDBItem.code, tagLIstFromDBItem.isDeleted, tagLIstFromDBItem.type),
-                                                                                                                                  r'''$''',
-                                                                                                                                ));
-                                                                                                                              });
+                                                                                                                              FFAppState().addToTagList(getJsonField(
+                                                                                                                                functions.generateTaglDetailsJson(tagLIstFromDBItem.leadTagName, tagLIstFromDBItem.code, tagLIstFromDBItem.isDeleted, tagLIstFromDBItem.type),
+                                                                                                                                r'''$''',
+                                                                                                                              ));
+                                                                                                                              setState(() {});
                                                                                                                             },
                                                                                                                             child: Container(
                                                                                                                               height: MediaQuery.sizeOf(context).height * 0.035,
@@ -2546,9 +2539,8 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                                 size: 7.0,
                                                                                                                               ),
                                                                                                                               onPressed: () async {
-                                                                                                                                setState(() {
-                                                                                                                                  FFAppState().removeFromTagList(tagLItem);
-                                                                                                                                });
+                                                                                                                                FFAppState().removeFromTagList(tagLItem);
+                                                                                                                                setState(() {});
                                                                                                                                 ScaffoldMessenger.of(context).showSnackBar(
                                                                                                                                   SnackBar(
                                                                                                                                     content: Text(
@@ -3146,9 +3138,8 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                     area: _model.textController2.text,
                                                                                   ));
                                                                                   await Future.delayed(const Duration(milliseconds: 2000));
-                                                                                  setState(() {
-                                                                                    FFAppState().tagList = [];
-                                                                                  });
+                                                                                  FFAppState().tagList = [];
+                                                                                  setState(() {});
 
                                                                                   setState(() {});
                                                                                 },

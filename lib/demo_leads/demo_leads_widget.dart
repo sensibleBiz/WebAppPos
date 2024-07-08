@@ -36,9 +36,8 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().demoListDate = functions.dateFormat(getCurrentTimestamp);
-      });
+      FFAppState().demoListDate = functions.dateFormat(getCurrentTimestamp);
+      setState(() {});
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -233,10 +232,9 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                     0.0, 0.0, 0.0, 5.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().userDemoList =
-                                                      false;
-                                                });
+                                                FFAppState().userDemoList =
+                                                    false;
+                                                setState(() {});
                                               },
                                               text: 'All',
                                               options: FFButtonOptions(
@@ -314,14 +312,13 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                   5.0),
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
-                                                          setState(() {
-                                                            FFAppState()
-                                                                    .selectedUserDemo =
-                                                                userListItem.id;
-                                                            FFAppState()
-                                                                    .userDemoList =
-                                                                true;
-                                                          });
+                                                          FFAppState()
+                                                                  .selectedUserDemo =
+                                                              userListItem.id;
+                                                          FFAppState()
+                                                                  .userDemoList =
+                                                              true;
+                                                          setState(() {});
                                                         },
                                                         text: userListItem.name,
                                                         options:
@@ -1057,11 +1054,10 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                     );
                                                   });
                                                 }
-                                                setState(() {
-                                                  FFAppState().demoListDate =
-                                                      functions.dateFormat(
-                                                          _model.datePicked);
-                                                });
+                                                FFAppState().demoListDate =
+                                                    functions.dateFormat(
+                                                        _model.datePicked);
+                                                setState(() {});
                                                 await showDialog(
                                                   context: context,
                                                   builder:

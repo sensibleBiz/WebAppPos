@@ -1335,11 +1335,10 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                                                           FFButtonWidget(
                                                                         onPressed:
                                                                             () async {
+                                                                          FFAppState().regName =
+                                                                              listItem.name;
                                                                           FFAppState()
-                                                                              .update(() {
-                                                                            FFAppState().regName =
-                                                                                listItem.name;
-                                                                          });
+                                                                              .update(() {});
                                                                         },
                                                                         text: listItem
                                                                             .name,
@@ -1990,6 +1989,19 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                                   _model.catRef?.reference,
                                               imageUrl:
                                                   'https://unsplash.com/photos/s5kTY-Ve1c0',
+                                              type: () {
+                                                if (_model
+                                                        .dropDownCategoryValue ==
+                                                    'FG') {
+                                                  return 1;
+                                                } else if (_model
+                                                        .dropDownCategoryValue ==
+                                                    'RAW MATERIAL ') {
+                                                  return 1;
+                                                } else {
+                                                  return 0;
+                                                }
+                                              }(),
                                             ));
                                             _model.doc = ProductMasterRecord
                                                 .getDocumentFromData(
@@ -2021,6 +2033,19 @@ class _AddProductMasterWidgetState extends State<AddProductMasterWidget> {
                                                           .catRef?.reference,
                                                       imageUrl:
                                                           'https://unsplash.com/photos/s5kTY-Ve1c0',
+                                                      type: () {
+                                                        if (_model
+                                                                .dropDownCategoryValue ==
+                                                            'FG') {
+                                                          return 1;
+                                                        } else if (_model
+                                                                .dropDownCategoryValue ==
+                                                            'RAW MATERIAL ') {
+                                                          return 1;
+                                                        } else {
+                                                          return 0;
+                                                        }
+                                                      }(),
                                                     ),
                                                     productMasterRecordReference);
                                             _shouldSetState = true;

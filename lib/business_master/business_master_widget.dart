@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -390,66 +391,6 @@ class _BusinessMasterWidgetState extends State<BusinessMasterWidget> {
                                                             MediaQuery.sizeOf(
                                                                         context)
                                                                     .width *
-                                                                0.1,
-                                                        height:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .height *
-                                                                0.05,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondary,
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      20.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                'Email',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .lineColor,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                    ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        width:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .width *
                                                                 0.06,
                                                         height:
                                                             MediaQuery.sizeOf(
@@ -473,7 +414,7 @@ class _BusinessMasterWidgetState extends State<BusinessMasterWidget> {
                                                                   .center,
                                                           children: [
                                                             Text(
-                                                              'Phone',
+                                                              'Delete',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .titleMedium
@@ -825,31 +766,6 @@ class _BusinessMasterWidgetState extends State<BusinessMasterWidget> {
                                                                               ),
                                                                             ),
                                                                             Container(
-                                                                              width: MediaQuery.sizeOf(context).width * 0.1,
-                                                                              height: MediaQuery.sizeOf(context).height * 0.06,
-                                                                              decoration: BoxDecoration(
-                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                              ),
-                                                                              child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                                                                                child: Column(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                  children: [
-                                                                                    Text(
-                                                                                      listItem.email,
-                                                                                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                            fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                            letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                          ),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            Container(
                                                                               width: MediaQuery.sizeOf(context).width * 0.06,
                                                                               height: MediaQuery.sizeOf(context).height * 0.06,
                                                                               decoration: BoxDecoration(
@@ -860,30 +776,106 @@ class _BusinessMasterWidgetState extends State<BusinessMasterWidget> {
                                                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                                                 children: [
-                                                                                  Theme(
-                                                                                    data: ThemeData(
-                                                                                      checkboxTheme: CheckboxThemeData(
-                                                                                        shape: RoundedRectangleBorder(
-                                                                                          borderRadius: BorderRadius.only(
-                                                                                            bottomLeft: Radius.circular(0.0),
-                                                                                            bottomRight: Radius.circular(0.0),
-                                                                                            topLeft: Radius.circular(0.0),
-                                                                                            topRight: Radius.circular(0.0),
-                                                                                          ),
+                                                                                  FFButtonWidget(
+                                                                                    onPressed: () async {
+                                                                                      _model.outletCount = await queryOutletRecordCount(
+                                                                                        queryBuilder: (outletRecord) => outletRecord.where(
+                                                                                          'businessMaster',
+                                                                                          isEqualTo: listItem.reference,
                                                                                         ),
+                                                                                      );
+                                                                                      if (_model.outletCount! > 0) {
+                                                                                        await showDialog(
+                                                                                          context: context,
+                                                                                          builder: (alertDialogContext) {
+                                                                                            return WebViewAware(
+                                                                                              child: AlertDialog(
+                                                                                                title: Text('It has outlets '),
+                                                                                                content: Text('You cant delete'),
+                                                                                                actions: [
+                                                                                                  TextButton(
+                                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                                    child: Text('Ok'),
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            );
+                                                                                          },
+                                                                                        );
+                                                                                      } else {
+                                                                                        var confirmDialogResponse = await showDialog<bool>(
+                                                                                              context: context,
+                                                                                              builder: (alertDialogContext) {
+                                                                                                return WebViewAware(
+                                                                                                  child: AlertDialog(
+                                                                                                    title: Text('Are you sure?'),
+                                                                                                    content: Text('You want to Delete'),
+                                                                                                    actions: [
+                                                                                                      TextButton(
+                                                                                                        onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                                        child: Text('Cancel'),
+                                                                                                      ),
+                                                                                                      TextButton(
+                                                                                                        onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                                        child: Text('Confirm'),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                );
+                                                                                              },
+                                                                                            ) ??
+                                                                                            false;
+                                                                                        if (confirmDialogResponse) {
+                                                                                          await listItem.reference.delete();
+                                                                                          ScaffoldMessenger.of(context).showSnackBar(
+                                                                                            SnackBar(
+                                                                                              content: Text(
+                                                                                                'Deleted!',
+                                                                                                style: TextStyle(
+                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                ),
+                                                                                              ),
+                                                                                              duration: Duration(milliseconds: 4000),
+                                                                                              backgroundColor: FlutterFlowTheme.of(context).secondary,
+                                                                                            ),
+                                                                                          );
+                                                                                        } else {
+                                                                                          ScaffoldMessenger.of(context).showSnackBar(
+                                                                                            SnackBar(
+                                                                                              content: Text(
+                                                                                                'Not Deleted',
+                                                                                                style: TextStyle(
+                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                ),
+                                                                                              ),
+                                                                                              duration: Duration(milliseconds: 4000),
+                                                                                              backgroundColor: FlutterFlowTheme.of(context).secondary,
+                                                                                            ),
+                                                                                          );
+                                                                                        }
+                                                                                      }
+
+                                                                                      setState(() {});
+                                                                                    },
+                                                                                    text: 'Delete',
+                                                                                    options: FFButtonOptions(
+                                                                                      width: 80.0,
+                                                                                      height: 40.0,
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                                      iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                      color: FlutterFlowTheme.of(context).primary,
+                                                                                      textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                            color: Colors.white,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                          ),
+                                                                                      elevation: 3.0,
+                                                                                      borderSide: BorderSide(
+                                                                                        color: Colors.transparent,
+                                                                                        width: 1.0,
                                                                                       ),
-                                                                                      unselectedWidgetColor: Color(0xFFF5F5F5),
-                                                                                    ),
-                                                                                    child: Checkbox(
-                                                                                      value: _model.checkboxValueMap[listItem] ??= functions.activeDevice(listItem.active),
-                                                                                      onChanged: (newValue) async {
-                                                                                        setState(() => _model.checkboxValueMap[listItem] = newValue!);
-                                                                                      },
-                                                                                      side: BorderSide(
-                                                                                        width: 2,
-                                                                                        color: Color(0xFFF5F5F5),
-                                                                                      ),
-                                                                                      activeColor: FlutterFlowTheme.of(context).primary,
+                                                                                      borderRadius: BorderRadius.circular(8.0),
                                                                                     ),
                                                                                   ),
                                                                                 ],
@@ -989,9 +981,8 @@ class _BusinessMasterWidgetState extends State<BusinessMasterWidget> {
                                                                                                 hoverColor: Colors.transparent,
                                                                                                 highlightColor: Colors.transparent,
                                                                                                 onTap: () async {
-                                                                                                  FFAppState().update(() {
-                                                                                                    FFAppState().activeInactiveFlag = false;
-                                                                                                  });
+                                                                                                  FFAppState().activeInactiveFlag = false;
+                                                                                                  FFAppState().update(() {});
                                                                                                   var confirmDialogResponse = await showDialog<bool>(
                                                                                                         context: context,
                                                                                                         builder: (alertDialogContext) {
@@ -1053,9 +1044,8 @@ class _BusinessMasterWidgetState extends State<BusinessMasterWidget> {
                                                                                                 hoverColor: Colors.transparent,
                                                                                                 highlightColor: Colors.transparent,
                                                                                                 onTap: () async {
-                                                                                                  FFAppState().update(() {
-                                                                                                    FFAppState().activeInactiveFlag = true;
-                                                                                                  });
+                                                                                                  FFAppState().activeInactiveFlag = true;
+                                                                                                  FFAppState().update(() {});
                                                                                                   var confirmDialogResponse = await showDialog<bool>(
                                                                                                         context: context,
                                                                                                         builder: (alertDialogContext) {

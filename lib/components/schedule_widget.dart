@@ -50,9 +50,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().mode = false;
-      });
+      FFAppState().mode = false;
+      setState(() {});
     });
 
     _model.textFieldUsernameTextController ??=
@@ -141,13 +140,11 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                             onChanged: (val) async {
                               setState(() => _model.typeDropdownValue = val);
                               if (_model.typeDropdownValue == 'Demo') {
-                                setState(() {
-                                  FFAppState().mode = true;
-                                });
+                                FFAppState().mode = true;
+                                setState(() {});
                               } else {
-                                setState(() {
-                                  FFAppState().mode = false;
-                                });
+                                FFAppState().mode = false;
+                                setState(() {});
                               }
                             },
                             width: double.infinity,

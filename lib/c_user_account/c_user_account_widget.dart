@@ -197,11 +197,10 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                               containerUserProfileRecordList
                                                   .toList(),
                                             );
-                                            FFAppState().update(() {
-                                              FFAppState()
-                                                      .userAccountCatCodeLength =
-                                                  _model.len!;
-                                            });
+                                            FFAppState()
+                                                    .userAccountCatCodeLength =
+                                                _model.len!;
+                                            FFAppState().update(() {});
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:

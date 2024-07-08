@@ -23,20 +23,25 @@ class RecipeItemListStruct extends FFFirebaseStruct {
   double? _price;
   double get price => _price ?? 0.0;
   set price(double? val) => _price = val;
-  void incrementPrice(double amount) => _price = price + amount;
+
+  void incrementPrice(double amount) => price = price + amount;
+
   bool hasPrice() => _price != null;
 
   // "quantity" field.
   double? _quantity;
   double get quantity => _quantity ?? 0.0;
   set quantity(double? val) => _quantity = val;
-  void incrementQuantity(double amount) => _quantity = quantity + amount;
+
+  void incrementQuantity(double amount) => quantity = quantity + amount;
+
   bool hasQuantity() => _quantity != null;
 
   // "name" field.
   String? _name;
   String get name => _name ?? '';
   set name(String? val) => _name = val;
+
   bool hasName() => _name != null;
 
   static RecipeItemListStruct fromMap(Map<String, dynamic> data) =>

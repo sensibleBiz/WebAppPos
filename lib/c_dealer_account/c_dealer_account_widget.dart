@@ -1,14 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/c_add_dealer_widget.dart';
-import '/components/c_edit_dealer_widget.dart';
+import '/components/c_edit_dealer_data_widget.dart';
 import '/components/c_header_widget.dart';
 import '/components/cstm_side_nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -222,10 +221,9 @@ class _CDealerAccountWidgetState extends State<CDealerAccountWidget> {
                                         ),
                                         FFButtonWidget(
                                           onPressed: () async {
-                                            setState(() {
-                                              FFAppState()
-                                                  .userMobileNumberAddDealer = '';
-                                            });
+                                            FFAppState()
+                                                .userMobileNumberAddDealer = '';
+                                            setState(() {});
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:
@@ -673,8 +671,13 @@ class _CDealerAccountWidgetState extends State<CDealerAccountWidget> {
                                                                   DealersRecord>>(
                                                             stream:
                                                                 queryDealersRecord(
-                                                              parent: FFAppState()
-                                                                  .outletIdRef,
+                                                              parent:
+                                                                  FFAppState()
+                                                                      .outletRef,
+                                                              queryBuilder: (dealersRecord) =>
+                                                                  dealersRecord
+                                                                      .orderBy(
+                                                                          'name'),
                                                             ),
                                                             builder: (context,
                                                                 snapshot) {
@@ -759,7 +762,7 @@ class _CDealerAccountWidgetState extends State<CDealerAccountWidget> {
                                                                               crossAxisAlignment: CrossAxisAlignment.center,
                                                                               children: [
                                                                                 Text(
-                                                                                  functions.genSrno(listViewIndex).toString(),
+                                                                                  listViewDealersRecord.dealerCode,
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         letterSpacing: 0.0,
@@ -878,8 +881,8 @@ class _CDealerAccountWidgetState extends State<CDealerAccountWidget> {
                                                                                         onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                         child: Padding(
                                                                                           padding: MediaQuery.viewInsetsOf(context),
-                                                                                          child: CEditDealerWidget(
-                                                                                            passDealerIdToEdit: listViewDealersRecord.reference.id,
+                                                                                          child: CEditDealerDataWidget(
+                                                                                            passDealerIdToEdit: listViewDealersRecord.id,
                                                                                           ),
                                                                                         ),
                                                                                       ),
@@ -940,7 +943,9 @@ class _CDealerAccountWidgetState extends State<CDealerAccountWidget> {
                                                                                     ) ??
                                                                                     false;
                                                                                 if (confirmDialogResponse) {
-                                                                                  await listViewDealersRecord.reference.delete();
+                                                                                  await listViewDealersRecord.reference.update(createDealersRecordData(
+                                                                                    isDeleted: true,
+                                                                                  ));
 
                                                                                   context.pushNamed(
                                                                                     'cDealerAccount',

@@ -441,12 +441,6 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                   .map((e) => e.id)
                                   .toList()),
                           optionLabels: dropDownAssgToUserProfileRecordList
-                              .where((e) => e.permissionList
-                                  .where((e) =>
-                                      (e.title == 'Leads') && (e.value != 0))
-                                  .toList()
-                                  .isNotEmpty)
-                              .toList()
                               .map((e) => e.name)
                               .toList(),
                           onChanged: (val) =>

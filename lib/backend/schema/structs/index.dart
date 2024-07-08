@@ -1,5 +1,6 @@
 export '/backend/schema/util/schema_util.dart';
 
+export 'app_settings_struct.dart';
 export 'call_log_list_struct.dart';
 export 'demo_list_struct.dart';
 export 'hold_list_struct.dart';

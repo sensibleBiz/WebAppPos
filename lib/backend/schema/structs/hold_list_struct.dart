@@ -35,66 +35,84 @@ class HoldListStruct extends FFFirebaseStruct {
   List<SelltemListStruct>? _items;
   List<SelltemListStruct> get items => _items ?? const [];
   set items(List<SelltemListStruct>? val) => _items = val;
-  void updateItems(Function(List<SelltemListStruct>) updateFn) =>
-      updateFn(_items ??= []);
+
+  void updateItems(Function(List<SelltemListStruct>) updateFn) {
+    updateFn(_items ??= []);
+  }
+
   bool hasItems() => _items != null;
 
   // "discountAmt" field.
   double? _discountAmt;
   double get discountAmt => _discountAmt ?? 0.0;
   set discountAmt(double? val) => _discountAmt = val;
+
   void incrementDiscountAmt(double amount) =>
-      _discountAmt = discountAmt + amount;
+      discountAmt = discountAmt + amount;
+
   bool hasDiscountAmt() => _discountAmt != null;
 
   // "discountPer" field.
   double? _discountPer;
   double get discountPer => _discountPer ?? 0.0;
   set discountPer(double? val) => _discountPer = val;
+
   void incrementDiscountPer(double amount) =>
-      _discountPer = discountPer + amount;
+      discountPer = discountPer + amount;
+
   bool hasDiscountPer() => _discountPer != null;
 
   // "delCharges" field.
   double? _delCharges;
   double get delCharges => _delCharges ?? 0.0;
   set delCharges(double? val) => _delCharges = val;
-  void incrementDelCharges(double amount) => _delCharges = delCharges + amount;
+
+  void incrementDelCharges(double amount) => delCharges = delCharges + amount;
+
   bool hasDelCharges() => _delCharges != null;
 
   // "taxAmount" field.
   double? _taxAmount;
   double get taxAmount => _taxAmount ?? 0.0;
   set taxAmount(double? val) => _taxAmount = val;
-  void incrementTaxAmount(double amount) => _taxAmount = taxAmount + amount;
+
+  void incrementTaxAmount(double amount) => taxAmount = taxAmount + amount;
+
   bool hasTaxAmount() => _taxAmount != null;
 
   // "subTotal" field.
   double? _subTotal;
   double get subTotal => _subTotal ?? 0.0;
   set subTotal(double? val) => _subTotal = val;
-  void incrementSubTotal(double amount) => _subTotal = subTotal + amount;
+
+  void incrementSubTotal(double amount) => subTotal = subTotal + amount;
+
   bool hasSubTotal() => _subTotal != null;
 
   // "finalAmount" field.
   double? _finalAmount;
   double get finalAmount => _finalAmount ?? 0.0;
   set finalAmount(double? val) => _finalAmount = val;
+
   void incrementFinalAmount(double amount) =>
-      _finalAmount = finalAmount + amount;
+      finalAmount = finalAmount + amount;
+
   bool hasFinalAmount() => _finalAmount != null;
 
   // "paymentMode" field.
   String? _paymentMode;
   String get paymentMode => _paymentMode ?? '';
   set paymentMode(String? val) => _paymentMode = val;
+
   bool hasPaymentMode() => _paymentMode != null;
 
   // "billAmount" field.
   double? _billAmount;
   double get billAmount => _billAmount ?? 0.0;
   set billAmount(double? val) => _billAmount = val;
-  void incrementBillAmount(double amount) => _billAmount = billAmount + amount;
+
+  void incrementBillAmount(double amount) => billAmount = billAmount + amount;
+
   bool hasBillAmount() => _billAmount != null;
 
   static HoldListStruct fromMap(Map<String, dynamic> data) => HoldListStruct(
@@ -132,7 +150,7 @@ class HoldListStruct extends FFFirebaseStruct {
         'items': serializeParam(
           _items,
           ParamType.DataStruct,
-          true,
+          isList: true,
         ),
         'discountAmt': serializeParam(
           _discountAmt,

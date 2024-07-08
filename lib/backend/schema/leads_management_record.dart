@@ -191,6 +191,11 @@ class LeadsManagementRecord extends FirestoreRecord {
   String get assignedBy => _assignedBy ?? '';
   bool hasAssignedBy() => _assignedBy != null;
 
+  // "isDealerLead" field.
+  bool? _isDealerLead;
+  bool get isDealerLead => _isDealerLead ?? false;
+  bool hasIsDealerLead() => _isDealerLead != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -232,6 +237,7 @@ class LeadsManagementRecord extends FirestoreRecord {
     _monthId = snapshotData['monthId'] as String?;
     _yearId = snapshotData['yearId'] as String?;
     _assignedBy = snapshotData['assignedBy'] as String?;
+    _isDealerLead = snapshotData['isDealerLead'] as bool?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -308,6 +314,7 @@ Map<String, dynamic> createLeadsManagementRecordData({
   String? monthId,
   String? yearId,
   String? assignedBy,
+  bool? isDealerLead,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -345,6 +352,7 @@ Map<String, dynamic> createLeadsManagementRecordData({
       'monthId': monthId,
       'yearId': yearId,
       'assignedBy': assignedBy,
+      'isDealerLead': isDealerLead,
     }.withoutNulls,
   );
 
@@ -392,7 +400,8 @@ class LeadsManagementRecordDocumentEquality
         e1?.businessTypeRef == e2?.businessTypeRef &&
         e1?.monthId == e2?.monthId &&
         e1?.yearId == e2?.yearId &&
-        e1?.assignedBy == e2?.assignedBy;
+        e1?.assignedBy == e2?.assignedBy &&
+        e1?.isDealerLead == e2?.isDealerLead;
   }
 
   @override
@@ -431,7 +440,8 @@ class LeadsManagementRecordDocumentEquality
         e?.businessTypeRef,
         e?.monthId,
         e?.yearId,
-        e?.assignedBy
+        e?.assignedBy,
+        e?.isDealerLead
       ]);
 
   @override

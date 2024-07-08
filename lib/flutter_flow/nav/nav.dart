@@ -136,14 +136,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 outletId: params.getParam(
                   'outletId',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
                 ),
                 shiftRef: params.getParam(
                   'shiftRef',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET', 'SHIFT'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'SHIFT'],
                 ),
                 userId: params.getParam(
                   'userId',
@@ -202,8 +202,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 outletId: params.getParam(
                   'outletId',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
                 ),
               ),
             ),
@@ -239,8 +239,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 outletId: params.getParam(
                   'outletId',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
                 ),
               ),
             ),
@@ -261,8 +261,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 outletId: params.getParam(
                   'outletId',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
                 ),
               ),
             ),
@@ -288,8 +288,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 outletId: params.getParam(
                   'outletId',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
                 ),
               ),
             ),
@@ -305,8 +305,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 outletId: params.getParam(
                   'outletId',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
                 ),
               ),
             ),
@@ -317,8 +317,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 outletId: params.getParam(
                   'outletId',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
                 ),
               ),
             ),
@@ -449,14 +449,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 outletId: params.getParam(
                   'outletId',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
                 ),
                 shiftRef: params.getParam(
                   'shiftRef',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET', 'SHIFT'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'SHIFT'],
                 ),
                 userId: params.getParam(
                   'userId',
@@ -590,8 +590,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 outletId: params.getParam(
                   'outletId',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
                 ),
               ),
             ),
@@ -666,8 +666,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 proRef: params.getParam(
                   'proRef',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET', 'PRODUCT'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PRODUCT'],
                 ),
               ),
             ),
@@ -678,8 +678,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 proRef: params.getParam(
                   'proRef',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET', 'PRODUCT'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PRODUCT'],
                 ),
                 id: params.getParam(
                   'id',
@@ -769,8 +769,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 outletId: params.getParam(
                   'outletId',
                   ParamType.DocumentReference,
-                  false,
-                  ['OUTLET'],
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
                 ),
               ),
             ),
@@ -778,11 +778,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Demos',
               path: 'Demos',
               builder: (context, params) => DemosWidget(),
-            ),
-            FFRoute(
-              name: 'DashboardAdminCopy',
-              path: 'dashboardAdminCopy',
-              builder: (context, params) => DashboardAdminCopyWidget(),
             ),
             FFRoute(
               name: 'UserManualDocReqKiosk',
@@ -793,6 +788,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'DealerDasboard',
               path: 'dealerDasboard',
               builder: (context, params) => DealerDasboardWidget(),
+            ),
+            FFRoute(
+              name: 'UploadfilegetLink',
+              path: 'uploadfilegetLink',
+              builder: (context, params) => UploadfilegetLinkWidget(),
+            ),
+            FFRoute(
+              name: 'UserManualAdminCopy',
+              path: 'userManualAdminCopy',
+              builder: (context, params) => UserManualAdminCopyWidget(),
+            ),
+            FFRoute(
+              name: 'LeadDasboardChart',
+              path: 'leadDasboardChart',
+              builder: (context, params) => LeadDasboardChartWidget(),
+            ),
+            FFRoute(
+              name: 'AppSettingsMaster',
+              path: 'appSettingsMaster',
+              builder: (context, params) => AppSettingsMasterWidget(
+                name: params.getParam(
+                  'name',
+                  ParamType.String,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -891,7 +911,7 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.extraMap.length == 1 &&
+      (state.allParams.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
@@ -912,11 +932,11 @@ class FFParameters {
 
   dynamic getParam<T>(
     String paramName,
-    ParamType type, [
+    ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
     StructBuilder<T>? structBuilder,
-  ]) {
+  }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }
@@ -1059,4 +1079,14 @@ class RootPageContext {
         value: RootPageContext(true, errorRoute),
         child: child,
       );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

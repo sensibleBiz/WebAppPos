@@ -35,59 +35,73 @@ class SelltemListStruct extends FFFirebaseStruct {
   String? _name;
   String get name => _name ?? '';
   set name(String? val) => _name = val;
+
   bool hasName() => _name != null;
 
   // "price" field.
   double? _price;
   double get price => _price ?? 0.0;
   set price(double? val) => _price = val;
-  void incrementPrice(double amount) => _price = price + amount;
+
+  void incrementPrice(double amount) => price = price + amount;
+
   bool hasPrice() => _price != null;
 
   // "quantity" field.
   double? _quantity;
   double get quantity => _quantity ?? 0.0;
   set quantity(double? val) => _quantity = val;
-  void incrementQuantity(double amount) => _quantity = quantity + amount;
+
+  void incrementQuantity(double amount) => quantity = quantity + amount;
+
   bool hasQuantity() => _quantity != null;
 
   // "tax" field.
   double? _tax;
   double get tax => _tax ?? 0.0;
   set tax(double? val) => _tax = val;
-  void incrementTax(double amount) => _tax = tax + amount;
+
+  void incrementTax(double amount) => tax = tax + amount;
+
   bool hasTax() => _tax != null;
 
   // "code" field.
   int? _code;
   int get code => _code ?? 0;
   set code(int? val) => _code = val;
-  void incrementCode(int amount) => _code = code + amount;
+
+  void incrementCode(int amount) => code = code + amount;
+
   bool hasCode() => _code != null;
 
   // "total" field.
   double? _total;
   double get total => _total ?? 0.0;
   set total(double? val) => _total = val;
-  void incrementTotal(double amount) => _total = total + amount;
+
+  void incrementTotal(double amount) => total = total + amount;
+
   bool hasTotal() => _total != null;
 
   // "id" field.
   String? _id;
   String get id => _id ?? '';
   set id(String? val) => _id = val;
+
   bool hasId() => _id != null;
 
   // "catId" field.
   String? _catId;
   String get catId => _catId ?? '';
   set catId(String? val) => _catId = val;
+
   bool hasCatId() => _catId != null;
 
   // "isDeletedItem" field.
   bool? _isDeletedItem;
   bool get isDeletedItem => _isDeletedItem ?? false;
   set isDeletedItem(bool? val) => _isDeletedItem = val;
+
   bool hasIsDeletedItem() => _isDeletedItem != null;
 
   static SelltemListStruct fromMap(Map<String, dynamic> data) =>

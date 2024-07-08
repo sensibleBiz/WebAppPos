@@ -149,10 +149,8 @@ class _LostLeadResonWidgetState extends State<LostLeadResonWidget> {
                   FFButtonWidget(
                     onPressed: () async {
                       Navigator.pop(context);
-                      setState(() {
-                        FFAppState().lostLeadReason =
-                            _model.textController.text;
-                      });
+                      FFAppState().lostLeadReason = _model.textController.text;
+                      setState(() {});
                     },
                     text: 'Save',
                     options: FFButtonOptions(

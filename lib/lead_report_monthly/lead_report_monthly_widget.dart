@@ -35,10 +35,9 @@ class _LeadReportMonthlyWidgetState extends State<LeadReportMonthlyWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().startDate = functions.currentMonth('first');
-        FFAppState().endDate = functions.currentMonth('last');
-      });
+      FFAppState().startDate = functions.currentMonth('first');
+      FFAppState().endDate = functions.currentMonth('last');
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -381,16 +380,13 @@ class _LeadReportMonthlyWidgetState extends State<LeadReportMonthlyWidget> {
                                                     size: 24.0,
                                                   ),
                                                   onPressed: () async {
-                                                    setState(() {
-                                                      FFAppState().startDate =
-                                                          functions
-                                                              .currentMonth(
-                                                                  'first');
-                                                      FFAppState().endDate =
-                                                          functions
-                                                              .currentMonth(
-                                                                  'last');
-                                                    });
+                                                    FFAppState().startDate =
+                                                        functions.currentMonth(
+                                                            'first');
+                                                    FFAppState().endDate =
+                                                        functions.currentMonth(
+                                                            'last');
+                                                    setState(() {});
                                                     await showDialog(
                                                       context: context,
                                                       builder: (dialogContext) {
@@ -939,190 +935,188 @@ class _LeadReportMonthlyWidgetState extends State<LeadReportMonthlyWidget> {
                                           ),
                                         ],
                                         rows: (list as Iterable)
-                                            .mapIndexed(
-                                                (listIndex, listItem) => [
-                                                      Text(
-                                                        getJsonField(
-                                                          listItem,
-                                                          r'''$.city''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
+                                            .mapIndexed((listIndex, listItem) =>
+                                                [
+                                                  Text(
+                                                    getJsonField(
+                                                      listItem,
+                                                      r'''$.city''',
+                                                    ).toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      Text(
-                                                        containerOutletLeadsRecordList
-                                                            .where((e) =>
-                                                                e.city ==
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    containerOutletLeadsRecordList
+                                                        .where((e) =>
+                                                            e.city ==
+                                                            getJsonField(
+                                                              listItem,
+                                                              r'''$.city''',
+                                                            ).toString())
+                                                        .toList()
+                                                        .length
+                                                        .toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    containerLeadsManagementRecordList
+                                                        .where((e) =>
+                                                            (e.city ==
                                                                 getJsonField(
                                                                   listItem,
                                                                   r'''$.city''',
-                                                                ))
-                                                            .toList()
-                                                            .length
-                                                            .toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                ).toString()) &&
+                                                            (e.stage ==
+                                                                'followup'))
+                                                        .toList()
+                                                        .length
+                                                        .toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyMediumFamily,
-                                                                  color: FlutterFlowTheme.of(
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    containerLeadsManagementRecordList
+                                                        .where((e) =>
+                                                            (e.city ==
+                                                                getJsonField(
+                                                                  listItem,
+                                                                  r'''$.city''',
+                                                                ).toString()) &&
+                                                            (e.stage ==
+                                                                'assigned'))
+                                                        .toList()
+                                                        .length
+                                                        .toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
                                                                           context)
-                                                                      .info,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      Text(
-                                                        containerLeadsManagementRecordList
-                                                            .where((e) =>
-                                                                (e.city ==
-                                                                    getJsonField(
-                                                                      listItem,
-                                                                      r'''$.city''',
-                                                                    )) &&
-                                                                (e.stage ==
-                                                                    'followup'))
-                                                            .toList()
-                                                            .length
-                                                            .toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    containerLeadsManagementRecordList
+                                                        .where((e) =>
+                                                            (e.city ==
+                                                                getJsonField(
+                                                                  listItem,
+                                                                  r'''$.city''',
+                                                                ).toString()) &&
+                                                            (e.stage == 'lost'))
+                                                        .toList()
+                                                        .length
+                                                        .toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      Text(
-                                                        containerLeadsManagementRecordList
-                                                            .where((e) =>
-                                                                (e.city ==
-                                                                    getJsonField(
-                                                                      listItem,
-                                                                      r'''$.city''',
-                                                                    )) &&
-                                                                (e.stage ==
-                                                                    'assigned'))
-                                                            .toList()
-                                                            .length
-                                                            .toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    containerLeadsManagementRecordList
+                                                        .where((e) =>
+                                                            (e.city ==
+                                                                getJsonField(
+                                                                  listItem,
+                                                                  r'''$.city''',
+                                                                ).toString()) &&
+                                                            (e.stage ==
+                                                                'completed'))
+                                                        .toList()
+                                                        .length
+                                                        .toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      Text(
-                                                        containerLeadsManagementRecordList
-                                                            .where((e) =>
-                                                                (e.city ==
-                                                                    getJsonField(
-                                                                      listItem,
-                                                                      r'''$.city''',
-                                                                    )) &&
-                                                                (e.stage ==
-                                                                    'lost'))
-                                                            .toList()
-                                                            .length
-                                                            .toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      Text(
-                                                        containerLeadsManagementRecordList
-                                                            .where((e) =>
-                                                                (e.city ==
-                                                                    getJsonField(
-                                                                      listItem,
-                                                                      r'''$.city''',
-                                                                    )) &&
-                                                                (e.stage ==
-                                                                    'completed'))
-                                                            .toList()
-                                                            .length
-                                                            .toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                    ]
-                                                        .map((c) => DataCell(c))
-                                                        .toList())
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                ]
+                                                    .map((c) => DataCell(c))
+                                                    .toList())
                                             .map((e) => DataRow(cells: e))
                                             .toList(),
                                         headingRowColor:

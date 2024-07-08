@@ -66,6 +66,31 @@ class DealersRecord extends FirestoreRecord {
   String get contactNumber => _contactNumber ?? '';
   bool hasContactNumber() => _contactNumber != null;
 
+  // "dealsIn" field.
+  String? _dealsIn;
+  String get dealsIn => _dealsIn ?? '';
+  bool hasDealsIn() => _dealsIn != null;
+
+  // "status" field.
+  String? _status;
+  String get status => _status ?? '';
+  bool hasStatus() => _status != null;
+
+  // "remarks" field.
+  String? _remarks;
+  String get remarks => _remarks ?? '';
+  bool hasRemarks() => _remarks != null;
+
+  // "isDeleted" field.
+  bool? _isDeleted;
+  bool get isDeleted => _isDeleted ?? false;
+  bool hasIsDeleted() => _isDeleted != null;
+
+  // "dealerCode" field.
+  String? _dealerCode;
+  String get dealerCode => _dealerCode ?? '';
+  bool hasDealerCode() => _dealerCode != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -79,6 +104,11 @@ class DealersRecord extends FirestoreRecord {
     _state = snapshotData['state'] as String?;
     _userProfileId = snapshotData['userProfileId'] as String?;
     _contactNumber = snapshotData['contactNumber'] as String?;
+    _dealsIn = snapshotData['dealsIn'] as String?;
+    _status = snapshotData['status'] as String?;
+    _remarks = snapshotData['remarks'] as String?;
+    _isDeleted = snapshotData['isDeleted'] as bool?;
+    _dealerCode = snapshotData['dealerCode'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -131,6 +161,11 @@ Map<String, dynamic> createDealersRecordData({
   String? state,
   String? userProfileId,
   String? contactNumber,
+  String? dealsIn,
+  String? status,
+  String? remarks,
+  bool? isDeleted,
+  String? dealerCode,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -144,6 +179,11 @@ Map<String, dynamic> createDealersRecordData({
       'state': state,
       'userProfileId': userProfileId,
       'contactNumber': contactNumber,
+      'dealsIn': dealsIn,
+      'status': status,
+      'remarks': remarks,
+      'isDeleted': isDeleted,
+      'dealerCode': dealerCode,
     }.withoutNulls,
   );
 
@@ -164,7 +204,12 @@ class DealersRecordDocumentEquality implements Equality<DealersRecord> {
         e1?.name == e2?.name &&
         e1?.state == e2?.state &&
         e1?.userProfileId == e2?.userProfileId &&
-        e1?.contactNumber == e2?.contactNumber;
+        e1?.contactNumber == e2?.contactNumber &&
+        e1?.dealsIn == e2?.dealsIn &&
+        e1?.status == e2?.status &&
+        e1?.remarks == e2?.remarks &&
+        e1?.isDeleted == e2?.isDeleted &&
+        e1?.dealerCode == e2?.dealerCode;
   }
 
   @override
@@ -178,7 +223,12 @@ class DealersRecordDocumentEquality implements Equality<DealersRecord> {
         e?.name,
         e?.state,
         e?.userProfileId,
-        e?.contactNumber
+        e?.contactNumber,
+        e?.dealsIn,
+        e?.status,
+        e?.remarks,
+        e?.isDeleted,
+        e?.dealerCode
       ]);
 
   @override

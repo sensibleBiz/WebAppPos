@@ -49,9 +49,8 @@ class _CategorySalereportNewWidgetState
         FFAppState().outletId,
         widget.shiftId!,
       );
-      setState(() {
-        FFAppState().resultList = _model.result1!.toList().cast<dynamic>();
-      });
+      FFAppState().resultList = _model.result1!.toList().cast<dynamic>();
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));

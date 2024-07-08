@@ -38,14 +38,13 @@ class _FollowUpsWidgetState extends State<FollowUpsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().startDate = functions.currentMonth('first');
-        FFAppState().endDate = functions.currentMonth('last');
-        FFAppState().startDate1 =
-            DateTime.fromMillisecondsSinceEpoch(FFAppState().startDate);
-        FFAppState().endDate1 =
-            DateTime.fromMillisecondsSinceEpoch(FFAppState().endDate);
-      });
+      FFAppState().startDate = functions.currentMonth('first');
+      FFAppState().endDate = functions.currentMonth('last');
+      FFAppState().startDate1 =
+          DateTime.fromMillisecondsSinceEpoch(FFAppState().startDate);
+      FFAppState().endDate1 =
+          DateTime.fromMillisecondsSinceEpoch(FFAppState().endDate);
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -840,15 +839,10 @@ class _FollowUpsWidgetState extends State<FollowUpsWidget> {
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                dateTimeFormat(
-                                                                    'yMMMd',
-                                                                    DateTime.fromMillisecondsSinceEpoch(
-                                                                        valueOrDefault<
-                                                                            int>(
-                                                                      followUpListItem
-                                                                          .createdDateInMill,
-                                                                      0,
-                                                                    ))),
+                                                                functions.milisecToTimestamp(
+                                                                    followUpListItem
+                                                                        .createdDate
+                                                                        ?.millisecondsSinceEpoch),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLarge

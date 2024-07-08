@@ -43,9 +43,8 @@ class _DayWiseReportWidgetState extends State<DayWiseReportWidget> {
         functions.getCurrentMonth('end'),
         FFAppState().outletId,
       );
-      setState(() {
-        FFAppState().reportData = _model.shiftReport!.toList().cast<dynamic>();
-      });
+      FFAppState().reportData = _model.shiftReport!.toList().cast<dynamic>();
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -2200,11 +2199,11 @@ class _DayWiseReportWidgetState extends State<DayWiseReportWidget> {
                                                                     onPressed:
                                                                         () async {
                                                                       FFAppState()
+                                                                              .shiftBill =
+                                                                          true;
+                                                                      FFAppState()
                                                                           .update(
-                                                                              () {
-                                                                        FFAppState().shiftBill =
-                                                                            true;
-                                                                      });
+                                                                              () {});
                                                                       ScaffoldMessenger.of(
                                                                               context)
                                                                           .showSnackBar(
@@ -2597,14 +2596,14 @@ class _DayWiseReportWidgetState extends State<DayWiseReportWidget> {
                                                                           .currentState!
                                                                           .openEndDrawer();
                                                                       FFAppState()
+                                                                              .selectedDayId =
+                                                                          getJsonField(
+                                                                        shiftListItem,
+                                                                        r'''$.dayId''',
+                                                                      ).toString();
+                                                                      FFAppState()
                                                                           .update(
-                                                                              () {
-                                                                        FFAppState().selectedDayId =
-                                                                            getJsonField(
-                                                                          shiftListItem,
-                                                                          r'''$.dayId''',
-                                                                        ).toString();
-                                                                      });
+                                                                              () {});
                                                                     },
                                                                     child:
                                                                         Container(
@@ -2823,9 +2822,8 @@ class _DayWiseReportWidgetState extends State<DayWiseReportWidget> {
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                     child: FFButtonWidget(
                                                                                       onPressed: () async {
-                                                                                        FFAppState().update(() {
-                                                                                          FFAppState().shiftBill = false;
-                                                                                        });
+                                                                                        FFAppState().shiftBill = false;
+                                                                                        FFAppState().update(() {});
                                                                                         ScaffoldMessenger.of(context).showSnackBar(
                                                                                           SnackBar(
                                                                                             content: Text(

@@ -42,15 +42,15 @@ class UserManualAdminModel extends FlutterFlowModel<UserManualAdminWidget> {
   FocusNode? textFieldFocusNode3;
   TextEditingController? textController4;
   String? Function(BuildContext, String?)? textController4Validator;
+  // State field(s) for imgList widget.
+  FocusNode? imgListFocusNode;
+  TextEditingController? imgListTextController;
+  String? Function(BuildContext, String?)? imgListTextControllerValidator;
   // State field(s) for TextFieldSteps widget.
   FocusNode? textFieldStepsFocusNode;
   TextEditingController? textFieldStepsTextController;
   String? Function(BuildContext, String?)?
       textFieldStepsTextControllerValidator;
-  // State field(s) for imgList widget.
-  FocusNode? imgListFocusNode;
-  TextEditingController? imgListTextController;
-  String? Function(BuildContext, String?)? imgListTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode4;
   TextEditingController? textController7;
@@ -80,11 +80,11 @@ class UserManualAdminModel extends FlutterFlowModel<UserManualAdminWidget> {
     textFieldFocusNode3?.dispose();
     textController4?.dispose();
 
-    textFieldStepsFocusNode?.dispose();
-    textFieldStepsTextController?.dispose();
-
     imgListFocusNode?.dispose();
     imgListTextController?.dispose();
+
+    textFieldStepsFocusNode?.dispose();
+    textFieldStepsTextController?.dispose();
 
     textFieldFocusNode4?.dispose();
     textController7?.dispose();

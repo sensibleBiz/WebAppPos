@@ -164,6 +164,7 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                       recipientNumber: '+917350014232',
                       text: _model.textController.text,
                     );
+
                     if ((_model.apiResultuav?.succeeded ?? true)) {
                       await showDialog(
                         context: context,
@@ -386,6 +387,7 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                 userMobileNumber: '+917350014232',
                                 imageUrl: _model.uploadedFileUrl1,
                               );
+
                               _shouldSetState = true;
                               if ((_model.imageresult?.succeeded ?? true)) {
                                 await showDialog(
@@ -614,6 +616,7 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                 userMobileNumber: '+917350014232',
                                 link: _model.uploadedFileUrl2,
                               );
+
                               _shouldSetState = true;
                               if ((_model.imageresult1?.succeeded ?? true)) {
                                 await showDialog(

@@ -81,10 +81,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              FFAppState().update(() {
-                FFAppState().setPremisesName = '';
-                FFAppState().selectPremiseRef = _model.catDoc?.reference;
-              });
+              FFAppState().setPremisesName = '';
+              FFAppState().selectPremiseRef = _model.catDoc?.reference;
+              FFAppState().update(() {});
             },
             child: Container(
               width: 550.0,

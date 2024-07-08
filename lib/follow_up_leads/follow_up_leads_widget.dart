@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -42,10 +43,9 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().selectedDate =
-            functions.timestampToMili(getCurrentTimestamp);
-      });
+      FFAppState().selectedDate =
+          functions.timestampToMili(getCurrentTimestamp);
+      setState(() {});
     });
 
     animationsMap.addAll({
@@ -368,11 +368,9 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                             );
                                           });
                                         }
-                                        setState(() {
-                                          FFAppState().selectedDate =
-                                              functions.timestampToMili(
-                                                  _model.datePicked);
-                                        });
+                                        FFAppState().selectedDate = functions
+                                            .timestampToMili(_model.datePicked);
+                                        setState(() {});
                                       },
                                     ),
                                   ),
@@ -516,26 +514,24 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                           2.0, 0.0, 3.0, 10.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          setState(() {
-                                            FFAppState().showStatus = false;
-                                          });
-                                          setState(() {
-                                            FFAppState().cAll =
-                                                FlutterFlowTheme.of(context)
-                                                    .primary;
-                                            FFAppState().cDemoDone =
-                                                Colors.transparent;
-                                            FFAppState().cDemoResch =
-                                                Colors.transparent;
-                                            FFAppState().cFollowUp =
-                                                Colors.transparent;
-                                            FFAppState().cInstallation =
-                                                Colors.transparent;
-                                            FFAppState().cHold =
-                                                Colors.transparent;
-                                            FFAppState().cLost =
-                                                Colors.transparent;
-                                          });
+                                          FFAppState().showStatus = false;
+                                          setState(() {});
+                                          FFAppState().cAll =
+                                              FlutterFlowTheme.of(context)
+                                                  .primary;
+                                          FFAppState().cDemoDone =
+                                              Colors.transparent;
+                                          FFAppState().cDemoResch =
+                                              Colors.transparent;
+                                          FFAppState().cFollowUp =
+                                              Colors.transparent;
+                                          FFAppState().cInstallation =
+                                              Colors.transparent;
+                                          FFAppState().cHold =
+                                              Colors.transparent;
+                                          FFAppState().cLost =
+                                              Colors.transparent;
+                                          setState(() {});
                                         },
                                         text: 'All',
                                         options: FFButtonOptions(
@@ -592,30 +588,26 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                     2.0, 5.0, 3.0, 5.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().dropDownStatus =
-                                                      'DEMO DONE';
-                                                  FFAppState().showStatus =
-                                                      true;
-                                                });
-                                                setState(() {
-                                                  FFAppState().cAll =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoDone =
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary;
-                                                  FFAppState().cDemoResch =
-                                                      Colors.transparent;
-                                                  FFAppState().cFollowUp =
-                                                      Colors.transparent;
-                                                  FFAppState().cInstallation =
-                                                      Colors.transparent;
-                                                  FFAppState().cHold =
-                                                      Colors.transparent;
-                                                  FFAppState().cLost =
-                                                      Colors.transparent;
-                                                });
+                                                FFAppState().dropDownStatus =
+                                                    'DEMO DONE';
+                                                FFAppState().showStatus = true;
+                                                setState(() {});
+                                                FFAppState().cAll =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoDone =
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary;
+                                                FFAppState().cDemoResch =
+                                                    Colors.transparent;
+                                                FFAppState().cFollowUp =
+                                                    Colors.transparent;
+                                                FFAppState().cInstallation =
+                                                    Colors.transparent;
+                                                FFAppState().cHold =
+                                                    Colors.transparent;
+                                                FFAppState().cLost =
+                                                    Colors.transparent;
+                                                setState(() {});
                                               },
                                               text: 'Demo Done',
                                               options: FFButtonOptions(
@@ -665,30 +657,26 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                     2.0, 5.0, 3.0, 5.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().dropDownStatus =
-                                                      'DEMO RESCEDULE';
-                                                  FFAppState().showStatus =
-                                                      true;
-                                                });
-                                                setState(() {
-                                                  FFAppState().cAll =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoDone =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoResch =
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary;
-                                                  FFAppState().cFollowUp =
-                                                      Colors.transparent;
-                                                  FFAppState().cInstallation =
-                                                      Colors.transparent;
-                                                  FFAppState().cHold =
-                                                      Colors.transparent;
-                                                  FFAppState().cLost =
-                                                      Colors.transparent;
-                                                });
+                                                FFAppState().dropDownStatus =
+                                                    'DEMO RESCEDULE';
+                                                FFAppState().showStatus = true;
+                                                setState(() {});
+                                                FFAppState().cAll =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoDone =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoResch =
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary;
+                                                FFAppState().cFollowUp =
+                                                    Colors.transparent;
+                                                FFAppState().cInstallation =
+                                                    Colors.transparent;
+                                                FFAppState().cHold =
+                                                    Colors.transparent;
+                                                FFAppState().cLost =
+                                                    Colors.transparent;
+                                                setState(() {});
                                               },
                                               text: ' Reschedule',
                                               options: FFButtonOptions(
@@ -738,30 +726,26 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                     2.0, 5.0, 3.0, 5.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().dropDownStatus =
-                                                      'FOLLOWUP';
-                                                  FFAppState().showStatus =
-                                                      true;
-                                                });
-                                                setState(() {
-                                                  FFAppState().cAll =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoDone =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoResch =
-                                                      Colors.transparent;
-                                                  FFAppState().cFollowUp =
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary;
-                                                  FFAppState().cInstallation =
-                                                      Colors.transparent;
-                                                  FFAppState().cHold =
-                                                      Colors.transparent;
-                                                  FFAppState().cLost =
-                                                      Colors.transparent;
-                                                });
+                                                FFAppState().dropDownStatus =
+                                                    'FOLLOWUP';
+                                                FFAppState().showStatus = true;
+                                                setState(() {});
+                                                FFAppState().cAll =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoDone =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoResch =
+                                                    Colors.transparent;
+                                                FFAppState().cFollowUp =
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary;
+                                                FFAppState().cInstallation =
+                                                    Colors.transparent;
+                                                FFAppState().cHold =
+                                                    Colors.transparent;
+                                                FFAppState().cLost =
+                                                    Colors.transparent;
+                                                setState(() {});
                                               },
                                               text: 'Follow up',
                                               options: FFButtonOptions(
@@ -811,30 +795,26 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                     2.0, 5.0, 3.0, 5.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                setState(() {
-                                                  FFAppState().dropDownStatus =
-                                                      'HOLD';
-                                                  FFAppState().showStatus =
-                                                      true;
-                                                });
-                                                setState(() {
-                                                  FFAppState().cAll =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoDone =
-                                                      Colors.transparent;
-                                                  FFAppState().cDemoResch =
-                                                      Colors.transparent;
-                                                  FFAppState().cFollowUp =
-                                                      Colors.transparent;
-                                                  FFAppState().cInstallation =
-                                                      Colors.transparent;
-                                                  FFAppState().cHold =
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary;
-                                                  FFAppState().cLost =
-                                                      Colors.transparent;
-                                                });
+                                                FFAppState().dropDownStatus =
+                                                    'HOLD';
+                                                FFAppState().showStatus = true;
+                                                setState(() {});
+                                                FFAppState().cAll =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoDone =
+                                                    Colors.transparent;
+                                                FFAppState().cDemoResch =
+                                                    Colors.transparent;
+                                                FFAppState().cFollowUp =
+                                                    Colors.transparent;
+                                                FFAppState().cInstallation =
+                                                    Colors.transparent;
+                                                FFAppState().cHold =
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary;
+                                                FFAppState().cLost =
+                                                    Colors.transparent;
+                                                setState(() {});
                                               },
                                               text: 'Hold',
                                               options: FFButtonOptions(

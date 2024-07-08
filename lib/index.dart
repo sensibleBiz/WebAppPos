@@ -102,8 +102,14 @@ export '/employeewise_record_list_final/employeewise_record_list_final_widget.da
 export '/lead_delete/lead_delete_widget.dart' show LeadDeleteWidget;
 export '/languages_copy/languages_copy_widget.dart' show LanguagesCopyWidget;
 export '/demos/demos_widget.dart' show DemosWidget;
-export '/dashboard_admin_copy/dashboard_admin_copy_widget.dart'
-    show DashboardAdminCopyWidget;
 export '/user_manual_doc_req_kiosk/user_manual_doc_req_kiosk_widget.dart'
     show UserManualDocReqKioskWidget;
 export '/dealer_dasboard/dealer_dasboard_widget.dart' show DealerDasboardWidget;
+export '/uploadfileget_link/uploadfileget_link_widget.dart'
+    show UploadfilegetLinkWidget;
+export '/user_manual_admin_copy/user_manual_admin_copy_widget.dart'
+    show UserManualAdminCopyWidget;
+export '/lead_dasboard_chart/lead_dasboard_chart_widget.dart'
+    show LeadDasboardChartWidget;
+export '/app_settings_master/app_settings_master_widget.dart'
+    show AppSettingsMasterWidget;

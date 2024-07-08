@@ -25,25 +25,30 @@ class LeadTagListStruct extends FFFirebaseStruct {
   int? _code;
   int get code => _code ?? 0;
   set code(int? val) => _code = val;
-  void incrementCode(int amount) => _code = code + amount;
+
+  void incrementCode(int amount) => code = code + amount;
+
   bool hasCode() => _code != null;
 
   // "isDeleted" field.
   bool? _isDeleted;
   bool get isDeleted => _isDeleted ?? false;
   set isDeleted(bool? val) => _isDeleted = val;
+
   bool hasIsDeleted() => _isDeleted != null;
 
   // "leadTagName" field.
   String? _leadTagName;
   String get leadTagName => _leadTagName ?? '';
   set leadTagName(String? val) => _leadTagName = val;
+
   bool hasLeadTagName() => _leadTagName != null;
 
   // "type" field.
   String? _type;
   String get type => _type ?? '';
   set type(String? val) => _type = val;
+
   bool hasType() => _type != null;
 
   static LeadTagListStruct fromMap(Map<String, dynamic> data) =>

@@ -290,9 +290,8 @@ class _TermsNconditionsWidgetState extends State<TermsNconditionsWidget> {
                                                     data:
                                                         containerTermsAndConditionsRecord!
                                                             .contains,
-                                                    onLinkTap:
-                                                        (url, _, __, ___) =>
-                                                            launchURL(url!),
+                                                    onLinkTap: (url, _, __) =>
+                                                        launchURL(url!),
                                                   ),
                                                 ],
                                               ),

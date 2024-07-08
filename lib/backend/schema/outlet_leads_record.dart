@@ -131,6 +131,11 @@ class OutletLeadsRecord extends FirestoreRecord {
   String get yearId => _yearId ?? '';
   bool hasYearId() => _yearId != null;
 
+  // "isDealerLead" field.
+  bool? _isDealerLead;
+  bool get isDealerLead => _isDealerLead ?? false;
+  bool hasIsDealerLead() => _isDealerLead != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -157,6 +162,7 @@ class OutletLeadsRecord extends FirestoreRecord {
     _priority = snapshotData['priority'] as String?;
     _monthId = snapshotData['monthId'] as String?;
     _yearId = snapshotData['yearId'] as String?;
+    _isDealerLead = snapshotData['isDealerLead'] as bool?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -222,6 +228,7 @@ Map<String, dynamic> createOutletLeadsRecordData({
   String? priority,
   String? monthId,
   String? yearId,
+  bool? isDealerLead,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -248,6 +255,7 @@ Map<String, dynamic> createOutletLeadsRecordData({
       'priority': priority,
       'monthId': monthId,
       'yearId': yearId,
+      'isDealerLead': isDealerLead,
     }.withoutNulls,
   );
 
@@ -281,7 +289,8 @@ class OutletLeadsRecordDocumentEquality implements Equality<OutletLeadsRecord> {
         e1?.businessTypeRef == e2?.businessTypeRef &&
         e1?.priority == e2?.priority &&
         e1?.monthId == e2?.monthId &&
-        e1?.yearId == e2?.yearId;
+        e1?.yearId == e2?.yearId &&
+        e1?.isDealerLead == e2?.isDealerLead;
   }
 
   @override
@@ -308,7 +317,8 @@ class OutletLeadsRecordDocumentEquality implements Equality<OutletLeadsRecord> {
         e?.businessTypeRef,
         e?.priority,
         e?.monthId,
-        e?.yearId
+        e?.yearId,
+        e?.isDealerLead
       ]);
 
   @override

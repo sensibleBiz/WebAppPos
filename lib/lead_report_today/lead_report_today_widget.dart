@@ -41,9 +41,8 @@ class _LeadReportTodayWidgetState extends State<LeadReportTodayWidget> {
         functions.yesterday(),
         functions.timestampToMili(getCurrentTimestamp),
       );
-      setState(() {
-        FFAppState().dateForReport = functions.dateFormat(getCurrentTimestamp);
-      });
+      FFAppState().dateForReport = functions.dateFormat(getCurrentTimestamp);
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -300,13 +299,10 @@ class _LeadReportTodayWidgetState extends State<LeadReportTodayWidget> {
                                                         );
                                                       });
                                                     }
-                                                    setState(() {
-                                                      FFAppState()
-                                                              .dateForReport =
-                                                          functions.dateFormat(
-                                                              _model
-                                                                  .datePicked);
-                                                    });
+                                                    FFAppState().dateForReport =
+                                                        functions.dateFormat(
+                                                            _model.datePicked);
+                                                    setState(() {});
                                                   },
                                                 ),
                                               ),
@@ -885,7 +881,7 @@ class _LeadReportTodayWidgetState extends State<LeadReportTodayWidget> {
                                                               getJsonField(
                                                                 listItem,
                                                                 r'''$.city''',
-                                                              ))
+                                                              ).toString())
                                                           .toList()
                                                           .length
                                                           .toString(),
@@ -916,7 +912,8 @@ class _LeadReportTodayWidgetState extends State<LeadReportTodayWidget> {
                                                                   getJsonField(
                                                                     listItem,
                                                                     r'''$.city''',
-                                                                  )) &&
+                                                                  )
+                                                                      .toString()) &&
                                                               (e.stage ==
                                                                   'followup'))
                                                           .toList()
@@ -946,7 +943,8 @@ class _LeadReportTodayWidgetState extends State<LeadReportTodayWidget> {
                                                                   getJsonField(
                                                                     listItem,
                                                                     r'''$.city''',
-                                                                  )) &&
+                                                                  )
+                                                                      .toString()) &&
                                                               (e.stage ==
                                                                   'assigned'))
                                                           .toList()
@@ -976,9 +974,8 @@ class _LeadReportTodayWidgetState extends State<LeadReportTodayWidget> {
                                                                   getJsonField(
                                                                     listItem,
                                                                     r'''$.city''',
-                                                                  )) &&
-                                                              (e.stage ==
-                                                                  'lost'))
+                                                                  ).toString()) &&
+                                                              (e.stage == 'lost'))
                                                           .toList()
                                                           .length
                                                           .toString(),
@@ -1012,7 +1009,8 @@ class _LeadReportTodayWidgetState extends State<LeadReportTodayWidget> {
                                                                   getJsonField(
                                                                     listItem,
                                                                     r'''$.city''',
-                                                                  )) &&
+                                                                  )
+                                                                      .toString()) &&
                                                               (e.stage ==
                                                                   'completed'))
                                                           .toList()

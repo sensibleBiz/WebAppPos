@@ -721,10 +721,10 @@ class _AddCategoryMasterWidgetState extends State<AddCategoryMasterWidget> {
                                                     ),
                                                     child: FFButtonWidget(
                                                       onPressed: () async {
-                                                        FFAppState().update(() {
-                                                          FFAppState().regName =
-                                                              listItem.name;
-                                                        });
+                                                        FFAppState().regName =
+                                                            listItem.name;
+                                                        FFAppState()
+                                                            .update(() {});
                                                       },
                                                       text: listItem.name,
                                                       options: FFButtonOptions(

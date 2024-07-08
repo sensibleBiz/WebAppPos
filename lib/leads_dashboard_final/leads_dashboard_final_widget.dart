@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/assign_lead_widget.dart';
+import '/components/assign_lead_dealer_widget.dart';
 import '/components/c_header_widget.dart';
 import '/components/call_details_widget.dart';
 import '/components/dis_qualify_lead_widget.dart';
@@ -15,6 +15,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:styled_divider/styled_divider.dart';
@@ -69,24 +70,19 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
         functions.yesterday(),
         functions.timestampToMili(getCurrentTimestamp),
       );
-      FFAppState().update(() {
-        FFAppState().allLeads =
-            _model.leadDetailsCopy1!.toList().cast<dynamic>();
-      });
-      setState(() {
-        FFAppState().assignedExec = false;
-        FFAppState().lostLeadIcon = false;
-      });
-      setState(() {
-        FFAppState().leadCreateValue = 'New Leads';
-        FFAppState().nleads = Color(0xFF210EAF);
-        FFAppState().aleads = Colors.transparent;
-        FFAppState().cLeads = Colors.transparent;
-        FFAppState().lleads = Colors.transparent;
-      });
-      setState(() {
-        FFAppState().searchHide = false;
-      });
+      FFAppState().allLeads = _model.leadDetailsCopy1!.toList().cast<dynamic>();
+      FFAppState().update(() {});
+      FFAppState().assignedExec = false;
+      FFAppState().lostLeadIcon = false;
+      setState(() {});
+      FFAppState().leadCreateValue = 'New Leads';
+      FFAppState().nleads = Color(0xFF210EAF);
+      FFAppState().aleads = Colors.transparent;
+      FFAppState().cLeads = Colors.transparent;
+      FFAppState().lleads = Colors.transparent;
+      setState(() {});
+      FFAppState().searchHide = false;
+      setState(() {});
     });
 
     _model.expandableExpandableController1 =
@@ -355,7 +351,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context
-                                              .pushNamed('DashboardAdminCopy');
+                                              .pushNamed('LeadDasboardChart');
                                         },
                                         child: Text(
                                           'Chart',
@@ -427,9 +423,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                             size: 22.0,
                                           ),
                                           onPressed: () async {
-                                            setState(() {
-                                              _model.showMore = true;
-                                            });
+                                            _model.showMore = true;
+                                            setState(() {});
                                             if (animationsMap[
                                                     'containerOnActionTriggerAnimation6'] !=
                                                 null) {
@@ -559,53 +554,54 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                         .timestampToMili(
                                                                             getCurrentTimestamp),
                                                                   );
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .assignedExec =
-                                                                        false;
-                                                                    FFAppState()
-                                                                            .lostLeadIcon =
-                                                                        false;
-                                                                  });
+                                                                  FFAppState()
+                                                                          .assignedExec =
+                                                                      false;
+                                                                  FFAppState()
+                                                                          .lostLeadIcon =
+                                                                      false;
+                                                                  setState(
+                                                                      () {});
+                                                                  FFAppState()
+                                                                          .allLeads =
+                                                                      _model
+                                                                          .res333!
+                                                                          .toList()
+                                                                          .cast<
+                                                                              dynamic>();
                                                                   FFAppState()
                                                                       .update(
-                                                                          () {
-                                                                    FFAppState().allLeads = _model
-                                                                        .res333!
-                                                                        .toList()
-                                                                        .cast<
-                                                                            dynamic>();
-                                                                  });
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .leadCreateValue =
-                                                                        'New Leads';
-                                                                    FFAppState()
-                                                                            .nleads =
-                                                                        Color(
-                                                                            0xFF210EAF);
-                                                                    FFAppState()
-                                                                            .aleads =
-                                                                        Colors
-                                                                            .transparent;
-                                                                    FFAppState()
-                                                                            .fLeads =
-                                                                        Colors
-                                                                            .transparent;
-                                                                    FFAppState()
-                                                                            .cLeads =
-                                                                        Colors
-                                                                            .transparent;
-                                                                    FFAppState()
-                                                                            .lleads =
-                                                                        Colors
-                                                                            .transparent;
-                                                                  });
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .searchHide =
-                                                                        false;
-                                                                  });
+                                                                          () {});
+                                                                  FFAppState()
+                                                                          .leadCreateValue =
+                                                                      'New Leads';
+                                                                  FFAppState()
+                                                                          .nleads =
+                                                                      Color(
+                                                                          0xFF210EAF);
+                                                                  FFAppState()
+                                                                          .aleads =
+                                                                      Colors
+                                                                          .transparent;
+                                                                  FFAppState()
+                                                                          .fLeads =
+                                                                      Colors
+                                                                          .transparent;
+                                                                  FFAppState()
+                                                                          .cLeads =
+                                                                      Colors
+                                                                          .transparent;
+                                                                  FFAppState()
+                                                                          .lleads =
+                                                                      Colors
+                                                                          .transparent;
+                                                                  setState(
+                                                                      () {});
+                                                                  FFAppState()
+                                                                          .searchHide =
+                                                                      false;
+                                                                  setState(
+                                                                      () {});
 
                                                                   setState(
                                                                       () {});
@@ -941,47 +937,49 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                         .timestampToMili(
                                                                             getCurrentTimestamp),
                                                                   );
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .assignedExec =
-                                                                        true;
-                                                                    FFAppState().allLeads = _model
-                                                                        .res2!
-                                                                        .toList()
-                                                                        .cast<
-                                                                            dynamic>();
-                                                                  });
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .leadCreateValue =
-                                                                        'Assigned';
-                                                                    FFAppState()
-                                                                            .lostLeadIcon =
-                                                                        false;
-                                                                  });
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .nleads =
-                                                                        Colors
-                                                                            .transparent;
-                                                                    FFAppState()
-                                                                            .aleads =
-                                                                        Color(
-                                                                            0xFFCC0404);
-                                                                    FFAppState()
-                                                                            .cLeads =
-                                                                        Colors
-                                                                            .transparent;
-                                                                    FFAppState()
-                                                                            .lleads =
-                                                                        Colors
-                                                                            .transparent;
-                                                                  });
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .searchHide =
-                                                                        true;
-                                                                  });
+                                                                  FFAppState()
+                                                                          .assignedExec =
+                                                                      true;
+                                                                  FFAppState()
+                                                                          .allLeads =
+                                                                      _model
+                                                                          .res2!
+                                                                          .toList()
+                                                                          .cast<
+                                                                              dynamic>();
+                                                                  setState(
+                                                                      () {});
+                                                                  FFAppState()
+                                                                          .leadCreateValue =
+                                                                      'Assigned';
+                                                                  FFAppState()
+                                                                          .lostLeadIcon =
+                                                                      false;
+                                                                  setState(
+                                                                      () {});
+                                                                  FFAppState()
+                                                                          .nleads =
+                                                                      Colors
+                                                                          .transparent;
+                                                                  FFAppState()
+                                                                          .aleads =
+                                                                      Color(
+                                                                          0xFFCC0404);
+                                                                  FFAppState()
+                                                                          .cLeads =
+                                                                      Colors
+                                                                          .transparent;
+                                                                  FFAppState()
+                                                                          .lleads =
+                                                                      Colors
+                                                                          .transparent;
+                                                                  setState(
+                                                                      () {});
+                                                                  FFAppState()
+                                                                          .searchHide =
+                                                                      true;
+                                                                  setState(
+                                                                      () {});
 
                                                                   setState(
                                                                       () {});
@@ -1306,47 +1304,49 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                         .timestampToMili(
                                                                             getCurrentTimestamp),
                                                                   );
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .assignedExec =
-                                                                        true;
-                                                                    FFAppState().allLeads = _model
-                                                                        .res5!
-                                                                        .toList()
-                                                                        .cast<
-                                                                            dynamic>();
-                                                                  });
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .leadCreateValue =
-                                                                        'Completed';
-                                                                    FFAppState()
-                                                                            .lostLeadIcon =
-                                                                        false;
-                                                                  });
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .nleads =
-                                                                        Colors
-                                                                            .transparent;
-                                                                    FFAppState()
-                                                                            .aleads =
-                                                                        Colors
-                                                                            .transparent;
-                                                                    FFAppState()
-                                                                            .cLeads =
-                                                                        Color(
-                                                                            0xFFF8DB19);
-                                                                    FFAppState()
-                                                                            .lleads =
-                                                                        Colors
-                                                                            .transparent;
-                                                                  });
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .searchHide =
-                                                                        true;
-                                                                  });
+                                                                  FFAppState()
+                                                                          .assignedExec =
+                                                                      true;
+                                                                  FFAppState()
+                                                                          .allLeads =
+                                                                      _model
+                                                                          .res5!
+                                                                          .toList()
+                                                                          .cast<
+                                                                              dynamic>();
+                                                                  setState(
+                                                                      () {});
+                                                                  FFAppState()
+                                                                          .leadCreateValue =
+                                                                      'Completed';
+                                                                  FFAppState()
+                                                                          .lostLeadIcon =
+                                                                      false;
+                                                                  setState(
+                                                                      () {});
+                                                                  FFAppState()
+                                                                          .nleads =
+                                                                      Colors
+                                                                          .transparent;
+                                                                  FFAppState()
+                                                                          .aleads =
+                                                                      Colors
+                                                                          .transparent;
+                                                                  FFAppState()
+                                                                          .cLeads =
+                                                                      Color(
+                                                                          0xFFF8DB19);
+                                                                  FFAppState()
+                                                                          .lleads =
+                                                                      Colors
+                                                                          .transparent;
+                                                                  setState(
+                                                                      () {});
+                                                                  FFAppState()
+                                                                          .searchHide =
+                                                                      true;
+                                                                  setState(
+                                                                      () {});
 
                                                                   setState(
                                                                       () {});
@@ -1663,49 +1663,45 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                       .timestampToMili(
                                                                           getCurrentTimestamp),
                                                                 );
-                                                                setState(() {
-                                                                  FFAppState()
-                                                                          .assignedExec =
-                                                                      true;
-                                                                  FFAppState()
-                                                                          .allLeads =
-                                                                      _model
-                                                                          .resLost!
-                                                                          .toList()
-                                                                          .cast<
-                                                                              dynamic>();
-                                                                });
-                                                                setState(() {
-                                                                  FFAppState()
-                                                                          .leadCreateValue =
-                                                                      'Lost';
-                                                                  FFAppState()
-                                                                          .lostLeadIcon =
-                                                                      true;
-                                                                });
-                                                                setState(() {
-                                                                  FFAppState()
-                                                                          .nleads =
-                                                                      Colors
-                                                                          .transparent;
-                                                                  FFAppState()
-                                                                          .aleads =
-                                                                      Colors
-                                                                          .transparent;
-                                                                  FFAppState()
-                                                                          .cLeads =
-                                                                      Colors
-                                                                          .transparent;
-                                                                  FFAppState()
-                                                                          .lleads =
-                                                                      Color(
-                                                                          0xFF059747);
-                                                                });
-                                                                setState(() {
-                                                                  FFAppState()
-                                                                          .searchHide =
-                                                                      true;
-                                                                });
+                                                                FFAppState()
+                                                                        .assignedExec =
+                                                                    true;
+                                                                FFAppState()
+                                                                        .allLeads =
+                                                                    _model
+                                                                        .resLost!
+                                                                        .toList()
+                                                                        .cast<
+                                                                            dynamic>();
+                                                                setState(() {});
+                                                                FFAppState()
+                                                                        .leadCreateValue =
+                                                                    'Lost';
+                                                                FFAppState()
+                                                                        .lostLeadIcon =
+                                                                    true;
+                                                                setState(() {});
+                                                                FFAppState()
+                                                                        .nleads =
+                                                                    Colors
+                                                                        .transparent;
+                                                                FFAppState()
+                                                                        .aleads =
+                                                                    Colors
+                                                                        .transparent;
+                                                                FFAppState()
+                                                                        .cLeads =
+                                                                    Colors
+                                                                        .transparent;
+                                                                FFAppState()
+                                                                        .lleads =
+                                                                    Color(
+                                                                        0xFF059747);
+                                                                setState(() {});
+                                                                FFAppState()
+                                                                        .searchHide =
+                                                                    true;
+                                                                setState(() {});
 
                                                                 setState(() {});
                                                               },
@@ -2478,9 +2474,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                               _model.allLeadSearchRes = await actions.leadDocToLeadJson(
                                                                                                 _model.resAssignedTo!.toList(),
                                                                                               );
-                                                                                              setState(() {
-                                                                                                FFAppState().allLeads = _model.allLeadSearchRes!.toList().cast<dynamic>();
-                                                                                              });
+                                                                                              FFAppState().allLeads = _model.allLeadSearchRes!.toList().cast<dynamic>();
+                                                                                              setState(() {});
 
                                                                                               setState(() {});
                                                                                             },
@@ -2585,9 +2580,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                         _model.allLeadSearchRes1 = await actions.leadDocToLeadJson(
                                                                                           _model.res1!.toList(),
                                                                                         );
-                                                                                        setState(() {
-                                                                                          FFAppState().allLeads = _model.allLeadSearchRes1!.toList().cast<dynamic>();
-                                                                                        });
+                                                                                        FFAppState().allLeads = _model.allLeadSearchRes1!.toList().cast<dynamic>();
+                                                                                        setState(() {});
 
                                                                                         setState(() {});
                                                                                       },
@@ -2665,9 +2659,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                   _model.allLeadSearchRes12 = await actions.leadDocToLeadJson(
                                                                                     _model.res12!.toList(),
                                                                                   );
-                                                                                  setState(() {
-                                                                                    FFAppState().allLeads = _model.allLeadSearchRes12!.toList().cast<dynamic>();
-                                                                                  });
+                                                                                  FFAppState().allLeads = _model.allLeadSearchRes12!.toList().cast<dynamic>();
+                                                                                  setState(() {});
 
                                                                                   setState(() {});
                                                                                 },
@@ -2737,9 +2730,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                         _model.allLeadSearchRes2 = await actions.leadDocToLeadJson(
                                                                                           _model.resCity!.toList(),
                                                                                         );
-                                                                                        setState(() {
-                                                                                          FFAppState().allLeads = _model.allLeadSearchRes2!.toList().cast<dynamic>();
-                                                                                        });
+                                                                                        FFAppState().allLeads = _model.allLeadSearchRes2!.toList().cast<dynamic>();
+                                                                                        setState(() {});
 
                                                                                         setState(() {});
                                                                                       },
@@ -2817,9 +2809,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                   _model.allLeadSearchRes13 = await actions.leadDocToLeadJson(
                                                                                     _model.resCity13!.toList(),
                                                                                   );
-                                                                                  setState(() {
-                                                                                    FFAppState().allLeads = _model.allLeadSearchRes13!.toList().cast<dynamic>();
-                                                                                  });
+                                                                                  FFAppState().allLeads = _model.allLeadSearchRes13!.toList().cast<dynamic>();
+                                                                                  setState(() {});
 
                                                                                   setState(() {});
                                                                                 },
@@ -2883,9 +2874,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                               _model.allLeadSearchRes3Copy = await actions.leadDocToLeadJson(
                                                                                 _model.resSourceCopy!.toList(),
                                                                               );
-                                                                              setState(() {
-                                                                                FFAppState().allLeads = _model.allLeadSearchRes3Copy!.toList().cast<dynamic>();
-                                                                              });
+                                                                              FFAppState().allLeads = _model.allLeadSearchRes3Copy!.toList().cast<dynamic>();
+                                                                              setState(() {});
 
                                                                               setState(() {});
                                                                             },
@@ -3676,6 +3666,13 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     ).toString(),
                                                                                     ParamType.String,
                                                                                   ),
+                                                                                  'leadRefId': serializeParam(
+                                                                                    getJsonField(
+                                                                                      leadListItem,
+                                                                                      r'''$.id''',
+                                                                                    ).toString(),
+                                                                                    ParamType.String,
+                                                                                  ),
                                                                                 }.withoutNulls,
                                                                               );
                                                                             },
@@ -3921,13 +3918,11 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                           hoverColor: Colors.transparent,
                                                                                           highlightColor: Colors.transparent,
                                                                                           onTap: () async {
-                                                                                            setState(() {
-                                                                                              FFAppState().changeAssignedFlag = false;
-                                                                                            });
+                                                                                            FFAppState().changeAssignedFlag = false;
+                                                                                            setState(() {});
                                                                                             await showModalBottomSheet(
                                                                                               isScrollControlled: true,
                                                                                               backgroundColor: Colors.transparent,
-                                                                                              barrierColor: Color(0x00000000),
                                                                                               enableDrag: false,
                                                                                               context: context,
                                                                                               builder: (context) {
@@ -3936,81 +3931,10 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                     onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                                     child: Padding(
                                                                                                       padding: MediaQuery.viewInsetsOf(context),
-                                                                                                      child: AssignLeadWidget(
-                                                                                                        area: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.area''',
-                                                                                                        ).toString(),
-                                                                                                        city: valueOrDefault<String>(
-                                                                                                          getJsonField(
-                                                                                                            leadListItem,
-                                                                                                            r'''$.city''',
-                                                                                                          )?.toString(),
-                                                                                                          'Not Available',
-                                                                                                        ),
-                                                                                                        comments: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.comments''',
-                                                                                                        ).toString(),
-                                                                                                        date: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.date''',
-                                                                                                        ).toString(),
-                                                                                                        email: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.email''',
-                                                                                                        ).toString(),
+                                                                                                      child: AssignLeadDealerWidget(
                                                                                                         mobile: getJsonField(
                                                                                                           leadListItem,
                                                                                                           r'''$.mobile''',
-                                                                                                        ).toString(),
-                                                                                                        mobileAlt: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.mobileAlt''',
-                                                                                                        ).toString(),
-                                                                                                        phone: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.phone''',
-                                                                                                        ).toString(),
-                                                                                                        requirement: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.requirement''',
-                                                                                                        ).toString(),
-                                                                                                        source: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.source''',
-                                                                                                        ).toString(),
-                                                                                                        state: valueOrDefault<String>(
-                                                                                                          getJsonField(
-                                                                                                            leadListItem,
-                                                                                                            r'''$.state''',
-                                                                                                          )?.toString(),
-                                                                                                          'Not Available',
-                                                                                                        ),
-                                                                                                        status: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.status''',
-                                                                                                        ).toString(),
-                                                                                                        time: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.time''',
-                                                                                                        ).toString(),
-                                                                                                        username: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.username''',
-                                                                                                        ).toString(),
-                                                                                                        createdDateTime: getCurrentTimestamp,
-                                                                                                        leadRefId: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.leadRefId''',
-                                                                                                        ).toString(),
-                                                                                                        businessName: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.businessName''',
-                                                                                                        ).toString(),
-                                                                                                        businessType: getJsonField(
-                                                                                                          leadListItem,
-                                                                                                          r'''$.businessType''',
                                                                                                         ).toString(),
                                                                                                       ),
                                                                                                     ),
@@ -4257,13 +4181,11 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                 hoverColor: Colors.transparent,
                                                                                                 highlightColor: Colors.transparent,
                                                                                                 onTap: () async {
-                                                                                                  setState(() {
-                                                                                                    FFAppState().changeAssignedFlag = true;
-                                                                                                  });
+                                                                                                  FFAppState().changeAssignedFlag = true;
+                                                                                                  setState(() {});
                                                                                                   await showModalBottomSheet(
                                                                                                     isScrollControlled: true,
                                                                                                     backgroundColor: Colors.transparent,
-                                                                                                    barrierColor: Color(0x00000000),
                                                                                                     enableDrag: false,
                                                                                                     context: context,
                                                                                                     builder: (context) {
@@ -4272,81 +4194,10 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                           onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                                           child: Padding(
                                                                                                             padding: MediaQuery.viewInsetsOf(context),
-                                                                                                            child: AssignLeadWidget(
-                                                                                                              area: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.area''',
-                                                                                                              ).toString(),
-                                                                                                              city: valueOrDefault<String>(
-                                                                                                                getJsonField(
-                                                                                                                  leadListItem,
-                                                                                                                  r'''$.city''',
-                                                                                                                )?.toString(),
-                                                                                                                'Not Available',
-                                                                                                              ),
-                                                                                                              comments: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.comments''',
-                                                                                                              ).toString(),
-                                                                                                              date: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.date''',
-                                                                                                              ).toString(),
-                                                                                                              email: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.email''',
-                                                                                                              ).toString(),
+                                                                                                            child: AssignLeadDealerWidget(
                                                                                                               mobile: getJsonField(
                                                                                                                 leadListItem,
                                                                                                                 r'''$.mobile''',
-                                                                                                              ).toString(),
-                                                                                                              mobileAlt: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.mobileAlt''',
-                                                                                                              ).toString(),
-                                                                                                              phone: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.phone''',
-                                                                                                              ).toString(),
-                                                                                                              requirement: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.requirement''',
-                                                                                                              ).toString(),
-                                                                                                              source: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.source''',
-                                                                                                              ).toString(),
-                                                                                                              state: valueOrDefault<String>(
-                                                                                                                getJsonField(
-                                                                                                                  leadListItem,
-                                                                                                                  r'''$.state''',
-                                                                                                                )?.toString(),
-                                                                                                                'Not Available',
-                                                                                                              ),
-                                                                                                              status: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.status''',
-                                                                                                              ).toString(),
-                                                                                                              time: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.time''',
-                                                                                                              ).toString(),
-                                                                                                              username: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.username''',
-                                                                                                              ).toString(),
-                                                                                                              createdDateTime: getCurrentTimestamp,
-                                                                                                              leadRefId: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.leadRefId''',
-                                                                                                              ).toString(),
-                                                                                                              businessName: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.businessName''',
-                                                                                                              ).toString(),
-                                                                                                              businessType: getJsonField(
-                                                                                                                leadListItem,
-                                                                                                                r'''$.businessType''',
                                                                                                               ).toString(),
                                                                                                             ),
                                                                                                           ),
@@ -5047,9 +4898,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                     size: 15.0,
                                   ),
                                   onPressed: () async {
-                                    setState(() {
-                                      _model.showMore = false;
-                                    });
+                                    _model.showMore = false;
+                                    setState(() {});
                                     if (animationsMap[
                                             'containerOnActionTriggerAnimation6'] !=
                                         null) {
@@ -5066,12 +4916,11 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                     0.0, 0.0, 0.0, 10.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    setState(() {
-                                      FFAppState().startDate =
-                                          functions.currentMonth('first');
-                                      FFAppState().endDate =
-                                          functions.currentMonth('last');
-                                    });
+                                    FFAppState().startDate =
+                                        functions.currentMonth('first');
+                                    FFAppState().endDate =
+                                        functions.currentMonth('last');
+                                    setState(() {});
 
                                     context.pushNamed('leadReportMonthly');
                                   },

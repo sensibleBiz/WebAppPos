@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'c_add_dealer_widget.dart' show CAddDealerWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -15,6 +17,10 @@ import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
 class CAddDealerModel extends FlutterFlowModel<CAddDealerWidget> {
+  ///  Local state fields for this component.
+
+  dynamic record;
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
@@ -27,16 +33,17 @@ class CAddDealerModel extends FlutterFlowModel<CAddDealerWidget> {
   UserProfileRecord? checkUser;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   DealersRecord? checkDuplicate;
+  // Stores action output result for [Custom Action - userAsDealerExists] action in Button widget.
+  bool? res;
+  // State field(s) for TextFieldName widget.
+  FocusNode? textFieldNameFocusNode;
+  TextEditingController? textFieldNameTextController;
+  String? Function(BuildContext, String?)? textFieldNameTextControllerValidator;
   // State field(s) for TextFieldMobile widget.
-  FocusNode? textFieldMobileFocusNode1;
-  TextEditingController? textFieldMobileTextController1;
+  FocusNode? textFieldMobileFocusNode;
+  TextEditingController? textFieldMobileTextController;
   String? Function(BuildContext, String?)?
-      textFieldMobileTextController1Validator;
-  // State field(s) for TextFieldMobile widget.
-  FocusNode? textFieldMobileFocusNode2;
-  TextEditingController? textFieldMobileTextController2;
-  String? Function(BuildContext, String?)?
-      textFieldMobileTextController2Validator;
+      textFieldMobileTextControllerValidator;
   // State field(s) for TextFieldEmailId widget.
   FocusNode? textFieldEmailIdFocusNode;
   TextEditingController? textFieldEmailIdTextController;
@@ -55,10 +62,29 @@ class CAddDealerModel extends FlutterFlowModel<CAddDealerWidget> {
     return null;
   }
 
+  // State field(s) for TextFieldDeals widget.
+  FocusNode? textFieldDealsFocusNode;
+  TextEditingController? textFieldDealsTextController;
+  String? Function(BuildContext, String?)?
+      textFieldDealsTextControllerValidator;
   // State field(s) for gstNumber widget.
   FocusNode? gstNumberFocusNode;
   TextEditingController? gstNumberTextController;
   String? Function(BuildContext, String?)? gstNumberTextControllerValidator;
+  // State field(s) for remark widget.
+  FocusNode? remarkFocusNode1;
+  TextEditingController? remarkTextController1;
+  String? Function(BuildContext, String?)? remarkTextController1Validator;
+  // State field(s) for DropDownState widget.
+  String? dropDownStateValue;
+  FormFieldController<String>? dropDownStateValueController;
+  // State field(s) for DropDownCity widget.
+  String? dropDownCityValue;
+  FormFieldController<String>? dropDownCityValueController;
+  // State field(s) for remark widget.
+  FocusNode? remarkFocusNode2;
+  TextEditingController? remarkTextController2;
+  String? Function(BuildContext, String?)? remarkTextController2Validator;
   // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
   DealersRecord? fetchedDuplicateDealer;
   // Stores action output result for [Backend Call - Create Document] action in Container widget.
@@ -74,11 +100,11 @@ class CAddDealerModel extends FlutterFlowModel<CAddDealerWidget> {
     searchMobileTextFieldFocusNode?.dispose();
     searchMobileTextFieldTextController?.dispose();
 
-    textFieldMobileFocusNode1?.dispose();
-    textFieldMobileTextController1?.dispose();
+    textFieldNameFocusNode?.dispose();
+    textFieldNameTextController?.dispose();
 
-    textFieldMobileFocusNode2?.dispose();
-    textFieldMobileTextController2?.dispose();
+    textFieldMobileFocusNode?.dispose();
+    textFieldMobileTextController?.dispose();
 
     textFieldEmailIdFocusNode?.dispose();
     textFieldEmailIdTextController?.dispose();
@@ -86,7 +112,16 @@ class CAddDealerModel extends FlutterFlowModel<CAddDealerWidget> {
     companyNameFocusNode?.dispose();
     companyNameTextController?.dispose();
 
+    textFieldDealsFocusNode?.dispose();
+    textFieldDealsTextController?.dispose();
+
     gstNumberFocusNode?.dispose();
     gstNumberTextController?.dispose();
+
+    remarkFocusNode1?.dispose();
+    remarkTextController1?.dispose();
+
+    remarkFocusNode2?.dispose();
+    remarkTextController2?.dispose();
   }
 }

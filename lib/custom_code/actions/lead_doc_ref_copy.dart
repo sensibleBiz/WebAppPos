@@ -132,6 +132,7 @@ Future<List<dynamic>> leadDocRefCopy(String dayId, String outletId,
         .collection('OUTLET')
         .doc(outletId)
         .collection('LEADS_MANAGEMENT')
+        .where('isDealerLead', isEqualTo: false)
         .where('createdDate', isGreaterThan: yesterday)
         .where('createdDate', isLessThanOrEqualTo: today)
         .orderBy('createdDate', descending: true)
@@ -140,6 +141,7 @@ Future<List<dynamic>> leadDocRefCopy(String dayId, String outletId,
 
     int len = querySnapshot.docs.length;
     // print(len);
+    print(querySnapshot.docs);
     if (len > 0) {
       querySnapshot.docs.forEach((doc) {
         Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
@@ -268,6 +270,7 @@ Future<List<dynamic>> leadDocRefCopy(String dayId, String outletId,
         .doc(outletId)
         .collection('LEADS_MANAGEMENT')
         .where('stage', isEqualTo: stage)
+        .where('isDealerLead', isEqualTo: false)
         .where('createdDate', isGreaterThan: yesterday)
         .where('createdDate', isLessThanOrEqualTo: today)
         .orderBy('createdDate', descending: true)

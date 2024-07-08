@@ -144,9 +144,8 @@ class _EmployeeCustomDateRangeWidgetState
                           );
                         });
                       }
-                      setState(() {
-                        FFAppState().startDate1 = _model.datePicked1;
-                      });
+                      FFAppState().startDate1 = _model.datePicked1;
+                      setState(() {});
                     },
                     text: '',
                     icon: Icon(
@@ -222,12 +221,11 @@ class _EmployeeCustomDateRangeWidgetState
                           );
                         });
                       }
-                      setState(() {
-                        FFAppState().endDate1 =
-                            functions.nextDay(_model.datePicked2!.toString());
-                        FFAppState().endDateShow =
-                            functions.nextDay(_model.datePicked2!.toString());
-                      });
+                      FFAppState().endDate1 =
+                          functions.nextDay(_model.datePicked2!.toString());
+                      FFAppState().endDateShow =
+                          functions.nextDay(_model.datePicked2!.toString());
+                      setState(() {});
                       await showDialog(
                         context: context,
                         builder: (alertDialogContext) {

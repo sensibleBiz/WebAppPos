@@ -201,10 +201,9 @@ class _CCategoryWidgetState extends State<CCategoryWidget> {
                                               containerCategoryRecordList
                                                   .toList(),
                                             );
-                                            FFAppState().update(() {
-                                              FFAppState().catCodeLengtH =
-                                                  _model.len!;
-                                            });
+                                            FFAppState().catCodeLengtH =
+                                                _model.len!;
+                                            FFAppState().update(() {});
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:

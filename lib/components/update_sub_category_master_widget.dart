@@ -440,10 +440,9 @@ class _UpdateSubCategoryMasterWidgetState
                                                         setState(() => _model
                                                                 .dropDownCategoryNameValue =
                                                             val);
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .dropdown = true;
-                                                        });
+                                                        FFAppState().dropdown =
+                                                            true;
+                                                        setState(() {});
                                                       },
                                                       width: 180.0,
                                                       height: 50.0,
@@ -851,24 +850,24 @@ class _UpdateSubCategoryMasterWidgetState
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        FFAppState().update(() {
-                                                          FFAppState().regName =
-                                                              getJsonField(
-                                                            list2Item,
-                                                            r'''$.title''',
-                                                          ).toString();
-                                                          FFAppState()
-                                                                  .showNameList =
-                                                              true;
-                                                        });
-                                                        FFAppState().update(() {
-                                                          FFAppState().names = functions
-                                                              .stringToList(
-                                                                  container1SubCategoryRecord
-                                                                      .regionalName)
-                                                              .toList()
-                                                              .cast<dynamic>();
-                                                        });
+                                                        FFAppState().regName =
+                                                            getJsonField(
+                                                          list2Item,
+                                                          r'''$.title''',
+                                                        ).toString();
+                                                        FFAppState()
+                                                                .showNameList =
+                                                            true;
+                                                        FFAppState()
+                                                            .update(() {});
+                                                        FFAppState().names = functions
+                                                            .stringToList(
+                                                                container1SubCategoryRecord
+                                                                    .regionalName)
+                                                            .toList()
+                                                            .cast<dynamic>();
+                                                        FFAppState()
+                                                            .update(() {});
                                                       },
                                                       child: Row(
                                                         mainAxisSize:
@@ -1047,15 +1046,13 @@ class _UpdateSubCategoryMasterWidgetState
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
+                                                          FFAppState().regName =
+                                                              getJsonField(
+                                                            list3Item,
+                                                            r'''$.title''',
+                                                          ).toString();
                                                           FFAppState()
-                                                              .update(() {
-                                                            FFAppState()
-                                                                    .regName =
-                                                                getJsonField(
-                                                              list3Item,
-                                                              r'''$.title''',
-                                                            ).toString();
-                                                          });
+                                                              .update(() {});
                                                         },
                                                         child: Row(
                                                           mainAxisSize:
@@ -1541,9 +1538,8 @@ class _UpdateSubCategoryMasterWidgetState
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          FFAppState().update(() {
-                                            FFAppState().dropdown = false;
-                                          });
+                                          FFAppState().dropdown = false;
+                                          FFAppState().update(() {});
                                           Navigator.pop(context);
                                         },
                                         child: Container(
@@ -1673,9 +1669,8 @@ class _UpdateSubCategoryMasterWidgetState
                                                 context.pushNamed(
                                                     'SubCategoryMaster');
 
-                                                FFAppState().update(() {
-                                                  FFAppState().dropdown = false;
-                                                });
+                                                FFAppState().dropdown = false;
+                                                FFAppState().update(() {});
                                               } else {
                                                 _model.notSame = await actions
                                                     .dupSubCategory(
@@ -1739,10 +1734,8 @@ class _UpdateSubCategoryMasterWidgetState
                                                   context.pushNamed(
                                                       'SubCategoryMaster');
 
-                                                  FFAppState().update(() {
-                                                    FFAppState().dropdown =
-                                                        false;
-                                                  });
+                                                  FFAppState().dropdown = false;
+                                                  FFAppState().update(() {});
                                                 } else {
                                                   await showDialog(
                                                     context: context,

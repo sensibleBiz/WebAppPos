@@ -81,11 +81,18 @@ class CAddUserModel extends FlutterFlowModel<CAddUserWidget> {
   TextEditingController? textFieldCodeTextController;
   String? Function(BuildContext, String?)? textFieldCodeTextControllerValidator;
   // State field(s) for CheckboxGroup1 widget.
-  List<String>? checkboxGroup1Values;
   FormFieldController<List<String>>? checkboxGroup1ValueController;
+  List<String>? get checkboxGroup1Values =>
+      checkboxGroup1ValueController?.value;
+  set checkboxGroup1Values(List<String>? v) =>
+      checkboxGroup1ValueController?.value = v;
+
   // State field(s) for CheckboxGroup2 widget.
-  List<String>? checkboxGroup2Values;
   FormFieldController<List<String>>? checkboxGroup2ValueController;
+  List<String>? get checkboxGroup2Values =>
+      checkboxGroup2ValueController?.value;
+  set checkboxGroup2Values(List<String>? v) =>
+      checkboxGroup2ValueController?.value = v;
 
   @override
   void initState(BuildContext context) {

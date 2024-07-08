@@ -246,25 +246,25 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                     .transparent,
                                                             onTap: () async {
                                                               FFAppState()
-                                                                  .update(() {
-                                                                FFAppState()
-                                                                        .bMDocRef =
-                                                                    listViewBusinesssMasterRecord
-                                                                        .reference;
-                                                                FFAppState()
-                                                                        .BMDocId =
-                                                                    listViewBusinesssMasterRecord
-                                                                        .id;
-                                                              });
+                                                                      .bMDocRef =
+                                                                  listViewBusinesssMasterRecord
+                                                                      .reference;
                                                               FFAppState()
-                                                                  .update(() {
-                                                                FFAppState()
-                                                                    .setBMcolor = '';
-                                                                FFAppState()
-                                                                        .setBMcolor =
-                                                                    listViewBusinesssMasterRecord
-                                                                        .id;
-                                                              });
+                                                                      .BMDocId =
+                                                                  listViewBusinesssMasterRecord
+                                                                      .id;
+                                                              FFAppState()
+                                                                  .update(
+                                                                      () {});
+                                                              FFAppState()
+                                                                  .setBMcolor = '';
+                                                              FFAppState()
+                                                                      .setBMcolor =
+                                                                  listViewBusinesssMasterRecord
+                                                                      .id;
+                                                              FFAppState()
+                                                                  .update(
+                                                                      () {});
                                                             },
                                                             child: Container(
                                                               width: MediaQuery
@@ -482,25 +482,23 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                   onTap:
                                                                       () async {
                                                                     FFAppState()
-                                                                        .update(
-                                                                            () {
-                                                                      FFAppState()
-                                                                              .outletRef =
-                                                                          gridViewOutletRecord
-                                                                              .reference;
-                                                                      FFAppState()
-                                                                              .outletId =
-                                                                          gridViewOutletRecord
-                                                                              .id;
-                                                                    });
+                                                                            .outletRef =
+                                                                        gridViewOutletRecord
+                                                                            .reference;
+                                                                    FFAppState()
+                                                                            .outletId =
+                                                                        gridViewOutletRecord
+                                                                            .id;
                                                                     FFAppState()
                                                                         .update(
-                                                                            () {
-                                                                      FFAppState()
-                                                                              .shift =
-                                                                          functions
-                                                                              .getDayId();
-                                                                    });
+                                                                            () {});
+                                                                    FFAppState()
+                                                                            .shift =
+                                                                        functions
+                                                                            .getDayId();
+                                                                    FFAppState()
+                                                                        .update(
+                                                                            () {});
 
                                                                     await containerUserProfileRecord!
                                                                         .reference

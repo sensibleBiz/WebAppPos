@@ -316,9 +316,8 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                       .toList();
                                               ;
                                             });
-                                            setState(() {
-                                              FFAppState().tagSearch = true;
-                                            });
+                                            FFAppState().tagSearch = true;
+                                            setState(() {});
                                           },
                                         ),
                                         autofocus: true,
@@ -430,9 +429,8 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                       _model.textFieldtagTextController
                                           ?.clear();
                                     });
-                                    setState(() {
-                                      FFAppState().tagSearch = false;
-                                    });
+                                    FFAppState().tagSearch = false;
+                                    setState(() {});
                                   },
                                 ),
                               ),
@@ -441,9 +439,8 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                   _model.tag = await actions.generateTagCode(
                                     containerLeadTagRecordList.toList(),
                                   );
-                                  setState(() {
-                                    FFAppState().leadtagCode = _model.tag!;
-                                  });
+                                  FFAppState().leadtagCode = _model.tag!;
+                                  setState(() {});
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
@@ -628,23 +625,31 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                                             Colors.transparent,
                                                                         onTap:
                                                                             () async {
+                                                                          FFAppState()
+                                                                              .addToTagList(getJsonField(
+                                                                            functions.generateTaglDetailsJson(
+                                                                                tagLIstItem.leadTagName,
+                                                                                tagLIstItem.code,
+                                                                                tagLIstItem.isDeleted,
+                                                                                tagLIstItem.type),
+                                                                            r'''$''',
+                                                                          ));
                                                                           setState(
-                                                                              () {
-                                                                            FFAppState().addToTagList(getJsonField(
-                                                                              functions.generateTaglDetailsJson(tagLIstItem.leadTagName, tagLIstItem.code, tagLIstItem.isDeleted, tagLIstItem.type),
-                                                                              r'''$''',
-                                                                            ));
-                                                                          });
+                                                                              () {});
                                                                         },
                                                                         onDoubleTap:
                                                                             () async {
+                                                                          FFAppState()
+                                                                              .addToTagList(getJsonField(
+                                                                            functions.generateTaglDetailsJson(
+                                                                                tagLIstItem.leadTagName,
+                                                                                tagLIstItem.code,
+                                                                                tagLIstItem.isDeleted,
+                                                                                tagLIstItem.type),
+                                                                            r'''$''',
+                                                                          ));
                                                                           setState(
-                                                                              () {
-                                                                            FFAppState().addToTagList(getJsonField(
-                                                                              functions.generateTaglDetailsJson(tagLIstItem.leadTagName, tagLIstItem.code, tagLIstItem.isDeleted, tagLIstItem.type),
-                                                                              r'''$''',
-                                                                            ));
-                                                                          });
+                                                                              () {});
                                                                         },
                                                                         child:
                                                                             Container(
@@ -768,21 +773,19 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                                                 Colors.transparent,
                                                                             onTap:
                                                                                 () async {
-                                                                              setState(() {
-                                                                                FFAppState().addToTagList(getJsonField(
-                                                                                  functions.generateTaglDetailsJson(tagLIstItem.leadTagName, tagLIstItem.code, tagLIstItem.isDeleted, tagLIstItem.type),
-                                                                                  r'''$''',
-                                                                                ));
-                                                                              });
+                                                                              FFAppState().addToTagList(getJsonField(
+                                                                                functions.generateTaglDetailsJson(tagLIstItem.leadTagName, tagLIstItem.code, tagLIstItem.isDeleted, tagLIstItem.type),
+                                                                                r'''$''',
+                                                                              ));
+                                                                              setState(() {});
                                                                             },
                                                                             onDoubleTap:
                                                                                 () async {
-                                                                              setState(() {
-                                                                                FFAppState().addToTagList(getJsonField(
-                                                                                  functions.generateTaglDetailsJson(tagLIstItem.leadTagName, tagLIstItem.code, tagLIstItem.isDeleted, tagLIstItem.type),
-                                                                                  r'''$''',
-                                                                                ));
-                                                                              });
+                                                                              FFAppState().addToTagList(getJsonField(
+                                                                                functions.generateTaglDetailsJson(tagLIstItem.leadTagName, tagLIstItem.code, tagLIstItem.isDeleted, tagLIstItem.type),
+                                                                                r'''$''',
+                                                                              ));
+                                                                              setState(() {});
                                                                             },
                                                                             child:
                                                                                 Container(
@@ -1006,10 +1009,10 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                                         ),
                                                                         onPressed:
                                                                             () async {
+                                                                          FFAppState()
+                                                                              .removeFromTagList(tagLItem);
                                                                           setState(
-                                                                              () {
-                                                                            FFAppState().removeFromTagList(tagLItem);
-                                                                          });
+                                                                              () {});
                                                                           ScaffoldMessenger.of(context)
                                                                               .showSnackBar(
                                                                             SnackBar(
@@ -1304,8 +1307,8 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                 area: widget.area,
                                                 city: widget.city,
                                                 comments: widget.comments,
-                                                date: functions.dateFormat(
-                                                    getCurrentTimestamp),
+                                                date:
+                                                    rowOutletLeadsRecord?.date,
                                                 email: widget.email,
                                                 logId: widget.logId,
                                                 mobile: widget.mobile,
@@ -1313,7 +1316,8 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                 phone: widget.phone,
                                                 requirement: widget.requirement,
                                                 source: widget.source,
-                                                time: widget.time,
+                                                time:
+                                                    rowOutletLeadsRecord?.time,
                                                 username: widget.username,
                                                 state: widget.state,
                                                 remarks: '#',
@@ -1341,6 +1345,7 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                     widget.businessName,
                                                 businessType:
                                                     widget.businessType,
+                                                isDealerLead: false,
                                               ),
                                               ...mapToFirestore(
                                                 {
@@ -1376,8 +1381,8 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                 area: widget.area,
                                                 city: widget.city,
                                                 comments: widget.comments,
-                                                date: functions.dateFormat(
-                                                    getCurrentTimestamp),
+                                                date:
+                                                    rowOutletLeadsRecord?.date,
                                                 email: widget.email,
                                                 logId: widget.logId,
                                                 mobile: widget.mobile,
@@ -1385,7 +1390,8 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                 phone: widget.phone,
                                                 requirement: widget.requirement,
                                                 source: widget.source,
-                                                time: widget.time,
+                                                time:
+                                                    rowOutletLeadsRecord?.time,
                                                 username: widget.username,
                                                 state: widget.state,
                                                 remarks: '#',
@@ -1413,6 +1419,7 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                     widget.businessName,
                                                 businessType:
                                                     widget.businessType,
+                                                isDealerLead: false,
                                               ),
                                               ...mapToFirestore(
                                                 {
@@ -1480,9 +1487,8 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                     createOutletLeadsRecordData(
                                                   status: 'LOST',
                                                 ));
-                                            setState(() {
-                                              FFAppState().tagList = [];
-                                            });
+                                            FFAppState().tagList = [];
+                                            setState(() {});
                                             await Future.delayed(const Duration(
                                                 milliseconds: 2000));
 

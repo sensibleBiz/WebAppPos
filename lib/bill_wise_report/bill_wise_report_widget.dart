@@ -48,9 +48,8 @@ class _BillWiseReportWidgetState extends State<BillWiseReportWidget> {
         FFAppState().outletId,
         widget.shiftId!,
       );
-      setState(() {
-        FFAppState().resultList = _model.result!.toList().cast<dynamic>();
-      });
+      FFAppState().resultList = _model.result!.toList().cast<dynamic>();
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -2274,9 +2273,8 @@ class _BillWiseReportWidgetState extends State<BillWiseReportWidget> {
                                                                                 highlightColor: Colors.transparent,
                                                                                 onTap: () async {
                                                                                   scaffoldKey.currentState!.openEndDrawer();
-                                                                                  FFAppState().update(() {
-                                                                                    FFAppState().selectedDayId = listViewDayIdInvoiceRecord.id;
-                                                                                  });
+                                                                                  FFAppState().selectedDayId = listViewDayIdInvoiceRecord.id;
+                                                                                  FFAppState().update(() {});
                                                                                 },
                                                                                 child: Container(
                                                                                   width: MediaQuery.sizeOf(context).width * 1.0,
@@ -2523,9 +2521,8 @@ class _BillWiseReportWidgetState extends State<BillWiseReportWidget> {
                                                                                   highlightColor: Colors.transparent,
                                                                                   onTap: () async {
                                                                                     scaffoldKey.currentState!.openEndDrawer();
-                                                                                    FFAppState().update(() {
-                                                                                      FFAppState().selectedDayId = listViewShiftIDInvoiceRecord.shiftId;
-                                                                                    });
+                                                                                    FFAppState().selectedDayId = listViewShiftIDInvoiceRecord.shiftId;
+                                                                                    FFAppState().update(() {});
                                                                                   },
                                                                                   child: Container(
                                                                                     width: MediaQuery.sizeOf(context).width * 1.0,
@@ -2656,9 +2653,8 @@ class _BillWiseReportWidgetState extends State<BillWiseReportWidget> {
                                                                                                   highlightColor: Colors.transparent,
                                                                                                   onTap: () async {
                                                                                                     scaffoldKey.currentState!.openEndDrawer();
-                                                                                                    FFAppState().update(() {
-                                                                                                      FFAppState().selectedDayId = listViewShiftIDInvoiceRecord.id;
-                                                                                                    });
+                                                                                                    FFAppState().selectedDayId = listViewShiftIDInvoiceRecord.id;
+                                                                                                    FFAppState().update(() {});
                                                                                                   },
                                                                                                   child: Container(
                                                                                                     width: 100.0,

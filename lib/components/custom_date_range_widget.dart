@@ -141,13 +141,11 @@ class _CustomDateRangeWidgetState extends State<CustomDateRangeWidget> {
                           );
                         });
                       }
-                      _model.updatePage(() {
-                        FFAppState().startDate =
-                            _model.datePicked1!.millisecondsSinceEpoch;
-                      });
-                      _model.updatePage(() {
-                        FFAppState().startDate1 = _model.datePicked1;
-                      });
+                      FFAppState().startDate =
+                          _model.datePicked1!.millisecondsSinceEpoch;
+                      _model.updatePage(() {});
+                      FFAppState().startDate1 = _model.datePicked1;
+                      _model.updatePage(() {});
                     },
                     text: '',
                     icon: Icon(
@@ -223,13 +221,11 @@ class _CustomDateRangeWidgetState extends State<CustomDateRangeWidget> {
                           );
                         });
                       }
-                      setState(() {
-                        FFAppState().endDate =
-                            _model.datePicked2!.millisecondsSinceEpoch;
-                      });
-                      setState(() {
-                        FFAppState().endDate1 = _model.datePicked2;
-                      });
+                      FFAppState().endDate =
+                          _model.datePicked2!.millisecondsSinceEpoch;
+                      setState(() {});
+                      FFAppState().endDate1 = _model.datePicked2;
+                      setState(() {});
                     },
                     text: 'Date Picker',
                     icon: Icon(

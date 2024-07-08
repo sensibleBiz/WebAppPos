@@ -118,15 +118,26 @@ class _LoginNewFinalWidgetState extends State<LoginNewFinalWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 0.0, 50.0),
-                                              child: Container(
-                                                width: 180.0,
-                                                height: 110.0,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    fit: BoxFit.contain,
-                                                    image: Image.asset(
-                                                      'assets/images/Sensible_Logo_Large.png',
-                                                    ).image,
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onDoubleTap: () async {
+                                                  context.pushNamed(
+                                                      'UserManualDocReqKiosk');
+                                                },
+                                                child: Container(
+                                                  width: 180.0,
+                                                  height: 110.0,
+                                                  decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                      fit: BoxFit.contain,
+                                                      image: Image.asset(
+                                                        'assets/images/Sensible_Logo_Large.png',
+                                                      ).image,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -395,12 +406,10 @@ class _LoginNewFinalWidgetState extends State<LoginNewFinalWidget> {
                                                     _model.textFieldEmailTextController
                                                             .text !=
                                                         '') {
-                                                  FFAppState().update(() {
-                                                    FFAppState().currentEmail =
-                                                        _model
-                                                            .textFieldEmailTextController
-                                                            .text;
-                                                  });
+                                                  FFAppState().currentEmail = _model
+                                                      .textFieldEmailTextController
+                                                      .text;
+                                                  FFAppState().update(() {});
                                                   _model.fetchedRecordUserProfile =
                                                       await queryUserProfileRecordOnce(
                                                     queryBuilder:
@@ -417,33 +426,30 @@ class _LoginNewFinalWidgetState extends State<LoginNewFinalWidget> {
                                                   if (_model
                                                           .fetchedRecordUserProfile !=
                                                       null) {
-                                                    setState(() {
-                                                      FFAppState().outletId = _model
-                                                          .fetchedRecordUserProfile!
-                                                          .outletId;
-                                                      FFAppState().role = _model
-                                                          .fetchedRecordUserProfile!
-                                                          .role;
-                                                      FFAppState()
-                                                              .userProfileRef =
-                                                          _model
-                                                              .fetchedRecordUserProfile
-                                                              ?.reference;
-                                                    });
-                                                    setState(() {
-                                                      FFAppState().userId = _model
-                                                          .fetchedRecordUserProfile!
-                                                          .id;
-                                                    });
+                                                    FFAppState().outletId = _model
+                                                        .fetchedRecordUserProfile!
+                                                        .outletId;
+                                                    FFAppState().role = _model
+                                                        .fetchedRecordUserProfile!
+                                                        .role;
+                                                    FFAppState()
+                                                            .userProfileRef =
+                                                        _model
+                                                            .fetchedRecordUserProfile
+                                                            ?.reference;
+                                                    setState(() {});
+                                                    FFAppState().userId = _model
+                                                        .fetchedRecordUserProfile!
+                                                        .id;
+                                                    setState(() {});
                                                     if (_model
                                                             .fetchedRecordUserProfile
                                                             ?.role ==
                                                         'admin') {
-                                                      setState(() {
-                                                        FFAppState()
-                                                                .BackButtonRole =
-                                                            true;
-                                                      });
+                                                      FFAppState()
+                                                              .BackButtonRole =
+                                                          true;
+                                                      setState(() {});
 
                                                       context.pushNamed(
                                                         'cOutletList',
@@ -464,21 +470,19 @@ class _LoginNewFinalWidgetState extends State<LoginNewFinalWidget> {
                                                         context.pushNamed(
                                                             'DashboardAdmin');
 
-                                                        setState(() {
-                                                          FFAppState()
-                                                                  .BackButtonRole =
-                                                              true;
-                                                        });
+                                                        FFAppState()
+                                                                .BackButtonRole =
+                                                            true;
+                                                        setState(() {});
                                                       } else {
                                                         if ((_model.fetchedRecordUserProfile
                                                                     ?.permissionList?[10])
                                                                 ?.value ==
                                                             4) {
-                                                          setState(() {
-                                                            FFAppState()
-                                                                    .BackButtonRole =
-                                                                false;
-                                                          });
+                                                          FFAppState()
+                                                                  .BackButtonRole =
+                                                              false;
+                                                          setState(() {});
 
                                                           context.pushNamed(
                                                             'cOutletListUser4',
