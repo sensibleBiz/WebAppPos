@@ -41,10 +41,10 @@ Future<List<dynamic>> leadsByDateRange(
       .then((value) => value);
 
   int len = querySnapshot.docs.length;
-  print(len);
+  // print(len);
   if (len > 0) {
     querySnapshot.docs.forEach((doc) {
-      print(doc["businessName"]);
+//print(doc["businessName"]);
       leadDocs.add({
         "username": doc["username"],
         "mobile": doc["mobile"],
@@ -154,7 +154,7 @@ Future<List<dynamic>> leadsByDateRange(
     "facebook": countFacebook,
   });
 
-  print(leadDocs);
+  //print(leadDocs);
 
   return leadDocs;
 }

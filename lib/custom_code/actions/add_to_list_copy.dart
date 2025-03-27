@@ -13,7 +13,7 @@ Future<List<dynamic>> addToListCopy(ProductRecord? document) async {
   // Add your function code here!
   List<dynamic> list = FFAppState().itemCartList;
 
-  print(document);
+  // print(document);
   final data = {
     "name": document!.name,
     "price": (document.mrpPrice)!.toDouble(),
@@ -25,8 +25,8 @@ Future<List<dynamic>> addToListCopy(ProductRecord? document) async {
 
   var flag = false;
   if (list.isNotEmpty) {
-    print("list");
-    print(list);
+    // print("list");
+    // print(list);
     for (int i = 0; i < list.length; i++) {
       if (list[i]["name"] == data["name"]) {
         list[i]["quantity"]++;
@@ -41,6 +41,6 @@ Future<List<dynamic>> addToListCopy(ProductRecord? document) async {
   } else {
     FFAppState().itemCartList.add(data);
   }
-  print(FFAppState().itemCartList);
+  // print(FFAppState().itemCartList);
   return FFAppState().itemCartList;
 }

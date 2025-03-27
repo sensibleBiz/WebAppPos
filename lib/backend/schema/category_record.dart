@@ -46,6 +46,16 @@ class CategoryRecord extends FirestoreRecord {
   bool get isDeleted => _isDeleted ?? false;
   bool hasIsDeleted() => _isDeleted != null;
 
+  // "code" field.
+  int? _code;
+  int get code => _code ?? 0;
+  bool hasCode() => _code != null;
+
+  // "catimageUrl" field.
+  String? _catimageUrl;
+  String get catimageUrl => _catimageUrl ?? '';
+  bool hasCatimageUrl() => _catimageUrl != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -55,6 +65,8 @@ class CategoryRecord extends FirestoreRecord {
     _categoryRf = snapshotData['categoryRf'] as DocumentReference?;
     _type = castToType<int>(snapshotData['type']);
     _isDeleted = snapshotData['isDeleted'] as bool?;
+    _code = castToType<int>(snapshotData['code']);
+    _catimageUrl = snapshotData['catimageUrl'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -103,6 +115,8 @@ Map<String, dynamic> createCategoryRecordData({
   DocumentReference? categoryRf,
   int? type,
   bool? isDeleted,
+  int? code,
+  String? catimageUrl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -112,6 +126,8 @@ Map<String, dynamic> createCategoryRecordData({
       'categoryRf': categoryRf,
       'type': type,
       'isDeleted': isDeleted,
+      'code': code,
+      'catimageUrl': catimageUrl,
     }.withoutNulls,
   );
 
@@ -128,12 +144,22 @@ class CategoryRecordDocumentEquality implements Equality<CategoryRecord> {
         e1?.name == e2?.name &&
         e1?.categoryRf == e2?.categoryRf &&
         e1?.type == e2?.type &&
-        e1?.isDeleted == e2?.isDeleted;
+        e1?.isDeleted == e2?.isDeleted &&
+        e1?.code == e2?.code &&
+        e1?.catimageUrl == e2?.catimageUrl;
   }
 
   @override
-  int hash(CategoryRecord? e) => const ListEquality().hash(
-      [e?.categoryNo, e?.id, e?.name, e?.categoryRf, e?.type, e?.isDeleted]);
+  int hash(CategoryRecord? e) => const ListEquality().hash([
+        e?.categoryNo,
+        e?.id,
+        e?.name,
+        e?.categoryRf,
+        e?.type,
+        e?.isDeleted,
+        e?.code,
+        e?.catimageUrl
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is CategoryRecord;

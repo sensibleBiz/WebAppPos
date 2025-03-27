@@ -16,8 +16,8 @@ Future<List<dynamic>> leadDocToLeadJson(
   int aCount = 0, fCount = 0, cCount = 0, lCount = 0;
 
   for (int i = 0; i < docs.length; i++) {
-    print(docs[i]);
-    print(docs[i].username);
+    // print(docs[i]);
+    // print(docs[i].username);
 
     leadDocs.add({
       "username": docs[i].username,

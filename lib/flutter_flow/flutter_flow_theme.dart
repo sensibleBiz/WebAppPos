@@ -69,6 +69,12 @@ abstract class FlutterFlowTheme {
   late Color customColor2;
   late Color customColor3;
   late Color backgroundComponants;
+  late Color customColor4;
+  late Color back2nd;
+  late Color text2nd;
+  late Color customColor5;
+  late Color customColor6;
+  late Color customColor7;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -179,6 +185,12 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color customColor2 = Color(0xFFF2F2EA);
   late Color customColor3 = Color(0xFF979CAF);
   late Color backgroundComponants = Color(0xFF475366);
+  late Color customColor4 = Color(0xFFF26E7F);
+  late Color back2nd = Color(0xFFE2E4EB);
+  late Color text2nd = Color(0xFF9BA0BB);
+  late Color customColor5 = Color(0xFF216CE4);
+  late Color customColor6 = Color(0xFF020D41);
+  late Color customColor7 = Color(0xFF0A1023);
 }
 
 abstract class Typography {
@@ -578,6 +590,12 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color customColor2 = Color(0xFF0D0801);
   late Color customColor3 = Color(0xFF4E595D);
   late Color backgroundComponants = Color(0xFF67727F);
+  late Color customColor4 = Color(0xFFF26E7F);
+  late Color back2nd = Color(0xFF2E343C);
+  late Color text2nd = Color(0xFF7C82A2);
+  late Color customColor5 = Color(0xFF216CE4);
+  late Color customColor6 = Color(0xFF020D41);
+  late Color customColor7 = Color(0xFF0A1023);
 }
 
 extension TextStyleHelper on TextStyle {
@@ -591,6 +609,7 @@ extension TextStyleHelper on TextStyle {
     bool useGoogleFonts = true,
     TextDecoration? decoration,
     double? lineHeight,
+    List<Shadow>? shadows,
   }) =>
       useGoogleFonts
           ? GoogleFonts.getFont(
@@ -602,6 +621,7 @@ extension TextStyleHelper on TextStyle {
               fontStyle: fontStyle ?? this.fontStyle,
               decoration: decoration,
               height: lineHeight,
+              shadows: shadows,
             )
           : copyWith(
               fontFamily: fontFamily,
@@ -612,5 +632,6 @@ extension TextStyleHelper on TextStyle {
               fontStyle: fontStyle,
               decoration: decoration,
               height: lineHeight,
+              shadows: shadows,
             );
 }

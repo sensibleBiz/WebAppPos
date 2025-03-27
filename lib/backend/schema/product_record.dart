@@ -201,6 +201,121 @@ class ProductRecord extends FirestoreRecord {
   double get delliveryChrg => _delliveryChrg ?? 0.0;
   bool hasDelliveryChrg() => _delliveryChrg != null;
 
+  // "isEnable" field.
+  bool? _isEnable;
+  bool get isEnable => _isEnable ?? false;
+  bool hasIsEnable() => _isEnable != null;
+
+  // "inclusiveGST" field.
+  bool? _inclusiveGST;
+  bool get inclusiveGST => _inclusiveGST ?? false;
+  bool hasInclusiveGST() => _inclusiveGST != null;
+
+  // "isDealer" field.
+  bool? _isDealer;
+  bool get isDealer => _isDealer ?? false;
+  bool hasIsDealer() => _isDealer != null;
+
+  // "netTotal" field.
+  double? _netTotal;
+  double get netTotal => _netTotal ?? 0.0;
+  bool hasNetTotal() => _netTotal != null;
+
+  // "gstAmt" field.
+  double? _gstAmt;
+  double get gstAmt => _gstAmt ?? 0.0;
+  bool hasGstAmt() => _gstAmt != null;
+
+  // "kitchenId" field.
+  String? _kitchenId;
+  String get kitchenId => _kitchenId ?? '';
+  bool hasKitchenId() => _kitchenId != null;
+
+  // "priceTable" field.
+  String? _priceTable;
+  String get priceTable => _priceTable ?? '';
+  bool hasPriceTable() => _priceTable != null;
+
+  // "onlineSynced" field.
+  bool? _onlineSynced;
+  bool get onlineSynced => _onlineSynced ?? false;
+  bool hasOnlineSynced() => _onlineSynced != null;
+
+  // "onlinePrice" field.
+  double? _onlinePrice;
+  double get onlinePrice => _onlinePrice ?? 0.0;
+  bool hasOnlinePrice() => _onlinePrice != null;
+
+  // "keyCount" field.
+  int? _keyCount;
+  int get keyCount => _keyCount ?? 0;
+  bool hasKeyCount() => _keyCount != null;
+
+  // "discount" field.
+  double? _discount;
+  double get discount => _discount ?? 0.0;
+  bool hasDiscount() => _discount != null;
+
+  // "dateTime" field.
+  DateTime? _dateTime;
+  DateTime? get dateTime => _dateTime;
+  bool hasDateTime() => _dateTime != null;
+
+  // "cess" field.
+  double? _cess;
+  double get cess => _cess ?? 0.0;
+  bool hasCess() => _cess != null;
+
+  // "currentStock" field.
+  double? _currentStock;
+  double get currentStock => _currentStock ?? 0.0;
+  bool hasCurrentStock() => _currentStock != null;
+
+  // "unitId" field.
+  int? _unitId;
+  int get unitId => _unitId ?? 0;
+  bool hasUnitId() => _unitId != null;
+
+  // "taxIndex" field.
+  int? _taxIndex;
+  int get taxIndex => _taxIndex ?? 0;
+  bool hasTaxIndex() => _taxIndex != null;
+
+  // "selected" field.
+  bool? _selected;
+  bool get selected => _selected ?? false;
+  bool hasSelected() => _selected != null;
+
+  // "active" field.
+  bool? _active;
+  bool get active => _active ?? false;
+  bool hasActive() => _active != null;
+
+  // "costPrice" field.
+  double? _costPrice;
+  double get costPrice => _costPrice ?? 0.0;
+  bool hasCostPrice() => _costPrice != null;
+
+  // "gstPer" field.
+  String? _gstPer;
+  String get gstPer => _gstPer ?? '';
+  bool hasGstPer() => _gstPer != null;
+
+  // "posModel" field.
+  String? _posModel;
+  String get posModel => _posModel ?? '';
+  bool hasPosModel() => _posModel != null;
+
+  // "posSerial" field.
+  String? _posSerial;
+  String get posSerial => _posSerial ?? '';
+  bool hasPosSerial() => _posSerial != null;
+
+  // "deviceId" field.
+  String? _deviceId;
+  String get deviceId => _deviceId ?? '';
+  bool hasDeviceId() => _deviceId != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -241,6 +356,29 @@ class ProductRecord extends FirestoreRecord {
     _recipeId = snapshotData['recipeId'] as String?;
     _isDeleted = snapshotData['isDeleted'] as bool?;
     _delliveryChrg = castToType<double>(snapshotData['delliveryChrg']);
+    _isEnable = snapshotData['isEnable'] as bool?;
+    _inclusiveGST = snapshotData['inclusiveGST'] as bool?;
+    _isDealer = snapshotData['isDealer'] as bool?;
+    _netTotal = castToType<double>(snapshotData['netTotal']);
+    _gstAmt = castToType<double>(snapshotData['gstAmt']);
+    _kitchenId = snapshotData['kitchenId'] as String?;
+    _priceTable = snapshotData['priceTable'] as String?;
+    _onlineSynced = snapshotData['onlineSynced'] as bool?;
+    _onlinePrice = castToType<double>(snapshotData['onlinePrice']);
+    _keyCount = castToType<int>(snapshotData['keyCount']);
+    _discount = castToType<double>(snapshotData['discount']);
+    _dateTime = snapshotData['dateTime'] as DateTime?;
+    _cess = castToType<double>(snapshotData['cess']);
+    _currentStock = castToType<double>(snapshotData['currentStock']);
+    _unitId = castToType<int>(snapshotData['unitId']);
+    _taxIndex = castToType<int>(snapshotData['taxIndex']);
+    _selected = snapshotData['selected'] as bool?;
+    _active = snapshotData['active'] as bool?;
+    _costPrice = castToType<double>(snapshotData['costPrice']);
+    _gstPer = snapshotData['gstPer'] as String?;
+    _posModel = snapshotData['posModel'] as String?;
+    _posSerial = snapshotData['posSerial'] as String?;
+    _deviceId = snapshotData['deviceId'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -320,6 +458,29 @@ Map<String, dynamic> createProductRecordData({
   String? recipeId,
   bool? isDeleted,
   double? delliveryChrg,
+  bool? isEnable,
+  bool? inclusiveGST,
+  bool? isDealer,
+  double? netTotal,
+  double? gstAmt,
+  String? kitchenId,
+  String? priceTable,
+  bool? onlineSynced,
+  double? onlinePrice,
+  int? keyCount,
+  double? discount,
+  DateTime? dateTime,
+  double? cess,
+  double? currentStock,
+  int? unitId,
+  int? taxIndex,
+  bool? selected,
+  bool? active,
+  double? costPrice,
+  String? gstPer,
+  String? posModel,
+  String? posSerial,
+  String? deviceId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -360,6 +521,29 @@ Map<String, dynamic> createProductRecordData({
       'recipeId': recipeId,
       'isDeleted': isDeleted,
       'delliveryChrg': delliveryChrg,
+      'isEnable': isEnable,
+      'inclusiveGST': inclusiveGST,
+      'isDealer': isDealer,
+      'netTotal': netTotal,
+      'gstAmt': gstAmt,
+      'kitchenId': kitchenId,
+      'priceTable': priceTable,
+      'onlineSynced': onlineSynced,
+      'onlinePrice': onlinePrice,
+      'keyCount': keyCount,
+      'discount': discount,
+      'dateTime': dateTime,
+      'cess': cess,
+      'currentStock': currentStock,
+      'unitId': unitId,
+      'taxIndex': taxIndex,
+      'selected': selected,
+      'active': active,
+      'costPrice': costPrice,
+      'gstPer': gstPer,
+      'posModel': posModel,
+      'posSerial': posSerial,
+      'deviceId': deviceId,
     }.withoutNulls,
   );
 
@@ -407,7 +591,30 @@ class ProductRecordDocumentEquality implements Equality<ProductRecord> {
         e1?.leadTime == e2?.leadTime &&
         e1?.recipeId == e2?.recipeId &&
         e1?.isDeleted == e2?.isDeleted &&
-        e1?.delliveryChrg == e2?.delliveryChrg;
+        e1?.delliveryChrg == e2?.delliveryChrg &&
+        e1?.isEnable == e2?.isEnable &&
+        e1?.inclusiveGST == e2?.inclusiveGST &&
+        e1?.isDealer == e2?.isDealer &&
+        e1?.netTotal == e2?.netTotal &&
+        e1?.gstAmt == e2?.gstAmt &&
+        e1?.kitchenId == e2?.kitchenId &&
+        e1?.priceTable == e2?.priceTable &&
+        e1?.onlineSynced == e2?.onlineSynced &&
+        e1?.onlinePrice == e2?.onlinePrice &&
+        e1?.keyCount == e2?.keyCount &&
+        e1?.discount == e2?.discount &&
+        e1?.dateTime == e2?.dateTime &&
+        e1?.cess == e2?.cess &&
+        e1?.currentStock == e2?.currentStock &&
+        e1?.unitId == e2?.unitId &&
+        e1?.taxIndex == e2?.taxIndex &&
+        e1?.selected == e2?.selected &&
+        e1?.active == e2?.active &&
+        e1?.costPrice == e2?.costPrice &&
+        e1?.gstPer == e2?.gstPer &&
+        e1?.posModel == e2?.posModel &&
+        e1?.posSerial == e2?.posSerial &&
+        e1?.deviceId == e2?.deviceId;
   }
 
   @override
@@ -448,7 +655,30 @@ class ProductRecordDocumentEquality implements Equality<ProductRecord> {
         e?.leadTime,
         e?.recipeId,
         e?.isDeleted,
-        e?.delliveryChrg
+        e?.delliveryChrg,
+        e?.isEnable,
+        e?.inclusiveGST,
+        e?.isDealer,
+        e?.netTotal,
+        e?.gstAmt,
+        e?.kitchenId,
+        e?.priceTable,
+        e?.onlineSynced,
+        e?.onlinePrice,
+        e?.keyCount,
+        e?.discount,
+        e?.dateTime,
+        e?.cess,
+        e?.currentStock,
+        e?.unitId,
+        e?.taxIndex,
+        e?.selected,
+        e?.active,
+        e?.costPrice,
+        e?.gstPer,
+        e?.posModel,
+        e?.posSerial,
+        e?.deviceId
       ]);
 
   @override

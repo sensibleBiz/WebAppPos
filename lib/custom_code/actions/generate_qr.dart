@@ -9,11 +9,11 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 Future generateQr() async {
-  // Add your function code here!
+  /* // Add your function code here!
   print("inside generate");
   final push = WebPush();
   final token = await push.getToken();
@@ -57,5 +57,5 @@ class WebPush {
       print(token);
     }
     return token;
-  }
+  }*/
 }

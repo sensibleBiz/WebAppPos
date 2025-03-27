@@ -16,11 +16,11 @@ Future<int> genarateCategorYCode(List<CategoryRecord>? list) async {
   if (list!.isNotEmpty) {
     list.sort((a, b) => b.categoryNo!.compareTo(a.categoryNo!));
     int maxCode = list[0].categoryNo!;
-    print(list);
+    //print(list);
     nextCode = maxCode + 1;
   } else {
     nextCode = 1;
   }
-  print(nextCode);
+  //print(nextCode);
   return nextCode;
 }

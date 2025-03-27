@@ -13,6 +13,6 @@ import 'package:change_case/change_case.dart';
 
 Future<String> toCamelCase(String text) async {
   // Add your function code here!
-  print(text.toCamelCase());
+//  print(text.toCamelCase());
   return (text.toCamelCase());
 }

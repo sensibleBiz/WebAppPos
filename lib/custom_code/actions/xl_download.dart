@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'dart:convert' show utf8;
-import 'package:download/download.dart';
+//import 'package:download/download.dart';
 
 Future xlDownload(List<ProductRecord>? doc) async {
   // Add your function code here!
@@ -36,5 +36,5 @@ Future xlDownload(List<ProductRecord>? doc) async {
   final fileName = "FF" + DateTime.now().toString() + ".xlsx";
   var bytes = utf8.encode(fileContent);
   final stream = Stream.fromIterable(bytes);
-  return download(stream, fileName);
+// return download(stream, fileName);
 }

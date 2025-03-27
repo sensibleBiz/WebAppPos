@@ -156,6 +156,26 @@ class PartyRecord extends FirestoreRecord {
   int get code => _code ?? 0;
   bool hasCode() => _code != null;
 
+  // "isDealer" field.
+  bool? _isDealer;
+  bool get isDealer => _isDealer ?? false;
+  bool hasIsDealer() => _isDealer != null;
+
+  // "partyLeadRef" field.
+  DocumentReference? _partyLeadRef;
+  DocumentReference? get partyLeadRef => _partyLeadRef;
+  bool hasPartyLeadRef() => _partyLeadRef != null;
+
+  // "state" field.
+  String? _state;
+  String get state => _state ?? '';
+  bool hasState() => _state != null;
+
+  // "balance" field.
+  double? _balance;
+  double get balance => _balance ?? 0.0;
+  bool hasBalance() => _balance != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -187,6 +207,10 @@ class PartyRecord extends FirestoreRecord {
     _firstVisit = snapshotData['firstVisit'] as String?;
     _lastVisit = snapshotData['lastVisit'] as String?;
     _code = castToType<int>(snapshotData['code']);
+    _isDealer = snapshotData['isDealer'] as bool?;
+    _partyLeadRef = snapshotData['partyLeadRef'] as DocumentReference?;
+    _state = snapshotData['state'] as String?;
+    _balance = castToType<double>(snapshotData['balance']);
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -256,6 +280,10 @@ Map<String, dynamic> createPartyRecordData({
   String? firstVisit,
   String? lastVisit,
   int? code,
+  bool? isDealer,
+  DocumentReference? partyLeadRef,
+  String? state,
+  double? balance,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -287,6 +315,10 @@ Map<String, dynamic> createPartyRecordData({
       'firstVisit': firstVisit,
       'lastVisit': lastVisit,
       'code': code,
+      'isDealer': isDealer,
+      'partyLeadRef': partyLeadRef,
+      'state': state,
+      'balance': balance,
     }.withoutNulls,
   );
 
@@ -325,7 +357,11 @@ class PartyRecordDocumentEquality implements Equality<PartyRecord> {
         e1?.credit == e2?.credit &&
         e1?.firstVisit == e2?.firstVisit &&
         e1?.lastVisit == e2?.lastVisit &&
-        e1?.code == e2?.code;
+        e1?.code == e2?.code &&
+        e1?.isDealer == e2?.isDealer &&
+        e1?.partyLeadRef == e2?.partyLeadRef &&
+        e1?.state == e2?.state &&
+        e1?.balance == e2?.balance;
   }
 
   @override
@@ -357,7 +393,11 @@ class PartyRecordDocumentEquality implements Equality<PartyRecord> {
         e?.credit,
         e?.firstVisit,
         e?.lastVisit,
-        e?.code
+        e?.code,
+        e?.isDealer,
+        e?.partyLeadRef,
+        e?.state,
+        e?.balance
       ]);
 
   @override

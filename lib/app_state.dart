@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import 'backend/api_requests/api_manager.dart';
+import '/backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
@@ -514,6 +514,96 @@ class FFAppState extends ChangeNotifier {
     });
     _safeInit(() {
       _lleads = _colorFromIntValue(prefs.getInt('ff_lleads')) ?? _lleads;
+    });
+    _safeInit(() {
+      _rawCartList = prefs.getStringList('ff_rawCartList')?.map((x) {
+            try {
+              return jsonDecode(x);
+            } catch (e) {
+              print("Can't decode persisted json. Error: $e.");
+              return {};
+            }
+          }).toList() ??
+          _rawCartList;
+    });
+    _safeInit(() {
+      _rawCartList2 = prefs.getStringList('ff_rawCartList2')?.map((x) {
+            try {
+              return jsonDecode(x);
+            } catch (e) {
+              print("Can't decode persisted json. Error: $e.");
+              return {};
+            }
+          }).toList() ??
+          _rawCartList2;
+    });
+    _safeInit(() {
+      _subTotal = prefs.getDouble('ff_subTotal') ?? _subTotal;
+    });
+    _safeInit(() {
+      _tempPartyList = prefs.getStringList('ff_tempPartyList')?.map((x) {
+            try {
+              return jsonDecode(x);
+            } catch (e) {
+              print("Can't decode persisted json. Error: $e.");
+              return {};
+            }
+          }).toList() ??
+          _tempPartyList;
+    });
+    _safeInit(() {
+      _isDealer = prefs.getBool('ff_isDealer') ?? _isDealer;
+    });
+    _safeInit(() {
+      _rawCode = prefs.getInt('ff_rawCode') ?? _rawCode;
+    });
+    _safeInit(() {
+      _selectedStatus = prefs.getInt('ff_selectedStatus') ?? _selectedStatus;
+    });
+    _safeInit(() {
+      _zone = prefs.getString('ff_zone') ?? _zone;
+    });
+    _safeInit(() {
+      _currentUserRole =
+          prefs.getString('ff_currentUserRole') ?? _currentUserRole;
+    });
+    _safeInit(() {
+      _loggedInUserPermisions = prefs
+              .getStringList('ff_loggedInUserPermisions')
+              ?.map((x) {
+                try {
+                  return UserAccesCStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _loggedInUserPermisions;
+    });
+    _safeInit(() {
+      _currentUserZoneList =
+          prefs.getStringList('ff_currentUserZoneList') ?? _currentUserZoneList;
+    });
+    _safeInit(() {
+      _readOnlyAccess = prefs.getBool('ff_readOnlyAccess') ?? _readOnlyAccess;
+    });
+    _safeInit(() {
+      _stageListPermissionState = prefs
+              .getStringList('ff_stageListPermissionState')
+              ?.map((x) {
+                try {
+                  return StageAccessDataTypeStruct.fromSerializableMap(
+                      jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _stageListPermissionState;
     });
   }
 
@@ -2484,6 +2574,505 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInUserMobileNumbers(int index, String value) {
     userMobileNumbers.insert(index, value);
+  }
+
+  bool _show = false;
+  bool get show => _show;
+  set show(bool value) {
+    _show = value;
+  }
+
+  bool _isSearching = false;
+  bool get isSearching => _isSearching;
+  set isSearching(bool value) {
+    _isSearching = value;
+  }
+
+  List<dynamic> _rawCartList = [];
+  List<dynamic> get rawCartList => _rawCartList;
+  set rawCartList(List<dynamic> value) {
+    _rawCartList = value;
+    prefs.setStringList(
+        'ff_rawCartList', value.map((x) => jsonEncode(x)).toList());
+  }
+
+  void addToRawCartList(dynamic value) {
+    rawCartList.add(value);
+    prefs.setStringList(
+        'ff_rawCartList', _rawCartList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeFromRawCartList(dynamic value) {
+    rawCartList.remove(value);
+    prefs.setStringList(
+        'ff_rawCartList', _rawCartList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromRawCartList(int index) {
+    rawCartList.removeAt(index);
+    prefs.setStringList(
+        'ff_rawCartList', _rawCartList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void updateRawCartListAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    rawCartList[index] = updateFn(_rawCartList[index]);
+    prefs.setStringList(
+        'ff_rawCartList', _rawCartList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void insertAtIndexInRawCartList(int index, dynamic value) {
+    rawCartList.insert(index, value);
+    prefs.setStringList(
+        'ff_rawCartList', _rawCartList.map((x) => jsonEncode(x)).toList());
+  }
+
+  List<dynamic> _rawCartList2 = [];
+  List<dynamic> get rawCartList2 => _rawCartList2;
+  set rawCartList2(List<dynamic> value) {
+    _rawCartList2 = value;
+    prefs.setStringList(
+        'ff_rawCartList2', value.map((x) => jsonEncode(x)).toList());
+  }
+
+  void addToRawCartList2(dynamic value) {
+    rawCartList2.add(value);
+    prefs.setStringList(
+        'ff_rawCartList2', _rawCartList2.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeFromRawCartList2(dynamic value) {
+    rawCartList2.remove(value);
+    prefs.setStringList(
+        'ff_rawCartList2', _rawCartList2.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromRawCartList2(int index) {
+    rawCartList2.removeAt(index);
+    prefs.setStringList(
+        'ff_rawCartList2', _rawCartList2.map((x) => jsonEncode(x)).toList());
+  }
+
+  void updateRawCartList2AtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    rawCartList2[index] = updateFn(_rawCartList2[index]);
+    prefs.setStringList(
+        'ff_rawCartList2', _rawCartList2.map((x) => jsonEncode(x)).toList());
+  }
+
+  void insertAtIndexInRawCartList2(int index, dynamic value) {
+    rawCartList2.insert(index, value);
+    prefs.setStringList(
+        'ff_rawCartList2', _rawCartList2.map((x) => jsonEncode(x)).toList());
+  }
+
+  dynamic _selectedSale;
+  dynamic get selectedSale => _selectedSale;
+  set selectedSale(dynamic value) {
+    _selectedSale = value;
+  }
+
+  dynamic _selectedPurchase;
+  dynamic get selectedPurchase => _selectedPurchase;
+  set selectedPurchase(dynamic value) {
+    _selectedPurchase = value;
+  }
+
+  List<String> _imagePathh = [];
+  List<String> get imagePathh => _imagePathh;
+  set imagePathh(List<String> value) {
+    _imagePathh = value;
+  }
+
+  void addToImagePathh(String value) {
+    imagePathh.add(value);
+  }
+
+  void removeFromImagePathh(String value) {
+    imagePathh.remove(value);
+  }
+
+  void removeAtIndexFromImagePathh(int index) {
+    imagePathh.removeAt(index);
+  }
+
+  void updateImagePathhAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    imagePathh[index] = updateFn(_imagePathh[index]);
+  }
+
+  void insertAtIndexInImagePathh(int index, String value) {
+    imagePathh.insert(index, value);
+  }
+
+  int _count = 0;
+  int get count => _count;
+  set count(int value) {
+    _count = value;
+  }
+
+  double _subTotal = 0.0;
+  double get subTotal => _subTotal;
+  set subTotal(double value) {
+    _subTotal = value;
+    prefs.setDouble('ff_subTotal', value);
+  }
+
+  List<dynamic> _tempPartyList = [];
+  List<dynamic> get tempPartyList => _tempPartyList;
+  set tempPartyList(List<dynamic> value) {
+    _tempPartyList = value;
+    prefs.setStringList(
+        'ff_tempPartyList', value.map((x) => jsonEncode(x)).toList());
+  }
+
+  void addToTempPartyList(dynamic value) {
+    tempPartyList.add(value);
+    prefs.setStringList(
+        'ff_tempPartyList', _tempPartyList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeFromTempPartyList(dynamic value) {
+    tempPartyList.remove(value);
+    prefs.setStringList(
+        'ff_tempPartyList', _tempPartyList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromTempPartyList(int index) {
+    tempPartyList.removeAt(index);
+    prefs.setStringList(
+        'ff_tempPartyList', _tempPartyList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void updateTempPartyListAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    tempPartyList[index] = updateFn(_tempPartyList[index]);
+    prefs.setStringList(
+        'ff_tempPartyList', _tempPartyList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void insertAtIndexInTempPartyList(int index, dynamic value) {
+    tempPartyList.insert(index, value);
+    prefs.setStringList(
+        'ff_tempPartyList', _tempPartyList.map((x) => jsonEncode(x)).toList());
+  }
+
+  double _percentageDis = 0.0;
+  double get percentageDis => _percentageDis;
+  set percentageDis(double value) {
+    _percentageDis = value;
+  }
+
+  double _totalPriceEdit = 0.0;
+  double get totalPriceEdit => _totalPriceEdit;
+  set totalPriceEdit(double value) {
+    _totalPriceEdit = value;
+  }
+
+  dynamic _jsonrawcart;
+  dynamic get jsonrawcart => _jsonrawcart;
+  set jsonrawcart(dynamic value) {
+    _jsonrawcart = value;
+  }
+
+  double _textDisAmt = 0.0;
+  double get textDisAmt => _textDisAmt;
+  set textDisAmt(double value) {
+    _textDisAmt = value;
+  }
+
+  bool _gstsale = false;
+  bool get gstsale => _gstsale;
+  set gstsale(bool value) {
+    _gstsale = value;
+  }
+
+  String _kioskProductImageUrl = '';
+  String get kioskProductImageUrl => _kioskProductImageUrl;
+  set kioskProductImageUrl(String value) {
+    _kioskProductImageUrl = value;
+  }
+
+  int _tabIndex = 0;
+  int get tabIndex => _tabIndex;
+  set tabIndex(int value) {
+    _tabIndex = value;
+  }
+
+  String _categoryId = '';
+  String get categoryId => _categoryId;
+  set categoryId(String value) {
+    _categoryId = value;
+  }
+
+  bool _allinclusive = true;
+  bool get allinclusive => _allinclusive;
+  set allinclusive(bool value) {
+    _allinclusive = value;
+  }
+
+  double _gstAmt = 0.0;
+  double get gstAmt => _gstAmt;
+  set gstAmt(double value) {
+    _gstAmt = value;
+  }
+
+  bool _isDealer = false;
+  bool get isDealer => _isDealer;
+  set isDealer(bool value) {
+    _isDealer = value;
+    prefs.setBool('ff_isDealer', value);
+  }
+
+  int _rawCode = 0;
+  int get rawCode => _rawCode;
+  set rawCode(int value) {
+    _rawCode = value;
+    prefs.setInt('ff_rawCode', value);
+  }
+
+  int _SalesCount = 0;
+  int get SalesCount => _SalesCount;
+  set SalesCount(int value) {
+    _SalesCount = value;
+  }
+
+  List<dynamic> _leadJsonForChart = [];
+  List<dynamic> get leadJsonForChart => _leadJsonForChart;
+  set leadJsonForChart(List<dynamic> value) {
+    _leadJsonForChart = value;
+  }
+
+  void addToLeadJsonForChart(dynamic value) {
+    leadJsonForChart.add(value);
+  }
+
+  void removeFromLeadJsonForChart(dynamic value) {
+    leadJsonForChart.remove(value);
+  }
+
+  void removeAtIndexFromLeadJsonForChart(int index) {
+    leadJsonForChart.removeAt(index);
+  }
+
+  void updateLeadJsonForChartAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    leadJsonForChart[index] = updateFn(_leadJsonForChart[index]);
+  }
+
+  void insertAtIndexInLeadJsonForChart(int index, dynamic value) {
+    leadJsonForChart.insert(index, value);
+  }
+
+  int _selectedStatus = 0;
+  int get selectedStatus => _selectedStatus;
+  set selectedStatus(int value) {
+    _selectedStatus = value;
+    prefs.setInt('ff_selectedStatus', value);
+  }
+
+  String _billingType = '';
+  String get billingType => _billingType;
+  set billingType(String value) {
+    _billingType = value;
+  }
+
+  String _zone = '';
+  String get zone => _zone;
+  set zone(String value) {
+    _zone = value;
+    prefs.setString('ff_zone', value);
+  }
+
+  String _emailForReport = '';
+  String get emailForReport => _emailForReport;
+  set emailForReport(String value) {
+    _emailForReport = value;
+  }
+
+  String _currentUserRole = '';
+  String get currentUserRole => _currentUserRole;
+  set currentUserRole(String value) {
+    _currentUserRole = value;
+    prefs.setString('ff_currentUserRole', value);
+  }
+
+  DocumentReference? _deyeOutletId =
+      FirebaseFirestore.instance.doc('/OUTLET/Ab8jsMVOOA1bEUqju7uM');
+  DocumentReference? get deyeOutletId => _deyeOutletId;
+  set deyeOutletId(DocumentReference? value) {
+    _deyeOutletId = value;
+  }
+
+  List<UserAccesCStruct> _loggedInUserPermisions = [
+    UserAccesCStruct.fromSerializableMap(
+        jsonDecode('{\"title\":\"Hello World\",\"value\":\"0\"}'))
+  ];
+  List<UserAccesCStruct> get loggedInUserPermisions => _loggedInUserPermisions;
+  set loggedInUserPermisions(List<UserAccesCStruct> value) {
+    _loggedInUserPermisions = value;
+    prefs.setStringList(
+        'ff_loggedInUserPermisions', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToLoggedInUserPermisions(UserAccesCStruct value) {
+    loggedInUserPermisions.add(value);
+    prefs.setStringList('ff_loggedInUserPermisions',
+        _loggedInUserPermisions.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromLoggedInUserPermisions(UserAccesCStruct value) {
+    loggedInUserPermisions.remove(value);
+    prefs.setStringList('ff_loggedInUserPermisions',
+        _loggedInUserPermisions.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromLoggedInUserPermisions(int index) {
+    loggedInUserPermisions.removeAt(index);
+    prefs.setStringList('ff_loggedInUserPermisions',
+        _loggedInUserPermisions.map((x) => x.serialize()).toList());
+  }
+
+  void updateLoggedInUserPermisionsAtIndex(
+    int index,
+    UserAccesCStruct Function(UserAccesCStruct) updateFn,
+  ) {
+    loggedInUserPermisions[index] = updateFn(_loggedInUserPermisions[index]);
+    prefs.setStringList('ff_loggedInUserPermisions',
+        _loggedInUserPermisions.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInLoggedInUserPermisions(
+      int index, UserAccesCStruct value) {
+    loggedInUserPermisions.insert(index, value);
+    prefs.setStringList('ff_loggedInUserPermisions',
+        _loggedInUserPermisions.map((x) => x.serialize()).toList());
+  }
+
+  List<String> _currentUserZoneList = [];
+  List<String> get currentUserZoneList => _currentUserZoneList;
+  set currentUserZoneList(List<String> value) {
+    _currentUserZoneList = value;
+    prefs.setStringList('ff_currentUserZoneList', value);
+  }
+
+  void addToCurrentUserZoneList(String value) {
+    currentUserZoneList.add(value);
+    prefs.setStringList('ff_currentUserZoneList', _currentUserZoneList);
+  }
+
+  void removeFromCurrentUserZoneList(String value) {
+    currentUserZoneList.remove(value);
+    prefs.setStringList('ff_currentUserZoneList', _currentUserZoneList);
+  }
+
+  void removeAtIndexFromCurrentUserZoneList(int index) {
+    currentUserZoneList.removeAt(index);
+    prefs.setStringList('ff_currentUserZoneList', _currentUserZoneList);
+  }
+
+  void updateCurrentUserZoneListAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    currentUserZoneList[index] = updateFn(_currentUserZoneList[index]);
+    prefs.setStringList('ff_currentUserZoneList', _currentUserZoneList);
+  }
+
+  void insertAtIndexInCurrentUserZoneList(int index, String value) {
+    currentUserZoneList.insert(index, value);
+    prefs.setStringList('ff_currentUserZoneList', _currentUserZoneList);
+  }
+
+  bool _readOnlyAccess = false;
+  bool get readOnlyAccess => _readOnlyAccess;
+  set readOnlyAccess(bool value) {
+    _readOnlyAccess = value;
+    prefs.setBool('ff_readOnlyAccess', value);
+  }
+
+  List<StageAccessDataTypeStruct> _stageListState = [];
+  List<StageAccessDataTypeStruct> get stageListState => _stageListState;
+  set stageListState(List<StageAccessDataTypeStruct> value) {
+    _stageListState = value;
+  }
+
+  void addToStageListState(StageAccessDataTypeStruct value) {
+    stageListState.add(value);
+  }
+
+  void removeFromStageListState(StageAccessDataTypeStruct value) {
+    stageListState.remove(value);
+  }
+
+  void removeAtIndexFromStageListState(int index) {
+    stageListState.removeAt(index);
+  }
+
+  void updateStageListStateAtIndex(
+    int index,
+    StageAccessDataTypeStruct Function(StageAccessDataTypeStruct) updateFn,
+  ) {
+    stageListState[index] = updateFn(_stageListState[index]);
+  }
+
+  void insertAtIndexInStageListState(
+      int index, StageAccessDataTypeStruct value) {
+    stageListState.insert(index, value);
+  }
+
+  List<StageAccessDataTypeStruct> _stageListPermissionState = [];
+  List<StageAccessDataTypeStruct> get stageListPermissionState =>
+      _stageListPermissionState;
+  set stageListPermissionState(List<StageAccessDataTypeStruct> value) {
+    _stageListPermissionState = value;
+    prefs.setStringList('ff_stageListPermissionState',
+        value.map((x) => x.serialize()).toList());
+  }
+
+  void addToStageListPermissionState(StageAccessDataTypeStruct value) {
+    stageListPermissionState.add(value);
+    prefs.setStringList('ff_stageListPermissionState',
+        _stageListPermissionState.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromStageListPermissionState(StageAccessDataTypeStruct value) {
+    stageListPermissionState.remove(value);
+    prefs.setStringList('ff_stageListPermissionState',
+        _stageListPermissionState.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromStageListPermissionState(int index) {
+    stageListPermissionState.removeAt(index);
+    prefs.setStringList('ff_stageListPermissionState',
+        _stageListPermissionState.map((x) => x.serialize()).toList());
+  }
+
+  void updateStageListPermissionStateAtIndex(
+    int index,
+    StageAccessDataTypeStruct Function(StageAccessDataTypeStruct) updateFn,
+  ) {
+    stageListPermissionState[index] =
+        updateFn(_stageListPermissionState[index]);
+    prefs.setStringList('ff_stageListPermissionState',
+        _stageListPermissionState.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInStageListPermissionState(
+      int index, StageAccessDataTypeStruct value) {
+    stageListPermissionState.insert(index, value);
+    prefs.setStringList('ff_stageListPermissionState',
+        _stageListPermissionState.map((x) => x.serialize()).toList());
   }
 }
 

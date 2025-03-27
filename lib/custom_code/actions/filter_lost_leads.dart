@@ -22,6 +22,6 @@ Future<List<dynamic>> filterLostLeads(
       returnList.add(list[i]);
     }
   }
-  print(returnList);
+  //print(returnList);
   return returnList;
 }

@@ -10,7 +10,6 @@ import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/lat_lng.dart';
@@ -18,10 +17,14 @@ import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'serialization_util.dart';
 
+import '/index.dart';
+
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
+
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
@@ -80,18 +83,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
+      navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? CDashWidget() : LoginNewFinalWidget(),
+          appStateNotifier.loggedIn ? CDashWidget() : CRMLoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? CDashWidget() : LoginNewFinalWidget(),
+              appStateNotifier.loggedIn ? CDashWidget() : CRMLoginWidget(),
           routes: [
             FFRoute(
-              name: 'Device',
-              path: 'device',
+              name: DeviceWidget.routeName,
+              path: DeviceWidget.routePath,
               builder: (context, params) => DeviceWidget(
                 name: params.getParam(
                   'name',
@@ -100,13 +104,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'Notifications',
-              path: 'notifications',
+              name: NotificationsWidget.routeName,
+              path: NotificationsWidget.routePath,
               builder: (context, params) => NotificationsWidget(),
             ),
             FFRoute(
-              name: 'Subscription',
-              path: 'subscription',
+              name: SubscriptionWidget.routeName,
+              path: SubscriptionWidget.routePath,
               builder: (context, params) => SubscriptionWidget(
                 name: params.getParam(
                   'name',
@@ -115,8 +119,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'ServicePoint',
-              path: 'servicePoint',
+              name: ServicePointWidget.routeName,
+              path: ServicePointWidget.routePath,
               builder: (context, params) => ServicePointWidget(
                 name: params.getParam(
                   'name',
@@ -125,13 +129,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'EditLanguagePopUp',
-              path: 'editLanguagePopUp',
+              name: EditLanguagePopUpWidget.routeName,
+              path: EditLanguagePopUpWidget.routePath,
               builder: (context, params) => EditLanguagePopUpWidget(),
             ),
             FFRoute(
-              name: 'DashboardAdmin',
-              path: 'dashboardAdmin',
+              name: DashboardAdminWidget.routeName,
+              path: DashboardAdminWidget.routePath,
               builder: (context, params) => DashboardAdminWidget(
                 outletId: params.getParam(
                   'outletId',
@@ -152,13 +156,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'CategoryMaster',
-              path: 'categoryMaster',
+              name: CategoryMasterWidget.routeName,
+              path: CategoryMasterWidget.routePath,
               builder: (context, params) => CategoryMasterWidget(),
             ),
             FFRoute(
-              name: 'UnitType',
-              path: 'unitType',
+              name: UnitTypeWidget.routeName,
+              path: UnitTypeWidget.routePath,
               builder: (context, params) => UnitTypeWidget(
                 name: params.getParam(
                   'name',
@@ -167,13 +171,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'QRLogin',
-              path: 'qRLogin',
+              name: QRLoginWidget.routeName,
+              path: QRLoginWidget.routePath,
               builder: (context, params) => QRLoginWidget(),
             ),
             FFRoute(
-              name: 'SubCategoryMaster',
-              path: 'subCategoryMaster',
+              name: SubCategoryMasterWidget.routeName,
+              path: SubCategoryMasterWidget.routePath,
               builder: (context, params) => SubCategoryMasterWidget(
                 name: params.getParam(
                   'name',
@@ -182,18 +186,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'EmailLoginNew',
-              path: 'emailLoginNew',
-              builder: (context, params) => EmailLoginNewWidget(),
+              name: EmailLoginNewNotInUseWidget.routeName,
+              path: EmailLoginNewNotInUseWidget.routePath,
+              builder: (context, params) => EmailLoginNewNotInUseWidget(),
             ),
             FFRoute(
-              name: 'BusinessTypeMaster',
-              path: 'businessTypeMaster',
+              name: BusinessTypeMasterWidget.routeName,
+              path: BusinessTypeMasterWidget.routePath,
               builder: (context, params) => BusinessTypeMasterWidget(),
             ),
             FFRoute(
-              name: 'Languages',
-              path: 'languages',
+              name: LanguagesWidget.routeName,
+              path: LanguagesWidget.routePath,
               builder: (context, params) => LanguagesWidget(
                 name: params.getParam(
                   'name',
@@ -208,13 +212,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'BusinessMaster',
-              path: 'businessMaster',
+              name: BusinessMasterWidget.routeName,
+              path: BusinessMasterWidget.routePath,
               builder: (context, params) => BusinessMasterWidget(),
             ),
             FFRoute(
-              name: 'PaymentMaster',
-              path: 'paymentMaster',
+              name: PaymentMasterWidget.routeName,
+              path: PaymentMasterWidget.routePath,
               builder: (context, params) => PaymentMasterWidget(
                 name: params.getParam(
                   'name',
@@ -223,8 +227,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'UserRoleType',
-              path: 'userRoleType',
+              name: UserRoleTypeWidget.routeName,
+              path: UserRoleTypeWidget.routePath,
               builder: (context, params) => UserRoleTypeWidget(
                 name: params.getParam(
                   'name',
@@ -233,8 +237,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'cServicePoint',
-              path: 'cServicePoint',
+              name: CServicePointWidget.routeName,
+              path: CServicePointWidget.routePath,
               builder: (context, params) => CServicePointWidget(
                 outletId: params.getParam(
                   'outletId',
@@ -245,8 +249,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'ProductMaster',
-              path: 'productMaster',
+              name: ProductMasterWidget.routeName,
+              path: ProductMasterWidget.routePath,
               builder: (context, params) => ProductMasterWidget(
                 list: params.getParam(
                   'list',
@@ -255,8 +259,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'cPremises',
-              path: 'cPremises',
+              name: CPremisesWidget.routeName,
+              path: CPremisesWidget.routePath,
               builder: (context, params) => CPremisesWidget(
                 outletId: params.getParam(
                   'outletId',
@@ -267,8 +271,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'TaxMaster',
-              path: 'taxMaster',
+              name: TaxMasterWidget.routeName,
+              path: TaxMasterWidget.routePath,
               builder: (context, params) => TaxMasterWidget(
                 name: params.getParam(
                   'name',
@@ -277,13 +281,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'cReports',
-              path: 'cReports',
+              name: CReportsWidget.routeName,
+              path: CReportsWidget.routePath,
               builder: (context, params) => CReportsWidget(),
             ),
             FFRoute(
-              name: 'cUserAccount',
-              path: 'cUserAccount',
+              name: CUserAccountWidget.routeName,
+              path: CUserAccountWidget.routePath,
               builder: (context, params) => CUserAccountWidget(
                 outletId: params.getParam(
                   'outletId',
@@ -294,13 +298,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'cRecipe',
-              path: 'cRecipe',
+              name: CRecipeWidget.routeName,
+              path: CRecipeWidget.routePath,
               builder: (context, params) => CRecipeWidget(),
             ),
             FFRoute(
-              name: 'cProducts',
-              path: 'cProducts',
+              name: CProductsWidget.routeName,
+              path: CProductsWidget.routePath,
               builder: (context, params) => CProductsWidget(
                 outletId: params.getParam(
                   'outletId',
@@ -311,8 +315,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'cCategory',
-              path: 'cCategory',
+              name: CCategoryWidget.routeName,
+              path: CCategoryWidget.routePath,
               builder: (context, params) => CCategoryWidget(
                 outletId: params.getParam(
                   'outletId',
@@ -323,23 +327,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'EmailLogin',
-              path: 'emailLogin',
-              builder: (context, params) => EmailLoginWidget(),
+              name: EmailLoginNotInUseWidget.routeName,
+              path: EmailLoginNotInUseWidget.routePath,
+              builder: (context, params) => EmailLoginNotInUseWidget(),
             ),
             FFRoute(
-              name: 'cCombo',
-              path: 'cCombo',
+              name: CComboWidget.routeName,
+              path: CComboWidget.routePath,
               builder: (context, params) => CComboWidget(),
             ),
             FFRoute(
-              name: 'Contactus',
-              path: 'contactus',
+              name: ContactusWidget.routeName,
+              path: ContactusWidget.routePath,
               builder: (context, params) => ContactusWidget(),
             ),
             FFRoute(
-              name: 'cOutletList',
-              path: 'cOutletList',
+              name: COutletListWidget.routeName,
+              path: COutletListWidget.routePath,
               builder: (context, params) => COutletListWidget(
                 emailId: params.getParam(
                   'emailId',
@@ -348,18 +352,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'cCummulativeReport',
-              path: 'cCummulativeReport',
+              name: CCummulativeReportWidget.routeName,
+              path: CCummulativeReportWidget.routePath,
               builder: (context, params) => CCummulativeReportWidget(),
             ),
             FFRoute(
-              name: 'cSubscription',
-              path: 'cSubscription',
+              name: CSubscriptionWidget.routeName,
+              path: CSubscriptionWidget.routePath,
               builder: (context, params) => CSubscriptionWidget(),
             ),
             FFRoute(
-              name: 'cItemWiseSaleReport',
-              path: 'cItemWiseSaleReport',
+              name: CItemWiseSaleReportWidget.routeName,
+              path: CItemWiseSaleReportWidget.routePath,
               builder: (context, params) => CItemWiseSaleReportWidget(
                 dayId: params.getParam(
                   'dayId',
@@ -372,8 +376,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'cDevice',
-              path: 'cDevice',
+              name: CDeviceWidget.routeName,
+              path: CDeviceWidget.routePath,
               asyncParams: {
                 'doc': getDoc(['USER_PROFILE'], UserProfileRecord.fromSnapshot),
               },
@@ -385,28 +389,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'termsNconditions',
-              path: 'termsNconditions',
+              name: TermsNconditionsWidget.routeName,
+              path: TermsNconditionsWidget.routePath,
               builder: (context, params) => TermsNconditionsWidget(),
             ),
             FFRoute(
-              name: 'AboutUs',
-              path: 'aboutUs',
+              name: AboutUsWidget.routeName,
+              path: AboutUsWidget.routePath,
               builder: (context, params) => AboutUsWidget(),
             ),
             FFRoute(
-              name: 'cOTPverification',
-              path: 'cOTPverification',
+              name: COTPverificationWidget.routeName,
+              path: COTPverificationWidget.routePath,
               builder: (context, params) => COTPverificationWidget(),
             ),
             FFRoute(
-              name: 'dayWiseReport',
-              path: 'dayWiseReport',
+              name: DayWiseReportWidget.routeName,
+              path: DayWiseReportWidget.routePath,
               builder: (context, params) => DayWiseReportWidget(),
             ),
             FFRoute(
-              name: 'categorySalereportNew',
-              path: 'categorySalereportNew',
+              name: CategorySalereportNewWidget.routeName,
+              path: CategorySalereportNewWidget.routePath,
               builder: (context, params) => CategorySalereportNewWidget(
                 dayId: params.getParam(
                   'dayId',
@@ -419,13 +423,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'WorkInProgress',
-              path: 'workInProgress',
+              name: WorkInProgressWidget.routeName,
+              path: WorkInProgressWidget.routePath,
               builder: (context, params) => WorkInProgressWidget(),
             ),
             FFRoute(
-              name: 'BillWiseReport',
-              path: 'BillWiseReport',
+              name: BillWiseReportWidget.routeName,
+              path: BillWiseReportWidget.routePath,
               builder: (context, params) => BillWiseReportWidget(
                 dayId: params.getParam(
                   'dayId',
@@ -438,13 +442,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'AddNewLead',
-              path: 'addNewLead',
+              name: AddNewLeadWidget.routeName,
+              path: AddNewLeadWidget.routePath,
               builder: (context, params) => AddNewLeadWidget(),
             ),
             FFRoute(
-              name: 'cDash',
-              path: 'cDash',
+              name: CDashWidget.routeName,
+              path: CDashWidget.routePath,
               builder: (context, params) => CDashWidget(
                 outletId: params.getParam(
                   'outletId',
@@ -465,8 +469,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'callDetailsList',
-              path: 'callDetailsList',
+              name: CallDetailsListWidget.routeName,
+              path: CallDetailsListWidget.routePath,
               builder: (context, params) => CallDetailsListWidget(
                 id: params.getParam(
                   'id',
@@ -483,33 +487,33 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'custLeads',
-              path: 'custLeads',
+              name: CustLeadsWidget.routeName,
+              path: CustLeadsWidget.routePath,
               builder: (context, params) => CustLeadsWidget(),
             ),
             FFRoute(
-              name: 'leadQuery',
-              path: 'leadQuery',
+              name: LeadQueryWidget.routeName,
+              path: LeadQueryWidget.routePath,
               builder: (context, params) => LeadQueryWidget(),
             ),
             FFRoute(
-              name: 'FollowUps',
-              path: 'FollowUps',
+              name: FollowUpsWidget.routeName,
+              path: FollowUpsWidget.routePath,
               builder: (context, params) => FollowUpsWidget(),
             ),
             FFRoute(
-              name: 'TodayDetails',
-              path: 'todayDetails',
+              name: TodayDetailsWidget.routeName,
+              path: TodayDetailsWidget.routePath,
               builder: (context, params) => TodayDetailsWidget(),
             ),
             FFRoute(
-              name: 'SupportDashboard',
-              path: 'supportDashboard',
+              name: SupportDashboardWidget.routeName,
+              path: SupportDashboardWidget.routePath,
               builder: (context, params) => SupportDashboardWidget(),
             ),
             FFRoute(
-              name: 'LeadLog',
-              path: 'leadLog',
+              name: LeadLogWidget.routeName,
+              path: LeadLogWidget.routePath,
               builder: (context, params) => LeadLogWidget(
                 id: params.getParam(
                   'id',
@@ -554,38 +558,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'DemoLeads',
-              path: 'demoLeads',
+              name: DemoLeadsWidget.routeName,
+              path: DemoLeadsWidget.routePath,
               builder: (context, params) => DemoLeadsWidget(),
             ),
             FFRoute(
-              name: 'uploadfile',
-              path: 'uploadfile',
+              name: UploadfileWidget.routeName,
+              path: UploadfileWidget.routePath,
               builder: (context, params) => UploadfileWidget(),
             ),
             FFRoute(
-              name: 'FollowUpLeads',
-              path: 'followUpLeads',
+              name: FollowUpLeadsWidget.routeName,
+              path: FollowUpLeadsWidget.routePath,
               builder: (context, params) => FollowUpLeadsWidget(),
             ),
             FFRoute(
-              name: 'LeadsDashboardFinal',
-              path: 'leadsDashboard',
+              name: LeadsDashboardFinalWidget.routeName,
+              path: LeadsDashboardFinalWidget.routePath,
               builder: (context, params) => LeadsDashboardFinalWidget(),
             ),
             FFRoute(
-              name: 'leadReportToday',
-              path: 'leadReportToday',
+              name: LeadReportTodayWidget.routeName,
+              path: LeadReportTodayWidget.routePath,
               builder: (context, params) => LeadReportTodayWidget(),
             ),
             FFRoute(
-              name: 'leadSummary',
-              path: 'leadSummary',
+              name: LeadSummaryWidget.routeName,
+              path: LeadSummaryWidget.routePath,
               builder: (context, params) => LeadSummaryWidget(),
             ),
             FFRoute(
-              name: 'cDealerAccount',
-              path: 'cDealerAccount',
+              name: CDealerAccountWidget.routeName,
+              path: CDealerAccountWidget.routePath,
               builder: (context, params) => CDealerAccountWidget(
                 outletId: params.getParam(
                   'outletId',
@@ -596,13 +600,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'DealerAssignment',
-              path: 'DealerAssignment',
+              name: DealerAssignmentWidget.routeName,
+              path: DealerAssignmentWidget.routePath,
               builder: (context, params) => DealerAssignmentWidget(),
             ),
             FFRoute(
-              name: 'cOutletListUser4',
-              path: 'cOutletListUser4',
+              name: COutletListUser4Widget.routeName,
+              path: COutletListUser4Widget.routePath,
               builder: (context, params) => COutletListUser4Widget(
                 emailId: params.getParam(
                   'emailId',
@@ -611,23 +615,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'LoginNewFinal',
-              path: 'loginNewFinal',
-              builder: (context, params) => LoginNewFinalWidget(),
+              name: CRMLoginWidget.routeName,
+              path: CRMLoginWidget.routePath,
+              builder: (context, params) => CRMLoginWidget(),
             ),
             FFRoute(
-              name: 'AdminUserManualView',
-              path: 'adminUserManualView',
+              name: AdminUserManualViewWidget.routeName,
+              path: AdminUserManualViewWidget.routePath,
               builder: (context, params) => AdminUserManualViewWidget(),
             ),
             FFRoute(
-              name: 'UserManualAdmin',
-              path: 'userManualAdmin',
+              name: UserManualAdminWidget.routeName,
+              path: UserManualAdminWidget.routePath,
               builder: (context, params) => UserManualAdminWidget(),
             ),
             FFRoute(
-              name: 'EditUserManual',
-              path: 'editUserManual',
+              name: EditUserManualWidget.routeName,
+              path: EditUserManualWidget.routePath,
               asyncParams: {
                 'userDoc':
                     getDoc(['USER_MANUAL'], UserManualRecord.fromSnapshot),
@@ -646,8 +650,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'UserManualUserView',
-              path: 'userManualUserView',
+              name: UserManualUserViewWidget.routeName,
+              path: UserManualUserViewWidget.routePath,
               builder: (context, params) => UserManualUserViewWidget(
                 update: params.getParam(
                   'update',
@@ -656,8 +660,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'cAddProductDetailsNew',
-              path: 'cAddProductDetailsNew',
+              name: CAddProductDetailsNewWidget.routeName,
+              path: CAddProductDetailsNewWidget.routePath,
               builder: (context, params) => CAddProductDetailsNewWidget(
                 codeLen: params.getParam(
                   'codeLen',
@@ -672,8 +676,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'cEditProductDetailsNew',
-              path: 'cEditProductDetailsNew',
+              name: CEditProductDetailsNewWidget.routeName,
+              path: CEditProductDetailsNewWidget.routePath,
               builder: (context, params) => CEditProductDetailsNewWidget(
                 proRef: params.getParam(
                   'proRef',
@@ -692,23 +696,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'ContactUsNew',
-              path: 'contactUsNew',
+              name: ContactUsNewWidget.routeName,
+              path: ContactUsNewWidget.routePath,
               builder: (context, params) => ContactUsNewWidget(),
             ),
             FFRoute(
-              name: 'image',
-              path: 'image',
+              name: ImageWidget.routeName,
+              path: ImageWidget.routePath,
               builder: (context, params) => ImageWidget(),
             ),
             FFRoute(
-              name: 'urlImage',
-              path: 'urlImage',
+              name: UrlImageWidget.routeName,
+              path: UrlImageWidget.routePath,
               builder: (context, params) => UrlImageWidget(),
             ),
             FFRoute(
-              name: 'DemoActivity',
-              path: 'demoActivity',
+              name: DemoActivityWidget.routeName,
+              path: DemoActivityWidget.routePath,
               asyncParams: {
                 'leadActivityDoc': getDoc(['OUTLET', 'LEAD_ACTIVITIES'],
                     LeadActivitiesRecord.fromSnapshot),
@@ -725,23 +729,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'leadReportMonthly',
-              path: 'leadReportMonthly',
+              name: LeadReportMonthlyWidget.routeName,
+              path: LeadReportMonthlyWidget.routePath,
               builder: (context, params) => LeadReportMonthlyWidget(),
             ),
             FFRoute(
-              name: 'leadEmployeeReportFinal',
-              path: 'leadEmployeeReportFinal',
+              name: LeadEmployeeReportFinalWidget.routeName,
+              path: LeadEmployeeReportFinalWidget.routePath,
               builder: (context, params) => LeadEmployeeReportFinalWidget(),
             ),
             FFRoute(
-              name: 'TodayDetailsCopy',
-              path: 'todayDetailsCopy',
+              name: TodayDetailsCopyWidget.routeName,
+              path: TodayDetailsCopyWidget.routePath,
               builder: (context, params) => TodayDetailsCopyWidget(),
             ),
             FFRoute(
-              name: 'employeewiseRecordListFinal',
-              path: 'employeewiseRecordListFinal',
+              name: EmployeewiseRecordListFinalWidget.routeName,
+              path: EmployeewiseRecordListFinalWidget.routePath,
               builder: (context, params) => EmployeewiseRecordListFinalWidget(
                 assignedTo: params.getParam(
                   'assignedTo',
@@ -754,13 +758,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'leadDelete',
-              path: 'leadDelete',
+              name: LeadDeleteWidget.routeName,
+              path: LeadDeleteWidget.routePath,
               builder: (context, params) => LeadDeleteWidget(),
             ),
             FFRoute(
-              name: 'LanguagesCopy',
-              path: 'languagesCopy',
+              name: LanguagesCopyWidget.routeName,
+              path: LanguagesCopyWidget.routePath,
               builder: (context, params) => LanguagesCopyWidget(
                 name: params.getParam(
                   'name',
@@ -775,44 +779,539 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'Demos',
-              path: 'Demos',
+              name: DemosWidget.routeName,
+              path: DemosWidget.routePath,
               builder: (context, params) => DemosWidget(),
             ),
             FFRoute(
-              name: 'UserManualDocReqKiosk',
-              path: 'userManualDocReqKiosk',
+              name: UserManualDocReqKioskWidget.routeName,
+              path: UserManualDocReqKioskWidget.routePath,
               builder: (context, params) => UserManualDocReqKioskWidget(),
             ),
             FFRoute(
-              name: 'DealerDasboard',
-              path: 'dealerDasboard',
+              name: DealerDasboardWidget.routeName,
+              path: DealerDasboardWidget.routePath,
               builder: (context, params) => DealerDasboardWidget(),
             ),
             FFRoute(
-              name: 'UploadfilegetLink',
-              path: 'uploadfilegetLink',
+              name: UploadfilegetLinkWidget.routeName,
+              path: UploadfilegetLinkWidget.routePath,
               builder: (context, params) => UploadfilegetLinkWidget(),
             ),
             FFRoute(
-              name: 'UserManualAdminCopy',
-              path: 'userManualAdminCopy',
+              name: UserManualAdminCopyWidget.routeName,
+              path: UserManualAdminCopyWidget.routePath,
               builder: (context, params) => UserManualAdminCopyWidget(),
             ),
             FFRoute(
-              name: 'LeadDasboardChart',
-              path: 'leadDasboardChart',
-              builder: (context, params) => LeadDasboardChartWidget(),
-            ),
-            FFRoute(
-              name: 'AppSettingsMaster',
-              path: 'appSettingsMaster',
+              name: AppSettingsMasterWidget.routeName,
+              path: AppSettingsMasterWidget.routePath,
               builder: (context, params) => AppSettingsMasterWidget(
                 name: params.getParam(
                   'name',
                   ParamType.String,
                 ),
               ),
+            ),
+            FFRoute(
+              name: LogInCRMNotInUseWidget.routeName,
+              path: LogInCRMNotInUseWidget.routePath,
+              builder: (context, params) => LogInCRMNotInUseWidget(),
+            ),
+            FFRoute(
+              name: StateWidget.routeName,
+              path: StateWidget.routePath,
+              builder: (context, params) => StateWidget(
+                name: params.getParam(
+                  'name',
+                  ParamType.String,
+                ),
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: CityWidget.routeName,
+              path: CityWidget.routePath,
+              builder: (context, params) => CityWidget(
+                name: params.getParam(
+                  'name',
+                  ParamType.String,
+                ),
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: LeadStagesMasterWidget.routeName,
+              path: LeadStagesMasterWidget.routePath,
+              builder: (context, params) => LeadStagesMasterWidget(),
+            ),
+            FFRoute(
+              name: DealerAssignmentCopyWidget.routeName,
+              path: DealerAssignmentCopyWidget.routePath,
+              builder: (context, params) => DealerAssignmentCopyWidget(),
+            ),
+            FFRoute(
+              name: LeadStatusMasterWidget.routeName,
+              path: LeadStatusMasterWidget.routePath,
+              builder: (context, params) => LeadStatusMasterWidget(),
+            ),
+            FFRoute(
+              name: LeadStagesMasterNewWidget.routeName,
+              path: LeadStagesMasterNewWidget.routePath,
+              builder: (context, params) => LeadStagesMasterNewWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: LeadStatusMasterNewWidget.routeName,
+              path: LeadStatusMasterNewWidget.routePath,
+              builder: (context, params) => LeadStatusMasterNewWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: SPDashboardWidget.routeName,
+              path: SPDashboardWidget.routePath,
+              builder: (context, params) => SPDashboardWidget(
+                partyDoc: params.getParam(
+                  'partyDoc',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PARTY'],
+                ),
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PARTY'],
+                ),
+                leadManagement: params.getParam(
+                  'leadManagement',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'LEADS_MANAGEMENT'],
+                ),
+                currentEmail: params.getParam(
+                  'currentEmail',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: SalesOrderdetailsWidget.routeName,
+              path: SalesOrderdetailsWidget.routePath,
+              builder: (context, params) => SalesOrderdetailsWidget(
+                id: params.getParam(
+                  'id',
+                  ParamType.String,
+                ),
+                saleRef: params.getParam(
+                  'saleRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'SALE'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: AddPartyWidget.routeName,
+              path: AddPartyWidget.routePath,
+              builder: (context, params) => AddPartyWidget(
+                codeLen: params.getParam(
+                  'codeLen',
+                  ParamType.int,
+                ),
+                np: params.getParam(
+                  'np',
+                  ParamType.int,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: EditPartyWidget.routeName,
+              path: EditPartyWidget.routePath,
+              builder: (context, params) => EditPartyWidget(
+                id: params.getParam(
+                  'id',
+                  ParamType.String,
+                ),
+                docRef: params.getParam(
+                  'docRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PARTY'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: CreateSaleDirectSaleWidget.routeName,
+              path: CreateSaleDirectSaleWidget.routePath,
+              builder: (context, params) => CreateSaleDirectSaleWidget(
+                id: params.getParam(
+                  'id',
+                  ParamType.String,
+                ),
+                leadRefId: params.getParam(
+                  'leadRefId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'LEADS_MANAGEMENT'],
+                ),
+                partyDoc11: params.getParam(
+                  'partyDoc11',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PARTY'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: SaleProductSelectionNewCopyWidget.routeName,
+              path: SaleProductSelectionNewCopyWidget.routePath,
+              builder: (context, params) => SaleProductSelectionNewCopyWidget(),
+            ),
+            FFRoute(
+              name: AddProductMaterialSaleWidget.routeName,
+              path: AddProductMaterialSaleWidget.routePath,
+              builder: (context, params) => AddProductMaterialSaleWidget(
+                np: params.getParam(
+                  'np',
+                  ParamType.int,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: RawMCategoriesSaleWidget.routeName,
+              path: RawMCategoriesSaleWidget.routePath,
+              builder: (context, params) => RawMCategoriesSaleWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: EditProductMaterialSaleWidget.routeName,
+              path: EditProductMaterialSaleWidget.routePath,
+              asyncParams: {
+                'docPro':
+                    getDoc(['OUTLET', 'PRODUCT'], ProductRecord.fromSnapshot),
+              },
+              builder: (context, params) => EditProductMaterialSaleWidget(
+                proRef: params.getParam(
+                  'proRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PRODUCT'],
+                ),
+                id: params.getParam(
+                  'id',
+                  ParamType.String,
+                ),
+                docPro: params.getParam(
+                  'docPro',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: RequestedOrderWidget.routeName,
+              path: RequestedOrderWidget.routePath,
+              builder: (context, params) => RequestedOrderWidget(),
+            ),
+            FFRoute(
+              name: SPDashboardNewWidget.routeName,
+              path: SPDashboardNewWidget.routePath,
+              builder: (context, params) => SPDashboardNewWidget(),
+            ),
+            FFRoute(
+              name: IntegrationMasterWidget.routeName,
+              path: IntegrationMasterWidget.routePath,
+              builder: (context, params) => IntegrationMasterWidget(),
+            ),
+            FFRoute(
+              name: PartyTransactionWidget.routeName,
+              path: PartyTransactionWidget.routePath,
+              builder: (context, params) => PartyTransactionWidget(
+                partyDoc: params.getParam(
+                  'partyDoc',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PARTY'],
+                ),
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PARTY'],
+                ),
+                leadManagement: params.getParam(
+                  'leadManagement',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PARTY'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: EmployeeWiseSalesOrderReportWidget.routeName,
+              path: EmployeeWiseSalesOrderReportWidget.routePath,
+              builder: (context, params) =>
+                  EmployeeWiseSalesOrderReportWidget(),
+            ),
+            FFRoute(
+              name: DealerDasboardCopyWidget.routeName,
+              path: DealerDasboardCopyWidget.routePath,
+              builder: (context, params) => DealerDasboardCopyWidget(),
+            ),
+            FFRoute(
+              name: LeadDeleteCopyWidget.routeName,
+              path: LeadDeleteCopyWidget.routePath,
+              builder: (context, params) => LeadDeleteCopyWidget(),
+            ),
+            FFRoute(
+              name: LeadReportMonthlSourceWiseWidget.routeName,
+              path: LeadReportMonthlSourceWiseWidget.routePath,
+              builder: (context, params) => LeadReportMonthlSourceWiseWidget(),
+            ),
+            FFRoute(
+              name: DeyeAddComplaintsWidget.routeName,
+              path: DeyeAddComplaintsWidget.routePath,
+              builder: (context, params) => DeyeAddComplaintsWidget(),
+            ),
+            FFRoute(
+              name: ZoneWidget.routeName,
+              path: ZoneWidget.routePath,
+              builder: (context, params) => ZoneWidget(
+                name: params.getParam(
+                  'name',
+                  ParamType.String,
+                ),
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: TeamTreeMasterWidget.routeName,
+              path: TeamTreeMasterWidget.routePath,
+              builder: (context, params) => TeamTreeMasterWidget(
+                list: params.getParam(
+                  'list',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: CRMDashboardWidget.routeName,
+              path: CRMDashboardWidget.routePath,
+              builder: (context, params) => CRMDashboardWidget(),
+            ),
+            FFRoute(
+              name: CComplaintReportWidget.routeName,
+              path: CComplaintReportWidget.routePath,
+              builder: (context, params) => CComplaintReportWidget(),
+            ),
+            FFRoute(
+              name: CComplaintDetailsWidget.routeName,
+              path: CComplaintDetailsWidget.routePath,
+              builder: (context, params) => CComplaintDetailsWidget(
+                leadManagementDocId: params.getParam(
+                  'leadManagementDocId',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: CRMDashboardCopyWidget.routeName,
+              path: CRMDashboardCopyWidget.routePath,
+              builder: (context, params) => CRMDashboardCopyWidget(),
+            ),
+            FFRoute(
+              name: CRMDashboardNEWWidget.routeName,
+              path: CRMDashboardNEWWidget.routePath,
+              builder: (context, params) => CRMDashboardNEWWidget(),
+            ),
+            FFRoute(
+              name: LeadReportMonthlyCRMWidget.routeName,
+              path: LeadReportMonthlyCRMWidget.routePath,
+              builder: (context, params) => LeadReportMonthlyCRMWidget(),
+            ),
+            FFRoute(
+              name: LeadEmployeeReportFinalCRMWidget.routeName,
+              path: LeadEmployeeReportFinalCRMWidget.routePath,
+              builder: (context, params) => LeadEmployeeReportFinalCRMWidget(),
+            ),
+            FFRoute(
+              name: DeyeDashboard2Widget.routeName,
+              path: DeyeDashboard2Widget.routePath,
+              builder: (context, params) => DeyeDashboard2Widget(),
+            ),
+            FFRoute(
+              name: RegisterComplaintWidget.routeName,
+              path: RegisterComplaintWidget.routePath,
+              builder: (context, params) => RegisterComplaintWidget(),
+            ),
+            FFRoute(
+              name: DeyeDashboardOldWidget.routeName,
+              path: DeyeDashboardOldWidget.routePath,
+              builder: (context, params) => DeyeDashboardOldWidget(),
+            ),
+            FFRoute(
+              name: DeyeThankyouPageWidget.routeName,
+              path: DeyeThankyouPageWidget.routePath,
+              builder: (context, params) => DeyeThankyouPageWidget(),
+            ),
+            FFRoute(
+              name: DeyeTeamTreeWidget.routeName,
+              path: DeyeTeamTreeWidget.routePath,
+              builder: (context, params) => DeyeTeamTreeWidget(),
+            ),
+            FFRoute(
+              name: DeyeComplaintDetailsWidget.routeName,
+              path: DeyeComplaintDetailsWidget.routePath,
+              builder: (context, params) => DeyeComplaintDetailsWidget(
+                mobile: params.getParam(
+                  'mobile',
+                  ParamType.String,
+                ),
+                leadManagementDocId: params.getParam(
+                  'leadManagementDocId',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeCategoryMasterWidget.routeName,
+              path: DeyeCategoryMasterWidget.routePath,
+              builder: (context, params) => DeyeCategoryMasterWidget(),
+            ),
+            FFRoute(
+              name: DeyeProductMasterWidget.routeName,
+              path: DeyeProductMasterWidget.routePath,
+              builder: (context, params) => DeyeProductMasterWidget(
+                list: params.getParam(
+                  'list',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeLeadStagesMasterWidget.routeName,
+              path: DeyeLeadStagesMasterWidget.routePath,
+              builder: (context, params) => DeyeLeadStagesMasterWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeLeadStatusMasterWidget.routeName,
+              path: DeyeLeadStatusMasterWidget.routePath,
+              builder: (context, params) => DeyeLeadStatusMasterWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeComplaintReportWidget.routeName,
+              path: DeyeComplaintReportWidget.routePath,
+              builder: (context, params) => DeyeComplaintReportWidget(),
+            ),
+            FFRoute(
+              name: DeyeLeadEmployeeReportWidget.routeName,
+              path: DeyeLeadEmployeeReportWidget.routePath,
+              builder: (context, params) => DeyeLeadEmployeeReportWidget(),
+            ),
+            FFRoute(
+              name: DeyeCityWiseReportWidget.routeName,
+              path: DeyeCityWiseReportWidget.routePath,
+              builder: (context, params) => DeyeCityWiseReportWidget(),
+            ),
+            FFRoute(
+              name: DeyeDashboardSupportWidget.routeName,
+              path: DeyeDashboardSupportWidget.routePath,
+              builder: (context, params) => DeyeDashboardSupportWidget(),
+            ),
+            FFRoute(
+              name: DeyeCategoryWidget.routeName,
+              path: DeyeCategoryWidget.routePath,
+              builder: (context, params) => DeyeCategoryWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeProductsWidget.routeName,
+              path: DeyeProductsWidget.routePath,
+              builder: (context, params) => DeyeProductsWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeDashboardEXPANDWidget.routeName,
+              path: DeyeDashboardEXPANDWidget.routePath,
+              builder: (context, params) => DeyeDashboardEXPANDWidget(),
+            ),
+            FFRoute(
+              name: DeyeEditProfileAdminWidget.routeName,
+              path: DeyeEditProfileAdminWidget.routePath,
+              asyncParams: {
+                'profileDoc':
+                    getDoc(['USER_PROFILE'], UserProfileRecord.fromSnapshot),
+              },
+              builder: (context, params) => DeyeEditProfileAdminWidget(
+                profileDoc: params.getParam(
+                  'profileDoc',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: NavigationTestWidget.routeName,
+              path: NavigationTestWidget.routePath,
+              builder: (context, params) => NavigationTestWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -988,7 +1487,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/loginNewFinal';
+            return '/CRM-Login';
           }
           return null;
         },
@@ -1004,11 +1503,11 @@ class FFRoute {
           final child = appStateNotifier.loading
               ? Center(
                   child: SizedBox(
-                    width: 35.0,
-                    height: 35.0,
-                    child: SpinKitPulse(
+                    width: 30.0,
+                    height: 30.0,
+                    child: SpinKitRing(
                       color: FlutterFlowTheme.of(context).primary,
-                      size: 35.0,
+                      size: 30.0,
                     ),
                   ),
                 )

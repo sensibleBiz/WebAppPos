@@ -12,8 +12,8 @@ import 'package:flutter/material.dart';
 Future<dynamic> removeDuplicateTagList(LeadTagRecord tagObj) async {
   bool flag = false;
   int count = 0;
-  print("Tags");
-  print(FFAppState().tagList);
+//  print("Tags");
+//  print(FFAppState().tagList);
   if (FFAppState().tagList.length == 0) {
     FFAppState().tagList.add(generateTaglDetailsJson(
         tagObj.leadTagName, tagObj.code, tagObj.isDeleted, tagObj.type));
@@ -28,8 +28,8 @@ Future<dynamic> removeDuplicateTagList(LeadTagRecord tagObj) async {
           tagObj.leadTagName, tagObj.code, tagObj.isDeleted, tagObj.type));
     }
   }
-  print("after Tags");
-  print(FFAppState().tagList);
+//  print("after Tags");
+//  print(FFAppState().tagList);
   return FFAppState().tagList;
   // Add your function code here!
 }

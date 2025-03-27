@@ -111,6 +111,36 @@ class OutletRecord extends FirestoreRecord {
   LatLng? get latLang => _latLang;
   bool hasLatLang() => _latLang != null;
 
+  // "isProd" field.
+  bool? _isProd;
+  bool get isProd => _isProd ?? false;
+  bool hasIsProd() => _isProd != null;
+
+  // "isDemo" field.
+  bool? _isDemo;
+  bool get isDemo => _isDemo ?? false;
+  bool hasIsDemo() => _isDemo != null;
+
+  // "billingType" field.
+  String? _billingType;
+  String get billingType => _billingType ?? '';
+  bool hasBillingType() => _billingType != null;
+
+  // "dealerCode" field.
+  String? _dealerCode;
+  String get dealerCode => _dealerCode ?? '';
+  bool hasDealerCode() => _dealerCode != null;
+
+  // "merchantKey" field.
+  String? _merchantKey;
+  String get merchantKey => _merchantKey ?? '';
+  bool hasMerchantKey() => _merchantKey != null;
+
+  // "merchantId" field.
+  String? _merchantId;
+  String get merchantId => _merchantId ?? '';
+  bool hasMerchantId() => _merchantId != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _name = snapshotData['name'] as String?;
@@ -131,6 +161,12 @@ class OutletRecord extends FirestoreRecord {
     _code = castToType<int>(snapshotData['code']);
     _userId = snapshotData['userId'] as String?;
     _latLang = snapshotData['latLang'] as LatLng?;
+    _isProd = snapshotData['isProd'] as bool?;
+    _isDemo = snapshotData['isDemo'] as bool?;
+    _billingType = snapshotData['billingType'] as String?;
+    _dealerCode = snapshotData['dealerCode'] as String?;
+    _merchantKey = snapshotData['merchantKey'] as String?;
+    _merchantId = snapshotData['merchantId'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -186,6 +222,12 @@ Map<String, dynamic> createOutletRecordData({
   int? code,
   String? userId,
   LatLng? latLang,
+  bool? isProd,
+  bool? isDemo,
+  String? billingType,
+  String? dealerCode,
+  String? merchantKey,
+  String? merchantId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -208,6 +250,12 @@ Map<String, dynamic> createOutletRecordData({
       'code': code,
       'userId': userId,
       'latLang': latLang,
+      'isProd': isProd,
+      'isDemo': isDemo,
+      'billingType': billingType,
+      'dealerCode': dealerCode,
+      'merchantKey': merchantKey,
+      'merchantId': merchantId,
     }.withoutNulls,
   );
 
@@ -237,7 +285,13 @@ class OutletRecordDocumentEquality implements Equality<OutletRecord> {
         e1?.multicounter == e2?.multicounter &&
         e1?.code == e2?.code &&
         e1?.userId == e2?.userId &&
-        e1?.latLang == e2?.latLang;
+        e1?.latLang == e2?.latLang &&
+        e1?.isProd == e2?.isProd &&
+        e1?.isDemo == e2?.isDemo &&
+        e1?.billingType == e2?.billingType &&
+        e1?.dealerCode == e2?.dealerCode &&
+        e1?.merchantKey == e2?.merchantKey &&
+        e1?.merchantId == e2?.merchantId;
   }
 
   @override
@@ -260,7 +314,13 @@ class OutletRecordDocumentEquality implements Equality<OutletRecord> {
         e?.multicounter,
         e?.code,
         e?.userId,
-        e?.latLang
+        e?.latLang,
+        e?.isProd,
+        e?.isDemo,
+        e?.billingType,
+        e?.dealerCode,
+        e?.merchantKey,
+        e?.merchantId
       ]);
 
   @override

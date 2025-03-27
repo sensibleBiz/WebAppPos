@@ -514,5 +514,74 @@ service cloud.firestore {
       allow write: if true;
       allow delete: if true;
     }
+
+    match /OUTLET/{parent}/MONTHLY_PASS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/MONTHLY_PASS/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/LEAD_STAGES/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/LEAD_STAGES/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/LEAD_STATUS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/LEAD_STATUS/{document} {
+      allow read: if true;
+    }
+
+
+    match /INTEGRATION/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /ZONE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /OUTLET/{parent}/TEAM_TREE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/TEAM_TREE/{document} {
+      allow read: if true;
+    }
+
+
+    match /NOTIFICATIONS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
   }
 }

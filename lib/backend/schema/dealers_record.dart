@@ -26,30 +26,10 @@ class DealersRecord extends FirestoreRecord {
   String get address => _address ?? '';
   bool hasAddress() => _address != null;
 
-  // "companyName" field.
-  String? _companyName;
-  String get companyName => _companyName ?? '';
-  bool hasCompanyName() => _companyName != null;
-
-  // "emailId" field.
-  String? _emailId;
-  String get emailId => _emailId ?? '';
-  bool hasEmailId() => _emailId != null;
-
-  // "gstNumber" field.
-  String? _gstNumber;
-  String get gstNumber => _gstNumber ?? '';
-  bool hasGstNumber() => _gstNumber != null;
-
   // "isActive" field.
   bool? _isActive;
   bool get isActive => _isActive ?? false;
   bool hasIsActive() => _isActive != null;
-
-  // "name" field.
-  String? _name;
-  String get name => _name ?? '';
-  bool hasName() => _name != null;
 
   // "state" field.
   String? _state;
@@ -61,26 +41,6 @@ class DealersRecord extends FirestoreRecord {
   String get userProfileId => _userProfileId ?? '';
   bool hasUserProfileId() => _userProfileId != null;
 
-  // "contactNumber" field.
-  String? _contactNumber;
-  String get contactNumber => _contactNumber ?? '';
-  bool hasContactNumber() => _contactNumber != null;
-
-  // "dealsIn" field.
-  String? _dealsIn;
-  String get dealsIn => _dealsIn ?? '';
-  bool hasDealsIn() => _dealsIn != null;
-
-  // "status" field.
-  String? _status;
-  String get status => _status ?? '';
-  bool hasStatus() => _status != null;
-
-  // "remarks" field.
-  String? _remarks;
-  String get remarks => _remarks ?? '';
-  bool hasRemarks() => _remarks != null;
-
   // "isDeleted" field.
   bool? _isDeleted;
   bool get isDeleted => _isDeleted ?? false;
@@ -91,24 +51,70 @@ class DealersRecord extends FirestoreRecord {
   String get dealerCode => _dealerCode ?? '';
   bool hasDealerCode() => _dealerCode != null;
 
+  // "firmName" field.
+  String? _firmName;
+  String get firmName => _firmName ?? '';
+  bool hasFirmName() => _firmName != null;
+
+  // "mobile" field.
+  String? _mobile;
+  String get mobile => _mobile ?? '';
+  bool hasMobile() => _mobile != null;
+
+  // "dealerName" field.
+  String? _dealerName;
+  String get dealerName => _dealerName ?? '';
+  bool hasDealerName() => _dealerName != null;
+
+  // "gst" field.
+  String? _gst;
+  String get gst => _gst ?? '';
+  bool hasGst() => _gst != null;
+
+  // "city" field.
+  String? _city;
+  String get city => _city ?? '';
+  bool hasCity() => _city != null;
+
+  // "pincode" field.
+  String? _pincode;
+  String get pincode => _pincode ?? '';
+  bool hasPincode() => _pincode != null;
+
+  // "outletId" field.
+  String? _outletId;
+  String get outletId => _outletId ?? '';
+  bool hasOutletId() => _outletId != null;
+
+  // "area" field.
+  String? _area;
+  String get area => _area ?? '';
+  bool hasArea() => _area != null;
+
+  // "name" field.
+  String? _name;
+  String get name => _name ?? '';
+  bool hasName() => _name != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _address = snapshotData['address'] as String?;
-    _companyName = snapshotData['companyName'] as String?;
-    _emailId = snapshotData['emailId'] as String?;
-    _gstNumber = snapshotData['gstNumber'] as String?;
     _isActive = snapshotData['isActive'] as bool?;
-    _name = snapshotData['name'] as String?;
     _state = snapshotData['state'] as String?;
     _userProfileId = snapshotData['userProfileId'] as String?;
-    _contactNumber = snapshotData['contactNumber'] as String?;
-    _dealsIn = snapshotData['dealsIn'] as String?;
-    _status = snapshotData['status'] as String?;
-    _remarks = snapshotData['remarks'] as String?;
     _isDeleted = snapshotData['isDeleted'] as bool?;
     _dealerCode = snapshotData['dealerCode'] as String?;
+    _firmName = snapshotData['firmName'] as String?;
+    _mobile = snapshotData['mobile'] as String?;
+    _dealerName = snapshotData['dealerName'] as String?;
+    _gst = snapshotData['gst'] as String?;
+    _city = snapshotData['city'] as String?;
+    _pincode = snapshotData['pincode'] as String?;
+    _outletId = snapshotData['outletId'] as String?;
+    _area = snapshotData['area'] as String?;
+    _name = snapshotData['name'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -153,37 +159,39 @@ class DealersRecord extends FirestoreRecord {
 Map<String, dynamic> createDealersRecordData({
   String? id,
   String? address,
-  String? companyName,
-  String? emailId,
-  String? gstNumber,
   bool? isActive,
-  String? name,
   String? state,
   String? userProfileId,
-  String? contactNumber,
-  String? dealsIn,
-  String? status,
-  String? remarks,
   bool? isDeleted,
   String? dealerCode,
+  String? firmName,
+  String? mobile,
+  String? dealerName,
+  String? gst,
+  String? city,
+  String? pincode,
+  String? outletId,
+  String? area,
+  String? name,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'id': id,
       'address': address,
-      'companyName': companyName,
-      'emailId': emailId,
-      'gstNumber': gstNumber,
       'isActive': isActive,
-      'name': name,
       'state': state,
       'userProfileId': userProfileId,
-      'contactNumber': contactNumber,
-      'dealsIn': dealsIn,
-      'status': status,
-      'remarks': remarks,
       'isDeleted': isDeleted,
       'dealerCode': dealerCode,
+      'firmName': firmName,
+      'mobile': mobile,
+      'dealerName': dealerName,
+      'gst': gst,
+      'city': city,
+      'pincode': pincode,
+      'outletId': outletId,
+      'area': area,
+      'name': name,
     }.withoutNulls,
   );
 
@@ -197,38 +205,40 @@ class DealersRecordDocumentEquality implements Equality<DealersRecord> {
   bool equals(DealersRecord? e1, DealersRecord? e2) {
     return e1?.id == e2?.id &&
         e1?.address == e2?.address &&
-        e1?.companyName == e2?.companyName &&
-        e1?.emailId == e2?.emailId &&
-        e1?.gstNumber == e2?.gstNumber &&
         e1?.isActive == e2?.isActive &&
-        e1?.name == e2?.name &&
         e1?.state == e2?.state &&
         e1?.userProfileId == e2?.userProfileId &&
-        e1?.contactNumber == e2?.contactNumber &&
-        e1?.dealsIn == e2?.dealsIn &&
-        e1?.status == e2?.status &&
-        e1?.remarks == e2?.remarks &&
         e1?.isDeleted == e2?.isDeleted &&
-        e1?.dealerCode == e2?.dealerCode;
+        e1?.dealerCode == e2?.dealerCode &&
+        e1?.firmName == e2?.firmName &&
+        e1?.mobile == e2?.mobile &&
+        e1?.dealerName == e2?.dealerName &&
+        e1?.gst == e2?.gst &&
+        e1?.city == e2?.city &&
+        e1?.pincode == e2?.pincode &&
+        e1?.outletId == e2?.outletId &&
+        e1?.area == e2?.area &&
+        e1?.name == e2?.name;
   }
 
   @override
   int hash(DealersRecord? e) => const ListEquality().hash([
         e?.id,
         e?.address,
-        e?.companyName,
-        e?.emailId,
-        e?.gstNumber,
         e?.isActive,
-        e?.name,
         e?.state,
         e?.userProfileId,
-        e?.contactNumber,
-        e?.dealsIn,
-        e?.status,
-        e?.remarks,
         e?.isDeleted,
-        e?.dealerCode
+        e?.dealerCode,
+        e?.firmName,
+        e?.mobile,
+        e?.dealerName,
+        e?.gst,
+        e?.city,
+        e?.pincode,
+        e?.outletId,
+        e?.area,
+        e?.name
       ]);
 
   @override

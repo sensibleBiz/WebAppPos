@@ -1,5 +1,6 @@
 // ignore_for_file: constant_identifier_names, depend_on_referenced_packages, prefer_final_fields
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 import 'dart:io';
@@ -169,7 +170,6 @@ class ApiManager {
   // If your API calls need authentication, populate this field once
   // the user has authenticated. Alter this as needed.
   static String? _accessToken;
-
   // You may want to call this if, for example, you make a change to the
   // database and no longer want the cached result of a call that may
   // have changed.
@@ -376,7 +376,11 @@ class ApiManager {
         : postBody;
   }
 
-  Future<ApiCallResponse> call(ApiCallOptions options) => makeApiCall(
+  Future<ApiCallResponse> call(
+    ApiCallOptions options, {
+    http.Client? client,
+  }) =>
+      makeApiCall(
         callName: options.callName,
         apiUrl: options.apiUrl,
         callType: options.callType,
@@ -391,6 +395,7 @@ class ApiManager {
         cache: options.cache,
         isStreamingApi: options.isStreamingApi,
         options: options,
+        client: client,
       );
 
   Future<ApiCallResponse> makeApiCall({

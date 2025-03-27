@@ -545,6 +545,31 @@ class AppSettingsRecord extends FirestoreRecord {
   bool get productAndList => _productAndList ?? false;
   bool hasProductAndList() => _productAndList != null;
 
+  // "printKOTWithBill" field.
+  bool? _printKOTWithBill;
+  bool get printKOTWithBill => _printKOTWithBill ?? false;
+  bool hasPrintKOTWithBill() => _printKOTWithBill != null;
+
+  // "ethernetPrint" field.
+  bool? _ethernetPrint;
+  bool get ethernetPrint => _ethernetPrint ?? false;
+  bool hasEthernetPrint() => _ethernetPrint != null;
+
+  // "deviceId" field.
+  String? _deviceId;
+  String get deviceId => _deviceId ?? '';
+  bool hasDeviceId() => _deviceId != null;
+
+  // "hideParcelButton" field.
+  bool? _hideParcelButton;
+  bool get hideParcelButton => _hideParcelButton ?? false;
+  bool hasHideParcelButton() => _hideParcelButton != null;
+
+  // "settingList" field.
+  List<AppSettingDataTypeStruct>? _settingList;
+  List<AppSettingDataTypeStruct> get settingList => _settingList ?? const [];
+  bool hasSettingList() => _settingList != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -659,6 +684,14 @@ class AppSettingsRecord extends FirestoreRecord {
     _fullScreenQr = snapshotData['fullScreenQr'] as bool?;
     _fullScreenBill = snapshotData['fullScreenBill'] as bool?;
     _productAndList = snapshotData['productAndList'] as bool?;
+    _printKOTWithBill = snapshotData['printKOTWithBill'] as bool?;
+    _ethernetPrint = snapshotData['ethernetPrint'] as bool?;
+    _deviceId = snapshotData['deviceId'] as String?;
+    _hideParcelButton = snapshotData['hideParcelButton'] as bool?;
+    _settingList = getStructList(
+      snapshotData['settingList'],
+      AppSettingDataTypeStruct.fromMap,
+    );
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -806,6 +839,10 @@ Map<String, dynamic> createAppSettingsRecordData({
   bool? fullScreenQr,
   bool? fullScreenBill,
   bool? productAndList,
+  bool? printKOTWithBill,
+  bool? ethernetPrint,
+  String? deviceId,
+  bool? hideParcelButton,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -914,6 +951,10 @@ Map<String, dynamic> createAppSettingsRecordData({
       'fullScreenQr': fullScreenQr,
       'fullScreenBill': fullScreenBill,
       'productAndList': productAndList,
+      'printKOTWithBill': printKOTWithBill,
+      'ethernetPrint': ethernetPrint,
+      'deviceId': deviceId,
+      'hideParcelButton': hideParcelButton,
     }.withoutNulls,
   );
 
@@ -925,6 +966,7 @@ class AppSettingsRecordDocumentEquality implements Equality<AppSettingsRecord> {
 
   @override
   bool equals(AppSettingsRecord? e1, AppSettingsRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.allowSaleWithoutTax == e2?.allowSaleWithoutTax &&
         e1?.askCustomerInBillCreation == e2?.askCustomerInBillCreation &&
         e1?.billFormatSendToEmail == e2?.billFormatSendToEmail &&
@@ -1030,7 +1072,12 @@ class AppSettingsRecordDocumentEquality implements Equality<AppSettingsRecord> {
         e1?.tableScreen == e2?.tableScreen &&
         e1?.fullScreenQr == e2?.fullScreenQr &&
         e1?.fullScreenBill == e2?.fullScreenBill &&
-        e1?.productAndList == e2?.productAndList;
+        e1?.productAndList == e2?.productAndList &&
+        e1?.printKOTWithBill == e2?.printKOTWithBill &&
+        e1?.ethernetPrint == e2?.ethernetPrint &&
+        e1?.deviceId == e2?.deviceId &&
+        e1?.hideParcelButton == e2?.hideParcelButton &&
+        listEquality.equals(e1?.settingList, e2?.settingList);
   }
 
   @override
@@ -1139,7 +1186,12 @@ class AppSettingsRecordDocumentEquality implements Equality<AppSettingsRecord> {
         e?.tableScreen,
         e?.fullScreenQr,
         e?.fullScreenBill,
-        e?.productAndList
+        e?.productAndList,
+        e?.printKOTWithBill,
+        e?.ethernetPrint,
+        e?.deviceId,
+        e?.hideParcelButton,
+        e?.settingList
       ]);
 
   @override

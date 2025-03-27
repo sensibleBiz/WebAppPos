@@ -31,10 +31,16 @@ class CitiesRecord extends FirestoreRecord {
   String get state => _state ?? '';
   bool hasState() => _state != null;
 
+  // "code" field.
+  int? _code;
+  int get code => _code ?? 0;
+  bool hasCode() => _code != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _cityName = snapshotData['cityName'] as String?;
     _state = snapshotData['state'] as String?;
+    _code = castToType<int>(snapshotData['code']);
   }
 
   static CollectionReference get collection =>
@@ -74,12 +80,14 @@ Map<String, dynamic> createCitiesRecordData({
   String? id,
   String? cityName,
   String? state,
+  int? code,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'id': id,
       'cityName': cityName,
       'state': state,
+      'code': code,
     }.withoutNulls,
   );
 
@@ -93,12 +101,13 @@ class CitiesRecordDocumentEquality implements Equality<CitiesRecord> {
   bool equals(CitiesRecord? e1, CitiesRecord? e2) {
     return e1?.id == e2?.id &&
         e1?.cityName == e2?.cityName &&
-        e1?.state == e2?.state;
+        e1?.state == e2?.state &&
+        e1?.code == e2?.code;
   }
 
   @override
   int hash(CitiesRecord? e) =>
-      const ListEquality().hash([e?.id, e?.cityName, e?.state]);
+      const ListEquality().hash([e?.id, e?.cityName, e?.state, e?.code]);
 
   @override
   bool isValidKey(Object? o) => o is CitiesRecord;

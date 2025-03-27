@@ -21,6 +21,6 @@ Future<int> genarateCatMasterCode(List<CategoryMasterRecord>? list) async {
   } else {
     nextCode = 1;
   }
-  print(nextCode);
+  //print(nextCode);
   return nextCode;
 }

@@ -17,8 +17,8 @@ Future setDropdownStatus(
   // Add your function code here!
   int len = list.length;
   for (int i = 0; i < len; i++) {
-    print(listItem["id"]);
-    print(list[i]["id"]);
+    //  print(listItem["id"]);
+    //  print(list[i]["id"]);
     if (listItem["id"] == list[i]["id"]) {
       list[i]["status"] = status;
     }

@@ -20,6 +20,18 @@ class PurchaseSaleItemListStruct extends FFFirebaseStruct {
     double? delliveryChrg,
     int? acceptedQuantity,
     int? rejectedQuantity,
+    String? gstPer,
+    double? gstAmt,
+    double? mrpPrice,
+    double? cgst,
+    double? sgst,
+    int? cgstPer,
+    int? sgstPer,
+    double? igst,
+    int? igstPer,
+    String? posSerial,
+    String? deviceId,
+    String? posModel,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _quantity = quantity,
@@ -31,6 +43,18 @@ class PurchaseSaleItemListStruct extends FFFirebaseStruct {
         _delliveryChrg = delliveryChrg,
         _acceptedQuantity = acceptedQuantity,
         _rejectedQuantity = rejectedQuantity,
+        _gstPer = gstPer,
+        _gstAmt = gstAmt,
+        _mrpPrice = mrpPrice,
+        _cgst = cgst,
+        _sgst = sgst,
+        _cgstPer = cgstPer,
+        _sgstPer = sgstPer,
+        _igst = igst,
+        _igstPer = igstPer,
+        _posSerial = posSerial,
+        _deviceId = deviceId,
+        _posModel = posModel,
         super(firestoreUtilData);
 
   // "name" field.
@@ -120,6 +144,106 @@ class PurchaseSaleItemListStruct extends FFFirebaseStruct {
 
   bool hasRejectedQuantity() => _rejectedQuantity != null;
 
+  // "gstPer" field.
+  String? _gstPer;
+  String get gstPer => _gstPer ?? '';
+  set gstPer(String? val) => _gstPer = val;
+
+  bool hasGstPer() => _gstPer != null;
+
+  // "gstAmt" field.
+  double? _gstAmt;
+  double get gstAmt => _gstAmt ?? 0.0;
+  set gstAmt(double? val) => _gstAmt = val;
+
+  void incrementGstAmt(double amount) => gstAmt = gstAmt + amount;
+
+  bool hasGstAmt() => _gstAmt != null;
+
+  // "mrpPrice" field.
+  double? _mrpPrice;
+  double get mrpPrice => _mrpPrice ?? 0.0;
+  set mrpPrice(double? val) => _mrpPrice = val;
+
+  void incrementMrpPrice(double amount) => mrpPrice = mrpPrice + amount;
+
+  bool hasMrpPrice() => _mrpPrice != null;
+
+  // "cgst" field.
+  double? _cgst;
+  double get cgst => _cgst ?? 0.0;
+  set cgst(double? val) => _cgst = val;
+
+  void incrementCgst(double amount) => cgst = cgst + amount;
+
+  bool hasCgst() => _cgst != null;
+
+  // "sgst" field.
+  double? _sgst;
+  double get sgst => _sgst ?? 0.0;
+  set sgst(double? val) => _sgst = val;
+
+  void incrementSgst(double amount) => sgst = sgst + amount;
+
+  bool hasSgst() => _sgst != null;
+
+  // "cgstPer" field.
+  int? _cgstPer;
+  int get cgstPer => _cgstPer ?? 0;
+  set cgstPer(int? val) => _cgstPer = val;
+
+  void incrementCgstPer(int amount) => cgstPer = cgstPer + amount;
+
+  bool hasCgstPer() => _cgstPer != null;
+
+  // "sgstPer" field.
+  int? _sgstPer;
+  int get sgstPer => _sgstPer ?? 0;
+  set sgstPer(int? val) => _sgstPer = val;
+
+  void incrementSgstPer(int amount) => sgstPer = sgstPer + amount;
+
+  bool hasSgstPer() => _sgstPer != null;
+
+  // "igst" field.
+  double? _igst;
+  double get igst => _igst ?? 0.0;
+  set igst(double? val) => _igst = val;
+
+  void incrementIgst(double amount) => igst = igst + amount;
+
+  bool hasIgst() => _igst != null;
+
+  // "igstPer" field.
+  int? _igstPer;
+  int get igstPer => _igstPer ?? 0;
+  set igstPer(int? val) => _igstPer = val;
+
+  void incrementIgstPer(int amount) => igstPer = igstPer + amount;
+
+  bool hasIgstPer() => _igstPer != null;
+
+  // "posSerial" field.
+  String? _posSerial;
+  String get posSerial => _posSerial ?? '';
+  set posSerial(String? val) => _posSerial = val;
+
+  bool hasPosSerial() => _posSerial != null;
+
+  // "deviceId" field.
+  String? _deviceId;
+  String get deviceId => _deviceId ?? '';
+  set deviceId(String? val) => _deviceId = val;
+
+  bool hasDeviceId() => _deviceId != null;
+
+  // "posModel" field.
+  String? _posModel;
+  String get posModel => _posModel ?? '';
+  set posModel(String? val) => _posModel = val;
+
+  bool hasPosModel() => _posModel != null;
+
   static PurchaseSaleItemListStruct fromMap(Map<String, dynamic> data) =>
       PurchaseSaleItemListStruct(
         name: data['name'] as String?,
@@ -132,6 +256,18 @@ class PurchaseSaleItemListStruct extends FFFirebaseStruct {
         delliveryChrg: castToType<double>(data['delliveryChrg']),
         acceptedQuantity: castToType<int>(data['acceptedQuantity']),
         rejectedQuantity: castToType<int>(data['rejectedQuantity']),
+        gstPer: data['gstPer'] as String?,
+        gstAmt: castToType<double>(data['gstAmt']),
+        mrpPrice: castToType<double>(data['mrpPrice']),
+        cgst: castToType<double>(data['cgst']),
+        sgst: castToType<double>(data['sgst']),
+        cgstPer: castToType<int>(data['cgstPer']),
+        sgstPer: castToType<int>(data['sgstPer']),
+        igst: castToType<double>(data['igst']),
+        igstPer: castToType<int>(data['igstPer']),
+        posSerial: data['posSerial'] as String?,
+        deviceId: data['deviceId'] as String?,
+        posModel: data['posModel'] as String?,
       );
 
   static PurchaseSaleItemListStruct? maybeFromMap(dynamic data) => data is Map
@@ -149,6 +285,18 @@ class PurchaseSaleItemListStruct extends FFFirebaseStruct {
         'delliveryChrg': _delliveryChrg,
         'acceptedQuantity': _acceptedQuantity,
         'rejectedQuantity': _rejectedQuantity,
+        'gstPer': _gstPer,
+        'gstAmt': _gstAmt,
+        'mrpPrice': _mrpPrice,
+        'cgst': _cgst,
+        'sgst': _sgst,
+        'cgstPer': _cgstPer,
+        'sgstPer': _sgstPer,
+        'igst': _igst,
+        'igstPer': _igstPer,
+        'posSerial': _posSerial,
+        'deviceId': _deviceId,
+        'posModel': _posModel,
       }.withoutNulls;
 
   @override
@@ -192,6 +340,54 @@ class PurchaseSaleItemListStruct extends FFFirebaseStruct {
         'rejectedQuantity': serializeParam(
           _rejectedQuantity,
           ParamType.int,
+        ),
+        'gstPer': serializeParam(
+          _gstPer,
+          ParamType.String,
+        ),
+        'gstAmt': serializeParam(
+          _gstAmt,
+          ParamType.double,
+        ),
+        'mrpPrice': serializeParam(
+          _mrpPrice,
+          ParamType.double,
+        ),
+        'cgst': serializeParam(
+          _cgst,
+          ParamType.double,
+        ),
+        'sgst': serializeParam(
+          _sgst,
+          ParamType.double,
+        ),
+        'cgstPer': serializeParam(
+          _cgstPer,
+          ParamType.int,
+        ),
+        'sgstPer': serializeParam(
+          _sgstPer,
+          ParamType.int,
+        ),
+        'igst': serializeParam(
+          _igst,
+          ParamType.double,
+        ),
+        'igstPer': serializeParam(
+          _igstPer,
+          ParamType.int,
+        ),
+        'posSerial': serializeParam(
+          _posSerial,
+          ParamType.String,
+        ),
+        'deviceId': serializeParam(
+          _deviceId,
+          ParamType.String,
+        ),
+        'posModel': serializeParam(
+          _posModel,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -248,6 +444,66 @@ class PurchaseSaleItemListStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        gstPer: deserializeParam(
+          data['gstPer'],
+          ParamType.String,
+          false,
+        ),
+        gstAmt: deserializeParam(
+          data['gstAmt'],
+          ParamType.double,
+          false,
+        ),
+        mrpPrice: deserializeParam(
+          data['mrpPrice'],
+          ParamType.double,
+          false,
+        ),
+        cgst: deserializeParam(
+          data['cgst'],
+          ParamType.double,
+          false,
+        ),
+        sgst: deserializeParam(
+          data['sgst'],
+          ParamType.double,
+          false,
+        ),
+        cgstPer: deserializeParam(
+          data['cgstPer'],
+          ParamType.int,
+          false,
+        ),
+        sgstPer: deserializeParam(
+          data['sgstPer'],
+          ParamType.int,
+          false,
+        ),
+        igst: deserializeParam(
+          data['igst'],
+          ParamType.double,
+          false,
+        ),
+        igstPer: deserializeParam(
+          data['igstPer'],
+          ParamType.int,
+          false,
+        ),
+        posSerial: deserializeParam(
+          data['posSerial'],
+          ParamType.String,
+          false,
+        ),
+        deviceId: deserializeParam(
+          data['deviceId'],
+          ParamType.String,
+          false,
+        ),
+        posModel: deserializeParam(
+          data['posModel'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -265,7 +521,19 @@ class PurchaseSaleItemListStruct extends FFFirebaseStruct {
         discount == other.discount &&
         delliveryChrg == other.delliveryChrg &&
         acceptedQuantity == other.acceptedQuantity &&
-        rejectedQuantity == other.rejectedQuantity;
+        rejectedQuantity == other.rejectedQuantity &&
+        gstPer == other.gstPer &&
+        gstAmt == other.gstAmt &&
+        mrpPrice == other.mrpPrice &&
+        cgst == other.cgst &&
+        sgst == other.sgst &&
+        cgstPer == other.cgstPer &&
+        sgstPer == other.sgstPer &&
+        igst == other.igst &&
+        igstPer == other.igstPer &&
+        posSerial == other.posSerial &&
+        deviceId == other.deviceId &&
+        posModel == other.posModel;
   }
 
   @override
@@ -279,7 +547,19 @@ class PurchaseSaleItemListStruct extends FFFirebaseStruct {
         discount,
         delliveryChrg,
         acceptedQuantity,
-        rejectedQuantity
+        rejectedQuantity,
+        gstPer,
+        gstAmt,
+        mrpPrice,
+        cgst,
+        sgst,
+        cgstPer,
+        sgstPer,
+        igst,
+        igstPer,
+        posSerial,
+        deviceId,
+        posModel
       ]);
 }
 
@@ -294,6 +574,18 @@ PurchaseSaleItemListStruct createPurchaseSaleItemListStruct({
   double? delliveryChrg,
   int? acceptedQuantity,
   int? rejectedQuantity,
+  String? gstPer,
+  double? gstAmt,
+  double? mrpPrice,
+  double? cgst,
+  double? sgst,
+  int? cgstPer,
+  int? sgstPer,
+  double? igst,
+  int? igstPer,
+  String? posSerial,
+  String? deviceId,
+  String? posModel,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -310,6 +602,18 @@ PurchaseSaleItemListStruct createPurchaseSaleItemListStruct({
       delliveryChrg: delliveryChrg,
       acceptedQuantity: acceptedQuantity,
       rejectedQuantity: rejectedQuantity,
+      gstPer: gstPer,
+      gstAmt: gstAmt,
+      mrpPrice: mrpPrice,
+      cgst: cgst,
+      sgst: sgst,
+      cgstPer: cgstPer,
+      sgstPer: sgstPer,
+      igst: igst,
+      igstPer: igstPer,
+      posSerial: posSerial,
+      deviceId: deviceId,
+      posModel: posModel,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

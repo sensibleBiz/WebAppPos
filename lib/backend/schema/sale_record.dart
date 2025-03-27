@@ -111,11 +111,6 @@ class SaleRecord extends FirestoreRecord {
   String get comment => _comment ?? '';
   bool hasComment() => _comment != null;
 
-  // "invoiceNo" field.
-  int? _invoiceNo;
-  int get invoiceNo => _invoiceNo ?? 0;
-  bool hasInvoiceNo() => _invoiceNo != null;
-
   // "invoiceDate" field.
   int? _invoiceDate;
   int get invoiceDate => _invoiceDate ?? 0;
@@ -151,6 +146,97 @@ class SaleRecord extends FirestoreRecord {
   double get additionalChargAmt => _additionalChargAmt ?? 0.0;
   bool hasAdditionalChargAmt() => _additionalChargAmt != null;
 
+  // "updatedBy" field.
+  String? _updatedBy;
+  String get updatedBy => _updatedBy ?? '';
+  bool hasUpdatedBy() => _updatedBy != null;
+
+  // "imageOfAdvAmt" field.
+  List<String>? _imageOfAdvAmt;
+  List<String> get imageOfAdvAmt => _imageOfAdvAmt ?? const [];
+  bool hasImageOfAdvAmt() => _imageOfAdvAmt != null;
+
+  // "count" field.
+  int? _count;
+  int get count => _count ?? 0;
+  bool hasCount() => _count != null;
+
+  // "createdDate" field.
+  int? _createdDate;
+  int get createdDate => _createdDate ?? 0;
+  bool hasCreatedDate() => _createdDate != null;
+
+  // "leadRefId" field.
+  String? _leadRefId;
+  String get leadRefId => _leadRefId ?? '';
+  bool hasLeadRefId() => _leadRefId != null;
+
+  // "gstType" field.
+  bool? _gstType;
+  bool get gstType => _gstType ?? false;
+  bool hasGstType() => _gstType != null;
+
+  // "monthId" field.
+  String? _monthId;
+  String get monthId => _monthId ?? '';
+  bool hasMonthId() => _monthId != null;
+
+  // "yearId" field.
+  String? _yearId;
+  String get yearId => _yearId ?? '';
+  bool hasYearId() => _yearId != null;
+
+  // "orderStatus" field.
+  bool? _orderStatus;
+  bool get orderStatus => _orderStatus ?? false;
+  bool hasOrderStatus() => _orderStatus != null;
+
+  // "invoiceNo" field.
+  String? _invoiceNo;
+  String get invoiceNo => _invoiceNo ?? '';
+  bool hasInvoiceNo() => _invoiceNo != null;
+
+  // "paidAmt" field.
+  double? _paidAmt;
+  double get paidAmt => _paidAmt ?? 0.0;
+  bool hasPaidAmt() => _paidAmt != null;
+
+  // "poDueDate" field.
+  String? _poDueDate;
+  String get poDueDate => _poDueDate ?? '';
+  bool hasPoDueDate() => _poDueDate != null;
+
+  // "serialNo" field.
+  String? _serialNo;
+  String get serialNo => _serialNo ?? '';
+  bool hasSerialNo() => _serialNo != null;
+
+  // "productList1" field.
+  List<PurchaseSaleItemList1Struct>? _productList1;
+  List<PurchaseSaleItemList1Struct> get productList1 =>
+      _productList1 ?? const [];
+  bool hasProductList1() => _productList1 != null;
+
+  // "imageUrl" field.
+  String? _imageUrl;
+  String get imageUrl => _imageUrl ?? '';
+  bool hasImageUrl() => _imageUrl != null;
+
+  // "receivedAmt" field.
+  double? _receivedAmt;
+  double get receivedAmt => _receivedAmt ?? 0.0;
+  bool hasReceivedAmt() => _receivedAmt != null;
+
+  // "courierName" field.
+  String? _courierName;
+  String get courierName => _courierName ?? '';
+  bool hasCourierName() => _courierName != null;
+
+  // "docketNumber" field.
+  String? _docketNumber;
+  String get docketNumber => _docketNumber ?? '';
+  bool hasDocketNumber() => _docketNumber != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -176,7 +262,6 @@ class SaleRecord extends FirestoreRecord {
     _status = castToType<int>(snapshotData['status']);
     _modifiedDate = castToType<int>(snapshotData['modifiedDate']);
     _comment = snapshotData['comment'] as String?;
-    _invoiceNo = castToType<int>(snapshotData['invoiceNo']);
     _invoiceDate = castToType<int>(snapshotData['invoiceDate']);
     _createdBy = snapshotData['createdBy'] as String?;
     _orderTime = snapshotData['orderTime'] as DateTime?;
@@ -185,6 +270,27 @@ class SaleRecord extends FirestoreRecord {
     _additionalCharg = snapshotData['additionalCharg'] as String?;
     _additionalChargAmt =
         castToType<double>(snapshotData['additionalChargAmt']);
+    _updatedBy = snapshotData['updatedBy'] as String?;
+    _imageOfAdvAmt = getDataList(snapshotData['imageOfAdvAmt']);
+    _count = castToType<int>(snapshotData['count']);
+    _createdDate = castToType<int>(snapshotData['createdDate']);
+    _leadRefId = snapshotData['leadRefId'] as String?;
+    _gstType = snapshotData['gstType'] as bool?;
+    _monthId = snapshotData['monthId'] as String?;
+    _yearId = snapshotData['yearId'] as String?;
+    _orderStatus = snapshotData['orderStatus'] as bool?;
+    _invoiceNo = snapshotData['invoiceNo'] as String?;
+    _paidAmt = castToType<double>(snapshotData['paidAmt']);
+    _poDueDate = snapshotData['poDueDate'] as String?;
+    _serialNo = snapshotData['serialNo'] as String?;
+    _productList1 = getStructList(
+      snapshotData['productList1'],
+      PurchaseSaleItemList1Struct.fromMap,
+    );
+    _imageUrl = snapshotData['imageUrl'] as String?;
+    _receivedAmt = castToType<double>(snapshotData['receivedAmt']);
+    _courierName = snapshotData['courierName'] as String?;
+    _docketNumber = snapshotData['docketNumber'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -244,7 +350,6 @@ Map<String, dynamic> createSaleRecordData({
   int? status,
   int? modifiedDate,
   String? comment,
-  int? invoiceNo,
   int? invoiceDate,
   String? createdBy,
   DateTime? orderTime,
@@ -252,6 +357,22 @@ Map<String, dynamic> createSaleRecordData({
   int? serialNumber,
   String? additionalCharg,
   double? additionalChargAmt,
+  String? updatedBy,
+  int? count,
+  int? createdDate,
+  String? leadRefId,
+  bool? gstType,
+  String? monthId,
+  String? yearId,
+  bool? orderStatus,
+  String? invoiceNo,
+  double? paidAmt,
+  String? poDueDate,
+  String? serialNo,
+  String? imageUrl,
+  double? receivedAmt,
+  String? courierName,
+  String? docketNumber,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -273,7 +394,6 @@ Map<String, dynamic> createSaleRecordData({
       'status': status,
       'modifiedDate': modifiedDate,
       'comment': comment,
-      'invoiceNo': invoiceNo,
       'invoiceDate': invoiceDate,
       'createdBy': createdBy,
       'orderTime': orderTime,
@@ -281,6 +401,22 @@ Map<String, dynamic> createSaleRecordData({
       'serialNumber': serialNumber,
       'additionalCharg': additionalCharg,
       'additionalChargAmt': additionalChargAmt,
+      'updatedBy': updatedBy,
+      'count': count,
+      'createdDate': createdDate,
+      'leadRefId': leadRefId,
+      'gstType': gstType,
+      'monthId': monthId,
+      'yearId': yearId,
+      'orderStatus': orderStatus,
+      'invoiceNo': invoiceNo,
+      'paidAmt': paidAmt,
+      'poDueDate': poDueDate,
+      'serialNo': serialNo,
+      'imageUrl': imageUrl,
+      'receivedAmt': receivedAmt,
+      'courierName': courierName,
+      'docketNumber': docketNumber,
     }.withoutNulls,
   );
 
@@ -312,14 +448,31 @@ class SaleRecordDocumentEquality implements Equality<SaleRecord> {
         e1?.status == e2?.status &&
         e1?.modifiedDate == e2?.modifiedDate &&
         e1?.comment == e2?.comment &&
-        e1?.invoiceNo == e2?.invoiceNo &&
         e1?.invoiceDate == e2?.invoiceDate &&
         e1?.createdBy == e2?.createdBy &&
         e1?.orderTime == e2?.orderTime &&
         e1?.modifiedBy == e2?.modifiedBy &&
         e1?.serialNumber == e2?.serialNumber &&
         e1?.additionalCharg == e2?.additionalCharg &&
-        e1?.additionalChargAmt == e2?.additionalChargAmt;
+        e1?.additionalChargAmt == e2?.additionalChargAmt &&
+        e1?.updatedBy == e2?.updatedBy &&
+        listEquality.equals(e1?.imageOfAdvAmt, e2?.imageOfAdvAmt) &&
+        e1?.count == e2?.count &&
+        e1?.createdDate == e2?.createdDate &&
+        e1?.leadRefId == e2?.leadRefId &&
+        e1?.gstType == e2?.gstType &&
+        e1?.monthId == e2?.monthId &&
+        e1?.yearId == e2?.yearId &&
+        e1?.orderStatus == e2?.orderStatus &&
+        e1?.invoiceNo == e2?.invoiceNo &&
+        e1?.paidAmt == e2?.paidAmt &&
+        e1?.poDueDate == e2?.poDueDate &&
+        e1?.serialNo == e2?.serialNo &&
+        listEquality.equals(e1?.productList1, e2?.productList1) &&
+        e1?.imageUrl == e2?.imageUrl &&
+        e1?.receivedAmt == e2?.receivedAmt &&
+        e1?.courierName == e2?.courierName &&
+        e1?.docketNumber == e2?.docketNumber;
   }
 
   @override
@@ -343,14 +496,31 @@ class SaleRecordDocumentEquality implements Equality<SaleRecord> {
         e?.status,
         e?.modifiedDate,
         e?.comment,
-        e?.invoiceNo,
         e?.invoiceDate,
         e?.createdBy,
         e?.orderTime,
         e?.modifiedBy,
         e?.serialNumber,
         e?.additionalCharg,
-        e?.additionalChargAmt
+        e?.additionalChargAmt,
+        e?.updatedBy,
+        e?.imageOfAdvAmt,
+        e?.count,
+        e?.createdDate,
+        e?.leadRefId,
+        e?.gstType,
+        e?.monthId,
+        e?.yearId,
+        e?.orderStatus,
+        e?.invoiceNo,
+        e?.paidAmt,
+        e?.poDueDate,
+        e?.serialNo,
+        e?.productList1,
+        e?.imageUrl,
+        e?.receivedAmt,
+        e?.courierName,
+        e?.docketNumber
       ]);
 
   @override

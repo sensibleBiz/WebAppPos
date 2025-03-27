@@ -196,6 +196,26 @@ class LeadsManagementRecord extends FirestoreRecord {
   bool get isDealerLead => _isDealerLead ?? false;
   bool hasIsDealerLead() => _isDealerLead != null;
 
+  // "isDuplicate" field.
+  bool? _isDuplicate;
+  bool get isDuplicate => _isDuplicate ?? false;
+  bool hasIsDuplicate() => _isDuplicate != null;
+
+  // "zone" field.
+  String? _zone;
+  String get zone => _zone ?? '';
+  bool hasZone() => _zone != null;
+
+  // "ticket" field.
+  String? _ticket;
+  String get ticket => _ticket ?? '';
+  bool hasTicket() => _ticket != null;
+
+  // "customFields" field.
+  CustomFieldsStruct? _customFields;
+  CustomFieldsStruct get customFields => _customFields ?? CustomFieldsStruct();
+  bool hasCustomFields() => _customFields != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -238,6 +258,12 @@ class LeadsManagementRecord extends FirestoreRecord {
     _yearId = snapshotData['yearId'] as String?;
     _assignedBy = snapshotData['assignedBy'] as String?;
     _isDealerLead = snapshotData['isDealerLead'] as bool?;
+    _isDuplicate = snapshotData['isDuplicate'] as bool?;
+    _zone = snapshotData['zone'] as String?;
+    _ticket = snapshotData['ticket'] as String?;
+    _customFields = snapshotData['customFields'] is CustomFieldsStruct
+        ? snapshotData['customFields']
+        : CustomFieldsStruct.maybeFromMap(snapshotData['customFields']);
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -315,6 +341,10 @@ Map<String, dynamic> createLeadsManagementRecordData({
   String? yearId,
   String? assignedBy,
   bool? isDealerLead,
+  bool? isDuplicate,
+  String? zone,
+  String? ticket,
+  CustomFieldsStruct? customFields,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -353,8 +383,15 @@ Map<String, dynamic> createLeadsManagementRecordData({
       'yearId': yearId,
       'assignedBy': assignedBy,
       'isDealerLead': isDealerLead,
+      'isDuplicate': isDuplicate,
+      'zone': zone,
+      'ticket': ticket,
+      'customFields': CustomFieldsStruct().toMap(),
     }.withoutNulls,
   );
+
+  // Handle nested data for "customFields" field.
+  addCustomFieldsStructData(firestoreData, customFields, 'customFields');
 
   return firestoreData;
 }
@@ -401,7 +438,11 @@ class LeadsManagementRecordDocumentEquality
         e1?.monthId == e2?.monthId &&
         e1?.yearId == e2?.yearId &&
         e1?.assignedBy == e2?.assignedBy &&
-        e1?.isDealerLead == e2?.isDealerLead;
+        e1?.isDealerLead == e2?.isDealerLead &&
+        e1?.isDuplicate == e2?.isDuplicate &&
+        e1?.zone == e2?.zone &&
+        e1?.ticket == e2?.ticket &&
+        e1?.customFields == e2?.customFields;
   }
 
   @override
@@ -441,7 +482,11 @@ class LeadsManagementRecordDocumentEquality
         e?.monthId,
         e?.yearId,
         e?.assignedBy,
-        e?.isDealerLead
+        e?.isDealerLead,
+        e?.isDuplicate,
+        e?.zone,
+        e?.ticket,
+        e?.customFields
       ]);
 
   @override

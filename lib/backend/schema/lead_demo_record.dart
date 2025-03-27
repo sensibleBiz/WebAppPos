@@ -128,10 +128,16 @@ class LeadDemoRecord extends FirestoreRecord {
     _currentTime = snapshotData['currentTime'] as DateTime?;
     _requirement = snapshotData['requirement'] as String?;
     _dayId = snapshotData['dayId'] as String?;
-    _checkInLocationDetails = LocationDetailsStruct.maybeFromMap(
-        snapshotData['checkInLocationDetails']);
-    _checkOutLocationDetails = LocationDetailsStruct.maybeFromMap(
-        snapshotData['checkOutLocationDetails']);
+    _checkInLocationDetails =
+        snapshotData['checkInLocationDetails'] is LocationDetailsStruct
+            ? snapshotData['checkInLocationDetails']
+            : LocationDetailsStruct.maybeFromMap(
+                snapshotData['checkInLocationDetails']);
+    _checkOutLocationDetails =
+        snapshotData['checkOutLocationDetails'] is LocationDetailsStruct
+            ? snapshotData['checkOutLocationDetails']
+            : LocationDetailsStruct.maybeFromMap(
+                snapshotData['checkOutLocationDetails']);
     _monthId = snapshotData['monthId'] as String?;
     _yearId = snapshotData['yearId'] as String?;
   }

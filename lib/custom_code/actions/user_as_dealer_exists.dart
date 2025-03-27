@@ -16,7 +16,7 @@ Future<bool> userAsDealerExists(
   bool result = false;
   if (user != null) {
     if (dealer != null) {
-      if (user.mobile == dealer.contactNumber) {
+      if (user.mobile == dealer.mobile) {
         result = true;
       } else {
         result = false;

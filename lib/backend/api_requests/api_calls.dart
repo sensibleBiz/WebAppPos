@@ -121,6 +121,55 @@ class SendVideoCall {
   }
 }
 
+class SendMailCall {
+  static Future<ApiCallResponse> call({
+    String? outletName = '',
+    String? file = '',
+    String? fileName = '',
+    String? toEmail = '',
+    String? branchName = '',
+    String? username = '',
+    String? mobileNo = '',
+    String? roll = '',
+    String? reportType = '',
+  }) async {
+    final ffApiRequestBody = '''
+{   
+  "outletName": "${escapeStringForJson(outletName)}",
+  "branchName": "${escapeStringForJson(branchName)}",
+  "userName": "${escapeStringForJson(username)}",
+  "userMobileNumber": "${escapeStringForJson(mobileNo)}",
+  "userRoll": "${escapeStringForJson(roll)}",
+  "reportType":"${escapeStringForJson(reportType)}",
+  "file": "${escapeStringForJson(file)}",
+  "fileName": "${escapeStringForJson(fileName)}",
+  "toEmail": "${escapeStringForJson(toEmail)}",
+  "ccEmail": "rohit.sensibleconnect@gmail.com"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'sendMail',
+      apiUrl:
+          'https://asia-south1-sconnect-pos.cloudfunctions.net/msg91Mail/send_mail',
+      callType: ApiCallType.POST,
+      headers: {
+        'Access-Control-Allow-Origin':
+            'https://ff-debug-service-frontend-pro-ygxkweukma-uc.a.run.app',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
@@ -166,4 +215,15 @@ String _serializeJson(dynamic jsonVar, [bool isList = false]) {
     }
     return isList ? '[]' : '{}';
   }
+}
+
+String? escapeStringForJson(String? input) {
+  if (input == null) {
+    return null;
+  }
+  return input
+      .replaceAll('\\', '\\\\')
+      .replaceAll('"', '\\"')
+      .replaceAll('\n', '\\n')
+      .replaceAll('\t', '\\t');
 }

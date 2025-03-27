@@ -13,6 +13,6 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 Future<bool> checkInternetConnectiom() async {
   bool result = await InternetConnectionChecker().hasConnection;
-  print(result);
+  //print(result);
   return result;
 }

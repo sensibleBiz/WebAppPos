@@ -185,6 +185,21 @@ class PrintSettingsRecord extends FirestoreRecord {
   int get code => _code ?? 0;
   bool hasCode() => _code != null;
 
+  // "openSoftKeyWord" field.
+  bool? _openSoftKeyWord;
+  bool get openSoftKeyWord => _openSoftKeyWord ?? false;
+  bool hasOpenSoftKeyWord() => _openSoftKeyWord != null;
+
+  // "rateColumnTax" field.
+  bool? _rateColumnTax;
+  bool get rateColumnTax => _rateColumnTax ?? false;
+  bool hasRateColumnTax() => _rateColumnTax != null;
+
+  // "showProductimg" field.
+  bool? _showProductimg;
+  bool get showProductimg => _showProductimg ?? false;
+  bool hasShowProductimg() => _showProductimg != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -224,6 +239,9 @@ class PrintSettingsRecord extends FirestoreRecord {
     _billAmountInWords = snapshotData['billAmountInWords'] as bool?;
     _couponKotSummary = snapshotData['couponKotSummary'] as bool?;
     _code = castToType<int>(snapshotData['code']);
+    _openSoftKeyWord = snapshotData['openSoftKeyWord'] as bool?;
+    _rateColumnTax = snapshotData['rateColumnTax'] as bool?;
+    _showProductimg = snapshotData['showProductimg'] as bool?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -299,6 +317,9 @@ Map<String, dynamic> createPrintSettingsRecordData({
   bool? billAmountInWords,
   bool? couponKotSummary,
   int? code,
+  bool? openSoftKeyWord,
+  bool? rateColumnTax,
+  bool? showProductimg,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -335,6 +356,9 @@ Map<String, dynamic> createPrintSettingsRecordData({
       'billAmountInWords': billAmountInWords,
       'couponKotSummary': couponKotSummary,
       'code': code,
+      'openSoftKeyWord': openSoftKeyWord,
+      'rateColumnTax': rateColumnTax,
+      'showProductimg': showProductimg,
     }.withoutNulls,
   );
 
@@ -380,7 +404,10 @@ class PrintSettingsRecordDocumentEquality
         e1?.trimNameForSingleLine == e2?.trimNameForSingleLine &&
         e1?.billAmountInWords == e2?.billAmountInWords &&
         e1?.couponKotSummary == e2?.couponKotSummary &&
-        e1?.code == e2?.code;
+        e1?.code == e2?.code &&
+        e1?.openSoftKeyWord == e2?.openSoftKeyWord &&
+        e1?.rateColumnTax == e2?.rateColumnTax &&
+        e1?.showProductimg == e2?.showProductimg;
   }
 
   @override
@@ -417,7 +444,10 @@ class PrintSettingsRecordDocumentEquality
         e?.trimNameForSingleLine,
         e?.billAmountInWords,
         e?.couponKotSummary,
-        e?.code
+        e?.code,
+        e?.openSoftKeyWord,
+        e?.rateColumnTax,
+        e?.showProductimg
       ]);
 
   @override

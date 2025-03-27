@@ -21,6 +21,95 @@ int getcreatedDate() {
   return timestamp;
 }
 
+int lastDays(int day) {
+  // get yesterday value in integer
+  var now = DateTime.now();
+  var yesterday = DateTime(now.year, now.month, now.day - day);
+  return yesterday.millisecondsSinceEpoch;
+}
+
+List<LeadsManagementRecord> filteredComplaintsForReports(
+  List<LeadsManagementRecord> leadsDoc,
+  String? filterExce,
+  String? filterNum,
+  String? filterField,
+  String? review,
+  String? zone,
+  String? stage,
+) {
+  // print("***********");
+  // print(filterExce);
+  // print(filterNum);
+  // print(filterField);
+  // print(review);
+  // print(zone);
+  // print(stage);
+  // print("***********");
+  if (filterExce!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) => lead.assignedTo == filterExce).toList();
+    // print(leadsDoc);
+  }
+  if (review!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) => lead.remarks == review).toList();
+    //print(leadsDoc);
+  }
+  if (stage!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) => lead.stage == stage).toList();
+    //print(leadsDoc);
+  }
+  if (zone!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) => lead.zone == zone).toList();
+    // print(leadsDoc);
+  }
+
+  if (filterField!.isNotEmpty && filterNum!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) {
+      switch (filterField) {
+        case "Mobile":
+          return lead.mobile == filterNum;
+        case "Serial":
+          return lead.customFields.serial.toString() == filterNum;
+        case "Complaint":
+          return lead.ticket == filterNum;
+        default:
+          return false;
+      }
+    }).toList();
+  }
+
+  return leadsDoc;
+}
+
+List<LeadsManagementRecord> filteredComplaints(
+  List<LeadsManagementRecord> leadsDoc,
+  String filterExce,
+  String filterNum,
+  String filterField,
+) {
+  print(filterExce);
+  if (filterExce.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) => lead.assignedTo == filterExce).toList();
+    //print(leadsDoc);
+  }
+
+  if (filterField.isNotEmpty && filterNum.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) {
+      switch (filterField) {
+        case "Mobile":
+          return lead.mobile == filterNum;
+        case "Serial":
+          return lead.customFields.serial.toString() == filterNum;
+        case "Complaint":
+          return lead.ticket == filterNum;
+        default:
+          return false;
+      }
+    }).toList();
+  }
+
+  return leadsDoc;
+}
+
 List<OutletLeadsRecord> groupByCitiesCopy3(List<OutletLeadsRecord> list) {
   List<OutletLeadsRecord> returnList = [];
 
@@ -70,11 +159,31 @@ String? monthCopy(int date) {
   return invNum;
 }
 
+String getDayIdDate() {
+// Add your function code here!
+  DateTime date = DateTime.now();
+  var day;
+  if (date.day.toString().length == 1) {
+    day = "0" + date.day.toString();
+  } else {
+    day = date.day.toString();
+  }
+  var month;
+  if (date.month.toString().length == 1) {
+    month = "0" + date.month.toString();
+  } else {
+    month = date.month.toString();
+  }
+  var invNum = day + "-" + month + "-" + date.year.toString();
+  // print(invNum);
+  return invNum;
+}
+
 List<LeadsRecord> groupByCitiesCopy2(List<LeadsRecord> list) {
   List<LeadsRecord> returnList = [];
 
   for (var record in list) {
-    print(record.city);
+    //print(record.city);
     if (returnList.length > 0) {
       int count = 0;
       bool flag = false;
@@ -96,7 +205,89 @@ List<LeadsRecord> groupByCitiesCopy2(List<LeadsRecord> list) {
   }
   //returnList.sort((a, b) => ,)
   returnList.sort((a, b) => a.city.compareTo(b.city));
-  print(returnList);
+  //print(returnList);
+  return returnList;
+}
+
+List<dynamic> groupBySourceReport(
+  List<LeadsManagementRecord> listLeadMange,
+  List<OutletLeadsRecord> listLead,
+) {
+  List<dynamic> returnList = [];
+
+  for (var record in listLeadMange) {
+    // print(record.city);
+    if (returnList.length > 0) {
+      int count = 0;
+      bool flag = false;
+
+      for (int i = 0; i < returnList.length; i++) {
+        count++;
+        if (record.source == returnList[i]["source"]) {
+          flag = true;
+          break;
+        } else {
+          if (count == returnList.length && flag == false) {
+            returnList.add({
+              "source": record.source,
+              "city": record.city,
+              "stage": record.stage,
+              "status": record.status,
+              "id": record.city,
+            });
+            // returnList.add(record);
+          }
+        }
+      }
+    } else {
+      //returnList.add(record);
+      returnList.add({
+        "source": record.source,
+        "city": record.city,
+        "stage": record.stage,
+        "status": record.status,
+        "id": record.city,
+      });
+    }
+  }
+
+  for (var recordLead in listLead) {
+    //  print(recordLead.city);
+    if (returnList.length > 0) {
+      int count = 0;
+      bool flag = false;
+
+      for (int i = 0; i < returnList.length; i++) {
+        count++;
+        if (recordLead.source == returnList[i]["source"]) {
+          flag = true;
+          break;
+        } else {
+          if (count == returnList.length && flag == false) {
+            // returnList.add(recordLead);
+            returnList.add({
+              "source": recordLead.source,
+              "city": recordLead.city,
+              "stage": recordLead.status,
+              "status": recordLead.status,
+              "id": recordLead.city,
+            });
+          }
+        }
+      }
+    } else {
+      // returnList.add(recordLead);
+      returnList.add({
+        "source": recordLead.source,
+        "city": recordLead.city,
+        "stage": recordLead.status,
+        "status": recordLead.status,
+        "id": recordLead.city,
+      });
+    }
+  }
+  //returnList.sort((a, b) => a.city.compareTo(b.city));
+  //print(returnList);
   return returnList;
 }
 
@@ -114,6 +305,35 @@ int yesterdayCopy() {
   var now = DateTime.now();
   var yesterday = DateTime(now.year, now.month, now.day - 1);
   return yesterday.millisecondsSinceEpoch;
+}
+
+List<dynamic> groupLeadByExcecutive(List<LeadsManagementRecord> list) {
+  // Custom grouping
+  //Map<String, List<Map<String, dynamic>>> grouped = {};
+
+  // Group and count occurrences dynamically
+  Map<String, int> grouped1 = {};
+
+  for (var doc in list) {
+    //print(doc.assignedTo);
+    final category = doc.assignedTo; // Handle missing fields
+    if (!grouped1.containsKey(category)) {
+      grouped1[category] = 0;
+    }
+    grouped1[category] = grouped1[category]! + 1;
+  }
+
+  // Convert the map into a list of JSON objects
+  List<dynamic> jsonList = grouped1.entries
+      .map((entry) => {"id": entry.key, "count": entry.value})
+      .toList();
+  //print(jsonList);
+  jsonList.sort((a, b) => b["count"].compareTo(a["count"]));
+
+  return jsonList;
+
+  //-----------------
+  //return grouped.values.expand((group) => group).toList();
 }
 
 List<dynamic> groupByCitiesReportCopy(
@@ -189,7 +409,7 @@ List<dynamic> groupByCitiesReportCopy(
       });
     }
   }
-  //returnList.sort((a, b) => a.city.compareTo(b.city));
+  returnList.sort((a, b) => a.city.compareTo(b.city));
   //print(returnList);
   return returnList;
 }
@@ -240,7 +460,7 @@ String getYearId() {
   //  month = date.month.toString();
   //}
   var invNum = date.year.toString();
-  print(invNum);
+//  print(invNum);
   return invNum;
 }
 
@@ -265,7 +485,7 @@ String getMonthId() {
     month = date.month.toString();
   }
   var invNum = date.year.toString() + "-" + month;
-  print(invNum);
+  // print(invNum);
   return invNum;
 }
 
@@ -281,7 +501,7 @@ List<dynamic> dealerChartDataCopy(
       for (int i = 0; i <= docs.length - 1; i++) {
         if (docs[i].date == dateFormat(DateTime.now())) {
           stage = docs[i].stage;
-          print(stage);
+          //  print(stage);
           switch (stage) {
             case "assigned":
               acount++;
@@ -309,7 +529,7 @@ List<dynamic> dealerChartDataCopy(
       for (int i = 0; i <= docs.length - 1; i++) {
         if (docs[i].monthId == monthCopy(1)) {
           stage = docs[i].stage;
-          print(stage);
+          // print(stage);
           switch (stage) {
             case "assigned":
               acount++;
@@ -337,7 +557,7 @@ List<dynamic> dealerChartDataCopy(
       for (int i = 0; i <= docs.length - 1; i++) {
         if (docs[i].monthId == getLastMonthId(1)) {
           stage = docs[i].stage;
-          print(stage);
+          // print(stage);
           switch (stage) {
             case "assigned":
               acount++;
@@ -364,7 +584,7 @@ List<dynamic> dealerChartDataCopy(
     }
   }
 
-  print(list1);
+  // print(list1);
   return list1;
 }
 
@@ -508,8 +728,8 @@ String getCatname(DocumentReference? docRef) {
 int getUpdatedDate() {
   // Add your function code here!
   int timestamp = DateTime.now().millisecondsSinceEpoch;
-  print("timestamp");
-  print(timestamp);
+//  print("timestamp");
+//  print(timestamp);
   return timestamp;
 }
 
@@ -525,10 +745,10 @@ String activeInactive(bool? data) {
 bool activeDevice(bool? data) {
   // Add your function code here!
   if (data!) {
-    print("DeActivate");
+    // print("DeActivate");
     return false;
   } else {
-    print("Activate");
+    // print("Activate");
     return true;
   }
 }
@@ -627,6 +847,34 @@ DocumentReference getCatDocRefFroMId(
   return FirebaseFirestore.instance.doc('/OUTLET/' + docId + '/CATEGORY/$id');
 }
 
+int? getPrevioustMonthMili(
+  DateTime curDate,
+  String index,
+) {
+  //var day;
+  //if (date.day.toString().length == 1) {
+  //day = "0" + date.day.toString();
+  //} else {
+  //  day = date.day.toString();
+
+  var first, last;
+  int firstInMilli, lastInMilli;
+  int result = 0;
+  if (index == "first") {
+    first = DateTime(curDate.year, curDate.month, 1);
+
+    firstInMilli = first.millisecondsSinceEpoch;
+    result = firstInMilli;
+  } else if (index == "last") {
+    last = (curDate.month < 12)
+        ? new DateTime(curDate.year, curDate.month + 1, 1)
+        : new DateTime(curDate.year + 1, 1, 1);
+    lastInMilli = last.millisecondsSinceEpoch;
+    result = lastInMilli;
+  }
+  return result;
+}
+
 DocumentReference getProdoctMasterDocRefFromId(String? id) {
   // Add your function code here!
   return FirebaseFirestore.instance.doc('/PRODUCT_MASTER/$id');
@@ -722,7 +970,7 @@ String getDayId() {
     month = date.month.toString();
   }
   var invNum = date.year.toString() + "-" + month + "-" + day;
-  print(invNum);
+  // print(invNum);
   return invNum;
 }
 
@@ -799,7 +1047,7 @@ List<dynamic> getProList(
   } else {
     tempList = list[0]["details"];
   }
-  print(tempList);
+  // print(tempList);
   return tempList;
 }
 
@@ -808,7 +1056,7 @@ String getToday(DateTime dateTime) {
   day = dateTime.day.toString();
   month = dateTime.month.toString();
 
-  print(dateTime);
+//  print(dateTime);
 
   var invNum = dateTime.year.toString() +
       "-" +
@@ -816,7 +1064,7 @@ String getToday(DateTime dateTime) {
       "-" +
       (day.length < 2 ? "0" + day : day).toString();
 
-  print(invNum);
+//  print(invNum);
   return invNum.toString();
 }
 
@@ -827,7 +1075,7 @@ String getyesterday() {
   var day, month;
   day = yesterday.day.toString();
   month = yesterday.month.toString();
-  print(yesterday);
+  // print(yesterday);
 
   var invNum = yesterday.year.toString() +
       "-" +
@@ -835,7 +1083,7 @@ String getyesterday() {
       "-" +
       (day.length < 2 ? "0" + day : day).toString();
 
-  print(invNum);
+  // print(invNum);
   return invNum.toString();
 }
 
@@ -899,7 +1147,7 @@ String getTime(int? dateInNumber) {
   DateTime tsdate = DateTime.fromMillisecondsSinceEpoch(dateInNumber!);
   String datetime = DateFormat('dd/MM/yyyy hh:mm a').toString();
 
-  print(datetime);
+//  print(datetime);
   String fdatetime = DateFormat('dd/MM/yyyy hh:mm a').format(tsdate);
 
   // DateTime date;
@@ -913,10 +1161,15 @@ String toCapitalLetter1(String? value) {
 String? leadsReq(String? req) {
   String? res;
   //res = (req!.substring(0, req!.indexOf('.')));
-  req!.replaceAll("<br>", " ");
+  // req!.replaceAll("<br>", " ");
 
-  res = (req!.indexOf('.') == -1 ? req! : req!.substring(0, req!.indexOf('.')));
+  // res = (req!.indexOf('.') == -1 ? req! : req!.substring(0, req!.indexOf('.')));
+
+  res = req!.replaceAll(RegExp(r'[^\w\s]'), '');
+
   return res;
+
+  //return res;
 }
 
 int timestampToMili(DateTime? date) {
@@ -963,13 +1216,13 @@ DocumentReference getRef(
     docId = list[0]["id"];
   }
 
-  print(docId);
-  print(outletId);
+// print(docId);
+//  print(outletId);
   return FirebaseFirestore.instance
       .doc('/OUTLET/' + outletId + '/LEADS_MANAGEMENT/$docId');
 }
 
-int yesterday() {
+int last30days() {
   // get yesterday value in integer
   var now = DateTime.now();
   var yesterday = DateTime(now.year, now.month, now.day - 31);
@@ -1006,15 +1259,18 @@ String statusForStage(String status) {
   else if (status.toUpperCase() == "LOST") {
     stage = "lost";
   }
-  print(stage);
-  print(status);
+  //print(stage);
+  //print(status);
   return stage;
 }
 
-List<String> dropdownStatusList(String stage) {
+List<String> dropdownStatusList(
+  String stage,
+  bool isSearching,
+) {
   List<String> list = [];
 
-  if (stage.toUpperCase() == "ASSIGNED") {
+  if (stage.toUpperCase() == "ASSIGNED" && isSearching == false) {
     list.add("ASSIGNED");
     list.add("RINGING");
     list.add("CALLED");
@@ -1027,7 +1283,7 @@ List<String> dropdownStatusList(String stage) {
 
     list.add("LOST");
     // print(list);
-  } else if (stage.toUpperCase() == "FOLLOWUP") {
+  } else if (stage.toUpperCase() == "FOLLOWUP" && isSearching == false) {
     list.add("DEMO DONE");
     list.add("DEMO RESCHEDULED");
     list.add("FOLLOWUP");
@@ -1036,15 +1292,30 @@ List<String> dropdownStatusList(String stage) {
     list.add("COMPLETED");
     list.add("LOST");
     // print(list);
-  } else if (stage.toUpperCase() == "COMPLETED") {
+  } else if (stage.toUpperCase() == "COMPLETED" && isSearching == false) {
     list.add("COMPLETED");
     list.add("LOST");
 
     //  print(list);
-  } else if (stage.toUpperCase() == "LOST") {
+  } else if (stage.toUpperCase() == "LOST" && isSearching == false) {
     list.add("LOST");
 
     //  print(list);
+  } else if (isSearching == true) {
+    list.add("ASSIGNED");
+    list.add("RINGING");
+    list.add("CALLED");
+    list.add("CALL BACK");
+    list.add("CALL PENDING");
+    list.add("DEMO SCHEDULED");
+    list.add("DEMO PENDING");
+    list.add("DEMO DONE");
+    list.add("COMPLETED");
+    list.add("DEMO RESCHEDULED");
+    list.add("FOLLOWUP");
+    list.add("HOLD");
+    list.add("INSTALLATION");
+    list.add("LOST");
   }
   return list;
 }
@@ -1061,7 +1332,7 @@ dynamic generateTaglDetailsJson(
     "isDeleted": isDeleted,
     "type": type,
   };
-  print(obj);
+  // print(obj);
   return obj;
 }
 
@@ -1110,25 +1381,25 @@ List<LeadsManagementRecord> filterTagName(
   int count = 0;
 
   for (int i = 0; i < list.length; i++) {
-    print("1");
+    //  print("1");
     list1 = list[i].leadTag;
-    print(list[i].leadTag);
+    //  print(list[i].leadTag);
     for (int j = 0; j < list1.length; j++) {
-      print("2");
+      //  print("2");
       count++;
       if (type == list1[j].leadTagName) {
-        print("3");
+        //  print("3");
         returnList.add(list[i]);
         flag = true;
-        print(list1[j].leadTagName);
-        print(list[i]);
+        //  print(list1[j].leadTagName);
+        // print(list[i]);
       }
-      print("end if");
+      //  print("end if");
     }
-    print("end for j");
+    // print("end for j");
   }
-  print("end of i");
-  print(returnList);
+  // print("end of i");
+//  print(returnList);
   return returnList;
 }
 
@@ -1203,7 +1474,7 @@ List<LeadsRecord> groupByCities(List<LeadsRecord> list) {
   }
   //returnList.sort((a, b) => ,)
   returnList.sort((a, b) => a.city.compareTo(b.city));
-  print(returnList);
+  //print(returnList);
   return returnList;
 }
 
@@ -1290,7 +1561,7 @@ String? countStage(
   String stage,
   String city,
 ) {
-  print(jsonList);
+  // print(jsonList);
   int total = 0;
   for (int i = 0; i < jsonList.length; i++) {
     if (stage != 0) {
@@ -1321,12 +1592,12 @@ int getcode(List<UserManualRecord> list) {
   if (list!.isNotEmpty) {
     list.sort((a, b) => b.code!.compareTo(a.code!));
     int maxCode = list[0].code!;
-    print(list);
+    //  print(list);
     nextCode = maxCode + 1;
   } else {
     nextCode = 1;
   }
-  print(nextCode);
+//  print(nextCode);
   return nextCode;
 }
 
@@ -1484,4 +1755,338 @@ List<dynamic> top3Products(List<InvoiceRecord> invoice) {
     });
   }
   return list;
+}
+
+List<dynamic> orderByList(
+  List<dynamic> jsonList,
+  String? type,
+) {
+  if (type == "a") {
+    jsonList.sort((a, b) => a['createdDate'].compareTo(b['createdDate']));
+  } else if (type == "d") {
+    jsonList.sort((a, b) => b['createdDate'].compareTo(a['createdDate']));
+  }
+  return jsonList;
+}
+
+List<String> statusFilters(String filter) {
+  List<String> list = [];
+
+  list.add(filter.toLowerCase());
+  list.add(filter.toUpperCase());
+
+  return list;
+}
+
+int index(int indexNo) {
+  return (indexNo + 1);
+}
+
+DocumentReference getStageDocId(
+  String? id,
+  DocumentReference? parentRef,
+) {
+  var docId = parentRef!.id;
+  var subId = id;
+  return FirebaseFirestore.instance.doc('/OUTLET/$docId/LEAD_STAGES/$subId');
+}
+
+List<dynamic> groupLeadDocs(
+  String groupField,
+  List<LeadsManagementRecord> list,
+) {
+  // Custom grouping
+  //Map<String, List<Map<String, dynamic>>> grouped = {};
+  Map<String, List<LeadsManagementRecord>> grouped = {};
+  List<dynamic> jsonData = [];
+  for (var doc in list) {
+    //final category = doc.status;
+    final category = doc.stage;
+    if (!grouped.containsKey(category)) {
+      grouped[category] = [];
+    }
+    grouped[category]!.add(doc);
+    jsonData
+        .add({"status": grouped[category], "count": grouped[category]!.length});
+  }
+  //print(jsonData);
+  //--------------------
+  Map<String, int> countMap = {};
+
+  // Group and count occurrences dynamically
+  Map<String, int> grouped1 = {};
+
+  for (var doc in list) {
+    final category = doc.stage; // Handle missing fields
+    if (!grouped1.containsKey(category)) {
+      grouped1[category] = 0;
+    }
+    grouped1[category] = grouped1[category]! + 1;
+  }
+
+  // Convert the map into a list of JSON objects
+  List<dynamic> jsonList = grouped1.entries
+      .map((entry) => {"status": entry.key, "count": entry.value})
+      .toList();
+  //print(jsonList);
+
+  jsonList.sort((a, b) => b["count"].compareTo(a["count"]));
+  return jsonList;
+
+  //-----------------
+  //return grouped.values.expand((group) => group).toList();
+}
+
+double getTotalTaxAmount(List<PurchaseSaleItemListStruct> productListJson) {
+  double totalAmount = 0.0;
+  for (var product in productListJson) {
+    double cgstAmt = product.sgst;
+    double sgstAmt = product.cgst;
+    totalAmount += cgstAmt + sgstAmt;
+  }
+  return totalAmount;
+}
+
+double getTotalPurchase(
+  double? qty,
+  double? price,
+) {
+  double total = qty! * price!;
+  // double sub = FFAppState().subTotal;
+  // FFAppState().subTotal = sub + total;
+  // Add your function code here!
+  return (qty * price).toDouble();
+}
+
+String? imgStrtoimagePath(String? imageLink) {
+  return imageLink;
+}
+
+String getMonthFormatDayId(String format) {
+  final DateTime now = DateTime.now();
+  final DateTime today = DateTime(now.year, now.month, now.day);
+
+  var day, month;
+  var invNum;
+  day = today.day.toString();
+  month = today.month.toString();
+  print(today);
+
+  if (format == "year") {
+    invNum = today.year.toString() +
+        "-" +
+        (month.length < 2 ? "0" + month : month).toString() +
+        "-" +
+        (day.length < 2 ? "0" + day : day).toString();
+  } else if (format == "month") {
+    invNum = (month.length < 2 ? "0" + month : month).toString() +
+        "-" +
+        today.year.toString();
+  }
+
+  print(invNum);
+  return invNum.toString();
+}
+
+String genInvoiceNum(int? count) {
+  DateTime date = DateTime.now();
+  var invNum = date.day.toString() +
+      date.month.toString() +
+      date.year.toString() +
+      count.toString();
+
+  print(invNum);
+  return invNum.toString();
+}
+
+double? roundOffSale(double? discAmount) {
+  if (discAmount == null) {
+    return null;
+  }
+  double roundedAmount = discAmount.roundToDouble();
+  double difference = discAmount - roundedAmount;
+  if (difference >= 0.5) {
+    roundedAmount += 1;
+  }
+  return roundedAmount;
+}
+
+double roundOff1(double number) {
+  print("Tax");
+  print(number);
+  double output;
+
+  output = double.parse(number.toStringAsFixed(2));
+  print("output");
+  print(output);
+
+  return output;
+}
+
+double stringToDouble(String str) {
+  return double.parse(str);
+}
+
+List<SaleRecord> orderBy(
+  List<SaleRecord> docs,
+  String type,
+) {
+  if (type == "a") {
+    docs.sort((a, b) => a.orderDate.compareTo(b.orderDate));
+  } else if (type == "d") {
+    docs.sort((a, b) => b.orderDate.compareTo(a.orderDate));
+  }
+  return docs;
+}
+
+String? returnStr(dynamic jsonstr) {
+  return jsonstr.toString();
+}
+
+String? trimMobile(
+  String mobile,
+  String? index,
+) {
+  // Remove '+', '-' or any other non-digit characters
+
+  String formattedNumber = mobile.replaceAll(RegExp(r'\D'), '');
+// Add '91' prefix if not already present
+  if (!formattedNumber.startsWith('91')) {
+    formattedNumber = '91' + formattedNumber;
+  }
+  print(formattedNumber);
+  return formattedNumber;
+}
+
+int incrementSourceCount(
+  String source,
+  String stage,
+) {
+  //Normalize source and stage
+
+  Map<String, Map<String, int>> sourceStageCounts = {
+    "INDIAMART": {"followup": 0, "completed": 0, "lost": 0},
+    "JUSTDAIL": {"followup": 0, "completed": 0, "lost": 0},
+    "FACEBOOK": {"followup": 0, "completed": 0, "lost": 0},
+    "QUICKLEAD": {"followup": 0, "completed": 0, "lost": 0},
+  };
+  LeadCountStruct list;
+  String normalizedSource = source.toUpperCase();
+  String normalizedStage = stage.toLowerCase();
+
+  // Check if source exists in the map
+  if (sourceStageCounts.containsKey(normalizedSource)) {
+    // Check if stage exists for the source
+    if (sourceStageCounts[normalizedSource]!.containsKey(normalizedStage)) {
+      // Increment the count
+      sourceStageCounts[normalizedSource]![normalizedStage] =
+          sourceStageCounts[normalizedSource]![normalizedStage]! + 1;
+    } else {
+      // If stage doesn't exist, initialize it
+      sourceStageCounts[normalizedSource]![normalizedStage] = 1;
+    }
+  } else {
+    // If source doesn't exist, initialize it with the current stage
+    sourceStageCounts[normalizedSource] = {normalizedStage: 1};
+  }
+  print(sourceStageCounts);
+  return 1;
+}
+
+String genComplaintNum(
+  int count,
+  String zone,
+) {
+  String zoneTemp = zone == "SOUTH"
+      ? "N"
+      : zone == "NORTH"
+          ? "N"
+          : "W"; // Example zone
+  // Example count
+  String countTemp = count < 1 ? "1" : (count + 1).toString();
+  if (countTemp.length < 2) {
+    countTemp = "0" + countTemp;
+  }
+  DateTime date = DateTime.now();
+  String formattedDate = DateFormat('yyMMdd').format(date);
+  // String complaintNum = "DY" + zoneTemp + formattedDate + countTemp;
+  String complaintNum = formattedDate + countTemp;
+
+  // print(complaintNum);
+  return complaintNum.toString();
+}
+
+String? selectedDayId(DateTime dateTime) {
+  var day;
+
+  if (dateTime.day.toString().length == 1) {
+    day = "0" + dateTime.day.toString();
+  } else {
+    day = dateTime.day.toString();
+  }
+  var month;
+  if (dateTime.month.toString().length == 1) {
+    month = "0" + dateTime.month.toString();
+  } else {
+    month = dateTime.month.toString();
+  }
+
+  //var invNum = dateTime.year.toString() + "-" + month + "-" + day;
+  var invNum = day + "-" + month + "-" + dateTime.year.toString();
+
+  print(invNum);
+  return invNum.toString();
+}
+
+List<dynamic> updateAllLeads(
+  int index,
+  String stage,
+  List<dynamic> jsonList,
+) {
+  List<dynamic> list = jsonList;
+  list[index]["stage"] = stage;
+  list[index]["status"] = stage;
+
+  return list;
+}
+
+List<OutletLeadsRecord> filteredNewComplaints(
+  List<OutletLeadsRecord> leadsDoc,
+  String filterNum,
+  String filterField,
+) {
+  List<OutletLeadsRecord> returnLeadsDoc = leadsDoc;
+  List<OutletLeadsRecord> returnLeadsDoc1 = [];
+
+  if (filterField != null) {
+    for (int j = 0; j < returnLeadsDoc.length; j++) {
+      if (filterField == "Mobile") {
+        if (leadsDoc[j].mobile == filterNum) {
+          returnLeadsDoc1.add(leadsDoc[j]);
+        }
+      } else if (filterField == "Serial") {
+        if (leadsDoc[j].customFields.serial.toString() == filterNum) {
+          returnLeadsDoc1.add(leadsDoc[j]);
+        }
+      } else if (filterField == "Complaint") {
+        if (leadsDoc[j].ticket == filterNum) {
+          returnLeadsDoc1.add(leadsDoc[j]);
+        }
+      }
+    }
+  } else {
+    returnLeadsDoc1 = returnLeadsDoc;
+  }
+
+  return returnLeadsDoc1;
+}
+
+bool getStagePermission(
+  String id,
+  List<StageAccessDataTypeStruct> stageAccessList,
+) {
+  print("--------------------");
+  print(stageAccessList.any((stage) => stage.id == id && stage.value == 4));
+  print("--------------------");
+  return stageAccessList.any((stage) => stage.id == id && stage.value == 4);
 }

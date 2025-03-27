@@ -25,6 +25,6 @@ Future<String> barcodeRandom() async {
     return tmp;
   }
 
-  print(result);
+  //print(result);
   return result(10);
 }
