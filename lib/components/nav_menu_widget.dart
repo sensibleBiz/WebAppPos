@@ -945,6 +945,16 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                         ),
                       ].divide(SizedBox(height: 1.0)),
                     ),
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 1.0),
+                      child: Container(
+                        width: 50.0,
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).customColor6,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

@@ -164,45 +164,59 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      if (animationsMap['containerOnActionTriggerAnimation'] !=
-                          null) {
-                        await animationsMap[
-                                'containerOnActionTriggerAnimation']!
-                            .controller
-                            .forward(from: 0.0);
-                      }
-                    },
-                    child: Container(
-                      width: 60.0,
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).customColor7,
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          FlutterFlowIconButton(
-                            borderRadius: 8.0,
-                            buttonSize: 45.0,
-                            hoverIconColor:
-                                FlutterFlowTheme.of(context).customColor5,
-                            icon: Icon(
-                              Icons.arrow_back,
-                              color: FlutterFlowTheme.of(context).text2nd,
-                              size: 20.0,
-                            ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
+                  Container(
+                    width: 60.0,
+                    height: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).customColor7,
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FlutterFlowIconButton(
+                          borderRadius: 8.0,
+                          buttonSize: 45.0,
+                          hoverIconColor:
+                              FlutterFlowTheme.of(context).customColor5,
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: FlutterFlowTheme.of(context).text2nd,
+                            size: 20.0,
                           ),
-                        ],
-                      ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 8.0,
+                          buttonSize: 45.0,
+                          hoverIconColor:
+                              FlutterFlowTheme.of(context).customColor5,
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: FlutterFlowTheme.of(context).text2nd,
+                            size: 20.0,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 8.0,
+                          buttonSize: 45.0,
+                          hoverIconColor:
+                              FlutterFlowTheme.of(context).customColor5,
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: FlutterFlowTheme.of(context).text2nd,
+                            size: 20.0,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                      ],
                     ),
                   ),
                   Padding(

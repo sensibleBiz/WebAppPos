@@ -2090,3 +2090,20 @@ bool getStagePermission(
   print("--------------------");
   return stageAccessList.any((stage) => stage.id == id && stage.value == 4);
 }
+
+List<LeadStagesRecord>? filterLeadStageByAccess(
+  List<LeadStagesRecord>? leadStageList,
+  List<StageAccessDataTypeStruct>? stageAccessList,
+) {
+  if (leadStageList == null || stageAccessList == null) return [];
+
+  return stageAccessList
+      .where((access) => access.value == 4) // Filter only value == 4
+      .where((access) =>
+          leadStageList.any((lead) => lead.id == access.id)) // Match ID
+      .map((access) {
+    final matchedLead = leadStageList.firstWhere((lead) => lead.id == access.id,
+        orElse: () => null);
+    return matchedLead!;
+  }).toList();
+}

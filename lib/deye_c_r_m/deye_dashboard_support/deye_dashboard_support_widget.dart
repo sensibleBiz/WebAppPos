@@ -60,6 +60,7 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
       safeSetState(() {});
       FFAppState().startDate = functions.lastDays(2);
       FFAppState().endDate = functions.tommarow();
+      FFAppState().leadCreateValue = 'completed';
       safeSetState(() {});
     });
 
@@ -199,7 +200,7 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                 children: [
                                   Container(
                                     width: double.infinity,
-                                    height: 45.0,
+                                    height: 60.0,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
@@ -208,26 +209,212 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          'Completed Complaints',
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineLarge
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineLargeFamily,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontSize: 22.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w600,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(FlutterFlowTheme
-                                                            .of(context)
-                                                        .headlineLargeFamily),
-                                              ),
+                                        Expanded(
+                                          child: StreamBuilder<
+                                              List<LeadStagesRecord>>(
+                                            stream: queryLeadStagesRecord(
+                                              parent: FFAppState().outletRef,
+                                              queryBuilder:
+                                                  (leadStagesRecord) =>
+                                                      leadStagesRecord
+                                                          .orderBy('code'),
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 30.0,
+                                                    height: 30.0,
+                                                    child: SpinKitRing(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      size: 30.0,
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                              List<LeadStagesRecord>
+                                                  listViewLeadStagesRecordList =
+                                                  snapshot.data!;
+
+                                              return ListView.separated(
+                                                padding: EdgeInsets.zero,
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemCount:
+                                                    listViewLeadStagesRecordList
+                                                        .length,
+                                                separatorBuilder: (_, __) =>
+                                                    SizedBox(width: 10.0),
+                                                itemBuilder:
+                                                    (context, listViewIndex) {
+                                                  final listViewLeadStagesRecord =
+                                                      listViewLeadStagesRecordList[
+                                                          listViewIndex];
+                                                  return Visibility(
+                                                    visible: functions
+                                                        .getStagePermission(
+                                                            listViewLeadStagesRecord
+                                                                .id,
+                                                            FFAppState()
+                                                                .stageListPermissionState
+                                                                .toList()),
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10.0),
+                                                        border: Border.all(
+                                                          color: FFAppState()
+                                                                      .leadCreateValue ==
+                                                                  listViewLeadStagesRecord
+                                                                      .name
+                                                              ? Color(
+                                                                  0xFF216CE4)
+                                                              : Color(
+                                                                  0x00000000),
+                                                          width: 1.5,
+                                                        ),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.all(3.0),
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            FFAppState()
+                                                                    .leadCreateValue =
+                                                                listViewLeadStagesRecord
+                                                                    .name;
+                                                            safeSetState(() {});
+                                                          },
+                                                          child: Container(
+                                                            width: 220.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: () {
+                                                                if (listViewLeadStagesRecord
+                                                                        .name ==
+                                                                    'assigned') {
+                                                                  return Color(
+                                                                      0xFFE3AB0F);
+                                                                } else if (listViewLeadStagesRecord
+                                                                        .name ==
+                                                                    'pending') {
+                                                                  return Color(
+                                                                      0xFFFC590C);
+                                                                } else if (listViewLeadStagesRecord
+                                                                        .name ==
+                                                                    'completed') {
+                                                                  return FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .tertiary;
+                                                                } else if (listViewLeadStagesRecord
+                                                                        .name ==
+                                                                    'REOPENED') {
+                                                                  return FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor5;
+                                                                } else {
+                                                                  return FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .tertiary;
+                                                                }
+                                                              }(),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10.0,
+                                                                          15.0,
+                                                                          10.0,
+                                                                          15.0),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      Stack(
+                                                                        children: [
+                                                                          if (listViewLeadStagesRecord.name ==
+                                                                              'completed')
+                                                                            Icon(
+                                                                              Icons.check_box_rounded,
+                                                                              color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                              size: 30.0,
+                                                                            ),
+                                                                          if (listViewLeadStagesRecord.name ==
+                                                                              'pending')
+                                                                            Icon(
+                                                                              Icons.watch_later_sharp,
+                                                                              color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                              size: 30.0,
+                                                                            ),
+                                                                          if (listViewLeadStagesRecord.name ==
+                                                                              'assigned')
+                                                                            Icon(
+                                                                              Icons.location_history,
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              size: 30.0,
+                                                                            ),
+                                                                        ],
+                                                                      ),
+                                                                      Text(
+                                                                        listViewLeadStagesRecord
+                                                                            .display,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                              color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                              fontSize: 17.0,
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            ),
+                                                                      ),
+                                                                    ].divide(SizedBox(
+                                                                        width:
+                                                                            5.0)),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            },
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -1075,7 +1262,8 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                             .where(
                                                               'status',
                                                               isEqualTo:
-                                                                  'completed',
+                                                                  FFAppState()
+                                                                      .leadCreateValue,
                                                             )
                                                             .where(
                                                               'createdDate',

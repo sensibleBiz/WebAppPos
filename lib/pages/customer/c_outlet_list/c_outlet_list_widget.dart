@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -529,10 +530,21 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                             ).then((s) => s.firstOrNull);
                                                                             FFAppState().zone =
                                                                                 _model.teamTREE!.zone;
+                                                                            FFAppState().currentUserZoneList =
+                                                                                _model.teamTREE!.zoneList.toList().cast<String>();
+                                                                            FFAppState().stageListPermissionState =
+                                                                                _model.teamTREE!.stageAccessList.toList().cast<StageAccessDataTypeStruct>();
                                                                             safeSetState(() {});
                                                                             if (FFAppState().loggedInUserPermisions.elementAtOrNull(16)?.value ==
                                                                                 4) {
                                                                               context.pushNamed(DeyeDashboardSupportWidget.routeName);
+                                                                            } else if ((FFAppState().loggedInUserPermisions.elementAtOrNull(16)?.value == 1) &&
+                                                                                (FFAppState().role == 'user') &&
+                                                                                (_model.teamTREE?.roleInZone == 'manager')) {
+                                                                              FFAppState().readOnlyAccess = true;
+                                                                              safeSetState(() {});
+
+                                                                              context.pushNamed(DeyeDashboardEXPANDWidget.routeName);
                                                                             } else {
                                                                               context.pushNamed(DeyeDashboardEXPANDWidget.routeName);
                                                                             }
