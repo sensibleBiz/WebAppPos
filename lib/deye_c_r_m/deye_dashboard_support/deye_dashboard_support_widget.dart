@@ -448,18 +448,9 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                             (teamTreeRecord) =>
                                                                 teamTreeRecord
                                                                     .where(
-                                                                      'zone',
-                                                                      isEqualTo:
-                                                                          FFAppState()
-                                                                              .zone,
-                                                                    )
-                                                                    .where(
-                                                                      'roleInZone',
-                                                                      isEqualTo:
-                                                                          'admin',
-                                                                    )
-                                                                    .orderBy(
-                                                                        'userName'),
+                                                          'roleInZone',
+                                                          isEqualTo: 'admin',
+                                                        ),
                                                       ),
                                                       builder:
                                                           (context, snapshot) {
@@ -503,10 +494,25 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                                   .map((e) => e
                                                                       .userName)
                                                                   .toList(),
-                                                          onChanged: (val) =>
-                                                              safeSetState(() =>
-                                                                  _model.dropDownZoneAllValue =
-                                                                      val),
+                                                          onChanged:
+                                                              (val) async {
+                                                            safeSetState(() =>
+                                                                _model.dropDownZoneAllValue =
+                                                                    val);
+                                                            _model.selectedZone =
+                                                                dropDownZoneAllTeamTreeRecordList
+                                                                    .where((e) =>
+                                                                        e.userProfileId ==
+                                                                        _model
+                                                                            .dropDownZoneAllValue)
+                                                                    .toList()
+                                                                    .firstOrNull!
+                                                                    .zoneList
+                                                                    .toList()
+                                                                    .cast<
+                                                                        String>();
+                                                            safeSetState(() {});
+                                                          },
                                                           width: 250.0,
                                                           height: 40.0,
                                                           searchHintTextStyle:
@@ -1321,8 +1327,7 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                                       : _model
                                                                           .textController
                                                                           .text,
-                                                                  _model.dropDownValue ==
-                                                                              null ||
+                                                                  _model.dropDownValue == null ||
                                                                           _model.dropDownValue ==
                                                                               ''
                                                                       ? ''
@@ -1336,7 +1341,10 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                                       ? ''
                                                                       : _model
                                                                           .dropDownZoneAllValue,
-                                                                  '')
+                                                                  '',
+                                                                  _model
+                                                                      .selectedZone
+                                                                      .toList())
                                                               : containerLeadsManagementRecordList)
                                                           .toList();
                                                       if (containerVar
@@ -1644,7 +1652,7 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
                                                                                 Expanded(
-                                                                                  flex: 1,
+                                                                                  flex: 2,
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -1707,7 +1715,7 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                                                   ),
                                                                                 ),
                                                                                 Expanded(
-                                                                                  flex: 1,
+                                                                                  flex: 2,
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
@@ -1769,7 +1777,7 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                                                   ),
                                                                                 ),
                                                                                 Expanded(
-                                                                                  flex: 2,
+                                                                                  flex: 4,
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [

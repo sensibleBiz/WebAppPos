@@ -3074,6 +3074,35 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList('ff_stageListPermissionState',
         _stageListPermissionState.map((x) => x.serialize()).toList());
   }
+
+  List<String> _emptyList = [];
+  List<String> get emptyList => _emptyList;
+  set emptyList(List<String> value) {
+    _emptyList = value;
+  }
+
+  void addToEmptyList(String value) {
+    emptyList.add(value);
+  }
+
+  void removeFromEmptyList(String value) {
+    emptyList.remove(value);
+  }
+
+  void removeAtIndexFromEmptyList(int index) {
+    emptyList.removeAt(index);
+  }
+
+  void updateEmptyListAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    emptyList[index] = updateFn(_emptyList[index]);
+  }
+
+  void insertAtIndexInEmptyList(int index, String value) {
+    emptyList.insert(index, value);
+  }
 }
 
 void _safeInit(Function() initializeField) {

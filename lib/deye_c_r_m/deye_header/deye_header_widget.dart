@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/deye_c_r_m/deye_nav_menu/deye_nav_menu_widget.dart';
 import '/deye_c_r_m/deye_notification_popup/deye_notification_popup_widget.dart';
 import '/deye_c_r_m/deye_profile_popup/deye_profile_popup_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -53,7 +54,7 @@ class _DeyeHeaderWidgetState extends State<DeyeHeaderWidget> {
       width: double.infinity,
       height: 100.0,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).customColor6,
+        color: FlutterFlowTheme.of(context).customColor7,
       ),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
@@ -64,28 +65,49 @@ class _DeyeHeaderWidgetState extends State<DeyeHeaderWidget> {
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                  child: FlutterFlowIconButton(
-                    borderRadius: 3.0,
-                    buttonSize: 35.0,
-                    fillColor: FlutterFlowTheme.of(context).tertiary,
-                    icon: Icon(
-                      Icons.menu_rounded,
-                      color: FlutterFlowTheme.of(context).lineColor,
-                      size: 18.0,
+                Builder(
+                  builder: (context) => Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                    child: FlutterFlowIconButton(
+                      borderRadius: 8.0,
+                      buttonSize: 40.0,
+                      fillColor: FlutterFlowTheme.of(context).tertiary,
+                      icon: Icon(
+                        Icons.menu,
+                        color: FlutterFlowTheme.of(context).lineColor,
+                        size: 18.0,
+                      ),
+                      onPressed: () async {
+                        await showDialog(
+                          context: context,
+                          builder: (dialogContext) {
+                            return Dialog(
+                              elevation: 0,
+                              insetPadding: EdgeInsets.zero,
+                              backgroundColor: Colors.transparent,
+                              alignment: AlignmentDirectional(-1.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              child: WebViewAware(
+                                child: Container(
+                                  height: double.infinity,
+                                  width: 250.0,
+                                  child: DeyeNavMenuWidget(),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
-                    onPressed: () async {
-                      Scaffold.of(context).openDrawer();
-                    },
                   ),
                 ),
                 Container(
-                  width: 150.0,
-                  height: 45.0,
+                  width: 100.0,
+                  height: 50.0,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      fit: BoxFit.fitHeight,
+                      fit: BoxFit.fitWidth,
                       image: Image.asset(
                         'assets/images/logo.png',
                       ).image,

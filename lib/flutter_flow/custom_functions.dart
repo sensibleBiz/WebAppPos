@@ -36,6 +36,7 @@ List<LeadsManagementRecord> filteredComplaintsForReports(
   String? review,
   String? zone,
   String? stage,
+  List<String>? zoneList,
 ) {
   // print("***********");
   // print(filterExce);
@@ -60,6 +61,9 @@ List<LeadsManagementRecord> filteredComplaintsForReports(
   if (zone!.isNotEmpty) {
     leadsDoc = leadsDoc.where((lead) => lead.zone == zone).toList();
     // print(leadsDoc);
+  }
+  if (zoneList!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) => zoneList.contains(lead.zone)).toList();
   }
 
   if (filterField!.isNotEmpty && filterNum!.isNotEmpty) {
@@ -2102,8 +2106,8 @@ List<LeadStagesRecord>? filterLeadStageByAccess(
       .where((access) =>
           leadStageList.any((lead) => lead.id == access.id)) // Match ID
       .map((access) {
-    final matchedLead = leadStageList.firstWhere((lead) => lead.id == access.id,
-        orElse: () => null);
+    final matchedLead =
+        leadStageList.firstWhere((lead) => lead.id == access.id);
     return matchedLead!;
   }).toList();
 }

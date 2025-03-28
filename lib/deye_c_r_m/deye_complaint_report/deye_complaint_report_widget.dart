@@ -1329,14 +1329,14 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                         Expanded(
                                           child: Builder(
                                             builder: (context) {
-                                              final cComplaintReportVar = (_model
-                                                              .isSearched ==
-                                                          true
+                                              final cComplaintReportVar = (_model.isSearched == true
                                                       ? functions.filteredComplaintsForReports(
                                                           containerLeadsManagementRecordList
                                                               .toList(),
                                                           '',
-                                                          _model.textFieldAllTextController.text == null || _model.textFieldAllTextController.text == ''
+                                                          _model.textFieldAllTextController.text == null ||
+                                                                  _model.textFieldAllTextController.text ==
+                                                                      ''
                                                               ? ''
                                                               : _model
                                                                   .textFieldAllTextController
@@ -1357,7 +1357,8 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                   _model.dropDownZoneAllValue == ''
                                                               ? ''
                                                               : _model.dropDownZoneAllValue,
-                                                          '')
+                                                          '',
+                                                          FFAppState().emptyList.toList())
                                                       : containerLeadsManagementRecordList)
                                                   .toList();
                                               if (cComplaintReportVar.isEmpty) {
@@ -2722,8 +2723,7 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                         Expanded(
                                           child: Builder(
                                             builder: (context) {
-                                              final cComplaintReportVar1 = (_model.isSearched ==
-                                                          true
+                                              final cComplaintReportVar1 = (_model.isSearched == true
                                                       ? functions.filteredComplaintsForReports(
                                                           containerZoneLeadsManagementRecordList
                                                               .toList(),
@@ -2733,12 +2733,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                   'null'
                                                               ? ''
                                                               : _model
-                                                                  .textFieldReportTextController
-                                                                  .text,
+                                                                  .textFieldReportTextController.text,
                                                           _model.dropDownReportValue ==
                                                                       null ||
-                                                                  _model
-                                                                          .dropDownReportValue ==
+                                                                  _model.dropDownReportValue ==
                                                                       ''
                                                               ? ''
                                                               : _model
@@ -2753,7 +2751,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                   'null'
                                                               ? ''
                                                               : _model
-                                                                  .dropDownStageReportValue)
+                                                                  .dropDownStageReportValue,
+                                                          FFAppState()
+                                                              .emptyList
+                                                              .toList())
                                                       : containerZoneLeadsManagementRecordList)
                                                   .toList();
                                               if (cComplaintReportVar1

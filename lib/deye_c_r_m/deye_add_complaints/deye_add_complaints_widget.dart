@@ -1329,9 +1329,12 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       0.0,
                                                                   borderRadius:
                                                                       10.0,
-                                                                  margin: EdgeInsets
-                                                                      .all(
-                                                                          10.0),
+                                                                  margin: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          20.0,
+                                                                          12.0,
+                                                                          20.0,
+                                                                          12.0),
                                                                   hidesUnderline:
                                                                       true,
                                                                   isSearchable:
@@ -1628,9 +1631,12 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       0.0,
                                                                   borderRadius:
                                                                       10.0,
-                                                                  margin: EdgeInsets
-                                                                      .all(
-                                                                          10.0),
+                                                                  margin: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          20.0,
+                                                                          12.0,
+                                                                          20.0,
+                                                                          12.0),
                                                                   hidesUnderline:
                                                                       true,
                                                                   isSearchable:
@@ -2261,8 +2267,13 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 .customColor1,
                                                         borderWidth: 0.0,
                                                         borderRadius: 10.0,
-                                                        margin: EdgeInsets.all(
-                                                            10.0),
+                                                        margin:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    20.0,
+                                                                    12.0,
+                                                                    20.0,
+                                                                    12.0),
                                                         hidesUnderline: true,
                                                         isSearchable: true,
                                                         isMultiSelect: false,
@@ -2657,8 +2668,12 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                           borderWidth: 0.0,
                                                           borderRadius: 10.0,
                                                           margin:
-                                                              EdgeInsets.all(
-                                                                  10.0),
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      20.0,
+                                                                      12.0,
+                                                                      20.0,
+                                                                      12.0),
                                                           hidesUnderline: true,
                                                           isSearchable: true,
                                                           isMultiSelect: false,

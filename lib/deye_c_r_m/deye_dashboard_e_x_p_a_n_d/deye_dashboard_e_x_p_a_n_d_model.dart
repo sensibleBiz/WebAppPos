@@ -1,7 +1,5 @@
 import '/backend/backend.dart';
-import '/components/nav_menu_widget.dart';
 import '/components/popup_loading_widget.dart';
-import '/components/side_nav_bar_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -61,18 +59,12 @@ class DeyeDashboardEXPANDModel
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in Text widget.
   String? stage1;
-  // Model for SideNavBar component.
-  late SideNavBarModel sideNavBarModel;
-  // Model for NavMenu component.
-  late NavMenuModel navMenuModel;
   // Model for DeyeMenu component.
   late DeyeMenuModel deyeMenuModel;
 
   @override
   void initState(BuildContext context) {
     deyeHeaderModel = createModel(context, () => DeyeHeaderModel());
-    sideNavBarModel = createModel(context, () => SideNavBarModel());
-    navMenuModel = createModel(context, () => NavMenuModel());
     deyeMenuModel = createModel(context, () => DeyeMenuModel());
   }
 
@@ -82,8 +74,6 @@ class DeyeDashboardEXPANDModel
     textFieldFocusNode?.dispose();
     textController?.dispose();
 
-    sideNavBarModel.dispose();
-    navMenuModel.dispose();
     deyeMenuModel.dispose();
   }
 }

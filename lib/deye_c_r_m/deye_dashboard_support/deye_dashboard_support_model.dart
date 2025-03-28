@@ -40,6 +40,16 @@ class DeyeDashboardSupportModel
 
   bool isSearched = false;
 
+  /// all
+  List<String> selectedZone = [];
+  void addToSelectedZone(String item) => selectedZone.add(item);
+  void removeFromSelectedZone(String item) => selectedZone.remove(item);
+  void removeAtIndexFromSelectedZone(int index) => selectedZone.removeAt(index);
+  void insertAtIndexInSelectedZone(int index, String item) =>
+      selectedZone.insert(index, item);
+  void updateSelectedZoneAtIndex(int index, Function(String) updateFn) =>
+      selectedZone[index] = updateFn(selectedZone[index]);
+
   ///  State fields for stateful widgets in this page.
 
   // Model for DeyeHeader component.

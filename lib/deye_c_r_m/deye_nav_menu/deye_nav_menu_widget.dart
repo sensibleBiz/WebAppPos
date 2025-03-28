@@ -9,18 +9,18 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'nav_menu_model.dart';
-export 'nav_menu_model.dart';
+import 'deye_nav_menu_model.dart';
+export 'deye_nav_menu_model.dart';
 
-class NavMenuWidget extends StatefulWidget {
-  const NavMenuWidget({super.key});
+class DeyeNavMenuWidget extends StatefulWidget {
+  const DeyeNavMenuWidget({super.key});
 
   @override
-  State<NavMenuWidget> createState() => _NavMenuWidgetState();
+  State<DeyeNavMenuWidget> createState() => _DeyeNavMenuWidgetState();
 }
 
-class _NavMenuWidgetState extends State<NavMenuWidget> {
-  late NavMenuModel _model;
+class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
+  late DeyeNavMenuModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -31,7 +31,7 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => NavMenuModel());
+    _model = createModel(context, () => DeyeNavMenuModel());
 
     _model.expandableExpandableController1 =
         ExpandableController(initialExpanded: false);
@@ -52,12 +52,12 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
     context.watch<FFAppState>();
 
     return Container(
-      width: 250.0,
+      width: 300.0,
       height: double.infinity,
       decoration: BoxDecoration(),
       child: Row(
         mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             child: Container(
@@ -67,7 +67,7 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 15.0,
-                    color: Color(0x33000000),
+                    color: Color(0x58000000),
                     offset: Offset(
                       3.0,
                       0.0,
@@ -107,32 +107,42 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(3.0),
                           ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 10.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'User Profile',
-                                  textAlign: TextAlign.end,
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelLarge
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .labelLargeFamily,
-                                        color: FlutterFlowTheme.of(context)
-                                            .text2nd,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLargeFamily),
-                                      ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 45.0,
+                                height: 45.0,
+                                decoration: BoxDecoration(),
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Icon(
+                                    Icons.person_2,
+                                    color: FlutterFlowTheme.of(context)
+                                        .customColor5,
+                                    size: 18.0,
+                                  ),
                                 ),
-                              ].divide(SizedBox(width: 5.0)),
-                            ),
+                              ),
+                              Text(
+                                'User Profile',
+                                textAlign: TextAlign.end,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .labelLargeFamily,
+                                      color:
+                                          FlutterFlowTheme.of(context).text2nd,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily),
+                                    ),
+                              ),
+                            ].divide(SizedBox(width: 5.0)),
                           ),
                         ),
                         InkWell(
@@ -159,33 +169,42 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(3.0),
                             ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Dashboard',
-                                    textAlign: TextAlign.end,
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelLarge
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLargeFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .text2nd,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLargeFamily),
-                                        ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 45.0,
+                                  height: 45.0,
+                                  decoration: BoxDecoration(),
+                                  child: Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Icon(
+                                      Icons.home,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor5,
+                                      size: 18.0,
+                                    ),
                                   ),
-                                ].divide(SizedBox(width: 5.0)),
-                              ),
+                                ),
+                                Text(
+                                  'Dashboard',
+                                  textAlign: TextAlign.end,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelLargeFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .text2nd,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLargeFamily),
+                                      ),
+                                ),
+                              ].divide(SizedBox(width: 5.0)),
                             ),
                           ),
                         ),
@@ -203,37 +222,47 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(3.0),
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 10.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Masters',
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelLarge
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLargeFamily,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .text2nd,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelLargeFamily),
-                                              ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width: 45.0,
+                                        height: 45.0,
+                                        decoration: BoxDecoration(),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Icon(
+                                            Icons.dashboard_sharp,
+                                            color: FlutterFlowTheme.of(context)
+                                                .customColor5,
+                                            size: 18.0,
+                                          ),
                                         ),
-                                      ].divide(SizedBox(width: 5.0)),
-                                    ),
+                                      ),
+                                      Text(
+                                        'Masters',
+                                        textAlign: TextAlign.end,
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .text2nd,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLargeFamily),
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(width: 5.0)),
                                   ),
                                 ),
                                 collapsed: Container(),
@@ -285,7 +314,7 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .customColor5,
-                                                    size: 23.0,
+                                                    size: 18.0,
                                                   ),
                                                 ),
                                               ),
@@ -352,7 +381,7 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .customColor5,
-                                                    size: 23.0,
+                                                    size: 18.0,
                                                   ),
                                                 ),
                                               ),
@@ -427,7 +456,7 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .customColor5,
-                                                    size: 23.0,
+                                                    size: 18.0,
                                                   ),
                                                 ),
                                               ),
@@ -502,7 +531,7 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .customColor5,
-                                                    size: 23.0,
+                                                    size: 18.0,
                                                   ),
                                                 ),
                                               ),
@@ -569,7 +598,7 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .customColor5,
-                                                    size: 23.0,
+                                                    size: 18.0,
                                                   ),
                                                 ),
                                               ),
@@ -610,7 +639,10 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                   tapBodyToCollapse: false,
                                   headerAlignment:
                                       ExpandablePanelHeaderAlignment.center,
-                                  hasIcon: false,
+                                  hasIcon: true,
+                                  iconSize: 16.0,
+                                  iconColor: FlutterFlowTheme.of(context)
+                                      .primaryBtnText,
                                 ),
                               ),
                             ),
@@ -627,36 +659,44 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(3.0),
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 10.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Reports',
-                                        textAlign: TextAlign.end,
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLargeFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .text2nd,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelLargeFamily),
-                                            ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: 45.0,
+                                      height: 45.0,
+                                      decoration: BoxDecoration(),
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Icon(
+                                          Icons.bar_chart,
+                                          color: FlutterFlowTheme.of(context)
+                                              .customColor5,
+                                          size: 18.0,
+                                        ),
                                       ),
-                                    ].divide(SizedBox(width: 5.0)),
-                                  ),
+                                    ),
+                                    Text(
+                                      'Reports',
+                                      textAlign: TextAlign.end,
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLargeFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .text2nd,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLargeFamily),
+                                          ),
+                                    ),
+                                  ].divide(SizedBox(width: 5.0)),
                                 ),
                               ),
                               collapsed: Container(),
@@ -701,7 +741,7 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .customColor5,
-                                                  size: 23.0,
+                                                  size: 18.0,
                                                 ),
                                               ),
                                             ),
@@ -768,7 +808,7 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .customColor5,
-                                                  size: 23.0,
+                                                  size: 18.0,
                                                 ),
                                               ),
                                             ),
@@ -836,7 +876,7 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .customColor5,
-                                                  size: 23.0,
+                                                  size: 18.0,
                                                 ),
                                               ),
                                             ),
@@ -878,7 +918,10 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                                 tapBodyToCollapse: false,
                                 headerAlignment:
                                     ExpandablePanelHeaderAlignment.center,
-                                hasIcon: false,
+                                hasIcon: true,
+                                iconSize: 16.0,
+                                iconColor:
+                                    FlutterFlowTheme.of(context).primaryBtnText,
                               ),
                             ),
                           ),
@@ -912,51 +955,78 @@ class _NavMenuWidgetState extends State<NavMenuWidget> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(3.0),
                               ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 10.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Logout',
-                                      textAlign: TextAlign.end,
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelLarge
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLargeFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .text2nd,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLargeFamily),
-                                          ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 45.0,
+                                    height: 45.0,
+                                    decoration: BoxDecoration(),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Icon(
+                                        Icons.power_settings_new_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 18.0,
+                                      ),
                                     ),
-                                  ].divide(SizedBox(width: 5.0)),
-                                ),
+                                  ),
+                                  Text(
+                                    'Logout',
+                                    textAlign: TextAlign.end,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .text2nd,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily),
+                                        ),
+                                  ),
+                                ].divide(SizedBox(width: 5.0)),
                               ),
                             ),
                           ),
                         ),
                       ].divide(SizedBox(height: 1.0)),
                     ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
-                      child: Container(
-                        width: 50.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).customColor6,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
+              ),
+            ),
+          ),
+          InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              Navigator.pop(context);
+            },
+            child: Container(
+              width: 15.0,
+              height: 60.0,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).customColor7,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(0.0),
+                  bottomRight: Radius.circular(10.0),
+                  topLeft: Radius.circular(0.0),
+                  topRight: Radius.circular(10.0),
+                ),
+              ),
+              child: Icon(
+                Icons.chevron_left_sharp,
+                color: FlutterFlowTheme.of(context).primaryBtnText,
+                size: 10.0,
               ),
             ),
           ),

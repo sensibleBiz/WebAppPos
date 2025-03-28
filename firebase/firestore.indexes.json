@@ -449,24 +449,6 @@
       ]
     },
     {
-      "collectionGroup": "TEAM_TREE",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "zone",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "roleInZone",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "userName",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
       "collectionGroup": "LEADS_MANAGEMENT",
       "queryScope": "COLLECTION",
       "fields": [

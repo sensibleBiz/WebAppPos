@@ -72,6 +72,11 @@ class TeamTreeRecord extends FirestoreRecord {
       _stageAccessList ?? const [];
   bool hasStageAccessList() => _stageAccessList != null;
 
+  // "workMode" field.
+  String? _workMode;
+  String get workMode => _workMode ?? '';
+  bool hasWorkMode() => _workMode != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -89,6 +94,7 @@ class TeamTreeRecord extends FirestoreRecord {
       snapshotData['stageAccessList'],
       StageAccessDataTypeStruct.fromMap,
     );
+    _workMode = snapshotData['workMode'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -140,6 +146,7 @@ Map<String, dynamic> createTeamTreeRecordData({
   bool? isActive,
   String? zoneHeadProfileId,
   String? uid,
+  String? workMode,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -152,6 +159,7 @@ Map<String, dynamic> createTeamTreeRecordData({
       'isActive': isActive,
       'zoneHeadProfileId': zoneHeadProfileId,
       'uid': uid,
+      'workMode': workMode,
     }.withoutNulls,
   );
 
@@ -174,7 +182,8 @@ class TeamTreeRecordDocumentEquality implements Equality<TeamTreeRecord> {
         e1?.zoneHeadProfileId == e2?.zoneHeadProfileId &&
         e1?.uid == e2?.uid &&
         listEquality.equals(e1?.zoneList, e2?.zoneList) &&
-        listEquality.equals(e1?.stageAccessList, e2?.stageAccessList);
+        listEquality.equals(e1?.stageAccessList, e2?.stageAccessList) &&
+        e1?.workMode == e2?.workMode;
   }
 
   @override
@@ -189,7 +198,8 @@ class TeamTreeRecordDocumentEquality implements Equality<TeamTreeRecord> {
         e?.zoneHeadProfileId,
         e?.uid,
         e?.zoneList,
-        e?.stageAccessList
+        e?.stageAccessList,
+        e?.workMode
       ]);
 
   @override
