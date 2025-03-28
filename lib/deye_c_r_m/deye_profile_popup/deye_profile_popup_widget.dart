@@ -148,11 +148,10 @@ class _DeyeProfilePopupWidgetState extends State<DeyeProfilePopupWidget> {
                         color: FlutterFlowTheme.of(context).secondaryText,
                         size: 24.0,
                       ),
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
+                      fillColor: FlutterFlowTheme.of(context).accent4,
                       elevation: 2.0,
                       borderColor: Colors.transparent,
-                      borderWidth: 0.0,
+                      borderWidth: 2.0,
                       borderRadius: 8.0,
                       margin:
                           EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),

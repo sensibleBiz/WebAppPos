@@ -502,7 +502,7 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                             _model.selectedZone =
                                                                 dropDownZoneAllTeamTreeRecordList
                                                                     .where((e) =>
-                                                                        e.userProfileId ==
+                                                                        e.id ==
                                                                         _model
                                                                             .dropDownZoneAllValue)
                                                                     .toList()

@@ -63,6 +63,7 @@ List<LeadsManagementRecord> filteredComplaintsForReports(
     // print(leadsDoc);
   }
   if (zoneList!.isNotEmpty) {
+    print(zoneList);
     leadsDoc = leadsDoc.where((lead) => zoneList.contains(lead.zone)).toList();
   }
 
