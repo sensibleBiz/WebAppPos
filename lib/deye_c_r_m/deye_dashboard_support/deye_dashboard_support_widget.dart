@@ -486,8 +486,8 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                           options: List<
                                                                   String>.from(
                                                               dropDownZoneAllTeamTreeRecordList
-                                                                  .map((e) =>
-                                                                      e.id)
+                                                                  .map((e) => e
+                                                                      .userProfileId)
                                                                   .toList()),
                                                           optionLabels:
                                                               dropDownZoneAllTeamTreeRecordList
@@ -502,7 +502,7 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                             _model.selectedZone =
                                                                 dropDownZoneAllTeamTreeRecordList
                                                                     .where((e) =>
-                                                                        e.id ==
+                                                                        e.userProfileId ==
                                                                         _model
                                                                             .dropDownZoneAllValue)
                                                                     .toList()
