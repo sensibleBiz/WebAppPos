@@ -79,8 +79,8 @@ class _UploadfilegetLinkWidgetState extends State<UploadfilegetLinkWidget> {
                         color: Colors.white,
                         fontSize: 22.0,
                         letterSpacing: 0.0,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                        useGoogleFonts: !FlutterFlowTheme.of(context)
+                            .headlineMediumIsCustom,
                       ),
                 ),
               ),
@@ -114,7 +114,8 @@ class _UploadfilegetLinkWidgetState extends State<UploadfilegetLinkWidget> {
                         if (selectedMedia != null &&
                             selectedMedia.every((m) =>
                                 validateFileFormat(m.storagePath, context))) {
-                          safeSetState(() => _model.isDataUploading = true);
+                          safeSetState(() =>
+                              _model.isDataUploading_uploadData48g = true);
                           var selectedUploadedFiles = <FFUploadedFile>[];
 
                           var downloadUrls = <String>[];
@@ -139,15 +140,16 @@ class _UploadfilegetLinkWidgetState extends State<UploadfilegetLinkWidget> {
                                 .map((u) => u!)
                                 .toList();
                           } finally {
-                            _model.isDataUploading = false;
+                            _model.isDataUploading_uploadData48g = false;
                           }
                           if (selectedUploadedFiles.length ==
                                   selectedMedia.length &&
                               downloadUrls.length == selectedMedia.length) {
                             safeSetState(() {
-                              _model.uploadedLocalFile =
+                              _model.uploadedLocalFile_uploadData48g =
                                   selectedUploadedFiles.first;
-                              _model.uploadedFileUrl = downloadUrls.first;
+                              _model.uploadedFileUrl_uploadData48g =
+                                  downloadUrls.first;
                             });
                           } else {
                             safeSetState(() {});
@@ -155,7 +157,8 @@ class _UploadfilegetLinkWidgetState extends State<UploadfilegetLinkWidget> {
                           }
                         }
 
-                        FFAppState().uploadedFileUrl = _model.uploadedFileUrl;
+                        FFAppState().uploadedFileUrl =
+                            _model.uploadedFileUrl_uploadData48g;
                         safeSetState(() {});
                       },
                       text: 'Upload File',
@@ -173,9 +176,8 @@ class _UploadfilegetLinkWidgetState extends State<UploadfilegetLinkWidget> {
                                   FlutterFlowTheme.of(context).titleSmallFamily,
                               color: Colors.white,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .titleSmallFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .titleSmallIsCustom,
                             ),
                         elevation: 3.0,
                         borderSide: BorderSide(
@@ -193,9 +195,8 @@ class _UploadfilegetLinkWidgetState extends State<UploadfilegetLinkWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                       ),
                     FFButtonWidget(
@@ -237,9 +238,8 @@ class _UploadfilegetLinkWidgetState extends State<UploadfilegetLinkWidget> {
                                   FlutterFlowTheme.of(context).titleSmallFamily,
                               color: Colors.white,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .titleSmallFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .titleSmallIsCustom,
                             ),
                         elevation: 3.0,
                         borderSide: BorderSide(

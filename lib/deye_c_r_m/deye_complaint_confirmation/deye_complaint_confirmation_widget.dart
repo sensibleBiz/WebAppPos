@@ -64,8 +64,8 @@ class _DeyeComplaintConfirmationWidgetState
                     fontFamily:
                         FlutterFlowTheme.of(context).headlineSmallFamily,
                     letterSpacing: 0.0,
-                    useGoogleFonts: GoogleFonts.asMap().containsKey(
-                        FlutterFlowTheme.of(context).headlineSmallFamily),
+                    useGoogleFonts:
+                        !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                   ),
             ),
             Row(
@@ -89,8 +89,8 @@ class _DeyeComplaintConfirmationWidgetState
                               FlutterFlowTheme.of(context).labelLargeFamily,
                           color: FlutterFlowTheme.of(context).primaryBtnText,
                           letterSpacing: 1.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).labelLargeFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).labelLargeIsCustom,
                         ),
                     elevation: 0.0,
                     borderRadius: BorderRadius.circular(3.0),
@@ -114,8 +114,8 @@ class _DeyeComplaintConfirmationWidgetState
                           color: FlutterFlowTheme.of(context).primaryBtnText,
                           letterSpacing: 1.0,
                           fontWeight: FontWeight.w600,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).labelLargeFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).labelLargeIsCustom,
                         ),
                     elevation: 0.0,
                     borderRadius: BorderRadius.circular(3.0),

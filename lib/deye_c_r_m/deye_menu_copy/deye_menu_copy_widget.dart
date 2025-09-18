@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/logout_confirm/logout_confirm_widget.dart';
 import 'dart:ui';
 import '/index.dart';
@@ -78,8 +79,8 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                               FlutterFlowTheme.of(context).labelLargeFamily,
                           color: FlutterFlowTheme.of(context).text2nd,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).labelLargeFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).labelLargeIsCustom,
                         ),
                   ),
                 ].divide(SizedBox(width: 5.0)),
@@ -99,7 +100,7 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                   4) {
                 context.pushNamed(DeyeDashboardSupportWidget.routeName);
               } else {
-                context.pushNamed(DeyeDashboardEXPANDWidget.routeName);
+                context.pushNamed(DeyeDashboardCopyWidget.routeName);
               }
             },
             child: Container(
@@ -122,8 +123,8 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                                 FlutterFlowTheme.of(context).labelLargeFamily,
                             color: FlutterFlowTheme.of(context).text2nd,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelLargeFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .labelLargeIsCustom,
                           ),
                     ),
                   ].divide(SizedBox(width: 5.0)),
@@ -161,9 +162,8 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                                       .labelLargeFamily,
                                   color: FlutterFlowTheme.of(context).text2nd,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .labelLargeFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .labelLargeIsCustom,
                                 ),
                           ),
                         ].divide(SizedBox(width: 5.0)),
@@ -219,10 +219,9 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                                               .primaryBtnText,
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .headlineSmallIsCustom,
                                         ),
                                   ),
                                 ].divide(SizedBox(width: 5.0)),
@@ -265,10 +264,9 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                                               .primaryBtnText,
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .headlineSmallIsCustom,
                                         ),
                                   ),
                                 ].divide(SizedBox(width: 5.0)),
@@ -329,10 +327,9 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                                             .primaryBtnText,
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineSmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .headlineSmallIsCustom,
                                       ),
                                 ),
                               ].divide(SizedBox(width: 5.0)),
@@ -392,10 +389,9 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                                             .primaryBtnText,
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineSmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .headlineSmallIsCustom,
                                       ),
                                 ),
                               ].divide(SizedBox(width: 5.0)),
@@ -447,10 +443,9 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                                             .primaryBtnText,
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineSmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .headlineSmallIsCustom,
                                       ),
                                 ),
                               ].divide(SizedBox(width: 5.0)),
@@ -507,9 +502,8 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).labelLargeFamily,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .labelLargeFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .labelLargeIsCustom,
                             ),
                       ),
                     ].divide(SizedBox(width: 5.0)),
@@ -566,10 +560,9 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                                           .primaryBtnText,
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineSmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .headlineSmallIsCustom,
                                     ),
                               ),
                             ].divide(SizedBox(width: 5.0)),
@@ -620,10 +613,9 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                                           .primaryBtnText,
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineSmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .headlineSmallIsCustom,
                                     ),
                               ),
                             ].divide(SizedBox(width: 5.0)),
@@ -636,8 +628,7 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed(
-                              DeyeLeadEmployeeReportWidget.routeName);
+                          context.pushNamed(DeyeEmployeeReportWidget.routeName);
                         },
                         child: Container(
                           width: double.infinity,
@@ -675,10 +666,9 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                                           .primaryBtnText,
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineSmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .headlineSmallIsCustom,
                                     ),
                               ),
                             ].divide(SizedBox(width: 5.0)),
@@ -741,9 +731,8 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).labelLargeFamily,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .labelLargeFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .labelLargeIsCustom,
                             ),
                       ),
                     ].divide(SizedBox(width: 5.0)),

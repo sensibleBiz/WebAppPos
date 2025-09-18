@@ -184,22 +184,20 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                     ),
                                                     Text(
                                                       'Lead Stages',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .headlineLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .headlineLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ],
                                                 ),
@@ -261,26 +259,24 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .tertiary,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .headlineMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineMediumFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .lineColor,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .override(
+                                                            fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .headlineMediumFamily),
-                                                      ),
+                                                                    .headlineMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .lineColor,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineMediumIsCustom,
+                                                          ),
                                                   elevation: 2.0,
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,
@@ -367,10 +363,9 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                                           .lineColor,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -426,7 +421,7 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                              !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -473,10 +468,9 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                                           .lineColor,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -521,10 +515,9 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                                           .lineColor,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -569,10 +562,9 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                                           .lineColor,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -619,10 +611,9 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                                           17.0,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -718,7 +709,7 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ],
@@ -749,7 +740,7 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                                                                   style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                         fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                               ],
@@ -779,7 +770,7 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                                                           style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ],
@@ -912,10 +903,12 @@ class _LeadStagesMasterWidgetState extends State<LeadStagesMasterWidget> {
                                                                                                 );
                                                                                               }
                                                                                             },
-                                                                                            side: BorderSide(
-                                                                                              width: 2,
-                                                                                              color: FlutterFlowTheme.of(context).alternate,
-                                                                                            ),
+                                                                                            side: (FlutterFlowTheme.of(context).alternate != null)
+                                                                                                ? BorderSide(
+                                                                                                    width: 2,
+                                                                                                    color: FlutterFlowTheme.of(context).alternate!,
+                                                                                                  )
+                                                                                                : null,
                                                                                             activeColor: FlutterFlowTheme.of(context).primary,
                                                                                             checkColor: FlutterFlowTheme.of(context).info,
                                                                                           ),

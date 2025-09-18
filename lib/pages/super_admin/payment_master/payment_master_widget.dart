@@ -194,12 +194,10 @@ class _PaymentMasterWidgetState extends State<PaymentMasterWidget> {
                                                                       context)
                                                                   .headlineLargeFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                                   ),
                                                 ],
@@ -277,12 +275,10 @@ class _PaymentMasterWidgetState extends State<PaymentMasterWidget> {
                                                                   .of(context)
                                                               .lineColor,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineMediumIsCustom,
                                                         ),
                                                 elevation: 2.0,
                                                 borderSide: BorderSide(
@@ -366,10 +362,9 @@ class _PaymentMasterWidgetState extends State<PaymentMasterWidget> {
                                                                         .lineColor,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -425,7 +420,7 @@ class _PaymentMasterWidgetState extends State<PaymentMasterWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ],
@@ -471,10 +466,9 @@ class _PaymentMasterWidgetState extends State<PaymentMasterWidget> {
                                                                         .lineColor,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -518,10 +512,9 @@ class _PaymentMasterWidgetState extends State<PaymentMasterWidget> {
                                                                         .lineColor,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -609,7 +602,7 @@ class _PaymentMasterWidgetState extends State<PaymentMasterWidget> {
                                                                                     style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -640,7 +633,7 @@ class _PaymentMasterWidgetState extends State<PaymentMasterWidget> {
                                                                                               style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                           ],

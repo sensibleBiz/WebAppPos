@@ -3,7 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/components/c_add_user/c_add_user_widget.dart';
+import '/pages/components/add_user_acount/add_user_acount_widget.dart';
 import '/pages/components/c_edit_user/c_edit_user_widget.dart';
 import '/pages/components/c_header/c_header_widget.dart';
 import '/pages/components/cstm_side_nav_bar/cstm_side_nav_bar_widget.dart';
@@ -186,12 +186,10 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                       context)
                                                                   .headlineLargeFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                               ),
                                             ],
@@ -228,7 +226,8 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                       padding: MediaQuery
                                                           .viewInsetsOf(
                                                               context),
-                                                      child: CAddUserWidget(
+                                                      child:
+                                                          AddUserAcountWidget(
                                                         codeLen: FFAppState()
                                                             .userAccountCatCodeLength,
                                                       ),
@@ -265,12 +264,10 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                   context)
                                                               .lineColor,
                                                       letterSpacing: 0.0,
-                                                      useGoogleFonts: GoogleFonts
-                                                              .asMap()
-                                                          .containsKey(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineMediumFamily),
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMediumIsCustom,
                                                     ),
                                             elevation: 2.0,
                                             borderSide: BorderSide(
@@ -355,11 +352,10 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                       .labelSmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmallIsCustom,
                                                                 ),
                                                           ),
                                                         ],
@@ -410,11 +406,10 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                       .labelSmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmallIsCustom,
                                                                 ),
                                                           ),
                                                         ],
@@ -465,11 +460,10 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                       .labelSmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmallIsCustom,
                                                                 ),
                                                           ),
                                                         ],
@@ -522,10 +516,9 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                             .labelSmallFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .labelSmallIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -568,11 +561,10 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                       .labelSmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmallIsCustom,
                                                                 ),
                                                           ),
                                                         ],
@@ -614,11 +606,10 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                       .labelSmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmallIsCustom,
                                                                 ),
                                                           ),
                                                         ],
@@ -711,7 +702,7 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                                 style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -745,7 +736,7 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -780,7 +771,7 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -813,7 +804,7 @@ class _CUserAccountWidgetState extends State<CUserAccountWidget> {
                                                                                     style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],

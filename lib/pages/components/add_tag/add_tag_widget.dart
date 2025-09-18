@@ -116,10 +116,9 @@ class _AddTagWidgetState extends State<AddTagWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .headlineLargeFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineLargeFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineLargeIsCustom,
                                   ),
                             ),
                           ),
@@ -159,10 +158,9 @@ class _AddTagWidgetState extends State<AddTagWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .bodyMediumFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                               Padding(
@@ -179,10 +177,9 @@ class _AddTagWidgetState extends State<AddTagWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ),
@@ -205,10 +202,9 @@ class _AddTagWidgetState extends State<AddTagWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodySmallFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodySmallIsCustom,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -252,10 +248,9 @@ class _AddTagWidgetState extends State<AddTagWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .titleMediumFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMediumFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleMediumIsCustom,
                                     ),
                                 maxLines: null,
                                 validator: _model.textControllerValidator
@@ -280,10 +275,9 @@ class _AddTagWidgetState extends State<AddTagWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .bodyMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                               hintText: 'Please select...',
                               icon: Icon(
@@ -384,10 +378,9 @@ class _AddTagWidgetState extends State<AddTagWidget> {
                                     fontSize: 15.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleSmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
                                   ),
                               elevation: 2.0,
                               borderSide: BorderSide(
@@ -485,12 +478,10 @@ class _AddTagWidgetState extends State<AddTagWidget> {
                                                                   context)
                                                               .primaryText,
                                                       letterSpacing: 0.0,
-                                                      useGoogleFonts: GoogleFonts
-                                                              .asMap()
-                                                          .containsKey(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily),
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
                                                     ),
                                               ),
                                               Expanded(
@@ -521,12 +512,10 @@ class _AddTagWidgetState extends State<AddTagWidget> {
                                                                       .primaryText,
                                                               letterSpacing:
                                                                   0.0,
-                                                              useGoogleFonts: GoogleFonts
-                                                                      .asMap()
-                                                                  .containsKey(
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelLargeFamily),
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLargeIsCustom,
                                                             ),
                                                   ),
                                                 ),

@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/components/calendar/calendar_widget.dart';
 import 'dart:ui';
@@ -86,9 +87,8 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .headlineLargeFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .headlineLargeFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineLargeIsCustom,
                                 ),
                       ),
                     ],
@@ -111,9 +111,8 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                     .bodySmallFamily,
                                 fontSize: 12.0,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodySmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodySmallIsCustom,
                               ),
                         ),
                       ),
@@ -154,10 +153,9 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .bodySmallFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodySmallIsCustom,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -206,10 +204,9 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleMediumIsCustom,
                                   ),
                               validator: _model.textController1Validator
                                   .asValidator(context),
@@ -237,9 +234,8 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                     .bodySmallFamily,
                                 fontSize: 12.0,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodySmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodySmallIsCustom,
                               ),
                         ),
                       ),
@@ -280,10 +276,9 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .bodySmallFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodySmallIsCustom,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -332,11 +327,10 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleMediumFamily),
                                     lineHeight: 1.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleMediumIsCustom,
                                   ),
                               maxLines: 5,
                               validator: _model.textController2Validator
@@ -365,9 +359,8 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                     .bodySmallFamily,
                                 fontSize: 12.0,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodySmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodySmallIsCustom,
                               ),
                         ),
                       ),
@@ -408,10 +401,9 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .bodySmallFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodySmallIsCustom,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -460,10 +452,9 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleMediumIsCustom,
                                   ),
                               validator: _model.textController3Validator
                                   .asValidator(context),
@@ -506,10 +497,9 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                                   .bodySmallFamily,
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodySmallIsCustom,
                                         ),
                                   ),
                                 ),
@@ -541,10 +531,9 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                             .bodySmallFamily,
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodySmallIsCustom,
                                       ),
                                 ),
                               ),
@@ -592,10 +581,9 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodySmallFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodySmallIsCustom,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -644,10 +632,9 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .titleMediumFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMediumFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleMediumIsCustom,
                                     ),
                                 validator: _model.textController4Validator
                                     .asValidator(context),
@@ -699,10 +686,9 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleMediumIsCustom,
                                   ),
                               fillColor: Colors.white,
                               elevation: 2.0,
@@ -738,9 +724,8 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                     .bodySmallFamily,
                                 fontSize: 12.0,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodySmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodySmallIsCustom,
                               ),
                         ),
                       ),
@@ -784,10 +769,9 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -879,14 +863,20 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Lora',
+                                      font: GoogleFonts.lora(
+                                        fontWeight: FontWeight.normal,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey('Lora'),
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                             ],
@@ -928,13 +918,19 @@ class _AddNotificationsWidgetState extends State<AddNotificationsWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Lora',
+                                      font: GoogleFonts.lora(
+                                        fontWeight: FontWeight.normal,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       color: Colors.white,
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey('Lora'),
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                               ),
                             ],

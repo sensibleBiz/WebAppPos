@@ -202,10 +202,9 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                               .displaySmallFamily,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).displaySmallFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .displaySmallIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -235,10 +234,9 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                               .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -289,10 +287,9 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleSmallIsCustom,
                                                                     ),
                                                             elevation: 12.0,
                                                             borderSide:
@@ -370,10 +367,9 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                           14.0,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodySmallIsCustom,
                                                                     ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
@@ -438,11 +434,10 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                     .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                           validator: _model
                                                               .textFieldEmailTextControllerValidator
@@ -493,10 +488,9 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                           14.0,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodySmallIsCustom,
                                                                     ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
@@ -584,11 +578,10 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                     .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                           validator: _model
                                                               .textFieldPwdTextControllerValidator
@@ -638,10 +631,9 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                           14.0,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodySmallIsCustom,
                                                                     ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
@@ -706,11 +698,10 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                     .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                           validator: _model
                                                               .textFieldPwd1TextControllerValidator
@@ -894,10 +885,9 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -947,10 +937,9 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleSmallIsCustom,
                                                                   ),
                                                           elevation: 2.0,
                                                           borderSide:
@@ -996,10 +985,9 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                         15.0,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -1033,10 +1021,9 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                         12.0,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodySmallIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -1050,51 +1037,7 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                             highlightColor:
                                                                 Colors
                                                                     .transparent,
-                                                            onTap: () async {
-                                                              GoRouter.of(
-                                                                      context)
-                                                                  .prepareAuthEvent();
-                                                              if (_model
-                                                                      .textFieldPwdTextController
-                                                                      .text !=
-                                                                  _model
-                                                                      .textFieldPwd1TextController
-                                                                      .text) {
-                                                                ScaffoldMessenger.of(
-                                                                        context)
-                                                                    .showSnackBar(
-                                                                  SnackBar(
-                                                                    content:
-                                                                        Text(
-                                                                      'Passwords don\'t match!',
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                                return;
-                                                              }
-
-                                                              final user =
-                                                                  await authManager
-                                                                      .createAccountWithEmail(
-                                                                context,
-                                                                _model
-                                                                    .textFieldEmailTextController
-                                                                    .text,
-                                                                _model
-                                                                    .textFieldPwdTextController
-                                                                    .text,
-                                                              );
-                                                              if (user ==
-                                                                  null) {
-                                                                return;
-                                                              }
-
-                                                              context.goNamedAuth(
-                                                                  CDashWidget
-                                                                      .routeName,
-                                                                  context
-                                                                      .mounted);
-                                                            },
+                                                            onTap: () async {},
                                                             child: AutoSizeText(
                                                               'SignUp',
                                                               style: FlutterFlowTheme
@@ -1111,10 +1054,9 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                         15.0,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -1175,12 +1117,10 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                       .primaryBtnText,
                                                   fontSize: 14.0,
                                                   letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmallFamily),
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmallIsCustom,
                                                 ),
                                           ),
                                         ),

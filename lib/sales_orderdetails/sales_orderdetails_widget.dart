@@ -189,10 +189,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                               .primaryBtnText,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .headlineMediumIsCustom,
                                         ),
                                   ),
                                   FlutterFlowIconButton(
@@ -315,10 +314,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                             .labelLargeFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .labelLargeIsCustom,
                                                                   ),
                                                             ),
                                                             Text(
@@ -337,10 +335,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                             .titleMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -360,10 +357,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                             .labelLargeFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .labelLargeIsCustom,
                                                                   ),
                                                             ),
                                                             StreamBuilder<
@@ -435,7 +431,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                 );
                                                               },
@@ -526,11 +522,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                   }(),
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineSmallIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -553,11 +548,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .labelSmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallIsCustom,
                                                               ),
                                                         ),
                                                       ].divide(SizedBox(
@@ -598,11 +592,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                       ),
                                                       Row(
@@ -620,11 +613,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                       .titleSmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmallIsCustom,
                                                                 ),
                                                           ),
                                                           Text(
@@ -642,11 +634,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                           ),
                                                           if (false)
@@ -700,7 +691,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -715,7 +706,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ],
@@ -739,7 +730,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -754,7 +745,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ],
@@ -784,7 +775,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -800,7 +791,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ],
@@ -824,7 +815,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -838,7 +829,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ],
@@ -863,25 +854,22 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                   children: [
                                                     Text(
                                                       'Payment',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .titleMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleMediumFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumIsCustom,
+                                                          ),
                                                     ),
                                                     Row(
                                                       mainAxisSize:
@@ -898,11 +886,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .titleSmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmallIsCustom,
                                                               ),
                                                         ),
                                                         Padding(
@@ -924,11 +911,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                       .titleMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -953,11 +939,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                       .titleMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -978,11 +963,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .titleSmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmallIsCustom,
                                                               ),
                                                         ),
                                                         Padding(
@@ -1004,11 +988,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                       .titleMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -1028,11 +1011,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .titleMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -1052,11 +1034,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .titleSmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmallIsCustom,
                                                               ),
                                                         ),
                                                         Padding(
@@ -1078,11 +1059,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                       .titleMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -1103,11 +1083,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .titleMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -1130,11 +1109,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .info,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineMediumIsCustom,
                                                               ),
                                                         ),
                                                         Padding(
@@ -1161,11 +1139,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                       17.0,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -1185,11 +1162,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .info,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -1212,11 +1188,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .primary,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineMediumIsCustom,
                                                               ),
                                                         ),
                                                         Padding(
@@ -1243,11 +1218,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                       14.0,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -1271,11 +1245,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .primary,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -1312,10 +1285,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         .primary,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -1391,10 +1363,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                           .primary,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .headlineMediumIsCustom,
                                                                     ),
                                                               );
                                                             },
@@ -1424,11 +1395,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                       .titleSmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmallIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -1471,11 +1441,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .titleMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -1682,7 +1651,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                               fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                               color: Colors.white,
                                                                               letterSpacing: 0.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                             ),
                                                                         elevation:
                                                                             0.0,
@@ -1702,694 +1671,608 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                           ),
                                                         ),
                                                         Expanded(
-                                                          child: StreamBuilder<
-                                                              List<
-                                                                  PartyRecord>>(
-                                                            stream:
-                                                                queryPartyRecord(
-                                                              parent:
-                                                                  FFAppState()
-                                                                      .outletRef,
-                                                              queryBuilder:
-                                                                  (partyRecord) =>
-                                                                      partyRecord
-                                                                          .where(
-                                                                'mobile',
-                                                                isEqualTo: containerSaleRecord
-                                                                            ?.mobile !=
-                                                                        ''
-                                                                    ? containerSaleRecord
-                                                                        ?.mobile
-                                                                    : null,
+                                                          child: Container(
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                0.12,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        10.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        10.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        10.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        10.0),
                                                               ),
-                                                              singleRecord:
-                                                                  true,
                                                             ),
-                                                            builder: (context,
-                                                                snapshot) {
-                                                              // Customize what your widget looks like when it's loading.
-                                                              if (!snapshot
-                                                                  .hasData) {
-                                                                return Center(
-                                                                  child:
-                                                                      SizedBox(
-                                                                    width: 30.0,
-                                                                    height:
-                                                                        30.0,
-                                                                    child:
-                                                                        SpinKitRing(
+                                                            child: Stack(
+                                                              children: [
+                                                                if (containerSaleRecord
+                                                                        ?.status ==
+                                                                    1)
+                                                                  Container(
+                                                                    width: double
+                                                                        .infinity,
+                                                                    decoration:
+                                                                        BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primary,
-                                                                      size:
-                                                                          30.0,
+                                                                          .success,
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(10.0),
+                                                                        bottomRight:
+                                                                            Radius.circular(10.0),
+                                                                        topLeft:
+                                                                            Radius.circular(10.0),
+                                                                        topRight:
+                                                                            Radius.circular(10.0),
+                                                                      ),
+                                                                    ),
+                                                                    child:
+                                                                        FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (alertDialogContext) {
+                                                                            return WebViewAware(
+                                                                              child: AlertDialog(
+                                                                                title: Text('Sale Order'),
+                                                                                content: Text('order confirmed'),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                    child: Text('Ok'),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        );
+
+                                                                        await containerSaleRecord!
+                                                                            .reference
+                                                                            .update({
+                                                                          ...createSaleRecordData(
+                                                                            status:
+                                                                                2,
+                                                                            authorizedBy:
+                                                                                salesOrderdetailsUserProfileRecord?.id,
+                                                                            modifiedDate:
+                                                                                functions.timestampToMili(getCurrentTimestamp),
+                                                                          ),
+                                                                          ...mapToFirestore(
+                                                                            {
+                                                                              'imageOfAdvAmt': FFAppState().imagePathh,
+                                                                            },
+                                                                          ),
+                                                                        });
+
+                                                                        context.pushNamed(
+                                                                            SPDashboardWidget.routeName);
+                                                                      },
+                                                                      text:
+                                                                          'Confirmed ',
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        width: MediaQuery.sizeOf(context).width *
+                                                                            0.12,
+                                                                        height:
+                                                                            40.0,
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            24.0,
+                                                                            0.0,
+                                                                            24.0,
+                                                                            0.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .success,
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                              color: Colors.white,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                            ),
+                                                                        elevation:
+                                                                            0.0,
+                                                                        borderSide:
+                                                                            BorderSide(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                      ),
                                                                     ),
                                                                   ),
-                                                                );
-                                                              }
-                                                              List<PartyRecord>
-                                                                  containerPartyRecordList =
-                                                                  snapshot
-                                                                      .data!;
-                                                              final containerPartyRecord =
-                                                                  containerPartyRecordList
-                                                                          .isNotEmpty
-                                                                      ? containerPartyRecordList
-                                                                          .first
-                                                                      : null;
+                                                                if (containerSaleRecord
+                                                                        ?.status ==
+                                                                    2)
+                                                                  Container(
+                                                                    width: double
+                                                                        .infinity,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(10.0),
+                                                                        bottomRight:
+                                                                            Radius.circular(10.0),
+                                                                        topLeft:
+                                                                            Radius.circular(10.0),
+                                                                        topRight:
+                                                                            Radius.circular(10.0),
+                                                                      ),
+                                                                    ),
+                                                                    child:
+                                                                        FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (alertDialogContext) {
+                                                                            return WebViewAware(
+                                                                              child: AlertDialog(
+                                                                                title: Text('Sale Order'),
+                                                                                content: Text('order confirmed'),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                    child: Text('Ok'),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        );
 
-                                                              return Container(
-                                                                width: MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width *
-                                                                    0.12,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .only(
-                                                                    bottomLeft:
-                                                                        Radius.circular(
-                                                                            10.0),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            10.0),
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            10.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            10.0),
+                                                                        await containerSaleRecord!
+                                                                            .reference
+                                                                            .update({
+                                                                          ...createSaleRecordData(
+                                                                            status:
+                                                                                3,
+                                                                            authorizedBy:
+                                                                                salesOrderdetailsUserProfileRecord?.id,
+                                                                            modifiedDate:
+                                                                                functions.timestampToMili(getCurrentTimestamp),
+                                                                            courierName:
+                                                                                _model.textController2.text,
+                                                                            docketNumber:
+                                                                                _model.textController3.text,
+                                                                          ),
+                                                                          ...mapToFirestore(
+                                                                            {
+                                                                              'imageOfAdvAmt': FFAppState().imagePathh,
+                                                                            },
+                                                                          ),
+                                                                        });
+
+                                                                        context.pushNamed(
+                                                                            SPDashboardWidget.routeName);
+                                                                      },
+                                                                      text:
+                                                                          ' ReadyToDispatch',
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        width: MediaQuery.sizeOf(context).width *
+                                                                            0.12,
+                                                                        height:
+                                                                            40.0,
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            24.0,
+                                                                            0.0,
+                                                                            24.0,
+                                                                            0.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                              color: Colors.white,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                            ),
+                                                                        elevation:
+                                                                            0.0,
+                                                                        borderSide:
+                                                                            BorderSide(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                      ),
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                child: Stack(
-                                                                  children: [
-                                                                    if (containerSaleRecord
-                                                                            ?.status ==
-                                                                        1)
-                                                                      Container(
-                                                                        width: double
-                                                                            .infinity,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).success,
-                                                                          borderRadius:
-                                                                              BorderRadius.only(
-                                                                            bottomLeft:
-                                                                                Radius.circular(10.0),
-                                                                            bottomRight:
-                                                                                Radius.circular(10.0),
-                                                                            topLeft:
-                                                                                Radius.circular(10.0),
-                                                                            topRight:
-                                                                                Radius.circular(10.0),
-                                                                          ),
-                                                                        ),
-                                                                        child: StreamBuilder<
-                                                                            List<LeadsManagementRecord>>(
-                                                                          stream:
-                                                                              queryLeadsManagementRecord(
-                                                                            parent:
-                                                                                FFAppState().outletRef,
-                                                                            queryBuilder: (leadsManagementRecord) =>
-                                                                                leadsManagementRecord.where(
-                                                                              'id',
-                                                                              isEqualTo: containerPartyRecord?.partyLeadRef?.id != '' ? containerPartyRecord?.partyLeadRef?.id : null,
-                                                                            ),
-                                                                            singleRecord:
-                                                                                true,
-                                                                          ),
-                                                                          builder:
-                                                                              (context, snapshot) {
-                                                                            // Customize what your widget looks like when it's loading.
-                                                                            if (!snapshot.hasData) {
-                                                                              return Center(
-                                                                                child: SizedBox(
-                                                                                  width: 30.0,
-                                                                                  height: 30.0,
-                                                                                  child: SpinKitRing(
-                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                    size: 30.0,
-                                                                                  ),
+                                                                if (containerSaleRecord
+                                                                        ?.status ==
+                                                                    3)
+                                                                  Container(
+                                                                    width: double
+                                                                        .infinity,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(10.0),
+                                                                        bottomRight:
+                                                                            Radius.circular(10.0),
+                                                                        topLeft:
+                                                                            Radius.circular(10.0),
+                                                                        topRight:
+                                                                            Radius.circular(10.0),
+                                                                      ),
+                                                                    ),
+                                                                    child:
+                                                                        FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        if ((_model.textController2.text == null || _model.textController2.text == '') &&
+                                                                            (_model.textController3.text == null ||
+                                                                                _model.textController3.text == '')) {
+                                                                          await showDialog(
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (alertDialogContext) {
+                                                                              return WebViewAware(
+                                                                                child: AlertDialog(
+                                                                                  title: Text('Alert !'),
+                                                                                  content: Text('Please Fill Courier Name & Docket Number'),
+                                                                                  actions: [
+                                                                                    TextButton(
+                                                                                      onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                      child: Text('Ok'),
+                                                                                    ),
+                                                                                  ],
                                                                                 ),
                                                                               );
-                                                                            }
-                                                                            List<LeadsManagementRecord>
-                                                                                buttonLeadsManagementRecordList =
-                                                                                snapshot.data!;
-                                                                            final buttonLeadsManagementRecord = buttonLeadsManagementRecordList.isNotEmpty
-                                                                                ? buttonLeadsManagementRecordList.first
-                                                                                : null;
+                                                                            },
+                                                                          );
+                                                                          return;
+                                                                        }
 
-                                                                            return FFButtonWidget(
-                                                                              onPressed: () async {
-                                                                                await showDialog(
-                                                                                  context: context,
-                                                                                  builder: (alertDialogContext) {
-                                                                                    return WebViewAware(
-                                                                                      child: AlertDialog(
-                                                                                        title: Text('Sale Order'),
-                                                                                        content: Text('order confirmed'),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                            child: Text('Ok'),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-                                                                                    );
-                                                                                  },
-                                                                                );
-
-                                                                                await containerSaleRecord!.reference.update({
-                                                                                  ...createSaleRecordData(
-                                                                                    status: 2,
-                                                                                    authorizedBy: salesOrderdetailsUserProfileRecord?.id,
-                                                                                    modifiedDate: functions.timestampToMili(getCurrentTimestamp),
+                                                                        await containerSaleRecord!
+                                                                            .reference
+                                                                            .update({
+                                                                          ...createSaleRecordData(
+                                                                            status:
+                                                                                4,
+                                                                            authorizedBy:
+                                                                                salesOrderdetailsUserProfileRecord?.id,
+                                                                            modifiedDate:
+                                                                                functions.timestampToMili(getCurrentTimestamp),
+                                                                          ),
+                                                                          ...mapToFirestore(
+                                                                            {
+                                                                              'imageOfAdvAmt': FFAppState().imagePathh,
+                                                                            },
+                                                                          ),
+                                                                        });
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (alertDialogContext) {
+                                                                            return WebViewAware(
+                                                                              child: AlertDialog(
+                                                                                title: Text('Sale Order'),
+                                                                                content: Text('order confirmed'),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                    child: Text('Ok'),
                                                                                   ),
-                                                                                  ...mapToFirestore(
-                                                                                    {
-                                                                                      'imageOfAdvAmt': FFAppState().imagePathh,
-                                                                                    },
-                                                                                  ),
-                                                                                });
-
-                                                                                context.pushNamed(SPDashboardWidget.routeName);
-                                                                              },
-                                                                              text: 'Confirmed ',
-                                                                              options: FFButtonOptions(
-                                                                                width: MediaQuery.sizeOf(context).width * 0.12,
-                                                                                height: 40.0,
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                color: FlutterFlowTheme.of(context).success,
-                                                                                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                      fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                      color: Colors.white,
-                                                                                      letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                                    ),
-                                                                                elevation: 0.0,
-                                                                                borderSide: BorderSide(
-                                                                                  color: Colors.transparent,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.circular(8.0),
+                                                                                ],
                                                                               ),
                                                                             );
                                                                           },
-                                                                        ),
-                                                                      ),
-                                                                    if (containerSaleRecord
-                                                                            ?.status ==
-                                                                        2)
-                                                                      Container(
-                                                                        width: double
-                                                                            .infinity,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).info,
-                                                                          borderRadius:
-                                                                              BorderRadius.only(
-                                                                            bottomLeft:
-                                                                                Radius.circular(10.0),
-                                                                            bottomRight:
-                                                                                Radius.circular(10.0),
-                                                                            topLeft:
-                                                                                Radius.circular(10.0),
-                                                                            topRight:
-                                                                                Radius.circular(10.0),
-                                                                          ),
-                                                                        ),
-                                                                        child: StreamBuilder<
-                                                                            List<LeadsManagementRecord>>(
-                                                                          stream:
-                                                                              queryLeadsManagementRecord(
-                                                                            parent:
-                                                                                FFAppState().outletRef,
-                                                                            queryBuilder: (leadsManagementRecord) =>
-                                                                                leadsManagementRecord.where(
-                                                                              'id',
-                                                                              isEqualTo: containerPartyRecord?.partyLeadRef?.id != '' ? containerPartyRecord?.partyLeadRef?.id : null,
+                                                                        );
+
+                                                                        context.pushNamed(
+                                                                            SPDashboardWidget.routeName);
+                                                                      },
+                                                                      text:
+                                                                          'Dispatched ',
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        width: MediaQuery.sizeOf(context).width *
+                                                                            0.12,
+                                                                        height:
+                                                                            40.0,
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            24.0,
+                                                                            0.0,
+                                                                            24.0,
+                                                                            0.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .alternate,
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                             ),
-                                                                            singleRecord:
-                                                                                true,
-                                                                          ),
+                                                                        elevation:
+                                                                            0.0,
+                                                                        borderSide:
+                                                                            BorderSide(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                if (containerSaleRecord
+                                                                        ?.status ==
+                                                                    4)
+                                                                  Container(
+                                                                    width: double
+                                                                        .infinity,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(10.0),
+                                                                        bottomRight:
+                                                                            Radius.circular(10.0),
+                                                                        topLeft:
+                                                                            Radius.circular(10.0),
+                                                                        topRight:
+                                                                            Radius.circular(10.0),
+                                                                      ),
+                                                                    ),
+                                                                    child:
+                                                                        FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
                                                                           builder:
-                                                                              (context, snapshot) {
-                                                                            // Customize what your widget looks like when it's loading.
-                                                                            if (!snapshot.hasData) {
-                                                                              return Center(
-                                                                                child: SizedBox(
-                                                                                  width: 30.0,
-                                                                                  height: 30.0,
-                                                                                  child: SpinKitRing(
-                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                    size: 30.0,
+                                                                              (alertDialogContext) {
+                                                                            return WebViewAware(
+                                                                              child: AlertDialog(
+                                                                                title: Text('Sale Order'),
+                                                                                content: Text('order confirmed'),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                    child: Text('Ok'),
                                                                                   ),
-                                                                                ),
-                                                                              );
-                                                                            }
-                                                                            List<LeadsManagementRecord>
-                                                                                buttonLeadsManagementRecordList =
-                                                                                snapshot.data!;
-                                                                            final buttonLeadsManagementRecord = buttonLeadsManagementRecordList.isNotEmpty
-                                                                                ? buttonLeadsManagementRecordList.first
-                                                                                : null;
-
-                                                                            return FFButtonWidget(
-                                                                              onPressed: () async {
-                                                                                await showDialog(
-                                                                                  context: context,
-                                                                                  builder: (alertDialogContext) {
-                                                                                    return WebViewAware(
-                                                                                      child: AlertDialog(
-                                                                                        title: Text('Sale Order'),
-                                                                                        content: Text('order confirmed'),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                            child: Text('Ok'),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-                                                                                    );
-                                                                                  },
-                                                                                );
-
-                                                                                await containerSaleRecord!.reference.update({
-                                                                                  ...createSaleRecordData(
-                                                                                    status: 3,
-                                                                                    authorizedBy: salesOrderdetailsUserProfileRecord?.id,
-                                                                                    modifiedDate: functions.timestampToMili(getCurrentTimestamp),
-                                                                                    courierName: _model.textController2.text,
-                                                                                    docketNumber: _model.textController3.text,
-                                                                                  ),
-                                                                                  ...mapToFirestore(
-                                                                                    {
-                                                                                      'imageOfAdvAmt': FFAppState().imagePathh,
-                                                                                    },
-                                                                                  ),
-                                                                                });
-
-                                                                                context.pushNamed(SPDashboardWidget.routeName);
-                                                                              },
-                                                                              text: ' ReadyToDispatch',
-                                                                              options: FFButtonOptions(
-                                                                                width: MediaQuery.sizeOf(context).width * 0.12,
-                                                                                height: 40.0,
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                color: FlutterFlowTheme.of(context).info,
-                                                                                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                      fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                      color: Colors.white,
-                                                                                      letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                                    ),
-                                                                                elevation: 0.0,
-                                                                                borderSide: BorderSide(
-                                                                                  color: Colors.transparent,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.circular(8.0),
+                                                                                ],
                                                                               ),
                                                                             );
                                                                           },
-                                                                        ),
-                                                                      ),
-                                                                    if (containerSaleRecord
-                                                                            ?.status ==
-                                                                        3)
-                                                                      Container(
-                                                                        width: double
-                                                                            .infinity,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).alternate,
-                                                                          borderRadius:
-                                                                              BorderRadius.only(
-                                                                            bottomLeft:
-                                                                                Radius.circular(10.0),
-                                                                            bottomRight:
-                                                                                Radius.circular(10.0),
-                                                                            topLeft:
-                                                                                Radius.circular(10.0),
-                                                                            topRight:
-                                                                                Radius.circular(10.0),
+                                                                        );
+
+                                                                        await containerSaleRecord!
+                                                                            .reference
+                                                                            .update({
+                                                                          ...createSaleRecordData(
+                                                                            status:
+                                                                                5,
+                                                                            authorizedBy:
+                                                                                salesOrderdetailsUserProfileRecord?.id,
+                                                                            modifiedDate:
+                                                                                functions.timestampToMili(getCurrentTimestamp),
                                                                           ),
-                                                                        ),
-                                                                        child: StreamBuilder<
-                                                                            List<LeadsManagementRecord>>(
-                                                                          stream:
-                                                                              queryLeadsManagementRecord(
-                                                                            parent:
-                                                                                FFAppState().outletRef,
-                                                                            queryBuilder: (leadsManagementRecord) =>
-                                                                                leadsManagementRecord.where(
-                                                                              'id',
-                                                                              isEqualTo: containerPartyRecord?.partyLeadRef?.id != '' ? containerPartyRecord?.partyLeadRef?.id : null,
+                                                                          ...mapToFirestore(
+                                                                            {
+                                                                              'imageOfAdvAmt': FFAppState().imagePathh,
+                                                                            },
+                                                                          ),
+                                                                        });
+
+                                                                        context.pushNamed(
+                                                                            SPDashboardWidget.routeName);
+                                                                      },
+                                                                      text:
+                                                                          'Delivered ',
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        width: MediaQuery.sizeOf(context).width *
+                                                                            0.12,
+                                                                        height:
+                                                                            40.0,
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            24.0,
+                                                                            0.0,
+                                                                            24.0,
+                                                                            0.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .alternate,
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                             ),
-                                                                            singleRecord:
-                                                                                true,
-                                                                          ),
+                                                                        elevation:
+                                                                            0.0,
+                                                                        borderSide:
+                                                                            BorderSide(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                if (containerSaleRecord
+                                                                        ?.status ==
+                                                                    5)
+                                                                  Container(
+                                                                    width: double
+                                                                        .infinity,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(10.0),
+                                                                        bottomRight:
+                                                                            Radius.circular(10.0),
+                                                                        topLeft:
+                                                                            Radius.circular(10.0),
+                                                                        topRight:
+                                                                            Radius.circular(10.0),
+                                                                      ),
+                                                                    ),
+                                                                    child:
+                                                                        FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
                                                                           builder:
-                                                                              (context, snapshot) {
-                                                                            // Customize what your widget looks like when it's loading.
-                                                                            if (!snapshot.hasData) {
-                                                                              return Center(
-                                                                                child: SizedBox(
-                                                                                  width: 30.0,
-                                                                                  height: 30.0,
-                                                                                  child: SpinKitRing(
-                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                    size: 30.0,
+                                                                              (alertDialogContext) {
+                                                                            return WebViewAware(
+                                                                              child: AlertDialog(
+                                                                                title: Text('Sale Order'),
+                                                                                content: Text('order confirmed'),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                    child: Text('Ok'),
                                                                                   ),
-                                                                                ),
-                                                                              );
-                                                                            }
-                                                                            List<LeadsManagementRecord>
-                                                                                buttonLeadsManagementRecordList =
-                                                                                snapshot.data!;
-                                                                            final buttonLeadsManagementRecord = buttonLeadsManagementRecordList.isNotEmpty
-                                                                                ? buttonLeadsManagementRecordList.first
-                                                                                : null;
-
-                                                                            return FFButtonWidget(
-                                                                              onPressed: () async {
-                                                                                if ((_model.textController2.text == null || _model.textController2.text == '') && (_model.textController3.text == null || _model.textController3.text == '')) {
-                                                                                  await showDialog(
-                                                                                    context: context,
-                                                                                    builder: (alertDialogContext) {
-                                                                                      return WebViewAware(
-                                                                                        child: AlertDialog(
-                                                                                          title: Text('Alert !'),
-                                                                                          content: Text('Please Fill Courier Name & Docket Number'),
-                                                                                          actions: [
-                                                                                            TextButton(
-                                                                                              onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                              child: Text('Ok'),
-                                                                                            ),
-                                                                                          ],
-                                                                                        ),
-                                                                                      );
-                                                                                    },
-                                                                                  );
-                                                                                  return;
-                                                                                }
-
-                                                                                await containerSaleRecord!.reference.update({
-                                                                                  ...createSaleRecordData(
-                                                                                    status: 4,
-                                                                                    authorizedBy: salesOrderdetailsUserProfileRecord?.id,
-                                                                                    modifiedDate: functions.timestampToMili(getCurrentTimestamp),
-                                                                                  ),
-                                                                                  ...mapToFirestore(
-                                                                                    {
-                                                                                      'imageOfAdvAmt': FFAppState().imagePathh,
-                                                                                    },
-                                                                                  ),
-                                                                                });
-                                                                                await showDialog(
-                                                                                  context: context,
-                                                                                  builder: (alertDialogContext) {
-                                                                                    return WebViewAware(
-                                                                                      child: AlertDialog(
-                                                                                        title: Text('Sale Order'),
-                                                                                        content: Text('order confirmed'),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                            child: Text('Ok'),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-                                                                                    );
-                                                                                  },
-                                                                                );
-
-                                                                                context.pushNamed(SPDashboardWidget.routeName);
-                                                                              },
-                                                                              text: 'Dispatched ',
-                                                                              options: FFButtonOptions(
-                                                                                width: MediaQuery.sizeOf(context).width * 0.12,
-                                                                                height: 40.0,
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                color: FlutterFlowTheme.of(context).alternate,
-                                                                                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                      fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                      color: FlutterFlowTheme.of(context).primary,
-                                                                                      letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                                    ),
-                                                                                elevation: 0.0,
-                                                                                borderSide: BorderSide(
-                                                                                  color: Colors.transparent,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.circular(8.0),
+                                                                                ],
                                                                               ),
                                                                             );
                                                                           },
-                                                                        ),
-                                                                      ),
-                                                                    if (containerSaleRecord
-                                                                            ?.status ==
-                                                                        4)
-                                                                      Container(
-                                                                        width: double
-                                                                            .infinity,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).alternate,
-                                                                          borderRadius:
-                                                                              BorderRadius.only(
-                                                                            bottomLeft:
-                                                                                Radius.circular(10.0),
-                                                                            bottomRight:
-                                                                                Radius.circular(10.0),
-                                                                            topLeft:
-                                                                                Radius.circular(10.0),
-                                                                            topRight:
-                                                                                Radius.circular(10.0),
+                                                                        );
+
+                                                                        await containerSaleRecord!
+                                                                            .reference
+                                                                            .update({
+                                                                          ...createSaleRecordData(
+                                                                            status:
+                                                                                5,
+                                                                            authorizedBy:
+                                                                                salesOrderdetailsUserProfileRecord?.id,
+                                                                            modifiedDate:
+                                                                                functions.timestampToMili(getCurrentTimestamp),
                                                                           ),
-                                                                        ),
-                                                                        child: StreamBuilder<
-                                                                            List<LeadsManagementRecord>>(
-                                                                          stream:
-                                                                              queryLeadsManagementRecord(
-                                                                            parent:
-                                                                                FFAppState().outletRef,
-                                                                            queryBuilder: (leadsManagementRecord) =>
-                                                                                leadsManagementRecord.where(
-                                                                              'id',
-                                                                              isEqualTo: containerPartyRecord?.partyLeadRef?.id != '' ? containerPartyRecord?.partyLeadRef?.id : null,
+                                                                          ...mapToFirestore(
+                                                                            {
+                                                                              'imageOfAdvAmt': FFAppState().imagePathh,
+                                                                            },
+                                                                          ),
+                                                                        });
+
+                                                                        context.pushNamed(
+                                                                            SPDashboardWidget.routeName);
+                                                                      },
+                                                                      text:
+                                                                          'Delivered ',
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        width: MediaQuery.sizeOf(context).width *
+                                                                            0.12,
+                                                                        height:
+                                                                            40.0,
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            24.0,
+                                                                            0.0,
+                                                                            24.0,
+                                                                            0.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .alternate,
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                             ),
-                                                                            singleRecord:
-                                                                                true,
-                                                                          ),
-                                                                          builder:
-                                                                              (context, snapshot) {
-                                                                            // Customize what your widget looks like when it's loading.
-                                                                            if (!snapshot.hasData) {
-                                                                              return Center(
-                                                                                child: SizedBox(
-                                                                                  width: 30.0,
-                                                                                  height: 30.0,
-                                                                                  child: SpinKitRing(
-                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                    size: 30.0,
-                                                                                  ),
-                                                                                ),
-                                                                              );
-                                                                            }
-                                                                            List<LeadsManagementRecord>
-                                                                                buttonLeadsManagementRecordList =
-                                                                                snapshot.data!;
-                                                                            final buttonLeadsManagementRecord = buttonLeadsManagementRecordList.isNotEmpty
-                                                                                ? buttonLeadsManagementRecordList.first
-                                                                                : null;
-
-                                                                            return FFButtonWidget(
-                                                                              onPressed: () async {
-                                                                                await showDialog(
-                                                                                  context: context,
-                                                                                  builder: (alertDialogContext) {
-                                                                                    return WebViewAware(
-                                                                                      child: AlertDialog(
-                                                                                        title: Text('Sale Order'),
-                                                                                        content: Text('order confirmed'),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                            child: Text('Ok'),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-                                                                                    );
-                                                                                  },
-                                                                                );
-
-                                                                                await containerSaleRecord!.reference.update({
-                                                                                  ...createSaleRecordData(
-                                                                                    status: 5,
-                                                                                    authorizedBy: salesOrderdetailsUserProfileRecord?.id,
-                                                                                    modifiedDate: functions.timestampToMili(getCurrentTimestamp),
-                                                                                  ),
-                                                                                  ...mapToFirestore(
-                                                                                    {
-                                                                                      'imageOfAdvAmt': FFAppState().imagePathh,
-                                                                                    },
-                                                                                  ),
-                                                                                });
-
-                                                                                context.pushNamed(SPDashboardWidget.routeName);
-                                                                              },
-                                                                              text: 'Delivered ',
-                                                                              options: FFButtonOptions(
-                                                                                width: MediaQuery.sizeOf(context).width * 0.12,
-                                                                                height: 40.0,
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                color: FlutterFlowTheme.of(context).alternate,
-                                                                                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                      fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                      color: FlutterFlowTheme.of(context).primary,
-                                                                                      letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                                    ),
-                                                                                elevation: 0.0,
-                                                                                borderSide: BorderSide(
-                                                                                  color: Colors.transparent,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        ),
-                                                                      ),
-                                                                    if (containerSaleRecord
-                                                                            ?.status ==
-                                                                        5)
-                                                                      Container(
-                                                                        width: double
-                                                                            .infinity,
-                                                                        decoration:
-                                                                            BoxDecoration(
+                                                                        elevation:
+                                                                            0.0,
+                                                                        borderSide:
+                                                                            BorderSide(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
-                                                                          borderRadius:
-                                                                              BorderRadius.only(
-                                                                            bottomLeft:
-                                                                                Radius.circular(10.0),
-                                                                            bottomRight:
-                                                                                Radius.circular(10.0),
-                                                                            topLeft:
-                                                                                Radius.circular(10.0),
-                                                                            topRight:
-                                                                                Radius.circular(10.0),
-                                                                          ),
+                                                                              Colors.transparent,
                                                                         ),
-                                                                        child: StreamBuilder<
-                                                                            List<LeadsManagementRecord>>(
-                                                                          stream:
-                                                                              queryLeadsManagementRecord(
-                                                                            parent:
-                                                                                FFAppState().outletRef,
-                                                                            queryBuilder: (leadsManagementRecord) =>
-                                                                                leadsManagementRecord.where(
-                                                                              'id',
-                                                                              isEqualTo: containerPartyRecord?.partyLeadRef?.id != '' ? containerPartyRecord?.partyLeadRef?.id : null,
-                                                                            ),
-                                                                            singleRecord:
-                                                                                true,
-                                                                          ),
-                                                                          builder:
-                                                                              (context, snapshot) {
-                                                                            // Customize what your widget looks like when it's loading.
-                                                                            if (!snapshot.hasData) {
-                                                                              return Center(
-                                                                                child: SizedBox(
-                                                                                  width: 30.0,
-                                                                                  height: 30.0,
-                                                                                  child: SpinKitRing(
-                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                    size: 30.0,
-                                                                                  ),
-                                                                                ),
-                                                                              );
-                                                                            }
-                                                                            List<LeadsManagementRecord>
-                                                                                buttonLeadsManagementRecordList =
-                                                                                snapshot.data!;
-                                                                            final buttonLeadsManagementRecord = buttonLeadsManagementRecordList.isNotEmpty
-                                                                                ? buttonLeadsManagementRecordList.first
-                                                                                : null;
-
-                                                                            return FFButtonWidget(
-                                                                              onPressed: () async {
-                                                                                await showDialog(
-                                                                                  context: context,
-                                                                                  builder: (alertDialogContext) {
-                                                                                    return WebViewAware(
-                                                                                      child: AlertDialog(
-                                                                                        title: Text('Sale Order'),
-                                                                                        content: Text('order confirmed'),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                            child: Text('Ok'),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-                                                                                    );
-                                                                                  },
-                                                                                );
-
-                                                                                await containerSaleRecord!.reference.update({
-                                                                                  ...createSaleRecordData(
-                                                                                    status: 5,
-                                                                                    authorizedBy: salesOrderdetailsUserProfileRecord?.id,
-                                                                                    modifiedDate: functions.timestampToMili(getCurrentTimestamp),
-                                                                                  ),
-                                                                                  ...mapToFirestore(
-                                                                                    {
-                                                                                      'imageOfAdvAmt': FFAppState().imagePathh,
-                                                                                    },
-                                                                                  ),
-                                                                                });
-
-                                                                                context.pushNamed(SPDashboardWidget.routeName);
-                                                                              },
-                                                                              text: 'Delivered ',
-                                                                              options: FFButtonOptions(
-                                                                                width: MediaQuery.sizeOf(context).width * 0.12,
-                                                                                height: 40.0,
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                color: FlutterFlowTheme.of(context).alternate,
-                                                                                textStyle: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                      fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.normal,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                    ),
-                                                                                elevation: 0.0,
-                                                                                borderSide: BorderSide(
-                                                                                  color: Colors.transparent,
-                                                                                ),
-                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
                                                                       ),
-                                                                  ],
-                                                                ),
-                                                              );
-                                                            },
+                                                                    ),
+                                                                  ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ].divide(SizedBox(
@@ -2467,10 +2350,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         14.0,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                           hintStyle:
                                                               FlutterFlowTheme.of(
@@ -2482,10 +2364,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                             .bodyLargeFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyLargeIsCustom,
                                                                   ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
@@ -2545,26 +2426,24 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                   .of(context)
                                                               .secondaryBackground,
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMediumFamily,
-                                                                  color: Color(
-                                                                      0xFF4DA201),
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
+                                                              color: Color(
+                                                                  0xFF4DA201),
+                                                              fontSize: 14.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumIsCustom,
+                                                            ),
                                                         textAlign:
                                                             TextAlign.end,
                                                         validator: _model
@@ -2595,11 +2474,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     .primary,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         )),
                                                         Row(
@@ -2631,10 +2509,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                           .primary,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleMediumIsCustom,
                                                                     ),
                                                               )),
                                                             ),
@@ -2655,10 +2532,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         .primary,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             )),
                                                           ],
@@ -2726,7 +2602,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                       ),
                                                                   hintText:
                                                                       'Courier Name',
@@ -2739,7 +2615,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                       ),
                                                                   enabledBorder:
                                                                       OutlineInputBorder(
@@ -2813,10 +2689,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                           .secondaryText,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                                 cursorColor:
                                                                     FlutterFlowTheme.of(
@@ -2890,7 +2765,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                         ),
                                                                     hintText:
                                                                         'Docket Number',
@@ -2903,7 +2778,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                         ),
                                                                     enabledBorder:
                                                                         OutlineInputBorder(
@@ -2974,7 +2849,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                   cursorColor:
                                                                       FlutterFlowTheme.of(
@@ -3143,10 +3018,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleMediumIsCustom,
                                                                     ),
                                                             elevation: 3.0,
                                                             borderSide:
@@ -3216,11 +3090,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -3320,7 +3193,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                       fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.w600,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -3340,7 +3213,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                       fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.w600,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                     ),
                                                                               ),
                                                                               Text(
@@ -3349,7 +3222,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                       fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.w600,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -3379,7 +3252,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -3390,7 +3263,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -3401,7 +3274,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -3423,7 +3296,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -3432,7 +3305,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                 style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -3461,7 +3334,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                     ),
                                                                               ),
                                                                               Text(
@@ -3469,7 +3342,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                 style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -3488,7 +3361,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                     ),
                                                                               ),
                                                                               Text(
@@ -3496,7 +3369,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                 style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -3525,7 +3398,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                       ),
                                                                                 ),
                                                                                 Text(
@@ -3533,7 +3406,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -3550,7 +3423,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                       ),
                                                                                 ),
                                                                                 Text(
@@ -3559,7 +3432,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                         fontSize: 12.0,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -3586,7 +3459,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                       ),
                                                                                 ),
                                                                                 Text(
@@ -3594,7 +3467,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -3611,7 +3484,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                       ),
                                                                                 ),
                                                                                 Text(
@@ -3620,7 +3493,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                         fontSize: 12.0,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -3647,7 +3520,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                       ),
                                                                                 ),
                                                                                 Text(
@@ -3655,7 +3528,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -3672,7 +3545,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                       ),
                                                                                 ),
                                                                                 Text(
@@ -3681,7 +3554,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                         fontSize: 12.0,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -3717,7 +3590,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                           color: FlutterFlowTheme.of(context).info,
                                                                                           fontSize: 15.0,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -3728,7 +3601,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                     style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -3744,7 +3617,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                                           color: FlutterFlowTheme.of(context).primary,
                                                                                           fontSize: 17.0,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -3803,9 +3676,9 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                           validateFileFormat(
                                                               m.storagePath,
                                                               context))) {
-                                                    safeSetState(() =>
-                                                        _model.isDataUploading =
-                                                            true);
+                                                    safeSetState(() => _model
+                                                            .isDataUploading_uploadDataHi2 =
+                                                        true);
                                                     var selectedUploadedFiles =
                                                         <FFUploadedFile>[];
 
@@ -3848,7 +3721,7 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                               .map((u) => u!)
                                                               .toList();
                                                     } finally {
-                                                      _model.isDataUploading =
+                                                      _model.isDataUploading_uploadDataHi2 =
                                                           false;
                                                     }
                                                     if (selectedUploadedFiles
@@ -3859,10 +3732,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                             selectedMedia
                                                                 .length) {
                                                       safeSetState(() {
-                                                        _model.uploadedLocalFile =
+                                                        _model.uploadedLocalFile_uploadDataHi2 =
                                                             selectedUploadedFiles
                                                                 .first;
-                                                        _model.uploadedFileUrl =
+                                                        _model.uploadedFileUrl_uploadDataHi2 =
                                                             downloadUrls.first;
                                                       });
                                                     } else {
@@ -3872,7 +3745,8 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                   }
 
                                                   FFAppState().addToImagePathh(
-                                                      _model.uploadedFileUrl);
+                                                      _model
+                                                          .uploadedFileUrl_uploadDataHi2);
                                                   safeSetState(() {});
                                                 },
                                                 child: Text(
@@ -3890,12 +3764,10 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                     context)
                                                                 .info,
                                                         letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMediumFamily),
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleMediumIsCustom,
                                                       ),
                                                 ),
                                               ),

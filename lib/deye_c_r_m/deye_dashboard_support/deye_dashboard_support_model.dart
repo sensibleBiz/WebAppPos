@@ -1,10 +1,13 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/send_email_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -12,9 +15,9 @@ import '/flutter_flow/form_field_controller.dart';
 import '/pages/components/call_details/call_details_widget.dart';
 import '/pages/components/custom_date_range/custom_date_range_widget.dart';
 import '/pages/components/list_view_msg/list_view_msg_widget.dart';
-import '/pages/components/update_stage_dropdown_copy/update_stage_dropdown_copy_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'deye_dashboard_support_widget.dart' show DeyeDashboardSupportWidget;
@@ -50,6 +53,8 @@ class DeyeDashboardSupportModel
   void updateSelectedZoneAtIndex(int index, Function(String) updateFn) =>
       selectedZone[index] = updateFn(selectedZone[index]);
 
+  bool showToday = false;
+
   ///  State fields for stateful widgets in this page.
 
   // Model for DeyeHeader component.
@@ -57,6 +62,9 @@ class DeyeDashboardSupportModel
   // State field(s) for DropDownZoneAll widget.
   String? dropDownZoneAllValue;
   FormFieldController<String>? dropDownZoneAllValueController;
+  // State field(s) for DropDownRemarkAll widget.
+  String? dropDownRemarkAllValue;
+  FormFieldController<String>? dropDownRemarkAllValueController;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -64,8 +72,12 @@ class DeyeDashboardSupportModel
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in Text widget.
-  String? stage;
+  // Stores action output result for [Custom Action - genExcelForComplaintReport] action in Icon widget.
+  String? base64Link232;
+  // Stores action output result for [Backend Call - API (sendMail)] action in Icon widget.
+  ApiCallResponse? apiResult88g;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController;
   // Model for DeyeMenu component.
   late DeyeMenuModel deyeMenuModel;
 
@@ -83,4 +95,7 @@ class DeyeDashboardSupportModel
 
     deyeMenuModel.dispose();
   }
+
+  /// Additional helper methods.
+  String? get radioButtonValue => radioButtonValueController?.value;
 }

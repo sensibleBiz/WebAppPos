@@ -138,8 +138,6 @@ export '/pages/state/state_widget.dart' show StateWidget;
 export '/pages/city/city_widget.dart' show CityWidget;
 export '/pages/lead_stages_master/lead_stages_master_widget.dart'
     show LeadStagesMasterWidget;
-export '/pages/dealer_assignment_copy/dealer_assignment_copy_widget.dart'
-    show DealerAssignmentCopyWidget;
 export '/pages/lead_status_master/lead_status_master_widget.dart'
     show LeadStatusMasterWidget;
 export '/pages/lead_stages_master_new/lead_stages_master_new_widget.dart'
@@ -181,44 +179,34 @@ export '/deye_c_r_m/deye_add_complaints/deye_add_complaints_widget.dart'
 export '/pages/zone/zone_widget.dart' show ZoneWidget;
 export '/pages/team_tree_master/team_tree_master_widget.dart'
     show TeamTreeMasterWidget;
-export '/pages/c_r_m_dashboard/c_r_m_dashboard_widget.dart'
-    show CRMDashboardWidget;
 export '/pages/customer/c_complaint_report/c_complaint_report_widget.dart'
     show CComplaintReportWidget;
-export '/pages/customer/c_complaint_details/c_complaint_details_widget.dart'
-    show CComplaintDetailsWidget;
-export '/pages/c_r_m_dashboard_copy/c_r_m_dashboard_copy_widget.dart'
-    show CRMDashboardCopyWidget;
-export '/pages/c_r_m_dashboard_n_e_w/c_r_m_dashboard_n_e_w_widget.dart'
-    show CRMDashboardNEWWidget;
+export '/deye_c_r_m/deye_complaint_detail_view/deye_complaint_detail_view_widget.dart'
+    show DeyeComplaintDetailViewWidget;
+export '/pages/leads_dashboard_new/leads_dashboard_new_widget.dart'
+    show LeadsDashboardNewWidget;
 export '/pages/lead_report_monthly_c_r_m/lead_report_monthly_c_r_m_widget.dart'
     show LeadReportMonthlyCRMWidget;
 export '/pages/lead_employee_report_final_c_r_m/lead_employee_report_final_c_r_m_widget.dart'
     show LeadEmployeeReportFinalCRMWidget;
 export '/deye_c_r_m/deye_dashboard2/deye_dashboard2_widget.dart'
     show DeyeDashboard2Widget;
-export '/deye_c_r_m/register_complaint/register_complaint_widget.dart'
-    show RegisterComplaintWidget;
-export '/deye_c_r_m/deye_dashboard_old/deye_dashboard_old_widget.dart'
-    show DeyeDashboardOldWidget;
+export '/deye_c_r_m/register_complaint1/register_complaint1_widget.dart'
+    show RegisterComplaint1Widget;
 export '/deye_c_r_m/deye_thankyou_page/deye_thankyou_page_widget.dart'
     show DeyeThankyouPageWidget;
 export '/deye_c_r_m/deye_team_tree/deye_team_tree_widget.dart'
     show DeyeTeamTreeWidget;
-export '/deye_c_r_m/deye_complaint_details/deye_complaint_details_widget.dart'
-    show DeyeComplaintDetailsWidget;
-export '/deye_c_r_m/deye_category_master/deye_category_master_widget.dart'
-    show DeyeCategoryMasterWidget;
-export '/deye_c_r_m/deye_product_master/deye_product_master_widget.dart'
-    show DeyeProductMasterWidget;
+export '/deye_c_r_m/deye_complaint_edit_details/deye_complaint_edit_details_widget.dart'
+    show DeyeComplaintEditDetailsWidget;
 export '/deye_c_r_m/deye_lead_stages_master/deye_lead_stages_master_widget.dart'
     show DeyeLeadStagesMasterWidget;
 export '/deye_c_r_m/deye_lead_status_master/deye_lead_status_master_widget.dart'
     show DeyeLeadStatusMasterWidget;
 export '/deye_c_r_m/deye_complaint_report/deye_complaint_report_widget.dart'
     show DeyeComplaintReportWidget;
-export '/deye_c_r_m/deye_lead_employee_report/deye_lead_employee_report_widget.dart'
-    show DeyeLeadEmployeeReportWidget;
+export '/deye_c_r_m/deye_employee_report/deye_employee_report_widget.dart'
+    show DeyeEmployeeReportWidget;
 export '/deye_c_r_m/deye_city_wise_report/deye_city_wise_report_widget.dart'
     show DeyeCityWiseReportWidget;
 export '/deye_c_r_m/deye_dashboard_support/deye_dashboard_support_widget.dart'
@@ -227,8 +215,64 @@ export '/deye_c_r_m/deye_category/deye_category_widget.dart'
     show DeyeCategoryWidget;
 export '/deye_c_r_m/deye_products/deye_products_widget.dart'
     show DeyeProductsWidget;
-export '/deye_c_r_m/deye_dashboard_e_x_p_a_n_d/deye_dashboard_e_x_p_a_n_d_widget.dart'
-    show DeyeDashboardEXPANDWidget;
+export '/deye_c_r_m/deye_dashboard/deye_dashboard_widget.dart'
+    show DeyeDashboardWidget;
 export '/deye_c_r_m/deye_edit_profile_admin/deye_edit_profile_admin_widget.dart'
     show DeyeEditProfileAdminWidget;
 export '/navigation_test/navigation_test_widget.dart' show NavigationTestWidget;
+export '/check_in_status/check_in_status_widget.dart' show CheckInStatusWidget;
+export '/deye_c_r_m/deye_employee_detail_report/deye_employee_detail_report_widget.dart'
+    show DeyeEmployeeDetailReportWidget;
+export '/pages/lead_log_new/lead_log_new_widget.dart' show LeadLogNewWidget;
+export '/deye_c_r_m/deye_feedback_form2/deye_feedback_form2_widget.dart'
+    show DeyeFeedbackForm2Widget;
+export '/deye_c_r_m/deye_admin_feedback/deye_admin_feedback_widget.dart'
+    show DeyeAdminFeedbackWidget;
+export '/deye_c_r_m/deye_user_account/deye_user_account_widget.dart'
+    show DeyeUserAccountWidget;
+export '/deye_c_r_m/deye_team_tree2/deye_team_tree2_widget.dart'
+    show DeyeTeamTree2Widget;
+export '/deye_c_r_m/deye_team_tree3/deye_team_tree3_widget.dart'
+    show DeyeTeamTree3Widget;
+export '/deye_c_r_m/deye_state_wise_report/deye_state_wise_report_widget.dart'
+    show DeyeStateWiseReportWidget;
+export '/deye_c_r_m/deye_statewise_detail_report/deye_statewise_detail_report_widget.dart'
+    show DeyeStatewiseDetailReportWidget;
+export '/deye_c_r_m/deye_add_complaints_copy/deye_add_complaints_copy_widget.dart'
+    show DeyeAddComplaintsCopyWidget;
+export '/deye_c_r_m/deye_dashboard_copy/deye_dashboard_copy_widget.dart'
+    show DeyeDashboardCopyWidget;
+export '/deye_c_r_m/deye_new_complaint_edit/deye_new_complaint_edit_widget.dart'
+    show DeyeNewComplaintEditWidget;
+export '/pages/ringing_leads/ringing_leads_widget.dart' show RingingLeadsWidget;
+export '/pages/add_new_dealer/add_new_dealer_widget.dart'
+    show AddNewDealerWidget;
+export '/pages/edit_new_dealer/edit_new_dealer_widget.dart'
+    show EditNewDealerWidget;
+export '/deye_c_r_m/dealer_dashboard/dealer_dashboard_widget.dart'
+    show DealerDashboardWidget;
+export '/pages/lead_summary_copy/lead_summary_copy_widget.dart'
+    show LeadSummaryCopyWidget;
+export '/deye_c_r_m/dealer_onboard/dealer_onboard_widget.dart'
+    show DealerOnboardWidget;
+export '/deye_c_r_m/dealer_dashboard1/dealer_dashboard1_widget.dart'
+    show DealerDashboard1Widget;
+export '/deye_attendance_admin/deye_attendance_admin_widget.dart'
+    show DeyeAttendanceAdminWidget;
+export '/deye_leave_admin/deye_leave_admin_widget.dart'
+    show DeyeLeaveAdminWidget;
+export '/pages/users_all_activities/users_all_activities_widget.dart'
+    show UsersAllActivitiesWidget;
+export '/pages/users_demo_activity/users_demo_activity_widget.dart'
+    show UsersDemoActivityWidget;
+export '/attendance_admin/attendance_admin_widget.dart'
+    show AttendanceAdminWidget;
+export '/deye_c_r_m/register_complaint_demo/register_complaint_demo_widget.dart'
+    show RegisterComplaintDemoWidget;
+export '/deye_c_r_m/register_complaint/register_complaint_widget.dart'
+    show RegisterComplaintWidget;
+export '/deye_c_r_m/delete_lead_report/delete_lead_report_widget.dart'
+    show DeleteLeadReportWidget;
+export '/dashboard_graph/dashboard_graph_widget.dart' show DashboardGraphWidget;
+export '/deye_c_r_m/all_user_account/all_user_account_widget.dart'
+    show AllUserAccountWidget;

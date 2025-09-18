@@ -25,6 +25,10 @@ import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
 class DeyeAddComplaintsModel extends FlutterFlowModel<DeyeAddComplaintsWidget> {
+  ///  Local state fields for this page.
+
+  String selectedZone = 'NA';
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -75,7 +79,7 @@ class DeyeAddComplaintsModel extends FlutterFlowModel<DeyeAddComplaintsWidget> {
   // State field(s) for DropDownCities widget.
   String? dropDownCitiesValue;
   FormFieldController<String>? dropDownCitiesValueController;
-  // Stores action output result for [Custom Action - genarateCityCode] action in Button widget.
+  // Stores action output result for [Custom Action - genarateCityListCode] action in Button widget.
   int? len;
   // State field(s) for area widget.
   FocusNode? areaFocusNode;

@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -121,10 +122,9 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .headlineLargeFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineLargeFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .headlineLargeIsCustom,
                                     ),
                               ),
                             ],
@@ -148,10 +148,9 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                             .bodySmallFamily,
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodySmallIsCustom,
                                       ),
                                 ),
                               ),
@@ -196,10 +195,9 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .titleSmallFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleSmallIsCustom,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -248,10 +246,9 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleMediumIsCustom,
                                   ),
                               textAlign: TextAlign.start,
                               validator: _model
@@ -278,10 +275,9 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                             .bodySmallFamily,
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodySmallIsCustom,
                                       ),
                                 ),
                               ),
@@ -328,10 +324,9 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .titleSmallFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleSmallIsCustom,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -380,10 +375,9 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleMediumIsCustom,
                                   ),
                               textAlign: TextAlign.start,
                               validator: _model
@@ -410,10 +404,9 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                             .bodySmallFamily,
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodySmallIsCustom,
                                       ),
                                 ),
                               ),
@@ -460,10 +453,9 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .titleSmallFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleSmallIsCustom,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -512,10 +504,9 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleMediumIsCustom,
                                   ),
                               textAlign: TextAlign.start,
                               validator: _model
@@ -564,11 +555,15 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                       safeSetState(() =>
                                           _model.checkboxValue = newValue!);
                                     },
-                                    side: BorderSide(
-                                      width: 2,
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                    ),
+                                    side: (FlutterFlowTheme.of(context)
+                                                .alternate !=
+                                            null)
+                                        ? BorderSide(
+                                            width: 2,
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate!,
+                                          )
+                                        : null,
                                     activeColor:
                                         FlutterFlowTheme.of(context).primary,
                                     checkColor:
@@ -620,12 +615,9 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleMediumFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .titleMediumIsCustom,
                                             ),
                                       ),
                                     ],
@@ -654,8 +646,8 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
 
                                     await containerLeadStagesRecord.reference
                                         .update(createLeadStagesRecordData(
-                                      name: functions.toCapitalLetter(_model
-                                          .textTaxNameTextController.text),
+                                      name:
+                                          _model.textTaxNameTextController.text,
                                       display: functions.toCapitalLetter(_model
                                           .textTaxPercentageNumberTextController
                                           .text),
@@ -733,11 +725,10 @@ class _LeadStageUpdateWidgetState extends State<LeadStageUpdateWidget> {
                                                         .primaryBtnText,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(FlutterFlowTheme
-                                                            .of(context)
-                                                        .headlineMediumFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineMediumIsCustom,
                                               ),
                                         ),
                                       ],

@@ -181,12 +181,10 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                       context)
                                                                   .headlineLargeFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                               ),
                                             ],
@@ -355,7 +353,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                   style: FlutterFlowTheme.of(context).displayMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).displayMediumFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displayMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).displayMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -385,7 +383,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                           style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -393,7 +391,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                           style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ],
@@ -405,7 +403,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                   style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -435,7 +433,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -443,7 +441,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                           style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ],
@@ -455,7 +453,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                   style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                                 Padding(
@@ -478,7 +476,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                                       fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                       color: FlutterFlowTheme.of(context).primary,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                               Text(
@@ -487,7 +485,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                                       fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                       color: FlutterFlowTheme.of(context).primary,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                             ],
@@ -500,7 +498,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                               color: FlutterFlowTheme.of(context).primary,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ],
@@ -573,7 +571,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                     style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -586,7 +584,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                         fontSize: 21.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.w600,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -617,7 +615,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -749,7 +747,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                         style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -765,7 +763,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                                 fontSize: 22.0,
                                                                                                 letterSpacing: 0.0,
                                                                                                 fontWeight: FontWeight.normal,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displaySmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).displaySmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                         Text(
@@ -776,7 +774,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                                 fontSize: 24.0,
                                                                                                 letterSpacing: 0.0,
                                                                                                 fontWeight: FontWeight.normal,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displaySmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).displaySmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ],
@@ -790,7 +788,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                               color: FlutterFlowTheme.of(context).primary,
                                                                                               fontSize: 20.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -858,7 +856,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                           style: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -868,7 +866,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ],

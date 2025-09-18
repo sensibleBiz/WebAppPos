@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -91,9 +92,8 @@ class _PopupFailedWidgetState extends State<PopupFailedWidget> {
                                   color: Color(0xFF41000B),
                                   fontSize: 26.0,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .displayLargeFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .displayLargeIsCustom,
                                 ),
                       ),
                     ),
@@ -105,9 +105,8 @@ class _PopupFailedWidgetState extends State<PopupFailedWidget> {
                             color: Color(0xFF41000B),
                             fontSize: 40.0,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context)
-                                    .displayLargeFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .displayLargeIsCustom,
                           ),
                     ),
                   ],

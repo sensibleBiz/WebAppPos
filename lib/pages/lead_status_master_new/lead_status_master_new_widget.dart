@@ -183,12 +183,10 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                       context)
                                                                   .headlineLargeFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                               ),
                                             ],
@@ -258,12 +256,10 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                   context)
                                                               .lineColor,
                                                       letterSpacing: 0.0,
-                                                      useGoogleFonts: GoogleFonts
-                                                              .asMap()
-                                                          .containsKey(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineMediumFamily),
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMediumIsCustom,
                                                     ),
                                             elevation: 2.0,
                                             borderSide: BorderSide(
@@ -343,11 +339,10 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                     .lineColor,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -401,10 +396,9 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                         .lineColor,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -448,11 +442,10 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                     .lineColor,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -494,11 +487,10 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                     .lineColor,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -540,11 +532,10 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                     .lineColor,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -587,11 +578,10 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                 fontSize: 17.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -689,7 +679,7 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                                   style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -721,7 +711,7 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                                             style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ],
@@ -753,7 +743,7 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                                     style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -888,10 +878,12 @@ class _LeadStatusMasterNewWidgetState extends State<LeadStatusMasterNewWidget> {
                                                                                           );
                                                                                         }
                                                                                       },
-                                                                                      side: BorderSide(
-                                                                                        width: 2,
-                                                                                        color: FlutterFlowTheme.of(context).alternate,
-                                                                                      ),
+                                                                                      side: (FlutterFlowTheme.of(context).alternate != null)
+                                                                                          ? BorderSide(
+                                                                                              width: 2,
+                                                                                              color: FlutterFlowTheme.of(context).alternate!,
+                                                                                            )
+                                                                                          : null,
                                                                                       activeColor: FlutterFlowTheme.of(context).primary,
                                                                                       checkColor: FlutterFlowTheme.of(context).info,
                                                                                     ),

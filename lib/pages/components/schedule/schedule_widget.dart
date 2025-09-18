@@ -112,9 +112,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .headlineLargeFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineLargeFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .headlineLargeIsCustom,
                               ),
                     ),
                   ),
@@ -158,9 +157,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .labelLargeFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .labelLargeFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .labelLargeIsCustom,
                                 ),
                             hintText: 'Select Type',
                             icon: Icon(
@@ -192,8 +190,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ),
@@ -254,10 +252,9 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                                                               .labelMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             selectedTextStyle:
                                                                 FlutterFlowTheme.of(
@@ -269,10 +266,9 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                                                               .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                             buttonPosition:
                                                                 RadioButtonPosition
@@ -321,8 +317,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ),
@@ -395,10 +391,9 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineSmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .headlineSmallIsCustom,
                                     ),
                                 elevation: 2.0,
                                 borderSide: BorderSide(
@@ -427,9 +422,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                         ),
                       ),
@@ -469,11 +463,10 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .labelLargeFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLargeFamily),
                                       lineHeight: 2.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelLargeIsCustom,
                                     ),
                               ),
                             ],
@@ -491,9 +484,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                       ),
                     ],
@@ -532,11 +524,10 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .labelLargeFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLargeFamily),
                                       lineHeight: 1.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelLargeIsCustom,
                                     ),
                               ),
                             ],
@@ -559,9 +550,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                         ),
                       ),
@@ -591,10 +581,9 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .bodySmallFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodySmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodySmallIsCustom,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -632,9 +621,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .labelLargeFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .labelLargeFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .labelLargeIsCustom,
                                 ),
                             validator: _model
                                 .textFieldUsernameTextControllerValidator
@@ -658,9 +646,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                         ),
                       ),
@@ -692,9 +679,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .labelLargeFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .labelLargeFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .labelLargeIsCustom,
                                 ),
                             hintText: 'Select Priority',
                             icon: Icon(
@@ -730,9 +716,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                         ),
                       ),
@@ -802,10 +787,9 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .labelLargeFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLargeFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelLargeIsCustom,
                                     ),
                                 hintText: 'Select Executive',
                                 icon: Icon(
@@ -843,9 +827,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                         ),
                       ),
@@ -867,9 +850,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodySmallFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodySmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodySmallIsCustom,
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -907,9 +889,8 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                           maxLines: 2,
                           validator: _model.textFieldDecsTextControllerValidator
@@ -980,10 +961,9 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                         color: Colors.white,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleSmallIsCustom,
                                       ),
                                   elevation: 2.0,
                                   borderSide: BorderSide(
@@ -1311,10 +1291,9 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                                           color: Colors.white,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(

@@ -17,10 +17,10 @@ import 'package:webviewx_plus/webviewx_plus.dart';
 class ImageModel extends FlutterFlowModel<ImageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadDataIui = false;
+  FFUploadedFile uploadedLocalFile_uploadDataIui =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_uploadDataIui = '';
 
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   CategoryMasterRecord? imageDoc;

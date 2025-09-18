@@ -1,11 +1,13 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/logout_confirm/logout_confirm_widget.dart';
 import 'dart:ui';
 import '/index.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -101,50 +103,54 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Container(
-                          width: double.infinity,
-                          height: 45.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(3.0),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 45.0,
-                                height: 45.0,
-                                decoration: BoxDecoration(),
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Icon(
-                                    Icons.person_2,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor5,
-                                    size: 18.0,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                'User Profile',
-                                textAlign: TextAlign.end,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelLarge
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .labelLargeFamily,
-                                      color:
-                                          FlutterFlowTheme.of(context).text2nd,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLargeFamily),
+                        if (FFAppState().hide)
+                          Container(
+                            width: double.infinity,
+                            height: 45.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(3.0),
+                            ),
+                            child: Visibility(
+                              visible: FFAppState().hide,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 45.0,
+                                    height: 45.0,
+                                    decoration: BoxDecoration(),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Icon(
+                                        Icons.person_2,
+                                        color: FlutterFlowTheme.of(context)
+                                            .customColor5,
+                                        size: 18.0,
+                                      ),
                                     ),
+                                  ),
+                                  Text(
+                                    'User Profile',
+                                    textAlign: TextAlign.end,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .text2nd,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .labelLargeIsCustom,
+                                        ),
+                                  ),
+                                ].divide(SizedBox(width: 5.0)),
                               ),
-                            ].divide(SizedBox(width: 5.0)),
+                            ),
                           ),
-                        ),
                         InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -159,8 +165,8 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                               context.pushNamed(
                                   DeyeDashboardSupportWidget.routeName);
                             } else {
-                              context.pushNamed(
-                                  DeyeDashboardEXPANDWidget.routeName);
+                              context
+                                  .pushNamed(DeyeDashboardCopyWidget.routeName);
                             }
                           },
                           child: Container(
@@ -198,10 +204,9 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                         color: FlutterFlowTheme.of(context)
                                             .text2nd,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLargeFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelLargeIsCustom,
                                       ),
                                 ),
                               ].divide(SizedBox(width: 5.0)),
@@ -254,12 +259,9 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .text2nd,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelLargeFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .labelLargeIsCustom,
                                             ),
                                       ),
                                     ].divide(SizedBox(width: 5.0)),
@@ -334,12 +336,10 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                                               .primaryBtnText,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmallIsCustom,
                                                         ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
@@ -401,12 +401,141 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                                               .primaryBtnText,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmallIsCustom,
+                                                        ),
+                                              ),
+                                            ].divide(SizedBox(width: 5.0)),
+                                          ),
+                                        ),
+                                      ),
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context
+                                              .pushNamed(StateWidget.routeName);
+                                        },
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 45.0,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFF272E3E),
+                                            borderRadius:
+                                                BorderRadius.circular(3.0),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                width: 45.0,
+                                                height: 45.0,
+                                                decoration: BoxDecoration(),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: FaIcon(
+                                                    FontAwesomeIcons
+                                                        .fortAwesome,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .customColor5,
+                                                    size: 18.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                'State',
+                                                textAlign: TextAlign.end,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineSmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBtnText,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmallIsCustom,
+                                                        ),
+                                              ),
+                                            ].divide(SizedBox(width: 5.0)),
+                                          ),
+                                        ),
+                                      ),
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context
+                                              .pushNamed(CityWidget.routeName);
+                                        },
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 45.0,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFF272E3E),
+                                            borderRadius:
+                                                BorderRadius.circular(3.0),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                width: 45.0,
+                                                height: 45.0,
+                                                decoration: BoxDecoration(),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Icon(
+                                                    Icons.location_city,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .customColor5,
+                                                    size: 18.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                'CIty',
+                                                textAlign: TextAlign.end,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineSmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBtnText,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmallIsCustom,
                                                         ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
@@ -476,12 +605,10 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                                               .primaryBtnText,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmallIsCustom,
                                                         ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
@@ -551,18 +678,91 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                                               .primaryBtnText,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmallIsCustom,
                                                         ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
                                           ),
                                         ),
                                       ),
+                                      if (FFAppState().role == 'SuperAdmin')
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              DeyeUserAccountWidget.routeName,
+                                              queryParameters: {
+                                                'outletId': serializeParam(
+                                                  FFAppState().outletRef,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child: Container(
+                                            width: double.infinity,
+                                            height: 45.0,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF272E3E),
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  width: 45.0,
+                                                  height: 45.0,
+                                                  decoration: BoxDecoration(),
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Icon(
+                                                      Icons.person_sharp,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .customColor5,
+                                                      size: 18.0,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'User Account',
+                                                  textAlign: TextAlign.end,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .headlineSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmallFamily,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBtnText,
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineSmallIsCustom,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 5.0)),
+                                            ),
+                                          ),
+                                        ),
                                       InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -570,7 +770,7 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed(
-                                              DeyeTeamTreeWidget.routeName);
+                                              DeyeTeamTree3Widget.routeName);
                                         },
                                         child: Container(
                                           width: double.infinity,
@@ -618,12 +818,10 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                                               .primaryBtnText,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmallIsCustom,
                                                         ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
@@ -690,10 +888,9 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                             color: FlutterFlowTheme.of(context)
                                                 .text2nd,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLargeFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelLargeIsCustom,
                                           ),
                                     ),
                                   ].divide(SizedBox(width: 5.0)),
@@ -715,6 +912,17 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                         context.pushNamed(
                                             DeyeComplaintReportWidget
                                                 .routeName);
+                                      },
+                                      onLongPress: () async {
+                                        context.pushNamed(
+                                          DeyeAdminFeedbackWidget.routeName,
+                                          queryParameters: {
+                                            'outletId': serializeParam(
+                                              FFAppState().outletRef,
+                                              ParamType.DocumentReference,
+                                            ),
+                                          }.withoutNulls,
+                                        );
                                       },
                                       child: Container(
                                         width: double.infinity,
@@ -762,12 +970,10 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                                                 .primaryBtnText,
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmallFamily),
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineSmallIsCustom,
                                                       ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -781,7 +987,8 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed(
-                                            DeyeCityWiseReportWidget.routeName);
+                                            DeyeStateWiseReportWidget
+                                                .routeName);
                                       },
                                       child: Container(
                                         width: double.infinity,
@@ -813,7 +1020,7 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                               ),
                                             ),
                                             Text(
-                                              'CIty Wise Report',
+                                              'State Wise Report',
                                               textAlign: TextAlign.end,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -829,12 +1036,10 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                                                 .primaryBtnText,
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmallFamily),
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineSmallIsCustom,
                                                       ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -848,8 +1053,7 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed(
-                                            DeyeLeadEmployeeReportWidget
-                                                .routeName);
+                                            DeyeEmployeeReportWidget.routeName);
                                       },
                                       child: Container(
                                         width: double.infinity,
@@ -897,12 +1101,10 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                                                 .primaryBtnText,
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmallFamily),
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineSmallIsCustom,
                                                       ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -926,6 +1128,195 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                             ),
                           ),
                         ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(
+                              DeyeAdminFeedbackWidget.routeName,
+                              queryParameters: {
+                                'outletId': serializeParam(
+                                  FFAppState().outletRef,
+                                  ParamType.DocumentReference,
+                                ),
+                              }.withoutNulls,
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 45.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(3.0),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 45.0,
+                                  height: 45.0,
+                                  decoration: BoxDecoration(),
+                                  child: Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Icon(
+                                      Icons.star_rate,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor5,
+                                      size: 18.0,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  'Feedback Report',
+                                  textAlign: TextAlign.end,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelLargeFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .text2nd,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelLargeIsCustom,
+                                      ),
+                                ),
+                              ].divide(SizedBox(width: 5.0)),
+                            ),
+                          ),
+                        ),
+                        if ((FFAppState()
+                                    .loggedInUserPermisions
+                                    .elementAtOrNull(16)
+                                    ?.value ==
+                                3) ||
+                            (FFAppState().role == 'SuperAdmin') ||
+                            (FFAppState()
+                                    .loggedInUserPermisions
+                                    .elementAtOrNull(14)
+                                    ?.value ==
+                                4))
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                  DeyeAttendanceAdminWidget.routeName);
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 45.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 45.0,
+                                    height: 45.0,
+                                    decoration: BoxDecoration(),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Icon(
+                                        Icons.pan_tool,
+                                        color: FlutterFlowTheme.of(context)
+                                            .customColor5,
+                                        size: 18.0,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Attendance Admin',
+                                    textAlign: TextAlign.end,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .text2nd,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .labelLargeIsCustom,
+                                        ),
+                                  ),
+                                ].divide(SizedBox(width: 5.0)),
+                              ),
+                            ),
+                          ),
+                        if ((FFAppState()
+                                    .loggedInUserPermisions
+                                    .elementAtOrNull(16)
+                                    ?.value ==
+                                3) ||
+                            (FFAppState().role == 'SuperAdmin') ||
+                            (FFAppState()
+                                    .loggedInUserPermisions
+                                    .elementAtOrNull(14)
+                                    ?.value ==
+                                4))
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(DeyeLeaveAdminWidget.routeName);
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 45.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 45.0,
+                                    height: 45.0,
+                                    decoration: BoxDecoration(),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Icon(
+                                        Icons.event_busy_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .customColor5,
+                                        size: 18.0,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Leave Admin',
+                                    textAlign: TextAlign.end,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .text2nd,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .labelLargeIsCustom,
+                                        ),
+                                  ),
+                                ].divide(SizedBox(width: 5.0)),
+                              ),
+                            ),
+                          ),
                         Builder(
                           builder: (context) => InkWell(
                             splashColor: Colors.transparent,
@@ -985,15 +1376,69 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .text2nd,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLargeFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .labelLargeIsCustom,
                                         ),
                                   ),
                                 ].divide(SizedBox(width: 5.0)),
                               ),
                             ),
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: 45.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(3.0),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 45.0,
+                                height: 45.0,
+                                decoration: BoxDecoration(),
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Icon(
+                                    Icons.event_busy_sharp,
+                                    color: FlutterFlowTheme.of(context)
+                                        .customColor5,
+                                    size: 18.0,
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed(
+                                      DeleteLeadReportWidget.routeName);
+                                },
+                                child: Text(
+                                  'Delet',
+                                  textAlign: TextAlign.end,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelLargeFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelLargeIsCustom,
+                                      ),
+                                ),
+                              ),
+                            ].divide(SizedBox(width: 5.0)),
                           ),
                         ),
                       ].divide(SizedBox(height: 1.0)),

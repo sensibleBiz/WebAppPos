@@ -16,10 +16,10 @@ import 'package:webviewx_plus/webviewx_plus.dart';
 class UploadfilegetLinkModel extends FlutterFlowModel<UploadfilegetLinkWidget> {
   ///  State fields for stateful widgets in this page.
 
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadData48g = false;
+  FFUploadedFile uploadedLocalFile_uploadData48g =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_uploadData48g = '';
 
   @override
   void initState(BuildContext context) {}

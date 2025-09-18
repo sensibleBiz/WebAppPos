@@ -48,7 +48,7 @@ class _PopupWarningWidgetState extends State<PopupWarningWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(1.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: 500.0,
         height: 200.0,
@@ -102,9 +102,8 @@ class _PopupWarningWidgetState extends State<PopupWarningWidget> {
                                   color: Color(0xFF41000B),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .displayLargeFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .displayLargeIsCustom,
                                 ),
                           ),
                         ),
@@ -118,12 +117,10 @@ class _PopupWarningWidgetState extends State<PopupWarningWidget> {
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .displayLargeFamily,
-                                color: Color(0xFF41000B),
-                                fontSize: 35.0,
+                                fontSize: 22.0,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .displayLargeFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .displayLargeIsCustom,
                               ),
                         ),
                       ],
@@ -141,7 +138,7 @@ class _PopupWarningWidgetState extends State<PopupWarningWidget> {
                       EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 15.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      Navigator.pop(context);
+                      Navigator.pop(context, false);
                     },
                     text: 'Cancel',
                     options: FFButtonOptions(
@@ -159,8 +156,8 @@ class _PopupWarningWidgetState extends State<PopupWarningWidget> {
                             color: Colors.white,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).titleSmallFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleSmallIsCustom,
                           ),
                       elevation: 0.0,
                       borderRadius: BorderRadius.circular(8.0),
@@ -191,8 +188,8 @@ class _PopupWarningWidgetState extends State<PopupWarningWidget> {
                             color: Colors.white,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).titleSmallFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleSmallIsCustom,
                           ),
                       elevation: 0.0,
                       borderRadius: BorderRadius.circular(8.0),

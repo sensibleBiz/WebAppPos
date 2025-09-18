@@ -31,10 +31,10 @@ class AddCategoryMasterModel extends FlutterFlowModel<AddCategoryMasterWidget> {
   TextEditingController? textCategoryMasterTypeCodeTextController;
   String? Function(BuildContext, String?)?
       textCategoryMasterTypeCodeTextControllerValidator;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadDataO95 = false;
+  FFUploadedFile uploadedLocalFile_uploadDataO95 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_uploadDataO95 = '';
 
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;

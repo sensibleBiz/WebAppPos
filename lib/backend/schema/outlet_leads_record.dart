@@ -156,6 +156,16 @@ class OutletLeadsRecord extends FirestoreRecord {
   CustomFieldsStruct get customFields => _customFields ?? CustomFieldsStruct();
   bool hasCustomFields() => _customFields != null;
 
+  // "leadCampaign" field.
+  String? _leadCampaign;
+  String get leadCampaign => _leadCampaign ?? '';
+  bool hasLeadCampaign() => _leadCampaign != null;
+
+  // "contact" field.
+  String? _contact;
+  String get contact => _contact ?? '';
+  bool hasContact() => _contact != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -189,6 +199,8 @@ class OutletLeadsRecord extends FirestoreRecord {
     _customFields = snapshotData['customFields'] is CustomFieldsStruct
         ? snapshotData['customFields']
         : CustomFieldsStruct.maybeFromMap(snapshotData['customFields']);
+    _leadCampaign = snapshotData['leadCampaign'] as String?;
+    _contact = snapshotData['contact'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -259,6 +271,8 @@ Map<String, dynamic> createOutletLeadsRecordData({
   String? zone,
   String? ticket,
   CustomFieldsStruct? customFields,
+  String? leadCampaign,
+  String? contact,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -290,6 +304,8 @@ Map<String, dynamic> createOutletLeadsRecordData({
       'zone': zone,
       'ticket': ticket,
       'customFields': CustomFieldsStruct().toMap(),
+      'leadCampaign': leadCampaign,
+      'contact': contact,
     }.withoutNulls,
   );
 
@@ -331,7 +347,9 @@ class OutletLeadsRecordDocumentEquality implements Equality<OutletLeadsRecord> {
         e1?.isDuplicate == e2?.isDuplicate &&
         e1?.zone == e2?.zone &&
         e1?.ticket == e2?.ticket &&
-        e1?.customFields == e2?.customFields;
+        e1?.customFields == e2?.customFields &&
+        e1?.leadCampaign == e2?.leadCampaign &&
+        e1?.contact == e2?.contact;
   }
 
   @override
@@ -363,7 +381,9 @@ class OutletLeadsRecordDocumentEquality implements Equality<OutletLeadsRecord> {
         e?.isDuplicate,
         e?.zone,
         e?.ticket,
-        e?.customFields
+        e?.customFields,
+        e?.leadCampaign,
+        e?.contact
       ]);
 
   @override

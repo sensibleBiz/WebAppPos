@@ -187,10 +187,9 @@ class _CreateSaleDirectSaleWidgetState
                                             .primaryBtnText,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .headlineMediumIsCustom,
                                       ),
                                 ),
                                 FlutterFlowIconButton(
@@ -402,7 +401,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                     textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                     textHighlightStyle: TextStyle(),
                                                                                     elevation: 4.0,
@@ -437,12 +436,12 @@ class _CreateSaleDirectSaleWidgetState
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                                           ),
                                                                                       hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                           ),
                                                                                       enabledBorder: OutlineInputBorder(
                                                                                         borderSide: BorderSide(
@@ -483,7 +482,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                           fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
                                                                                           color: FlutterFlowTheme.of(context).info,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                                         ),
                                                                                     maxLines: null,
                                                                                     validator: _model.textFieldSalesPartyTextControllerValidator.asValidator(context),
@@ -519,8 +518,6 @@ class _CreateSaleDirectSaleWidgetState
                                                                           icon:
                                                                               Icon(
                                                                             Icons.add,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).lineColor,
                                                                             size:
                                                                                 16.0,
                                                                           ),
@@ -538,13 +535,15 @@ class _CreateSaleDirectSaleWidgetState
                                                                                 0.0,
                                                                                 0.0,
                                                                                 0.0),
+                                                                            iconColor:
+                                                                                FlutterFlowTheme.of(context).lineColor,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).tertiary,
                                                                             textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                   fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                   color: FlutterFlowTheme.of(context).lineColor,
                                                                                   letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                 ),
                                                                             elevation:
                                                                                 3.0,
@@ -592,9 +591,6 @@ class _CreateSaleDirectSaleWidgetState
                                                                   'Select Items',
                                                               icon: Icon(
                                                                 Icons.add,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .lineColor,
                                                                 size: 16.0,
                                                               ),
                                                               options:
@@ -613,6 +609,9 @@ class _CreateSaleDirectSaleWidgetState
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
+                                                                iconColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .lineColor,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .tertiary,
@@ -628,10 +627,9 @@ class _CreateSaleDirectSaleWidgetState
                                                                           .lineColor,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleSmallIsCustom,
                                                                     ),
                                                                 elevation: 2.0,
                                                                 borderSide:
@@ -680,7 +678,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -704,7 +702,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                              !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -864,7 +862,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                 letterSpacing: 0.0,
                                                                                                 fontWeight: FontWeight.w600,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ],
@@ -927,7 +925,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                           style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -944,7 +942,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                     fontSize: 11.0,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                   ),
                                                                                             )),
                                                                                           ],
@@ -962,7 +960,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                     fontSize: 11.0,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                   ),
                                                                                             )),
                                                                                           ],
@@ -978,7 +976,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                   fontSize: 11.0,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                 ),
                                                                                           )),
                                                                                         ],
@@ -1003,7 +1001,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                               style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                             Text(
@@ -1014,7 +1012,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                           ],
@@ -1038,7 +1036,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                       fontSize: 11.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                     ),
                                                                                               )),
                                                                                             ),
@@ -1051,7 +1049,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                       fontSize: 11.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                     ),
                                                                                               )),
                                                                                             ),
@@ -1067,7 +1065,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                       fontSize: 11.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                     ),
                                                                                               )),
                                                                                             ),
@@ -1092,7 +1090,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                       fontSize: 11.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                     ),
                                                                                               )),
                                                                                             ),
@@ -1105,7 +1103,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                       fontSize: 11.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                     ),
                                                                                               )),
                                                                                             ),
@@ -1119,7 +1117,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                           ],
@@ -1137,7 +1135,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                               Padding(
@@ -1152,7 +1150,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                         fontSize: 11.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                       ),
                                                                                                 )),
                                                                                               ),
@@ -1165,7 +1163,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                         fontSize: 11.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                       ),
                                                                                                 )),
                                                                                               ),
@@ -1174,7 +1172,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                               Text(
@@ -1185,7 +1183,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                             ],
@@ -1203,7 +1201,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                               Padding(
@@ -1218,7 +1216,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                         fontSize: 11.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                       ),
                                                                                                 )),
                                                                                               ),
@@ -1231,7 +1229,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                         fontSize: 11.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                       ),
                                                                                                 )),
                                                                                               ),
@@ -1240,7 +1238,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                               Text(
@@ -1251,7 +1249,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                             ],
@@ -1267,7 +1265,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                             Padding(
@@ -1282,7 +1280,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                       fontSize: 11.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                     ),
                                                                                               )),
                                                                                             ),
@@ -1295,7 +1293,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                       fontSize: 11.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                     ),
                                                                                               )),
                                                                                             ),
@@ -1304,7 +1302,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                               style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                             Text(
@@ -1315,7 +1313,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                               style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                           ],
@@ -1346,7 +1344,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                             color: FlutterFlowTheme.of(context).info,
                                                                                             fontSize: 13.0,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                     Padding(
@@ -1358,7 +1356,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                               color: FlutterFlowTheme.of(context).info,
                                                                                               fontSize: 13.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1372,7 +1370,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                             color: FlutterFlowTheme.of(context).info,
                                                                                             fontSize: 15.0,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                   ],
@@ -1407,205 +1405,199 @@ class _CreateSaleDirectSaleWidgetState
                                                                   0.0,
                                                                   0.0,
                                                                   10.0),
-                                                      child: StreamBuilder<
-                                                          List<
-                                                              LeadsManagementRecord>>(
-                                                        stream:
-                                                            queryLeadsManagementRecord(
-                                                          parent: FFAppState()
-                                                              .outletRef,
-                                                          singleRecord: true,
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5.0),
                                                         ),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 30.0,
-                                                                height: 30.0,
-                                                                child:
-                                                                    SpinKitRing(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  size: 30.0,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          }
-                                                          List<LeadsManagementRecord>
-                                                              containerLeadsManagementRecordList =
-                                                              snapshot.data!;
-                                                          final containerLeadsManagementRecord =
-                                                              containerLeadsManagementRecordList
-                                                                      .isNotEmpty
-                                                                  ? containerLeadsManagementRecordList
-                                                                      .first
-                                                                  : null;
-
-                                                          return Container(
-                                                            width:
-                                                                double.infinity,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5.0),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          3.0,
-                                                                          10.0,
-                                                                          3.0),
-                                                              child: Column(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      3.0,
+                                                                      10.0,
+                                                                      3.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Row(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
                                                                 children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Text(
-                                                                        'Invoice No. :',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .override(
-                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                              letterSpacing: 0.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                            ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                  Text(
+                                                                    'Invoice No. :',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                        ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                        child:
-                                                                            Text(
-                                                                          functions
-                                                                              .genInvoiceNum(FFAppState().count),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .labelLarge
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Text(
-                                                                        'Date :',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .override(
-                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                              letterSpacing: 0.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                            ),
-                                                                      ),
-                                                                      Expanded(
-                                                                        child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              TextFormField(
-                                                                            controller:
-                                                                                _model.textController2,
-                                                                            focusNode:
-                                                                                _model.textFieldFocusNode1,
-                                                                            autofocus:
-                                                                                true,
-                                                                            readOnly:
-                                                                                true,
-                                                                            obscureText:
-                                                                                false,
-                                                                            decoration:
-                                                                                InputDecoration(
-                                                                              isDense: true,
-                                                                              hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                    letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                  ),
-                                                                              enabledBorder: OutlineInputBorder(
-                                                                                borderSide: BorderSide(
-                                                                                  color: Color(0x00000000),
-                                                                                  width: 1.0,
-                                                                                ),
-                                                                                borderRadius: const BorderRadius.only(
-                                                                                  topLeft: Radius.circular(4.0),
-                                                                                  topRight: Radius.circular(4.0),
-                                                                                ),
-                                                                              ),
-                                                                              focusedBorder: OutlineInputBorder(
-                                                                                borderSide: BorderSide(
-                                                                                  color: Color(0x00000000),
-                                                                                  width: 1.0,
-                                                                                ),
-                                                                                borderRadius: const BorderRadius.only(
-                                                                                  topLeft: Radius.circular(4.0),
-                                                                                  topRight: Radius.circular(4.0),
-                                                                                ),
-                                                                              ),
-                                                                              errorBorder: OutlineInputBorder(
-                                                                                borderSide: BorderSide(
-                                                                                  color: Color(0x00000000),
-                                                                                  width: 1.0,
-                                                                                ),
-                                                                                borderRadius: const BorderRadius.only(
-                                                                                  topLeft: Radius.circular(4.0),
-                                                                                  topRight: Radius.circular(4.0),
-                                                                                ),
-                                                                              ),
-                                                                              focusedErrorBorder: OutlineInputBorder(
-                                                                                borderSide: BorderSide(
-                                                                                  color: Color(0x00000000),
-                                                                                  width: 1.0,
-                                                                                ),
-                                                                                borderRadius: const BorderRadius.only(
-                                                                                  topLeft: Radius.circular(4.0),
-                                                                                  topRight: Radius.circular(4.0),
-                                                                                ),
-                                                                              ),
-                                                                              contentPadding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
-                                                                            ),
-                                                                            style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                ),
-                                                                            validator:
-                                                                                _model.textController2Validator.asValidator(context),
+                                                                    child: Text(
+                                                                      functions.genInvoiceNum(
+                                                                          FFAppState()
+                                                                              .count),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                           ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ),
-                                                          );
-                                                        },
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Text(
+                                                                    'Date :',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                        ),
+                                                                  ),
+                                                                  Expanded(
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          TextFormField(
+                                                                        controller:
+                                                                            _model.textController2,
+                                                                        focusNode:
+                                                                            _model.textFieldFocusNode1,
+                                                                        autofocus:
+                                                                            true,
+                                                                        readOnly:
+                                                                            true,
+                                                                        obscureText:
+                                                                            false,
+                                                                        decoration:
+                                                                            InputDecoration(
+                                                                          isDense:
+                                                                              true,
+                                                                          hintStyle: FlutterFlowTheme.of(context)
+                                                                              .bodySmall
+                                                                              .override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                letterSpacing: 0.0,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                              ),
+                                                                          enabledBorder:
+                                                                              OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: Color(0x00000000),
+                                                                              width: 1.0,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                const BorderRadius.only(
+                                                                              topLeft: Radius.circular(4.0),
+                                                                              topRight: Radius.circular(4.0),
+                                                                            ),
+                                                                          ),
+                                                                          focusedBorder:
+                                                                              OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: Color(0x00000000),
+                                                                              width: 1.0,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                const BorderRadius.only(
+                                                                              topLeft: Radius.circular(4.0),
+                                                                              topRight: Radius.circular(4.0),
+                                                                            ),
+                                                                          ),
+                                                                          errorBorder:
+                                                                              OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: Color(0x00000000),
+                                                                              width: 1.0,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                const BorderRadius.only(
+                                                                              topLeft: Radius.circular(4.0),
+                                                                              topRight: Radius.circular(4.0),
+                                                                            ),
+                                                                          ),
+                                                                          focusedErrorBorder:
+                                                                              OutlineInputBorder(
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: Color(0x00000000),
+                                                                              width: 1.0,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                const BorderRadius.only(
+                                                                              topLeft: Radius.circular(4.0),
+                                                                              topRight: Radius.circular(4.0),
+                                                                            ),
+                                                                          ),
+                                                                          contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0.0,
+                                                                              10.0,
+                                                                              0.0,
+                                                                              10.0),
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .labelLarge
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                            ),
+                                                                        validator: _model
+                                                                            .textController2Validator
+                                                                            .asValidator(context),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
                                                       ),
                                                     ),
                                                     Padding(
@@ -1660,10 +1652,9 @@ class _CreateSaleDirectSaleWidgetState
                                                                               .titleSmallFamily,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleSmallIsCustom,
                                                                     ),
                                                               ),
                                                               Container(
@@ -1702,7 +1693,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -1723,7 +1714,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.w600,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -1803,7 +1794,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                             fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                             letterSpacing: 0.0,
                                                                                             fontWeight: FontWeight.w600,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                           ),
                                                                                     )),
                                                                                     Padding(
@@ -1846,7 +1837,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                       style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                           ),
                                                                                     )),
                                                                                   ),
@@ -1858,7 +1849,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                       style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                           ),
                                                                                     )),
                                                                                   ),
@@ -1894,12 +1885,12 @@ class _CreateSaleDirectSaleWidgetState
                                                                                           labelStyle: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                                               ),
                                                                                           hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                               ),
                                                                                           enabledBorder: OutlineInputBorder(
                                                                                             borderSide: BorderSide(
@@ -1947,7 +1938,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                             ),
                                                                                         validator: _model.amountTextControllerValidator.asValidator(context),
                                                                                       ),
@@ -1995,7 +1986,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                       ),
                                                                                 )),
                                                                               ),
@@ -2007,7 +1998,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                   style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                       ),
                                                                                 )),
                                                                               ),
@@ -2054,12 +2045,12 @@ class _CreateSaleDirectSaleWidgetState
                                                                                         labelStyle: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                                             ),
                                                                                         hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                             ),
                                                                                         enabledBorder: OutlineInputBorder(
                                                                                           borderSide: BorderSide(
@@ -2107,7 +2098,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                           ),
                                                                                       validator: _model.textFieldDiscountPerTextControllerValidator.asValidator(context),
                                                                                     ),
@@ -2124,7 +2115,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                       style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                           ),
                                                                                     )),
                                                                                     SelectionArea(
@@ -2133,7 +2124,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                       style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                           ),
                                                                                     )),
                                                                                     Padding(
@@ -2143,7 +2134,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2190,7 +2181,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                       ),
                                                                                 )),
                                                                               ),
@@ -2225,7 +2216,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                           fontFamily: FlutterFlowTheme.of(context).displaySmallFamily,
                                                                                           color: FlutterFlowTheme.of(context).primaryBtnText,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displaySmallFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).displaySmallIsCustom,
                                                                                         ),
                                                                                     elevation: 2.0,
                                                                                     borderSide: BorderSide(
@@ -2266,7 +2257,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                           fontFamily: FlutterFlowTheme.of(context).displaySmallFamily,
                                                                                           color: FlutterFlowTheme.of(context).primaryBtnText,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displaySmallFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).displaySmallIsCustom,
                                                                                         ),
                                                                                     elevation: 2.0,
                                                                                     borderSide: BorderSide(
@@ -2284,7 +2275,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                   style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                       ),
                                                                                 )),
                                                                               ),
@@ -2302,12 +2293,12 @@ class _CreateSaleDirectSaleWidgetState
                                                                                       labelStyle: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                                           ),
                                                                                       hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                           ),
                                                                                       enabledBorder: OutlineInputBorder(
                                                                                         borderSide: BorderSide(
@@ -2355,7 +2346,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                     validator: _model.textFieldRoundOffTextControllerValidator.asValidator(context),
                                                                                   ),
@@ -2390,14 +2381,14 @@ class _CreateSaleDirectSaleWidgetState
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                               ),
                                                                           hintStyle: FlutterFlowTheme.of(context)
                                                                               .labelMedium
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                               ),
                                                                           enabledBorder:
                                                                               OutlineInputBorder(
@@ -2449,7 +2440,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                             .override(
                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                               letterSpacing: 0.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                             ),
                                                                         maxLines:
                                                                             2,
@@ -2529,7 +2520,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                         fontSize: 15.0,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.w500,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                                 FlutterFlowDropDown<String>(
@@ -2553,7 +2544,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                   textStyle: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                       ),
                                                                                   icon: Icon(
                                                                                     Icons.keyboard_arrow_down_rounded,
@@ -2589,7 +2580,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                     style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -2611,14 +2602,14 @@ class _CreateSaleDirectSaleWidgetState
                                                                                         textStyle: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                         selectedTextStyle: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                               color: FlutterFlowTheme.of(context).primary,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.w600,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                             ),
                                                                                         textPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
                                                                                         buttonPosition: RadioButtonPosition.left,
@@ -2700,7 +2691,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                              !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                   Row(
@@ -2725,7 +2716,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -2739,7 +2730,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                               fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w600,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                             ),
                                                                       ),
                                                                     ],
@@ -2840,7 +2831,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                       hintStyle: FlutterFlowTheme.of(
                                                                               context)
@@ -2853,7 +2844,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                           ),
                                                                       enabledBorder:
                                                                           OutlineInputBorder(
@@ -2922,7 +2913,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                     textAlign:
                                                                         TextAlign
@@ -2972,7 +2963,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                           ),
                                                                     )),
                                                                   ),
@@ -2996,7 +2987,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                 color: FlutterFlowTheme.of(context).primary,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                               ),
                                                                         )),
                                                                       ),
@@ -3013,7 +3004,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).primary,
                                                                               letterSpacing: 0.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                             ),
                                                                       )),
                                                                     ],
@@ -3084,7 +3075,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                       ),
                                                               elevation: 3.0,
                                                               borderSide:
@@ -3556,7 +3547,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                                       fontSize: 16.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.w600,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displaySmallFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).displaySmallIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -3617,7 +3608,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                           ),
                                                                       elevation:
                                                                           0.0,
@@ -3681,7 +3672,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                 m.storagePath,
                                                                 context))) {
                                                       safeSetState(() => _model
-                                                              .isDataUploading =
+                                                              .isDataUploading_uploadDataR0 =
                                                           true);
                                                       var selectedUploadedFiles =
                                                           <FFUploadedFile>[];
@@ -3725,7 +3716,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                 .map((u) => u!)
                                                                 .toList();
                                                       } finally {
-                                                        _model.isDataUploading =
+                                                        _model.isDataUploading_uploadDataR0 =
                                                             false;
                                                       }
                                                       if (selectedUploadedFiles
@@ -3736,10 +3727,10 @@ class _CreateSaleDirectSaleWidgetState
                                                               selectedMedia
                                                                   .length) {
                                                         safeSetState(() {
-                                                          _model.uploadedLocalFile =
+                                                          _model.uploadedLocalFile_uploadDataR0 =
                                                               selectedUploadedFiles
                                                                   .first;
-                                                          _model.uploadedFileUrl =
+                                                          _model.uploadedFileUrl_uploadDataR0 =
                                                               downloadUrls
                                                                   .first;
                                                         });
@@ -3751,7 +3742,7 @@ class _CreateSaleDirectSaleWidgetState
 
                                                     FFAppState()
                                                         .addToImagePathh(_model
-                                                            .uploadedFileUrl);
+                                                            .uploadedFileUrl_uploadDataR0);
                                                     safeSetState(() {});
                                                   },
                                                   child: Text(
@@ -3768,12 +3759,10 @@ class _CreateSaleDirectSaleWidgetState
                                                                   .of(context)
                                                               .info,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),

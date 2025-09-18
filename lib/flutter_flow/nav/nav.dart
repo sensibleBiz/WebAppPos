@@ -85,13 +85,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? CDashWidget() : CRMLoginWidget(),
+          appStateNotifier.loggedIn ? COutletListWidget() : CRMLoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? CDashWidget() : CRMLoginWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? COutletListWidget()
+              : CRMLoginWidget(),
           routes: [
             FFRoute(
               name: DeviceWidget.routeName,
@@ -856,11 +857,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LeadStagesMasterWidget(),
             ),
             FFRoute(
-              name: DealerAssignmentCopyWidget.routeName,
-              path: DealerAssignmentCopyWidget.routePath,
-              builder: (context, params) => DealerAssignmentCopyWidget(),
-            ),
-            FFRoute(
               name: LeadStatusMasterWidget.routeName,
               path: LeadStatusMasterWidget.routePath,
               builder: (context, params) => LeadStatusMasterWidget(),
@@ -1128,34 +1124,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: CRMDashboardWidget.routeName,
-              path: CRMDashboardWidget.routePath,
-              builder: (context, params) => CRMDashboardWidget(),
-            ),
-            FFRoute(
               name: CComplaintReportWidget.routeName,
               path: CComplaintReportWidget.routePath,
               builder: (context, params) => CComplaintReportWidget(),
             ),
             FFRoute(
-              name: CComplaintDetailsWidget.routeName,
-              path: CComplaintDetailsWidget.routePath,
-              builder: (context, params) => CComplaintDetailsWidget(
+              name: DeyeComplaintDetailViewWidget.routeName,
+              path: DeyeComplaintDetailViewWidget.routePath,
+              asyncParams: {
+                'leadManagementDoc': getDoc(['OUTLET', 'LEADS_MANAGEMENT'],
+                    LeadsManagementRecord.fromSnapshot),
+              },
+              builder: (context, params) => DeyeComplaintDetailViewWidget(
                 leadManagementDocId: params.getParam(
                   'leadManagementDocId',
                   ParamType.String,
                 ),
+                leadManagementDoc: params.getParam(
+                  'leadManagementDoc',
+                  ParamType.Document,
+                ),
               ),
             ),
             FFRoute(
-              name: CRMDashboardCopyWidget.routeName,
-              path: CRMDashboardCopyWidget.routePath,
-              builder: (context, params) => CRMDashboardCopyWidget(),
-            ),
-            FFRoute(
-              name: CRMDashboardNEWWidget.routeName,
-              path: CRMDashboardNEWWidget.routePath,
-              builder: (context, params) => CRMDashboardNEWWidget(),
+              name: LeadsDashboardNewWidget.routeName,
+              path: LeadsDashboardNewWidget.routePath,
+              builder: (context, params) => LeadsDashboardNewWidget(),
             ),
             FFRoute(
               name: LeadReportMonthlyCRMWidget.routeName,
@@ -1173,14 +1167,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => DeyeDashboard2Widget(),
             ),
             FFRoute(
-              name: RegisterComplaintWidget.routeName,
-              path: RegisterComplaintWidget.routePath,
-              builder: (context, params) => RegisterComplaintWidget(),
-            ),
-            FFRoute(
-              name: DeyeDashboardOldWidget.routeName,
-              path: DeyeDashboardOldWidget.routePath,
-              builder: (context, params) => DeyeDashboardOldWidget(),
+              name: RegisterComplaint1Widget.routeName,
+              path: RegisterComplaint1Widget.routePath,
+              builder: (context, params) => RegisterComplaint1Widget(),
             ),
             FFRoute(
               name: DeyeThankyouPageWidget.routeName,
@@ -1193,31 +1182,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => DeyeTeamTreeWidget(),
             ),
             FFRoute(
-              name: DeyeComplaintDetailsWidget.routeName,
-              path: DeyeComplaintDetailsWidget.routePath,
-              builder: (context, params) => DeyeComplaintDetailsWidget(
+              name: DeyeComplaintEditDetailsWidget.routeName,
+              path: DeyeComplaintEditDetailsWidget.routePath,
+              asyncParams: {
+                'leadManagementDoc': getDoc(['OUTLET', 'LEADS_MANAGEMENT'],
+                    LeadsManagementRecord.fromSnapshot),
+              },
+              builder: (context, params) => DeyeComplaintEditDetailsWidget(
                 mobile: params.getParam(
                   'mobile',
                   ParamType.String,
                 ),
-                leadManagementDocId: params.getParam(
-                  'leadManagementDocId',
-                  ParamType.String,
-                ),
-              ),
-            ),
-            FFRoute(
-              name: DeyeCategoryMasterWidget.routeName,
-              path: DeyeCategoryMasterWidget.routePath,
-              builder: (context, params) => DeyeCategoryMasterWidget(),
-            ),
-            FFRoute(
-              name: DeyeProductMasterWidget.routeName,
-              path: DeyeProductMasterWidget.routePath,
-              builder: (context, params) => DeyeProductMasterWidget(
-                list: params.getParam(
-                  'list',
-                  ParamType.String,
+                leadManagementDoc: params.getParam(
+                  'leadManagementDoc',
+                  ParamType.Document,
                 ),
               ),
             ),
@@ -1251,9 +1229,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => DeyeComplaintReportWidget(),
             ),
             FFRoute(
-              name: DeyeLeadEmployeeReportWidget.routeName,
-              path: DeyeLeadEmployeeReportWidget.routePath,
-              builder: (context, params) => DeyeLeadEmployeeReportWidget(),
+              name: DeyeEmployeeReportWidget.routeName,
+              path: DeyeEmployeeReportWidget.routePath,
+              builder: (context, params) => DeyeEmployeeReportWidget(),
             ),
             FFRoute(
               name: DeyeCityWiseReportWidget.routeName,
@@ -1290,9 +1268,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: DeyeDashboardEXPANDWidget.routeName,
-              path: DeyeDashboardEXPANDWidget.routePath,
-              builder: (context, params) => DeyeDashboardEXPANDWidget(),
+              name: DeyeDashboardWidget.routeName,
+              path: DeyeDashboardWidget.routePath,
+              builder: (context, params) => DeyeDashboardWidget(),
             ),
             FFRoute(
               name: DeyeEditProfileAdminWidget.routeName,
@@ -1312,6 +1290,234 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: NavigationTestWidget.routeName,
               path: NavigationTestWidget.routePath,
               builder: (context, params) => NavigationTestWidget(),
+            ),
+            FFRoute(
+              name: CheckInStatusWidget.routeName,
+              path: CheckInStatusWidget.routePath,
+              builder: (context, params) => CheckInStatusWidget(),
+            ),
+            FFRoute(
+              name: DeyeEmployeeDetailReportWidget.routeName,
+              path: DeyeEmployeeDetailReportWidget.routePath,
+              builder: (context, params) => DeyeEmployeeDetailReportWidget(
+                userProfileId: params.getParam(
+                  'userProfileId',
+                  ParamType.String,
+                ),
+                employeeName: params.getParam(
+                  'employeeName',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: LeadLogNewWidget.routeName,
+              path: LeadLogNewWidget.routePath,
+              asyncParams: {
+                'leadDoc': getDoc(['OUTLET', 'LEADS_MANAGEMENT'],
+                    LeadsManagementRecord.fromSnapshot),
+              },
+              builder: (context, params) => LeadLogNewWidget(
+                leadDoc: params.getParam(
+                  'leadDoc',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeFeedbackForm2Widget.routeName,
+              path: DeyeFeedbackForm2Widget.routePath,
+              asyncParams: {
+                'leadDoc': getDoc(['OUTLET', 'LEADS_MANAGEMENT'],
+                    LeadsManagementRecord.fromSnapshot),
+              },
+              builder: (context, params) => DeyeFeedbackForm2Widget(
+                leadDoc: params.getParam(
+                  'leadDoc',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeAdminFeedbackWidget.routeName,
+              path: DeyeAdminFeedbackWidget.routePath,
+              builder: (context, params) => DeyeAdminFeedbackWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeUserAccountWidget.routeName,
+              path: DeyeUserAccountWidget.routePath,
+              builder: (context, params) => DeyeUserAccountWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeTeamTree2Widget.routeName,
+              path: DeyeTeamTree2Widget.routePath,
+              builder: (context, params) => DeyeTeamTree2Widget(),
+            ),
+            FFRoute(
+              name: DeyeTeamTree3Widget.routeName,
+              path: DeyeTeamTree3Widget.routePath,
+              builder: (context, params) => DeyeTeamTree3Widget(),
+            ),
+            FFRoute(
+              name: DeyeStateWiseReportWidget.routeName,
+              path: DeyeStateWiseReportWidget.routePath,
+              builder: (context, params) => DeyeStateWiseReportWidget(),
+            ),
+            FFRoute(
+              name: DeyeStatewiseDetailReportWidget.routeName,
+              path: DeyeStatewiseDetailReportWidget.routePath,
+              asyncParams: {
+                'docs': getDocList(['OUTLET', 'LEADS_MANAGEMENT'],
+                    LeadsManagementRecord.fromSnapshot),
+              },
+              builder: (context, params) => DeyeStatewiseDetailReportWidget(
+                state: params.getParam(
+                  'state',
+                  ParamType.String,
+                ),
+                docs: params.getParam<LeadsManagementRecord>(
+                  'docs',
+                  ParamType.Document,
+                  isList: true,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeAddComplaintsCopyWidget.routeName,
+              path: DeyeAddComplaintsCopyWidget.routePath,
+              builder: (context, params) => DeyeAddComplaintsCopyWidget(),
+            ),
+            FFRoute(
+              name: DeyeDashboardCopyWidget.routeName,
+              path: DeyeDashboardCopyWidget.routePath,
+              builder: (context, params) => DeyeDashboardCopyWidget(),
+            ),
+            FFRoute(
+              name: DeyeNewComplaintEditWidget.routeName,
+              path: DeyeNewComplaintEditWidget.routePath,
+              asyncParams: {
+                'leadDoc': getDoc(
+                    ['OUTLET', 'OUTLET_LEADS'], OutletLeadsRecord.fromSnapshot),
+              },
+              builder: (context, params) => DeyeNewComplaintEditWidget(
+                leadDoc: params.getParam(
+                  'leadDoc',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: RingingLeadsWidget.routeName,
+              path: RingingLeadsWidget.routePath,
+              builder: (context, params) => RingingLeadsWidget(),
+            ),
+            FFRoute(
+              name: AddNewDealerWidget.routeName,
+              path: AddNewDealerWidget.routePath,
+              builder: (context, params) => AddNewDealerWidget(),
+            ),
+            FFRoute(
+              name: EditNewDealerWidget.routeName,
+              path: EditNewDealerWidget.routePath,
+              builder: (context, params) => EditNewDealerWidget(
+                dealerDoc: params.getParam(
+                  'dealerDoc',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'DEALERS'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DealerDashboardWidget.routeName,
+              path: DealerDashboardWidget.routePath,
+              builder: (context, params) => DealerDashboardWidget(),
+            ),
+            FFRoute(
+              name: LeadSummaryCopyWidget.routeName,
+              path: LeadSummaryCopyWidget.routePath,
+              builder: (context, params) => LeadSummaryCopyWidget(),
+            ),
+            FFRoute(
+              name: DealerOnboardWidget.routeName,
+              path: DealerOnboardWidget.routePath,
+              builder: (context, params) => DealerOnboardWidget(),
+            ),
+            FFRoute(
+              name: DealerDashboard1Widget.routeName,
+              path: DealerDashboard1Widget.routePath,
+              builder: (context, params) => DealerDashboard1Widget(),
+            ),
+            FFRoute(
+              name: DeyeAttendanceAdminWidget.routeName,
+              path: DeyeAttendanceAdminWidget.routePath,
+              builder: (context, params) => DeyeAttendanceAdminWidget(),
+            ),
+            FFRoute(
+              name: DeyeLeaveAdminWidget.routeName,
+              path: DeyeLeaveAdminWidget.routePath,
+              builder: (context, params) => DeyeLeaveAdminWidget(),
+            ),
+            FFRoute(
+              name: UsersAllActivitiesWidget.routeName,
+              path: UsersAllActivitiesWidget.routePath,
+              builder: (context, params) => UsersAllActivitiesWidget(),
+            ),
+            FFRoute(
+              name: UsersDemoActivityWidget.routeName,
+              path: UsersDemoActivityWidget.routePath,
+              builder: (context, params) => UsersDemoActivityWidget(),
+            ),
+            FFRoute(
+              name: AttendanceAdminWidget.routeName,
+              path: AttendanceAdminWidget.routePath,
+              builder: (context, params) => AttendanceAdminWidget(),
+            ),
+            FFRoute(
+              name: RegisterComplaintDemoWidget.routeName,
+              path: RegisterComplaintDemoWidget.routePath,
+              builder: (context, params) => RegisterComplaintDemoWidget(),
+            ),
+            FFRoute(
+              name: RegisterComplaintWidget.routeName,
+              path: RegisterComplaintWidget.routePath,
+              builder: (context, params) => RegisterComplaintWidget(),
+            ),
+            FFRoute(
+              name: DeleteLeadReportWidget.routeName,
+              path: DeleteLeadReportWidget.routePath,
+              builder: (context, params) => DeleteLeadReportWidget(),
+            ),
+            FFRoute(
+              name: DashboardGraphWidget.routeName,
+              path: DashboardGraphWidget.routePath,
+              builder: (context, params) => DashboardGraphWidget(),
+            ),
+            FFRoute(
+              name: AllUserAccountWidget.routeName,
+              path: AllUserAccountWidget.routePath,
+              builder: (context, params) => AllUserAccountWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

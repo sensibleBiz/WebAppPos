@@ -43,6 +43,8 @@ class LeadLogModel extends FlutterFlowModel<LeadLogWidget> {
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   // State field(s) for TextFielduname widget.
   FocusNode? textFieldunameFocusNode;

@@ -101,8 +101,8 @@ class _UploadImageUserManualWidgetState
                           fontFamily:
                               FlutterFlowTheme.of(context).labelMediumFamily,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).labelMediumFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                         ),
                     hintStyle: FlutterFlowTheme.of(context)
                         .labelMedium
@@ -110,8 +110,8 @@ class _UploadImageUserManualWidgetState
                           fontFamily:
                               FlutterFlowTheme.of(context).labelMediumFamily,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).labelMediumFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -148,8 +148,8 @@ class _UploadImageUserManualWidgetState
                         fontFamily:
                             FlutterFlowTheme.of(context).labelLargeFamily,
                         letterSpacing: 0.0,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).labelLargeFamily),
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).labelLargeIsCustom,
                       ),
                   maxLines: null,
                   validator:
@@ -171,8 +171,8 @@ class _UploadImageUserManualWidgetState
                       fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                       color: Colors.white,
                       letterSpacing: 0.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).titleSmallFamily),
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).titleSmallIsCustom,
                     ),
                 elevation: 3.0,
                 borderSide: BorderSide(

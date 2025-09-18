@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -103,8 +104,8 @@ class _StepsUsermanual1WidgetState extends State<StepsUsermanual1Widget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).labelMediumFamily,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).labelMediumFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                         ),
                     hintStyle: FlutterFlowTheme.of(context)
                         .labelMedium
@@ -112,8 +113,8 @@ class _StepsUsermanual1WidgetState extends State<StepsUsermanual1Widget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).labelMediumFamily,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).labelMediumFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                         ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
@@ -148,8 +149,8 @@ class _StepsUsermanual1WidgetState extends State<StepsUsermanual1Widget> {
                         fontFamily:
                             FlutterFlowTheme.of(context).bodyMediumFamily,
                         letterSpacing: 0.0,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                       ),
                   validator: _model.textFieldImageUrlTextControllerValidator
                       .asValidator(context),

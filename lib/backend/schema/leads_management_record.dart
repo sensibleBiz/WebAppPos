@@ -216,6 +216,32 @@ class LeadsManagementRecord extends FirestoreRecord {
   CustomFieldsStruct get customFields => _customFields ?? CustomFieldsStruct();
   bool hasCustomFields() => _customFields != null;
 
+  // "closeDate" field.
+  String? _closeDate;
+  String get closeDate => _closeDate ?? '';
+  bool hasCloseDate() => _closeDate != null;
+
+  // "closeDateMili" field.
+  int? _closeDateMili;
+  int get closeDateMili => _closeDateMili ?? 0;
+  bool hasCloseDateMili() => _closeDateMili != null;
+
+  // "assignedToHistory" field.
+  List<AssignedToHistoryStruct>? _assignedToHistory;
+  List<AssignedToHistoryStruct> get assignedToHistory =>
+      _assignedToHistory ?? const [];
+  bool hasAssignedToHistory() => _assignedToHistory != null;
+
+  // "contact" field.
+  String? _contact;
+  String get contact => _contact ?? '';
+  bool hasContact() => _contact != null;
+
+  // "leadCampaign" field.
+  String? _leadCampaign;
+  String get leadCampaign => _leadCampaign ?? '';
+  bool hasLeadCampaign() => _leadCampaign != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -264,6 +290,14 @@ class LeadsManagementRecord extends FirestoreRecord {
     _customFields = snapshotData['customFields'] is CustomFieldsStruct
         ? snapshotData['customFields']
         : CustomFieldsStruct.maybeFromMap(snapshotData['customFields']);
+    _closeDate = snapshotData['closeDate'] as String?;
+    _closeDateMili = castToType<int>(snapshotData['closeDateMili']);
+    _assignedToHistory = getStructList(
+      snapshotData['assignedToHistory'],
+      AssignedToHistoryStruct.fromMap,
+    );
+    _contact = snapshotData['contact'] as String?;
+    _leadCampaign = snapshotData['leadCampaign'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -345,6 +379,10 @@ Map<String, dynamic> createLeadsManagementRecordData({
   String? zone,
   String? ticket,
   CustomFieldsStruct? customFields,
+  String? closeDate,
+  int? closeDateMili,
+  String? contact,
+  String? leadCampaign,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -387,6 +425,10 @@ Map<String, dynamic> createLeadsManagementRecordData({
       'zone': zone,
       'ticket': ticket,
       'customFields': CustomFieldsStruct().toMap(),
+      'closeDate': closeDate,
+      'closeDateMili': closeDateMili,
+      'contact': contact,
+      'leadCampaign': leadCampaign,
     }.withoutNulls,
   );
 
@@ -442,7 +484,12 @@ class LeadsManagementRecordDocumentEquality
         e1?.isDuplicate == e2?.isDuplicate &&
         e1?.zone == e2?.zone &&
         e1?.ticket == e2?.ticket &&
-        e1?.customFields == e2?.customFields;
+        e1?.customFields == e2?.customFields &&
+        e1?.closeDate == e2?.closeDate &&
+        e1?.closeDateMili == e2?.closeDateMili &&
+        listEquality.equals(e1?.assignedToHistory, e2?.assignedToHistory) &&
+        e1?.contact == e2?.contact &&
+        e1?.leadCampaign == e2?.leadCampaign;
   }
 
   @override
@@ -486,7 +533,12 @@ class LeadsManagementRecordDocumentEquality
         e?.isDuplicate,
         e?.zone,
         e?.ticket,
-        e?.customFields
+        e?.customFields,
+        e?.closeDate,
+        e?.closeDateMili,
+        e?.assignedToHistory,
+        e?.contact,
+        e?.leadCampaign
       ]);
 
   @override

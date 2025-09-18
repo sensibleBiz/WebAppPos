@@ -19,6 +19,7 @@ Future<List<dynamic>> leadDocRefCopy(String dayId, String outletId,
   int demopending = 0;
   int demoScheduled = 0;
   int called = 0;
+  int totalLost = 0;
   var product;
   var capacity;
   var serial;
@@ -129,7 +130,10 @@ Future<List<dynamic>> leadDocRefCopy(String dayId, String outletId,
                   "product": product,
                   "capacity": capacity,
                   "purFrom": purFrom,
-                  "serial": serial
+                  "serial": serial,
+                  "leadCampaign": data.containsKey('leadCampaign') == true
+                      ? doc["leadCampaign"]
+                      : "not available"
                 });
               } else if (FFAppState().zone == "ALL") {
                 leadDocs.add({
@@ -189,7 +193,10 @@ Future<List<dynamic>> leadDocRefCopy(String dayId, String outletId,
                   "product": product,
                   "capacity": capacity,
                   "purFrom": purFrom,
-                  "serial": serial
+                  "serial": serial,
+                  "leadCampaign": data.containsKey('leadCampaign') == true
+                      ? doc["leadCampaign"]
+                      : "not available"
                 });
               }
             } else {
@@ -243,7 +250,10 @@ Future<List<dynamic>> leadDocRefCopy(String dayId, String outletId,
                     : "not available",
 
                 "time": doc["time"],
-
+// "leadCampaign": doc["leadCampaign"],
+                "leadCampaign": data.containsKey('leadCampaign') == true
+                    ? doc["leadCampaign"]
+                    : "not available",
                 "ticket": data.containsKey('ticket') == true
                     ? doc["ticket"]
                     : "not available",
@@ -583,6 +593,7 @@ Future<List<dynamic>> leadDocRefCopy(String dayId, String outletId,
           }
         }
         if (doc["stage"] == "lost") {
+          totalLost = totalLost + 1;
           if (doc["source"].toUpperCase() == "INDIAMART") {
             countIndiamart = countIndiamart + 1;
           } else if (doc["source"].toUpperCase() == "JUSTDAIL") {
@@ -876,6 +887,7 @@ Future<List<dynamic>> leadDocRefCopy(String dayId, String outletId,
           }
         }
         if (doc["stage"] == "lost") {
+          totalLost = totalLost + 1;
           if (doc["source"].toUpperCase() == "INDIAMART") {
             countIndiamart = countIndiamart + 1;
           } else if (doc["source"].toUpperCase() == "JUSTDAIL") {
@@ -910,6 +922,7 @@ Future<List<dynamic>> leadDocRefCopy(String dayId, String outletId,
       "total": countIndiamart + countJustDail + countQuickLead + countFacebook
     });
     FFAppState().lostLeadCount.add({
+      "totalLost": totalLost,
       "indiamart": countIndiamart,
       "justdail": countJustDail,
       "quicklead": countQuickLead,
@@ -919,5 +932,6 @@ Future<List<dynamic>> leadDocRefCopy(String dayId, String outletId,
 
     // print(leadDocs);
   }
+  FFAppState().TotalLostLeads = totalLost;
   return leadDocs;
 }

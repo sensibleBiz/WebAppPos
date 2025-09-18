@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -108,8 +109,8 @@ class _StepsUsermanualWidgetState extends State<StepsUsermanualWidget> {
                               blurRadius: 2.0,
                             )
                           ],
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).labelMediumFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                         ),
                     hintStyle: FlutterFlowTheme.of(context)
                         .labelMedium
@@ -117,8 +118,8 @@ class _StepsUsermanualWidgetState extends State<StepsUsermanualWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).labelMediumFamily,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).labelMediumFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                         ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
@@ -153,8 +154,8 @@ class _StepsUsermanualWidgetState extends State<StepsUsermanualWidget> {
                         fontFamily:
                             FlutterFlowTheme.of(context).bodyMediumFamily,
                         letterSpacing: 0.0,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                       ),
                   validator: _model.textFieldEditTextControllerValidator
                       .asValidator(context),

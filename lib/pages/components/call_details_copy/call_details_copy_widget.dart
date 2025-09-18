@@ -129,10 +129,9 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .headlineLargeFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineLargeFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .headlineLargeIsCustom,
                                       ),
                                 ),
                               ),
@@ -186,10 +185,9 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleMediumFamily,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMediumFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -233,12 +231,10 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                                   context)
                                                               .bodySmallFamily,
                                                       letterSpacing: 0.0,
-                                                      useGoogleFonts: GoogleFonts
-                                                              .asMap()
-                                                          .containsKey(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmallFamily),
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmallIsCustom,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
@@ -298,12 +294,10 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
                                               ),
                                           validator: _model
                                               .textFieldDateTextControllerValidator
@@ -348,10 +342,9 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleMediumFamily,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMediumFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -395,12 +388,10 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                                   context)
                                                               .bodySmallFamily,
                                                       letterSpacing: 0.0,
-                                                      useGoogleFonts: GoogleFonts
-                                                              .asMap()
-                                                          .containsKey(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmallFamily),
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmallIsCustom,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
@@ -460,12 +451,10 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
                                               ),
                                           validator: _model
                                               .textFieldTimeTextControllerValidator
@@ -510,10 +499,9 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleMediumFamily,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMediumFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -553,12 +541,9 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                       .bodyMediumFamily,
                                               color: Colors.black,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         hintText: 'Please select...',
                                         fillColor: FlutterFlowTheme.of(context)
@@ -613,10 +598,9 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleMediumFamily,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMediumFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -673,12 +657,9 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                       .bodyMediumFamily,
                                               color: Colors.black,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         hintText: '0 Min',
                                         fillColor: FlutterFlowTheme.of(context)
@@ -703,10 +684,9 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodySmallFamily,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmallFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodySmallIsCustom,
                                           ),
                                     ),
                                     Padding(
@@ -790,12 +770,9 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                       .bodyMediumFamily,
                                               color: Colors.black,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         hintText: '0 Sec',
                                         fillColor: FlutterFlowTheme.of(context)
@@ -824,11 +801,8 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                       .bodySmallFamily,
                                               letterSpacing: 0.0,
                                               useGoogleFonts:
-                                                  GoogleFonts.asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodySmallFamily),
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodySmallIsCustom,
                                             ),
                                       ),
                                     ),
@@ -869,10 +843,9 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleMediumFamily,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMediumFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -909,12 +882,10 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmallFamily,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodySmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmallIsCustom,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -974,12 +945,9 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         maxLines: 3,
                                         validator: _model
@@ -1043,12 +1011,10 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmallIsCustom,
                                               ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(
@@ -1183,12 +1149,10 @@ class _CallDetailsCopyWidgetState extends State<CallDetailsCopyWidget> {
                                                 color: Colors.white,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmallIsCustom,
                                               ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(

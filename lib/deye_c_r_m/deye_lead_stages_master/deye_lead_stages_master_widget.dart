@@ -204,11 +204,10 @@ class _DeyeLeadStagesMasterWidgetState
                                                               context)
                                                           .headlineLargeFamily,
                                                   letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(FlutterFlowTheme
-                                                              .of(context)
-                                                          .headlineLargeFamily),
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLargeIsCustom,
                                                 ),
                                           ),
                                         ],
@@ -272,12 +271,9 @@ class _DeyeLeadStagesMasterWidgetState
                                                   FlutterFlowTheme.of(context)
                                                       .primaryBtnText,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineLargeFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .headlineLargeIsCustom,
                                             ),
                                         elevation: 2.0,
                                         borderSide: BorderSide(
@@ -344,12 +340,10 @@ class _DeyeLeadStagesMasterWidgetState
                                                                   .of(context)
                                                               .lineColor,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                   ),
                                                 ],
@@ -395,11 +389,10 @@ class _DeyeLeadStagesMasterWidgetState
                                                                       .lineColor,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -434,12 +427,10 @@ class _DeyeLeadStagesMasterWidgetState
                                                                   .of(context)
                                                               .lineColor,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                   ),
                                                 ],
@@ -472,12 +463,10 @@ class _DeyeLeadStagesMasterWidgetState
                                                                   .of(context)
                                                               .lineColor,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                   ),
                                                 ],
@@ -510,12 +499,10 @@ class _DeyeLeadStagesMasterWidgetState
                                                                   .of(context)
                                                               .lineColor,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                   ),
                                                 ],
@@ -549,12 +536,10 @@ class _DeyeLeadStagesMasterWidgetState
                                                               .lineColor,
                                                           fontSize: 17.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ],
@@ -648,10 +633,9 @@ class _DeyeLeadStagesMasterWidgetState
                                                                               .titleMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -717,7 +701,7 @@ class _DeyeLeadStagesMasterWidgetState
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                       ],
@@ -772,7 +756,7 @@ class _DeyeLeadStagesMasterWidgetState
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ],
@@ -951,13 +935,15 @@ class _DeyeLeadStagesMasterWidgetState
                                                                         );
                                                                       }
                                                                     },
-                                                                    side:
-                                                                        BorderSide(
-                                                                      width: 2,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .customColor3,
-                                                                    ),
+                                                                    side: (FlutterFlowTheme.of(context).customColor3 !=
+                                                                            null)
+                                                                        ? BorderSide(
+                                                                            width:
+                                                                                2,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).customColor3!,
+                                                                          )
+                                                                        : null,
                                                                     activeColor:
                                                                         FlutterFlowTheme.of(context)
                                                                             .customColor5,

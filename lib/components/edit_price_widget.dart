@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -40,7 +41,7 @@ class _EditPriceWidgetState extends State<EditPriceWidget> {
         text: getJsonField(
       widget!.editPrice,
       r'''$.price''',
-    ).toString().toString());
+    ).toString());
     _model.textFieldDiscountFocusNode ??= FocusNode();
     _model.textFieldDiscountFocusNode!.addListener(
       () async {
@@ -97,9 +98,8 @@ class _EditPriceWidgetState extends State<EditPriceWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .headlineSmallFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .headlineSmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineSmallIsCustom,
                                 ),
                       ),
                     ),
@@ -148,10 +148,9 @@ class _EditPriceWidgetState extends State<EditPriceWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodySmallFamily,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmallFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodySmallIsCustom,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -197,10 +196,9 @@ class _EditPriceWidgetState extends State<EditPriceWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleMediumIsCustom,
                                         ),
                                     validator: _model
                                         .textFieldDiscountTextControllerValidator
@@ -247,10 +245,9 @@ class _EditPriceWidgetState extends State<EditPriceWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .headlineSmallFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineSmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineSmallIsCustom,
                                   ),
                             ),
                           ],
@@ -297,10 +294,9 @@ class _EditPriceWidgetState extends State<EditPriceWidget> {
                                         .primaryBtnText,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineSmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineSmallIsCustom,
                                   ),
                             ),
                           ],

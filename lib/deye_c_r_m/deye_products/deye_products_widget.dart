@@ -1,4 +1,7 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/deye_c_r_m/deye_add_product/deye_add_product_widget.dart';
+import '/deye_c_r_m/deye_edit_product/deye_edit_product_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -217,77 +220,104 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                                               context)
                                                           .headlineLargeFamily,
                                                   letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(FlutterFlowTheme
-                                                              .of(context)
-                                                          .headlineLargeFamily),
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLargeIsCustom,
                                                 ),
                                           ),
                                         ],
                                       ),
                                     ),
-                                    FFButtonWidget(
-                                      onPressed: () async {
-                                        _model.len =
-                                            await actions.generateProducTCode(
-                                          containerProductRecordList.toList(),
-                                        );
-                                        FFAppState().catCodeLengtH =
-                                            _model.len!;
-                                        FFAppState().update(() {});
+                                    Builder(
+                                      builder: (context) => FFButtonWidget(
+                                        onPressed: () async {
+                                          _model.len =
+                                              await actions.generateProducTCode(
+                                            containerProductRecordList.toList(),
+                                          );
+                                          FFAppState().catCodeLengtH =
+                                              _model.len!;
+                                          FFAppState().update(() {});
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: WebViewAware(
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      FocusScope.of(
+                                                              dialogContext)
+                                                          .unfocus();
+                                                      FocusManager
+                                                          .instance.primaryFocus
+                                                          ?.unfocus();
+                                                    },
+                                                    child: Container(
+                                                      height: 400.0,
+                                                      width: 550.0,
+                                                      child:
+                                                          DeyeAddProductWidget(
+                                                        len: _model.len,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
 
-                                        context.pushNamed(
-                                          CAddProductDetailsNewWidget.routeName,
-                                          queryParameters: {
-                                            'codeLen': serializeParam(
-                                              FFAppState().catCodeLengtH,
-                                              ParamType.int,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-
-                                        safeSetState(() {});
-                                      },
-                                      text: 'Add',
-                                      options: FFButtonOptions(
-                                        width: 130.0,
-                                        height: 40.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .customColor5,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMediumFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBtnText,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(FlutterFlowTheme
-                                                          .of(context)
-                                                      .headlineMediumFamily),
-                                            ),
-                                        elevation: 2.0,
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
+                                          safeSetState(() {});
+                                        },
+                                        text: 'Add',
+                                        options: FFButtonOptions(
+                                          width: 130.0,
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .customColor5,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .headlineMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMediumFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBtnText,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineMediumIsCustom,
+                                              ),
+                                          elevation: 2.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          hoverColor:
+                                              FlutterFlowTheme.of(context).info,
+                                          hoverTextColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryBtnText,
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        hoverColor:
-                                            FlutterFlowTheme.of(context).info,
-                                        hoverTextColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryBtnText,
                                       ),
                                     ),
                                   ],
@@ -341,12 +371,10 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                                                   .of(context)
                                                               .lineColor,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                   ),
                                                 ],
@@ -393,11 +421,10 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                                                       .lineColor,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -432,7 +459,7 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                                             .start,
                                                     children: [
                                                       Text(
-                                                        'Price',
+                                                        'Category',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -446,11 +473,10 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                                                       .lineColor,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -487,12 +513,10 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                                                   .of(context)
                                                               .lineColor,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                   ),
                                                 ],
@@ -527,12 +551,10 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                                                   .of(context)
                                                               .lineColor,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                   ),
                                                 ],
@@ -546,6 +568,9 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                           builder: (context) {
                                             final list =
                                                 containerProductRecordList
+                                                    .sortedList(
+                                                        keyOf: (e) => e.code,
+                                                        desc: false)
                                                     .toList();
 
                                             return ListView.builder(
@@ -602,11 +627,10 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                                                       .titleMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ],
@@ -661,10 +685,9 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                                                               .titleMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -710,94 +733,187 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              Text(
-                                                                listItem
-                                                                    .sellingPrice
-                                                                    .toString(),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                              StreamBuilder<
+                                                                  List<
+                                                                      CategoryRecord>>(
+                                                                stream:
+                                                                    queryCategoryRecord(
+                                                                  parent: FFAppState()
+                                                                      .outletRef,
+                                                                  queryBuilder:
+                                                                      (categoryRecord) =>
+                                                                          categoryRecord
+                                                                              .where(
+                                                                    'id',
+                                                                    isEqualTo:
+                                                                        listItem
+                                                                            .category,
+                                                                  ),
+                                                                  singleRecord:
+                                                                      true,
+                                                                ),
+                                                                builder: (context,
+                                                                    snapshot) {
+                                                                  // Customize what your widget looks like when it's loading.
+                                                                  if (!snapshot
+                                                                      .hasData) {
+                                                                    return Center(
+                                                                      child:
+                                                                          SizedBox(
+                                                                        width:
+                                                                            30.0,
+                                                                        height:
+                                                                            30.0,
+                                                                        child:
+                                                                            SpinKitRing(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primary,
+                                                                          size:
+                                                                              30.0,
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                  List<CategoryRecord>
+                                                                      textCategoryRecordList =
+                                                                      snapshot
+                                                                          .data!;
+                                                                  // Return an empty Container when the item does not exist.
+                                                                  if (snapshot
+                                                                      .data!
+                                                                      .isEmpty) {
+                                                                    return Container();
+                                                                  }
+                                                                  final textCategoryRecord = textCategoryRecordList
+                                                                          .isNotEmpty
+                                                                      ? textCategoryRecordList
+                                                                          .first
+                                                                      : null;
+
+                                                                  return Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      textCategoryRecord
+                                                                          ?.name,
+                                                                      '-',
                                                                     ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).titleMediumIsCustom,
+                                                                        ),
+                                                                  );
+                                                                },
                                                               ),
                                                             ],
                                                           ),
                                                         ),
                                                       ),
                                                     ),
-                                                    InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        context.pushNamed(
-                                                          CEditProductDetailsNewWidget
-                                                              .routeName,
-                                                          queryParameters: {
-                                                            'proRef':
-                                                                serializeParam(
-                                                              listItem
-                                                                  .reference,
-                                                              ParamType
-                                                                  .DocumentReference,
-                                                            ),
-                                                            'id':
-                                                                serializeParam(
-                                                              listItem.id,
-                                                              ParamType.String,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      },
-                                                      child: Container(
-                                                        width:
-                                                            MediaQuery.sizeOf(
+                                                    Builder(
+                                                      builder: (context) =>
+                                                          InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (dialogContext) {
+                                                              return Dialog(
+                                                                elevation: 0,
+                                                                insetPadding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                alignment: AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
+                                                                child:
+                                                                    WebViewAware(
+                                                                  child:
+                                                                      GestureDetector(
+                                                                    onTap: () {
+                                                                      FocusScope.of(
+                                                                              dialogContext)
+                                                                          .unfocus();
+                                                                      FocusManager
+                                                                          .instance
+                                                                          .primaryFocus
+                                                                          ?.unfocus();
+                                                                    },
+                                                                    child:
+                                                                        Container(
+                                                                      height:
+                                                                          400.0,
+                                                                      width:
+                                                                          550.0,
+                                                                      child:
+                                                                          DeyeEditProductWidget(
+                                                                        productDoc:
+                                                                            listItem,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.04,
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.06,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                          ),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Icon(
+                                                                Icons.mode_edit,
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .width *
-                                                                0.04,
-                                                        height:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .height *
-                                                                0.06,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                        ),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Icon(
-                                                              Icons.mode_edit,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              size: 18.0,
-                                                            ),
-                                                          ],
+                                                                    .primaryText,
+                                                                size: 18.0,
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -847,7 +963,10 @@ class _DeyeProductsWidgetState extends State<DeyeProductsWidget> {
                                                         if (confirmDialogResponse) {
                                                           await listItem
                                                               .reference
-                                                              .delete();
+                                                              .update(
+                                                                  createProductRecordData(
+                                                            isDeleted: true,
+                                                          ));
 
                                                           context.pushNamed(
                                                             DeyeProductsWidget

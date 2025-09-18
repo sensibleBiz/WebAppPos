@@ -116,6 +116,8 @@ class AddNewLeadModel extends FlutterFlowModel<AddNewLeadWidget> {
   bool? checkTrue;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<OutletLeadsRecord>? leadRecords;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  OutletLeadsRecord? lead;
 
   @override
   void initState(BuildContext context) {

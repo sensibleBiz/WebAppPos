@@ -77,6 +77,26 @@ class TeamTreeRecord extends FirestoreRecord {
   String get workMode => _workMode ?? '';
   bool hasWorkMode() => _workMode != null;
 
+  // "team" field.
+  String? _team;
+  String get team => _team ?? '';
+  bool hasTeam() => _team != null;
+
+  // "isOnPayRoll" field.
+  bool? _isOnPayRoll;
+  bool get isOnPayRoll => _isOnPayRoll ?? false;
+  bool hasIsOnPayRoll() => _isOnPayRoll != null;
+
+  // "code" field.
+  String? _code;
+  String get code => _code ?? '';
+  bool hasCode() => _code != null;
+
+  // "onRole" field.
+  bool? _onRole;
+  bool get onRole => _onRole ?? false;
+  bool hasOnRole() => _onRole != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -95,6 +115,10 @@ class TeamTreeRecord extends FirestoreRecord {
       StageAccessDataTypeStruct.fromMap,
     );
     _workMode = snapshotData['workMode'] as String?;
+    _team = snapshotData['team'] as String?;
+    _isOnPayRoll = snapshotData['isOnPayRoll'] as bool?;
+    _code = snapshotData['code'] as String?;
+    _onRole = snapshotData['onRole'] as bool?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -147,6 +171,10 @@ Map<String, dynamic> createTeamTreeRecordData({
   String? zoneHeadProfileId,
   String? uid,
   String? workMode,
+  String? team,
+  bool? isOnPayRoll,
+  String? code,
+  bool? onRole,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -160,6 +188,10 @@ Map<String, dynamic> createTeamTreeRecordData({
       'zoneHeadProfileId': zoneHeadProfileId,
       'uid': uid,
       'workMode': workMode,
+      'team': team,
+      'isOnPayRoll': isOnPayRoll,
+      'code': code,
+      'onRole': onRole,
     }.withoutNulls,
   );
 
@@ -183,7 +215,11 @@ class TeamTreeRecordDocumentEquality implements Equality<TeamTreeRecord> {
         e1?.uid == e2?.uid &&
         listEquality.equals(e1?.zoneList, e2?.zoneList) &&
         listEquality.equals(e1?.stageAccessList, e2?.stageAccessList) &&
-        e1?.workMode == e2?.workMode;
+        e1?.workMode == e2?.workMode &&
+        e1?.team == e2?.team &&
+        e1?.isOnPayRoll == e2?.isOnPayRoll &&
+        e1?.code == e2?.code &&
+        e1?.onRole == e2?.onRole;
   }
 
   @override
@@ -199,7 +235,11 @@ class TeamTreeRecordDocumentEquality implements Equality<TeamTreeRecord> {
         e?.uid,
         e?.zoneList,
         e?.stageAccessList,
-        e?.workMode
+        e?.workMode,
+        e?.team,
+        e?.isOnPayRoll,
+        e?.code,
+        e?.onRole
       ]);
 
   @override

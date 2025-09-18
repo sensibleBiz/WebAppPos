@@ -4,6 +4,7 @@ import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
@@ -107,9 +108,8 @@ class _AddBusinessTypeMasterWidgetState
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .headlineLargeFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineLargeFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .headlineLargeIsCustom,
                               ),
                         ),
                       ],
@@ -132,9 +132,8 @@ class _AddBusinessTypeMasterWidgetState
                                       .bodySmallFamily,
                                   fontSize: 12.0,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodySmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodySmallIsCustom,
                                 ),
                           ),
                         ),
@@ -173,9 +172,8 @@ class _AddBusinessTypeMasterWidgetState
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .titleSmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .titleSmallIsCustom,
                               ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -223,9 +221,8 @@ class _AddBusinessTypeMasterWidgetState
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .titleMediumFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleMediumIsCustom,
                                 ),
                         textAlign: TextAlign.start,
                         validator: _model
@@ -282,10 +279,9 @@ class _AddBusinessTypeMasterWidgetState
                                             color: FlutterFlowTheme.of(context)
                                                 .lineColor,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMediumFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleMediumIsCustom,
                                           ),
                                     ),
                                   ],
@@ -306,8 +302,8 @@ class _AddBusinessTypeMasterWidgetState
                                       selectedMedia.every((m) =>
                                           validateFileFormat(
                                               m.storagePath, context))) {
-                                    safeSetState(
-                                        () => _model.isDataUploading = true);
+                                    safeSetState(() => _model
+                                        .isDataUploading_uploadMediaJ1b = true);
                                     var selectedUploadedFiles =
                                         <FFUploadedFile>[];
 
@@ -342,16 +338,17 @@ class _AddBusinessTypeMasterWidgetState
                                     } finally {
                                       ScaffoldMessenger.of(context)
                                           .hideCurrentSnackBar();
-                                      _model.isDataUploading = false;
+                                      _model.isDataUploading_uploadMediaJ1b =
+                                          false;
                                     }
                                     if (selectedUploadedFiles.length ==
                                             selectedMedia.length &&
                                         downloadUrls.length ==
                                             selectedMedia.length) {
                                       safeSetState(() {
-                                        _model.uploadedLocalFile =
+                                        _model.uploadedLocalFile_uploadMediaJ1b =
                                             selectedUploadedFiles.first;
-                                        _model.uploadedFileUrl =
+                                        _model.uploadedFileUrl_uploadMediaJ1b =
                                             downloadUrls.first;
                                       });
                                       showUploadMessage(context, 'Success!');
@@ -418,12 +415,10 @@ class _AddBusinessTypeMasterWidgetState
                                                         .bodySmallFamily,
                                                 fontSize: 12.0,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodySmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmallIsCustom,
                                               ),
                                         ),
                                       ),
@@ -468,12 +463,9 @@ class _AddBusinessTypeMasterWidgetState
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmallFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmallFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .titleSmallIsCustom,
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -523,10 +515,9 @@ class _AddBusinessTypeMasterWidgetState
                                                 FlutterFlowTheme.of(context)
                                                     .titleMediumFamily,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMediumFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleMediumIsCustom,
                                           ),
                                       textAlign: TextAlign.start,
                                       validator: _model
@@ -554,12 +545,10 @@ class _AddBusinessTypeMasterWidgetState
                                                         .bodySmallFamily,
                                                 fontSize: 12.0,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodySmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmallIsCustom,
                                               ),
                                         ),
                                       ),
@@ -624,12 +613,10 @@ class _AddBusinessTypeMasterWidgetState
                                                     FlutterFlowTheme.of(context)
                                                         .titleMediumFamily,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMediumFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleMediumIsCustom,
                                               ),
                                           icon: Icon(
                                             Icons.keyboard_arrow_down,
@@ -671,12 +658,10 @@ class _AddBusinessTypeMasterWidgetState
                                                         .bodySmallFamily,
                                                 fontSize: 12.0,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodySmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmallIsCustom,
                                               ),
                                         ),
                                       ),
@@ -747,22 +732,21 @@ class _AddBusinessTypeMasterWidgetState
                                                   containerSubscriptionRecord!
                                                       .amount
                                                       .toString(),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMediumFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMedium
+                                                          .override(
+                                                            fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .titleMediumFamily),
-                                                      ),
+                                                                    .titleMediumFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumIsCustom,
+                                                          ),
                                                 ),
                                               ),
                                           ],
@@ -817,10 +801,9 @@ class _AddBusinessTypeMasterWidgetState
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .titleMediumFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleMediumIsCustom,
                                       ),
                                 ),
                               ],
@@ -1018,10 +1001,9 @@ class _AddBusinessTypeMasterWidgetState
                                               .primaryBtnText,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .headlineMediumIsCustom,
                                         ),
                                   ),
                                 ],

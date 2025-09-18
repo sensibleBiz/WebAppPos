@@ -2,7 +2,9 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,6 +47,8 @@ class _DeyeNotificationPopupWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: 350.0,
       height: 450.0,
@@ -70,13 +74,15 @@ class _DeyeNotificationPopupWidgetState
                 Navigator.pop(context);
               },
             ),
-            StreamBuilder<List<NotificationsRecord>>(
-              stream: queryNotificationsRecord(
-                queryBuilder: (notificationsRecord) =>
-                    notificationsRecord.where(
-                  'isSeen',
-                  isEqualTo: false,
-                ),
+            StreamBuilder<List<LeaveApplicationRecord>>(
+              stream: queryLeaveApplicationRecord(
+                parent: FFAppState().outletRef,
+                queryBuilder: (leaveApplicationRecord) => leaveApplicationRecord
+                    .where(
+                      'updateddate',
+                      isGreaterThanOrEqualTo: functions.lastDays(15),
+                    )
+                    .orderBy('updateddate', descending: true),
               ),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
@@ -92,18 +98,18 @@ class _DeyeNotificationPopupWidgetState
                     ),
                   );
                 }
-                List<NotificationsRecord> listViewNotificationsRecordList =
-                    snapshot.data!;
+                List<LeaveApplicationRecord>
+                    listViewLeaveApplicationRecordList = snapshot.data!;
 
                 return ListView.separated(
                   padding: EdgeInsets.zero,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
-                  itemCount: listViewNotificationsRecordList.length,
+                  itemCount: listViewLeaveApplicationRecordList.length,
                   separatorBuilder: (_, __) => SizedBox(height: 3.0),
                   itemBuilder: (context, listViewIndex) {
-                    final listViewNotificationsRecord =
-                        listViewNotificationsRecordList[listViewIndex];
+                    final listViewLeaveApplicationRecord =
+                        listViewLeaveApplicationRecordList[listViewIndex];
                     return Container(
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primaryBackground,
@@ -120,32 +126,56 @@ class _DeyeNotificationPopupWidgetState
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 5.0),
                               child: Text(
-                                listViewNotificationsRecord.title,
+                                listViewLeaveApplicationRecord.userProfileId,
                                 style: FlutterFlowTheme.of(context)
                                     .labelSmall
                                     .override(
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .labelSmallFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .labelSmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelSmallIsCustom,
                                     ),
                               ),
                             ),
                             Text(
-                              'Msg',
+                              listViewLeaveApplicationRecord.status,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .bodyMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
+                                  ),
+                            ),
+                            Text(
+                              listViewLeaveApplicationRecord.leaveType,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
+                                  ),
+                            ),
+                            Text(
+                              listViewLeaveApplicationRecord.duration,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                           ],

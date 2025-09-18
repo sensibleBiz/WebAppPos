@@ -1,15 +1,17 @@
 import '/backend/backend.dart';
+import '/deye_c_r_m/deye_header/deye_header_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/pages/components/add_state/add_state_widget.dart';
 import '/pages/components/adm_side_nav_bar/adm_side_nav_bar_widget.dart';
 import '/pages/components/admin_header/admin_header_widget.dart';
 import '/pages/components/update_state/update_state_widget.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
-import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -58,6 +60,8 @@ class _StateWidgetState extends State<StateWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Title(
         title: 'State',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -77,14 +81,15 @@ class _StateWidgetState extends State<StateWidget> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      flex: 2,
-                      child: wrapWithModel(
-                        model: _model.admSideNavBarModel,
-                        updateCallback: () => safeSetState(() {}),
-                        child: AdmSideNavBarWidget(),
+                    if (FFAppState().billingType != 'CRM')
+                      Expanded(
+                        flex: 2,
+                        child: wrapWithModel(
+                          model: _model.admSideNavBarModel,
+                          updateCallback: () => safeSetState(() {}),
+                          child: AdmSideNavBarWidget(),
+                        ),
                       ),
-                    ),
                     Expanded(
                       flex: 9,
                       child: Container(
@@ -96,15 +101,26 @@ class _StateWidgetState extends State<StateWidget> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            wrapWithModel(
-                              model: _model.adminHeaderModel,
-                              updateCallback: () => safeSetState(() {}),
-                              child: AdminHeaderWidget(),
+                            Stack(
+                              children: [
+                                if (FFAppState().billingType != 'CRM')
+                                  wrapWithModel(
+                                    model: _model.adminHeaderModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: AdminHeaderWidget(),
+                                  ),
+                                if (FFAppState().billingType == 'CRM')
+                                  wrapWithModel(
+                                    model: _model.deyeHeaderModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: DeyeHeaderWidget(),
+                                  ),
+                              ],
                             ),
                             StreamBuilder<List<StateRecord>>(
                               stream: queryStateRecord(
-                                queryBuilder: (stateRecord) => stateRecord
-                                    .orderBy('code', descending: true),
+                                queryBuilder: (stateRecord) =>
+                                    stateRecord.orderBy('name'),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
@@ -179,9 +195,7 @@ class _StateWidgetState extends State<StateWidget> {
                                                       size: 30.0,
                                                     ),
                                                     onPressed: () async {
-                                                      context.pushNamed(
-                                                          DashboardAdminWidget
-                                                              .routeName);
+                                                      context.safePop();
                                                     },
                                                   ),
                                                   Text(
@@ -195,16 +209,95 @@ class _StateWidgetState extends State<StateWidget> {
                                                                       context)
                                                                   .headlineLargeFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                                   ),
                                                 ],
                                               ),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsets.all(5.0),
+                                                  child: Text(
+                                                    'Zone',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMediumFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMediumIsCustom,
+                                                        ),
+                                                  ),
+                                                ),
+                                                FlutterFlowDropDown<String>(
+                                                  controller: _model
+                                                          .dropDownValueController ??=
+                                                      FormFieldController<
+                                                          String>(null),
+                                                  options: FFAppConstants
+                                                      .DefualtZones,
+                                                  onChanged: (val) =>
+                                                      safeSetState(() => _model
+                                                          .dropDownValue = val),
+                                                  width: 200.0,
+                                                  height: 40.0,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
+                                                  hintText: 'Select...',
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderWidth: 0.0,
+                                                  borderRadius: 8.0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 12.0, 0.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: false,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
+                                                ),
+                                              ],
                                             ),
                                             FFButtonWidget(
                                               onPressed: () async {
@@ -278,12 +371,10 @@ class _StateWidgetState extends State<StateWidget> {
                                                                   .of(context)
                                                               .lineColor,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineMediumIsCustom,
                                                         ),
                                                 elevation: 2.0,
                                                 borderSide: BorderSide(
@@ -365,10 +456,9 @@ class _StateWidgetState extends State<StateWidget> {
                                                                         .lineColor,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -424,7 +514,7 @@ class _StateWidgetState extends State<StateWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ],
@@ -470,10 +560,9 @@ class _StateWidgetState extends State<StateWidget> {
                                                                         .lineColor,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -517,10 +606,9 @@ class _StateWidgetState extends State<StateWidget> {
                                                                         .lineColor,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -558,9 +646,14 @@ class _StateWidgetState extends State<StateWidget> {
                                                               Builder(
                                                                 builder:
                                                                     (context) {
-                                                                  final list =
-                                                                      containerStateRecordList
-                                                                          .toList();
+                                                                  final list = (_model.dropDownValue != null &&
+                                                                              _model.dropDownValue !=
+                                                                                  ''
+                                                                          ? containerStateRecordList
+                                                                              .where((e) => e.zone == _model.dropDownValue)
+                                                                              .toList()
+                                                                          : containerStateRecordList)
+                                                                      .toList();
 
                                                                   return ListView
                                                                       .builder(
@@ -608,7 +701,7 @@ class _StateWidgetState extends State<StateWidget> {
                                                                                     style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -637,7 +730,7 @@ class _StateWidgetState extends State<StateWidget> {
                                                                                             style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ],

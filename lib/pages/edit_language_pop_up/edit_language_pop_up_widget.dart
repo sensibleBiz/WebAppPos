@@ -66,8 +66,8 @@ class _EditLanguagePopUpWidgetState extends State<EditLanguagePopUpWidget> {
                       color: Colors.white,
                       fontSize: 22.0,
                       letterSpacing: 0.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).headlineMediumFamily),
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                     ),
               ),
               actions: [],
@@ -158,12 +158,10 @@ class _EditLanguagePopUpWidgetState extends State<EditLanguagePopUpWidget> {
                                                         .titleSmallFamily,
                                                 color: Colors.white,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmallIsCustom,
                                               ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(
@@ -236,12 +234,10 @@ class _EditLanguagePopUpWidgetState extends State<EditLanguagePopUpWidget> {
                                                         .titleSmallFamily,
                                                 color: Colors.white,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmallIsCustom,
                                               ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(
@@ -288,12 +284,10 @@ class _EditLanguagePopUpWidgetState extends State<EditLanguagePopUpWidget> {
                                                         .titleSmallFamily,
                                                 color: Colors.white,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmallIsCustom,
                                               ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(
@@ -340,12 +334,10 @@ class _EditLanguagePopUpWidgetState extends State<EditLanguagePopUpWidget> {
                                                         .titleSmallFamily,
                                                 color: Colors.white,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmallIsCustom,
                                               ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(
@@ -388,11 +380,9 @@ class _EditLanguagePopUpWidgetState extends State<EditLanguagePopUpWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .headlineMediumFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(FlutterFlowTheme
-                                                          .of(context)
-                                                      .headlineMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .headlineMediumIsCustom,
                                             ),
                                       ),
                                     ],
@@ -415,11 +405,9 @@ class _EditLanguagePopUpWidgetState extends State<EditLanguagePopUpWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .headlineMediumFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(FlutterFlowTheme
-                                                          .of(context)
-                                                      .headlineMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .headlineMediumIsCustom,
                                             ),
                                       ),
                                     ],
@@ -442,11 +430,9 @@ class _EditLanguagePopUpWidgetState extends State<EditLanguagePopUpWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .headlineMediumFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(FlutterFlowTheme
-                                                          .of(context)
-                                                      .headlineMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .headlineMediumIsCustom,
                                             ),
                                       ),
                                     ],
@@ -469,11 +455,9 @@ class _EditLanguagePopUpWidgetState extends State<EditLanguagePopUpWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .headlineMediumFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(FlutterFlowTheme
-                                                          .of(context)
-                                                      .headlineMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .headlineMediumIsCustom,
                                             ),
                                       ),
                                     ],

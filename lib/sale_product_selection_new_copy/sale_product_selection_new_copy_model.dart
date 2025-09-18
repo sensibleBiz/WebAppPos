@@ -26,6 +26,8 @@ class SaleProductSelectionNewCopyModel
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   // Stores action output result for [Custom Action - addToRawlist] action in Container widget.
   List<dynamic>? res1;

@@ -179,10 +179,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .headlineLargeFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineLargeFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineLargeIsCustom,
                                   ),
                             ),
                           ),
@@ -215,9 +214,8 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                     .bodyMediumFamily,
                                 fontSize: 15.0,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                         ),
                       ],
@@ -243,10 +241,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                   .bodyMediumFamily,
                                           fontSize: 15.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -325,12 +322,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -340,12 +334,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                       .bodyMediumFamily,
                                               color: Colors.black,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         hintText: 'Please select...',
                                         fillColor: Colors.white,
@@ -384,10 +375,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                   .bodyMediumFamily,
                                           fontSize: 15.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -456,12 +446,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -471,12 +458,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                       .bodyMediumFamily,
                                               color: Colors.black,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         hintText: 'Please select...',
                                         fillColor: Colors.white,
@@ -718,6 +702,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                           assignedBy: _model
                                                               .userRef1?.id,
                                                           isDuplicate: false,
+                                                          leadCampaign:
+                                                              container66OutletLeadsRecord
+                                                                  ?.leadCampaign,
                                                         ),
                                                         ...mapToFirestore(
                                                           {
@@ -838,6 +825,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                           assignedBy: _model
                                                               .userRef1?.id,
                                                           isDuplicate: false,
+                                                          leadCampaign:
+                                                              container66OutletLeadsRecord
+                                                                  ?.leadCampaign,
                                                         ),
                                                         ...mapToFirestore(
                                                           {
@@ -888,11 +878,10 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                                       .primary,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineSmallIsCustom,
                                                                 ),
                                                           ),
                                                           duration: Duration(
@@ -913,9 +902,10 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                         isDuplicate: false,
                                                       ));
                                                       await Future.delayed(
-                                                          const Duration(
-                                                              milliseconds:
-                                                                  2000));
+                                                        Duration(
+                                                          milliseconds: 2000,
+                                                        ),
+                                                      );
 
                                                       context.pushNamed(
                                                           LeadsDashboardFinalWidget
@@ -1005,6 +995,9 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                                 ?.userProfileId
                                                             : _model
                                                                 .userRef2?.id,
+                                                        leadCampaign:
+                                                            container66OutletLeadsRecord
+                                                                ?.leadCampaign,
                                                       ));
                                                       ScaffoldMessenger.of(
                                                               context)
@@ -1024,11 +1017,10 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                                       .primary,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineSmallIsCustom,
                                                                 ),
                                                           ),
                                                           duration: Duration(
@@ -1056,9 +1048,10 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                         isDuplicate: false,
                                                       ));
                                                       await Future.delayed(
-                                                          const Duration(
-                                                              milliseconds:
-                                                                  2000));
+                                                        Duration(
+                                                          milliseconds: 2000,
+                                                        ),
+                                                      );
                                                       _model.res3 =
                                                           await actions
                                                               .leadDocRefCopy(
@@ -1145,27 +1138,25 @@ class _AssignLeadWidgetState extends State<AssignLeadWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primary,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryBtnText,
-                                                        fontSize: 18.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMediumFamily),
-                                                      ),
+                                                                    .bodyMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBtnText,
+                                                            fontSize: 18.0,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                   elevation: 2.0,
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,

@@ -13,14 +13,14 @@ class CustomFieldsStruct extends FFFirebaseStruct {
     String? capacity,
     String? productType,
     String? purchasedFrom,
-    int? serial,
-    String? remark,
+    String? solution,
+    String? serial,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _capacity = capacity,
         _productType = productType,
         _purchasedFrom = purchasedFrom,
+        _solution = solution,
         _serial = serial,
-        _remark = remark,
         super(firestoreUtilData);
 
   // "capacity" field.
@@ -44,29 +44,27 @@ class CustomFieldsStruct extends FFFirebaseStruct {
 
   bool hasPurchasedFrom() => _purchasedFrom != null;
 
-  // "serial" field.
-  int? _serial;
-  int get serial => _serial ?? 0;
-  set serial(int? val) => _serial = val;
+  // "solution" field.
+  String? _solution;
+  String get solution => _solution ?? '';
+  set solution(String? val) => _solution = val;
 
-  void incrementSerial(int amount) => serial = serial + amount;
+  bool hasSolution() => _solution != null;
+
+  // "serial" field.
+  String? _serial;
+  String get serial => _serial ?? '';
+  set serial(String? val) => _serial = val;
 
   bool hasSerial() => _serial != null;
-
-  // "remark" field.
-  String? _remark;
-  String get remark => _remark ?? '';
-  set remark(String? val) => _remark = val;
-
-  bool hasRemark() => _remark != null;
 
   static CustomFieldsStruct fromMap(Map<String, dynamic> data) =>
       CustomFieldsStruct(
         capacity: data['capacity'] as String?,
         productType: data['productType'] as String?,
         purchasedFrom: data['purchasedFrom'] as String?,
-        serial: castToType<int>(data['serial']),
-        remark: data['remark'] as String?,
+        solution: data['solution'] as String?,
+        serial: data['serial'] as String?,
       );
 
   static CustomFieldsStruct? maybeFromMap(dynamic data) => data is Map
@@ -77,8 +75,8 @@ class CustomFieldsStruct extends FFFirebaseStruct {
         'capacity': _capacity,
         'productType': _productType,
         'purchasedFrom': _purchasedFrom,
+        'solution': _solution,
         'serial': _serial,
-        'remark': _remark,
       }.withoutNulls;
 
   @override
@@ -95,12 +93,12 @@ class CustomFieldsStruct extends FFFirebaseStruct {
           _purchasedFrom,
           ParamType.String,
         ),
+        'solution': serializeParam(
+          _solution,
+          ParamType.String,
+        ),
         'serial': serializeParam(
           _serial,
-          ParamType.int,
-        ),
-        'remark': serializeParam(
-          _remark,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -122,13 +120,13 @@ class CustomFieldsStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        serial: deserializeParam(
-          data['serial'],
-          ParamType.int,
+        solution: deserializeParam(
+          data['solution'],
+          ParamType.String,
           false,
         ),
-        remark: deserializeParam(
-          data['remark'],
+        serial: deserializeParam(
+          data['serial'],
           ParamType.String,
           false,
         ),
@@ -143,21 +141,21 @@ class CustomFieldsStruct extends FFFirebaseStruct {
         capacity == other.capacity &&
         productType == other.productType &&
         purchasedFrom == other.purchasedFrom &&
-        serial == other.serial &&
-        remark == other.remark;
+        solution == other.solution &&
+        serial == other.serial;
   }
 
   @override
   int get hashCode => const ListEquality()
-      .hash([capacity, productType, purchasedFrom, serial, remark]);
+      .hash([capacity, productType, purchasedFrom, solution, serial]);
 }
 
 CustomFieldsStruct createCustomFieldsStruct({
   String? capacity,
   String? productType,
   String? purchasedFrom,
-  int? serial,
-  String? remark,
+  String? solution,
+  String? serial,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -167,8 +165,8 @@ CustomFieldsStruct createCustomFieldsStruct({
       capacity: capacity,
       productType: productType,
       purchasedFrom: purchasedFrom,
+      solution: solution,
       serial: serial,
-      remark: remark,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

@@ -156,12 +156,10 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                     context)
                                                                 .headlineLargeFamily,
                                                         letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineLargeFamily),
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineLargeIsCustom,
                                                       ),
                                             ),
                                           ),
@@ -342,7 +340,7 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                             .override(
                                                                               fontFamily: FlutterFlowTheme.of(context).displayMediumFamily,
                                                                               letterSpacing: 0.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displayMediumFamily),
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).displayMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -387,12 +385,10 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                       context)
                                                                   .headlineLargeFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                               ),
                                             ),
@@ -553,7 +549,7 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                         );
                                                                       } else {
                                                                         context.pushNamed(
-                                                                            LeadsDashboardFinalWidget.routeName);
+                                                                            LeadsDashboardNewWidget.routeName);
                                                                       }
                                                                     }
 
@@ -619,7 +615,7 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                                               style: FlutterFlowTheme.of(context).headlineLarge.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                           ],
@@ -656,7 +652,7 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -667,7 +663,7 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -690,7 +686,7 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                                 Padding(
@@ -700,7 +696,7 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -718,7 +714,7 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                               Padding(
@@ -728,7 +724,7 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                                   style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -737,7 +733,7 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],

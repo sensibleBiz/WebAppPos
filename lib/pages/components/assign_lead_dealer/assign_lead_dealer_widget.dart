@@ -132,9 +132,8 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .headlineLargeFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineLargeFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .headlineLargeIsCustom,
                               ),
                         ),
                       ),
@@ -164,8 +163,8 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             fontSize: 15.0,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ],
@@ -190,10 +189,9 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                           .bodyMediumFamily,
                                       fontSize: 15.0,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -276,19 +274,18 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                             val),
                                     width: 180.0,
                                     height: 50.0,
-                                    searchTextStyle: FlutterFlowTheme.of(
-                                            context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
+                                    searchTextStyle:
+                                        FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
-                                        ),
+                                                      .bodyMediumFamily,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -297,10 +294,9 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                                   .bodyMediumFamily,
                                           color: Colors.black,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                     hintText: 'Please select...',
                                     fillColor: Colors.white,
@@ -338,10 +334,9 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                           .bodyMediumFamily,
                                       fontSize: 15.0,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -420,19 +415,18 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                     },
                                     width: 180.0,
                                     height: 50.0,
-                                    searchTextStyle: FlutterFlowTheme.of(
-                                            context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
+                                    searchTextStyle:
+                                        FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
-                                        ),
+                                                      .bodyMediumFamily,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -441,10 +435,9 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                                   .bodyMediumFamily,
                                           color: Colors.black,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                     hintText: 'Please select...',
                                     fillColor: Colors.white,
@@ -627,6 +620,15 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                                         ? true
                                                         : false,
                                                 isDuplicate: false,
+                                                leadCampaign:
+                                                    container66OutletLeadsRecord
+                                                        ?.leadCampaign,
+                                                contact:
+                                                    container66OutletLeadsRecord
+                                                        ?.contact,
+                                                ticket:
+                                                    container66OutletLeadsRecord
+                                                        ?.ticket,
                                               ),
                                               ...mapToFirestore(
                                                 {
@@ -750,6 +752,15 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                                         ? true
                                                         : false,
                                                 isDuplicate: false,
+                                                leadCampaign:
+                                                    container66OutletLeadsRecord
+                                                        ?.leadCampaign,
+                                                contact:
+                                                    container66OutletLeadsRecord
+                                                        ?.contact,
+                                                ticket:
+                                                    container66OutletLeadsRecord
+                                                        ?.ticket,
                                               ),
                                               ...mapToFirestore(
                                                 {
@@ -802,12 +813,10 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                                                     context)
                                                                 .primary,
                                                         letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmallFamily),
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineSmallIsCustom,
                                                       ),
                                                 ),
                                                 duration: Duration(
@@ -817,11 +826,14 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                                         .secondary,
                                               ),
                                             );
-                                            await Future.delayed(const Duration(
-                                                milliseconds: 2000));
+                                            await Future.delayed(
+                                              Duration(
+                                                milliseconds: 2000,
+                                              ),
+                                            );
 
                                             context.pushNamed(
-                                                LeadsDashboardFinalWidget
+                                                LeadsDashboardNewWidget
                                                     .routeName);
 
                                             if (_shouldSetState)
@@ -842,6 +854,9 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                                   _model.dealerSwitchValue!
                                                       ? true
                                                       : false,
+                                              leadCampaign:
+                                                  container66OutletLeadsRecord
+                                                      ?.leadCampaign,
                                             ));
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
@@ -861,12 +876,10 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                                                     context)
                                                                 .primary,
                                                         letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmallFamily),
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineSmallIsCustom,
                                                       ),
                                                 ),
                                                 duration: Duration(
@@ -939,12 +952,10 @@ class _AssignLeadDealerWidgetState extends State<AssignLeadDealerWidget> {
                                                         .primaryBtnText,
                                                 fontSize: 18.0,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
                                               ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(

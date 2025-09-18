@@ -12,8 +12,8 @@ import 'package:provider/provider.dart';
 class UrlImageModel extends FlutterFlowModel<UrlImageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadDataI8w = false;
+  FFUploadedFile uploadedLocalFile_uploadDataI8w =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
   @override

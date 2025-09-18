@@ -49,70 +49,71 @@ class _DeyeThankyouPageWidgetState extends State<DeyeThankyouPageWidget> {
             FocusScope.of(context).unfocus();
             FocusManager.instance.primaryFocus?.unfocus();
           },
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).back2nd,
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(45.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.thumb_up,
-                      color: FlutterFlowTheme.of(context).customColor6,
-                      size: 50.0,
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          'Thank you ',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context)
-                              .displayLarge
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .displayLargeFamily,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .displayLargeFamily),
-                              ),
-                        ),
-                        Text(
-                          'for contacting us !',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context)
-                              .displayMedium
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .displayMediumFamily,
-                                letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .displayMediumFamily),
-                              ),
-                        ),
-                      ].divide(SizedBox(height: 5.0)),
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        'assets/images/logo.png',
-                        width: 200.0,
-                        height: 90.0,
-                        fit: BoxFit.none,
+          child: PopScope(
+            canPop: false,
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              body: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).back2nd,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(45.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.thumb_up,
+                        color: FlutterFlowTheme.of(context).customColor6,
+                        size: 50.0,
                       ),
-                    ),
-                  ].divide(SizedBox(height: 40.0)),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Thank you ',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .displayLarge
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .displayLargeFamily,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .displayLargeIsCustom,
+                                ),
+                          ),
+                          Text(
+                            'for contacting us !',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .displayMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .displayMediumFamily,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .displayMediumIsCustom,
+                                ),
+                          ),
+                        ].divide(SizedBox(height: 5.0)),
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          'assets/images/logo.png',
+                          width: 200.0,
+                          height: 90.0,
+                          fit: BoxFit.none,
+                        ),
+                      ),
+                    ].divide(SizedBox(height: 40.0)),
+                  ),
                 ),
               ),
             ),

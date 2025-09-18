@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/c_edit_profile/c_edit_profile_widget.dart';
 import '/pages/components/logout_confirm/logout_confirm_widget.dart';
 import 'dart:ui';

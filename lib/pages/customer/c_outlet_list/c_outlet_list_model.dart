@@ -23,7 +23,13 @@ class COutletListModel extends FlutterFlowModel<COutletListWidget> {
   // Model for cHeader component.
   late CHeaderModel cHeaderModel;
   // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
+  int? teamTreeDocs;
+  // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
   TeamTreeRecord? teamTREE;
+  // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
+  List<CategoryRecord>? categoryDocs;
+  // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
+  List<ProductRecord>? productDocs;
 
   @override
   void initState(BuildContext context) {

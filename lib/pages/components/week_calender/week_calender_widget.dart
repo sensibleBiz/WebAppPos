@@ -94,10 +94,9 @@ class _WeekCalenderWidgetState extends State<WeekCalenderWidget> {
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleSmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
                                   ),
                               elevation: 2.0,
                               borderSide: BorderSide(
@@ -128,9 +127,8 @@ class _WeekCalenderWidgetState extends State<WeekCalenderWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .headlineLargeFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .headlineLargeFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineLargeIsCustom,
                                 ),
                         dayOfWeekStyle: FlutterFlowTheme.of(context)
                             .labelSmall
@@ -138,9 +136,8 @@ class _WeekCalenderWidgetState extends State<WeekCalenderWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).labelSmallFamily,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .labelSmallFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .labelSmallIsCustom,
                             ),
                         dateStyle:
                             FlutterFlowTheme.of(context).headlineLarge.override(
@@ -149,9 +146,8 @@ class _WeekCalenderWidgetState extends State<WeekCalenderWidget> {
                                   color: FlutterFlowTheme.of(context).primary,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .headlineLargeFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineLargeIsCustom,
                                 ),
                         selectedDateStyle: TextStyle(
                           color: FlutterFlowTheme.of(context).primary,

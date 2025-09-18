@@ -1,7 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/components/send_email_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -10,7 +7,6 @@ import '/pages/components/cstm_side_nav_bar/cstm_side_nav_bar_widget.dart';
 import '/pages/components/custom_date_range/custom_date_range_widget.dart';
 import '/pages/components/list_view_msg/list_view_msg_widget.dart';
 import 'dart:ui';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'c_complaint_report_widget.dart' show CComplaintReportWidget;
@@ -28,14 +24,6 @@ class CComplaintReportModel extends FlutterFlowModel<CComplaintReportWidget> {
   late CstmSideNavBarModel cstmSideNavBarModel;
   // Model for cHeader component.
   late CHeaderModel cHeaderModel;
-  // Stores action output result for [Custom Action - genExcelForComplaintReport] action in Icon widget.
-  String? base64Link232;
-  // Stores action output result for [Backend Call - API (sendMail)] action in Icon widget.
-  ApiCallResponse? apiResult88g;
-  // Stores action output result for [Custom Action - genExcelForComplaintReport] action in Icon widget.
-  String? base64Link2322;
-  // Stores action output result for [Backend Call - API (sendMail)] action in Icon widget.
-  ApiCallResponse? apiResult88gt;
 
   @override
   void initState(BuildContext context) {

@@ -4,6 +4,7 @@ import '/components/popup_success_copy_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -139,8 +140,8 @@ class _StatusDropdownWidgetState extends State<StatusDropdownWidget> {
                 fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                 fontSize: 11.0,
                 letterSpacing: 0.0,
-                useGoogleFonts: GoogleFonts.asMap()
-                    .containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                useGoogleFonts:
+                    !FlutterFlowTheme.of(context).labelLargeIsCustom,
               ),
           icon: Icon(
             Icons.keyboard_arrow_down_rounded,

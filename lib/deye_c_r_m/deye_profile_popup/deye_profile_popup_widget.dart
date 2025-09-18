@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/components/logout_confirm/logout_confirm_widget.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -139,8 +140,8 @@ class _DeyeProfilePopupWidgetState extends State<DeyeProfilePopupWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                       hintText: 'Select...',
                       icon: Icon(
@@ -188,8 +189,9 @@ class _DeyeProfilePopupWidgetState extends State<DeyeProfilePopupWidget> {
                         shape: BoxShape.circle,
                       ),
                       child: Image.network(
-                        widget!.profileDoc?.photoUrl != ''
-                            ? widget!.profileDoc!.photoUrl
+                        widget!.profileDoc?.avtarurl != ''
+                            ? functions.imgStrtoimagePath(
+                                widget!.profileDoc?.avtarurl)!
                             : 'https://cdn-icons-png.flaticon.com/256/1177/1177568.png',
                         fit: BoxFit.cover,
                       ),
@@ -208,9 +210,8 @@ class _DeyeProfilePopupWidgetState extends State<DeyeProfilePopupWidget> {
                                       .titleMediumFamily,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleMediumIsCustom,
                                 ),
                       ),
                     ),
@@ -228,9 +229,8 @@ class _DeyeProfilePopupWidgetState extends State<DeyeProfilePopupWidget> {
                                       .titleMediumFamily,
                                   fontSize: 10.0,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleMediumIsCustom,
                                 ),
                       ),
                     ),
@@ -247,9 +247,8 @@ class _DeyeProfilePopupWidgetState extends State<DeyeProfilePopupWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .titleMediumFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleMediumIsCustom,
                                 ),
                       ),
                     ),
@@ -295,9 +294,8 @@ class _DeyeProfilePopupWidgetState extends State<DeyeProfilePopupWidget> {
                                     .labelSmallFamily,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w600,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .labelSmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .labelSmallIsCustom,
                               ),
                           elevation: 0.0,
                           borderSide: BorderSide(
@@ -349,9 +347,8 @@ class _DeyeProfilePopupWidgetState extends State<DeyeProfilePopupWidget> {
                                   fontSize: 11.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleSmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleSmallIsCustom,
                                 ),
                             elevation: 0.0,
                             borderRadius: BorderRadius.circular(8.0),

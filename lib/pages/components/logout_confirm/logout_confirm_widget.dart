@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -69,8 +70,8 @@ class _LogoutConfirmWidgetState extends State<LogoutConfirmWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).headlineLargeFamily,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).headlineLargeFamily),
+                          useGoogleFonts: !FlutterFlowTheme.of(context)
+                              .headlineLargeIsCustom,
                         ),
                   ),
                 ],
@@ -111,10 +112,9 @@ class _LogoutConfirmWidgetState extends State<LogoutConfirmWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleMediumIsCustom,
                                   ),
                             ),
                           ],
@@ -140,6 +140,11 @@ class _LogoutConfirmWidgetState extends State<LogoutConfirmWidget> {
                         FFAppState().readOnlyAccess = false;
                         FFAppState().currentUserZoneList = [];
                         FFAppState().stageListPermissionState = [];
+                        FFAppState().currentLoggedInUserId = '';
+                        FFAppState().roleInZone = '';
+                        FFAppState().currentMobile = '';
+                        FFAppState().currentUserRole = '';
+                        FFAppState().curUserName = '';
                         safeSetState(() {});
                         GoRouter.of(context).prepareAuthEvent();
                         await authManager.signOut();
@@ -170,10 +175,9 @@ class _LogoutConfirmWidgetState extends State<LogoutConfirmWidget> {
                                         .primaryBtnText,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleMediumIsCustom,
                                   ),
                             ),
                           ],

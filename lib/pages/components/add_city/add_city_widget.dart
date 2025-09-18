@@ -1,12 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -102,9 +103,8 @@ class _AddCityWidgetState extends State<AddCityWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .headlineLargeFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineLargeFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .headlineLargeIsCustom,
                               ),
                         ),
                       ],
@@ -127,9 +127,8 @@ class _AddCityWidgetState extends State<AddCityWidget> {
                                       .bodySmallFamily,
                                   fontSize: 12.0,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodySmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodySmallIsCustom,
                                 ),
                           ),
                         ),
@@ -169,9 +168,8 @@ class _AddCityWidgetState extends State<AddCityWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .titleSmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .titleSmallIsCustom,
                               ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -219,9 +217,8 @@ class _AddCityWidgetState extends State<AddCityWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .titleMediumFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleMediumIsCustom,
                                 ),
                         textAlign: TextAlign.start,
                         validator: _model
@@ -247,9 +244,8 @@ class _AddCityWidgetState extends State<AddCityWidget> {
                                       .bodySmallFamily,
                                   fontSize: 12.0,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodySmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodySmallIsCustom,
                                 ),
                           ),
                         ),
@@ -299,17 +295,35 @@ class _AddCityWidgetState extends State<AddCityWidget> {
                                 safeSetState(() => _model.dropDownValue = val),
                             width: 200.0,
                             height: 40.0,
+                            searchHintTextStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .labelMediumIsCustom,
+                                ),
+                            searchTextStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyMediumIsCustom,
+                                ),
                             textStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyMediumFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyMediumIsCustom,
                                 ),
                             hintText: 'Select...',
+                            searchHintText: 'Search...',
                             icon: Icon(
                               Icons.keyboard_arrow_down_rounded,
                               color: FlutterFlowTheme.of(context).secondaryText,
@@ -325,7 +339,7 @@ class _AddCityWidgetState extends State<AddCityWidget> {
                                 12.0, 0.0, 12.0, 0.0),
                             hidesUnderline: true,
                             isOverButton: false,
-                            isSearchable: false,
+                            isSearchable: true,
                             isMultiSelect: false,
                           );
                         },
@@ -365,9 +379,8 @@ class _AddCityWidgetState extends State<AddCityWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .titleSmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .titleSmallIsCustom,
                               ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -415,9 +428,8 @@ class _AddCityWidgetState extends State<AddCityWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .titleMediumFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleMediumIsCustom,
                                 ),
                         textAlign: TextAlign.start,
                         validator: _model
@@ -465,10 +477,9 @@ class _AddCityWidgetState extends State<AddCityWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .titleMediumFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleMediumIsCustom,
                                       ),
                                 ),
                               ],
@@ -479,149 +490,114 @@ class _AddCityWidgetState extends State<AddCityWidget> {
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
-                        child: StreamBuilder<List<StateRecord>>(
-                          stream: queryStateRecord(
-                            queryBuilder: (stateRecord) => stateRecord.where(
-                              'name',
-                              isEqualTo: _model.dropDownValue,
-                            ),
-                            singleRecord: true,
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 30.0,
-                                  height: 30.0,
-                                  child: SpinKitRing(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 30.0,
-                                  ),
-                                ),
-                              );
-                            }
-                            List<StateRecord> containerStateRecordList =
-                                snapshot.data!;
-                            final containerStateRecord =
-                                containerStateRecordList.isNotEmpty
-                                    ? containerStateRecordList.first
-                                    : null;
-
-                            return InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                var _shouldSetState = false;
-                                if (_model.textLanguageNameTextController
-                                            .text !=
-                                        null &&
-                                    _model.textLanguageNameTextController
-                                            .text !=
-                                        '') {
-                                  var citiesRecordReference =
-                                      CitiesRecord.collection.doc();
-                                  await citiesRecordReference
-                                      .set(createCitiesRecordData(
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            var _shouldSetState = false;
+                            if (_model.textLanguageNameTextController.text !=
+                                    null &&
+                                _model.textLanguageNameTextController.text !=
+                                    '') {
+                              var citiesRecordReference =
+                                  CitiesRecord.collection.doc();
+                              await citiesRecordReference
+                                  .set(createCitiesRecordData(
+                                cityName: functions.toCapitalLetter(
+                                    _model.textLanguageNameTextController.text),
+                                code: int.tryParse(
+                                    _model.textLanguageCodeTextController.text),
+                                state: _model.dropDownValue,
+                              ));
+                              _model.doc = CitiesRecord.getDocumentFromData(
+                                  createCitiesRecordData(
                                     cityName: functions.toCapitalLetter(_model
                                         .textLanguageNameTextController.text),
                                     code: int.tryParse(_model
                                         .textLanguageCodeTextController.text),
-                                    state: containerStateRecord?.name,
-                                  ));
-                                  _model.doc = CitiesRecord.getDocumentFromData(
-                                      createCitiesRecordData(
-                                        cityName: functions.toCapitalLetter(
-                                            _model
-                                                .textLanguageNameTextController
-                                                .text),
-                                        code: int.tryParse(_model
-                                            .textLanguageCodeTextController
-                                            .text),
-                                        state: containerStateRecord?.name,
-                                      ),
-                                      citiesRecordReference);
-                                  _shouldSetState = true;
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return WebViewAware(
-                                        child: AlertDialog(
-                                          title: Text('Create'),
-                                          content:
-                                              Text('State  Add Successfully'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  );
-
-                                  await _model.doc!.reference
-                                      .update(createCitiesRecordData(
-                                    id: _model.doc?.reference.id,
-                                  ));
-
-                                  context.pushNamed(CityWidget.routeName);
-                                } else {
-                                  if (_model.formKey.currentState == null ||
-                                      !_model.formKey.currentState!
-                                          .validate()) {
-                                    return;
-                                  }
-                                  if (_shouldSetState) safeSetState(() {});
-                                  return;
-                                }
-
-                                if (_shouldSetState) safeSetState(() {});
-                              },
-                              child: Container(
-                                width: 200.0,
-                                height: 48.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 10.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Save',
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMediumFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBtnText,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(FlutterFlowTheme
-                                                          .of(context)
-                                                      .headlineMediumFamily),
-                                            ),
-                                      ),
-                                    ],
+                                    state: _model.dropDownValue,
                                   ),
-                                ),
-                              ),
-                            );
+                                  citiesRecordReference);
+                              _shouldSetState = true;
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return WebViewAware(
+                                    child: AlertDialog(
+                                      title: Text('Create'),
+                                      content: Text('City  Add Successfully'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+
+                              await _model.doc!.reference
+                                  .update(createCitiesRecordData(
+                                id: _model.doc?.reference.id,
+                              ));
+                              FFAppState().addToCities(CityListStruct(
+                                cityName: _model.doc?.cityName,
+                                code: _model.doc?.code,
+                                id: _model.doc?.reference.id,
+                                state: _model.doc?.state,
+                              ));
+                              safeSetState(() {});
+                              context.safePop();
+                            } else {
+                              if (_model.formKey.currentState == null ||
+                                  !_model.formKey.currentState!.validate()) {
+                                return;
+                              }
+                              if (_shouldSetState) safeSetState(() {});
+                              return;
+                            }
+
+                            if (_shouldSetState) safeSetState(() {});
                           },
+                          child: Container(
+                            width: 200.0,
+                            height: 48.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).primary,
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 10.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Save',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMediumFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBtnText,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .headlineMediumIsCustom,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ],

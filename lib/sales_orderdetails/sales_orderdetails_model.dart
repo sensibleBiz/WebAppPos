@@ -49,10 +49,10 @@ class SalesOrderdetailsModel extends FlutterFlowModel<SalesOrderdetailsWidget> {
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController;
 
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadDataHi2 = false;
+  FFUploadedFile uploadedLocalFile_uploadDataHi2 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_uploadDataHi2 = '';
 
   @override
   void initState(BuildContext context) {}

@@ -21,6 +21,162 @@ int getcreatedDate() {
   return timestamp;
 }
 
+List<LeaveApplicationRecord> getZonewiseLeave(
+  List<LeaveApplicationRecord> leaveDocs,
+  List<TeamTreeRecord> team,
+) {
+  List<LeaveApplicationRecord> attendanceList = [];
+  final teamUserIds = team.map((t) => t.userProfileId).toSet();
+
+  if (leaveDocs != null) {
+    for (final att in leaveDocs) {
+      if (teamUserIds.contains(att.userProfileId)) {
+        attendanceList.add(att);
+      }
+    }
+  }
+
+  return attendanceList;
+}
+
+String getCustmMonthId(DateTime date) {
+  // Move to last month
+  final lastMonthDate = DateTime(date.year, date.month - 1, 1);
+
+  // Format month with leading zero
+  final month = lastMonthDate.month.toString().padLeft(2, '0');
+
+  // Build Month ID
+  final monthId = "$month-${lastMonthDate.year}";
+
+  return monthId;
+}
+
+List<LeadsManagementRecord> filteredLeadsForReports(
+  List<LeadsManagementRecord> leadsDoc,
+  String? filterExce,
+  String? filterNum,
+  String? filterField,
+  String? review,
+  String? stage,
+  String? source,
+) {
+  if (filterExce!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) => lead.assignedTo == filterExce).toList();
+    // print(leadsDoc);
+  }
+  if (review!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) => lead.remarks == review).toList();
+    //print(leadsDoc);
+  }
+  if (stage!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) => lead.stage == stage).toList();
+    //print(leadsDoc);
+  }
+  if (source!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) => lead.source == source).toList();
+    //print(leadsDoc);
+  }
+  if (filterField!.isNotEmpty && filterNum!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) {
+      switch (filterField) {
+        case "Mobile":
+          return lead.contact == filterNum || lead.mobile == filterNum;
+
+        case "City":
+          return lead.city == filterNum;
+        default:
+          return false;
+      }
+    }).toList();
+  }
+
+  return leadsDoc;
+}
+
+List<TeamTreeDatatypeStruct> addTeamTree(List<TeamTreeRecord> docs) {
+  List<TeamTreeDatatypeStruct> returnList = [];
+
+  for (final doc in docs) {
+    final struct = createTeamTreeDatatypeStruct(
+      id: doc.id,
+      username: doc.userName,
+      userProfileId: doc.userProfileId,
+    );
+    returnList.add(struct);
+  }
+
+  return returnList;
+}
+
+List<CategoryDataTypeStruct> addCategoryList(List<CategoryRecord> docs) {
+  List<CategoryDataTypeStruct> returnList = [];
+
+  for (final doc in docs) {
+    final struct = createCategoryDataTypeStruct(
+      id: doc.id,
+      name: doc.name,
+    );
+    returnList.add(struct);
+  }
+
+  return returnList;
+}
+
+List<ProductDataTypeStruct> addProductLis(List<ProductRecord> docs) {
+  List<ProductDataTypeStruct> returnList = [];
+
+  for (final doc in docs) {
+    final struct = createProductDataTypeStruct(
+      id: doc.id,
+      name: doc.name,
+      category: doc.category,
+    );
+    returnList.add(struct);
+  }
+
+  return returnList;
+}
+
+List<CityListStruct> addCityList(List<CitiesRecord> docs) {
+  List<CityListStruct> returnList = [];
+  CityListStruct struct = CityListStruct();
+  for (int i = 0; i < docs.length; i++) {
+    struct = createCityListStruct(
+        id: docs[i].id,
+        code: docs[i].code,
+        cityName: docs[i].cityName,
+        state: docs[i].state);
+
+    returnList.add(struct);
+  }
+
+  // print(returnList);
+
+  return returnList;
+}
+
+List<StatesStruct> addStatesList(
+  List<StateRecord> docs,
+  List<String> zone,
+) {
+  List<StatesStruct> returnList = [];
+
+  for (final doc in docs) {
+    if (zone.contains(doc.zone)) {
+      final struct = createStatesStruct(
+        id: doc.id,
+        code: doc.code,
+        name: doc.name,
+        zone: doc.zone,
+      );
+      returnList.add(struct);
+    }
+  }
+
+  return returnList;
+}
+
 int lastDays(int day) {
   // get yesterday value in integer
   var now = DateTime.now();
@@ -37,6 +193,7 @@ List<LeadsManagementRecord> filteredComplaintsForReports(
   String? zone,
   String? stage,
   List<String>? zoneList,
+  String? solution,
 ) {
   // print("***********");
   // print(filterExce);
@@ -58,13 +215,20 @@ List<LeadsManagementRecord> filteredComplaintsForReports(
     leadsDoc = leadsDoc.where((lead) => lead.stage == stage).toList();
     //print(leadsDoc);
   }
-  if (zone!.isNotEmpty) {
-    leadsDoc = leadsDoc.where((lead) => lead.zone == zone).toList();
-    // print(leadsDoc);
-  }
   if (zoneList!.isNotEmpty) {
     print(zoneList);
     leadsDoc = leadsDoc.where((lead) => zoneList.contains(lead.zone)).toList();
+  } else {
+    if (zone!.isNotEmpty) {
+      leadsDoc = leadsDoc.where((lead) => lead.zone == zone).toList();
+      // print(leadsDoc);
+    }
+  }
+  if (solution!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) {
+      final customFields = lead.customFields;
+      return customFields.hasSolution() && customFields.solution == solution;
+    }).toList();
   }
 
   if (filterField!.isNotEmpty && filterNum!.isNotEmpty) {
@@ -83,6 +247,96 @@ List<LeadsManagementRecord> filteredComplaintsForReports(
   }
 
   return leadsDoc;
+}
+
+List<dynamic> groupByStateReport(List<LeadsManagementRecord> listLeadMange) {
+  List<dynamic> returnList = [];
+  // print("*********");
+  // print(listLeadMange);
+  for (var record in listLeadMange) {
+    // print("------------------------------------------ 1");
+    // print(record.mobile);
+    // print(record.city);
+    // print("------------------------------------------1");
+    if (returnList.length > 0) {
+      int count = 0;
+      bool flag = false;
+
+      for (int i = 0; i < returnList.length; i++) {
+        count++;
+        if (record.state == returnList[i]["state"]) {
+          flag = true;
+          break;
+        } else {
+          if (count == returnList.length && flag == false) {
+            returnList.add({
+              "city": record.city,
+              "stage": record.stage,
+              "status": record.status,
+              "id": record.id,
+              "state": record.state
+            });
+            // returnList.add(record);
+          }
+        }
+      }
+    } else {
+      //returnList.add(record);
+      returnList.add({
+        "city": record.city,
+        "stage": record.stage,
+        "status": record.status,
+        "id": record.id,
+        "state": record.state
+      });
+    }
+  }
+  // print("&&&&&&&&&&&&&&&&&&&&&&&&&&");
+  // print(listLead);
+
+  // for (var recordLead in listLead) {
+  //   //  print(recordLead.city);
+  //   if (returnList.length > 0) {
+  //     int count = 0;
+  //     bool flag = false;
+  //     // print("------------------------------------------2");
+  //     // print(recordLead.mobile);
+  //     // print(recordLead.city);
+  //     // print("------------------------------------------2");
+
+  //     for (int i = 0; i < returnList.length; i++) {
+  //       count++;
+  //       if (recordLead.state == returnList[i]["state"]) {
+  //         flag = true;
+  //         break;
+  //       } else {
+  //         if (count == returnList.length && flag == false) {
+  //           // returnList.add(recordLead);
+  //           returnList.add({
+  //             "city": recordLead.city,
+  //             "stage": recordLead.status,
+  //             "status": recordLead.status,
+  //             "id": recordLead.city,
+  //             "state": recordLead.state
+  //           });
+  //         }
+  //       }
+  //     }
+  //   } else {
+  //     // returnList.add(recordLead);
+  //     returnList.add({
+  //       "city": recordLead.city,
+  //       "stage": recordLead.status,
+  //       "status": recordLead.status,
+  //       "id": recordLead.city,
+  //       "state": recordLead.state
+  //     });
+  //   }
+  // }
+  // print(returnList);
+  // returnList.sort((a, b) => a.city.compareTo(b.city));
+  //print(returnList);
+  return returnList;
 }
 
 List<LeadsManagementRecord> filteredComplaints(
@@ -346,9 +600,13 @@ List<dynamic> groupByCitiesReportCopy(
   List<OutletLeadsRecord> listLead,
 ) {
   List<dynamic> returnList = [];
-
+  print("*********");
+  print(listLeadMange);
   for (var record in listLeadMange) {
-    // print(record.city);
+    print("------------------------------------------ 1");
+    print(record.mobile);
+    print(record.city);
+    print("------------------------------------------1");
     if (returnList.length > 0) {
       int count = 0;
       bool flag = false;
@@ -380,12 +638,18 @@ List<dynamic> groupByCitiesReportCopy(
       });
     }
   }
+  print("&&&&&&&&&&&&&&&&&&&&&&&&&&");
+  print(listLead);
 
   for (var recordLead in listLead) {
     //  print(recordLead.city);
     if (returnList.length > 0) {
       int count = 0;
       bool flag = false;
+      print("------------------------------------------2");
+      print(recordLead.mobile);
+      print(recordLead.city);
+      print("------------------------------------------2");
 
       for (int i = 0; i < returnList.length; i++) {
         count++;
@@ -414,7 +678,8 @@ List<dynamic> groupByCitiesReportCopy(
       });
     }
   }
-  returnList.sort((a, b) => a.city.compareTo(b.city));
+  print(returnList);
+  // returnList.sort((a, b) => a.city.compareTo(b.city));
   //print(returnList);
   return returnList;
 }
@@ -492,105 +757,6 @@ String getMonthId() {
   var invNum = date.year.toString() + "-" + month;
   // print(invNum);
   return invNum;
-}
-
-List<dynamic> dealerChartDataCopy(
-  List<LeadsManagementRecord> docs,
-  String filter,
-) {
-  List<dynamic> list1 = [];
-  String stage;
-  int acount = 0, fcount = 0, ccount = 0, lcount = 0;
-  if (docs.length > 0) {
-    if (filter == "today") {
-      for (int i = 0; i <= docs.length - 1; i++) {
-        if (docs[i].date == dateFormat(DateTime.now())) {
-          stage = docs[i].stage;
-          //  print(stage);
-          switch (stage) {
-            case "assigned":
-              acount++;
-              break;
-            case "followup":
-              fcount++;
-              break;
-            case "completed":
-              ccount++;
-              break;
-            case "lost":
-              lcount++;
-              break;
-          }
-        }
-      }
-
-      list1 = [
-        {"label": "Assigned", "value": acount},
-        {"label": "Followup", "value": fcount},
-        {"label": "Completed", "value": ccount},
-        {"label": "Lost", "value": lcount}
-      ];
-    } else if (filter == "cmonth") {
-      for (int i = 0; i <= docs.length - 1; i++) {
-        if (docs[i].monthId == monthCopy(1)) {
-          stage = docs[i].stage;
-          // print(stage);
-          switch (stage) {
-            case "assigned":
-              acount++;
-              break;
-            case "followup":
-              fcount++;
-              break;
-            case "completed":
-              ccount++;
-              break;
-            case "lost":
-              lcount++;
-              break;
-          }
-        }
-      }
-
-      list1 = [
-        {"label": "Assigned", "value": acount},
-        {"label": "Followup", "value": fcount},
-        {"label": "Completed", "value": ccount},
-        {"label": "Lost", "value": lcount}
-      ];
-    } else if (filter == "lmonth") {
-      for (int i = 0; i <= docs.length - 1; i++) {
-        if (docs[i].monthId == getLastMonthId(1)) {
-          stage = docs[i].stage;
-          // print(stage);
-          switch (stage) {
-            case "assigned":
-              acount++;
-              break;
-            case "followup":
-              fcount++;
-              break;
-            case "completed":
-              ccount++;
-              break;
-            case "lost":
-              lcount++;
-              break;
-          }
-        }
-      }
-
-      list1 = [
-        {"label": "Assigned", "value": acount},
-        {"label": "Followup", "value": fcount},
-        {"label": "Completed", "value": ccount},
-        {"label": "Lost", "value": lcount}
-      ];
-    }
-  }
-
-  // print(list1);
-  return list1;
 }
 
 List<dynamic> demoListLastObjCopy(List<dynamic> list) {
@@ -736,15 +902,6 @@ int getUpdatedDate() {
 //  print("timestamp");
 //  print(timestamp);
   return timestamp;
-}
-
-String activeInactive(bool? data) {
-  // Add your function code here!
-  if (data!) {
-    return "Active";
-  } else {
-    return "Inactive";
-  }
 }
 
 bool activeDevice(bool? data) {
@@ -2111,4 +2268,425 @@ List<LeadStagesRecord>? filterLeadStageByAccess(
         leadStageList.firstWhere((lead) => lead.id == access.id);
     return matchedLead!;
   }).toList();
+}
+
+CustFeedbackStruct storeFeedbackList(
+  String que,
+  String ans,
+) {
+  List<CustFeedbackStruct> returnList = [];
+  CustFeedbackStruct struct = CustFeedbackStruct();
+
+  int tempRating = 0;
+  switch (ans) {
+    case "Excellent":
+      tempRating = 5;
+
+      break;
+
+    case "Good":
+      tempRating = 4;
+
+      break;
+
+    case "Neutral":
+      tempRating = 3;
+
+      break;
+
+    case "Poor":
+      tempRating = 2;
+
+      break;
+
+    case "Very Poor":
+      tempRating = 1;
+
+      break;
+
+    default:
+      tempRating;
+
+      break;
+  }
+
+  struct =
+      createCustFeedbackStruct(question: que, answer: ans, rating: tempRating);
+
+  returnList.add(struct);
+
+  print(returnList);
+
+  return returnList[0];
+}
+
+List<dynamic> feedbackChartCount(List<CustomerFeedbackRecord> feedbackDocs) {
+  int supportCount = 0;
+  int quicklyCount = 0;
+  int expectationsCount = 0;
+  int overallCount = 0;
+
+  double totalRatingSum = 0.0;
+  int totalRatingCount = 0;
+
+  List<CustFeedbackStruct> custFeeds = [];
+
+  for (int i = 0; i < feedbackDocs.length; i++) {
+    custFeeds.addAll(feedbackDocs[i].custFeedback);
+  }
+
+  for (int j = 0; j < custFeeds.length; j++) {
+    String question = custFeeds[j].question.toLowerCase();
+    double rating = custFeeds[j].rating.toDouble();
+
+    if (question.contains("support")) {
+      supportCount++;
+      totalRatingSum += rating;
+      totalRatingCount++;
+    } else if (question.contains("quickly")) {
+      quicklyCount++;
+      totalRatingSum += rating;
+      totalRatingCount++;
+    } else if (question.contains("expectations")) {
+      expectationsCount++;
+      totalRatingSum += rating;
+      totalRatingCount++;
+    } else if (question.contains("overall")) {
+      overallCount++;
+      totalRatingSum += rating;
+      totalRatingCount++;
+    }
+  }
+
+  double avgRating =
+      totalRatingCount > 0 ? (totalRatingSum / totalRatingCount) : 0.0;
+
+  return [
+    {"index": "Support", "count": supportCount},
+    {"index": "Promptness", "count": quicklyCount},
+    {"index": "Expectations", "count": expectationsCount},
+    {"index": "Overall", "count": overallCount},
+  ];
+}
+
+double calculateAvgRating(List<CustomerFeedbackRecord> docs) {
+  double avgRating;
+  int supportCount = 0;
+  int quicklyCount = 0;
+  int expectationsCount = 0;
+  int overallCount = 0;
+
+  double totalRatingSum = 0.0;
+  int totalRatingCount = 0;
+
+  List<CustFeedbackStruct> custFeeds = [];
+
+  for (int i = 0; i < docs.length; i++) {
+    custFeeds.addAll(docs[i].custFeedback);
+  }
+
+  for (int j = 0; j < custFeeds.length; j++) {
+    String question = custFeeds[j].question.toLowerCase();
+    double rating = custFeeds[j].rating.toDouble();
+
+    if (question.contains("support")) {
+      supportCount++;
+      totalRatingSum += rating;
+      totalRatingCount++;
+    } else if (question.contains("quickly")) {
+      quicklyCount++;
+      totalRatingSum += rating;
+      totalRatingCount++;
+    } else if (question.contains("expectations")) {
+      expectationsCount++;
+      totalRatingSum += rating;
+      totalRatingCount++;
+    } else if (question.contains("overall")) {
+      overallCount++;
+      totalRatingSum += rating;
+      totalRatingCount++;
+    }
+  }
+
+  avgRating = totalRatingCount > 0 ? (totalRatingSum / totalRatingCount) : 0.0;
+
+  return avgRating;
+}
+
+List<UserAccesCStruct> setPermission(
+  List<String> list,
+  int leads,
+  int webDashboard,
+  bool isCRM,
+) {
+  List<dynamic> accessString = [];
+  accessString.add({"title": "Edit Bill", "value": 0});
+  accessString.add({"title": "Goods Received", "value": 0});
+  accessString.add({"title": "Reports", "value": 0});
+  accessString.add({"title": "Settings", "value": 0});
+  accessString.add({"title": "Shift Report", "value": 0});
+  accessString.add({"title": "Stock Out", "value": 0});
+  accessString.add({"title": "Payment", "value": 0});
+  accessString.add({"title": "Barcode", "value": 0});
+  accessString.add({"title": "Sales Order", "value": 0});
+  accessString.add({"title": "Purchase Order", "value": 0});
+  accessString.add({"title": "Leads", "value": leads});
+  accessString.add({"title": "Service Call", "value": 0});
+  accessString.add({"title": "Expense", "value": 0});
+  accessString.add({"title": "Production Batch", "value": 0});
+  accessString.add({"title": "Attendance", "value": 0});
+  accessString.add({"title": "CareProfile", "value": 0});
+  accessString.add({"title": "WebDashboard", "value": webDashboard});
+
+  print(accessString);
+
+  List<UserAccesCStruct> returnList = [];
+  UserAccesCStruct struct = UserAccesCStruct();
+
+  for (int j = 0; j < accessString.length; j++) {
+    struct = createUserAccesCStruct(
+        title: accessString[j]["title"], value: accessString[j]["value"]);
+    returnList.add(struct);
+  }
+
+  print(returnList);
+
+  return returnList;
+}
+
+String generateDealerCode(String input) {
+  List<String> words = input.split(' ');
+
+  // Get the first three characters of the first two words and convert to uppercase
+  String firstWordCode;
+  firstWordCode =
+      words[0].substring(0, words[0].length < 3 ? words[0].length : 3);
+  String secondWordCode =
+      words[1].substring(0, words[1].length < 3 ? words[1].length : 3);
+  print(firstWordCode);
+  print(secondWordCode);
+  if (firstWordCode.length == 1) {
+    secondWordCode =
+        words[1].substring(0, words[1].length < 5 ? words[1].length : 5);
+  } else if (firstWordCode.length == 2) {
+    secondWordCode =
+        words[1].substring(0, words[1].length < 4 ? words[1].length : 4);
+  } else if (firstWordCode.isEmpty) {
+    secondWordCode =
+        words[1].substring(0, words[1].length < 6 ? words[1].length : 6);
+  }
+
+  if (secondWordCode.length == 1) {
+    firstWordCode =
+        words[0].substring(0, words[0].length < 5 ? words[0].length : 5);
+  } else if (secondWordCode.length == 2) {
+    firstWordCode =
+        words[0].substring(0, words[0].length < 4 ? words[0].length : 4);
+  } else if (secondWordCode.isEmpty) {
+    firstWordCode =
+        words[0].substring(0, words[0].length < 6 ? words[0].length : 6);
+  }
+  // Concatenate the codes from the two words
+
+  String code = firstWordCode + secondWordCode;
+  print(code);
+  if (code.length < 6) {
+    int additionalCharsNeeded = 6 - code.length;
+    for (int i = 0; i < additionalCharsNeeded; i++) {
+      code = code + "*";
+    }
+    print(code);
+  }
+  print(code);
+  return code.toUpperCase();
+}
+
+int getTodayDateInMili(DateTime customDate) {
+// get customDate value in integer   12/02/2025 00: 00 :00
+
+  var today = DateTime(customDate.year, customDate.month, customDate.day);
+  return today.millisecondsSinceEpoch;
+}
+
+List<AttendanceRecord> getZonewiseAtt(
+  List<AttendanceRecord> attendanceDocs,
+  List<TeamTreeRecord> team,
+) {
+  List<AttendanceRecord> attendanceList = [];
+  final teamUserIds = team.map((t) => t.userProfileId).toSet();
+
+  if (attendanceDocs != null) {
+    for (final att in attendanceDocs) {
+      if (teamUserIds.contains(att.userId)) {
+        attendanceList.add(att);
+      }
+    }
+  }
+
+  return attendanceList;
+}
+
+String attendanceTime(int? dateInNumber) {
+  // Millisecond to hh:mm AM/PM format
+  String res;
+  if (dateInNumber == 0 || dateInNumber == null) {
+    res = "0:00 AM";
+  } else {
+    var a = DateTime.fromMillisecondsSinceEpoch(dateInNumber!);
+    int hour = a.hour;
+    int minute = a.minute;
+
+    // Convert to 12-hour format
+    String period = hour < 12 ? 'AM' : 'PM';
+    hour = hour == 12 ? 12 : hour % 12;
+
+    res = "$hour:$minute $period";
+  }
+  print(res);
+  return res;
+}
+
+List<TeamTreeRecord> returnAbsentUserList(
+  List<TeamTreeRecord> teamTree,
+  List<AttendanceRecord> attendance,
+) {
+  List<TeamTreeRecord> absentUsers = [];
+
+  for (var member in teamTree) {
+    final isPresent = attendance.any(
+      (att) => att.userId == member.userProfileId,
+    );
+
+    if (!isPresent) {
+      absentUsers.add(member);
+    }
+  }
+
+  return absentUsers;
+}
+
+int getZonewise(
+  List<LeaveApplicationRecord> leaveApplications,
+  List<AttendanceRecord> attendanceDocs,
+  String index,
+  List<TeamTreeRecord> team,
+) {
+  int count = 0;
+  final teamUserIds = team.map((t) => t.userProfileId).toSet();
+  if (index == "Leave") {
+    for (final leave in leaveApplications) {
+      if (teamUserIds.contains(leave.userProfileId)) {
+        count++;
+      }
+    }
+  } else if (index == "Attendance") {
+    if (attendanceDocs != null) {
+      for (final att in attendanceDocs) {
+        if (teamUserIds.contains(att.userId)) {
+          count++;
+        }
+      }
+    }
+  } else {
+    count = 0;
+  }
+
+  return count;
+}
+
+String checkAbsentCount(
+  List<TeamTreeRecord> team,
+  List<AttendanceRecord> attendance,
+  List<LeaveApplicationRecord> leave,
+) {
+  int absentCount = 0;
+
+  print("team");
+  print(team);
+  print("attendance");
+  print(attendance);
+  print("leave");
+  print(leave);
+
+  for (var member in team) {
+    final isOnLeave = leave.any(
+      (lv) => lv.userProfileId == member.userProfileId,
+    );
+    if (!isOnLeave) {
+      final isPresent = attendance.any(
+        (att) => att.userId == member.userProfileId,
+      );
+      if (!isPresent && !isOnLeave) {
+        absentCount++;
+      }
+    }
+
+    // Count as absent only if not present and not on leave
+  }
+
+  return absentCount.toString();
+}
+
+DateTime? geStartEndDateTimeFromMilisec(
+  int start,
+  int end,
+  String index,
+) {
+  DateTime result;
+
+  /// Returns a Map with normalized 'start' and 'end' timestamps (milliseconds).
+
+  // Convert to DateTime
+  final startDate = DateTime.fromMillisecondsSinceEpoch(start);
+  final endDate = DateTime.fromMillisecondsSinceEpoch(end);
+
+  // Normalize start to 00:00:00.000
+  final startOfDay = DateTime(startDate.year, startDate.month, startDate.day);
+
+  // Normalize end to 23:59:59.999
+  final endOfDay =
+      DateTime(endDate.year, endDate.month, endDate.day, 23, 59, 59, 999);
+  if (index == "start") {
+    result = startOfDay;
+  } else {
+    result = endOfDay;
+  }
+
+  return result;
+}
+
+String getAssingedToByState(
+  List<TeamTreeRecord> teamTree,
+  String state,
+  String index,
+) {
+  String res = "";
+
+  String? targetName;
+  if (index == "CRM") {
+    if (state == "KERALA") {
+      targetName = "ELSON ELDHO";
+    } else if (state == "ANDRA PRADESH" ||
+        state == "KARNATAKA" ||
+        state == "") {
+      targetName = "TIRUPARI VAASU";
+    } else if (state == "TAMILNADU") {
+      targetName = "HARIHARA VISHNU ";
+    }
+  } else {
+    if (state == "KERALA") {
+      targetName = "Test Manager1";
+    } else if (state == "ANDRA PRADESH" || state == "KARNATAKA") {
+      targetName = "Test Manager1";
+    }
+  }
+
+  if (targetName != null) {
+    final match = teamTree.firstWhere(
+      (t) => t.userName.toLowerCase() == targetName!.toLowerCase(),
+    );
+    res = match.userProfileId ?? "";
+  }
+
+  return res;
 }

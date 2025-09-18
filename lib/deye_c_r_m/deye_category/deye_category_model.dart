@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
@@ -5,8 +6,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/components/c_add_category/c_add_category_widget.dart';
-import '/pages/components/c_editcategory/c_editcategory_widget.dart';
+import '/pages/components/deye_add_category/deye_add_category_widget.dart';
+import '/pages/components/deye_edit_category/deye_edit_category_widget.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';

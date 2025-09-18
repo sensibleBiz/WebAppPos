@@ -154,13 +154,14 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                               width: 100.0,
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: Image.asset(
-                                    'assets/images/5500876_2648569.jpg',
-                                  ).image,
+                                gradient: LinearGradient(
+                                  colors: [
+                                    FlutterFlowTheme.of(context).primary,
+                                    FlutterFlowTheme.of(context).secondary
+                                  ],
+                                  stops: [0.0, 1.0],
+                                  begin: AlignmentDirectional(0.0, -1.0),
+                                  end: AlignmentDirectional(0, 1.0),
                                 ),
                               ),
                               child: Padding(
@@ -201,11 +202,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBtnText,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(FlutterFlowTheme
-                                                            .of(context)
-                                                        .headlineLargeFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLargeIsCustom,
                                               ),
                                         ),
                                       ],
@@ -262,12 +262,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                   .of(context)
                                                               .primaryBackground,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                               ),
                                               Text(
@@ -291,12 +289,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w300,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                               ),
                                             ],
@@ -353,22 +349,20 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                 0.0, 4.0),
                                                     child: Text(
                                                       'Customer Name',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   TextFormField(
@@ -393,11 +387,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                     .bodySmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmallIsCustom,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -469,16 +462,30 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       context)
                                                                   .titleMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                     validator: _model
                                                         .usernameTextControllerValidator
                                                         .asValidator(context),
+                                                    inputFormatters: [
+                                                      if (!isAndroid && !isiOS)
+                                                        TextInputFormatter
+                                                            .withFunction(
+                                                                (oldValue,
+                                                                    newValue) {
+                                                          return TextEditingValue(
+                                                            selection: newValue
+                                                                .selection,
+                                                            text: newValue.text
+                                                                .toCapitalization(
+                                                                    TextCapitalization
+                                                                        .characters),
+                                                          );
+                                                        }),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
@@ -512,11 +519,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                     .labelLargeFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLargeIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -543,11 +549,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                 fontSize: 20.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -572,11 +577,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                     .bodySmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmallIsCustom,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -648,12 +652,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       context)
                                                                   .titleMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                     maxLength: 10,
                                                     maxLengthEnforcement:
@@ -719,11 +721,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                     .bodyLargeFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyLargeFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLargeIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -755,10 +756,9 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                               .bodySmallFamily,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodySmallIsCustom,
                                                                     ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
@@ -838,11 +838,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                     .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                           keyboardType:
                                                               TextInputType
@@ -888,11 +887,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .labelLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLargeIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -916,11 +914,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .bodySmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmallIsCustom,
                                                                 ),
                                                         enabledBorder:
                                                             OutlineInputBorder(
@@ -990,22 +987,20 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                           size: 20.0,
                                                         ),
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .titleMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleMediumFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumIsCustom,
+                                                          ),
                                                       keyboardType:
                                                           TextInputType
                                                               .emailAddress,
@@ -1030,22 +1025,20 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                 0.0, 4.0),
                                                     child: Text(
                                                       'State',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   StreamBuilder<
@@ -1101,11 +1094,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .bodyMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                         textStyle:
                                                             FlutterFlowTheme.of(
@@ -1117,11 +1109,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .titleMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                         searchHintText:
                                                             'Search State Here...',
@@ -1194,11 +1185,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .labelLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLargeIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -1267,10 +1257,9 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                         .secondaryText,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyLargeIsCustom,
                                                                   ),
                                                           searchTextStyle:
                                                               FlutterFlowTheme.of(
@@ -1282,10 +1271,9 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                             .bodyMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                           textStyle:
                                                               FlutterFlowTheme.of(
@@ -1297,10 +1285,9 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                             .bodyMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                           searchHintText:
                                                               'Search for an item...',
@@ -1348,22 +1335,20 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                 0.0, 4.0),
                                                     child: Text(
                                                       'Area',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Container(
@@ -1388,11 +1373,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .bodySmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmallIsCustom,
                                                                 ),
                                                         enabledBorder:
                                                             OutlineInputBorder(
@@ -1462,22 +1446,20 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                           size: 20.0,
                                                         ),
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMediumFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                       validator: _model
                                                           .areaTextControllerValidator
                                                           .asValidator(context),
@@ -1526,11 +1508,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .labelLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLargeIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -1598,10 +1579,9 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                             .titleSmallFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleSmallIsCustom,
                                                                   ),
                                                           searchTextStyle:
                                                               FlutterFlowTheme.of(
@@ -1613,10 +1593,9 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                             .bodyMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                           textStyle:
                                                               FlutterFlowTheme.of(
@@ -1628,10 +1607,9 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                             .bodySmallFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodySmallIsCustom,
                                                                   ),
                                                           searchHintText:
                                                               'Search Business type...',
@@ -1679,22 +1657,20 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                 0.0, 4.0),
                                                     child: Text(
                                                       'Business Name',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   TextFormField(
@@ -1716,11 +1692,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                     .bodySmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmallIsCustom,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -1784,12 +1759,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       context)
                                                                   .bodyMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                     validator: _model
                                                         .bNameTextControllerValidator
@@ -1826,11 +1799,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .bodyLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLargeIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -1862,10 +1834,9 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                             .bodySmallFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodySmallIsCustom,
                                                                   ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
@@ -1945,11 +1916,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .bodyMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                         keyboardType:
                                                             TextInputType
@@ -2006,11 +1976,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .labelLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLargeIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -2044,11 +2013,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                     .titleMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                       icon: Icon(
                                                         Icons
@@ -2108,11 +2076,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                     .labelLargeFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLargeIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -2135,22 +2102,22 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                             val),
                                                     width: double.infinity,
                                                     height: 50.0,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleMediumFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
+                                                    textStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .override(
+                                                              fontFamily:
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .titleMediumFamily),
-                                                        ),
+                                                                      .titleMediumFamily,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMediumIsCustom,
+                                                            ),
                                                     icon: Icon(
                                                       Icons.keyboard_arrow_down,
                                                       color:
@@ -2206,11 +2173,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .bodyLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLargeIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -2242,10 +2208,9 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                             .bodySmallFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodySmallIsCustom,
                                                                   ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
@@ -2318,11 +2283,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .bodyMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                         validator: _model
                                                             .commentsTextControllerValidator
@@ -2355,22 +2319,20 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                 0.0, 4.0),
                                                     child: Text(
                                                       'Requirement',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Container(
@@ -2395,11 +2357,10 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                       .bodySmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmallIsCustom,
                                                                 ),
                                                         enabledBorder:
                                                             OutlineInputBorder(
@@ -2462,22 +2423,20 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMediumFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                       maxLines: 5,
                                                       validator: _model
                                                           .requirementTextControllerValidator
@@ -2545,10 +2504,12 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                       _model.wait = true;
                                                       safeSetState(() {});
 
-                                                      await OutletLeadsRecord
+                                                      var outletLeadsRecordReference =
+                                                          OutletLeadsRecord
                                                               .createDoc(
                                                                   FFAppState()
-                                                                      .outletRef!)
+                                                                      .outletRef!);
+                                                      await outletLeadsRecordReference
                                                           .set(
                                                               createOutletLeadsRecordData(
                                                         area: _model
@@ -2665,7 +2626,132 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                             .getMonthId(),
                                                         yearId: functions
                                                             .getYearId(),
+                                                        leadCampaign:
+                                                            'Manualy added',
                                                       ));
+                                                      _model.lead = OutletLeadsRecord
+                                                          .getDocumentFromData(
+                                                              createOutletLeadsRecordData(
+                                                                area: _model
+                                                                    .areaTextController
+                                                                    .text,
+                                                                city: _model.dropDownCitiesValue ==
+                                                                            null ||
+                                                                        _model.dropDownCitiesValue ==
+                                                                            ''
+                                                                    ? valueOrDefault<
+                                                                        String>(
+                                                                        '',
+                                                                        'city',
+                                                                      )
+                                                                    : valueOrDefault<
+                                                                        String>(
+                                                                        _model
+                                                                            .dropDownCitiesValue,
+                                                                        'Not Available',
+                                                                      ),
+                                                                comments: _model
+                                                                    .commentsTextController
+                                                                    .text,
+                                                                createdDateTime:
+                                                                    getCurrentTimestamp,
+                                                                date: functions
+                                                                    .dateFormat(
+                                                                        getCurrentTimestamp),
+                                                                email: _model
+                                                                    .emailTextController
+                                                                    .text,
+                                                                id: functions
+                                                                    .timestampToMili(
+                                                                        getCurrentTimestamp),
+                                                                logId: functions
+                                                                    .timestampToMili(
+                                                                        getCurrentTimestamp),
+                                                                mobile: _model
+                                                                    .mobileTextController
+                                                                    .text,
+                                                                mobileAlt: _model
+                                                                    .mobileAltTextController
+                                                                    .text,
+                                                                phone: _model
+                                                                    .phoneTextController
+                                                                    .text,
+                                                                requirement: _model
+                                                                    .requirementTextController
+                                                                    .text,
+                                                                source: _model.dropDownSourceValue ==
+                                                                            null ||
+                                                                        _model.dropDownSourceValue ==
+                                                                            ''
+                                                                    ? ''
+                                                                    : _model
+                                                                        .dropDownSourceValue,
+                                                                state: _model.dropDownstateValue ==
+                                                                            null ||
+                                                                        _model.dropDownstateValue ==
+                                                                            ''
+                                                                    ? valueOrDefault<
+                                                                        String>(
+                                                                        '',
+                                                                        'state',
+                                                                      )
+                                                                    : valueOrDefault<
+                                                                        String>(
+                                                                        _model
+                                                                            .dropDownstateValue,
+                                                                        'Not Available',
+                                                                      ),
+                                                                status:
+                                                                    'Unread',
+                                                                time: dateTimeFormat(
+                                                                    "jms",
+                                                                    getCurrentTimestamp),
+                                                                username: _model
+                                                                    .usernameTextController
+                                                                    .text,
+                                                                businessType: _model.dropDownBTypeValue ==
+                                                                            null ||
+                                                                        _model.dropDownBTypeValue ==
+                                                                            ''
+                                                                    ? valueOrDefault<
+                                                                        String>(
+                                                                        '',
+                                                                        '#',
+                                                                      )
+                                                                    : _model
+                                                                        .dropDownBTypeValue,
+                                                                businessName: _model
+                                                                    .bNameTextController
+                                                                    .text,
+                                                                priority:
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  _model.dropDownPriorityValue ==
+                                                                              null ||
+                                                                          _model.dropDownPriorityValue ==
+                                                                              ''
+                                                                      ? valueOrDefault<
+                                                                          String>(
+                                                                          '',
+                                                                          'priority',
+                                                                        )
+                                                                      : valueOrDefault<
+                                                                          String>(
+                                                                          _model
+                                                                              .dropDownPriorityValue,
+                                                                          '#',
+                                                                        ),
+                                                                  '\"\"',
+                                                                ),
+                                                                monthId: functions
+                                                                    .getMonthId(),
+                                                                yearId: functions
+                                                                    .getYearId(),
+                                                                leadCampaign:
+                                                                    'Manualy added',
+                                                              ),
+                                                              outletLeadsRecordReference);
+                                                      _shouldSetState = true;
                                                       safeSetState(() {
                                                         _model
                                                             .usernameTextController
@@ -2695,15 +2781,9 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                             .phoneTextController
                                                             ?.clear();
                                                       });
-                                                      await Future.delayed(
-                                                          const Duration(
-                                                              milliseconds:
-                                                                  2000));
-                                                      _model.wait = false;
-                                                      safeSetState(() {});
 
                                                       context.pushNamed(
-                                                          LeadsDashboardFinalWidget
+                                                          LeadsDashboardNewWidget
                                                               .routeName);
 
                                                       if (_shouldSetState)
@@ -2787,28 +2867,26 @@ class _AddNewLeadWidgetState extends State<AddNewLeadWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primary,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .headlineMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineMediumFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryBtnText,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .override(
+                                                            fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .headlineMediumFamily),
-                                                      ),
+                                                                    .headlineMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBtnText,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineMediumIsCustom,
+                                                          ),
                                                   elevation: 2.0,
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,

@@ -124,7 +124,7 @@ class _CReportsWidgetState extends State<CReportsWidget> {
                                             ),
                                             onPressed: () async {
                                               context.pushNamed(
-                                                  CRMDashboardCopyWidget
+                                                  LeadsDashboardNewWidget
                                                       .routeName);
                                             },
                                           ),
@@ -139,11 +139,10 @@ class _CReportsWidgetState extends State<CReportsWidget> {
                                                           .headlineLargeFamily,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(FlutterFlowTheme
-                                                              .of(context)
-                                                          .headlineLargeFamily),
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLargeIsCustom,
                                                 ),
                                           ),
                                         ],
@@ -259,10 +258,9 @@ class _CReportsWidgetState extends State<CReportsWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -357,10 +355,9 @@ class _CReportsWidgetState extends State<CReportsWidget> {
                                                                             .titleMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -458,10 +455,9 @@ class _CReportsWidgetState extends State<CReportsWidget> {
                                                                         .primaryText,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),

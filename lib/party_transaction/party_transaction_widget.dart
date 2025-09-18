@@ -58,6 +58,7 @@ class _PartyTransactionWidgetState extends State<PartyTransactionWidget>
       length: 2,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -137,10 +138,9 @@ class _PartyTransactionWidgetState extends State<PartyTransactionWidget>
                                             .primaryBtnText,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .headlineMediumIsCustom,
                                       ),
                                 ),
                                 if (responsiveVisibility(
@@ -173,1831 +173,740 @@ class _PartyTransactionWidgetState extends State<PartyTransactionWidget>
                   ),
                   Expanded(
                     flex: 24,
-                    child: StreamBuilder<List<UserProfileRecord>>(
-                      stream: queryUserProfileRecord(
-                        queryBuilder: (userProfileRecord) =>
-                            userProfileRecord.where(
-                          'email',
-                          isEqualTo: FFAppState().currentEmail,
+                    child: Container(
+                      width: double.infinity,
+                      height: 100.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(0.0),
+                          bottomRight: Radius.circular(0.0),
+                          topLeft: Radius.circular(40.0),
+                          topRight: Radius.circular(40.0),
                         ),
-                        singleRecord: true,
                       ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 30.0,
-                              height: 30.0,
-                              child: SpinKitRing(
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 30.0,
-                              ),
-                            ),
-                          );
-                        }
-                        List<UserProfileRecord> containerUserProfileRecordList =
-                            snapshot.data!;
-                        final containerUserProfileRecord =
-                            containerUserProfileRecordList.isNotEmpty
-                                ? containerUserProfileRecordList.first
-                                : null;
-
-                        return Container(
-                          width: double.infinity,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0.0),
-                              bottomRight: Radius.circular(0.0),
-                              topLeft: Radius.circular(40.0),
-                              topRight: Radius.circular(40.0),
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Column(
-                                    children: [
-                                      Align(
-                                        alignment: Alignment(0.0, 0),
-                                        child: TabBar(
-                                          labelColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                          unselectedLabelColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          labelStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .labelLarge
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLargeFamily,
-                                                fontSize: 12.0,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelLargeFamily),
-                                              ),
-                                          unselectedLabelStyle: TextStyle(),
-                                          indicatorColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                          tabs: [
-                                            Tab(
-                                              text: 'Advance Payment',
-                                            ),
-                                            Tab(
-                                              text: 'Balance Pending',
-                                            ),
-                                          ],
-                                          controller: _model.tabBarController,
-                                          onTap: (i) async {
-                                            [() async {}, () async {}][i]();
-                                          },
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.all(10.0),
+                              child: Column(
+                                children: [
+                                  Align(
+                                    alignment: Alignment(0.0, 0),
+                                    child: TabBar(
+                                      labelColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      unselectedLabelColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLargeFamily,
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelLargeIsCustom,
+                                          ),
+                                      unselectedLabelStyle: TextStyle(),
+                                      indicatorColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                      tabs: [
+                                        Tab(
+                                          text: 'Advance Payment',
                                         ),
-                                      ),
-                                      Expanded(
-                                        child: TabBarView(
-                                          controller: _model.tabBarController,
-                                          children: [
-                                            StreamBuilder<
-                                                List<UserProfileRecord>>(
-                                              stream: queryUserProfileRecord(
-                                                queryBuilder:
-                                                    (userProfileRecord) =>
-                                                        userProfileRecord.where(
-                                                  'email',
-                                                  isEqualTo:
-                                                      FFAppState().currentEmail,
+                                        Tab(
+                                          text: 'Balance Pending',
+                                        ),
+                                      ],
+                                      controller: _model.tabBarController,
+                                      onTap: (i) async {
+                                        [() async {}, () async {}][i]();
+                                      },
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: TabBarView(
+                                      controller: _model.tabBarController,
+                                      children: [
+                                        StreamBuilder<List<UserProfileRecord>>(
+                                          stream: queryUserProfileRecord(
+                                            queryBuilder: (userProfileRecord) =>
+                                                userProfileRecord.where(
+                                              'email',
+                                              isEqualTo:
+                                                  FFAppState().currentEmail,
+                                            ),
+                                            singleRecord: true,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 30.0,
+                                                  height: 30.0,
+                                                  child: SpinKitRing(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size: 30.0,
+                                                  ),
                                                 ),
-                                                singleRecord: true,
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 30.0,
-                                                      height: 30.0,
-                                                      child: SpinKitRing(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 30.0,
+                                              );
+                                            }
+                                            List<UserProfileRecord>
+                                                stackUserProfileRecordList =
+                                                snapshot.data!;
+                                            final stackUserProfileRecord =
+                                                stackUserProfileRecordList
+                                                        .isNotEmpty
+                                                    ? stackUserProfileRecordList
+                                                        .first
+                                                    : null;
+
+                                            return Stack(
+                                              children: [
+                                                if (FFAppState().showList ==
+                                                    false)
+                                                  StreamBuilder<
+                                                      List<SaleRecord>>(
+                                                    stream: querySaleRecord(
+                                                      parent: FFAppState()
+                                                          .outletRef,
+                                                      queryBuilder:
+                                                          (saleRecord) =>
+                                                              saleRecord.where(
+                                                        'balanceDue',
+                                                        isNotEqualTo: 0.0,
                                                       ),
                                                     ),
-                                                  );
-                                                }
-                                                List<UserProfileRecord>
-                                                    stackUserProfileRecordList =
-                                                    snapshot.data!;
-                                                final stackUserProfileRecord =
-                                                    stackUserProfileRecordList
-                                                            .isNotEmpty
-                                                        ? stackUserProfileRecordList
-                                                            .first
-                                                        : null;
-
-                                                return Stack(
-                                                  children: [
-                                                    if (FFAppState().showList ==
-                                                        false)
-                                                      StreamBuilder<
-                                                          List<SaleRecord>>(
-                                                        stream: querySaleRecord(
-                                                          parent: FFAppState()
-                                                              .outletRef,
-                                                          queryBuilder:
-                                                              (saleRecord) =>
-                                                                  saleRecord
-                                                                      .where(
-                                                            'balanceDue',
-                                                            isNotEqualTo: 0.0,
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 30.0,
+                                                            height: 30.0,
+                                                            child: SpinKitRing(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              size: 30.0,
+                                                            ),
                                                           ),
-                                                        ),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 30.0,
-                                                                height: 30.0,
-                                                                child:
-                                                                    SpinKitRing(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  size: 30.0,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          }
-                                                          List<SaleRecord>
-                                                              saleSaleRecordList =
-                                                              snapshot.data!;
+                                                        );
+                                                      }
+                                                      List<SaleRecord>
+                                                          saleSaleRecordList =
+                                                          snapshot.data!;
 
-                                                          return Container(
-                                                            width:
-                                                                double.infinity,
-                                                            height: MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
+                                                      return Container(
+                                                        width: double.infinity,
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
                                                                     .height *
                                                                 1.0,
-                                                            decoration:
-                                                                BoxDecoration(),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child:
-                                                                        Stack(
-                                                                      children: [
-                                                                        if ((stackUserProfileRecord?.role ==
-                                                                                'user') &&
-                                                                            (functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() ==
-                                                                                '1'))
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                10.0),
-                                                                            child:
-                                                                                Builder(
-                                                                              builder: (context) {
-                                                                                final saleRef1 = functions.orderBy(saleSaleRecordList.where((e) => (e.createdBy == stackUserProfileRecord?.id) && (stackUserProfileRecord?.role == 'user') && (e.balanceDue != 0.0)).toList(), 'd').toList();
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Stack(
+                                                                  children: [
+                                                                    if ((stackUserProfileRecord?.role ==
+                                                                            'user') &&
+                                                                        (functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() ==
+                                                                            '1'))
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            10.0),
+                                                                        child:
+                                                                            Builder(
+                                                                          builder:
+                                                                              (context) {
+                                                                            final saleRef1 =
+                                                                                functions.orderBy(saleSaleRecordList.where((e) => (e.createdBy == stackUserProfileRecord?.id) && (stackUserProfileRecord?.role == 'user') && (e.balanceDue != 0.0)).toList(), 'd').toList();
 
-                                                                                return ListView.builder(
-                                                                                  padding: EdgeInsets.zero,
-                                                                                  shrinkWrap: true,
-                                                                                  scrollDirection: Axis.vertical,
-                                                                                  itemCount: saleRef1.length,
-                                                                                  itemBuilder: (context, saleRef1Index) {
-                                                                                    final saleRef1Item = saleRef1[saleRef1Index];
-                                                                                    return Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                                                                      child: InkWell(
-                                                                                        splashColor: Colors.transparent,
-                                                                                        focusColor: Colors.transparent,
-                                                                                        hoverColor: Colors.transparent,
-                                                                                        highlightColor: Colors.transparent,
-                                                                                        onTap: () async {
-                                                                                          _model.sale23 = await actions.docToJsonSale(
-                                                                                            saleRef1Item,
-                                                                                          );
-                                                                                          FFAppState().selectedSale = _model.sale23!;
-                                                                                          FFAppState().update(() {});
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              shrinkWrap: true,
+                                                                              scrollDirection: Axis.vertical,
+                                                                              itemCount: saleRef1.length,
+                                                                              itemBuilder: (context, saleRef1Index) {
+                                                                                final saleRef1Item = saleRef1[saleRef1Index];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                                                                  child: InkWell(
+                                                                                    splashColor: Colors.transparent,
+                                                                                    focusColor: Colors.transparent,
+                                                                                    hoverColor: Colors.transparent,
+                                                                                    highlightColor: Colors.transparent,
+                                                                                    onTap: () async {
+                                                                                      _model.sale23 = await actions.docToJsonSale(
+                                                                                        saleRef1Item,
+                                                                                      );
+                                                                                      FFAppState().selectedSale = _model.sale23!;
+                                                                                      FFAppState().update(() {});
 
-                                                                                          context.pushNamed(
-                                                                                            SalesOrderdetailsWidget.routeName,
-                                                                                            queryParameters: {
-                                                                                              'id': serializeParam(
-                                                                                                saleRef1Item.id,
-                                                                                                ParamType.String,
-                                                                                              ),
-                                                                                              'saleRef': serializeParam(
-                                                                                                saleRef1Item.reference,
-                                                                                                ParamType.DocumentReference,
-                                                                                              ),
-                                                                                            }.withoutNulls,
-                                                                                          );
-
-                                                                                          safeSetState(() {});
-                                                                                        },
-                                                                                        child: Container(
-                                                                                          width: 100.0,
-                                                                                          decoration: BoxDecoration(
-                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      context.pushNamed(
+                                                                                        SalesOrderdetailsWidget.routeName,
+                                                                                        queryParameters: {
+                                                                                          'id': serializeParam(
+                                                                                            saleRef1Item.id,
+                                                                                            ParamType.String,
                                                                                           ),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(6.0),
-                                                                                            child: Column(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                              children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                                  child: Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                    children: [
-                                                                                                      SelectionArea(
-                                                                                                          child: Text(
-                                                                                                        saleRef1Item.party,
-                                                                                                        style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              fontWeight: FontWeight.w600,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                            ),
-                                                                                                      )),
-                                                                                                      SelectionArea(
-                                                                                                          child: Text(
-                                                                                                        functions.milisecToTimestamp(saleRef1Item.orderDate),
-                                                                                                        style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                                            ),
-                                                                                                      )),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                                                                                  child: Container(
-                                                                                                    height: 18.0,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      color: Color(0xFFC4E091),
-                                                                                                      borderRadius: BorderRadius.circular(5.0),
-                                                                                                    ),
-                                                                                                    child: Column(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                                                      children: [
-                                                                                                        Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
-                                                                                                          child: SelectionArea(
-                                                                                                              child: Text(
-                                                                                                            'Sale',
-                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                                                  fontSize: 10.0,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                ),
-                                                                                                          )),
+                                                                                          'saleRef': serializeParam(
+                                                                                            saleRef1Item.reference,
+                                                                                            ParamType.DocumentReference,
+                                                                                          ),
+                                                                                        }.withoutNulls,
+                                                                                      );
+
+                                                                                      safeSetState(() {});
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 100.0,
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      ),
+                                                                                      child: Padding(
+                                                                                        padding: EdgeInsets.all(6.0),
+                                                                                        child: Column(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                              child: Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                children: [
+                                                                                                  SelectionArea(
+                                                                                                      child: Text(
+                                                                                                    saleRef1Item.party,
+                                                                                                    style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                         ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ),
+                                                                                                  )),
+                                                                                                  SelectionArea(
+                                                                                                      child: Text(
+                                                                                                    functions.milisecToTimestamp(saleRef1Item.orderDate),
+                                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                                        ),
+                                                                                                  )),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ),
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                                                                                              child: Container(
+                                                                                                height: 18.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: Color(0xFFC4E091),
+                                                                                                  borderRadius: BorderRadius.circular(5.0),
                                                                                                 ),
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
-                                                                                                  child: Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                    children: [
-                                                                                                      Row(
-                                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                                        children: [
-                                                                                                          Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                                                                                                            child: Column(
-                                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                              children: [
-                                                                                                                Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                                                  child: SelectionArea(
-                                                                                                                      child: Text(
-                                                                                                                    'Total',
-                                                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                                                          letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                                                        ),
-                                                                                                                  )),
-                                                                                                                ),
-                                                                                                                Row(
-                                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                                  children: [
-                                                                                                                    Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
-                                                                                                                      child: SelectionArea(
-                                                                                                                          child: Text(
-                                                                                                                        '₹',
-                                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                              letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                            ),
-                                                                                                                      )),
-                                                                                                                    ),
-                                                                                                                    SelectionArea(
-                                                                                                                        child: Text(
-                                                                                                                      saleRef1Item.finalBillAmt.toString(),
-                                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                            letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                          ),
-                                                                                                                    )),
-                                                                                                                  ],
-                                                                                                                ),
-                                                                                                              ],
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                          Column(
-                                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                            children: [
-                                                                                                              Padding(
-                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                                                child: SelectionArea(
-                                                                                                                    child: Text(
-                                                                                                                  'Balance',
-                                                                                                                  style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                                        fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                                                        letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                                                      ),
-                                                                                                                )),
-                                                                                                              ),
-                                                                                                              Row(
-                                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                                children: [
-                                                                                                                  Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
-                                                                                                                    child: SelectionArea(
-                                                                                                                        child: Text(
-                                                                                                                      '₹',
-                                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                            letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                          ),
-                                                                                                                    )),
-                                                                                                                  ),
-                                                                                                                  SelectionArea(
-                                                                                                                      child: Text(
-                                                                                                                    saleRef1Item.balanceDue.toString(),
-                                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                          letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                        ),
-                                                                                                                  )),
-                                                                                                                ],
-                                                                                                              ),
-                                                                                                            ],
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                      Row(
-                                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                                        children: [
-                                                                                                          Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                                                                                                            child: FFButtonWidget(
-                                                                                                              onPressed: () {
-                                                                                                                print('Button pressed ...');
-                                                                                                              },
-                                                                                                              text: valueOrDefault<String>(
-                                                                                                                () {
-                                                                                                                  if (saleRef1Item.status == 1) {
-                                                                                                                    return 'Requested';
-                                                                                                                  } else if (saleRef1Item.status == 2) {
-                                                                                                                    return 'Confirmed';
-                                                                                                                  } else if (saleRef1Item.status == 3) {
-                                                                                                                    return 'Dispatch';
-                                                                                                                  } else if (saleRef1Item.status == 4) {
-                                                                                                                    return 'Delivered';
-                                                                                                                  } else if (saleRef1Item.status == 5) {
-                                                                                                                    return 'Cancel';
-                                                                                                                  } else {
-                                                                                                                    return '';
-                                                                                                                  }
-                                                                                                                }(),
-                                                                                                                '1',
-                                                                                                              ),
-                                                                                                              options: FFButtonOptions(
-                                                                                                                height: 25.0,
-                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                                                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                                color: () {
-                                                                                                                  if (saleRef1Item.status == 1) {
-                                                                                                                    return FlutterFlowTheme.of(context).warning;
-                                                                                                                  } else if (saleRef1Item.status == 2) {
-                                                                                                                    return FlutterFlowTheme.of(context).success;
-                                                                                                                  } else if (saleRef1Item.status == 3) {
-                                                                                                                    return FlutterFlowTheme.of(context).info;
-                                                                                                                  } else if (saleRef1Item.status == 4) {
-                                                                                                                    return FlutterFlowTheme.of(context).alternate;
-                                                                                                                  } else if (saleRef1Item.status == 5) {
-                                                                                                                    return FlutterFlowTheme.of(context).primary;
-                                                                                                                  } else {
-                                                                                                                    return null;
-                                                                                                                  }
-                                                                                                                }(),
-                                                                                                                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                                      color: Colors.white,
-                                                                                                                      letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                                                                    ),
-                                                                                                                elevation: 3.0,
-                                                                                                                borderSide: BorderSide(
-                                                                                                                  color: Colors.transparent,
-                                                                                                                  width: 1.0,
-                                                                                                                ),
-                                                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Row(
+                                                                                                child: Column(
                                                                                                   mainAxisSize: MainAxisSize.max,
-                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.center,
                                                                                                   children: [
-                                                                                                    Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.end,
-                                                                                                      children: [
-                                                                                                        Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
+                                                                                                      child: SelectionArea(
                                                                                                           child: Text(
-                                                                                                            'Created By :',
-                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                  color: FlutterFlowTheme.of(context).primary,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                        StreamBuilder<List<UserProfileRecord>>(
-                                                                                                          stream: queryUserProfileRecord(
-                                                                                                            queryBuilder: (userProfileRecord) => userProfileRecord.where(
-                                                                                                              'id',
-                                                                                                              isEqualTo: saleRef1Item.createdBy,
+                                                                                                        'Sale',
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                              fontSize: 10.0,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                             ),
-                                                                                                            singleRecord: true,
-                                                                                                          ),
-                                                                                                          builder: (context, snapshot) {
-                                                                                                            // Customize what your widget looks like when it's loading.
-                                                                                                            if (!snapshot.hasData) {
-                                                                                                              return Center(
-                                                                                                                child: SizedBox(
-                                                                                                                  width: 30.0,
-                                                                                                                  height: 30.0,
-                                                                                                                  child: SpinKitRing(
-                                                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                                                    size: 30.0,
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                              );
-                                                                                                            }
-                                                                                                            List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
-                                                                                                            // Return an empty Container when the item does not exist.
-                                                                                                            if (snapshot.data!.isEmpty) {
-                                                                                                              return Container();
-                                                                                                            }
-                                                                                                            final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
-
-                                                                                                            return Text(
-                                                                                                              valueOrDefault<String>(
-                                                                                                                textUserProfileRecord?.name,
-                                                                                                                '0',
-                                                                                                              ),
-                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                    letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                  ),
-                                                                                                            );
-                                                                                                          },
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                    Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.end,
-                                                                                                      children: [
-                                                                                                        Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                                                                                                          child: Text(
-                                                                                                            'Updated By :',
-                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                  color: FlutterFlowTheme.of(context).primary,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                        StreamBuilder<List<UserProfileRecord>>(
-                                                                                                          stream: queryUserProfileRecord(
-                                                                                                            queryBuilder: (userProfileRecord) => userProfileRecord.where(
-                                                                                                              'id',
-                                                                                                              isEqualTo: saleRef1Item.authorizedBy,
-                                                                                                            ),
-                                                                                                            singleRecord: true,
-                                                                                                          ),
-                                                                                                          builder: (context, snapshot) {
-                                                                                                            // Customize what your widget looks like when it's loading.
-                                                                                                            if (!snapshot.hasData) {
-                                                                                                              return Center(
-                                                                                                                child: SizedBox(
-                                                                                                                  width: 30.0,
-                                                                                                                  height: 30.0,
-                                                                                                                  child: SpinKitRing(
-                                                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                                                    size: 30.0,
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                              );
-                                                                                                            }
-                                                                                                            List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
-                                                                                                            // Return an empty Container when the item does not exist.
-                                                                                                            if (snapshot.data!.isEmpty) {
-                                                                                                              return Container();
-                                                                                                            }
-                                                                                                            final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
-
-                                                                                                            return Text(
-                                                                                                              valueOrDefault<String>(
-                                                                                                                textUserProfileRecord?.name,
-                                                                                                                'Pending',
-                                                                                                              ),
-                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                    letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                  ),
-                                                                                                            );
-                                                                                                          },
-                                                                                                        ),
-                                                                                                      ],
+                                                                                                      )),
                                                                                                     ),
                                                                                                   ],
                                                                                                 ),
-                                                                                              ],
+                                                                                              ),
                                                                                             ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    );
-                                                                                  },
-                                                                                );
-                                                                              },
-                                                                            ),
-                                                                          ),
-                                                                        if ((stackUserProfileRecord?.role == 'admin') ||
-                                                                            (stackUserProfileRecord?.role ==
-                                                                                'user') ||
-                                                                            (functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() ==
-                                                                                '4'))
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                10.0),
-                                                                            child:
-                                                                                Builder(
-                                                                              builder: (context) {
-                                                                                final saleRef = saleSaleRecordList.where((e) => functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() != '1').toList();
-
-                                                                                return ListView.builder(
-                                                                                  padding: EdgeInsets.zero,
-                                                                                  shrinkWrap: true,
-                                                                                  scrollDirection: Axis.vertical,
-                                                                                  itemCount: saleRef.length,
-                                                                                  itemBuilder: (context, saleRefIndex) {
-                                                                                    final saleRefItem = saleRef[saleRefIndex];
-                                                                                    return Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                                                                      child: InkWell(
-                                                                                        splashColor: Colors.transparent,
-                                                                                        focusColor: Colors.transparent,
-                                                                                        hoverColor: Colors.transparent,
-                                                                                        highlightColor: Colors.transparent,
-                                                                                        onTap: () async {
-                                                                                          _model.sale1 = await actions.docToJsonSale(
-                                                                                            saleRefItem,
-                                                                                          );
-                                                                                          FFAppState().selectedSale = _model.sale1!;
-                                                                                          FFAppState().update(() {});
-
-                                                                                          context.pushNamed(
-                                                                                            SalesOrderdetailsWidget.routeName,
-                                                                                            queryParameters: {
-                                                                                              'id': serializeParam(
-                                                                                                saleRefItem.id,
-                                                                                                ParamType.String,
-                                                                                              ),
-                                                                                              'saleRef': serializeParam(
-                                                                                                saleRefItem.reference,
-                                                                                                ParamType.DocumentReference,
-                                                                                              ),
-                                                                                            }.withoutNulls,
-                                                                                          );
-
-                                                                                          safeSetState(() {});
-                                                                                        },
-                                                                                        child: Container(
-                                                                                          width: 100.0,
-                                                                                          decoration: BoxDecoration(
-                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                          ),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(6.0),
-                                                                                            child: Column(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                              children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                                  child: Row(
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                                                                                              child: Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                children: [
+                                                                                                  Row(
                                                                                                     mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                    children: [
-                                                                                                      SelectionArea(
-                                                                                                          child: Text(
-                                                                                                        saleRefItem.party,
-                                                                                                        style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              fontWeight: FontWeight.w600,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                            ),
-                                                                                                      )),
-                                                                                                      SelectionArea(
-                                                                                                          child: Text(
-                                                                                                        functions.milisecToTimestamp(saleRefItem.orderDate),
-                                                                                                        style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                                            ),
-                                                                                                      )),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                                                                                  child: Container(
-                                                                                                    height: 18.0,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      color: Color(0xFFC4E091),
-                                                                                                      borderRadius: BorderRadius.circular(5.0),
-                                                                                                    ),
-                                                                                                    child: Column(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                                                      children: [
-                                                                                                        Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
-                                                                                                          child: SelectionArea(
-                                                                                                              child: Text(
-                                                                                                            'Sale',
-                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                                                  fontSize: 10.0,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                ),
-                                                                                                          )),
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                                                                                  child: Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                     children: [
                                                                                                       Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
-                                                                                                        child: Row(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                                        child: Column(
                                                                                                           mainAxisSize: MainAxisSize.max,
-                                                                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                           children: [
                                                                                                             Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                                                                                                              child: Column(
-                                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                                children: [
-                                                                                                                  Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                                                    child: SelectionArea(
-                                                                                                                        child: Text(
-                                                                                                                      'Total',
-                                                                                                                      style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                                                            letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                                                          ),
-                                                                                                                    )),
-                                                                                                                  ),
-                                                                                                                  Row(
-                                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                                    children: [
-                                                                                                                      Padding(
-                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
-                                                                                                                        child: SelectionArea(
-                                                                                                                            child: Text(
-                                                                                                                          '₹',
-                                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                                letterSpacing: 0.0,
-                                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                              ),
-                                                                                                                        )),
-                                                                                                                      ),
-                                                                                                                      SelectionArea(
-                                                                                                                          child: Text(
-                                                                                                                        saleRefItem.finalBillAmt.toString(),
-                                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                              letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                            ),
-                                                                                                                      )),
-                                                                                                                    ],
-                                                                                                                  ),
-                                                                                                                ],
-                                                                                                              ),
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                                              child: SelectionArea(
+                                                                                                                  child: Text(
+                                                                                                                'Total',
+                                                                                                                style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                                      letterSpacing: 0.0,
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                                                    ),
+                                                                                                              )),
                                                                                                             ),
-                                                                                                            Column(
+                                                                                                            Row(
                                                                                                               mainAxisSize: MainAxisSize.max,
-                                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                               children: [
                                                                                                                 Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
                                                                                                                   child: SelectionArea(
                                                                                                                       child: Text(
-                                                                                                                    'Balance',
-                                                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                                    '₹',
+                                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                         ),
                                                                                                                   )),
                                                                                                                 ),
-                                                                                                                Row(
-                                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                                  children: [
-                                                                                                                    Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
-                                                                                                                      child: SelectionArea(
-                                                                                                                          child: Text(
-                                                                                                                        '₹',
-                                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                              letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                            ),
-                                                                                                                      )),
-                                                                                                                    ),
-                                                                                                                    SelectionArea(
-                                                                                                                        child: Text(
-                                                                                                                      saleRefItem.balanceDue.toString(),
-                                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                            letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                          ),
-                                                                                                                    )),
-                                                                                                                  ],
-                                                                                                                ),
+                                                                                                                SelectionArea(
+                                                                                                                    child: Text(
+                                                                                                                  saleRef1Item.finalBillAmt.toString(),
+                                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                        letterSpacing: 0.0,
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                      ),
+                                                                                                                )),
                                                                                                               ],
                                                                                                             ),
                                                                                                           ],
                                                                                                         ),
                                                                                                       ),
-                                                                                                      Row(
+                                                                                                      Column(
                                                                                                         mainAxisSize: MainAxisSize.max,
+                                                                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                         children: [
-                                                                                                          FFButtonWidget(
-                                                                                                            onPressed: () {
-                                                                                                              print('Button pressed ...');
-                                                                                                            },
-                                                                                                            text: valueOrDefault<String>(
-                                                                                                              () {
-                                                                                                                if (saleRefItem.status == 1) {
-                                                                                                                  return 'Requested';
-                                                                                                                } else if (saleRefItem.status == 2) {
-                                                                                                                  return 'Confirmed';
-                                                                                                                } else if (saleRefItem.status == 3) {
-                                                                                                                  return 'Canceled';
-                                                                                                                } else {
-                                                                                                                  return '';
-                                                                                                                }
-                                                                                                              }(),
-                                                                                                              '1',
-                                                                                                            ),
-                                                                                                            options: FFButtonOptions(
-                                                                                                              height: 25.0,
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                              color: () {
-                                                                                                                if (saleRefItem.status == 1) {
-                                                                                                                  return FlutterFlowTheme.of(context).warning;
-                                                                                                                } else if (saleRefItem.status == 2) {
-                                                                                                                  return FlutterFlowTheme.of(context).success;
-                                                                                                                } else if (saleRefItem.status == 3) {
-                                                                                                                  return FlutterFlowTheme.of(context).primary;
-                                                                                                                } else {
-                                                                                                                  return null;
-                                                                                                                }
-                                                                                                              }(),
-                                                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                                    color: Colors.white,
+                                                                                                          Padding(
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                                            child: SelectionArea(
+                                                                                                                child: Text(
+                                                                                                              'Balance',
+                                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                   ),
-                                                                                                              elevation: 3.0,
-                                                                                                              borderSide: BorderSide(
-                                                                                                                color: Colors.transparent,
-                                                                                                                width: 1.0,
+                                                                                                            )),
+                                                                                                          ),
+                                                                                                          Row(
+                                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                                            children: [
+                                                                                                              Padding(
+                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
+                                                                                                                child: SelectionArea(
+                                                                                                                    child: Text(
+                                                                                                                  '₹',
+                                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                        letterSpacing: 0.0,
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                      ),
+                                                                                                                )),
                                                                                                               ),
-                                                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                                                            ),
+                                                                                                              SelectionArea(
+                                                                                                                  child: Text(
+                                                                                                                saleRef1Item.balanceDue.toString(),
+                                                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                      letterSpacing: 0.0,
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                    ),
+                                                                                                              )),
+                                                                                                            ],
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
                                                                                                     ],
                                                                                                   ),
-                                                                                                ),
-                                                                                                Row(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                  children: [
-                                                                                                    Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      children: [
-                                                                                                        Text(
-                                                                                                          'CreatedBy :',
-                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                color: FlutterFlowTheme.of(context).primary,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                              ),
-                                                                                                        ),
-                                                                                                        StreamBuilder<List<UserProfileRecord>>(
-                                                                                                          stream: queryUserProfileRecord(
-                                                                                                            queryBuilder: (userProfileRecord) => userProfileRecord.where(
-                                                                                                              'id',
-                                                                                                              isEqualTo: saleRefItem.createdBy,
-                                                                                                            ),
-                                                                                                            singleRecord: true,
-                                                                                                          ),
-                                                                                                          builder: (context, snapshot) {
-                                                                                                            // Customize what your widget looks like when it's loading.
-                                                                                                            if (!snapshot.hasData) {
-                                                                                                              return Center(
-                                                                                                                child: SizedBox(
-                                                                                                                  width: 30.0,
-                                                                                                                  height: 30.0,
-                                                                                                                  child: SpinKitRing(
-                                                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                                                    size: 30.0,
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                              );
-                                                                                                            }
-                                                                                                            List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
-                                                                                                            // Return an empty Container when the item does not exist.
-                                                                                                            if (snapshot.data!.isEmpty) {
-                                                                                                              return Container();
-                                                                                                            }
-                                                                                                            final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
-
-                                                                                                            return Text(
-                                                                                                              valueOrDefault<String>(
-                                                                                                                textUserProfileRecord?.name,
-                                                                                                                '0',
-                                                                                                              ),
-                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                                                    letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                  ),
-                                                                                                            );
+                                                                                                  Row(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    children: [
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                                                                                                        child: FFButtonWidget(
+                                                                                                          onPressed: () {
+                                                                                                            print('Button pressed ...');
                                                                                                           },
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                    Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      children: [
-                                                                                                        Text(
-                                                                                                          'Approved By :',
-                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                color: FlutterFlowTheme.of(context).primary,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                              ),
-                                                                                                        ),
-                                                                                                        StreamBuilder<List<UserProfileRecord>>(
-                                                                                                          stream: queryUserProfileRecord(
-                                                                                                            queryBuilder: (userProfileRecord) => userProfileRecord.where(
-                                                                                                              'id',
-                                                                                                              isEqualTo: saleRefItem.authorizedBy,
-                                                                                                            ),
-                                                                                                            singleRecord: true,
+                                                                                                          text: valueOrDefault<String>(
+                                                                                                            () {
+                                                                                                              if (saleRef1Item.status == 1) {
+                                                                                                                return 'Requested';
+                                                                                                              } else if (saleRef1Item.status == 2) {
+                                                                                                                return 'Confirmed';
+                                                                                                              } else if (saleRef1Item.status == 3) {
+                                                                                                                return 'Dispatch';
+                                                                                                              } else if (saleRef1Item.status == 4) {
+                                                                                                                return 'Delivered';
+                                                                                                              } else if (saleRef1Item.status == 5) {
+                                                                                                                return 'Cancel';
+                                                                                                              } else {
+                                                                                                                return '';
+                                                                                                              }
+                                                                                                            }(),
+                                                                                                            '1',
                                                                                                           ),
-                                                                                                          builder: (context, snapshot) {
-                                                                                                            // Customize what your widget looks like when it's loading.
-                                                                                                            if (!snapshot.hasData) {
-                                                                                                              return Center(
-                                                                                                                child: SizedBox(
-                                                                                                                  width: 30.0,
-                                                                                                                  height: 30.0,
-                                                                                                                  child: SpinKitRing(
-                                                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                                                    size: 30.0,
-                                                                                                                  ),
+                                                                                                          options: FFButtonOptions(
+                                                                                                            height: 25.0,
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                            color: () {
+                                                                                                              if (saleRef1Item.status == 1) {
+                                                                                                                return FlutterFlowTheme.of(context).warning;
+                                                                                                              } else if (saleRef1Item.status == 2) {
+                                                                                                                return FlutterFlowTheme.of(context).success;
+                                                                                                              } else if (saleRef1Item.status == 3) {
+                                                                                                                return FlutterFlowTheme.of(context).info;
+                                                                                                              } else if (saleRef1Item.status == 4) {
+                                                                                                                return FlutterFlowTheme.of(context).alternate;
+                                                                                                              } else if (saleRef1Item.status == 5) {
+                                                                                                                return FlutterFlowTheme.of(context).primary;
+                                                                                                              } else {
+                                                                                                                return null;
+                                                                                                              }
+                                                                                                            }(),
+                                                                                                            textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                                  fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                                                  color: Colors.white,
+                                                                                                                  letterSpacing: 0.0,
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                                 ),
-                                                                                                              );
-                                                                                                            }
-                                                                                                            List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
-                                                                                                            // Return an empty Container when the item does not exist.
-                                                                                                            if (snapshot.data!.isEmpty) {
-                                                                                                              return Container();
-                                                                                                            }
-                                                                                                            final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
-
-                                                                                                            return Text(
-                                                                                                              valueOrDefault<String>(
-                                                                                                                textUserProfileRecord?.name,
-                                                                                                                '0',
-                                                                                                              ),
-                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                                                    letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                  ),
-                                                                                                            );
-                                                                                                          },
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    );
-                                                                                  },
-                                                                                );
-                                                                              },
-                                                                            ),
-                                                                          ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          );
-                                                        },
-                                                      ),
-                                                    if (FFAppState().showList ==
-                                                        true)
-                                                      StreamBuilder<
-                                                          List<PurchaseRecord>>(
-                                                        stream:
-                                                            queryPurchaseRecord(
-                                                          parent: FFAppState()
-                                                              .outletRef,
-                                                          queryBuilder:
-                                                              (purchaseRecord) =>
-                                                                  purchaseRecord.orderBy(
-                                                                      'orderDate',
-                                                                      descending:
-                                                                          true),
-                                                        ),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 30.0,
-                                                                height: 30.0,
-                                                                child:
-                                                                    SpinKitRing(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  size: 30.0,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          }
-                                                          List<PurchaseRecord>
-                                                              purchasePurchaseRecordList =
-                                                              snapshot.data!;
-
-                                                          return Container(
-                                                            width:
-                                                                double.infinity,
-                                                            height: MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .height *
-                                                                1.0,
-                                                            decoration:
-                                                                BoxDecoration(),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceBetween,
-                                                                      children: [
-                                                                        FFButtonWidget(
-                                                                          onPressed:
-                                                                              () async {
-                                                                            FFAppState().showList =
-                                                                                false;
-                                                                            safeSetState(() {});
-                                                                          },
-                                                                          text:
-                                                                              'Sales Order',
-                                                                          options:
-                                                                              FFButtonOptions(
-                                                                            width:
-                                                                                MediaQuery.sizeOf(context).width * 0.45,
-                                                                            height:
-                                                                                35.0,
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondary,
-                                                                            textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                  fontSize: 8.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                ),
-                                                                            elevation:
-                                                                                2.0,
-                                                                            borderSide:
-                                                                                BorderSide(
-                                                                              color: Colors.transparent,
-                                                                              width: 1.0,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10.0),
-                                                                          ),
-                                                                        ),
-                                                                        FFButtonWidget(
-                                                                          onPressed:
-                                                                              () async {
-                                                                            FFAppState().showList =
-                                                                                true;
-                                                                            safeSetState(() {});
-                                                                          },
-                                                                          text:
-                                                                              'Purchase Order',
-                                                                          options:
-                                                                              FFButtonOptions(
-                                                                            width:
-                                                                                MediaQuery.sizeOf(context).width * 0.45,
-                                                                            height:
-                                                                                35.0,
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primary,
-                                                                            textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                  fontSize: 8.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                ),
-                                                                            elevation:
-                                                                                2.0,
-                                                                            borderSide:
-                                                                                BorderSide(
-                                                                              color: Colors.transparent,
-                                                                              width: 1.0,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10.0),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Expanded(
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0),
-                                                                      child:
-                                                                          Builder(
-                                                                        builder:
-                                                                            (context) {
-                                                                          final purchaseRef =
-                                                                              purchasePurchaseRecordList.toList();
-
-                                                                          return ListView
-                                                                              .builder(
-                                                                            padding:
-                                                                                EdgeInsets.zero,
-                                                                            shrinkWrap:
-                                                                                true,
-                                                                            scrollDirection:
-                                                                                Axis.vertical,
-                                                                            itemCount:
-                                                                                purchaseRef.length,
-                                                                            itemBuilder:
-                                                                                (context, purchaseRefIndex) {
-                                                                              final purchaseRefItem = purchaseRef[purchaseRefIndex];
-                                                                              return Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                                                                child: InkWell(
-                                                                                  splashColor: Colors.transparent,
-                                                                                  focusColor: Colors.transparent,
-                                                                                  hoverColor: Colors.transparent,
-                                                                                  highlightColor: Colors.transparent,
-                                                                                  onTap: () async {
-                                                                                    _model.po = await actions.docToJsonPo(
-                                                                                      purchaseRefItem,
-                                                                                    );
-                                                                                    FFAppState().selectedPurchase = _model.po!;
-                                                                                    FFAppState().update(() {});
-
-                                                                                    safeSetState(() {});
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    width: 100.0,
-                                                                                    decoration: BoxDecoration(
-                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                    ),
-                                                                                    child: Padding(
-                                                                                      padding: EdgeInsets.all(6.0),
-                                                                                      child: Column(
-                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                        children: [
-                                                                                          Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                            child: Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                              children: [
-                                                                                                SelectionArea(
-                                                                                                    child: Text(
-                                                                                                  purchaseRefItem.party,
-                                                                                                  style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        fontWeight: FontWeight.w600,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                      ),
-                                                                                                )),
-                                                                                                Text(
-                                                                                                  functions.milisecToTimestamp(purchaseRefItem.orderDate),
-                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                      ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ),
-                                                                                          Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                                                                            child: Container(
-                                                                                              height: 18.0,
-                                                                                              decoration: BoxDecoration(
-                                                                                                color: Color(0xFFF7E8E8),
-                                                                                                borderRadius: BorderRadius.circular(5.0),
-                                                                                              ),
-                                                                                              child: Column(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                                                                children: [
-                                                                                                  Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
-                                                                                                    child: SelectionArea(
-                                                                                                        child: Text(
-                                                                                                      'Purchase',
-                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                            color: FlutterFlowTheme.of(context).primary,
-                                                                                                            fontSize: 10.0,
-                                                                                                            letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                            elevation: 3.0,
+                                                                                                            borderSide: BorderSide(
+                                                                                                              color: Colors.transparent,
+                                                                                                              width: 1.0,
+                                                                                                            ),
+                                                                                                            borderRadius: BorderRadius.circular(8.0),
                                                                                                           ),
-                                                                                                    )),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ],
                                                                                                   ),
                                                                                                 ],
                                                                                               ),
                                                                                             ),
-                                                                                          ),
-                                                                                          Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
-                                                                                            child: Row(
+                                                                                            Row(
                                                                                               mainAxisSize: MainAxisSize.max,
-                                                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                               children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                                                                                                  child: Column(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                    children: [
-                                                                                                      Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                                        child: SelectionArea(
-                                                                                                            child: Text(
-                                                                                                          'Total',
-                                                                                                          style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                                              ),
-                                                                                                        )),
-                                                                                                      ),
-                                                                                                      Row(
-                                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                                        children: [
-                                                                                                          Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
-                                                                                                            child: SelectionArea(
-                                                                                                                child: Text(
-                                                                                                              '₹',
-                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                    letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                  ),
-                                                                                                            )),
-                                                                                                          ),
-                                                                                                          SelectionArea(
-                                                                                                              child: Text(
-                                                                                                            purchaseRefItem.finalBillAmt.toString(),
-                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                ),
-                                                                                                          )),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Column(
+                                                                                                Row(
                                                                                                   mainAxisSize: MainAxisSize.max,
-                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.end,
                                                                                                   children: [
                                                                                                     Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                                      child: SelectionArea(
-                                                                                                          child: Text(
-                                                                                                        'Balance',
-                                                                                                        style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                                      child: Text(
+                                                                                                        'Created By :',
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).primary,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                             ),
-                                                                                                      )),
+                                                                                                      ),
                                                                                                     ),
-                                                                                                    Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      children: [
-                                                                                                        Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
-                                                                                                          child: SelectionArea(
-                                                                                                              child: Text(
-                                                                                                            '₹',
-                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                ),
-                                                                                                          )),
+                                                                                                    StreamBuilder<List<UserProfileRecord>>(
+                                                                                                      stream: queryUserProfileRecord(
+                                                                                                        queryBuilder: (userProfileRecord) => userProfileRecord.where(
+                                                                                                          'id',
+                                                                                                          isEqualTo: saleRef1Item.createdBy,
                                                                                                         ),
-                                                                                                        SelectionArea(
-                                                                                                            child: Text(
-                                                                                                          purchaseRefItem.balanceDue.toString(),
+                                                                                                        singleRecord: true,
+                                                                                                      ),
+                                                                                                      builder: (context, snapshot) {
+                                                                                                        // Customize what your widget looks like when it's loading.
+                                                                                                        if (!snapshot.hasData) {
+                                                                                                          return Center(
+                                                                                                            child: SizedBox(
+                                                                                                              width: 30.0,
+                                                                                                              height: 30.0,
+                                                                                                              child: SpinKitRing(
+                                                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                                                size: 30.0,
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          );
+                                                                                                        }
+                                                                                                        List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
+                                                                                                        // Return an empty Container when the item does not exist.
+                                                                                                        if (snapshot.data!.isEmpty) {
+                                                                                                          return Container();
+                                                                                                        }
+                                                                                                        final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
+
+                                                                                                        return Text(
+                                                                                                          valueOrDefault<String>(
+                                                                                                            textUserProfileRecord?.name,
+                                                                                                            '0',
+                                                                                                          ),
                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
-                                                                                                        )),
-                                                                                                      ],
+                                                                                                        );
+                                                                                                      },
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                                      child: Text(
+                                                                                                        'Updated By :',
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                            ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                    StreamBuilder<List<UserProfileRecord>>(
+                                                                                                      stream: queryUserProfileRecord(
+                                                                                                        queryBuilder: (userProfileRecord) => userProfileRecord.where(
+                                                                                                          'id',
+                                                                                                          isEqualTo: saleRef1Item.authorizedBy,
+                                                                                                        ),
+                                                                                                        singleRecord: true,
+                                                                                                      ),
+                                                                                                      builder: (context, snapshot) {
+                                                                                                        // Customize what your widget looks like when it's loading.
+                                                                                                        if (!snapshot.hasData) {
+                                                                                                          return Center(
+                                                                                                            child: SizedBox(
+                                                                                                              width: 30.0,
+                                                                                                              height: 30.0,
+                                                                                                              child: SpinKitRing(
+                                                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                                                size: 30.0,
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          );
+                                                                                                        }
+                                                                                                        List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
+                                                                                                        // Return an empty Container when the item does not exist.
+                                                                                                        if (snapshot.data!.isEmpty) {
+                                                                                                          return Container();
+                                                                                                        }
+                                                                                                        final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
+
+                                                                                                        return Text(
+                                                                                                          valueOrDefault<String>(
+                                                                                                            textUserProfileRecord?.name,
+                                                                                                            'Pending',
+                                                                                                          ),
+                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                              ),
+                                                                                                        );
+                                                                                                      },
                                                                                                     ),
                                                                                                   ],
                                                                                                 ),
                                                                                               ],
                                                                                             ),
-                                                                                          ),
-                                                                                        ],
+                                                                                          ],
+                                                                                        ),
                                                                                       ),
                                                                                     ),
                                                                                   ),
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          );
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceEvenly,
-                                                                      children: [
-                                                                        FFButtonWidget(
-                                                                          onPressed:
-                                                                              () {
-                                                                            print('Button pressed ...');
+                                                                                );
+                                                                              },
+                                                                            );
                                                                           },
-                                                                          text:
-                                                                              'Add Purchase',
-                                                                          options:
-                                                                              FFButtonOptions(
-                                                                            width:
-                                                                                130.0,
-                                                                            height:
-                                                                                40.0,
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primary,
-                                                                            textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                  letterSpacing: 0.0,
-                                                                                  fontWeight: FontWeight.w600,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                                ),
-                                                                            elevation:
-                                                                                2.0,
-                                                                            borderSide:
-                                                                                BorderSide(
-                                                                              color: Colors.transparent,
-                                                                              width: 1.0,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(15.0),
-                                                                          ),
                                                                         ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          );
-                                                        },
-                                                      ),
-                                                  ],
-                                                );
-                                              },
-                                            ),
-                                            StreamBuilder<
-                                                List<UserProfileRecord>>(
-                                              stream: queryUserProfileRecord(
-                                                queryBuilder:
-                                                    (userProfileRecord) =>
-                                                        userProfileRecord.where(
-                                                  'email',
-                                                  isEqualTo:
-                                                      FFAppState().currentEmail,
-                                                ),
-                                                singleRecord: true,
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 30.0,
-                                                      height: 30.0,
-                                                      child: SpinKitRing(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 30.0,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<UserProfileRecord>
-                                                    stackUserProfileRecordList =
-                                                    snapshot.data!;
-                                                final stackUserProfileRecord =
-                                                    stackUserProfileRecordList
-                                                            .isNotEmpty
-                                                        ? stackUserProfileRecordList
-                                                            .first
-                                                        : null;
+                                                                      ),
+                                                                    if ((stackUserProfileRecord?.role == 'admin') ||
+                                                                        (stackUserProfileRecord?.role ==
+                                                                            'user') ||
+                                                                        (functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() ==
+                                                                            '4'))
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            10.0),
+                                                                        child:
+                                                                            Builder(
+                                                                          builder:
+                                                                              (context) {
+                                                                            final saleRef =
+                                                                                saleSaleRecordList.where((e) => functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() != '1').toList();
 
-                                                return Stack(
-                                                  children: [
-                                                    if (FFAppState().showList ==
-                                                        false)
-                                                      StreamBuilder<
-                                                          List<SaleRecord>>(
-                                                        stream: querySaleRecord(
-                                                          parent: FFAppState()
-                                                              .outletRef,
-                                                          queryBuilder: (saleRecord) =>
-                                                              saleRecord
-                                                                  .where(
-                                                                    'balanceDue',
-                                                                    isEqualTo:
-                                                                        0.0,
-                                                                  )
-                                                                  .orderBy(
-                                                                      'orderDate',
-                                                                      descending:
-                                                                          true),
-                                                        ),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 30.0,
-                                                                height: 30.0,
-                                                                child:
-                                                                    SpinKitRing(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  size: 30.0,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          }
-                                                          List<SaleRecord>
-                                                              saleSaleRecordList =
-                                                              snapshot.data!;
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              shrinkWrap: true,
+                                                                              scrollDirection: Axis.vertical,
+                                                                              itemCount: saleRef.length,
+                                                                              itemBuilder: (context, saleRefIndex) {
+                                                                                final saleRefItem = saleRef[saleRefIndex];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                                                                  child: InkWell(
+                                                                                    splashColor: Colors.transparent,
+                                                                                    focusColor: Colors.transparent,
+                                                                                    hoverColor: Colors.transparent,
+                                                                                    highlightColor: Colors.transparent,
+                                                                                    onTap: () async {
+                                                                                      _model.sale1 = await actions.docToJsonSale(
+                                                                                        saleRefItem,
+                                                                                      );
+                                                                                      FFAppState().selectedSale = _model.sale1!;
+                                                                                      FFAppState().update(() {});
 
-                                                          return Container(
-                                                            width:
-                                                                double.infinity,
-                                                            height: MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .height *
-                                                                1.0,
-                                                            decoration:
-                                                                BoxDecoration(),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child:
-                                                                        Stack(
-                                                                      children: [
-                                                                        if ((stackUserProfileRecord?.role ==
-                                                                                'user') &&
-                                                                            (functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() ==
-                                                                                '1'))
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                10.0),
-                                                                            child:
-                                                                                Builder(
-                                                                              builder: (context) {
-                                                                                final saleRef1 = saleSaleRecordList.where((e) => (e.createdBy == stackUserProfileRecord?.id) && (stackUserProfileRecord?.role == 'user')).toList();
-
-                                                                                return ListView.builder(
-                                                                                  padding: EdgeInsets.zero,
-                                                                                  shrinkWrap: true,
-                                                                                  scrollDirection: Axis.vertical,
-                                                                                  itemCount: saleRef1.length,
-                                                                                  itemBuilder: (context, saleRef1Index) {
-                                                                                    final saleRef1Item = saleRef1[saleRef1Index];
-                                                                                    return Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                                                                      child: InkWell(
-                                                                                        splashColor: Colors.transparent,
-                                                                                        focusColor: Colors.transparent,
-                                                                                        hoverColor: Colors.transparent,
-                                                                                        highlightColor: Colors.transparent,
-                                                                                        onTap: () async {
-                                                                                          _model.sale230 = await actions.docToJsonSale(
-                                                                                            saleRef1Item,
-                                                                                          );
-                                                                                          FFAppState().selectedSale = _model.sale230!;
-                                                                                          FFAppState().update(() {});
-
-                                                                                          context.pushNamed(
-                                                                                            SalesOrderdetailsWidget.routeName,
-                                                                                            queryParameters: {
-                                                                                              'id': serializeParam(
-                                                                                                saleRef1Item.id,
-                                                                                                ParamType.String,
-                                                                                              ),
-                                                                                              'saleRef': serializeParam(
-                                                                                                saleRef1Item.reference,
-                                                                                                ParamType.DocumentReference,
-                                                                                              ),
-                                                                                            }.withoutNulls,
-                                                                                          );
-
-                                                                                          safeSetState(() {});
-                                                                                        },
-                                                                                        child: Container(
-                                                                                          width: 100.0,
-                                                                                          decoration: BoxDecoration(
-                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      context.pushNamed(
+                                                                                        SalesOrderdetailsWidget.routeName,
+                                                                                        queryParameters: {
+                                                                                          'id': serializeParam(
+                                                                                            saleRefItem.id,
+                                                                                            ParamType.String,
                                                                                           ),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(6.0),
-                                                                                            child: Column(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                              children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                                  child: Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                    children: [
-                                                                                                      SelectionArea(
-                                                                                                          child: Text(
-                                                                                                        saleRef1Item.party,
-                                                                                                        style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              fontWeight: FontWeight.w600,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                            ),
-                                                                                                      )),
-                                                                                                      SelectionArea(
-                                                                                                          child: Text(
-                                                                                                        functions.milisecToTimestamp(saleRef1Item.orderDate),
-                                                                                                        style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                                            ),
-                                                                                                      )),
-                                                                                                    ],
-                                                                                                  ),
+                                                                                          'saleRef': serializeParam(
+                                                                                            saleRefItem.reference,
+                                                                                            ParamType.DocumentReference,
+                                                                                          ),
+                                                                                        }.withoutNulls,
+                                                                                      );
+
+                                                                                      safeSetState(() {});
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 100.0,
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      ),
+                                                                                      child: Padding(
+                                                                                        padding: EdgeInsets.all(6.0),
+                                                                                        child: Column(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                              child: Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                children: [
+                                                                                                  SelectionArea(
+                                                                                                      child: Text(
+                                                                                                    saleRefItem.party,
+                                                                                                    style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
+                                                                                                        ),
+                                                                                                  )),
+                                                                                                  SelectionArea(
+                                                                                                      child: Text(
+                                                                                                    functions.milisecToTimestamp(saleRefItem.orderDate),
+                                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                                        ),
+                                                                                                  )),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ),
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                                                                                              child: Container(
+                                                                                                height: 18.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: Color(0xFFC4E091),
+                                                                                                  borderRadius: BorderRadius.circular(5.0),
                                                                                                 ),
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                                                                                  child: Container(
-                                                                                                    height: 18.0,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      color: Color(0xFFC4E091),
-                                                                                                      borderRadius: BorderRadius.circular(5.0),
+                                                                                                child: Column(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
+                                                                                                      child: SelectionArea(
+                                                                                                          child: Text(
+                                                                                                        'Sale',
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                              fontSize: 10.0,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                            ),
+                                                                                                      )),
                                                                                                     ),
-                                                                                                    child: Column(
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                                                                              child: Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                children: [
+                                                                                                  Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                                                                                                    child: Row(
                                                                                                       mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                      mainAxisAlignment: MainAxisAlignment.start,
                                                                                                       children: [
                                                                                                         Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
-                                                                                                          child: SelectionArea(
-                                                                                                              child: Text(
-                                                                                                            'Sale',
-                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                                                  fontSize: 10.0,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                ),
-                                                                                                          )),
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
-                                                                                                  child: Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                    children: [
-                                                                                                      Row(
-                                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                                        children: [
-                                                                                                          Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                                                                                                            child: Column(
-                                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                              children: [
-                                                                                                                Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                                                  child: SelectionArea(
-                                                                                                                      child: Text(
-                                                                                                                    'Total',
-                                                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                                                          letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                                                        ),
-                                                                                                                  )),
-                                                                                                                ),
-                                                                                                                Row(
-                                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                                  children: [
-                                                                                                                    Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
-                                                                                                                      child: SelectionArea(
-                                                                                                                          child: Text(
-                                                                                                                        '₹',
-                                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                              letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                            ),
-                                                                                                                      )),
-                                                                                                                    ),
-                                                                                                                    SelectionArea(
-                                                                                                                        child: Text(
-                                                                                                                      saleRef1Item.finalBillAmt.toString(),
-                                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                            letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                          ),
-                                                                                                                    )),
-                                                                                                                  ],
-                                                                                                                ),
-                                                                                                              ],
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                          Column(
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                                          child: Column(
                                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -2006,11 +915,11 @@ class _PartyTransactionWidgetState extends State<PartyTransactionWidget>
                                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                                                                                                                 child: SelectionArea(
                                                                                                                     child: Text(
-                                                                                                                  'Balance',
+                                                                                                                  'Total',
                                                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                       ),
                                                                                                                 )),
                                                                                                               ),
@@ -2025,665 +934,1732 @@ class _PartyTransactionWidgetState extends State<PartyTransactionWidget>
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                           ),
                                                                                                                     )),
                                                                                                                   ),
                                                                                                                   SelectionArea(
                                                                                                                       child: Text(
-                                                                                                                    saleRef1Item.balanceDue.toString(),
+                                                                                                                    saleRefItem.finalBillAmt.toString(),
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                         ),
                                                                                                                   )),
                                                                                                                 ],
                                                                                                               ),
                                                                                                             ],
                                                                                                           ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                      Row(
-                                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                                        children: [
-                                                                                                          Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                                                                                                            child: FFButtonWidget(
-                                                                                                              onPressed: () {
-                                                                                                                print('Button pressed ...');
-                                                                                                              },
-                                                                                                              text: valueOrDefault<String>(
-                                                                                                                () {
-                                                                                                                  if (saleRef1Item.status == 1) {
-                                                                                                                    return 'Requested';
-                                                                                                                  } else if (saleRef1Item.status == 2) {
-                                                                                                                    return 'Confirmed';
-                                                                                                                  } else if (saleRef1Item.status == 3) {
-                                                                                                                    return 'Dispatch';
-                                                                                                                  } else if (saleRef1Item.status == 4) {
-                                                                                                                    return 'Delivered';
-                                                                                                                  } else if (saleRef1Item.status == 5) {
-                                                                                                                    return 'Cancel';
-                                                                                                                  } else {
-                                                                                                                    return '';
-                                                                                                                  }
-                                                                                                                }(),
-                                                                                                                '1',
-                                                                                                              ),
-                                                                                                              options: FFButtonOptions(
-                                                                                                                height: 25.0,
-                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                                                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                                color: () {
-                                                                                                                  if (saleRef1Item.status == 1) {
-                                                                                                                    return FlutterFlowTheme.of(context).warning;
-                                                                                                                  } else if (saleRef1Item.status == 2) {
-                                                                                                                    return FlutterFlowTheme.of(context).success;
-                                                                                                                  } else if (saleRef1Item.status == 3) {
-                                                                                                                    return FlutterFlowTheme.of(context).info;
-                                                                                                                  } else if (saleRef1Item.status == 4) {
-                                                                                                                    return FlutterFlowTheme.of(context).alternate;
-                                                                                                                  } else if (saleRef1Item.status == 5) {
-                                                                                                                    return FlutterFlowTheme.of(context).primary;
-                                                                                                                  } else {
-                                                                                                                    return null;
-                                                                                                                  }
-                                                                                                                }(),
-                                                                                                                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                                      color: Colors.white,
-                                                                                                                      letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                                                                    ),
-                                                                                                                elevation: 3.0,
-                                                                                                                borderSide: BorderSide(
-                                                                                                                  color: Colors.transparent,
-                                                                                                                  width: 1.0,
-                                                                                                                ),
-                                                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                                                              ),
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Row(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                  children: [
-                                                                                                    Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.end,
-                                                                                                      children: [
-                                                                                                        Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                                                                                                          child: Text(
-                                                                                                            'Created By :',
-                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                  color: FlutterFlowTheme.of(context).primary,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                ),
-                                                                                                          ),
                                                                                                         ),
-                                                                                                        StreamBuilder<List<UserProfileRecord>>(
-                                                                                                          stream: queryUserProfileRecord(
-                                                                                                            queryBuilder: (userProfileRecord) => userProfileRecord.where(
-                                                                                                              'id',
-                                                                                                              isEqualTo: saleRef1Item.createdBy,
+                                                                                                        Column(
+                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                          children: [
+                                                                                                            Padding(
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                                              child: SelectionArea(
+                                                                                                                  child: Text(
+                                                                                                                'Balance',
+                                                                                                                style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                                      letterSpacing: 0.0,
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                                                    ),
+                                                                                                              )),
                                                                                                             ),
-                                                                                                            singleRecord: true,
-                                                                                                          ),
-                                                                                                          builder: (context, snapshot) {
-                                                                                                            // Customize what your widget looks like when it's loading.
-                                                                                                            if (!snapshot.hasData) {
-                                                                                                              return Center(
-                                                                                                                child: SizedBox(
-                                                                                                                  width: 30.0,
-                                                                                                                  height: 30.0,
-                                                                                                                  child: SpinKitRing(
-                                                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                                                    size: 30.0,
-                                                                                                                  ),
+                                                                                                            Row(
+                                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                                              children: [
+                                                                                                                Padding(
+                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
+                                                                                                                  child: SelectionArea(
+                                                                                                                      child: Text(
+                                                                                                                    '₹',
+                                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                          letterSpacing: 0.0,
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                        ),
+                                                                                                                  )),
                                                                                                                 ),
-                                                                                                              );
-                                                                                                            }
-                                                                                                            List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
-                                                                                                            // Return an empty Container when the item does not exist.
-                                                                                                            if (snapshot.data!.isEmpty) {
-                                                                                                              return Container();
-                                                                                                            }
-                                                                                                            final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
-
-                                                                                                            return Text(
-                                                                                                              valueOrDefault<String>(
-                                                                                                                textUserProfileRecord?.name,
-                                                                                                                '0',
-                                                                                                              ),
-                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                    letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                  ),
-                                                                                                            );
-                                                                                                          },
+                                                                                                                SelectionArea(
+                                                                                                                    child: Text(
+                                                                                                                  saleRefItem.balanceDue.toString(),
+                                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                        letterSpacing: 0.0,
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                      ),
+                                                                                                                )),
+                                                                                                              ],
+                                                                                                            ),
+                                                                                                          ],
                                                                                                         ),
                                                                                                       ],
                                                                                                     ),
-                                                                                                    Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.end,
-                                                                                                      children: [
-                                                                                                        Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                                                                                                          child: Text(
-                                                                                                            'Approved By :',
-                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                  color: FlutterFlowTheme.of(context).primary,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                ),
-                                                                                                          ),
+                                                                                                  ),
+                                                                                                  Row(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    children: [
+                                                                                                      FFButtonWidget(
+                                                                                                        onPressed: () {
+                                                                                                          print('Button pressed ...');
+                                                                                                        },
+                                                                                                        text: valueOrDefault<String>(
+                                                                                                          () {
+                                                                                                            if (saleRefItem.status == 1) {
+                                                                                                              return 'Requested';
+                                                                                                            } else if (saleRefItem.status == 2) {
+                                                                                                              return 'Confirmed';
+                                                                                                            } else if (saleRefItem.status == 3) {
+                                                                                                              return 'Canceled';
+                                                                                                            } else {
+                                                                                                              return '';
+                                                                                                            }
+                                                                                                          }(),
+                                                                                                          '1',
                                                                                                         ),
-                                                                                                        StreamBuilder<List<UserProfileRecord>>(
-                                                                                                          stream: queryUserProfileRecord(
-                                                                                                            queryBuilder: (userProfileRecord) => userProfileRecord.where(
-                                                                                                              'id',
-                                                                                                              isEqualTo: saleRef1Item.authorizedBy,
-                                                                                                            ),
-                                                                                                            singleRecord: true,
-                                                                                                          ),
-                                                                                                          builder: (context, snapshot) {
-                                                                                                            // Customize what your widget looks like when it's loading.
-                                                                                                            if (!snapshot.hasData) {
-                                                                                                              return Center(
-                                                                                                                child: SizedBox(
-                                                                                                                  width: 30.0,
-                                                                                                                  height: 30.0,
-                                                                                                                  child: SpinKitRing(
-                                                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                                                    size: 30.0,
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                              );
+                                                                                                        options: FFButtonOptions(
+                                                                                                          height: 25.0,
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                          color: () {
+                                                                                                            if (saleRefItem.status == 1) {
+                                                                                                              return FlutterFlowTheme.of(context).warning;
+                                                                                                            } else if (saleRefItem.status == 2) {
+                                                                                                              return FlutterFlowTheme.of(context).success;
+                                                                                                            } else if (saleRefItem.status == 3) {
+                                                                                                              return FlutterFlowTheme.of(context).primary;
+                                                                                                            } else {
+                                                                                                              return null;
                                                                                                             }
-                                                                                                            List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
-                                                                                                            // Return an empty Container when the item does not exist.
-                                                                                                            if (snapshot.data!.isEmpty) {
-                                                                                                              return Container();
-                                                                                                            }
-                                                                                                            final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
-
-                                                                                                            return Text(
-                                                                                                              valueOrDefault<String>(
-                                                                                                                textUserProfileRecord?.name,
-                                                                                                                'Pending',
+                                                                                                          }(),
+                                                                                                          textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                                                color: Colors.white,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                               ),
-                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                    letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                  ),
-                                                                                                            );
-                                                                                                          },
+                                                                                                          elevation: 3.0,
+                                                                                                          borderSide: BorderSide(
+                                                                                                            color: Colors.transparent,
+                                                                                                            width: 1.0,
+                                                                                                          ),
+                                                                                                          borderRadius: BorderRadius.circular(8.0),
                                                                                                         ),
-                                                                                                      ],
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ),
+                                                                                            Row(
+                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                              children: [
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Text(
+                                                                                                      'CreatedBy :',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                            color: FlutterFlowTheme.of(context).primary,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                    StreamBuilder<List<UserProfileRecord>>(
+                                                                                                      stream: queryUserProfileRecord(
+                                                                                                        queryBuilder: (userProfileRecord) => userProfileRecord.where(
+                                                                                                          'id',
+                                                                                                          isEqualTo: saleRefItem.createdBy,
+                                                                                                        ),
+                                                                                                        singleRecord: true,
+                                                                                                      ),
+                                                                                                      builder: (context, snapshot) {
+                                                                                                        // Customize what your widget looks like when it's loading.
+                                                                                                        if (!snapshot.hasData) {
+                                                                                                          return Center(
+                                                                                                            child: SizedBox(
+                                                                                                              width: 30.0,
+                                                                                                              height: 30.0,
+                                                                                                              child: SpinKitRing(
+                                                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                                                size: 30.0,
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          );
+                                                                                                        }
+                                                                                                        List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
+                                                                                                        // Return an empty Container when the item does not exist.
+                                                                                                        if (snapshot.data!.isEmpty) {
+                                                                                                          return Container();
+                                                                                                        }
+                                                                                                        final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
+
+                                                                                                        return Text(
+                                                                                                          valueOrDefault<String>(
+                                                                                                            textUserProfileRecord?.name,
+                                                                                                            '0',
+                                                                                                          ),
+                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                              ),
+                                                                                                        );
+                                                                                                      },
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Text(
+                                                                                                      'Approved By :',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                            color: FlutterFlowTheme.of(context).primary,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                    StreamBuilder<List<UserProfileRecord>>(
+                                                                                                      stream: queryUserProfileRecord(
+                                                                                                        queryBuilder: (userProfileRecord) => userProfileRecord.where(
+                                                                                                          'id',
+                                                                                                          isEqualTo: saleRefItem.authorizedBy,
+                                                                                                        ),
+                                                                                                        singleRecord: true,
+                                                                                                      ),
+                                                                                                      builder: (context, snapshot) {
+                                                                                                        // Customize what your widget looks like when it's loading.
+                                                                                                        if (!snapshot.hasData) {
+                                                                                                          return Center(
+                                                                                                            child: SizedBox(
+                                                                                                              width: 30.0,
+                                                                                                              height: 30.0,
+                                                                                                              child: SpinKitRing(
+                                                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                                                size: 30.0,
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          );
+                                                                                                        }
+                                                                                                        List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
+                                                                                                        // Return an empty Container when the item does not exist.
+                                                                                                        if (snapshot.data!.isEmpty) {
+                                                                                                          return Container();
+                                                                                                        }
+                                                                                                        final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
+
+                                                                                                        return Text(
+                                                                                                          valueOrDefault<String>(
+                                                                                                            textUserProfileRecord?.name,
+                                                                                                            '0',
+                                                                                                          ),
+                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                              ),
+                                                                                                        );
+                                                                                                      },
                                                                                                     ),
                                                                                                   ],
                                                                                                 ),
                                                                                               ],
                                                                                             ),
-                                                                                          ),
+                                                                                          ],
                                                                                         ),
                                                                                       ),
-                                                                                    );
-                                                                                  },
+                                                                                    ),
+                                                                                  ),
                                                                                 );
                                                                               },
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                if (FFAppState().showList ==
+                                                    true)
+                                                  StreamBuilder<
+                                                      List<PurchaseRecord>>(
+                                                    stream: queryPurchaseRecord(
+                                                      parent: FFAppState()
+                                                          .outletRef,
+                                                      queryBuilder:
+                                                          (purchaseRecord) =>
+                                                              purchaseRecord
+                                                                  .orderBy(
+                                                                      'orderDate',
+                                                                      descending:
+                                                                          true),
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 30.0,
+                                                            height: 30.0,
+                                                            child: SpinKitRing(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              size: 30.0,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      List<PurchaseRecord>
+                                                          purchasePurchaseRecordList =
+                                                          snapshot.data!;
+
+                                                      return Container(
+                                                        width: double.infinity,
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                1.0,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
+                                                                  children: [
+                                                                    FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        FFAppState().showList =
+                                                                            false;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      },
+                                                                      text:
+                                                                          'Sales Order',
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        width: MediaQuery.sizeOf(context).width *
+                                                                            0.45,
+                                                                        height:
+                                                                            35.0,
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondary,
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                              color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                              fontSize: 8.0,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
-                                                                          ),
-                                                                        if ((stackUserProfileRecord?.role == 'admin') ||
-                                                                            (stackUserProfileRecord?.role ==
-                                                                                'user') ||
-                                                                            (functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() ==
-                                                                                '4'))
-                                                                          Padding(
+                                                                        elevation:
+                                                                            2.0,
+                                                                        borderSide:
+                                                                            BorderSide(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          width:
+                                                                              1.0,
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10.0),
+                                                                      ),
+                                                                    ),
+                                                                    FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        FFAppState().showList =
+                                                                            true;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      },
+                                                                      text:
+                                                                          'Purchase Order',
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        width: MediaQuery.sizeOf(context).width *
+                                                                            0.45,
+                                                                        height:
+                                                                            35.0,
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                              color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                              fontSize: 8.0,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                            ),
+                                                                        elevation:
+                                                                            2.0,
+                                                                        borderSide:
+                                                                            BorderSide(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          width:
+                                                                              1.0,
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10.0),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0),
+                                                                  child:
+                                                                      Builder(
+                                                                    builder:
+                                                                        (context) {
+                                                                      final purchaseRef =
+                                                                          purchasePurchaseRecordList
+                                                                              .toList();
+
+                                                                      return ListView
+                                                                          .builder(
+                                                                        padding:
+                                                                            EdgeInsets.zero,
+                                                                        shrinkWrap:
+                                                                            true,
+                                                                        scrollDirection:
+                                                                            Axis.vertical,
+                                                                        itemCount:
+                                                                            purchaseRef.length,
+                                                                        itemBuilder:
+                                                                            (context,
+                                                                                purchaseRefIndex) {
+                                                                          final purchaseRefItem =
+                                                                              purchaseRef[purchaseRefIndex];
+                                                                          return Padding(
                                                                             padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 0.0,
                                                                                 0.0,
-                                                                                10.0),
+                                                                                5.0),
                                                                             child:
-                                                                                Builder(
-                                                                              builder: (context) {
-                                                                                final saleRef = saleSaleRecordList.where((e) => functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() != '1').toList();
+                                                                                InkWell(
+                                                                              splashColor: Colors.transparent,
+                                                                              focusColor: Colors.transparent,
+                                                                              hoverColor: Colors.transparent,
+                                                                              highlightColor: Colors.transparent,
+                                                                              onTap: () async {
+                                                                                _model.po = await actions.docToJsonPo(
+                                                                                  purchaseRefItem,
+                                                                                );
+                                                                                FFAppState().selectedPurchase = _model.po!;
+                                                                                FFAppState().update(() {});
 
-                                                                                return ListView.builder(
-                                                                                  padding: EdgeInsets.zero,
-                                                                                  shrinkWrap: true,
-                                                                                  scrollDirection: Axis.vertical,
-                                                                                  itemCount: saleRef.length,
-                                                                                  itemBuilder: (context, saleRefIndex) {
-                                                                                    final saleRefItem = saleRef[saleRefIndex];
-                                                                                    return Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                                                                      child: InkWell(
-                                                                                        splashColor: Colors.transparent,
-                                                                                        focusColor: Colors.transparent,
-                                                                                        hoverColor: Colors.transparent,
-                                                                                        highlightColor: Colors.transparent,
-                                                                                        onTap: () async {
-                                                                                          _model.sale10 = await actions.docToJsonSale(
-                                                                                            saleRefItem,
-                                                                                          );
-                                                                                          FFAppState().selectedSale = _model.sale10!;
-                                                                                          FFAppState().update(() {});
-
-                                                                                          context.pushNamed(
-                                                                                            SalesOrderdetailsWidget.routeName,
-                                                                                            queryParameters: {
-                                                                                              'id': serializeParam(
-                                                                                                '',
-                                                                                                ParamType.String,
-                                                                                              ),
-                                                                                            }.withoutNulls,
-                                                                                          );
-
-                                                                                          safeSetState(() {});
-                                                                                        },
+                                                                                safeSetState(() {});
+                                                                              },
+                                                                              child: Container(
+                                                                                width: 100.0,
+                                                                                decoration: BoxDecoration(
+                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(6.0),
+                                                                                  child: Column(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                    children: [
+                                                                                      Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                        child: Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                          children: [
+                                                                                            SelectionArea(
+                                                                                                child: Text(
+                                                                                              purchaseRefItem.party,
+                                                                                              style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    fontWeight: FontWeight.w600,
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
+                                                                                                  ),
+                                                                                            )),
+                                                                                            Text(
+                                                                                              functions.milisecToTimestamp(purchaseRefItem.orderDate),
+                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                  ),
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                                                                                         child: Container(
-                                                                                          width: 100.0,
+                                                                                          height: 18.0,
                                                                                           decoration: BoxDecoration(
-                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                            color: Color(0xFFF7E8E8),
+                                                                                            borderRadius: BorderRadius.circular(5.0),
                                                                                           ),
-                                                                                          child: Padding(
-                                                                                            padding: EdgeInsets.all(6.0),
-                                                                                            child: Column(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                              children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                                  child: Row(
+                                                                                          child: Column(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                                                            children: [
+                                                                                              Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
+                                                                                                child: SelectionArea(
+                                                                                                    child: Text(
+                                                                                                  'Purchase',
+                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                        color: FlutterFlowTheme.of(context).primary,
+                                                                                                        fontSize: 10.0,
+                                                                                                        letterSpacing: 0.0,
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                      ),
+                                                                                                )),
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                                                                                        child: Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                                                          children: [
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                              child: Column(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                children: [
+                                                                                                  Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                                    child: SelectionArea(
+                                                                                                        child: Text(
+                                                                                                      'Total',
+                                                                                                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                                          ),
+                                                                                                    )),
+                                                                                                  ),
+                                                                                                  Row(
                                                                                                     mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                     children: [
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
+                                                                                                        child: SelectionArea(
+                                                                                                            child: Text(
+                                                                                                          '₹',
+                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                              ),
+                                                                                                        )),
+                                                                                                      ),
                                                                                                       SelectionArea(
                                                                                                           child: Text(
-                                                                                                        saleRefItem.party,
-                                                                                                        style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                        purchaseRefItem.finalBillAmt.toString(),
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              fontWeight: FontWeight.w600,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                            ),
-                                                                                                      )),
-                                                                                                      SelectionArea(
-                                                                                                          child: Text(
-                                                                                                        functions.milisecToTimestamp(saleRefItem.orderDate),
-                                                                                                        style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                             ),
                                                                                                       )),
                                                                                                     ],
                                                                                                   ),
-                                                                                                ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ),
+                                                                                            Column(
+                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                              children: [
                                                                                                 Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                                                                                  child: Container(
-                                                                                                    height: 18.0,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      color: Color(0xFFC4E091),
-                                                                                                      borderRadius: BorderRadius.circular(5.0),
-                                                                                                    ),
-                                                                                                    child: Column(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                                                      children: [
-                                                                                                        Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
-                                                                                                          child: SelectionArea(
-                                                                                                              child: Text(
-                                                                                                            'Sale',
-                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                                                  fontSize: 10.0,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                ),
-                                                                                                          )),
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                                  child: SelectionArea(
+                                                                                                      child: Text(
+                                                                                                    'Balance',
+                                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                         ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ),
+                                                                                                  )),
                                                                                                 ),
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                                                                                  child: Row(
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
+                                                                                                      child: SelectionArea(
+                                                                                                          child: Text(
+                                                                                                        '₹',
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                            ),
+                                                                                                      )),
+                                                                                                    ),
+                                                                                                    SelectionArea(
+                                                                                                        child: Text(
+                                                                                                      purchaseRefItem.balanceDue.toString(),
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                          ),
+                                                                                                    )),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      );
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceEvenly,
+                                                                  children: [
+                                                                    FFButtonWidget(
+                                                                      onPressed:
+                                                                          () {
+                                                                        print(
+                                                                            'Button pressed ...');
+                                                                      },
+                                                                      text:
+                                                                          'Add Purchase',
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        width:
+                                                                            130.0,
+                                                                        height:
+                                                                            40.0,
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                              color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.w600,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                            ),
+                                                                        elevation:
+                                                                            2.0,
+                                                                        borderSide:
+                                                                            BorderSide(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          width:
+                                                                              1.0,
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(15.0),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                              ],
+                                            );
+                                          },
+                                        ),
+                                        StreamBuilder<List<UserProfileRecord>>(
+                                          stream: queryUserProfileRecord(
+                                            queryBuilder: (userProfileRecord) =>
+                                                userProfileRecord.where(
+                                              'email',
+                                              isEqualTo:
+                                                  FFAppState().currentEmail,
+                                            ),
+                                            singleRecord: true,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 30.0,
+                                                  height: 30.0,
+                                                  child: SpinKitRing(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size: 30.0,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<UserProfileRecord>
+                                                stackUserProfileRecordList =
+                                                snapshot.data!;
+                                            final stackUserProfileRecord =
+                                                stackUserProfileRecordList
+                                                        .isNotEmpty
+                                                    ? stackUserProfileRecordList
+                                                        .first
+                                                    : null;
+
+                                            return Stack(
+                                              children: [
+                                                if (FFAppState().showList ==
+                                                    false)
+                                                  StreamBuilder<
+                                                      List<SaleRecord>>(
+                                                    stream: querySaleRecord(
+                                                      parent: FFAppState()
+                                                          .outletRef,
+                                                      queryBuilder: (saleRecord) =>
+                                                          saleRecord
+                                                              .where(
+                                                                'balanceDue',
+                                                                isEqualTo: 0.0,
+                                                              )
+                                                              .orderBy(
+                                                                  'orderDate',
+                                                                  descending:
+                                                                      true),
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 30.0,
+                                                            height: 30.0,
+                                                            child: SpinKitRing(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              size: 30.0,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      List<SaleRecord>
+                                                          saleSaleRecordList =
+                                                          snapshot.data!;
+
+                                                      return Container(
+                                                        width: double.infinity,
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                1.0,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Stack(
+                                                                  children: [
+                                                                    if ((stackUserProfileRecord?.role ==
+                                                                            'user') &&
+                                                                        (functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() ==
+                                                                            '1'))
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            10.0),
+                                                                        child:
+                                                                            Builder(
+                                                                          builder:
+                                                                              (context) {
+                                                                            final saleRef1 =
+                                                                                saleSaleRecordList.where((e) => (e.createdBy == stackUserProfileRecord?.id) && (stackUserProfileRecord?.role == 'user')).toList();
+
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              shrinkWrap: true,
+                                                                              scrollDirection: Axis.vertical,
+                                                                              itemCount: saleRef1.length,
+                                                                              itemBuilder: (context, saleRef1Index) {
+                                                                                final saleRef1Item = saleRef1[saleRef1Index];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                                                                  child: InkWell(
+                                                                                    splashColor: Colors.transparent,
+                                                                                    focusColor: Colors.transparent,
+                                                                                    hoverColor: Colors.transparent,
+                                                                                    highlightColor: Colors.transparent,
+                                                                                    onTap: () async {
+                                                                                      _model.sale230 = await actions.docToJsonSale(
+                                                                                        saleRef1Item,
+                                                                                      );
+                                                                                      FFAppState().selectedSale = _model.sale230!;
+                                                                                      FFAppState().update(() {});
+
+                                                                                      context.pushNamed(
+                                                                                        SalesOrderdetailsWidget.routeName,
+                                                                                        queryParameters: {
+                                                                                          'id': serializeParam(
+                                                                                            saleRef1Item.id,
+                                                                                            ParamType.String,
+                                                                                          ),
+                                                                                          'saleRef': serializeParam(
+                                                                                            saleRef1Item.reference,
+                                                                                            ParamType.DocumentReference,
+                                                                                          ),
+                                                                                        }.withoutNulls,
+                                                                                      );
+
+                                                                                      safeSetState(() {});
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 100.0,
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      ),
+                                                                                      child: Padding(
+                                                                                        padding: EdgeInsets.all(6.0),
+                                                                                        child: Column(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                              child: Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                children: [
+                                                                                                  SelectionArea(
+                                                                                                      child: Text(
+                                                                                                    saleRef1Item.party,
+                                                                                                    style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
+                                                                                                        ),
+                                                                                                  )),
+                                                                                                  SelectionArea(
+                                                                                                      child: Text(
+                                                                                                    functions.milisecToTimestamp(saleRef1Item.orderDate),
+                                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                                        ),
+                                                                                                  )),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ),
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                                                                                              child: Container(
+                                                                                                height: 18.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: Color(0xFFC4E091),
+                                                                                                  borderRadius: BorderRadius.circular(5.0),
+                                                                                                ),
+                                                                                                child: Column(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
+                                                                                                      child: SelectionArea(
+                                                                                                          child: Text(
+                                                                                                        'Sale',
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                              fontSize: 10.0,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                            ),
+                                                                                                      )),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                                                                                              child: Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                children: [
+                                                                                                  Row(
                                                                                                     mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                     children: [
                                                                                                       Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
-                                                                                                        child: Row(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                                        child: Column(
                                                                                                           mainAxisSize: MainAxisSize.max,
-                                                                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                           children: [
                                                                                                             Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                                                                                                              child: Column(
-                                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                                children: [
-                                                                                                                  Padding(
-                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                                                                                                                    child: SelectionArea(
-                                                                                                                        child: Text(
-                                                                                                                      'Total',
-                                                                                                                      style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                                                            letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                                                          ),
-                                                                                                                    )),
-                                                                                                                  ),
-                                                                                                                  Row(
-                                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                                    children: [
-                                                                                                                      Padding(
-                                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
-                                                                                                                        child: SelectionArea(
-                                                                                                                            child: Text(
-                                                                                                                          '₹',
-                                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                                letterSpacing: 0.0,
-                                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                              ),
-                                                                                                                        )),
-                                                                                                                      ),
-                                                                                                                      SelectionArea(
-                                                                                                                          child: Text(
-                                                                                                                        saleRefItem.finalBillAmt.toString(),
-                                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                              letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                            ),
-                                                                                                                      )),
-                                                                                                                    ],
-                                                                                                                  ),
-                                                                                                                ],
-                                                                                                              ),
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                                              child: SelectionArea(
+                                                                                                                  child: Text(
+                                                                                                                'Total',
+                                                                                                                style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                                      letterSpacing: 0.0,
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                                                    ),
+                                                                                                              )),
                                                                                                             ),
-                                                                                                            Column(
+                                                                                                            Row(
                                                                                                               mainAxisSize: MainAxisSize.max,
-                                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                               children: [
                                                                                                                 Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
                                                                                                                   child: SelectionArea(
                                                                                                                       child: Text(
-                                                                                                                    'Balance',
-                                                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                                    '₹',
+                                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                         ),
                                                                                                                   )),
                                                                                                                 ),
-                                                                                                                Row(
-                                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                                  children: [
-                                                                                                                    Padding(
-                                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
-                                                                                                                      child: SelectionArea(
-                                                                                                                          child: Text(
-                                                                                                                        '₹',
-                                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                              letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                            ),
-                                                                                                                      )),
-                                                                                                                    ),
-                                                                                                                    SelectionArea(
-                                                                                                                        child: Text(
-                                                                                                                      saleRefItem.balanceDue.toString(),
-                                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                            letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                          ),
-                                                                                                                    )),
-                                                                                                                  ],
-                                                                                                                ),
+                                                                                                                SelectionArea(
+                                                                                                                    child: Text(
+                                                                                                                  saleRef1Item.finalBillAmt.toString(),
+                                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                        letterSpacing: 0.0,
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                      ),
+                                                                                                                )),
                                                                                                               ],
                                                                                                             ),
                                                                                                           ],
                                                                                                         ),
                                                                                                       ),
-                                                                                                      Row(
+                                                                                                      Column(
                                                                                                         mainAxisSize: MainAxisSize.max,
+                                                                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                         children: [
-                                                                                                          FFButtonWidget(
-                                                                                                            onPressed: () {
-                                                                                                              print('Button pressed ...');
-                                                                                                            },
-                                                                                                            text: valueOrDefault<String>(
-                                                                                                              () {
-                                                                                                                if (saleRefItem.status == 1) {
-                                                                                                                  return 'Requested';
-                                                                                                                } else if (saleRefItem.status == 2) {
-                                                                                                                  return 'Confirmed';
-                                                                                                                } else if (saleRefItem.status == 3) {
-                                                                                                                  return 'Canceled';
-                                                                                                                } else {
-                                                                                                                  return '';
-                                                                                                                }
-                                                                                                              }(),
-                                                                                                              '1',
-                                                                                                            ),
-                                                                                                            options: FFButtonOptions(
-                                                                                                              height: 25.0,
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                                                                                                              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                              color: () {
-                                                                                                                if (saleRefItem.status == 1) {
-                                                                                                                  return FlutterFlowTheme.of(context).warning;
-                                                                                                                } else if (saleRefItem.status == 2) {
-                                                                                                                  return FlutterFlowTheme.of(context).success;
-                                                                                                                } else if (saleRefItem.status == 3) {
-                                                                                                                  return FlutterFlowTheme.of(context).primary;
-                                                                                                                } else {
-                                                                                                                  return null;
-                                                                                                                }
-                                                                                                              }(),
-                                                                                                              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                                    color: Colors.white,
+                                                                                                          Padding(
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                                            child: SelectionArea(
+                                                                                                                child: Text(
+                                                                                                              'Balance',
+                                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                   ),
-                                                                                                              elevation: 3.0,
-                                                                                                              borderSide: BorderSide(
-                                                                                                                color: Colors.transparent,
-                                                                                                                width: 1.0,
+                                                                                                            )),
+                                                                                                          ),
+                                                                                                          Row(
+                                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                                            children: [
+                                                                                                              Padding(
+                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
+                                                                                                                child: SelectionArea(
+                                                                                                                    child: Text(
+                                                                                                                  '₹',
+                                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                        letterSpacing: 0.0,
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                      ),
+                                                                                                                )),
                                                                                                               ),
-                                                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                                                            ),
+                                                                                                              SelectionArea(
+                                                                                                                  child: Text(
+                                                                                                                saleRef1Item.balanceDue.toString(),
+                                                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                      letterSpacing: 0.0,
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                    ),
+                                                                                                              )),
+                                                                                                            ],
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
                                                                                                     ],
                                                                                                   ),
+                                                                                                  Row(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    children: [
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                                                                                                        child: FFButtonWidget(
+                                                                                                          onPressed: () {
+                                                                                                            print('Button pressed ...');
+                                                                                                          },
+                                                                                                          text: valueOrDefault<String>(
+                                                                                                            () {
+                                                                                                              if (saleRef1Item.status == 1) {
+                                                                                                                return 'Requested';
+                                                                                                              } else if (saleRef1Item.status == 2) {
+                                                                                                                return 'Confirmed';
+                                                                                                              } else if (saleRef1Item.status == 3) {
+                                                                                                                return 'Dispatch';
+                                                                                                              } else if (saleRef1Item.status == 4) {
+                                                                                                                return 'Delivered';
+                                                                                                              } else if (saleRef1Item.status == 5) {
+                                                                                                                return 'Cancel';
+                                                                                                              } else {
+                                                                                                                return '';
+                                                                                                              }
+                                                                                                            }(),
+                                                                                                            '1',
+                                                                                                          ),
+                                                                                                          options: FFButtonOptions(
+                                                                                                            height: 25.0,
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                            color: () {
+                                                                                                              if (saleRef1Item.status == 1) {
+                                                                                                                return FlutterFlowTheme.of(context).warning;
+                                                                                                              } else if (saleRef1Item.status == 2) {
+                                                                                                                return FlutterFlowTheme.of(context).success;
+                                                                                                              } else if (saleRef1Item.status == 3) {
+                                                                                                                return FlutterFlowTheme.of(context).info;
+                                                                                                              } else if (saleRef1Item.status == 4) {
+                                                                                                                return FlutterFlowTheme.of(context).alternate;
+                                                                                                              } else if (saleRef1Item.status == 5) {
+                                                                                                                return FlutterFlowTheme.of(context).primary;
+                                                                                                              } else {
+                                                                                                                return null;
+                                                                                                              }
+                                                                                                            }(),
+                                                                                                            textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                                  fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                                                  color: Colors.white,
+                                                                                                                  letterSpacing: 0.0,
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                                                                ),
+                                                                                                            elevation: 3.0,
+                                                                                                            borderSide: BorderSide(
+                                                                                                              color: Colors.transparent,
+                                                                                                              width: 1.0,
+                                                                                                            ),
+                                                                                                            borderRadius: BorderRadius.circular(8.0),
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ),
+                                                                                            Row(
+                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                              children: [
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                                      child: Text(
+                                                                                                        'Created By :',
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                            ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                    StreamBuilder<List<UserProfileRecord>>(
+                                                                                                      stream: queryUserProfileRecord(
+                                                                                                        queryBuilder: (userProfileRecord) => userProfileRecord.where(
+                                                                                                          'id',
+                                                                                                          isEqualTo: saleRef1Item.createdBy,
+                                                                                                        ),
+                                                                                                        singleRecord: true,
+                                                                                                      ),
+                                                                                                      builder: (context, snapshot) {
+                                                                                                        // Customize what your widget looks like when it's loading.
+                                                                                                        if (!snapshot.hasData) {
+                                                                                                          return Center(
+                                                                                                            child: SizedBox(
+                                                                                                              width: 30.0,
+                                                                                                              height: 30.0,
+                                                                                                              child: SpinKitRing(
+                                                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                                                size: 30.0,
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          );
+                                                                                                        }
+                                                                                                        List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
+                                                                                                        // Return an empty Container when the item does not exist.
+                                                                                                        if (snapshot.data!.isEmpty) {
+                                                                                                          return Container();
+                                                                                                        }
+                                                                                                        final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
+
+                                                                                                        return Text(
+                                                                                                          valueOrDefault<String>(
+                                                                                                            textUserProfileRecord?.name,
+                                                                                                            '0',
+                                                                                                          ),
+                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                              ),
+                                                                                                        );
+                                                                                                      },
+                                                                                                    ),
+                                                                                                  ],
                                                                                                 ),
                                                                                                 Row(
                                                                                                   mainAxisSize: MainAxisSize.max,
-                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.end,
                                                                                                   children: [
-                                                                                                    Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      children: [
-                                                                                                        Text(
-                                                                                                          'CreatedBy :',
-                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                color: FlutterFlowTheme.of(context).primary,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                              ),
-                                                                                                        ),
-                                                                                                        StreamBuilder<List<UserProfileRecord>>(
-                                                                                                          stream: queryUserProfileRecord(
-                                                                                                            queryBuilder: (userProfileRecord) => userProfileRecord.where(
-                                                                                                              'id',
-                                                                                                              isEqualTo: saleRefItem.createdBy,
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                                      child: Text(
+                                                                                                        'Approved By :',
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                             ),
-                                                                                                            singleRecord: true,
-                                                                                                          ),
-                                                                                                          builder: (context, snapshot) {
-                                                                                                            // Customize what your widget looks like when it's loading.
-                                                                                                            if (!snapshot.hasData) {
-                                                                                                              return Center(
-                                                                                                                child: SizedBox(
-                                                                                                                  width: 30.0,
-                                                                                                                  height: 30.0,
-                                                                                                                  child: SpinKitRing(
-                                                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                                                    size: 30.0,
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                              );
-                                                                                                            }
-                                                                                                            List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
-                                                                                                            // Return an empty Container when the item does not exist.
-                                                                                                            if (snapshot.data!.isEmpty) {
-                                                                                                              return Container();
-                                                                                                            }
-                                                                                                            final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
-
-                                                                                                            return Text(
-                                                                                                              valueOrDefault<String>(
-                                                                                                                textUserProfileRecord?.name,
-                                                                                                                '0',
-                                                                                                              ),
-                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                                                    letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                  ),
-                                                                                                            );
-                                                                                                          },
-                                                                                                        ),
-                                                                                                      ],
+                                                                                                      ),
                                                                                                     ),
-                                                                                                    Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      children: [
-                                                                                                        Text(
-                                                                                                          'Approved By :',
+                                                                                                    StreamBuilder<List<UserProfileRecord>>(
+                                                                                                      stream: queryUserProfileRecord(
+                                                                                                        queryBuilder: (userProfileRecord) => userProfileRecord.where(
+                                                                                                          'id',
+                                                                                                          isEqualTo: saleRef1Item.authorizedBy,
+                                                                                                        ),
+                                                                                                        singleRecord: true,
+                                                                                                      ),
+                                                                                                      builder: (context, snapshot) {
+                                                                                                        // Customize what your widget looks like when it's loading.
+                                                                                                        if (!snapshot.hasData) {
+                                                                                                          return Center(
+                                                                                                            child: SizedBox(
+                                                                                                              width: 30.0,
+                                                                                                              height: 30.0,
+                                                                                                              child: SpinKitRing(
+                                                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                                                size: 30.0,
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          );
+                                                                                                        }
+                                                                                                        List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
+                                                                                                        // Return an empty Container when the item does not exist.
+                                                                                                        if (snapshot.data!.isEmpty) {
+                                                                                                          return Container();
+                                                                                                        }
+                                                                                                        final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
+
+                                                                                                        return Text(
+                                                                                                          valueOrDefault<String>(
+                                                                                                            textUserProfileRecord?.name,
+                                                                                                            'Pending',
+                                                                                                          ),
                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
-                                                                                                        ),
-                                                                                                        StreamBuilder<List<UserProfileRecord>>(
-                                                                                                          stream: queryUserProfileRecord(
-                                                                                                            queryBuilder: (userProfileRecord) => userProfileRecord.where(
-                                                                                                              'id',
-                                                                                                              isEqualTo: saleRefItem.authorizedBy,
-                                                                                                            ),
-                                                                                                            singleRecord: true,
-                                                                                                          ),
-                                                                                                          builder: (context, snapshot) {
-                                                                                                            // Customize what your widget looks like when it's loading.
-                                                                                                            if (!snapshot.hasData) {
-                                                                                                              return Center(
-                                                                                                                child: SizedBox(
-                                                                                                                  width: 30.0,
-                                                                                                                  height: 30.0,
-                                                                                                                  child: SpinKitRing(
-                                                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                                                    size: 30.0,
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                              );
-                                                                                                            }
-                                                                                                            List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
-                                                                                                            // Return an empty Container when the item does not exist.
-                                                                                                            if (snapshot.data!.isEmpty) {
-                                                                                                              return Container();
-                                                                                                            }
-                                                                                                            final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
-
-                                                                                                            return Text(
-                                                                                                              valueOrDefault<String>(
-                                                                                                                textUserProfileRecord?.name,
-                                                                                                                '0',
-                                                                                                              ),
-                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                                                    letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                  ),
-                                                                                                            );
-                                                                                                          },
-                                                                                                        ),
-                                                                                                      ],
+                                                                                                        );
+                                                                                                      },
                                                                                                     ),
                                                                                                   ],
                                                                                                 ),
                                                                                               ],
                                                                                             ),
-                                                                                          ),
+                                                                                          ],
                                                                                         ),
                                                                                       ),
-                                                                                    );
-                                                                                  },
+                                                                                    ),
+                                                                                  ),
                                                                                 );
                                                                               },
-                                                                            ),
-                                                                          ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ],
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    if ((stackUserProfileRecord?.role == 'admin') ||
+                                                                        (stackUserProfileRecord?.role ==
+                                                                            'user') ||
+                                                                        (functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() ==
+                                                                            '4'))
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            10.0),
+                                                                        child:
+                                                                            Builder(
+                                                                          builder:
+                                                                              (context) {
+                                                                            final saleRef =
+                                                                                saleSaleRecordList.where((e) => functions.userDocToJsonNew(stackUserProfileRecord!, 'Sales Order').toString() != '1').toList();
+
+                                                                            return ListView.builder(
+                                                                              padding: EdgeInsets.zero,
+                                                                              shrinkWrap: true,
+                                                                              scrollDirection: Axis.vertical,
+                                                                              itemCount: saleRef.length,
+                                                                              itemBuilder: (context, saleRefIndex) {
+                                                                                final saleRefItem = saleRef[saleRefIndex];
+                                                                                return Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                                                                  child: InkWell(
+                                                                                    splashColor: Colors.transparent,
+                                                                                    focusColor: Colors.transparent,
+                                                                                    hoverColor: Colors.transparent,
+                                                                                    highlightColor: Colors.transparent,
+                                                                                    onTap: () async {
+                                                                                      _model.sale10 = await actions.docToJsonSale(
+                                                                                        saleRefItem,
+                                                                                      );
+                                                                                      FFAppState().selectedSale = _model.sale10!;
+                                                                                      FFAppState().update(() {});
+
+                                                                                      context.pushNamed(
+                                                                                        SalesOrderdetailsWidget.routeName,
+                                                                                        queryParameters: {
+                                                                                          'id': serializeParam(
+                                                                                            '',
+                                                                                            ParamType.String,
+                                                                                          ),
+                                                                                        }.withoutNulls,
+                                                                                      );
+
+                                                                                      safeSetState(() {});
+                                                                                    },
+                                                                                    child: Container(
+                                                                                      width: 100.0,
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      ),
+                                                                                      child: Padding(
+                                                                                        padding: EdgeInsets.all(6.0),
+                                                                                        child: Column(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                          children: [
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                              child: Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                children: [
+                                                                                                  SelectionArea(
+                                                                                                      child: Text(
+                                                                                                    saleRefItem.party,
+                                                                                                    style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          fontWeight: FontWeight.w600,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
+                                                                                                        ),
+                                                                                                  )),
+                                                                                                  SelectionArea(
+                                                                                                      child: Text(
+                                                                                                    functions.milisecToTimestamp(saleRefItem.orderDate),
+                                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                                        ),
+                                                                                                  )),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ),
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                                                                                              child: Container(
+                                                                                                height: 18.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: Color(0xFFC4E091),
+                                                                                                  borderRadius: BorderRadius.circular(5.0),
+                                                                                                ),
+                                                                                                child: Column(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
+                                                                                                      child: SelectionArea(
+                                                                                                          child: Text(
+                                                                                                        'Sale',
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                              fontSize: 10.0,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                            ),
+                                                                                                      )),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                                                                              child: Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                children: [
+                                                                                                  Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
+                                                                                                    child: Row(
+                                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                                                      children: [
+                                                                                                        Padding(
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                                          child: Column(
+                                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                            children: [
+                                                                                                              Padding(
+                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                                                child: SelectionArea(
+                                                                                                                    child: Text(
+                                                                                                                  'Total',
+                                                                                                                  style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                                        fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                                        letterSpacing: 0.0,
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                                                      ),
+                                                                                                                )),
+                                                                                                              ),
+                                                                                                              Row(
+                                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                                children: [
+                                                                                                                  Padding(
+                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
+                                                                                                                    child: SelectionArea(
+                                                                                                                        child: Text(
+                                                                                                                      '₹',
+                                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                            letterSpacing: 0.0,
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                          ),
+                                                                                                                    )),
+                                                                                                                  ),
+                                                                                                                  SelectionArea(
+                                                                                                                      child: Text(
+                                                                                                                    saleRefItem.finalBillAmt.toString(),
+                                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                          letterSpacing: 0.0,
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                        ),
+                                                                                                                  )),
+                                                                                                                ],
+                                                                                                              ),
+                                                                                                            ],
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                        Column(
+                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                          children: [
+                                                                                                            Padding(
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                                                                                                              child: SelectionArea(
+                                                                                                                  child: Text(
+                                                                                                                'Balance',
+                                                                                                                style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                                      letterSpacing: 0.0,
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                                                    ),
+                                                                                                              )),
+                                                                                                            ),
+                                                                                                            Row(
+                                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                                              children: [
+                                                                                                                Padding(
+                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
+                                                                                                                  child: SelectionArea(
+                                                                                                                      child: Text(
+                                                                                                                    '₹',
+                                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                          letterSpacing: 0.0,
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                        ),
+                                                                                                                  )),
+                                                                                                                ),
+                                                                                                                SelectionArea(
+                                                                                                                    child: Text(
+                                                                                                                  saleRefItem.balanceDue.toString(),
+                                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                        letterSpacing: 0.0,
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                                      ),
+                                                                                                                )),
+                                                                                                              ],
+                                                                                                            ),
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                      ],
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  Row(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    children: [
+                                                                                                      FFButtonWidget(
+                                                                                                        onPressed: () {
+                                                                                                          print('Button pressed ...');
+                                                                                                        },
+                                                                                                        text: valueOrDefault<String>(
+                                                                                                          () {
+                                                                                                            if (saleRefItem.status == 1) {
+                                                                                                              return 'Requested';
+                                                                                                            } else if (saleRefItem.status == 2) {
+                                                                                                              return 'Confirmed';
+                                                                                                            } else if (saleRefItem.status == 3) {
+                                                                                                              return 'Canceled';
+                                                                                                            } else {
+                                                                                                              return '';
+                                                                                                            }
+                                                                                                          }(),
+                                                                                                          '1',
+                                                                                                        ),
+                                                                                                        options: FFButtonOptions(
+                                                                                                          height: 25.0,
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                                                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                          color: () {
+                                                                                                            if (saleRefItem.status == 1) {
+                                                                                                              return FlutterFlowTheme.of(context).warning;
+                                                                                                            } else if (saleRefItem.status == 2) {
+                                                                                                              return FlutterFlowTheme.of(context).success;
+                                                                                                            } else if (saleRefItem.status == 3) {
+                                                                                                              return FlutterFlowTheme.of(context).primary;
+                                                                                                            } else {
+                                                                                                              return null;
+                                                                                                            }
+                                                                                                          }(),
+                                                                                                          textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                                                color: Colors.white,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                                                              ),
+                                                                                                          elevation: 3.0,
+                                                                                                          borderSide: BorderSide(
+                                                                                                            color: Colors.transparent,
+                                                                                                            width: 1.0,
+                                                                                                          ),
+                                                                                                          borderRadius: BorderRadius.circular(8.0),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ),
+                                                                                            Row(
+                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                              children: [
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Text(
+                                                                                                      'CreatedBy :',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                            color: FlutterFlowTheme.of(context).primary,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                    StreamBuilder<List<UserProfileRecord>>(
+                                                                                                      stream: queryUserProfileRecord(
+                                                                                                        queryBuilder: (userProfileRecord) => userProfileRecord.where(
+                                                                                                          'id',
+                                                                                                          isEqualTo: saleRefItem.createdBy,
+                                                                                                        ),
+                                                                                                        singleRecord: true,
+                                                                                                      ),
+                                                                                                      builder: (context, snapshot) {
+                                                                                                        // Customize what your widget looks like when it's loading.
+                                                                                                        if (!snapshot.hasData) {
+                                                                                                          return Center(
+                                                                                                            child: SizedBox(
+                                                                                                              width: 30.0,
+                                                                                                              height: 30.0,
+                                                                                                              child: SpinKitRing(
+                                                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                                                size: 30.0,
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          );
+                                                                                                        }
+                                                                                                        List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
+                                                                                                        // Return an empty Container when the item does not exist.
+                                                                                                        if (snapshot.data!.isEmpty) {
+                                                                                                          return Container();
+                                                                                                        }
+                                                                                                        final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
+
+                                                                                                        return Text(
+                                                                                                          valueOrDefault<String>(
+                                                                                                            textUserProfileRecord?.name,
+                                                                                                            '0',
+                                                                                                          ),
+                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                              ),
+                                                                                                        );
+                                                                                                      },
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                                Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    Text(
+                                                                                                      'Approved By :',
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                            color: FlutterFlowTheme.of(context).primary,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                    StreamBuilder<List<UserProfileRecord>>(
+                                                                                                      stream: queryUserProfileRecord(
+                                                                                                        queryBuilder: (userProfileRecord) => userProfileRecord.where(
+                                                                                                          'id',
+                                                                                                          isEqualTo: saleRefItem.authorizedBy,
+                                                                                                        ),
+                                                                                                        singleRecord: true,
+                                                                                                      ),
+                                                                                                      builder: (context, snapshot) {
+                                                                                                        // Customize what your widget looks like when it's loading.
+                                                                                                        if (!snapshot.hasData) {
+                                                                                                          return Center(
+                                                                                                            child: SizedBox(
+                                                                                                              width: 30.0,
+                                                                                                              height: 30.0,
+                                                                                                              child: SpinKitRing(
+                                                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                                                size: 30.0,
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          );
+                                                                                                        }
+                                                                                                        List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
+                                                                                                        // Return an empty Container when the item does not exist.
+                                                                                                        if (snapshot.data!.isEmpty) {
+                                                                                                          return Container();
+                                                                                                        }
+                                                                                                        final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
+
+                                                                                                        return Text(
+                                                                                                          valueOrDefault<String>(
+                                                                                                            textUserProfileRecord?.name,
+                                                                                                            '0',
+                                                                                                          ),
+                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                                              ),
+                                                                                                        );
+                                                                                                      },
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                          );
-                                                        },
-                                                      ),
-                                                  ],
-                                                );
-                                              },
-                                            ),
-                                          ],
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                              ],
+                                            );
+                                          },
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
-                        );
-                      },
+                        ],
+                      ),
                     ),
                   ),
                 ],

@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
@@ -8,8 +9,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'deye_edit_profile_admin_widget.dart' show DeyeEditProfileAdminWidget;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -27,10 +30,10 @@ class DeyeEditProfileAdminModel
 
   // Model for DeyeHeader component.
   late DeyeHeaderModel deyeHeaderModel;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadDataY8l = false;
+  FFUploadedFile uploadedLocalFile_uploadDataY8l =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_uploadDataY8l = '';
 
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;

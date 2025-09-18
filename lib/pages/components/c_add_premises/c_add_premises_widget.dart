@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -115,9 +116,8 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .headlineLargeFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .headlineLargeFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineLargeIsCustom,
                                 ),
                           ),
                         ],
@@ -141,10 +141,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                         .bodySmallFamily,
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodySmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodySmallIsCustom,
                                   ),
                             ),
                           ),
@@ -195,10 +194,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .bodySmallFamily,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodySmallIsCustom,
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -247,10 +245,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .titleMediumFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleMediumIsCustom,
                                       ),
                                   validator: _model
                                       .textFieldPremisesNameTextControllerValidator
@@ -280,10 +277,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                         .bodySmallFamily,
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodySmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodySmallIsCustom,
                                   ),
                             ),
                           ),
@@ -330,10 +326,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .bodySmallFamily,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodySmallIsCustom,
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -382,10 +377,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .titleMediumFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleMediumIsCustom,
                                       ),
                                   keyboardType: TextInputType.number,
                                   validator: _model
@@ -414,9 +408,8 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                       .bodySmallFamily,
                                   fontSize: 12.0,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodySmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodySmallIsCustom,
                                 ),
                           ),
                         ),
@@ -445,9 +438,8 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyMediumIsCustom,
                                 ),
                             hintText: 'Premises Type',
                             fillColor: FlutterFlowTheme.of(context)
@@ -498,11 +490,8 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
                                               useGoogleFonts:
-                                                  GoogleFonts.asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodySmallFamily),
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodySmallIsCustom,
                                             ),
                                       ),
                                     ),
@@ -533,10 +522,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                                     .bodySmallFamily,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmallFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodySmallIsCustom,
                                           ),
                                     ),
                                   ),
@@ -585,10 +573,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .bodySmallFamily,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodySmallIsCustom,
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -637,10 +624,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .titleMediumFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleMediumIsCustom,
                                       ),
                                   keyboardType: TextInputType.number,
                                   validator: _model
@@ -678,10 +664,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodySmallFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodySmallIsCustom,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -730,10 +715,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .titleMediumFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMediumFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleMediumIsCustom,
                                     ),
                                 keyboardType: TextInputType.number,
                                 validator: _model
@@ -786,10 +770,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleMediumFamily,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleMediumIsCustom,
                                         ),
                                   ),
                                 ],
@@ -963,10 +946,9 @@ class _CAddPremisesWidgetState extends State<CAddPremisesWidget> {
                                                 .primaryBtnText,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMediumFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .headlineMediumIsCustom,
                                           ),
                                     ),
                                   ],

@@ -76,6 +76,53 @@ class AttendanceRecord extends FirestoreRecord {
   String get yearId => _yearId ?? '';
   bool hasYearId() => _yearId != null;
 
+  // "locationName" field.
+  String? _locationName;
+  String get locationName => _locationName ?? '';
+  bool hasLocationName() => _locationName != null;
+
+  // "street" field.
+  String? _street;
+  String get street => _street ?? '';
+  bool hasStreet() => _street != null;
+
+  // "locality" field.
+  String? _locality;
+  String get locality => _locality ?? '';
+  bool hasLocality() => _locality != null;
+
+  // "subLocality" field.
+  String? _subLocality;
+  String get subLocality => _subLocality ?? '';
+  bool hasSubLocality() => _subLocality != null;
+
+  // "postalCode" field.
+  int? _postalCode;
+  int get postalCode => _postalCode ?? 0;
+  bool hasPostalCode() => _postalCode != null;
+
+  // "checkInLocationDetails" field.
+  LocationDetailsStruct? _checkInLocationDetails;
+  LocationDetailsStruct get checkInLocationDetails =>
+      _checkInLocationDetails ?? LocationDetailsStruct();
+  bool hasCheckInLocationDetails() => _checkInLocationDetails != null;
+
+  // "checkOutLocationDetails" field.
+  LocationDetailsStruct? _checkOutLocationDetails;
+  LocationDetailsStruct get checkOutLocationDetails =>
+      _checkOutLocationDetails ?? LocationDetailsStruct();
+  bool hasCheckOutLocationDetails() => _checkOutLocationDetails != null;
+
+  // "createdDate" field.
+  DateTime? _createdDate;
+  DateTime? get createdDate => _createdDate;
+  bool hasCreatedDate() => _createdDate != null;
+
+  // "isPresent" field.
+  bool? _isPresent;
+  bool get isPresent => _isPresent ?? false;
+  bool hasIsPresent() => _isPresent != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -91,6 +138,23 @@ class AttendanceRecord extends FirestoreRecord {
     _checkInLocation = snapshotData['checkInLocation'] as String?;
     _monthId = snapshotData['monthId'] as String?;
     _yearId = snapshotData['yearId'] as String?;
+    _locationName = snapshotData['locationName'] as String?;
+    _street = snapshotData['street'] as String?;
+    _locality = snapshotData['locality'] as String?;
+    _subLocality = snapshotData['subLocality'] as String?;
+    _postalCode = castToType<int>(snapshotData['postalCode']);
+    _checkInLocationDetails =
+        snapshotData['checkInLocationDetails'] is LocationDetailsStruct
+            ? snapshotData['checkInLocationDetails']
+            : LocationDetailsStruct.maybeFromMap(
+                snapshotData['checkInLocationDetails']);
+    _checkOutLocationDetails =
+        snapshotData['checkOutLocationDetails'] is LocationDetailsStruct
+            ? snapshotData['checkOutLocationDetails']
+            : LocationDetailsStruct.maybeFromMap(
+                snapshotData['checkOutLocationDetails']);
+    _createdDate = snapshotData['createdDate'] as DateTime?;
+    _isPresent = snapshotData['isPresent'] as bool?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -145,6 +209,15 @@ Map<String, dynamic> createAttendanceRecordData({
   String? checkInLocation,
   String? monthId,
   String? yearId,
+  String? locationName,
+  String? street,
+  String? locality,
+  String? subLocality,
+  int? postalCode,
+  LocationDetailsStruct? checkInLocationDetails,
+  LocationDetailsStruct? checkOutLocationDetails,
+  DateTime? createdDate,
+  bool? isPresent,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -160,8 +233,25 @@ Map<String, dynamic> createAttendanceRecordData({
       'checkInLocation': checkInLocation,
       'monthId': monthId,
       'yearId': yearId,
+      'locationName': locationName,
+      'street': street,
+      'locality': locality,
+      'subLocality': subLocality,
+      'postalCode': postalCode,
+      'checkInLocationDetails': LocationDetailsStruct().toMap(),
+      'checkOutLocationDetails': LocationDetailsStruct().toMap(),
+      'createdDate': createdDate,
+      'isPresent': isPresent,
     }.withoutNulls,
   );
+
+  // Handle nested data for "checkInLocationDetails" field.
+  addLocationDetailsStructData(
+      firestoreData, checkInLocationDetails, 'checkInLocationDetails');
+
+  // Handle nested data for "checkOutLocationDetails" field.
+  addLocationDetailsStructData(
+      firestoreData, checkOutLocationDetails, 'checkOutLocationDetails');
 
   return firestoreData;
 }
@@ -182,7 +272,16 @@ class AttendanceRecordDocumentEquality implements Equality<AttendanceRecord> {
         e1?.status == e2?.status &&
         e1?.checkInLocation == e2?.checkInLocation &&
         e1?.monthId == e2?.monthId &&
-        e1?.yearId == e2?.yearId;
+        e1?.yearId == e2?.yearId &&
+        e1?.locationName == e2?.locationName &&
+        e1?.street == e2?.street &&
+        e1?.locality == e2?.locality &&
+        e1?.subLocality == e2?.subLocality &&
+        e1?.postalCode == e2?.postalCode &&
+        e1?.checkInLocationDetails == e2?.checkInLocationDetails &&
+        e1?.checkOutLocationDetails == e2?.checkOutLocationDetails &&
+        e1?.createdDate == e2?.createdDate &&
+        e1?.isPresent == e2?.isPresent;
   }
 
   @override
@@ -198,7 +297,16 @@ class AttendanceRecordDocumentEquality implements Equality<AttendanceRecord> {
         e?.status,
         e?.checkInLocation,
         e?.monthId,
-        e?.yearId
+        e?.yearId,
+        e?.locationName,
+        e?.street,
+        e?.locality,
+        e?.subLocality,
+        e?.postalCode,
+        e?.checkInLocationDetails,
+        e?.checkOutLocationDetails,
+        e?.createdDate,
+        e?.isPresent
       ]);
 
   @override

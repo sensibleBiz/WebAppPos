@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -82,9 +83,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .headlineLargeFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineLargeFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .headlineLargeIsCustom,
                               ),
                         ),
                       ),
@@ -97,9 +97,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                   color: FlutterFlowTheme.of(context).primary,
                                   letterSpacing: 0.0,
                                   decoration: TextDecoration.underline,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .displayMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .displayMediumIsCustom,
                                 ),
                       ),
                     ],
@@ -124,23 +123,24 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                         fontFamily:
                             FlutterFlowTheme.of(context).headlineLargeFamily,
                         letterSpacing: 0.0,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).headlineLargeFamily),
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                       ),
-                  dayOfWeekStyle:
-                      FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).titleMediumFamily,
-                            letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).titleMediumFamily),
-                          ),
+                  dayOfWeekStyle: FlutterFlowTheme.of(context)
+                      .titleMedium
+                      .override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).titleMediumFamily,
+                        letterSpacing: 0.0,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
+                      ),
                   dateStyle: FlutterFlowTheme.of(context).labelLarge.override(
                         fontFamily:
                             FlutterFlowTheme.of(context).labelLargeFamily,
                         letterSpacing: 0.0,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).labelLargeFamily),
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).labelLargeIsCustom,
                       ),
                   selectedDateStyle: TextStyle(),
                   inactiveDateStyle: TextStyle(),

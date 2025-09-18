@@ -76,6 +76,11 @@ class LeadActivitiesRecord extends FirestoreRecord {
   String get mode => _mode ?? '';
   bool hasMode() => _mode != null;
 
+  // "solution" field.
+  String? _solution;
+  String get solution => _solution ?? '';
+  bool hasSolution() => _solution != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -91,6 +96,7 @@ class LeadActivitiesRecord extends FirestoreRecord {
     _type = snapshotData['type'] as String?;
     _status = snapshotData['status'] as String?;
     _mode = snapshotData['mode'] as String?;
+    _solution = snapshotData['solution'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -145,6 +151,7 @@ Map<String, dynamic> createLeadActivitiesRecordData({
   String? type,
   String? status,
   String? mode,
+  String? solution,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -160,6 +167,7 @@ Map<String, dynamic> createLeadActivitiesRecordData({
       'type': type,
       'status': status,
       'mode': mode,
+      'solution': solution,
     }.withoutNulls,
   );
 
@@ -183,7 +191,8 @@ class LeadActivitiesRecordDocumentEquality
         e1?.leadName == e2?.leadName &&
         e1?.type == e2?.type &&
         e1?.status == e2?.status &&
-        e1?.mode == e2?.mode;
+        e1?.mode == e2?.mode &&
+        e1?.solution == e2?.solution;
   }
 
   @override
@@ -199,7 +208,8 @@ class LeadActivitiesRecordDocumentEquality
         e?.leadName,
         e?.type,
         e?.status,
-        e?.mode
+        e?.mode,
+        e?.solution
       ]);
 
   @override

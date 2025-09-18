@@ -39,6 +39,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
       length: 3,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -93,8 +94,6 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                     text: '',
                                     icon: Icon(
                                       Icons.chevron_left,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBtnText,
                                       size: 32.0,
                                     ),
                                     options: FFButtonOptions(
@@ -104,6 +103,8 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                       iconPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
+                                      iconColor: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
                                       color:
                                           FlutterFlowTheme.of(context).primary,
                                       textStyle: FlutterFlowTheme.of(context)
@@ -114,10 +115,9 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                     .titleSmallFamily,
                                             color: Colors.white,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmallFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleSmallIsCustom,
                                           ),
                                       elevation: 2.0,
                                       borderSide: BorderSide(
@@ -141,10 +141,9 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                 .primaryBtnText,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMediumFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .headlineMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -198,10 +197,9 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                               FlutterFlowTheme.of(context)
                                                   .headlineSmallFamily,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .headlineSmallIsCustom,
                                         ),
                                     unselectedLabelStyle: TextStyle(),
                                     indicatorColor:
@@ -386,7 +384,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                 style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                                     ),
                                                                               ),
                                                                               Padding(
@@ -396,7 +394,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -426,7 +424,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                       style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -437,7 +435,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                       style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -453,7 +451,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                       style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -464,7 +462,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                       style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -482,7 +480,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                         style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -522,7 +520,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                             style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                 ),
                                                                                           );
                                                                                         },
@@ -545,7 +543,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -554,7 +552,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                               style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -737,7 +735,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                         style: FlutterFlowTheme.of(context).headlineLarge.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                       Padding(
@@ -747,7 +745,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                           style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -774,7 +772,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                                 Padding(
@@ -784,7 +782,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                                     style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -801,7 +799,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                   Padding(
@@ -811,7 +809,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                                       style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -833,7 +831,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -847,7 +845,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                                 style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                       fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                             ),
@@ -858,7 +856,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                                 style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                       fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                             ),
@@ -867,7 +865,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                               style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                             Padding(
@@ -877,7 +875,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                                 style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                       fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                             ),
@@ -888,7 +886,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                                 style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                       fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                             ),
@@ -936,7 +934,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                         color: FlutterFlowTheme.of(context).lineColor,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1176,7 +1174,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           color: FlutterFlowTheme.of(context).secondaryText,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -1187,7 +1185,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                           fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
                                                                                           color: FlutterFlowTheme.of(context).primary,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -1205,7 +1203,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                               fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1220,7 +1218,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -1230,7 +1228,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                                 fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
                                                                                                 fontSize: 16.0,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ],
@@ -1258,7 +1256,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           color: FlutterFlowTheme.of(context).secondaryText,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -1271,7 +1269,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -1298,7 +1296,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                         style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1309,7 +1307,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                         style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1320,7 +1318,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                         style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1336,7 +1334,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                         style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1347,7 +1345,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                         style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1365,7 +1363,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                           style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -1403,7 +1401,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                             style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                                 ),
                                                                                           );
                                                                                         },
@@ -1426,7 +1424,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                         color: FlutterFlowTheme.of(context).secondaryText,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1435,7 +1433,7 @@ class _TodayDetailsCopyWidgetState extends State<TodayDetailsCopyWidget>
                                                                                 style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],

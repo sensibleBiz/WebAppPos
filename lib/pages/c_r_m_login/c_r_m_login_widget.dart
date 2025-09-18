@@ -12,6 +12,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -38,6 +39,9 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CRMLoginModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     _model.textFieldEmailTextController ??= TextEditingController();
     _model.textFieldEmailFocusNode ??= FocusNode();
@@ -78,7 +82,7 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                   Expanded(
                     child: Container(
                       width: double.infinity,
-                      height: 100.0,
+                      height: double.infinity,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         image: DecorationImage(
@@ -94,7 +98,7 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 50.0, 50.0, 50.0),
+                                0.0, 0.0, 50.0, 50.0),
                             child: FlipCard(
                               fill: Fill.fillBack,
                               direction: FlipDirection.HORIZONTAL,
@@ -107,7 +111,7 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 200.0, 20.0, 0.0),
+                                      20.0, 100.0, 20.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -126,15 +130,27 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 0.0, 50.0),
-                                              child: Container(
-                                                width: 180.0,
-                                                height: 110.0,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    fit: BoxFit.contain,
-                                                    image: Image.asset(
-                                                      'assets/images/Sensible_Logo_Large.png',
-                                                    ).image,
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                      RegisterComplaintDemoWidget
+                                                          .routeName);
+                                                },
+                                                child: Container(
+                                                  width: 180.0,
+                                                  height: 110.0,
+                                                  decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                      fit: BoxFit.contain,
+                                                      image: Image.asset(
+                                                        'assets/images/Sensible_Logo_Large.png',
+                                                      ).image,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -169,12 +185,10 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                                         context)
                                                                     .bodySmallFamily,
                                                             letterSpacing: 0.0,
-                                                            useGoogleFonts: GoogleFonts
-                                                                    .asMap()
-                                                                .containsKey(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodySmallFamily),
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallIsCustom,
                                                           ),
                                                   enabledBorder:
                                                       OutlineInputBorder(
@@ -243,12 +257,10 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                                       context)
                                                                   .titleMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                 validator: _model
                                                     .textFieldEmailTextControllerValidator
@@ -286,12 +298,10 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                                         context)
                                                                     .bodySmallFamily,
                                                             letterSpacing: 0.0,
-                                                            useGoogleFonts: GoogleFonts
-                                                                    .asMap()
-                                                                .containsKey(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodySmallFamily),
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallIsCustom,
                                                           ),
                                                   enabledBorder:
                                                       OutlineInputBorder(
@@ -382,12 +392,10 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                                       context)
                                                                   .titleMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                 validator: _model
                                                     .textFieldPwdTextControllerValidator
@@ -426,6 +434,24 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                   if (_model
                                                           .fetchedRecordUserProfile !=
                                                       null) {
+                                                    _model.cities =
+                                                        await queryCitiesRecordOnce(
+                                                      queryBuilder:
+                                                          (citiesRecord) =>
+                                                              citiesRecord
+                                                                  .orderBy(
+                                                                      'cityName'),
+                                                    );
+                                                    _shouldSetState = true;
+                                                    _model.states =
+                                                        await queryStateRecordOnce(
+                                                      queryBuilder:
+                                                          (stateRecord) =>
+                                                              stateRecord
+                                                                  .orderBy(
+                                                                      'name'),
+                                                    );
+                                                    _shouldSetState = true;
                                                     FFAppState().outletId = _model
                                                         .fetchedRecordUserProfile!
                                                         .outletId;
@@ -452,6 +478,20 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                     FFAppState().userId = _model
                                                         .fetchedRecordUserProfile!
                                                         .id;
+                                                    FFAppState().cities =
+                                                        functions
+                                                            .addCityList(_model
+                                                                .cities!
+                                                                .toList())
+                                                            .toList()
+                                                            .cast<
+                                                                CityListStruct>();
+                                                    FFAppState().curUserName =
+                                                        _model
+                                                            .fetchedRecordUserProfile!
+                                                            .name;
+                                                    FFAppState().isLoggedIn =
+                                                        true;
                                                     safeSetState(() {});
                                                     if (_model
                                                             .fetchedRecordUserProfile
@@ -473,6 +513,38 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                       ).then((s) =>
                                                               s.firstOrNull);
                                                       _shouldSetState = true;
+                                                      _model.categoryDocs =
+                                                          await queryCategoryRecordOnce(
+                                                        parent: _model.outletDoc
+                                                            ?.reference,
+                                                        queryBuilder:
+                                                            (categoryRecord) =>
+                                                                categoryRecord
+                                                                    .where(
+                                                          'isDeleted',
+                                                          isEqualTo: false,
+                                                        ),
+                                                      );
+                                                      _shouldSetState = true;
+                                                      _model.productDocs =
+                                                          await queryProductRecordOnce(
+                                                        parent: _model.outletDoc
+                                                            ?.reference,
+                                                        queryBuilder:
+                                                            (productRecord) =>
+                                                                productRecord
+                                                                    .where(
+                                                          'isDeleted',
+                                                          isEqualTo: false,
+                                                        ),
+                                                      );
+                                                      _shouldSetState = true;
+                                                      _model.teamTree =
+                                                          await queryTeamTreeRecordOnce(
+                                                        parent: _model.outletDoc
+                                                            ?.reference,
+                                                      );
+                                                      _shouldSetState = true;
                                                       FFAppState().outletRef =
                                                           _model.outletDoc
                                                               ?.reference;
@@ -483,6 +555,35 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                               .billingType;
                                                       FFAppState().shift =
                                                           functions.getDayId();
+                                                      FFAppState()
+                                                              .categoryList =
+                                                          functions
+                                                              .addCategoryList(
+                                                                  _model
+                                                                      .categoryDocs!
+                                                                      .toList())
+                                                              .toList()
+                                                              .cast<
+                                                                  CategoryDataTypeStruct>();
+                                                      FFAppState()
+                                                              .productsList =
+                                                          functions
+                                                              .addProductLis(_model
+                                                                  .productDocs!
+                                                                  .toList())
+                                                              .toList()
+                                                              .cast<
+                                                                  ProductDataTypeStruct>();
+                                                      FFAppState()
+                                                              .TeamTreeUsers =
+                                                          functions
+                                                              .addTeamTree(
+                                                                  _model
+                                                                      .teamTree!
+                                                                      .toList())
+                                                              .toList()
+                                                              .cast<
+                                                                  TeamTreeDatatypeStruct>();
                                                       FFAppState()
                                                           .update(() {});
                                                       if (_model.outletDoc
@@ -521,6 +622,25 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                                 .toList()
                                                                 .cast<
                                                                     StageAccessDataTypeStruct>();
+                                                        FFAppState().states = functions
+                                                            .addStatesList(
+                                                                _model.states!
+                                                                    .toList(),
+                                                                FFAppState()
+                                                                    .currentUserZoneList
+                                                                    .toList())
+                                                            .toList()
+                                                            .cast<
+                                                                StatesStruct>();
+                                                        FFAppState()
+                                                                .roleInZone =
+                                                            _model.teamTREE!
+                                                                .roleInZone;
+                                                        FFAppState()
+                                                                .currentLoggedInUserId =
+                                                            _model
+                                                                .fetchedRecordUserProfile!
+                                                                .id;
                                                         safeSetState(() {});
                                                         if (FFAppState()
                                                                 .loggedInUserPermisions
@@ -531,6 +651,10 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                           context.pushNamed(
                                                               DeyeDashboardSupportWidget
                                                                   .routeName);
+
+                                                          if (_shouldSetState)
+                                                            safeSetState(() {});
+                                                          return;
                                                         } else if ((FFAppState()
                                                                     .loggedInUserPermisions
                                                                     .elementAtOrNull(
@@ -547,15 +671,32 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                                   .readOnlyAccess =
                                                               true;
                                                           safeSetState(() {});
-
+                                                        } else if (FFAppState()
+                                                                .loggedInUserPermisions
+                                                                .elementAtOrNull(
+                                                                    16)
+                                                                ?.value ==
+                                                            3) {
                                                           context.pushNamed(
-                                                              DeyeDashboardEXPANDWidget
+                                                              DeyeAttendanceAdminWidget
                                                                   .routeName);
+
+                                                          if (_shouldSetState)
+                                                            safeSetState(() {});
+                                                          return;
                                                         } else {
                                                           context.pushNamed(
-                                                              DeyeDashboardEXPANDWidget
+                                                              DeyeDashboardCopyWidget
                                                                   .routeName);
+
+                                                          if (_shouldSetState)
+                                                            safeSetState(() {});
+                                                          return;
                                                         }
+
+                                                        context.pushNamed(
+                                                            DeyeDashboardCopyWidget
+                                                                .routeName);
                                                       } else {
                                                         if (FFAppState().role ==
                                                             'admin') {
@@ -650,6 +791,10 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                             },
                                                           );
                                                         }
+
+                                                        if (_shouldSetState)
+                                                          safeSetState(() {});
+                                                        return;
                                                       }
                                                     } else {
                                                       context.pushNamed(
@@ -746,12 +891,10 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                                   .titleSmallFamily,
                                                           color: Colors.white,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmallIsCustom,
                                                         ),
                                                 elevation: 3.0,
                                                 borderSide: BorderSide(
@@ -760,6 +903,32 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                 ),
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                              child: Text(
+                                                '1.1.26',
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .displayLarge
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .displayLargeFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      fontSize: 12.0,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .displayLargeIsCustom,
+                                                    ),
                                               ),
                                             ),
                                           ],
@@ -777,12 +946,9 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .customColor1,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displayLargeFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .displayLargeIsCustom,
                                             ),
                                       ),
                                     ],

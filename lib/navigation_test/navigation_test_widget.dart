@@ -814,10 +814,9 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .text2nd,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLargeFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelLargeIsCustom,
                                           ),
                                     ),
                                   ].divide(SizedBox(width: 5.0)),
@@ -838,7 +837,7 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                         DeyeDashboardSupportWidget.routeName);
                                   } else {
                                     context.pushNamed(
-                                        DeyeDashboardEXPANDWidget.routeName);
+                                        DeyeDashboardWidget.routeName);
                                   }
                                 },
                                 child: Container(
@@ -879,12 +878,9 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .text2nd,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelLargeFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .labelLargeIsCustom,
                                             ),
                                       ),
                                     ].divide(SizedBox(width: 5.0)),
@@ -930,26 +926,23 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                             Text(
                                               'Masters',
                                               textAlign: TextAlign.end,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelLargeFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .text2nd,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLargeFamily),
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelLarge
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelLargeFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .text2nd,
+                                                    letterSpacing: 0.0,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelLargeIsCustom,
+                                                  ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
                                         ),
@@ -1029,11 +1022,10 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                                                 fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmallIsCustom,
                                                               ),
                                                     ),
                                                   ].divide(
@@ -1103,11 +1095,10 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                                                 fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmallIsCustom,
                                                               ),
                                                     ),
                                                   ].divide(
@@ -1185,11 +1176,10 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                                                 fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmallIsCustom,
                                                               ),
                                                     ),
                                                   ].divide(
@@ -1267,11 +1257,10 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                                                 fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmallIsCustom,
                                                               ),
                                                     ),
                                                   ].divide(
@@ -1341,11 +1330,10 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                                                 fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmallIsCustom,
                                                               ),
                                                     ),
                                                   ].divide(
@@ -1420,12 +1408,10 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                                           context)
                                                       .text2nd,
                                                   letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLargeFamily),
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLargeIsCustom,
                                                 ),
                                           ),
                                         ].divide(SizedBox(width: 5.0)),
@@ -1495,12 +1481,10 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                                               .primaryBtnText,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmallIsCustom,
                                                         ),
                                                   ),
                                                 ].divide(SizedBox(width: 5.0)),
@@ -1565,12 +1549,10 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                                               .primaryBtnText,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmallIsCustom,
                                                         ),
                                                   ),
                                                 ].divide(SizedBox(width: 5.0)),
@@ -1584,7 +1566,7 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               context.pushNamed(
-                                                  DeyeLeadEmployeeReportWidget
+                                                  DeyeEmployeeReportWidget
                                                       .routeName);
                                             },
                                             child: Container(
@@ -1634,12 +1616,10 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                                               .primaryBtnText,
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmallIsCustom,
                                                         ),
                                                   ),
                                                 ].divide(SizedBox(width: 5.0)),
@@ -1737,12 +1717,10 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .text2nd,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelLargeFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLargeIsCustom,
                                               ),
                                         ),
                                       ].divide(SizedBox(width: 5.0)),

@@ -96,9 +96,8 @@ class _EmployeeCustomDateRangeWidgetState
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .labelLargeFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .labelLargeIsCustom,
                             ),
                       ),
                     ],
@@ -122,8 +121,8 @@ class _EmployeeCustomDateRangeWidgetState
                                 FlutterFlowTheme.of(context).labelMediumFamily,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .labelMediumIsCustom,
                           ),
                     ),
                   ),
@@ -173,8 +172,8 @@ class _EmployeeCustomDateRangeWidgetState
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .labelMediumIsCustom,
                           ),
                       elevation: 3.0,
                       borderSide: BorderSide(
@@ -203,8 +202,8 @@ class _EmployeeCustomDateRangeWidgetState
                                 FlutterFlowTheme.of(context).labelMediumFamily,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .labelMediumIsCustom,
                           ),
                     ),
                   ),
@@ -277,8 +276,8 @@ class _EmployeeCustomDateRangeWidgetState
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .labelMediumIsCustom,
                           ),
                       elevation: 3.0,
                       borderSide: BorderSide(
@@ -300,8 +299,8 @@ class _EmployeeCustomDateRangeWidgetState
                           FlutterFlowTheme.of(context).labelMediumFamily,
                       color: FlutterFlowTheme.of(context).primary,
                       letterSpacing: 0.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).labelMediumFamily),
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).labelMediumIsCustom,
                     ),
               ),
             ),
@@ -314,8 +313,8 @@ class _EmployeeCustomDateRangeWidgetState
                           FlutterFlowTheme.of(context).labelMediumFamily,
                       color: FlutterFlowTheme.of(context).primary,
                       letterSpacing: 0.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).labelMediumFamily),
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).labelMediumIsCustom,
                     ),
               ),
             ),
@@ -334,8 +333,8 @@ class _EmployeeCustomDateRangeWidgetState
                           FlutterFlowTheme.of(context).labelMediumFamily,
                       color: FlutterFlowTheme.of(context).primaryBackground,
                       letterSpacing: 0.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).labelMediumFamily),
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).labelMediumIsCustom,
                     ),
                 elevation: 3.0,
                 borderSide: BorderSide(

@@ -73,6 +73,7 @@ Future<List<dynamic>> leadDocRef(String dayId, String outletId, String stage,
             "businessType": doc["businessType"],
 
             "time": doc["time"],
+            "leadCampaign": doc["leadCampaign"]
           });
         }
         if (doc["source"].toUpperCase() == "INDIAMART") {

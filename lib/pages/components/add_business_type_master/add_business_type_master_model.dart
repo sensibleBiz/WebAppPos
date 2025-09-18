@@ -4,6 +4,7 @@ import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
@@ -41,10 +42,10 @@ class AddBusinessTypeMasterModel
     return null;
   }
 
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadMediaJ1b = false;
+  FFUploadedFile uploadedLocalFile_uploadMediaJ1b =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_uploadMediaJ1b = '';
 
   // State field(s) for TextBusinessTypeCode widget.
   FocusNode? textBusinessTypeCodeFocusNode;

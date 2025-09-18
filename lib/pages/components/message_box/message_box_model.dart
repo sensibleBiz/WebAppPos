@@ -27,17 +27,17 @@ class MessageBoxModel extends FlutterFlowModel<MessageBoxWidget> {
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Backend Call - API (sendWhatsapp)] action in Button widget.
   ApiCallResponse? apiResultuav;
-  bool isDataUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
+  bool isDataUploading_uploadDataG6q = false;
+  FFUploadedFile uploadedLocalFile_uploadDataG6q =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl1 = '';
+  String uploadedFileUrl_uploadDataG6q = '';
 
   // Stores action output result for [Backend Call - API (sendImage)] action in Button widget.
   ApiCallResponse? imageresult;
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
+  bool isDataUploading_uploadData1 = false;
+  FFUploadedFile uploadedLocalFile_uploadData1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
+  String uploadedFileUrl_uploadData1 = '';
 
   // Stores action output result for [Backend Call - API (sendVideo)] action in Button widget.
   ApiCallResponse? imageresult1;

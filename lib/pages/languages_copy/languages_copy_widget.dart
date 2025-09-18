@@ -185,12 +185,10 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                       context)
                                                                   .headlineLargeFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                                   ),
                                                 ],
@@ -226,12 +224,10 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                   .of(context)
                                                               .lineColor,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineMediumIsCustom,
                                                         ),
                                                 elevation: 2.0,
                                                 borderSide: BorderSide(
@@ -313,10 +309,9 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                         .lineColor,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -372,7 +367,7 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ],
@@ -418,10 +413,9 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                         .lineColor,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -465,10 +459,9 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                         .lineColor,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -556,7 +549,7 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                                     style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -591,7 +584,7 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                                                     style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                   Row(
@@ -604,7 +597,7 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                       ),
@@ -663,7 +656,7 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                             ),
                                                                                                       );
                                                                                                     },
@@ -678,7 +671,7 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                       ),
@@ -710,7 +703,7 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                                                     style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                   Row(
@@ -723,7 +716,7 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                       ),
@@ -750,7 +743,7 @@ class _LanguagesCopyWidgetState extends State<LanguagesCopyWidget> {
                                                                                                     style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ],

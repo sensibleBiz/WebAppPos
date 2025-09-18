@@ -98,9 +98,8 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).labelSmallFamily,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .labelSmallFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .labelSmallIsCustom,
                             ),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
@@ -149,8 +148,8 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                       maxLines: 8,
                       minLines: 3,
@@ -201,8 +200,8 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                               FlutterFlowTheme.of(context).titleSmallFamily,
                           color: Colors.white,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).titleSmallFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
                         ),
                     elevation: 2.0,
                     borderSide: BorderSide(
@@ -258,8 +257,8 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                     selectedMedia.every((m) =>
                                         validateFileFormat(
                                             m.storagePath, context))) {
-                                  safeSetState(
-                                      () => _model.isDataUploading1 = true);
+                                  safeSetState(() => _model
+                                      .isDataUploading_uploadDataG6q = true);
                                   var selectedUploadedFiles =
                                       <FFUploadedFile>[];
 
@@ -293,16 +292,17 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                   } finally {
                                     ScaffoldMessenger.of(context)
                                         .hideCurrentSnackBar();
-                                    _model.isDataUploading1 = false;
+                                    _model.isDataUploading_uploadDataG6q =
+                                        false;
                                   }
                                   if (selectedUploadedFiles.length ==
                                           selectedMedia.length &&
                                       downloadUrls.length ==
                                           selectedMedia.length) {
                                     safeSetState(() {
-                                      _model.uploadedLocalFile1 =
+                                      _model.uploadedLocalFile_uploadDataG6q =
                                           selectedUploadedFiles.first;
-                                      _model.uploadedFileUrl1 =
+                                      _model.uploadedFileUrl_uploadDataG6q =
                                           downloadUrls.first;
                                     });
                                     showUploadMessage(context, 'Success!');
@@ -319,7 +319,8 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                   builder: (alertDialogContext) {
                                     return WebViewAware(
                                       child: AlertDialog(
-                                        title: Text(_model.uploadedFileUrl1),
+                                        title: Text(_model
+                                            .uploadedFileUrl_uploadDataG6q),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
@@ -338,17 +339,16 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                             width: 200.0,
                             decoration: BoxDecoration(),
                             child: Text(
-                              _model.uploadedFileUrl1,
+                              _model.uploadedFileUrl_uploadDataG6q,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .bodyMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                           ),
@@ -362,8 +362,9 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                           FFButtonWidget(
                             onPressed: () async {
                               var _shouldSetState = false;
-                              if (!(_model.uploadedFileUrl1 != null &&
-                                  _model.uploadedFileUrl1 != '')) {
+                              if (!(_model.uploadedFileUrl_uploadDataG6q !=
+                                      null &&
+                                  _model.uploadedFileUrl_uploadDataG6q != '')) {
                                 await showDialog(
                                   context: context,
                                   builder: (alertDialogContext) {
@@ -386,7 +387,7 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                               }
                               _model.imageresult = await SendImageCall.call(
                                 userMobileNumber: '+917350014232',
-                                imageUrl: _model.uploadedFileUrl1,
+                                imageUrl: _model.uploadedFileUrl_uploadDataG6q,
                               );
 
                               _shouldSetState = true;
@@ -427,10 +428,9 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                         .titleSmallFamily,
                                     color: Colors.white,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleSmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
                                   ),
                               elevation: 2.0,
                               borderSide: BorderSide(
@@ -487,8 +487,8 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                     selectedMedia.every((m) =>
                                         validateFileFormat(
                                             m.storagePath, context))) {
-                                  safeSetState(
-                                      () => _model.isDataUploading2 = true);
+                                  safeSetState(() => _model
+                                      .isDataUploading_uploadData1 = true);
                                   var selectedUploadedFiles =
                                       <FFUploadedFile>[];
 
@@ -522,16 +522,16 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                   } finally {
                                     ScaffoldMessenger.of(context)
                                         .hideCurrentSnackBar();
-                                    _model.isDataUploading2 = false;
+                                    _model.isDataUploading_uploadData1 = false;
                                   }
                                   if (selectedUploadedFiles.length ==
                                           selectedMedia.length &&
                                       downloadUrls.length ==
                                           selectedMedia.length) {
                                     safeSetState(() {
-                                      _model.uploadedLocalFile2 =
+                                      _model.uploadedLocalFile_uploadData1 =
                                           selectedUploadedFiles.first;
-                                      _model.uploadedFileUrl2 =
+                                      _model.uploadedFileUrl_uploadData1 =
                                           downloadUrls.first;
                                     });
                                     showUploadMessage(context, 'Success!');
@@ -548,7 +548,8 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                   builder: (alertDialogContext) {
                                     return WebViewAware(
                                       child: AlertDialog(
-                                        title: Text(_model.uploadedFileUrl2),
+                                        title: Text(
+                                            _model.uploadedFileUrl_uploadData1),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
@@ -567,17 +568,16 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                             width: 200.0,
                             decoration: BoxDecoration(),
                             child: Text(
-                              _model.uploadedFileUrl2,
+                              _model.uploadedFileUrl_uploadData1,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .bodyMediumFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                           ),
@@ -591,8 +591,9 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                           FFButtonWidget(
                             onPressed: () async {
                               var _shouldSetState = false;
-                              if (!(_model.uploadedFileUrl2 != null &&
-                                  _model.uploadedFileUrl2 != '')) {
+                              if (!(_model.uploadedFileUrl_uploadData1 !=
+                                      null &&
+                                  _model.uploadedFileUrl_uploadData1 != '')) {
                                 await showDialog(
                                   context: context,
                                   builder: (alertDialogContext) {
@@ -615,7 +616,7 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                               }
                               _model.imageresult1 = await SendVideoCall.call(
                                 userMobileNumber: '+917350014232',
-                                link: _model.uploadedFileUrl2,
+                                link: _model.uploadedFileUrl_uploadData1,
                               );
 
                               _shouldSetState = true;
@@ -656,10 +657,9 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                         .titleSmallFamily,
                                     color: Colors.white,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleSmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
                                   ),
                               elevation: 2.0,
                               borderSide: BorderSide(

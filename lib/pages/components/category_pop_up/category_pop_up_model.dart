@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/c_add_category/c_add_category_widget.dart';
 import 'dart:ui';
 import 'category_pop_up_widget.dart' show CategoryPopUpWidget;

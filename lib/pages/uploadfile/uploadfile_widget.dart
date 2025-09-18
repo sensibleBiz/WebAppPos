@@ -67,8 +67,8 @@ class _UploadfileWidgetState extends State<UploadfileWidget> {
                       color: Colors.white,
                       fontSize: 22.0,
                       letterSpacing: 0.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).headlineMediumFamily),
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                     ),
               ),
               actions: [],
@@ -109,9 +109,8 @@ class _UploadfileWidgetState extends State<UploadfileWidget> {
                                   FlutterFlowTheme.of(context).titleSmallFamily,
                               color: Colors.white,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .titleSmallFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .titleSmallIsCustom,
                             ),
                         borderSide: BorderSide(
                           color: Colors.transparent,
@@ -127,8 +126,8 @@ class _UploadfileWidgetState extends State<UploadfileWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyMediumFamily,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                         ),
                   ),
                 ],

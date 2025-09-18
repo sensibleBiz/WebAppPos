@@ -55,6 +55,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
       length: 4,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
@@ -143,10 +144,9 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                             .primaryBtnText,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .headlineMediumIsCustom,
                                       ),
                                 ),
                                 Row(
@@ -392,10 +392,9 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             .headlineLargeFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -449,11 +448,10 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                 fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -570,10 +568,9 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             .headlineLargeFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -622,11 +619,10 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                 fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -743,10 +739,9 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             .headlineLargeFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -795,11 +790,10 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                 fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -916,10 +910,9 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             .headlineLargeFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -968,11 +961,10 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                 fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -1089,10 +1081,9 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             .headlineLargeFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -1141,11 +1132,10 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                 fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -1183,12 +1173,10 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                         .labelLargeFamily,
                                                 fontSize: 10.0,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelLargeFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLargeIsCustom,
                                               ),
                                           unselectedLabelStyle: TextStyle(),
                                           indicatorColor:
@@ -1411,7 +1399,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                     style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                         ),
                                                                                     validator: _model.textController1Validator.asValidator(context),
                                                                                   ),
@@ -1470,8 +1458,6 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             Icon(
                                                                           Icons
                                                                               .add,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).lineColor,
                                                                           size:
                                                                               16.0,
                                                                         ),
@@ -1488,6 +1474,8 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                               0.0),
                                                                           iconPadding:
                                                                               EdgeInsets.all(0.0),
+                                                                          iconColor:
+                                                                              FlutterFlowTheme.of(context).lineColor,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiary,
                                                                           textStyle: FlutterFlowTheme.of(context)
@@ -1495,7 +1483,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                           elevation:
                                                                               2.0,
@@ -1573,7 +1561,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                                 letterSpacing: 0.0,
                                                                                                                 fontWeight: FontWeight.w600,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                       ),
@@ -1582,7 +1570,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                         style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ],
@@ -1734,7 +1722,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                           style: FlutterFlowTheme.of(context).headlineSmall.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                       ),
@@ -1743,7 +1731,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ],
@@ -1980,10 +1968,9 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleSmallIsCustom,
                                                                     ),
                                                             elevation: 2.0,
                                                             borderSide:
@@ -2039,7 +2026,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                         fontWeight:
                                                                             FontWeight.w600,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                       ),
                                                               elevation: 2.0,
                                                               borderSide:
@@ -2187,9 +2174,6 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                         'New Item',
                                                                     icon: Icon(
                                                                       Icons.add,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .lineColor,
                                                                       size:
                                                                           16.0,
                                                                     ),
@@ -2207,6 +2191,9 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
+                                                                      iconColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .lineColor,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .tertiary,
@@ -2221,7 +2208,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                           ),
                                                                       elevation:
                                                                           2.0,
@@ -2267,9 +2254,6 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                         'New Category',
                                                                     icon: Icon(
                                                                       Icons.add,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .lineColor,
                                                                       size:
                                                                           16.0,
                                                                     ),
@@ -2287,6 +2271,9 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
+                                                                      iconColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .lineColor,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .tertiary,
@@ -2301,7 +2288,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                           ),
                                                                       elevation:
                                                                           2.0,
@@ -2461,7 +2448,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             .override(
                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               letterSpacing: 0.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                         validator: _model
                                                                             .textController2Validator
@@ -2552,7 +2539,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                               letterSpacing: 0.0,
                                                                                                               fontWeight: FontWeight.w600,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -2608,7 +2595,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                           ),
                                                                                                                     ),
                                                                                                                   ),
@@ -2617,7 +2604,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                         ),
                                                                                                                   ),
                                                                                                                 ],
@@ -2644,7 +2631,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                               letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                             ),
                                                                                                                       ),
                                                                                                                     ),
@@ -2655,7 +2642,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                               letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                             ),
                                                                                                                       ),
                                                                                                                     ),
@@ -2664,7 +2651,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                           ),
                                                                                                                     ),
                                                                                                                   ],
@@ -2843,7 +2830,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                       style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -2899,7 +2886,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                         ),
                                                                                                                   ),
                                                                                                                 ),
@@ -2908,7 +2895,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ],
@@ -2935,7 +2922,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                           ),
                                                                                                                     ),
                                                                                                                   ),
@@ -2946,7 +2933,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                           ),
                                                                                                                     ),
                                                                                                                   ),
@@ -2955,7 +2942,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                         ),
                                                                                                                   ),
                                                                                                                 ],
@@ -3202,9 +3189,6 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                         'New Item',
                                                                     icon: Icon(
                                                                       Icons.add,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .lineColor,
                                                                       size:
                                                                           16.0,
                                                                     ),
@@ -3222,6 +3206,9 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
+                                                                      iconColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .lineColor,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .tertiary,
@@ -3236,7 +3223,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                           ),
                                                                       elevation:
                                                                           2.0,
@@ -3282,9 +3269,6 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                         'New Category',
                                                                     icon: Icon(
                                                                       Icons.add,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .lineColor,
                                                                       size:
                                                                           16.0,
                                                                     ),
@@ -3302,6 +3286,9 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
+                                                                      iconColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .lineColor,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .tertiary,
@@ -3316,7 +3303,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                           ),
                                                                       elevation:
                                                                           2.0,
@@ -3476,7 +3463,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                             .override(
                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               letterSpacing: 0.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                         validator: _model
                                                                             .textController3Validator
@@ -3567,7 +3554,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                             letterSpacing: 0.0,
                                                                                                             fontWeight: FontWeight.w600,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -3616,7 +3603,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ),
@@ -3625,7 +3612,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ],
@@ -3652,7 +3639,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                           ),
                                                                                                                     ),
                                                                                                                   ),
@@ -3663,7 +3650,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                           ),
                                                                                                                     ),
                                                                                                                   ),
@@ -3672,7 +3659,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                         ),
                                                                                                                   ),
                                                                                                                 ],
@@ -3852,7 +3839,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                     style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -3908,7 +3895,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ),
@@ -3917,7 +3904,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ],
@@ -3944,7 +3931,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                         ),
                                                                                                                   ),
                                                                                                                 ),
@@ -3955,7 +3942,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                         ),
                                                                                                                   ),
                                                                                                                 ),
@@ -3964,7 +3951,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ],
@@ -4232,7 +4219,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                     color: FlutterFlowTheme.of(context).primaryBtnText,
                                                                                     fontSize: 8.0,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                   ),
                                                                               elevation: 2.0,
                                                                               borderSide: BorderSide(
@@ -4264,7 +4251,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                       color: FlutterFlowTheme.of(context).primaryBtnText,
                                                                                       fontSize: 8.0,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                                 elevation: 2.0,
                                                                                 borderRadius: BorderRadius.circular(10.0),
@@ -4340,7 +4327,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                               letterSpacing: 0.0,
                                                                                                               fontWeight: FontWeight.w600,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                             ),
                                                                                                       )),
                                                                                                       SelectionArea(
@@ -4349,7 +4336,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                         style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                             ),
                                                                                                       )),
                                                                                                     ],
@@ -4377,7 +4364,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                                   fontSize: 10.0,
                                                                                                                   letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                 ),
                                                                                                           )),
                                                                                                         ),
@@ -4409,7 +4396,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                         ),
                                                                                                                   )),
                                                                                                                 ),
@@ -4424,7 +4411,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                               letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                             ),
                                                                                                                       )),
                                                                                                                     ),
@@ -4434,7 +4421,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                           ),
                                                                                                                     )),
                                                                                                                   ],
@@ -4455,7 +4442,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                   style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                       ),
                                                                                                                 )),
                                                                                                               ),
@@ -4470,7 +4457,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                           ),
                                                                                                                     )),
                                                                                                                   ),
@@ -4480,7 +4467,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                         ),
                                                                                                                   )),
                                                                                                                 ],
@@ -4521,7 +4508,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                                       color: Colors.white,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                                     ),
                                                                                                                 elevation: 3.0,
                                                                                                                 borderSide: BorderSide(
@@ -4553,7 +4540,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                   color: FlutterFlowTheme.of(context).primary,
                                                                                                                   letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                 ),
                                                                                                           ),
                                                                                                         ),
@@ -4594,7 +4581,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                   ),
                                                                                                             );
                                                                                                           },
@@ -4613,7 +4600,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                   color: FlutterFlowTheme.of(context).primary,
                                                                                                                   letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                 ),
                                                                                                           ),
                                                                                                         ),
@@ -4654,7 +4641,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                   ),
                                                                                                             );
                                                                                                           },
@@ -4752,7 +4739,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                               letterSpacing: 0.0,
                                                                                                               fontWeight: FontWeight.w600,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                             ),
                                                                                                       )),
                                                                                                       SelectionArea(
@@ -4761,7 +4748,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                         style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                             ),
                                                                                                       )),
                                                                                                     ],
@@ -4802,7 +4789,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                                       fontSize: 10.0,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                     ),
                                                                                                               )),
                                                                                                             ),
@@ -4838,7 +4825,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                           ),
                                                                                                                     )),
                                                                                                                   ),
@@ -4853,7 +4840,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                                 letterSpacing: 0.0,
-                                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                               ),
                                                                                                                         )),
                                                                                                                       ),
@@ -4863,7 +4850,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                               letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                             ),
                                                                                                                       )),
                                                                                                                     ],
@@ -4884,7 +4871,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                         ),
                                                                                                                   )),
                                                                                                                 ),
@@ -4899,7 +4886,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                               letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                             ),
                                                                                                                       )),
                                                                                                                     ),
@@ -4909,7 +4896,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                           ),
                                                                                                                     )),
                                                                                                                   ],
@@ -4967,7 +4954,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                                     color: Colors.white,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                                   ),
                                                                                                               elevation: 3.0,
                                                                                                               borderSide: BorderSide(
@@ -4995,7 +4982,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                 color: FlutterFlowTheme.of(context).primary,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                         StreamBuilder<List<UserProfileRecord>>(
@@ -5036,7 +5023,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                   ),
                                                                                                             );
                                                                                                           },
@@ -5052,7 +5039,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                 color: FlutterFlowTheme.of(context).primary,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                         StreamBuilder<List<UserProfileRecord>>(
@@ -5096,7 +5083,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                   ),
                                                                                                             );
                                                                                                           },
@@ -5190,7 +5177,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                     color: FlutterFlowTheme.of(context).primaryBtnText,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.w600,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                   ),
                                                                               elevation: 2.0,
                                                                               borderSide: BorderSide(
@@ -5320,7 +5307,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
                                                                                   fontSize: 8.0,
                                                                                   letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                             elevation:
                                                                                 2.0,
@@ -5365,7 +5352,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
                                                                                   fontSize: 8.0,
                                                                                   letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                             elevation:
                                                                                 2.0,
@@ -5450,7 +5437,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                         fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                         letterSpacing: 0.0,
                                                                                                         fontWeight: FontWeight.w600,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                       ),
                                                                                                 )),
                                                                                                 Text(
@@ -5458,7 +5445,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                               ],
@@ -5486,7 +5473,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                             color: FlutterFlowTheme.of(context).primary,
                                                                                                             fontSize: 10.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                           ),
                                                                                                     )),
                                                                                                   ),
@@ -5515,7 +5502,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                           style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                               ),
                                                                                                         )),
                                                                                                       ),
@@ -5530,7 +5517,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                   ),
                                                                                                             )),
                                                                                                           ),
@@ -5540,7 +5527,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                   letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                 ),
                                                                                                           )),
                                                                                                         ],
@@ -5561,7 +5548,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                         style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                             ),
                                                                                                       )),
                                                                                                     ),
@@ -5576,7 +5563,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                   letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                 ),
                                                                                                           )),
                                                                                                         ),
@@ -5586,7 +5573,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
                                                                                                         )),
                                                                                                       ],
@@ -5651,7 +5638,7 @@ class _SPDashboardNewWidgetState extends State<SPDashboardNewWidget>
                                                                                   color: FlutterFlowTheme.of(context).primaryBtnText,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w600,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                 ),
                                                                             elevation:
                                                                                 2.0,

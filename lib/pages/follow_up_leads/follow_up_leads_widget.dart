@@ -264,8 +264,6 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                   text: '',
                                   icon: Icon(
                                     Icons.chevron_left,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBtnText,
                                     size: 32.0,
                                   ),
                                   options: FFButtonOptions(
@@ -274,6 +272,8 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                         0.0, 0.0, 0.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
+                                    iconColor: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
@@ -283,10 +283,9 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                   .titleSmallFamily,
                                           color: Colors.white,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(
@@ -310,10 +309,9 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                               .primaryBtnText,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .headlineMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -328,10 +326,9 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineSmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .headlineSmallIsCustom,
                                       ),
                                 ),
                               ],
@@ -397,8 +394,6 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                       text: 'Today',
                                       icon: Icon(
                                         Icons.phone_in_talk_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
                                         size: 18.0,
                                       ),
                                       options: FFButtonOptions(
@@ -406,6 +401,8 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                         height: 40.0,
                                         padding: EdgeInsets.all(0.0),
                                         iconPadding: EdgeInsets.all(0.0),
+                                        iconColor: FlutterFlowTheme.of(context)
+                                            .primary,
                                         color: FlutterFlowTheme.of(context)
                                             .secondary,
                                         textStyle: FlutterFlowTheme.of(context)
@@ -419,12 +416,9 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                       .primary,
                                               fontSize: 11.0,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmallFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .titleSmallIsCustom,
                                             ),
                                         elevation: 2.0,
                                         borderSide: BorderSide(
@@ -453,8 +447,6 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                       text: 'Add New Lead',
                                       icon: Icon(
                                         Icons.add,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
                                         size: 20.0,
                                       ),
                                       options: FFButtonOptions(
@@ -465,6 +457,8 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                         iconPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
+                                        iconColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
                                         textStyle: FlutterFlowTheme.of(context)
@@ -478,12 +472,9 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                       .primary,
                                               fontSize: 15.0,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmallFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .titleSmallIsCustom,
                                             ),
                                         elevation: 2.0,
                                         borderSide: BorderSide(
@@ -569,11 +560,10 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(FlutterFlowTheme
-                                                            .of(context)
-                                                        .headlineLargeFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLargeIsCustom,
                                               ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(
@@ -643,12 +633,10 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                       context)
                                                                   .titleMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                 elevation: 2.0,
                                                 borderSide: BorderSide(
@@ -712,12 +700,10 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                       context)
                                                                   .titleMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                 elevation: 2.0,
                                                 borderSide: BorderSide(
@@ -781,12 +767,10 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                       context)
                                                                   .titleMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                 elevation: 2.0,
                                                 borderSide: BorderSide(
@@ -850,12 +834,10 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                       context)
                                                                   .titleMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                 elevation: 2.0,
                                                 borderSide: BorderSide(
@@ -899,12 +881,10 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                         context)
                                                                     .titleMediumFamily,
                                                             letterSpacing: 0.0,
-                                                            useGoogleFonts: GoogleFonts
-                                                                    .asMap()
-                                                                .containsKey(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleMediumFamily),
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumIsCustom,
                                                           ),
                                                   elevation: 2.0,
                                                   borderSide: BorderSide(
@@ -952,12 +932,10 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                         context)
                                                                     .titleMediumFamily,
                                                             letterSpacing: 0.0,
-                                                            useGoogleFonts: GoogleFonts
-                                                                    .asMap()
-                                                                .containsKey(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleMediumFamily),
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumIsCustom,
                                                           ),
                                                   elevation: 2.0,
                                                   borderSide: BorderSide(
@@ -1125,10 +1103,9 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -1416,7 +1393,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                               color: FlutterFlowTheme.of(context).primary,
                                                                                                                               fontSize: 12.0,
                                                                                                                               letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                                                                             ),
                                                                                                                       ),
                                                                                                                     ),
@@ -1426,7 +1403,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                             fontSize: 10.0,
                                                                                                                             letterSpacing: 0.0,
-                                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                           ),
                                                                                                                     ),
                                                                                                                   ],
@@ -1456,7 +1433,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                       color: FlutterFlowTheme.of(context).primary,
                                                                                                                       fontSize: 14.0,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
@@ -1466,7 +1443,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                                                     fontSize: 12.0,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                                                   ),
                                                                                                             ),
                                                                                                           ],
@@ -1484,7 +1461,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ],
@@ -1501,7 +1478,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                   fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                                   color: Color(0xFF5283EB),
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                           Text(
@@ -1509,7 +1486,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ],
@@ -1585,7 +1562,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                     color: Color(0xFF003DC4),
                                                                                                                     fontSize: 10.0,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                   ),
                                                                                                             ),
                                                                                                           ],
@@ -1609,7 +1586,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                               color: FlutterFlowTheme.of(context).customColor3,
                                                                                                               fontSize: 10.0,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                             ),
                                                                                                       ),
                                                                                                       Text(
@@ -1619,7 +1596,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                               color: FlutterFlowTheme.of(context).customColor3,
                                                                                                               fontSize: 10.0,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ],
@@ -1651,7 +1628,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                       fontSize: 9.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                               Text(
@@ -1660,7 +1637,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                       fontSize: 10.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                               Padding(
@@ -1671,7 +1648,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                         fontSize: 10.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -1692,7 +1669,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                                         fontSize: 9.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                                 Text(
@@ -1702,7 +1679,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                                         fontSize: 10.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                               ],
@@ -2170,10 +2147,9 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -2446,7 +2422,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                                 color: FlutterFlowTheme.of(context).primary,
                                                                                                                                 fontSize: 12.0,
                                                                                                                                 letterSpacing: 0.0,
-                                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                                               ),
                                                                                                                         ),
                                                                                                                       ),
@@ -2470,7 +2446,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                               fontSize: 10.0,
                                                                                                                               letterSpacing: 0.0,
-                                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                             ),
                                                                                                                       ),
                                                                                                                     ],
@@ -2500,7 +2476,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                         color: FlutterFlowTheme.of(context).primary,
                                                                                                                         fontSize: 14.0,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ),
@@ -2509,7 +2485,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ],
@@ -2527,7 +2503,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ],
@@ -2544,7 +2520,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                     fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                                     color: Color(0xFF5283EB),
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                             Text(
@@ -2552,7 +2528,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                           ],
@@ -2630,7 +2606,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                       color: Color(0xFF003DC4),
                                                                                                                       fontSize: 10.0,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ],
@@ -2654,7 +2630,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                 color: FlutterFlowTheme.of(context).customColor3,
                                                                                                                 fontSize: 10.0,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                         StreamBuilder<List<UserProfileRecord>>(
@@ -2696,7 +2672,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                                     color: FlutterFlowTheme.of(context).customColor3,
                                                                                                                     fontSize: 10.0,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                   ),
                                                                                                             );
                                                                                                           },
@@ -2730,7 +2706,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                         fontSize: 10.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                                 Text(
@@ -2738,7 +2714,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                                 Padding(
@@ -2748,7 +2724,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -2769,7 +2745,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                                           fontSize: 10.0,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                   Text(
@@ -2779,7 +2755,7 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                                           fontSize: 12.0,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ],

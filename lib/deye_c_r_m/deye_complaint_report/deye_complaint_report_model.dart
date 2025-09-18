@@ -4,6 +4,7 @@ import '/backend/backend.dart';
 import '/components/send_email_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
+import '/deye_c_r_m/deye_no_data/deye_no_data_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -11,7 +12,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/components/custom_date_range/custom_date_range_widget.dart';
-import '/pages/components/list_view_msg/list_view_msg_widget.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -30,6 +30,15 @@ class DeyeComplaintReportModel
 
   bool isSearched = false;
 
+  List<String> selectedZone = [];
+  void addToSelectedZone(String item) => selectedZone.add(item);
+  void removeFromSelectedZone(String item) => selectedZone.remove(item);
+  void removeAtIndexFromSelectedZone(int index) => selectedZone.removeAt(index);
+  void insertAtIndexInSelectedZone(int index, String item) =>
+      selectedZone.insert(index, item);
+  void updateSelectedZoneAtIndex(int index, Function(String) updateFn) =>
+      selectedZone[index] = updateFn(selectedZone[index]);
+
   ///  State fields for stateful widgets in this page.
 
   // Model for DeyeHeader component.
@@ -44,6 +53,9 @@ class DeyeComplaintReportModel
   // State field(s) for DropDownRemarkAll widget.
   String? dropDownRemarkAllValue;
   FormFieldController<String>? dropDownRemarkAllValueController;
+  // State field(s) for DropDownSolutionAll widget.
+  String? dropDownSolutionAllValue;
+  FormFieldController<String>? dropDownSolutionAllValueController;
   // State field(s) for DropDownAll widget.
   String? dropDownAllValue;
   FormFieldController<String>? dropDownAllValueController;
@@ -61,6 +73,9 @@ class DeyeComplaintReportModel
   // State field(s) for DropDownRemarkReport widget.
   String? dropDownRemarkReportValue;
   FormFieldController<String>? dropDownRemarkReportValueController;
+  // State field(s) for DropDownSolutionReport widget.
+  String? dropDownSolutionReportValue;
+  FormFieldController<String>? dropDownSolutionReportValueController;
   // State field(s) for DropDownReport widget.
   String? dropDownReportValue;
   FormFieldController<String>? dropDownReportValueController;

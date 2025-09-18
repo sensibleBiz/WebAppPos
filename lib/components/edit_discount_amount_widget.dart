@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -42,7 +43,7 @@ class _EditDiscountAmountWidgetState extends State<EditDiscountAmountWidget> {
         text: getJsonField(
       FFAppState().jsonrawcart,
       r'''$.discount''',
-    ).toString().toString());
+    ).toString());
     _model.textFieldDiscountFocusNode ??= FocusNode();
     _model.textFieldDiscountFocusNode!.addListener(
       () async {
@@ -99,9 +100,8 @@ class _EditDiscountAmountWidgetState extends State<EditDiscountAmountWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .headlineSmallFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .headlineSmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineSmallIsCustom,
                                 ),
                       ),
                     ),
@@ -146,10 +146,9 @@ class _EditDiscountAmountWidgetState extends State<EditDiscountAmountWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .bodySmallFamily,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodySmallIsCustom,
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -190,10 +189,9 @@ class _EditDiscountAmountWidgetState extends State<EditDiscountAmountWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .titleMediumFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleMediumIsCustom,
                                       ),
                                   validator: _model
                                       .textFieldDiscountTextControllerValidator
@@ -213,10 +211,9 @@ class _EditDiscountAmountWidgetState extends State<EditDiscountAmountWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .bodyMediumFamily,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ],
@@ -238,10 +235,9 @@ class _EditDiscountAmountWidgetState extends State<EditDiscountAmountWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ],
@@ -284,10 +280,9 @@ class _EditDiscountAmountWidgetState extends State<EditDiscountAmountWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .headlineSmallFamily,
                                     letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineSmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineSmallIsCustom,
                                   ),
                             ),
                           ],
@@ -332,10 +327,9 @@ class _EditDiscountAmountWidgetState extends State<EditDiscountAmountWidget> {
                                         .primaryBtnText,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineSmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineSmallIsCustom,
                                   ),
                             ),
                           ],

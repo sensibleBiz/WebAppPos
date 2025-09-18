@@ -159,12 +159,10 @@ class _TermsNconditionsWidgetState extends State<TermsNconditionsWidget> {
                                                                     context)
                                                                 .headlineLargeFamily,
                                                         letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineLargeFamily),
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineLargeIsCustom,
                                                       ),
                                             ),
                                           ],
@@ -222,11 +220,10 @@ class _TermsNconditionsWidgetState extends State<TermsNconditionsWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .lineColor,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(FlutterFlowTheme
-                                                            .of(context)
-                                                        .headlineMediumFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineMediumIsCustom,
                                               ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(

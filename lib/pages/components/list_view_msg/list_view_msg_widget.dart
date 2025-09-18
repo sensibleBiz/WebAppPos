@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -62,8 +63,8 @@ class _ListViewMsgWidgetState extends State<ListViewMsgWidget> {
                           FlutterFlowTheme.of(context).displayMediumFamily,
                       fontSize: 16.0,
                       letterSpacing: 0.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).displayMediumFamily),
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).displayMediumIsCustom,
                     ),
               ),
             ],

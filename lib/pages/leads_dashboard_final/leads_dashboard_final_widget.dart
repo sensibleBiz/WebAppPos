@@ -301,8 +301,6 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                         text: '',
                                         icon: Icon(
                                           Icons.chevron_left,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
                                           size: 32.0,
                                         ),
                                         options: FFButtonOptions(
@@ -313,6 +311,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
+                                          iconColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
                                           textStyle: FlutterFlowTheme.of(
@@ -324,12 +325,10 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                         .titleSmallFamily,
                                                 color: Colors.white,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmallIsCustom,
                                               ),
                                           borderSide: BorderSide(
                                             color: Colors.transparent,
@@ -348,7 +347,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed(
-                                              LeadDeleteWidget.routeName);
+                                              LeadsDashboardNewWidget
+                                                  .routeName);
                                         },
                                         child: Text(
                                           'Leads Dashboard',
@@ -359,40 +359,12 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .headlineLargeFamily,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(FlutterFlowTheme
-                                                            .of(context)
-                                                        .headlineLargeFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLargeIsCustom,
                                               ),
                                         ),
-                                      ),
-                                    ),
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                            LeadDeleteCopyWidget.routeName);
-                                      },
-                                      child: Text(
-                                        'Hello World',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
-                                            ),
                                       ),
                                     ),
                                   ],
@@ -679,7 +651,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                               Text(
@@ -690,7 +662,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -765,7 +737,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                   Text(
@@ -779,7 +751,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -796,7 +768,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                   Text(
@@ -810,7 +782,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -827,7 +799,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                   Text(
@@ -841,7 +813,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -858,7 +830,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                   Text(
@@ -872,7 +844,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -1063,7 +1035,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                               Text(
@@ -1074,7 +1046,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -1150,7 +1122,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                   Text(
@@ -1161,7 +1133,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -1178,7 +1150,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                   Text(
@@ -1189,7 +1161,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -1206,7 +1178,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                   Text(
@@ -1217,7 +1189,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -1234,7 +1206,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                   Text(
@@ -1245,7 +1217,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -1284,595 +1256,590 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 5.0, 0.0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10.0),
-                                                    child: Container(
-                                                      width: 100.0,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
+                                                  child: FutureBuilder<int>(
+                                                    future:
+                                                        queryLeadsManagementRecordCount(
+                                                      parent: FFAppState()
+                                                          .outletRef,
+                                                      queryBuilder:
+                                                          (leadsManagementRecord) =>
+                                                              leadsManagementRecord
+                                                                  .where(
+                                                                    'stage',
+                                                                    isEqualTo:
+                                                                        'completed',
+                                                                  )
+                                                                  .where(
+                                                                    'updatedDate',
+                                                                    isGreaterThanOrEqualTo:
+                                                                        functions
+                                                                            .currentMonth('first'),
+                                                                  )
+                                                                  .where(
+                                                                    'updatedDate',
+                                                                    isLessThan:
+                                                                        functions
+                                                                            .currentMonth('last'),
+                                                                  ),
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 30.0,
+                                                            height: 30.0,
+                                                            child: SpinKitRing(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              size: 30.0,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      int containerCount =
+                                                          snapshot.data!;
+
+                                                      return ClipRRect(
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(10.0),
-                                                        border: Border.all(
-                                                          color: FFAppState()
-                                                              .cLeads,
-                                                        ),
-                                                      ),
-                                                      child: Container(
-                                                        width: double.infinity,
-                                                        color:
-                                                            Color(0x00000000),
-                                                        child:
-                                                            ExpandableNotifier(
-                                                          controller: _model
-                                                              .expandableExpandableController3,
-                                                          child:
-                                                              ExpandablePanel(
-                                                            header: Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(2.0),
-                                                              child: InkWell(
-                                                                splashColor: Colors
-                                                                    .transparent,
-                                                                focusColor: Colors
-                                                                    .transparent,
-                                                                hoverColor: Colors
-                                                                    .transparent,
-                                                                highlightColor:
-                                                                    Colors
-                                                                        .transparent,
-                                                                onTap:
-                                                                    () async {
-                                                                  _model.res5 =
-                                                                      await actions
-                                                                          .leadDocRefCopy(
-                                                                    '0',
-                                                                    FFAppState()
-                                                                        .outletId,
-                                                                    'completed',
-                                                                    functions
-                                                                        .last30days(),
-                                                                    functions
-                                                                        .timestampToMili(
-                                                                            getCurrentTimestamp),
-                                                                  );
+                                                        child: Container(
+                                                          width: 100.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10.0),
+                                                            border: Border.all(
+                                                              color:
                                                                   FFAppState()
-                                                                          .assignedExec =
-                                                                      true;
-                                                                  FFAppState()
-                                                                          .allLeads =
-                                                                      _model
+                                                                      .cLeads,
+                                                            ),
+                                                          ),
+                                                          child: Container(
+                                                            width:
+                                                                double.infinity,
+                                                            color: Color(
+                                                                0x00000000),
+                                                            child:
+                                                                ExpandableNotifier(
+                                                              controller: _model
+                                                                  .expandableExpandableController3,
+                                                              child:
+                                                                  ExpandablePanel(
+                                                                header: Padding(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              2.0),
+                                                                  child:
+                                                                      InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      _model.res5 =
+                                                                          await actions
+                                                                              .leadDocRefCopy(
+                                                                        '0',
+                                                                        FFAppState()
+                                                                            .outletId,
+                                                                        'completed',
+                                                                        functions
+                                                                            .last30days(),
+                                                                        functions
+                                                                            .timestampToMili(getCurrentTimestamp),
+                                                                      );
+                                                                      FFAppState()
+                                                                              .assignedExec =
+                                                                          true;
+                                                                      FFAppState().allLeads = _model
                                                                           .res5!
                                                                           .toList()
                                                                           .cast<
                                                                               dynamic>();
-                                                                  safeSetState(
-                                                                      () {});
-                                                                  FFAppState()
-                                                                          .leadCreateValue =
-                                                                      'Completed';
-                                                                  FFAppState()
-                                                                          .lostLeadIcon =
-                                                                      false;
-                                                                  safeSetState(
-                                                                      () {});
-                                                                  FFAppState()
-                                                                          .nleads =
-                                                                      Colors
-                                                                          .transparent;
-                                                                  FFAppState()
-                                                                          .aleads =
-                                                                      Colors
-                                                                          .transparent;
-                                                                  FFAppState()
-                                                                          .cLeads =
-                                                                      Color(
-                                                                          0xFFF8DB19);
-                                                                  FFAppState()
-                                                                          .lleads =
-                                                                      Colors
-                                                                          .transparent;
-                                                                  safeSetState(
-                                                                      () {});
-                                                                  FFAppState()
-                                                                          .searchHide =
-                                                                      true;
-                                                                  safeSetState(
-                                                                      () {});
-                                                                  FFAppState()
-                                                                          .isSearching =
-                                                                      false;
-                                                                  safeSetState(
-                                                                      () {});
+                                                                      safeSetState(
+                                                                          () {});
+                                                                      FFAppState()
+                                                                              .leadCreateValue =
+                                                                          'Completed';
+                                                                      FFAppState()
+                                                                              .lostLeadIcon =
+                                                                          false;
+                                                                      safeSetState(
+                                                                          () {});
+                                                                      FFAppState()
+                                                                              .nleads =
+                                                                          Colors
+                                                                              .transparent;
+                                                                      FFAppState()
+                                                                              .aleads =
+                                                                          Colors
+                                                                              .transparent;
+                                                                      FFAppState()
+                                                                              .cLeads =
+                                                                          Color(
+                                                                              0xFFF8DB19);
+                                                                      FFAppState()
+                                                                              .lleads =
+                                                                          Colors
+                                                                              .transparent;
+                                                                      safeSetState(
+                                                                          () {});
+                                                                      FFAppState()
+                                                                              .searchHide =
+                                                                          true;
+                                                                      safeSetState(
+                                                                          () {});
+                                                                      FFAppState()
+                                                                              .isSearching =
+                                                                          false;
+                                                                      safeSetState(
+                                                                          () {});
 
-                                                                  safeSetState(
-                                                                      () {});
-                                                                },
-                                                                child:
-                                                                    Container(
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            10.0),
-                                                                  ),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            20.0,
-                                                                            15.0,
-                                                                            10.0,
-                                                                            10.0),
+                                                                      safeSetState(
+                                                                          () {});
+                                                                    },
                                                                     child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              5.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.spaceBetween,
-                                                                            children: [
-                                                                              Text(
-                                                                                'Completed',
-                                                                                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                      fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
-                                                                                      letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
-                                                                                    ),
-                                                                              ),
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                child: Text(
-                                                                                  getJsonField(
-                                                                                    FFAppState().completedLeadCount.firstOrNull,
-                                                                                    r'''$.total''',
-                                                                                  ).toString(),
-                                                                                  style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
-                                                                                        letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
-                                                                                      ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        StyledDivider(
-                                                                          thickness:
-                                                                              1.5,
-                                                                          color:
-                                                                              Color(0xFF40BE1B),
-                                                                          lineStyle:
-                                                                              DividerLineStyle.dashed,
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            collapsed:
-                                                                Container(),
-                                                            expanded: Builder(
-                                                              builder:
-                                                                  (context) {
-                                                                final cList = functions
-                                                                    .demoListLastObjCopy(FFAppState()
-                                                                        .completedLeadCount
-                                                                        .toList())
-                                                                    .toList();
-
-                                                                return Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: List
-                                                                      .generate(
-                                                                          cList
-                                                                              .length,
-                                                                          (cListIndex) {
-                                                                    final cListItem =
-                                                                        cList[
-                                                                            cListIndex];
-                                                                    return Container(
-                                                                      width: double
-                                                                          .infinity,
-                                                                      height:
-                                                                          100.0,
+                                                                        Container(
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryBackground,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10.0),
                                                                       ),
                                                                       child:
                                                                           Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             20.0,
-                                                                            5.0,
-                                                                            20.0,
-                                                                            15.0),
+                                                                            15.0,
+                                                                            10.0,
+                                                                            10.0),
                                                                         child:
                                                                             Column(
                                                                           mainAxisSize:
                                                                               MainAxisSize.max,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                                                                               child: Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                 children: [
                                                                                   Text(
-                                                                                    'IndiaMart',
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                    'Completed',
+                                                                                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                          fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                                         ),
                                                                                   ),
-                                                                                  Text(
-                                                                                    getJsonField(
-                                                                                      cListItem,
-                                                                                      r'''$.indiamart''',
-                                                                                    ).toString(),
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                          letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                        ),
+                                                                                  Padding(
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                    child: Text(
+                                                                                      containerCount.toString(),
+                                                                                      style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
+                                                                                            color: FlutterFlowTheme.of(context).success,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
+                                                                                          ),
+                                                                                    ),
                                                                                   ),
                                                                                 ],
                                                                               ),
                                                                             ),
-                                                                            Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
-                                                                              child: Row(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text(
-                                                                                    'JustDial',
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                          letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                        ),
-                                                                                  ),
-                                                                                  Text(
-                                                                                    getJsonField(
-                                                                                      cListItem,
-                                                                                      r'''$.justdail''',
-                                                                                    ).toString(),
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                          letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                        ),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                            Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
-                                                                              child: Row(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text(
-                                                                                    'Facebook',
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                          letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                        ),
-                                                                                  ),
-                                                                                  Text(
-                                                                                    getJsonField(
-                                                                                      cListItem,
-                                                                                      r'''$.facebook''',
-                                                                                    ).toString(),
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                          letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                        ),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                            Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
-                                                                              child: Row(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: [
-                                                                                  Text(
-                                                                                    'Quick Add',
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                          letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                        ),
-                                                                                  ),
-                                                                                  Text(
-                                                                                    getJsonField(
-                                                                                      cListItem,
-                                                                                      r'''$.quicklead''',
-                                                                                    ).toString(),
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                          letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                        ),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
+                                                                            StyledDivider(
+                                                                              thickness: 1.5,
+                                                                              color: Color(0xFF40BE1B),
+                                                                              lineStyle: DividerLineStyle.dashed,
                                                                             ),
                                                                           ],
                                                                         ),
                                                                       ),
-                                                                    );
-                                                                  }),
-                                                                );
-                                                              },
-                                                            ),
-                                                            theme:
-                                                                ExpandableThemeData(
-                                                              tapHeaderToExpand:
-                                                                  true,
-                                                              tapBodyToExpand:
-                                                                  false,
-                                                              tapBodyToCollapse:
-                                                                  false,
-                                                              headerAlignment:
-                                                                  ExpandablePanelHeaderAlignment
-                                                                      .center,
-                                                              hasIcon: true,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0),
-                                                  child: Container(
-                                                    width: 100.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
-                                                      border: Border.all(
-                                                        color:
-                                                            FFAppState().lleads,
-                                                      ),
-                                                    ),
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      color: Color(0x00000000),
-                                                      child: ExpandableNotifier(
-                                                        controller: _model
-                                                            .expandableExpandableController4,
-                                                        child: ExpandablePanel(
-                                                          header: Padding(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    2.0),
-                                                            child: InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              onTap: () async {
-                                                                _model.resLost =
-                                                                    await actions
-                                                                        .leadDocRefCopy(
-                                                                  '0',
-                                                                  FFAppState()
-                                                                      .outletId,
-                                                                  'lost',
-                                                                  functions
-                                                                      .last30days(),
-                                                                  functions
-                                                                      .timestampToMili(
-                                                                          getCurrentTimestamp),
-                                                                );
-                                                                FFAppState()
-                                                                        .assignedExec =
-                                                                    true;
-                                                                FFAppState()
-                                                                        .allLeads =
-                                                                    _model
-                                                                        .resLost!
-                                                                        .toList()
-                                                                        .cast<
-                                                                            dynamic>();
-                                                                safeSetState(
-                                                                    () {});
-                                                                FFAppState()
-                                                                        .leadCreateValue =
-                                                                    'Lost';
-                                                                FFAppState()
-                                                                        .lostLeadIcon =
-                                                                    true;
-                                                                safeSetState(
-                                                                    () {});
-                                                                FFAppState()
-                                                                        .nleads =
-                                                                    Colors
-                                                                        .transparent;
-                                                                FFAppState()
-                                                                        .aleads =
-                                                                    Colors
-                                                                        .transparent;
-                                                                FFAppState()
-                                                                        .cLeads =
-                                                                    Colors
-                                                                        .transparent;
-                                                                FFAppState()
-                                                                        .lleads =
-                                                                    Color(
-                                                                        0xFF059747);
-                                                                safeSetState(
-                                                                    () {});
-                                                                FFAppState()
-                                                                        .searchHide =
-                                                                    true;
-                                                                safeSetState(
-                                                                    () {});
-                                                                FFAppState()
-                                                                        .isSearching =
-                                                                    false;
-                                                                safeSetState(
-                                                                    () {});
-
-                                                                safeSetState(
-                                                                    () {});
-                                                              },
-                                                              child: Container(
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              10.0),
-                                                                ),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          15.0,
-                                                                          10.0,
-                                                                          10.0),
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0),
-                                                                        child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.spaceBetween,
-                                                                          children: [
-                                                                            Text(
-                                                                              'Lost',
-                                                                              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
-                                                                                    letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
-                                                                                  ),
-                                                                            ),
-                                                                            Text(
-                                                                              getJsonField(
-                                                                                FFAppState().lostLeadCount.firstOrNull,
-                                                                                r'''$.total''',
-                                                                              ).toString(),
-                                                                              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
-                                                                                    letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
-                                                                                  ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      ),
-                                                                      StyledDivider(
-                                                                        thickness:
-                                                                            1.5,
-                                                                        color: Color(
-                                                                            0xFF16DDD0),
-                                                                        lineStyle:
-                                                                            DividerLineStyle.dashed,
-                                                                      ),
-                                                                    ],
+                                                                    ),
                                                                   ),
+                                                                ),
+                                                                collapsed:
+                                                                    Container(),
+                                                                expanded:
+                                                                    Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    final cList = functions
+                                                                        .demoListLastObjCopy(FFAppState()
+                                                                            .completedLeadCount
+                                                                            .toList())
+                                                                        .toList();
+
+                                                                    return Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: List.generate(
+                                                                          cList
+                                                                              .length,
+                                                                          (cListIndex) {
+                                                                        final cListItem =
+                                                                            cList[cListIndex];
+                                                                        return Container(
+                                                                          width:
+                                                                              double.infinity,
+                                                                          height:
+                                                                              100.0,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          ),
+                                                                          child:
+                                                                              Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                20.0,
+                                                                                5.0,
+                                                                                20.0,
+                                                                                15.0),
+                                                                            child:
+                                                                                Column(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              children: [
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                    children: [
+                                                                                      Text(
+                                                                                        'IndiaMart',
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                            ),
+                                                                                      ),
+                                                                                      Text(
+                                                                                        getJsonField(
+                                                                                          cListItem,
+                                                                                          r'''$.indiamart''',
+                                                                                        ).toString(),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                    children: [
+                                                                                      Text(
+                                                                                        'JustDial',
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                            ),
+                                                                                      ),
+                                                                                      Text(
+                                                                                        getJsonField(
+                                                                                          cListItem,
+                                                                                          r'''$.justdail''',
+                                                                                        ).toString(),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                    children: [
+                                                                                      Text(
+                                                                                        'Facebook',
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                            ),
+                                                                                      ),
+                                                                                      Text(
+                                                                                        getJsonField(
+                                                                                          cListItem,
+                                                                                          r'''$.facebook''',
+                                                                                        ).toString(),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                    children: [
+                                                                                      Text(
+                                                                                        'Quick Add',
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                            ),
+                                                                                      ),
+                                                                                      Text(
+                                                                                        getJsonField(
+                                                                                          cListItem,
+                                                                                          r'''$.quicklead''',
+                                                                                        ).toString(),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      }),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                                theme:
+                                                                    ExpandableThemeData(
+                                                                  tapHeaderToExpand:
+                                                                      true,
+                                                                  tapBodyToExpand:
+                                                                      false,
+                                                                  tapBodyToCollapse:
+                                                                      false,
+                                                                  headerAlignment:
+                                                                      ExpandablePanelHeaderAlignment
+                                                                          .center,
+                                                                  hasIcon: true,
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
-                                                          collapsed:
-                                                              Container(),
-                                                          expanded: Builder(
-                                                            builder: (context) {
-                                                              final lostList = functions
-                                                                  .demoListLastObjCopy(
-                                                                      FFAppState()
-                                                                          .lostLeadCount
-                                                                          .toList())
-                                                                  .toList();
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: FutureBuilder<int>(
+                                                  future:
+                                                      queryLeadsManagementRecordCount(
+                                                    parent:
+                                                        FFAppState().outletRef,
+                                                    queryBuilder:
+                                                        (leadsManagementRecord) =>
+                                                            leadsManagementRecord
+                                                                .where(
+                                                                  'stage',
+                                                                  isEqualTo:
+                                                                      'lost',
+                                                                )
+                                                                .where(
+                                                                  'updatedDate',
+                                                                  isGreaterThanOrEqualTo:
+                                                                      functions
+                                                                          .currentMonth(
+                                                                              'first'),
+                                                                )
+                                                                .where(
+                                                                  'updatedDate',
+                                                                  isLessThan: functions
+                                                                      .currentMonth(
+                                                                          'last'),
+                                                                ),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 30.0,
+                                                          height: 30.0,
+                                                          child: SpinKitRing(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            size: 30.0,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    int containerCount =
+                                                        snapshot.data!;
 
-                                                              return Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: List.generate(
-                                                                    lostList
-                                                                        .length,
-                                                                    (lostListIndex) {
-                                                                  final lostListItem =
-                                                                      lostList[
-                                                                          lostListIndex];
-                                                                  return Container(
-                                                                    width: double
-                                                                        .infinity,
-                                                                    height:
-                                                                        100.0,
+                                                    return ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                      child: Container(
+                                                        width: 100.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0),
+                                                          border: Border.all(
+                                                            color: FFAppState()
+                                                                .lleads,
+                                                          ),
+                                                        ),
+                                                        child: Container(
+                                                          width:
+                                                              double.infinity,
+                                                          color:
+                                                              Color(0x00000000),
+                                                          child:
+                                                              ExpandableNotifier(
+                                                            controller: _model
+                                                                .expandableExpandableController4,
+                                                            child:
+                                                                ExpandablePanel(
+                                                              header: Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .all(
+                                                                            2.0),
+                                                                child: InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
+                                                                    _model.resLost =
+                                                                        await actions
+                                                                            .leadDocRefCopy(
+                                                                      '0',
+                                                                      FFAppState()
+                                                                          .outletId,
+                                                                      'lost',
+                                                                      functions
+                                                                          .last30days(),
+                                                                      functions
+                                                                          .timestampToMili(
+                                                                              getCurrentTimestamp),
+                                                                    );
+                                                                    FFAppState()
+                                                                            .assignedExec =
+                                                                        true;
+                                                                    FFAppState().allLeads = _model
+                                                                        .resLost!
+                                                                        .toList()
+                                                                        .cast<
+                                                                            dynamic>();
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    FFAppState()
+                                                                            .leadCreateValue =
+                                                                        'Lost';
+                                                                    FFAppState()
+                                                                            .lostLeadIcon =
+                                                                        true;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    FFAppState()
+                                                                            .nleads =
+                                                                        Colors
+                                                                            .transparent;
+                                                                    FFAppState()
+                                                                            .aleads =
+                                                                        Colors
+                                                                            .transparent;
+                                                                    FFAppState()
+                                                                            .cLeads =
+                                                                        Colors
+                                                                            .transparent;
+                                                                    FFAppState()
+                                                                            .lleads =
+                                                                        Color(
+                                                                            0xFF059747);
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    FFAppState()
+                                                                            .searchHide =
+                                                                        true;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    FFAppState()
+                                                                            .isSearching =
+                                                                        false;
+                                                                    safeSetState(
+                                                                        () {});
+
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
+                                                                  child:
+                                                                      Container(
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryBackground,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              10.0),
                                                                     ),
                                                                     child:
                                                                         Padding(
                                                                       padding: EdgeInsetsDirectional.fromSTEB(
                                                                           20.0,
-                                                                          5.0,
-                                                                          20.0,
-                                                                          15.0),
+                                                                          15.0,
+                                                                          10.0,
+                                                                          10.0),
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -1881,160 +1848,234 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                           Padding(
                                                                             padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
-                                                                                3.0,
                                                                                 0.0,
-                                                                                3.0),
+                                                                                0.0,
+                                                                                5.0),
                                                                             child:
                                                                                 Row(
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                               children: [
                                                                                 Text(
-                                                                                  'IndiaMart',
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                  'Lost',
+                                                                                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                        fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                                       ),
                                                                                 ),
-                                                                                Text(
-                                                                                  getJsonField(
-                                                                                    lostListItem,
-                                                                                    r'''$.indiamart''',
-                                                                                  ).toString(),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                        letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                      ),
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                  child: Text(
+                                                                                    containerCount.toString(),
+                                                                                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                          fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
+                                                                                          color: FlutterFlowTheme.of(context).primary,
+                                                                                          letterSpacing: 0.0,
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
+                                                                                        ),
+                                                                                  ),
                                                                                 ),
                                                                               ],
                                                                             ),
                                                                           ),
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                3.0,
-                                                                                0.0,
-                                                                                3.0),
-                                                                            child:
-                                                                                Row(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                              children: [
-                                                                                Text(
-                                                                                  'JustDial',
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                        letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                      ),
-                                                                                ),
-                                                                                Text(
-                                                                                  getJsonField(
-                                                                                    lostListItem,
-                                                                                    r'''$.justdail''',
-                                                                                  ).toString(),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                        letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                      ),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                3.0,
-                                                                                0.0,
-                                                                                3.0),
-                                                                            child:
-                                                                                Row(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                              children: [
-                                                                                Text(
-                                                                                  'Facebook',
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                        letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                      ),
-                                                                                ),
-                                                                                Text(
-                                                                                  getJsonField(
-                                                                                    lostListItem,
-                                                                                    r'''$.facebook''',
-                                                                                  ).toString(),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                        letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                      ),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                3.0,
-                                                                                0.0,
-                                                                                3.0),
-                                                                            child:
-                                                                                Row(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                              children: [
-                                                                                Text(
-                                                                                  'Quick Add',
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                        letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                      ),
-                                                                                ),
-                                                                                Text(
-                                                                                  getJsonField(
-                                                                                    lostListItem,
-                                                                                    r'''$.quicklead''',
-                                                                                  ).toString(),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                        letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                      ),
-                                                                                ),
-                                                                              ],
-                                                                            ),
+                                                                          StyledDivider(
+                                                                            thickness:
+                                                                                1.5,
+                                                                            color:
+                                                                                Color(0xFF16DDD0),
+                                                                            lineStyle:
+                                                                                DividerLineStyle.dashed,
                                                                           ),
                                                                         ],
                                                                       ),
                                                                     ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              collapsed:
+                                                                  Container(),
+                                                              expanded: Builder(
+                                                                builder:
+                                                                    (context) {
+                                                                  final lostList = functions
+                                                                      .demoListLastObjCopy(FFAppState()
+                                                                          .lostLeadCount
+                                                                          .toList())
+                                                                      .toList();
+
+                                                                  return Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: List.generate(
+                                                                        lostList
+                                                                            .length,
+                                                                        (lostListIndex) {
+                                                                      final lostListItem =
+                                                                          lostList[
+                                                                              lostListIndex];
+                                                                      return Container(
+                                                                        width: double
+                                                                            .infinity,
+                                                                        height:
+                                                                            100.0,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                        ),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              20.0,
+                                                                              5.0,
+                                                                              20.0,
+                                                                              15.0),
+                                                                          child:
+                                                                              Column(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                  children: [
+                                                                                    Text(
+                                                                                      'IndiaMart',
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                          ),
+                                                                                    ),
+                                                                                    Text(
+                                                                                      getJsonField(
+                                                                                        lostListItem,
+                                                                                        r'''$.indiamart''',
+                                                                                      ).toString(),
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                  children: [
+                                                                                    Text(
+                                                                                      'JustDial',
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                          ),
+                                                                                    ),
+                                                                                    Text(
+                                                                                      getJsonField(
+                                                                                        lostListItem,
+                                                                                        r'''$.justdail''',
+                                                                                      ).toString(),
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                  children: [
+                                                                                    Text(
+                                                                                      'Facebook',
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                          ),
+                                                                                    ),
+                                                                                    Text(
+                                                                                      getJsonField(
+                                                                                        lostListItem,
+                                                                                        r'''$.facebook''',
+                                                                                      ).toString(),
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                  children: [
+                                                                                    Text(
+                                                                                      'Quick Add',
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                          ),
+                                                                                    ),
+                                                                                    Text(
+                                                                                      getJsonField(
+                                                                                        lostListItem,
+                                                                                        r'''$.quicklead''',
+                                                                                      ).toString(),
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    }),
                                                                   );
-                                                                }),
-                                                              );
-                                                            },
-                                                          ),
-                                                          theme:
-                                                              ExpandableThemeData(
-                                                            tapHeaderToExpand:
-                                                                true,
-                                                            tapBodyToExpand:
-                                                                false,
-                                                            tapBodyToCollapse:
-                                                                false,
-                                                            headerAlignment:
-                                                                ExpandablePanelHeaderAlignment
-                                                                    .center,
-                                                            hasIcon: true,
+                                                                },
+                                                              ),
+                                                              theme:
+                                                                  ExpandableThemeData(
+                                                                tapHeaderToExpand:
+                                                                    true,
+                                                                tapBodyToExpand:
+                                                                    false,
+                                                                tapBodyToCollapse:
+                                                                    false,
+                                                                headerAlignment:
+                                                                    ExpandablePanelHeaderAlignment
+                                                                        .center,
+                                                                hasIcon: true,
+                                                              ),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ),
+                                                    );
+                                                  },
                                                 ),
                                               ),
                                               Expanded(
@@ -2042,87 +2083,153 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           5.0, 0.0, 5.0, 0.0),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      context.pushNamed(
-                                                          FollowUpsWidget
-                                                              .routeName);
-                                                    },
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    20.0,
-                                                                    15.0,
-                                                                    20.0,
-                                                                    10.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
+                                                  child: FutureBuilder<int>(
+                                                    future:
+                                                        queryLeadActivitiesRecordCount(
+                                                      parent: FFAppState()
+                                                          .outletRef,
+                                                      queryBuilder:
+                                                          (leadActivitiesRecord) =>
+                                                              leadActivitiesRecord
+                                                                  .where(
+                                                                    'scheduledDate',
+                                                                    isLessThan:
+                                                                        functions
+                                                                            .tommarow(),
+                                                                  )
+                                                                  .where(
+                                                                    'status',
+                                                                    isEqualTo:
+                                                                        'PENDING',
+                                                                  )
+                                                                  .where(
+                                                                    'type',
+                                                                    isEqualTo:
+                                                                        'Follow Up',
+                                                                  ),
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 30.0,
+                                                            height: 30.0,
+                                                            child: SpinKitRing(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              size: 30.0,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      int containerCount =
+                                                          snapshot.data!;
+
+                                                      return InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          context.pushNamed(
+                                                              FollowUpsWidget
+                                                                  .routeName);
+                                                        },
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10.0),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        20.0,
+                                                                        15.0,
+                                                                        20.0,
+                                                                        10.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           5.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  Text(
-                                                                    'Follow up',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).headlineMediumFamily,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .spaceBetween,
+                                                                    children: [
+                                                                      Text(
+                                                                        'Follow up',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .headlineMedium
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
+                                                                            ),
+                                                                      ),
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Text(
+                                                                          containerCount
+                                                                              .toString(),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .headlineMedium
+                                                                              .override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
+                                                                                color: FlutterFlowTheme.of(context).info,
+                                                                                letterSpacing: 0.0,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
+                                                                              ),
                                                                         ),
+                                                                      ),
+                                                                    ],
                                                                   ),
-                                                                ],
-                                                              ),
+                                                                ),
+                                                                StyledDivider(
+                                                                  thickness:
+                                                                      1.5,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  lineStyle:
+                                                                      DividerLineStyle
+                                                                          .dashed,
+                                                                ),
+                                                              ],
                                                             ),
-                                                            StyledDivider(
-                                                              thickness: 1.5,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              lineStyle:
-                                                                  DividerLineStyle
-                                                                      .dashed,
-                                                            ),
-                                                          ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ),
+                                                      );
+                                                    },
                                                   ),
                                                 ),
                                               ),
@@ -2131,86 +2238,152 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 5.0, 0.0),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      context.pushNamed(
-                                                          DemosWidget
-                                                              .routeName);
-                                                    },
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    20.0,
-                                                                    15.0,
-                                                                    20.0,
-                                                                    10.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
+                                                  child: FutureBuilder<int>(
+                                                    future:
+                                                        queryLeadActivitiesRecordCount(
+                                                      parent: FFAppState()
+                                                          .outletRef,
+                                                      queryBuilder:
+                                                          (leadActivitiesRecord) =>
+                                                              leadActivitiesRecord
+                                                                  .where(
+                                                                    'scheduledDate',
+                                                                    isLessThan:
+                                                                        functions
+                                                                            .tommarow(),
+                                                                  )
+                                                                  .where(
+                                                                    'status',
+                                                                    isEqualTo:
+                                                                        'PENDING',
+                                                                  )
+                                                                  .where(
+                                                                    'type',
+                                                                    isEqualTo:
+                                                                        'Demo',
+                                                                  ),
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 30.0,
+                                                            height: 30.0,
+                                                            child: SpinKitRing(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              size: 30.0,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      int containerCount =
+                                                          snapshot.data!;
+
+                                                      return InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          context.pushNamed(
+                                                              DemosWidget
+                                                                  .routeName);
+                                                        },
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10.0),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        20.0,
+                                                                        15.0,
+                                                                        20.0,
+                                                                        10.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           5.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  Text(
-                                                                    'Demo',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).headlineMediumFamily,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .spaceBetween,
+                                                                    children: [
+                                                                      Text(
+                                                                        'Demo',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .headlineMedium
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
+                                                                            ),
+                                                                      ),
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Text(
+                                                                          containerCount
+                                                                              .toString(),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .headlineMedium
+                                                                              .override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
+                                                                                color: FlutterFlowTheme.of(context).warning,
+                                                                                letterSpacing: 0.0,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
+                                                                              ),
                                                                         ),
+                                                                      ),
+                                                                    ],
                                                                   ),
-                                                                ],
-                                                              ),
+                                                                ),
+                                                                StyledDivider(
+                                                                  thickness:
+                                                                      1.5,
+                                                                  color: Color(
+                                                                      0xFFA467FA),
+                                                                  lineStyle:
+                                                                      DividerLineStyle
+                                                                          .dashed,
+                                                                ),
+                                                              ],
                                                             ),
-                                                            StyledDivider(
-                                                              thickness: 1.5,
-                                                              color: Color(
-                                                                  0xFFA467FA),
-                                                              lineStyle:
-                                                                  DividerLineStyle
-                                                                      .dashed,
-                                                            ),
-                                                          ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ),
+                                                      );
+                                                    },
                                                   ),
                                                 ),
                                               ),
@@ -2290,9 +2463,6 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                         text: 'Lead Search',
                                                         icon: Icon(
                                                           Icons.search,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .lineColor,
                                                           size: 16.0,
                                                         ),
                                                         options:
@@ -2313,6 +2483,10 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                       0.0,
                                                                       0.0,
                                                                       0.0),
+                                                          iconColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .lineColor,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .tertiary,
@@ -2331,10 +2505,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                         11.0,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleSmallIsCustom,
                                                                   ),
                                                           elevation: 2.0,
                                                           borderSide:
@@ -2546,19 +2719,19 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                   color: FlutterFlowTheme.of(context).info,
                                                                                                   fontSize: 13.0,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                             searchTextStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                             textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).info,
                                                                                                   fontSize: 13.0,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                             hintText: '                 AssignedTo',
                                                                                             searchHintText: 'Search for an item...',
@@ -2696,19 +2869,19 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                               searchHintTextStyle: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                   ),
                                                                               searchTextStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                   ),
                                                                               textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     color: FlutterFlowTheme.of(context).info,
                                                                                     fontSize: 13.0,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                   ),
                                                                               hintText: '                   Source',
                                                                               searchHintText: 'Search for an item...',
@@ -2832,19 +3005,19 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                               searchHintTextStyle: FlutterFlowTheme.of(context).labelMedium.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                   ),
                                                                               searchTextStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                   ),
                                                                               textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     color: FlutterFlowTheme.of(context).info,
                                                                                     fontSize: 13.0,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                   ),
                                                                               hintText: '                 Status',
                                                                               searchHintText: 'Search for an item...',
@@ -2942,14 +3115,14 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                               color: FlutterFlowTheme.of(context).info,
                                                                                               fontSize: 13.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                             ),
                                                                                         hintStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                               color: FlutterFlowTheme.of(context).info,
                                                                                               fontSize: 13.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                             ),
                                                                                         enabledBorder: InputBorder.none,
                                                                                         focusedBorder: InputBorder.none,
@@ -2959,7 +3132,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                           ),
                                                                                       validator: _model.textFieldCityTextControllerValidator.asValidator(context),
                                                                                     ),
@@ -3086,7 +3259,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                             color: FlutterFlowTheme.of(context).info,
                                                                                             fontSize: 13.0,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                           ),
                                                                                       hintText: ' Mobile',
                                                                                       hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
@@ -3094,7 +3267,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                             color: FlutterFlowTheme.of(context).info,
                                                                                             fontSize: 13.0,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                           ),
                                                                                       enabledBorder: InputBorder.none,
                                                                                       focusedBorder: InputBorder.none,
@@ -3106,7 +3279,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                           color: FlutterFlowTheme.of(context).info,
                                                                                           fontSize: 13.0,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                     textAlign: TextAlign.center,
                                                                                     validator: _model.textFieldMobileTextControllerValidator.asValidator(context),
@@ -3195,8 +3368,6 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                             Icon(
                                                                           Icons
                                                                               .calendar_month,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
                                                                           size:
                                                                               24.0,
                                                                         ),
@@ -3216,6 +3387,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                               0.0,
                                                                               0.0,
                                                                               0.0),
+                                                                          iconColor:
+                                                                              FlutterFlowTheme.of(context).primary,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primaryBackground,
                                                                           textStyle: FlutterFlowTheme.of(context)
@@ -3224,7 +3397,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                 fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                 color: Colors.white,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                               ),
                                                                           elevation:
                                                                               2.0,
@@ -3276,9 +3449,6 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                             text: '',
                                                             icon: Icon(
                                                               Icons.close,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
                                                               size: 18.0,
                                                             ),
                                                             options:
@@ -3300,6 +3470,10 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
+                                                              iconColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .primaryBackground,
@@ -3315,7 +3489,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                       ),
                                                               elevation: 2.0,
                                                               borderSide:
@@ -3417,10 +3591,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                           11.0,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -3474,10 +3647,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                           11.0,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -3528,10 +3700,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                           11.0,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -3582,10 +3753,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                           11.0,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -3636,10 +3806,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                           11.0,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -3683,10 +3852,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                           10.0,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -4131,7 +4299,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                                       color: FlutterFlowTheme.of(context).primary,
                                                                                                                       fontSize: 14.0,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
@@ -4144,7 +4312,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                                                     fontSize: 12.0,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                                                   ),
                                                                                                             ),
                                                                                                           ],
@@ -4174,7 +4342,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                                         fontSize: 16.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -4203,7 +4371,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                         color: Color(0xFFE75007),
                                                                                                         fontSize: 13.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                                       ),
                                                                                                 )),
                                                                                               ),
@@ -4219,7 +4387,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -4248,7 +4416,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                             fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                             color: Color(0xFF5283EB),
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                           ),
                                                                                     )),
                                                                                   ),
@@ -4341,7 +4509,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                           color: FlutterFlowTheme.of(context).success,
                                                                                                           fontSize: 12.0,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ],
@@ -4490,7 +4658,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                             color: FlutterFlowTheme.of(context).primary,
                                                                                                             fontSize: 11.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ],
@@ -4613,7 +4781,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                                 color: Color(0xFF003DC4),
                                                                                                                 fontSize: 11.0,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                       ],
@@ -4638,7 +4806,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                         color: FlutterFlowTheme.of(context).customColor3,
                                                                                                         fontSize: 10.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                                 FutureBuilder<List<UserProfileRecord>>(
@@ -4683,7 +4851,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                             color: FlutterFlowTheme.of(context).customColor3,
                                                                                                             fontSize: 10.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                           ),
                                                                                                     );
                                                                                                   },
@@ -4727,7 +4895,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                               fontSize: 9.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -4744,7 +4912,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 fontSize: 10.0,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                         Padding(
@@ -4758,7 +4926,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   fontSize: 10.0,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -4784,7 +4952,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                 fontSize: 9.0,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -4804,7 +4972,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                                   fontSize: 10.0,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                           Text(
@@ -4819,7 +4987,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                                   fontSize: 10.0,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ],
@@ -4895,7 +5063,7 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                                             fontSize: 12.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -4931,6 +5099,30 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                             ],
                                                                                           ),
                                                                                       ],
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Expanded(
+                                                                                  child: Align(
+                                                                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                                                                    child: Text(
+                                                                                      getJsonField(
+                                                                                                leadListItem,
+                                                                                                r'''$.leadCampaign''',
+                                                                                              ) !=
+                                                                                              null
+                                                                                          ? getJsonField(
+                                                                                              leadListItem,
+                                                                                              r'''$.leadCampaign''',
+                                                                                            ).toString()
+                                                                                          : 'NA',
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                            color: FlutterFlowTheme.of(context).info,
+                                                                                            fontSize: 13.0,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                          ),
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -5361,10 +5553,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                               .primary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(
@@ -5408,10 +5599,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                               .primary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(
@@ -5455,10 +5645,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                               .primary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(
@@ -5480,7 +5669,6 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                   text: 'Today',
                                   icon: Icon(
                                     Icons.phone_in_talk_rounded,
-                                    color: FlutterFlowTheme.of(context).primary,
                                     size: 20.0,
                                   ),
                                   options: FFButtonOptions(
@@ -5488,6 +5676,8 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                     height: 40.0,
                                     padding: EdgeInsets.all(0.0),
                                     iconPadding: EdgeInsets.all(0.0),
+                                    iconColor:
+                                        FlutterFlowTheme.of(context).primary,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -5500,10 +5690,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                               .primary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(
@@ -5546,10 +5735,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                               .primary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(
@@ -5592,10 +5780,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                               .primary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(
@@ -5638,10 +5825,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                               .primary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(

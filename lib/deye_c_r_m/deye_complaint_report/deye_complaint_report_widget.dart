@@ -4,6 +4,7 @@ import '/backend/backend.dart';
 import '/components/send_email_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
+import '/deye_c_r_m/deye_no_data/deye_no_data_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -11,7 +12,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/components/custom_date_range/custom_date_range_widget.dart';
-import '/pages/components/list_view_msg/list_view_msg_widget.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -48,11 +48,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().filterDate = getCurrentTimestamp.toString();
       FFAppState().startDate = functions.last30days();
-      safeSetState(() {});
-      FFAppState().filterDate =
-          dateTimeFormat("dd-MMM-yyy", getCurrentTimestamp);
+      FFAppState().endDate = getCurrentTimestamp.millisecondsSinceEpoch;
+      FFAppState().filterDate = dateTimeFormat(
+          "yMMMd", DateTime.fromMillisecondsSinceEpoch(FFAppState().endDate));
       safeSetState(() {});
     });
 
@@ -293,16 +292,15 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       15.0,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       Text(
                                                         dateTimeFormat(
-                                                            "dd-MM-yyyy",
+                                                            "yMMMd",
                                                             DateTime.fromMillisecondsSinceEpoch(
                                                                 FFAppState()
                                                                     .startDate)),
@@ -316,11 +314,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       .labelLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLargeIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -352,11 +349,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                 fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -372,11 +368,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       .labelLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLargeIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -532,7 +527,37 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                 .filterDate,
                                                             deyeComplaintReportOutletRecord
                                                                 ?.name,
-                                                            containerLeadsManagementRecordList
+                                                            (_model.isSearched ==
+                                                                        true
+                                                                    ? functions.filteredComplaintsForReports(
+                                                                        containerLeadsManagementRecordList
+                                                                            .toList(),
+                                                                        '',
+                                                                        _model.textFieldAllTextController.text == null || _model.textFieldAllTextController.text == ''
+                                                                            ? ''
+                                                                            : _model
+                                                                                .textFieldAllTextController.text,
+                                                                        _model.dropDownAllValue == null || _model.dropDownAllValue == ''
+                                                                            ? ''
+                                                                            : _model
+                                                                                .dropDownAllValue,
+                                                                        _model.dropDownRemarkAllValue == null || _model.dropDownRemarkAllValue == ''
+                                                                            ? ''
+                                                                            : _model
+                                                                                .dropDownRemarkAllValue,
+                                                                        _model.dropDownZoneAllValue == null || _model.dropDownZoneAllValue == ''
+                                                                            ? ''
+                                                                            : _model
+                                                                                .dropDownZoneAllValue,
+                                                                        '',
+                                                                        _model
+                                                                            .selectedZone
+                                                                            .toList(),
+                                                                        _model.dropDownSolutionAllValue == null ||
+                                                                                _model.dropDownSolutionAllValue == ''
+                                                                            ? ''
+                                                                            : _model.dropDownSolutionAllValue)
+                                                                    : containerLeadsManagementRecordList)
                                                                 .toList(),
                                                           );
                                                           _model.apiResult88g =
@@ -655,13 +680,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                             (teamTreeRecord) =>
                                                                 teamTreeRecord
                                                                     .where(
-                                                                      'zone',
-                                                                      isEqualTo:
-                                                                          FFAppState()
-                                                                              .zone,
-                                                                    )
-                                                                    .orderBy(
-                                                                        'userName'),
+                                                          'roleInZone',
+                                                          isEqualTo: 'admin',
+                                                        ),
                                                       ),
                                                       builder:
                                                           (context, snapshot) {
@@ -690,17 +711,38 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                           controller: _model
                                                                   .dropDownZoneAllValueController ??=
                                                               FormFieldController<
-                                                                  String>(null),
-                                                          options: [
-                                                            'EAST',
-                                                            'WEST',
-                                                            'NORTH',
-                                                            'SOUTH'
+                                                                  String>(
+                                                            _model.dropDownZoneAllValue ??=
+                                                                '',
+                                                          ),
+                                                          options: List<
+                                                              String>.from([
+                                                            'GHIcpvPS3AR6oRBBJ140q1oR5Kz2',
+                                                            'OII8LWubmUQtA93bgZdmfL3NZwg1'
+                                                          ]),
+                                                          optionLabels: [
+                                                            'MAHAMAD MAHAGONDE',
+                                                            'TANAJI JADHAV'
                                                           ],
-                                                          onChanged: (val) =>
-                                                              safeSetState(() =>
-                                                                  _model.dropDownZoneAllValue =
-                                                                      val),
+                                                          onChanged:
+                                                              (val) async {
+                                                            safeSetState(() =>
+                                                                _model.dropDownZoneAllValue =
+                                                                    val);
+                                                            _model.selectedZone =
+                                                                dropDownZoneAllTeamTreeRecordList
+                                                                    .where((e) =>
+                                                                        e.userProfileId ==
+                                                                        _model
+                                                                            .dropDownZoneAllValue)
+                                                                    .toList()
+                                                                    .firstOrNull!
+                                                                    .zoneList
+                                                                    .toList()
+                                                                    .cast<
+                                                                        String>();
+                                                            safeSetState(() {});
+                                                          },
                                                           width: 250.0,
                                                           height: 40.0,
                                                           searchHintTextStyle:
@@ -715,10 +757,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                         12.0,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .labelMediumIsCustom,
                                                                   ),
                                                           searchTextStyle:
                                                               FlutterFlowTheme.of(
@@ -730,10 +771,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                             .bodyMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                           textStyle:
                                                               FlutterFlowTheme.of(
@@ -745,12 +785,11 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                             .labelSmallFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .labelSmallIsCustom,
                                                                   ),
-                                                          hintText: 'Zone',
+                                                          hintText: 'Executive',
                                                           searchHintText:
                                                               'Search...',
                                                           icon: Icon(
@@ -791,7 +830,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                       options: [
                                                         'Verified',
                                                         'Not Verified',
-                                                        'Not Responded'
+                                                        'Not Responded',
+                                                        'Not Applicable',
+                                                        '#'
                                                       ],
                                                       onChanged: (val) =>
                                                           safeSetState(() =>
@@ -810,11 +851,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                 fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
                                                               ),
                                                       searchTextStyle:
                                                           FlutterFlowTheme.of(
@@ -826,11 +866,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                       textStyle:
                                                           FlutterFlowTheme.of(
@@ -842,13 +881,103 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     .labelSmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallIsCustom,
                                                               ),
                                                       hintText: 'Remark',
+                                                      searchHintText:
+                                                          'Search...',
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .text2nd,
+                                                        size: 20.0,
+                                                      ),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      elevation: 2.0,
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderWidth: 1.0,
+                                                      borderRadius: 8.0,
+                                                      margin:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  0.0,
+                                                                  12.0,
+                                                                  0.0),
+                                                      hidesUnderline: true,
+                                                      isOverButton: false,
+                                                      isSearchable: true,
+                                                      isMultiSelect: false,
+                                                    ),
+                                                    FlutterFlowDropDown<String>(
+                                                      controller: _model
+                                                              .dropDownSolutionAllValueController ??=
+                                                          FormFieldController<
+                                                              String>(null),
+                                                      options: FFAppConstants
+                                                          .DeyeActionItems,
+                                                      onChanged: (val) =>
+                                                          safeSetState(() =>
+                                                              _model.dropDownSolutionAllValue =
+                                                                  val),
+                                                      width: 250.0,
+                                                      height: 40.0,
+                                                      searchHintTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                fontSize: 12.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
+                                                              ),
+                                                      searchTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
+                                                              ),
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallIsCustom,
+                                                              ),
+                                                      hintText: 'Solution',
                                                       searchHintText:
                                                           'Search...',
                                                       icon: Icon(
@@ -906,11 +1035,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     .labelSmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallIsCustom,
                                                               ),
                                                       hintText: 'Select Filter',
                                                       icon: Icon(
@@ -964,10 +1092,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                             .labelMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .labelMediumIsCustom,
                                                                   ),
                                                           hintStyle:
                                                               FlutterFlowTheme.of(
@@ -982,10 +1109,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                         .text2nd,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .labelMediumIsCustom,
                                                                   ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
@@ -1056,11 +1182,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       .labelSmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmallIsCustom,
                                                                 ),
                                                         cursorColor:
                                                             FlutterFlowTheme.of(
@@ -1116,28 +1241,19 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                           _model
                                                               .textFieldAllTextController
                                                               ?.clear();
-                                                          _model
-                                                              .textFieldReportTextController
-                                                              ?.clear();
                                                         });
                                                         safeSetState(() {
                                                           _model
                                                               .dropDownAllValueController
                                                               ?.reset();
                                                           _model
-                                                              .dropDownZoneAllValueController
-                                                              ?.reset();
-                                                          _model
                                                               .dropDownRemarkAllValueController
                                                               ?.reset();
                                                           _model
-                                                              .dropDownRemarkReportValueController
+                                                              .dropDownZoneAllValueController
                                                               ?.reset();
                                                           _model
-                                                              .dropDownReportValueController
-                                                              ?.reset();
-                                                          _model
-                                                              .dropDownStageReportValueController
+                                                              .dropDownSolutionAllValueController
                                                               ?.reset();
                                                         });
                                                       },
@@ -1170,150 +1286,132 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                   Expanded(
                                                     child: Text(
                                                       'Sr.No.',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     flex: 3,
                                                     child: Text(
                                                       'Complaint No.',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     flex: 8,
                                                     child: Text(
                                                       'Name',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     flex: 3,
                                                     child: Text(
                                                       'Mobile No',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     flex: 3,
                                                     child: Text(
                                                       'Serial',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     flex: 5,
                                                     child: Text(
                                                       'Remark',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Icon(
@@ -1329,40 +1427,48 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                         Expanded(
                                           child: Builder(
                                             builder: (context) {
-                                              final cComplaintReportVar = (_model.isSearched == true
+                                              final cComplaintReportVar = (_model
+                                                              .isSearched ==
+                                                          true
                                                       ? functions.filteredComplaintsForReports(
                                                           containerLeadsManagementRecordList
                                                               .toList(),
                                                           '',
-                                                          _model.textFieldAllTextController.text == null ||
-                                                                  _model.textFieldAllTextController.text ==
-                                                                      ''
+                                                          _model.textFieldAllTextController.text == null || _model.textFieldAllTextController.text == ''
                                                               ? ''
                                                               : _model
                                                                   .textFieldAllTextController
                                                                   .text,
-                                                          _model.dropDownAllValue == null ||
-                                                                  _model.dropDownAllValue ==
-                                                                      ''
+                                                          _model.dropDownAllValue == null || _model.dropDownAllValue == ''
                                                               ? ''
                                                               : _model
                                                                   .dropDownAllValue,
-                                                          _model.dropDownRemarkAllValue == null ||
-                                                                  _model.dropDownRemarkAllValue ==
-                                                                      ''
+                                                          _model.dropDownRemarkAllValue == null || _model.dropDownRemarkAllValue == ''
                                                               ? ''
                                                               : _model
                                                                   .dropDownRemarkAllValue,
-                                                          _model.dropDownZoneAllValue == null ||
-                                                                  _model.dropDownZoneAllValue == ''
+                                                          _model.dropDownZoneAllValue == null || _model.dropDownZoneAllValue == ''
                                                               ? ''
-                                                              : _model.dropDownZoneAllValue,
+                                                              : _model
+                                                                  .dropDownZoneAllValue,
                                                           '',
-                                                          FFAppState().emptyList.toList())
+                                                          _model
+                                                              .selectedZone
+                                                              .toList(),
+                                                          _model.dropDownSolutionAllValue == null ||
+                                                                  _model.dropDownSolutionAllValue == ''
+                                                              ? ''
+                                                              : _model.dropDownSolutionAllValue)
                                                       : containerLeadsManagementRecordList)
                                                   .toList();
                                               if (cComplaintReportVar.isEmpty) {
-                                                return ListViewMsgWidget();
+                                                return Container(
+                                                  width: double.infinity,
+                                                  child: DeyeNoDataWidget(
+                                                    message:
+                                                        '📭 No complaints available for the selected criteria !! ',
+                                                  ),
+                                                );
                                               }
 
                                               return ListView.separated(
@@ -1389,7 +1495,7 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                         Colors.transparent,
                                                     onTap: () async {
                                                       context.pushNamed(
-                                                        CComplaintDetailsWidget
+                                                        DeyeComplaintDetailViewWidget
                                                             .routeName,
                                                         queryParameters: {
                                                           'leadManagementDocId':
@@ -1398,7 +1504,17 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                 .reference.id,
                                                             ParamType.String,
                                                           ),
+                                                          'leadManagementDoc':
+                                                              serializeParam(
+                                                            cComplaintReportVarItem,
+                                                            ParamType.Document,
+                                                          ),
                                                         }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'leadManagementDoc':
+                                                              cComplaintReportVarItem,
+                                                        },
                                                       );
                                                     },
                                                     child: Container(
@@ -1422,7 +1538,7 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                           children: [
                                                             Expanded(
                                                               child: Text(
-                                                                '${(cComplaintReportVarIndex + 1).toString()}) ',
+                                                                '${(cComplaintReportVarIndex + 1).toString()}.',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLarge
@@ -1435,10 +1551,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelLargeIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -1454,15 +1569,17 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       fontFamily:
                                                                           FlutterFlowTheme.of(context)
                                                                               .labelLargeFamily,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .customColor5,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelLargeIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -1483,10 +1600,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelLargeIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -1507,10 +1623,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelLargeIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -1521,8 +1636,7 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     String>(
                                                                   cComplaintReportVarItem
                                                                       .customFields
-                                                                      .serial
-                                                                      .toString(),
+                                                                      .serial,
                                                                   '-',
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
@@ -1537,10 +1651,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelLargeIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -1550,8 +1663,7 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                 valueOrDefault<
                                                                     String>(
                                                                   cComplaintReportVarItem
-                                                                      .customFields
-                                                                      .remark,
+                                                                      .remarks,
                                                                   '-',
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
@@ -1566,10 +1678,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelLargeIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -1604,10 +1715,8 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                 parent: FFAppState().outletRef,
                                 queryBuilder: (leadsManagementRecord) =>
                                     leadsManagementRecord
-                                        .where(
-                                          'zone',
-                                          isEqualTo: FFAppState().zone,
-                                        )
+                                        .whereIn('zone',
+                                            FFAppState().currentUserZoneList)
                                         .where(
                                           'createdDate',
                                           isGreaterThanOrEqualTo:
@@ -1668,25 +1777,24 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                               children: [
                                                 Text(
                                                   'Complaint Report',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        fontSize: 20.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMediumFamily),
-                                                      ),
+                                                                    .bodyMediumFamily,
+                                                            fontSize: 20.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                 ),
                                                 Row(
                                                   mainAxisSize:
@@ -1698,7 +1806,7 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                       children: [
                                                         Text(
                                                           dateTimeFormat(
-                                                              "dd-MMM-yyyy",
+                                                              "yMMMd",
                                                               DateTime.fromMillisecondsSinceEpoch(
                                                                   FFAppState()
                                                                       .startDate)),
@@ -1711,11 +1819,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     .labelLargeFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLargeIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -1748,11 +1855,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       15.0,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -1768,11 +1874,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     .labelLargeFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLargeIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -1930,7 +2035,36 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                   .filterDate,
                                                               deyeComplaintReportOutletRecord
                                                                   ?.name,
-                                                              containerZoneLeadsManagementRecordList
+                                                              (_model.isSearched ==
+                                                                          true
+                                                                      ? functions.filteredComplaintsForReports(
+                                                                          containerZoneLeadsManagementRecordList
+                                                                              .toList(),
+                                                                          '',
+                                                                          _model.textFieldReportTextController.text == 'null'
+                                                                              ? ''
+                                                                              : _model
+                                                                                  .textFieldReportTextController.text,
+                                                                          _model.dropDownReportValue == null || _model.dropDownReportValue == ''
+                                                                              ? ''
+                                                                              : _model
+                                                                                  .dropDownReportValue,
+                                                                          _model.dropDownRemarkReportValue == 'null'
+                                                                              ? ''
+                                                                              : _model
+                                                                                  .dropDownRemarkReportValue,
+                                                                          '',
+                                                                          _model.dropDownStageReportValue == 'null'
+                                                                              ? ''
+                                                                              : _model
+                                                                                  .dropDownStageReportValue,
+                                                                          FFAppState()
+                                                                              .emptyList
+                                                                              .toList(),
+                                                                          _model.dropDownSolutionReportValue == null || _model.dropDownSolutionReportValue == ''
+                                                                              ? ''
+                                                                              : _model.dropDownSolutionReportValue)
+                                                                      : containerZoneLeadsManagementRecordList)
                                                                   .toList(),
                                                             );
                                                             _model.apiResult88gt =
@@ -2102,11 +2236,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                 fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
                                                               ),
                                                       searchTextStyle:
                                                           FlutterFlowTheme.of(
@@ -2118,11 +2251,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                       textStyle:
                                                           FlutterFlowTheme.of(
@@ -2134,11 +2266,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     .labelSmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelSmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallIsCustom,
                                                               ),
                                                       hintText: 'Stage',
                                                       searchHintText:
@@ -2185,12 +2316,14 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                   options: List<String>.from([
                                                     'Verified',
                                                     'Not Verified',
-                                                    'Not Responded'
+                                                    'Not Responded',
+                                                    'Not Applicable'
                                                   ]),
                                                   optionLabels: [
                                                     'Verified',
                                                     'Not Verified',
-                                                    'Not Responded'
+                                                    'Not Responded',
+                                                    'Not Applicable'
                                                   ],
                                                   onChanged: (val) =>
                                                       safeSetState(() => _model
@@ -2209,12 +2342,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     .labelMediumFamily,
                                                             fontSize: 12.0,
                                                             letterSpacing: 0.0,
-                                                            useGoogleFonts: GoogleFonts
-                                                                    .asMap()
-                                                                .containsKey(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMediumFamily),
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumIsCustom,
                                                           ),
                                                   searchTextStyle:
                                                       FlutterFlowTheme.of(
@@ -2226,12 +2357,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                         context)
                                                                     .bodyMediumFamily,
                                                             letterSpacing: 0.0,
-                                                            useGoogleFonts: GoogleFonts
-                                                                    .asMap()
-                                                                .containsKey(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMediumFamily),
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
                                                           ),
                                                   textStyle:
                                                       FlutterFlowTheme.of(
@@ -2243,14 +2372,98 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                         context)
                                                                     .labelSmallFamily,
                                                             letterSpacing: 0.0,
-                                                            useGoogleFonts: GoogleFonts
-                                                                    .asMap()
-                                                                .containsKey(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmallFamily),
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallIsCustom,
                                                           ),
                                                   hintText: 'Remark',
+                                                  searchHintText: 'Search...',
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .text2nd,
+                                                    size: 20.0,
+                                                  ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderWidth: 1.0,
+                                                  borderRadius: 8.0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 12.0, 0.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: false,
+                                                  isSearchable: true,
+                                                  isMultiSelect: false,
+                                                ),
+                                                FlutterFlowDropDown<String>(
+                                                  controller: _model
+                                                          .dropDownSolutionReportValueController ??=
+                                                      FormFieldController<
+                                                          String>(null),
+                                                  options: FFAppConstants
+                                                      .DeyeActionItems,
+                                                  onChanged: (val) =>
+                                                      safeSetState(() => _model
+                                                              .dropDownSolutionReportValue =
+                                                          val),
+                                                  width: 250.0,
+                                                  height: 40.0,
+                                                  searchHintTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                            fontSize: 12.0,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumIsCustom,
+                                                          ),
+                                                  searchTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallIsCustom,
+                                                          ),
+                                                  hintText: 'Solution',
                                                   searchHintText: 'Search...',
                                                   icon: Icon(
                                                     Icons
@@ -2303,12 +2516,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                         context)
                                                                     .labelSmallFamily,
                                                             letterSpacing: 0.0,
-                                                            useGoogleFonts: GoogleFonts
-                                                                    .asMap()
-                                                                .containsKey(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmallFamily),
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallIsCustom,
                                                           ),
                                                   hintText: 'Select Filter',
                                                   icon: Icon(
@@ -2357,11 +2568,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     .labelMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
                                                               ),
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
@@ -2376,11 +2586,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     .text2nd,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -2442,12 +2651,10 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                       context)
                                                                   .labelSmallFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelSmallIsCustom,
                                                         ),
                                                     cursorColor:
                                                         FlutterFlowTheme.of(
@@ -2509,6 +2716,9 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                       _model
                                                           .dropDownRemarkReportValueController
                                                           ?.reset();
+                                                      _model
+                                                          .dropDownSolutionReportValueController
+                                                          ?.reset();
                                                     });
                                                   },
                                                 ),
@@ -2537,177 +2747,179 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                   Expanded(
                                                     child: Text(
                                                       'Sr.No',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     flex: 3,
                                                     child: Text(
                                                       'Complaint No.',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
-                                                    flex: 7,
+                                                    flex: 6,
                                                     child: Text(
                                                       'Name',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     flex: 3,
                                                     child: Text(
                                                       'Mobile No',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     flex: 3,
                                                     child: Text(
                                                       'Serial No',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMediumFamily,
-                                                                fontSize: 15.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
+                                                            fontSize: 15.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     flex: 3,
                                                     child: Text(
                                                       'Status',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 4,
+                                                    child: Text(
+                                                      'Remark',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                            fontSize: 15.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     flex: 5,
                                                     child: Text(
-                                                      'Remark',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      'Closed Date',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMediumFamily,
-                                                                fontSize: 15.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
+                                                            fontSize: 15.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Icon(
@@ -2728,12 +2940,11 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                           containerZoneLeadsManagementRecordList
                                                               .toList(),
                                                           '',
-                                                          _model.textFieldReportTextController
-                                                                      .text ==
-                                                                  'null'
+                                                          _model.textFieldReportTextController.text == 'null'
                                                               ? ''
                                                               : _model
-                                                                  .textFieldReportTextController.text,
+                                                                  .textFieldReportTextController
+                                                                  .text,
                                                           _model.dropDownReportValue ==
                                                                       null ||
                                                                   _model.dropDownReportValue ==
@@ -2741,8 +2952,7 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                               ? ''
                                                               : _model
                                                                   .dropDownReportValue,
-                                                          _model.dropDownRemarkReportValue ==
-                                                                  'null'
+                                                          _model.dropDownRemarkReportValue == 'null'
                                                               ? ''
                                                               : _model
                                                                   .dropDownRemarkReportValue,
@@ -2754,12 +2964,23 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                   .dropDownStageReportValue,
                                                           FFAppState()
                                                               .emptyList
-                                                              .toList())
+                                                              .toList(),
+                                                          _model.dropDownSolutionReportValue ==
+                                                                      null ||
+                                                                  _model.dropDownSolutionReportValue == ''
+                                                              ? ''
+                                                              : _model.dropDownSolutionReportValue)
                                                       : containerZoneLeadsManagementRecordList)
                                                   .toList();
                                               if (cComplaintReportVar1
                                                   .isEmpty) {
-                                                return ListViewMsgWidget();
+                                                return Container(
+                                                  width: double.infinity,
+                                                  child: DeyeNoDataWidget(
+                                                    message:
+                                                        '📭 No complaints available for the selected criteria !! ',
+                                                  ),
+                                                );
                                               }
 
                                               return ListView.separated(
@@ -2786,7 +3007,7 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                         Colors.transparent,
                                                     onTap: () async {
                                                       context.pushNamed(
-                                                        CComplaintDetailsWidget
+                                                        DeyeComplaintDetailViewWidget
                                                             .routeName,
                                                         queryParameters: {
                                                           'leadManagementDocId':
@@ -2795,7 +3016,17 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                 .reference.id,
                                                             ParamType.String,
                                                           ),
+                                                          'leadManagementDoc':
+                                                              serializeParam(
+                                                            cComplaintReportVar1Item,
+                                                            ParamType.Document,
+                                                          ),
                                                         }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'leadManagementDoc':
+                                                              cComplaintReportVar1Item,
+                                                        },
                                                       );
                                                     },
                                                     child: Container(
@@ -2810,222 +3041,233 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                       child: Padding(
                                                         padding: EdgeInsets.all(
                                                             15.0),
-                                                        child: Row(
+                                                        child: Column(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
                                                           children: [
-                                                            Expanded(
-                                                              child:
-                                                                  SelectionArea(
-                                                                      child:
-                                                                          Text(
-                                                                '${(cComplaintReportVar1Index + 1).toString()}.',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily,
-                                                                      letterSpacing:
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                    ),
-                                                              )),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 3,
-                                                              child:
-                                                                  SelectionArea(
-                                                                      child:
-                                                                          Text(
-                                                                cComplaintReportVar1Item
-                                                                    .ticket,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily,
-                                                                      letterSpacing:
                                                                           0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                    ),
-                                                              )),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 7,
-                                                              child: Text(
-                                                                cComplaintReportVar1Item
-                                                                    .followUpName,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily,
-                                                                      letterSpacing:
                                                                           0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                          15.0),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  Expanded(
+                                                                    child: SelectionArea(
+                                                                        child: Text(
+                                                                      '${(cComplaintReportVar1Index + 1).toString()}.',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                          ),
+                                                                    )),
+                                                                  ),
+                                                                  Expanded(
+                                                                    flex: 3,
+                                                                    child: SelectionArea(
+                                                                        child: Text(
+                                                                      cComplaintReportVar1Item
+                                                                          .ticket,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                            fontSize:
+                                                                                14.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                          ),
+                                                                    )),
+                                                                  ),
+                                                                  Expanded(
+                                                                    flex: 6,
+                                                                    child: Text(
+                                                                      cComplaintReportVar1Item
+                                                                          .followUpName,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                            fontSize:
+                                                                                14.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                          ),
                                                                     ),
+                                                                  ),
+                                                                  Expanded(
+                                                                    flex: 3,
+                                                                    child: SelectionArea(
+                                                                        child: Text(
+                                                                      cComplaintReportVar1Item
+                                                                          .mobile,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                            fontSize:
+                                                                                14.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                          ),
+                                                                    )),
+                                                                  ),
+                                                                  Expanded(
+                                                                    flex: 3,
+                                                                    child: SelectionArea(
+                                                                        child: Text(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        cComplaintReportVar1Item
+                                                                            .customFields
+                                                                            .serial,
+                                                                        '-',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                            fontSize:
+                                                                                14.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                          ),
+                                                                    )),
+                                                                  ),
+                                                                  Expanded(
+                                                                    flex: 3,
+                                                                    child: SelectionArea(
+                                                                        child: Text(
+                                                                      functions.toCapitalLetter(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                        cComplaintReportVar1Item
+                                                                            .stage,
+                                                                        '-',
+                                                                      )),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                            fontSize:
+                                                                                14.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                          ),
+                                                                    )),
+                                                                  ),
+                                                                  Expanded(
+                                                                    flex: 4,
+                                                                    child: SelectionArea(
+                                                                        child: Text(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        cComplaintReportVar1Item
+                                                                            .remarks,
+                                                                        '-',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                          ),
+                                                                    )),
+                                                                  ),
+                                                                  Expanded(
+                                                                    flex: 5,
+                                                                    child: SelectionArea(
+                                                                        child: Text(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        cComplaintReportVar1Item
+                                                                            .closeDate,
+                                                                        '-',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                          ),
+                                                                    )),
+                                                                  ),
+                                                                  Icon(
+                                                                    Icons
+                                                                        .chevron_right,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                    size: 16.0,
+                                                                  ),
+                                                                ].divide(SizedBox(
+                                                                    width:
+                                                                        10.0)),
                                                               ),
                                                             ),
-                                                            Expanded(
-                                                              flex: 3,
-                                                              child:
-                                                                  SelectionArea(
-                                                                      child:
-                                                                          Text(
-                                                                cComplaintReportVar1Item
-                                                                    .mobile,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                    ),
-                                                              )),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 3,
-                                                              child:
-                                                                  SelectionArea(
-                                                                      child:
-                                                                          Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  cComplaintReportVar1Item
-                                                                      .customFields
-                                                                      .serial
-                                                                      .toString(),
-                                                                  '-',
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      fontSize:
-                                                                          15.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              )),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 3,
-                                                              child:
-                                                                  SelectionArea(
-                                                                      child:
-                                                                          Text(
-                                                                functions.toCapitalLetter(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                  cComplaintReportVar1Item
-                                                                      .stage,
-                                                                  '-',
-                                                                )),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                    ),
-                                                              )),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 5,
-                                                              child:
-                                                                  SelectionArea(
-                                                                      child:
-                                                                          Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  cComplaintReportVar1Item
-                                                                      .customFields
-                                                                      .remark,
-                                                                  '-',
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              )),
-                                                            ),
-                                                            Icon(
-                                                              Icons
-                                                                  .chevron_right,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              size: 16.0,
-                                                            ),
-                                                          ].divide(SizedBox(
-                                                              width: 10.0)),
+                                                          ],
                                                         ),
                                                       ),
                                                     ),
@@ -3034,12 +3276,6 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                               );
                                             },
                                           ),
-                                        ),
-                                        Container(
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.07,
-                                          decoration: BoxDecoration(),
                                         ),
                                       ],
                                     ),

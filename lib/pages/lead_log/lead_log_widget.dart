@@ -213,11 +213,9 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .primaryBtnText,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(FlutterFlowTheme
-                                                          .of(context)
-                                                      .headlineMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .headlineMediumIsCustom,
                                             ),
                                       ),
                                     ],
@@ -390,26 +388,52 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                             style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                   fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                   letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                 ),
                                                                           ),
                                                                         ),
-                                                                        SelectionArea(
-                                                                            child:
-                                                                                Text(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            containerLeadsManagementRecord?.mobile,
-                                                                            '0',
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .labelLarge
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                              ),
-                                                                        )),
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0.0,
+                                                                              0.0,
+                                                                              10.0,
+                                                                              0.0),
+                                                                          child: SelectionArea(
+                                                                              child: Text(
+                                                                            valueOrDefault<String>(
+                                                                              containerLeadsManagementRecord?.mobile,
+                                                                              '0',
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                                ),
+                                                                          )),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0.0,
+                                                                              0.0,
+                                                                              10.0,
+                                                                              0.0),
+                                                                          child: SelectionArea(
+                                                                              child: Text(
+                                                                            valueOrDefault<String>(
+                                                                              containerLeadsManagementRecord?.leadCampaign,
+                                                                              '0',
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                  color: FlutterFlowTheme.of(context).info,
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontStyle: FontStyle.italic,
+                                                                                  decoration: TextDecoration.underline,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                                ),
+                                                                          )),
+                                                                        ),
                                                                       ],
                                                                     ),
                                                                   ),
@@ -444,7 +468,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ],
@@ -605,7 +629,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -616,7 +640,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -639,7 +663,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                       style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -650,7 +674,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -671,7 +695,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -685,7 +709,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                     style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -710,7 +734,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                           style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -721,7 +745,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                           style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -733,7 +757,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                             style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -865,11 +889,10 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                       14.0,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                         unselectedLabelStyle:
                                                             TextStyle(),
@@ -1018,7 +1041,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                             style: FlutterFlowTheme.of(context).headlineMedium.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -1075,7 +1098,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                   hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                       ),
                                                                                                   enabledBorder: OutlineInputBorder(
                                                                                                     borderSide: BorderSide(
@@ -1111,7 +1134,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                     ),
                                                                                                 validator: _model.textFieldunameTextControllerValidator.asValidator(context),
                                                                                               ),
@@ -1127,7 +1150,6 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                 text: '',
                                                                                                 icon: Icon(
                                                                                                   Icons.close,
-                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
                                                                                                   size: 18.0,
                                                                                                 ),
                                                                                                 options: FFButtonOptions(
@@ -1135,12 +1157,13 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                   height: 40.0,
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                   iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                                                                                  iconColor: FlutterFlowTheme.of(context).primaryText,
                                                                                                   color: FlutterFlowTheme.of(context).customColor1,
                                                                                                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                         fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                         color: Colors.white,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                       ),
                                                                                                   elevation: 2.0,
                                                                                                   borderSide: BorderSide(
@@ -1194,7 +1217,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                             color: FlutterFlowTheme.of(context).primary,
                                                                                             fontSize: 14.0,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -1214,7 +1237,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                           color: FlutterFlowTheme.of(context).primary,
                                                                                           fontSize: 14.0,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -1247,7 +1270,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                             fontSize: 10.0,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -1265,7 +1288,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                         hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                             ),
                                                                                         enabledBorder: OutlineInputBorder(
                                                                                           borderSide: BorderSide(
@@ -1302,7 +1325,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                             fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                             fontSize: 14.0,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                           ),
                                                                                       validator: _model.textController2Validator.asValidator(context),
                                                                                     ),
@@ -1326,7 +1349,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                 fontSize: 10.0,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -1364,7 +1387,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                 fontSize: 14.0,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                               ),
                                                                                           icon: Icon(
                                                                                             Icons.keyboard_arrow_down,
@@ -1403,7 +1426,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                 fontSize: 10.0,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -1446,7 +1469,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                 fontSize: 14.0,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                               ),
                                                                                           icon: Icon(
                                                                                             Icons.keyboard_arrow_down,
@@ -1493,7 +1516,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                               fontSize: 10.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1509,7 +1532,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                               color: FlutterFlowTheme.of(context).info,
                                                                                               fontSize: 14.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1536,7 +1559,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                           fontSize: 14.0,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                         ),
                                                                                     icon: Icon(
                                                                                       Icons.keyboard_arrow_down,
@@ -1574,7 +1597,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                               fontSize: 10.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1589,7 +1612,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                               fontSize: 10.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1614,7 +1637,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                           fontSize: 14.0,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                         ),
                                                                                     icon: Icon(
                                                                                       Icons.keyboard_arrow_down,
@@ -1664,7 +1687,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                 fontSize: 10.0,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -1682,7 +1705,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                       hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                           ),
                                                                                       enabledBorder: OutlineInputBorder(
                                                                                         borderSide: BorderSide(
@@ -1724,7 +1747,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                           fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                           fontSize: 14.0,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                         ),
                                                                                     validator: _model.textController3Validator.asValidator(context),
                                                                                   ),
@@ -1747,7 +1770,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                 fontSize: 10.0,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -1804,7 +1827,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                         color: FlutterFlowTheme.of(context).info,
                                                                                                         fontSize: 14.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -1853,7 +1876,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                             textStyle: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                   letterSpacing: 0.0,
-                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                 ),
                                                                                             icon: Icon(
                                                                                               Icons.keyboard_arrow_down,
@@ -1936,7 +1959,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                         fontSize: 10.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -1957,7 +1980,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                         hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                             ),
                                                                                                         enabledBorder: OutlineInputBorder(
                                                                                                           borderSide: BorderSide(
@@ -1994,7 +2017,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                             fontSize: 14.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                           ),
                                                                                                       maxLines: null,
                                                                                                       validator: _model.textController4Validator.asValidator(context),
@@ -2010,7 +2033,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                         fontSize: 10.0,
                                                                                                         letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -2044,7 +2067,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                               textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                   ),
                                                                                                               textHighlightStyle: TextStyle(),
                                                                                                               elevation: 4.0,
@@ -2097,7 +2120,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                 hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                     ),
                                                                                                                 enabledBorder: OutlineInputBorder(
                                                                                                                   borderSide: BorderSide(
@@ -2133,7 +2156,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                               style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                                   ),
                                                                                                               maxLines: null,
                                                                                                               validator: _model.textFieldtagTextControllerValidator.asValidator(context),
@@ -2207,7 +2230,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                               fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                               color: FlutterFlowTheme.of(context).lineColor,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                             ),
                                                                                                         elevation: 2.0,
                                                                                                         borderSide: BorderSide(
@@ -2252,7 +2275,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                           fontSize: 10.0,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                         ),
                                                                                                                   ),
                                                                                                                 ),
@@ -2324,7 +2347,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                                                     fontSize: 11.0,
                                                                                                                                                     letterSpacing: 0.0,
-                                                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                                                   ),
                                                                                                                                             ),
                                                                                                                                           ),
@@ -2396,7 +2419,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                                                       fontSize: 11.0,
                                                                                                                                                       letterSpacing: 0.0,
-                                                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                                                     ),
                                                                                                                                               ),
                                                                                                                                             ),
@@ -2441,7 +2464,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                                           fontSize: 10.0,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                                         ),
                                                                                                                   ),
                                                                                                                 ),
@@ -2492,7 +2515,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                                           fontSize: 11.0,
                                                                                                                                           letterSpacing: 0.0,
-                                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                                         ),
                                                                                                                                   ),
                                                                                                                                 ),
@@ -2517,7 +2540,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                                                 fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
                                                                                                                                                 color: Color(0x00000000),
                                                                                                                                                 letterSpacing: 0.0,
-                                                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                                                                                               ),
                                                                                                                                         ),
                                                                                                                                         duration: Duration(milliseconds: 4000),
@@ -2598,7 +2621,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                                 fontSize: 11.0,
                                                                                                                                 letterSpacing: 0.0,
-                                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                               ),
                                                                                                                         ),
                                                                                                                       ),
@@ -2691,7 +2714,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                                   fontSize: 11.0,
                                                                                                                                   letterSpacing: 0.0,
-                                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                                 ),
                                                                                                                           ),
                                                                                                                         ),
@@ -2784,7 +2807,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                                   fontSize: 11.0,
                                                                                                                                   letterSpacing: 0.0,
-                                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                                 ),
                                                                                                                           ),
                                                                                                                         ),
@@ -2865,7 +2888,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                   letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                           ),
                                                                           Theme(
@@ -2886,10 +2909,12 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                               onChanged: (newValue) async {
                                                                                 safeSetState(() => _model.checkboxduplicateValue = newValue!);
                                                                               },
-                                                                              side: BorderSide(
-                                                                                width: 2,
-                                                                                color: FlutterFlowTheme.of(context).alternate,
-                                                                              ),
+                                                                              side: (FlutterFlowTheme.of(context).alternate != null)
+                                                                                  ? BorderSide(
+                                                                                      width: 2,
+                                                                                      color: FlutterFlowTheme.of(context).alternate!,
+                                                                                    )
+                                                                                  : null,
                                                                               activeColor: FlutterFlowTheme.of(context).primary,
                                                                               checkColor: FlutterFlowTheme.of(context).info,
                                                                             ),
@@ -2935,7 +2960,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                       color: Colors.white,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.w600,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                     ),
                                                                                 borderSide: BorderSide(
                                                                                   color: Colors.transparent,
@@ -2958,7 +2983,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -2984,7 +3009,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                             textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                   letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                             icon:
                                                                                 Icon(
@@ -3108,7 +3133,11 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                         area: _model.textController2.text,
                                                                                         isDuplicate: _model.checkboxduplicateValue,
                                                                                       ));
-                                                                                      await Future.delayed(const Duration(milliseconds: 2000));
+                                                                                      await Future.delayed(
+                                                                                        Duration(
+                                                                                          milliseconds: 2000,
+                                                                                        ),
+                                                                                      );
                                                                                       FFAppState().tagList = [];
                                                                                       safeSetState(() {});
 
@@ -3131,7 +3160,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                             fontSize: 16.0,
                                                                                             letterSpacing: 0.0,
                                                                                             fontWeight: FontWeight.w600,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                           ),
                                                                                       elevation: 2.0,
                                                                                       borderSide: BorderSide(
@@ -3277,7 +3306,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -3288,7 +3317,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -3305,7 +3334,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                       style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -3316,7 +3345,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                       style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -3325,7 +3354,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                     style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                   Padding(
@@ -3335,7 +3364,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                       style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -3346,7 +3375,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                                       style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -3371,7 +3400,7 @@ class _LeadLogWidgetState extends State<LeadLogWidget>
                                                                                         style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ],

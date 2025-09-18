@@ -82,8 +82,8 @@ class _CalenderWidgetState extends State<CalenderWidget> {
                                 FlutterFlowTheme.of(context).bodySmallFamily,
                             color: FlutterFlowTheme.of(context).primaryText,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodySmallFamily),
+                            useGoogleFonts:
+                                !FlutterFlowTheme.of(context).bodySmallIsCustom,
                           ),
                       elevation: 2.0,
                       borderSide: BorderSide(
@@ -117,8 +117,8 @@ class _CalenderWidgetState extends State<CalenderWidget> {
                             color: Colors.white,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).titleSmallFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleSmallIsCustom,
                           ),
                       elevation: 2.0,
                       borderSide: BorderSide(
@@ -155,18 +155,16 @@ class _CalenderWidgetState extends State<CalenderWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .headlineLargeFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineLargeFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .headlineLargeIsCustom,
                               ),
                       dayOfWeekStyle:
                           FlutterFlowTheme.of(context).headlineSmall.override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .headlineSmallFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineSmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .headlineSmallIsCustom,
                               ),
                       dateStyle: FlutterFlowTheme.of(context)
                           .labelLarge
@@ -174,8 +172,8 @@ class _CalenderWidgetState extends State<CalenderWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelLargeFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelLargeFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .labelLargeIsCustom,
                           ),
                       selectedDateStyle: TextStyle(
                         color: FlutterFlowTheme.of(context).primary,

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/index.dart';
@@ -115,9 +116,8 @@ class _TopicSearchUserManualWidgetState
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleMediumFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .titleMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .titleMediumIsCustom,
                               ),
                           searchTextStyle: FlutterFlowTheme.of(context)
                               .bodyMedium
@@ -125,9 +125,8 @@ class _TopicSearchUserManualWidgetState
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                           textStyle: FlutterFlowTheme.of(context)
                               .bodyMedium
@@ -135,9 +134,8 @@ class _TopicSearchUserManualWidgetState
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                           hintText: 'Please select...',
                           searchHintText: 'Search for an item...',

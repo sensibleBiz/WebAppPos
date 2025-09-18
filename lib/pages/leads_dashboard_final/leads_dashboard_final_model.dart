@@ -42,6 +42,15 @@ class LeadsDashboardFinalModel
 
   bool showMore = false;
 
+  List<String> stageList = ['assigned', 'followup'];
+  void addToStageList(String item) => stageList.add(item);
+  void removeFromStageList(String item) => stageList.remove(item);
+  void removeAtIndexFromStageList(int index) => stageList.removeAt(index);
+  void insertAtIndexInStageList(int index, String item) =>
+      stageList.insert(index, item);
+  void updateStageListAtIndex(int index, Function(String) updateFn) =>
+      stageList[index] = updateFn(stageList[index]);
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Custom Action - leadDocRefCopy] action in LeadsDashboardFinal widget.

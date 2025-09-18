@@ -164,11 +164,10 @@ class _LeadQueryWidgetState extends State<LeadQueryWidget> {
                                                                       .titleMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -235,12 +234,10 @@ class _LeadQueryWidgetState extends State<LeadQueryWidget> {
                                                                     .bodyMediumFamily,
                                                             color: Colors.black,
                                                             letterSpacing: 0.0,
-                                                            useGoogleFonts: GoogleFonts
-                                                                    .asMap()
-                                                                .containsKey(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMediumFamily),
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
                                                           ),
                                                   hintText: 'Please select...',
                                                   fillColor:
@@ -427,7 +424,7 @@ class _LeadQueryWidgetState extends State<LeadQueryWidget> {
                                                                                     style: FlutterFlowTheme.of(context).headlineMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -438,7 +435,7 @@ class _LeadQueryWidgetState extends State<LeadQueryWidget> {
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -449,7 +446,7 @@ class _LeadQueryWidgetState extends State<LeadQueryWidget> {
                                                                                     style: FlutterFlowTheme.of(context).headlineMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -460,7 +457,7 @@ class _LeadQueryWidgetState extends State<LeadQueryWidget> {
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -476,7 +473,7 @@ class _LeadQueryWidgetState extends State<LeadQueryWidget> {
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -540,7 +537,7 @@ class _LeadQueryWidgetState extends State<LeadQueryWidget> {
                                                                                         fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                         color: FlutterFlowTheme.of(context).primaryBtnText,
                                                                                         letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                       ),
                                                                                   elevation: 2.0,
                                                                                   borderSide: BorderSide(

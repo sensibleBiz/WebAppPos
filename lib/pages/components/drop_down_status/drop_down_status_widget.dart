@@ -100,9 +100,8 @@ class _DropDownStatusWidgetState extends State<DropDownStatusWidget> {
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .labelLargeFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .labelLargeIsCustom,
                             ),
                       ),
                     ],
@@ -128,8 +127,8 @@ class _DropDownStatusWidgetState extends State<DropDownStatusWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyMediumFamily,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                         ),
                     hintText: 'Please select...',
                     icon: Icon(
@@ -173,8 +172,8 @@ class _DropDownStatusWidgetState extends State<DropDownStatusWidget> {
                               FlutterFlowTheme.of(context).titleSmallFamily,
                           color: Colors.white,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).titleSmallFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
                         ),
                     elevation: 3.0,
                     borderSide: BorderSide(
@@ -254,8 +253,8 @@ class _DropDownStatusWidgetState extends State<DropDownStatusWidget> {
                               FlutterFlowTheme.of(context).labelMediumFamily,
                           color: FlutterFlowTheme.of(context).primaryBackground,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).labelMediumFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                         ),
                     elevation: 3.0,
                     borderSide: BorderSide(

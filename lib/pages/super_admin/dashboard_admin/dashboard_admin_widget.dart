@@ -234,8 +234,14 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Lora',
+                                                                      font: GoogleFonts
+                                                                          .lora(
+                                                                        fontWeight:
+                                                                            FontWeight.w100,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Color(
                                                                           0xFF306BF0),
                                                                       fontSize:
@@ -245,10 +251,10 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w100,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              'Lora'),
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                               Text(
@@ -257,8 +263,14 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Lora',
+                                                                      font: GoogleFonts
+                                                                          .lora(
+                                                                        fontWeight:
+                                                                            FontWeight.w100,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Color(
                                                                           0xFF306BF0),
                                                                       fontSize:
@@ -268,10 +280,10 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w100,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              'Lora'),
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ],
@@ -422,8 +434,14 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Lora',
+                                                                        font: GoogleFonts
+                                                                            .lora(
+                                                                          fontWeight:
+                                                                              FontWeight.w100,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         color: Color(
                                                                             0xFF306BF0),
                                                                         fontSize:
@@ -432,8 +450,9 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w100,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey('Lora'),
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -442,8 +461,14 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Lora',
+                                                                        font: GoogleFonts
+                                                                            .lora(
+                                                                          fontWeight:
+                                                                              FontWeight.w100,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         color: Color(
                                                                             0xFF306BF0),
                                                                         fontSize:
@@ -452,8 +477,9 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w100,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey('Lora'),
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ],
@@ -639,8 +665,14 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Lora',
+                                                                        font: GoogleFonts
+                                                                            .lora(
+                                                                          fontWeight:
+                                                                              FontWeight.w100,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         color: Color(
                                                                             0xFF306BF0),
                                                                         fontSize:
@@ -649,8 +681,9 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w100,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey('Lora'),
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -659,8 +692,14 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Lora',
+                                                                        font: GoogleFonts
+                                                                            .lora(
+                                                                          fontWeight:
+                                                                              FontWeight.w100,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         color: Color(
                                                                             0xFF306BF0),
                                                                         fontSize:
@@ -669,8 +708,9 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w100,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey('Lora'),
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 ),
                                                               ],
@@ -809,8 +849,14 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Lora',
+                                                                      font: GoogleFonts
+                                                                          .lora(
+                                                                        fontWeight:
+                                                                            FontWeight.w100,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Color(
                                                                           0xFFF03053),
                                                                       fontSize:
@@ -820,10 +866,10 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w100,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              'Lora'),
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                               Text(
@@ -832,8 +878,14 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Lora',
+                                                                      font: GoogleFonts
+                                                                          .lora(
+                                                                        fontWeight:
+                                                                            FontWeight.w100,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       color: Color(
                                                                           0xFFF03053),
                                                                       fontSize:
@@ -843,10 +895,10 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w100,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              'Lora'),
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               ),
                                                             ],

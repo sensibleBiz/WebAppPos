@@ -85,9 +85,8 @@ class _LanguagePopUpWidgetState extends State<LanguagePopUpWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodySmallFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodySmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodySmallIsCustom,
                               ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -134,9 +133,8 @@ class _LanguagePopUpWidgetState extends State<LanguagePopUpWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                         validator:
                             _model.textControllerValidator.asValidator(context),
@@ -171,9 +169,8 @@ class _LanguagePopUpWidgetState extends State<LanguagePopUpWidget> {
                                   FlutterFlowTheme.of(context).titleSmallFamily,
                               color: FlutterFlowTheme.of(context).lineColor,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .titleSmallFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .titleSmallIsCustom,
                             ),
                         elevation: 2.0,
                         borderSide: BorderSide(

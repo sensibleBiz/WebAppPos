@@ -113,8 +113,6 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                   text: '',
                                   icon: Icon(
                                     Icons.chevron_left,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBtnText,
                                     size: 32.0,
                                   ),
                                   options: FFButtonOptions(
@@ -123,6 +121,8 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                         0.0, 0.0, 0.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
+                                    iconColor: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
@@ -132,10 +132,9 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                   .titleSmallFamily,
                                           color: Colors.white,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(
@@ -147,23 +146,32 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 25.0, 0.0),
-                                  child: Text(
-                                    'Demo  Checkin / Checkout ',
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMediumFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMediumFamily),
-                                        ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                          CheckInStatusWidget.routeName);
+                                    },
+                                    child: Text(
+                                      'Demo  Checkin / Checkout ',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMediumFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBtnText,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .headlineMediumIsCustom,
+                                          ),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -270,12 +278,10 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                   .of(context)
                                                               .primary,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                                 elevation: 2.0,
                                                 borderSide: BorderSide(
@@ -331,10 +337,9 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                             .bodyMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -419,10 +424,9 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                             .titleMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                           elevation: 2.0,
                                                           borderSide:
@@ -605,7 +609,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                     fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                                     fontSize: 18.0,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -626,7 +630,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                              !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -773,7 +777,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                     fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                                     fontSize: 18.0,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -794,7 +798,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                              !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -943,7 +947,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                               ),
                                                                         ),
                                                                         Text(
@@ -953,7 +957,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                               ),
                                                                         ),
                                                                       ],
@@ -1016,7 +1020,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                               ),
                                                                         ),
                                                                         Text(
@@ -1026,7 +1030,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                               ),
                                                                         ),
                                                                       ],
@@ -1068,12 +1072,10 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                 .titleSmallFamily,
                                                         color: Colors.white,
                                                         letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmallFamily),
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleSmallIsCustom,
                                                       ),
                                               elevation: 3.0,
                                               borderSide: BorderSide(
@@ -1361,7 +1363,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                               fontSize: 14.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1377,7 +1379,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               color: FlutterFlowTheme.of(context).info,
                                                                                               fontSize: 12.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1392,7 +1394,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               fontSize: 12.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1407,7 +1409,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               fontSize: 12.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1422,7 +1424,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                     color: Color(0xFF5283EB),
                                                                                     fontSize: 12.0,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -1506,7 +1508,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                       color: Color(0xFF003DC4),
                                                                                                       fontSize: 12.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                             ],
@@ -1534,7 +1536,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                               fontSize: 11.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                       Text(
@@ -1543,7 +1545,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               fontSize: 11.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ],
@@ -1560,7 +1562,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                               fontSize: 11.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                       Text(
@@ -1569,7 +1571,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               fontSize: 11.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ],
@@ -1639,7 +1641,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                             fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                             fontSize: 10.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -1652,7 +1654,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                             color: FlutterFlowTheme.of(context).info,
                                                                                                             fontSize: 12.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -1676,7 +1678,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                               fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                               fontSize: 10.0,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -1701,7 +1703,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                             ],
@@ -1715,7 +1717,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ],
@@ -1729,7 +1731,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ],
@@ -1745,7 +1747,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                         ),
                                                                                                                   ),
                                                                                                                 ),
@@ -1755,7 +1757,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                         ),
                                                                                                                   ),
                                                                                                                 Text(
@@ -1763,7 +1765,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ],
@@ -1800,7 +1802,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                             fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                             fontSize: 10.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -1813,7 +1815,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                             color: FlutterFlowTheme.of(context).info,
                                                                                                             fontSize: 12.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -1832,7 +1834,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                           fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                           fontSize: 10.0,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -1859,7 +1861,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                       ],
@@ -1873,7 +1875,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                       ],
@@ -1887,7 +1889,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                       ],
@@ -1903,7 +1905,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                   letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                 ),
                                                                                                           ),
                                                                                                         ),
@@ -1913,7 +1915,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                   letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                 ),
                                                                                                           ),
                                                                                                       ],
@@ -1948,7 +1950,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                     fontSize: 10.0,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                             TextSpan(
@@ -1963,14 +1965,14 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                   ),
                                                                                             )
                                                                                           ],
                                                                                           style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -2190,7 +2192,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                               fontSize: 14.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2206,7 +2208,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               color: FlutterFlowTheme.of(context).info,
                                                                                               fontSize: 12.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2221,7 +2223,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               fontSize: 12.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2236,7 +2238,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                               fontSize: 12.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -2251,7 +2253,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                     color: Color(0xFF5283EB),
                                                                                     fontSize: 12.0,
                                                                                     letterSpacing: 0.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -2331,7 +2333,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                       color: Color(0xFF003DC4),
                                                                                                       fontSize: 12.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                             ],
@@ -2359,7 +2361,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                               fontSize: 9.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                       Text(
@@ -2368,7 +2370,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                               fontSize: 11.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ],
@@ -2385,7 +2387,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                               fontSize: 9.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                       Text(
@@ -2394,7 +2396,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                               fontSize: 11.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ],
@@ -2464,7 +2466,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                             fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                             fontSize: 10.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -2477,7 +2479,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                             color: FlutterFlowTheme.of(context).info,
                                                                                                             fontSize: 12.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -2501,7 +2503,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                               fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                               fontSize: 10.0,
                                                                                                               letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -2526,7 +2528,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ],
@@ -2540,7 +2542,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ],
@@ -2554,7 +2556,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ],
@@ -2570,7 +2572,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                           letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                         ),
                                                                                                                   ),
                                                                                                                 ),
@@ -2579,7 +2581,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                                 Text(
@@ -2587,7 +2589,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                         letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                       ),
                                                                                                                 ),
                                                                                                               ],
@@ -2623,7 +2625,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                             fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                             fontSize: 10.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -2636,7 +2638,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                             color: FlutterFlowTheme.of(context).info,
                                                                                                             fontSize: 12.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ),
@@ -2655,7 +2657,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                           fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                           fontSize: 10.0,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
@@ -2680,7 +2682,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                   ),
                                                                                                             ),
                                                                                                           ],
@@ -2694,7 +2696,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                   ),
                                                                                                             ),
                                                                                                           ],
@@ -2708,7 +2710,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                   ),
                                                                                                             ),
                                                                                                           ],
@@ -2724,7 +2726,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
@@ -2734,7 +2736,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                                     ),
                                                                                                               ),
                                                                                                           ],
@@ -2771,7 +2773,7 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                                     fontSize: 10.0,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                             TextSpan(
@@ -2786,14 +2788,14 @@ class _DemoLeadsWidgetState extends State<DemoLeadsWidget> {
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                     letterSpacing: 0.0,
-                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                   ),
                                                                                             )
                                                                                           ],
                                                                                           style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),

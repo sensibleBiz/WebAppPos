@@ -6,7 +6,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/list_view_msg/list_view_msg_widget.dart';
-import '/pages/components/map_team/map_team_widget.dart';
+import '/pages/components/map_team_copy/map_team_copy_widget.dart';
+import '/pages/components/map_team_update/map_team_update_widget.dart';
 import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -134,7 +135,7 @@ class _DeyeTeamTreeWidgetState extends State<DeyeTeamTreeWidget> {
                     ),
                   ),
                   Expanded(
-                    flex: 20,
+                    flex: 35,
                     child: StreamBuilder<List<TeamTreeRecord>>(
                       stream: queryTeamTreeRecord(
                         parent: FFAppState().outletRef,
@@ -179,10 +180,9 @@ class _DeyeTeamTreeWidgetState extends State<DeyeTeamTreeWidget> {
                                                     .headlineLargeFamily,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineLargeFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .headlineLargeIsCustom,
                                           ),
                                     ),
                                     Builder(
@@ -219,7 +219,7 @@ class _DeyeTeamTreeWidgetState extends State<DeyeTeamTreeWidget> {
                                                           .instance.primaryFocus
                                                           ?.unfocus();
                                                     },
-                                                    child: MapTeamWidget(),
+                                                    child: MapTeamCopyWidget(),
                                                   ),
                                                 ),
                                               );
@@ -298,11 +298,10 @@ class _DeyeTeamTreeWidgetState extends State<DeyeTeamTreeWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineSmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineSmallIsCustom,
                                                                 ),
                                                           ),
                                                         ],
@@ -378,7 +377,7 @@ class _DeyeTeamTreeWidgetState extends State<DeyeTeamTreeWidget> {
                                                                             fontWeight:
                                                                                 FontWeight.w600,
                                                                             useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -394,7 +393,7 @@ class _DeyeTeamTreeWidgetState extends State<DeyeTeamTreeWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -471,17 +470,63 @@ class _DeyeTeamTreeWidgetState extends State<DeyeTeamTreeWidget> {
                                                                                     ),
                                                                                   ),
                                                                                 ),
-                                                                                Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 3.0),
-                                                                                  child: Text(
-                                                                                    listManagerItem.userName,
-                                                                                    style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                          fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                          letterSpacing: 0.0,
-                                                                                          fontWeight: FontWeight.w600,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                                  children: [
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 3.0),
+                                                                                      child: Text(
+                                                                                        listManagerItem.userName,
+                                                                                        style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FontWeight.w600,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Builder(
+                                                                                      builder: (context) => Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 5.0),
+                                                                                        child: InkWell(
+                                                                                          splashColor: Colors.transparent,
+                                                                                          focusColor: Colors.transparent,
+                                                                                          hoverColor: Colors.transparent,
+                                                                                          highlightColor: Colors.transparent,
+                                                                                          onTap: () async {
+                                                                                            await showDialog(
+                                                                                              context: context,
+                                                                                              builder: (dialogContext) {
+                                                                                                return Dialog(
+                                                                                                  elevation: 0,
+                                                                                                  insetPadding: EdgeInsets.zero,
+                                                                                                  backgroundColor: Colors.transparent,
+                                                                                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                                  child: WebViewAware(
+                                                                                                    child: GestureDetector(
+                                                                                                      onTap: () {
+                                                                                                        FocusScope.of(dialogContext).unfocus();
+                                                                                                        FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                      },
+                                                                                                      child: MapTeamUpdateWidget(
+                                                                                                        docId: listManagerItem.id,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                );
+                                                                                              },
+                                                                                            );
+                                                                                          },
+                                                                                          child: Icon(
+                                                                                            Icons.edit,
+                                                                                            color: FlutterFlowTheme.of(context).customColor5,
+                                                                                            size: 15.0,
+                                                                                          ),
                                                                                         ),
-                                                                                  ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ],
                                                                                 ),
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
@@ -490,7 +535,7 @@ class _DeyeTeamTreeWidgetState extends State<DeyeTeamTreeWidget> {
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -520,7 +565,7 @@ class _DeyeTeamTreeWidgetState extends State<DeyeTeamTreeWidget> {
                                                                                               padding: EdgeInsets.all(5.0),
                                                                                               child: Column(
                                                                                                 mainAxisSize: MainAxisSize.max,
-                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                crossAxisAlignment: CrossAxisAlignment.center,
                                                                                                 children: [
                                                                                                   Padding(
                                                                                                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
@@ -534,25 +579,71 @@ class _DeyeTeamTreeWidgetState extends State<DeyeTeamTreeWidget> {
                                                                                                       ),
                                                                                                     ),
                                                                                                   ),
-                                                                                                  Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 3.0),
-                                                                                                    child: Text(
-                                                                                                      serviceEngItem.userName,
-                                                                                                      style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                            fontSize: 12.0,
-                                                                                                            letterSpacing: 0.0,
-                                                                                                            fontWeight: FontWeight.w600,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                  Row(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                    children: [
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 3.0),
+                                                                                                        child: Text(
+                                                                                                          serviceEngItem.userName,
+                                                                                                          style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                fontSize: 12.0,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                fontWeight: FontWeight.w600,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                                                              ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      Builder(
+                                                                                                        builder: (context) => Padding(
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 5.0),
+                                                                                                          child: InkWell(
+                                                                                                            splashColor: Colors.transparent,
+                                                                                                            focusColor: Colors.transparent,
+                                                                                                            hoverColor: Colors.transparent,
+                                                                                                            highlightColor: Colors.transparent,
+                                                                                                            onTap: () async {
+                                                                                                              await showDialog(
+                                                                                                                context: context,
+                                                                                                                builder: (dialogContext) {
+                                                                                                                  return Dialog(
+                                                                                                                    elevation: 0,
+                                                                                                                    insetPadding: EdgeInsets.zero,
+                                                                                                                    backgroundColor: Colors.transparent,
+                                                                                                                    alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                                                    child: WebViewAware(
+                                                                                                                      child: GestureDetector(
+                                                                                                                        onTap: () {
+                                                                                                                          FocusScope.of(dialogContext).unfocus();
+                                                                                                                          FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                                        },
+                                                                                                                        child: MapTeamUpdateWidget(
+                                                                                                                          docId: serviceEngItem.id,
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                  );
+                                                                                                                },
+                                                                                                              );
+                                                                                                            },
+                                                                                                            child: Icon(
+                                                                                                              Icons.edit,
+                                                                                                              color: FlutterFlowTheme.of(context).customColor5,
+                                                                                                              size: 15.0,
+                                                                                                            ),
                                                                                                           ),
-                                                                                                    ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ],
                                                                                                   ),
                                                                                                   Text(
                                                                                                     serviceEngItem.roleInZone,
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ],

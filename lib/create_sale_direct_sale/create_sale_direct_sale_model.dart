@@ -97,10 +97,10 @@ class CreateSaleDirectSaleModel
   // State field(s) for Expandable widget.
   late ExpandableController expandableExpandableController;
 
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadDataR0 = false;
+  FFUploadedFile uploadedLocalFile_uploadDataR0 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_uploadDataR0 = '';
 
   @override
   void initState(BuildContext context) {}

@@ -156,6 +156,16 @@ class UserProfileRecord extends FirestoreRecord {
   List<UserAccesCStruct> get permissionList => _permissionList ?? const [];
   bool hasPermissionList() => _permissionList != null;
 
+  // "isDeleted" field.
+  bool? _isDeleted;
+  bool get isDeleted => _isDeleted ?? false;
+  bool hasIsDeleted() => _isDeleted != null;
+
+  // "avtarurl" field.
+  String? _avtarurl;
+  String get avtarurl => _avtarurl ?? '';
+  bool hasAvtarurl() => _avtarurl != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _active = snapshotData['active'] as bool?;
@@ -191,6 +201,8 @@ class UserProfileRecord extends FirestoreRecord {
       snapshotData['permissionList'],
       UserAccesCStruct.fromMap,
     );
+    _isDeleted = snapshotData['isDeleted'] as bool?;
+    _avtarurl = snapshotData['avtarurl'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -253,6 +265,8 @@ Map<String, dynamic> createUserProfileRecordData({
   int? code,
   String? quickPin,
   String? password,
+  bool? isDeleted,
+  String? avtarurl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -281,6 +295,8 @@ Map<String, dynamic> createUserProfileRecordData({
       'code': code,
       'quickPin': quickPin,
       'password': password,
+      'isDeleted': isDeleted,
+      'avtarurl': avtarurl,
     }.withoutNulls,
   );
 
@@ -320,7 +336,9 @@ class UserProfileRecordDocumentEquality implements Equality<UserProfileRecord> {
         e1?.quickPin == e2?.quickPin &&
         listEquality.equals(e1?.userAccessList, e2?.userAccessList) &&
         e1?.password == e2?.password &&
-        listEquality.equals(e1?.permissionList, e2?.permissionList);
+        listEquality.equals(e1?.permissionList, e2?.permissionList) &&
+        e1?.isDeleted == e2?.isDeleted &&
+        e1?.avtarurl == e2?.avtarurl;
   }
 
   @override
@@ -352,7 +370,9 @@ class UserProfileRecordDocumentEquality implements Equality<UserProfileRecord> {
         e?.quickPin,
         e?.userAccessList,
         e?.password,
-        e?.permissionList
+        e?.permissionList,
+        e?.isDeleted,
+        e?.avtarurl
       ]);
 
   @override

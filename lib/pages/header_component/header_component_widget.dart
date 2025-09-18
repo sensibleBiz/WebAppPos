@@ -2,10 +2,12 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -97,8 +99,8 @@ class _HeaderComponentWidgetState extends State<HeaderComponentWidget> {
                             color: Colors.black,
                             fontSize: 24.0,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).titleMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleMediumIsCustom,
                           ),
                     ),
                   ),
@@ -124,8 +126,8 @@ class _HeaderComponentWidgetState extends State<HeaderComponentWidget> {
                             color: Colors.black,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .labelMediumIsCustom,
                           ),
                       hintStyle: FlutterFlowTheme.of(context)
                           .labelMedium
@@ -133,8 +135,8 @@ class _HeaderComponentWidgetState extends State<HeaderComponentWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .labelMediumIsCustom,
                           ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -171,11 +173,21 @@ class _HeaderComponentWidgetState extends State<HeaderComponentWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyMediumFamily,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                         ),
                     validator:
                         _model.textController1Validator.asValidator(context),
+                    inputFormatters: [
+                      if (!isAndroid && !isiOS)
+                        TextInputFormatter.withFunction((oldValue, newValue) {
+                          return TextEditingValue(
+                            selection: newValue.selection,
+                            text: newValue.text
+                                .toCapitalization(TextCapitalization.words),
+                          );
+                        }),
+                    ],
                   ),
                 ),
               ),
@@ -207,8 +219,8 @@ class _HeaderComponentWidgetState extends State<HeaderComponentWidget> {
                             color: Colors.black,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .labelMediumIsCustom,
                           ),
                       hintStyle: FlutterFlowTheme.of(context)
                           .labelMedium
@@ -216,8 +228,8 @@ class _HeaderComponentWidgetState extends State<HeaderComponentWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .labelMediumIsCustom,
                           ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -254,8 +266,8 @@ class _HeaderComponentWidgetState extends State<HeaderComponentWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyMediumFamily,
                           letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                         ),
                     validator:
                         _model.textController2Validator.asValidator(context),
@@ -309,10 +321,9 @@ class _HeaderComponentWidgetState extends State<HeaderComponentWidget> {
                                             fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -410,10 +421,9 @@ class _HeaderComponentWidgetState extends State<HeaderComponentWidget> {
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),

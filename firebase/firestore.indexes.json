@@ -33,6 +33,20 @@
       ]
     },
     {
+      "collectionGroup": "CITIES",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "state",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "cityName",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "LEAD_ACTIVITIES",
       "queryScope": "COLLECTION",
       "fields": [
@@ -71,6 +85,38 @@
         {
           "fieldPath": "updatedDate",
           "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LEADS_MANAGEMENT",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "stage",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "updatedDate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LEAD_ACTIVITIES",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "type",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "scheduledDate",
+          "order": "ASCENDING"
         }
       ]
     },
@@ -185,20 +231,6 @@
       ]
     },
     {
-      "collectionGroup": "LEADS_MANAGEMENT",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "isDealerLead",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "createdDate",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
       "collectionGroup": "CATEGORY",
       "queryScope": "COLLECTION",
       "fields": [
@@ -269,30 +301,16 @@
       ]
     },
     {
-      "collectionGroup": "PRODUCT",
+      "collectionGroup": "TEAM_TREE",
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "category",
+          "fieldPath": "roleInZone",
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "name",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
-      "collectionGroup": "USER_PROFILE",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "outletId",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "name",
-          "order": "ASCENDING"
+          "fieldPath": "zoneList",
+          "arrayConfig": "CONTAINS"
         }
       ]
     },
@@ -325,15 +343,57 @@
       ]
     },
     {
+      "collectionGroup": "LEAD_ACTIVITIES",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "scheduledDate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "OUTLET_LEADS",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "logId",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "PRODUCT",
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "id",
+          "fieldPath": "category",
           "order": "ASCENDING"
         },
         {
           "fieldPath": "name",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "TEAM_TREE",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "zoneList",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "userName",
           "order": "ASCENDING"
         }
       ]
@@ -347,11 +407,21 @@
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "zone",
+          "fieldPath": "createdDate",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LEADS_MANAGEMENT",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "createdDate",
+          "fieldPath": "closeDateMili",
           "order": "DESCENDING"
         }
       ]
@@ -379,71 +449,11 @@
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "zone",
-          "order": "ASCENDING"
-        },
-        {
           "fieldPath": "logId",
           "order": "ASCENDING"
-        }
-      ]
-    },
-    {
-      "collectionGroup": "LEADS_MANAGEMENT",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "zone",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "createdDate",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
-      "collectionGroup": "STATE",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "zone",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "name",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
-      "collectionGroup": "CITIES",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "state",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "cityName",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
-      "collectionGroup": "LEADS_MANAGEMENT",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "assignedTo",
-          "order": "ASCENDING"
         },
         {
           "fieldPath": "zone",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "createdDate",
           "order": "ASCENDING"
         }
       ]
@@ -457,8 +467,192 @@
           "order": "ASCENDING"
         },
         {
+          "fieldPath": "zone",
+          "order": "ASCENDING"
+        },
+        {
           "fieldPath": "createdDate",
           "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LEADS_MANAGEMENT",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "zone",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdDate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "CHECKIN_STATUS",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "updatedDate",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LEADS_MANAGEMENT",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "assignedTo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdDate",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LEADS_MANAGEMENT",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "assignedTo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdDate",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LEAD_FOLLOW_UP",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "leadMRefId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "date",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "CATEGORY",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isDeleted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "name",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "USER_PROFILE",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isDeleted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "outlets",
+          "arrayConfig": "CONTAINS"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "OUTLET_LEADS",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdDateTime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "DEALER_ACTIVITY",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "dealerId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "scheduleDate",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "LEAVE_APPLICATION",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "fromDate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "TEAM_TREE",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isActive",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "onRole",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "zoneList",
+          "arrayConfig": "CONTAINS"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "TEAM_TREE",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isActive",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "team",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "userName",
+          "order": "ASCENDING"
         }
       ]
     },

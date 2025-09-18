@@ -2,6 +2,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -79,13 +80,13 @@ class _StagesDropDownWidgetState extends State<StagesDropDownWidget> {
         );
         safeSetState(() {});
       },
-      width: 200.0,
-      height: 40.0,
+      width: 150.0,
+      height: 30.0,
       textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+            fontSize: 12.0,
             letterSpacing: 0.0,
-            useGoogleFonts: GoogleFonts.asMap()
-                .containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
           ),
       hintText: 'Select...',
       icon: Icon(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'flutter_flow/request_manager.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/api_requests/api_manager.dart';
@@ -604,6 +605,100 @@ class FFAppState extends ChangeNotifier {
               .withoutNulls
               .toList() ??
           _stageListPermissionState;
+    });
+    _safeInit(() {
+      _cities = prefs
+              .getStringList('ff_cities')
+              ?.map((x) {
+                try {
+                  return CityListStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _cities;
+    });
+    _safeInit(() {
+      _states = prefs
+              .getStringList('ff_states')
+              ?.map((x) {
+                try {
+                  return StatesStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _states;
+    });
+    _safeInit(() {
+      _productsList = prefs
+              .getStringList('ff_productsList')
+              ?.map((x) {
+                try {
+                  return ProductDataTypeStruct.fromSerializableMap(
+                      jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _productsList;
+    });
+    _safeInit(() {
+      _categoryList = prefs
+              .getStringList('ff_categoryList')
+              ?.map((x) {
+                try {
+                  return CategoryDataTypeStruct.fromSerializableMap(
+                      jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _categoryList;
+    });
+    _safeInit(() {
+      _TeamTreeUsers = prefs
+              .getStringList('ff_TeamTreeUsers')
+              ?.map((x) {
+                try {
+                  return TeamTreeDatatypeStruct.fromSerializableMap(
+                      jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _TeamTreeUsers;
+    });
+    _safeInit(() {
+      _curUserName = prefs.getString('ff_curUserName') ?? _curUserName;
+    });
+    _safeInit(() {
+      _isLoggedIn = prefs.getBool('ff_isLoggedIn') ?? _isLoggedIn;
+    });
+    _safeInit(() {
+      _roleInZone = prefs.getString('ff_roleInZone') ?? _roleInZone;
+    });
+    _safeInit(() {
+      _currentLoggedInUserId =
+          prefs.getString('ff_currentLoggedInUserId') ?? _currentLoggedInUserId;
+    });
+    _safeInit(() {
+      _demoOutlet = prefs.getString('ff_demoOutlet')?.ref ?? _demoOutlet;
     });
   }
 
@@ -3103,6 +3198,327 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInEmptyList(int index, String value) {
     emptyList.insert(index, value);
   }
+
+  String _selectedItem = '';
+  String get selectedItem => _selectedItem;
+  set selectedItem(String value) {
+    _selectedItem = value;
+  }
+
+  List<CustFeedbackStruct> _emptyFeedbackList = [];
+  List<CustFeedbackStruct> get emptyFeedbackList => _emptyFeedbackList;
+  set emptyFeedbackList(List<CustFeedbackStruct> value) {
+    _emptyFeedbackList = value;
+  }
+
+  void addToEmptyFeedbackList(CustFeedbackStruct value) {
+    emptyFeedbackList.add(value);
+  }
+
+  void removeFromEmptyFeedbackList(CustFeedbackStruct value) {
+    emptyFeedbackList.remove(value);
+  }
+
+  void removeAtIndexFromEmptyFeedbackList(int index) {
+    emptyFeedbackList.removeAt(index);
+  }
+
+  void updateEmptyFeedbackListAtIndex(
+    int index,
+    CustFeedbackStruct Function(CustFeedbackStruct) updateFn,
+  ) {
+    emptyFeedbackList[index] = updateFn(_emptyFeedbackList[index]);
+  }
+
+  void insertAtIndexInEmptyFeedbackList(int index, CustFeedbackStruct value) {
+    emptyFeedbackList.insert(index, value);
+  }
+
+  double _avgRating = 0.0;
+  double get avgRating => _avgRating;
+  set avgRating(double value) {
+    _avgRating = value;
+  }
+
+  String _stateZone = '';
+  String get stateZone => _stateZone;
+  set stateZone(String value) {
+    _stateZone = value;
+  }
+
+  List<CityListStruct> _cities = [];
+  List<CityListStruct> get cities => _cities;
+  set cities(List<CityListStruct> value) {
+    _cities = value;
+    prefs.setStringList('ff_cities', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToCities(CityListStruct value) {
+    cities.add(value);
+    prefs.setStringList(
+        'ff_cities', _cities.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromCities(CityListStruct value) {
+    cities.remove(value);
+    prefs.setStringList(
+        'ff_cities', _cities.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromCities(int index) {
+    cities.removeAt(index);
+    prefs.setStringList(
+        'ff_cities', _cities.map((x) => x.serialize()).toList());
+  }
+
+  void updateCitiesAtIndex(
+    int index,
+    CityListStruct Function(CityListStruct) updateFn,
+  ) {
+    cities[index] = updateFn(_cities[index]);
+    prefs.setStringList(
+        'ff_cities', _cities.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInCities(int index, CityListStruct value) {
+    cities.insert(index, value);
+    prefs.setStringList(
+        'ff_cities', _cities.map((x) => x.serialize()).toList());
+  }
+
+  List<StatesStruct> _states = [];
+  List<StatesStruct> get states => _states;
+  set states(List<StatesStruct> value) {
+    _states = value;
+    prefs.setStringList('ff_states', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToStates(StatesStruct value) {
+    states.add(value);
+    prefs.setStringList(
+        'ff_states', _states.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromStates(StatesStruct value) {
+    states.remove(value);
+    prefs.setStringList(
+        'ff_states', _states.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromStates(int index) {
+    states.removeAt(index);
+    prefs.setStringList(
+        'ff_states', _states.map((x) => x.serialize()).toList());
+  }
+
+  void updateStatesAtIndex(
+    int index,
+    StatesStruct Function(StatesStruct) updateFn,
+  ) {
+    states[index] = updateFn(_states[index]);
+    prefs.setStringList(
+        'ff_states', _states.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInStates(int index, StatesStruct value) {
+    states.insert(index, value);
+    prefs.setStringList(
+        'ff_states', _states.map((x) => x.serialize()).toList());
+  }
+
+  List<ProductDataTypeStruct> _productsList = [];
+  List<ProductDataTypeStruct> get productsList => _productsList;
+  set productsList(List<ProductDataTypeStruct> value) {
+    _productsList = value;
+    prefs.setStringList(
+        'ff_productsList', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToProductsList(ProductDataTypeStruct value) {
+    productsList.add(value);
+    prefs.setStringList(
+        'ff_productsList', _productsList.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromProductsList(ProductDataTypeStruct value) {
+    productsList.remove(value);
+    prefs.setStringList(
+        'ff_productsList', _productsList.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromProductsList(int index) {
+    productsList.removeAt(index);
+    prefs.setStringList(
+        'ff_productsList', _productsList.map((x) => x.serialize()).toList());
+  }
+
+  void updateProductsListAtIndex(
+    int index,
+    ProductDataTypeStruct Function(ProductDataTypeStruct) updateFn,
+  ) {
+    productsList[index] = updateFn(_productsList[index]);
+    prefs.setStringList(
+        'ff_productsList', _productsList.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInProductsList(int index, ProductDataTypeStruct value) {
+    productsList.insert(index, value);
+    prefs.setStringList(
+        'ff_productsList', _productsList.map((x) => x.serialize()).toList());
+  }
+
+  List<CategoryDataTypeStruct> _categoryList = [];
+  List<CategoryDataTypeStruct> get categoryList => _categoryList;
+  set categoryList(List<CategoryDataTypeStruct> value) {
+    _categoryList = value;
+    prefs.setStringList(
+        'ff_categoryList', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToCategoryList(CategoryDataTypeStruct value) {
+    categoryList.add(value);
+    prefs.setStringList(
+        'ff_categoryList', _categoryList.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromCategoryList(CategoryDataTypeStruct value) {
+    categoryList.remove(value);
+    prefs.setStringList(
+        'ff_categoryList', _categoryList.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromCategoryList(int index) {
+    categoryList.removeAt(index);
+    prefs.setStringList(
+        'ff_categoryList', _categoryList.map((x) => x.serialize()).toList());
+  }
+
+  void updateCategoryListAtIndex(
+    int index,
+    CategoryDataTypeStruct Function(CategoryDataTypeStruct) updateFn,
+  ) {
+    categoryList[index] = updateFn(_categoryList[index]);
+    prefs.setStringList(
+        'ff_categoryList', _categoryList.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInCategoryList(int index, CategoryDataTypeStruct value) {
+    categoryList.insert(index, value);
+    prefs.setStringList(
+        'ff_categoryList', _categoryList.map((x) => x.serialize()).toList());
+  }
+
+  List<TeamTreeDatatypeStruct> _TeamTreeUsers = [];
+  List<TeamTreeDatatypeStruct> get TeamTreeUsers => _TeamTreeUsers;
+  set TeamTreeUsers(List<TeamTreeDatatypeStruct> value) {
+    _TeamTreeUsers = value;
+    prefs.setStringList(
+        'ff_TeamTreeUsers', value.map((x) => x.serialize()).toList());
+  }
+
+  void addToTeamTreeUsers(TeamTreeDatatypeStruct value) {
+    TeamTreeUsers.add(value);
+    prefs.setStringList(
+        'ff_TeamTreeUsers', _TeamTreeUsers.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromTeamTreeUsers(TeamTreeDatatypeStruct value) {
+    TeamTreeUsers.remove(value);
+    prefs.setStringList(
+        'ff_TeamTreeUsers', _TeamTreeUsers.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromTeamTreeUsers(int index) {
+    TeamTreeUsers.removeAt(index);
+    prefs.setStringList(
+        'ff_TeamTreeUsers', _TeamTreeUsers.map((x) => x.serialize()).toList());
+  }
+
+  void updateTeamTreeUsersAtIndex(
+    int index,
+    TeamTreeDatatypeStruct Function(TeamTreeDatatypeStruct) updateFn,
+  ) {
+    TeamTreeUsers[index] = updateFn(_TeamTreeUsers[index]);
+    prefs.setStringList(
+        'ff_TeamTreeUsers', _TeamTreeUsers.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInTeamTreeUsers(int index, TeamTreeDatatypeStruct value) {
+    TeamTreeUsers.insert(index, value);
+    prefs.setStringList(
+        'ff_TeamTreeUsers', _TeamTreeUsers.map((x) => x.serialize()).toList());
+  }
+
+  String _curUserName = '';
+  String get curUserName => _curUserName;
+  set curUserName(String value) {
+    _curUserName = value;
+    prefs.setString('ff_curUserName', value);
+  }
+
+  int _TotalLostLeads = 0;
+  int get TotalLostLeads => _TotalLostLeads;
+  set TotalLostLeads(int value) {
+    _TotalLostLeads = value;
+  }
+
+  bool _isLoggedIn = false;
+  bool get isLoggedIn => _isLoggedIn;
+  set isLoggedIn(bool value) {
+    _isLoggedIn = value;
+    prefs.setBool('ff_isLoggedIn', value);
+  }
+
+  bool _isOnboard = false;
+  bool get isOnboard => _isOnboard;
+  set isOnboard(bool value) {
+    _isOnboard = value;
+  }
+
+  String _roleInZone = '';
+  String get roleInZone => _roleInZone;
+  set roleInZone(String value) {
+    _roleInZone = value;
+    prefs.setString('ff_roleInZone', value);
+  }
+
+  String _currentLoggedInUserId = '';
+  String get currentLoggedInUserId => _currentLoggedInUserId;
+  set currentLoggedInUserId(String value) {
+    _currentLoggedInUserId = value;
+    prefs.setString('ff_currentLoggedInUserId', value);
+  }
+
+  DateTime? _endDateForAtt;
+  DateTime? get endDateForAtt => _endDateForAtt;
+  set endDateForAtt(DateTime? value) {
+    _endDateForAtt = value;
+  }
+
+  DocumentReference? _demoOutlet =
+      FirebaseFirestore.instance.doc('/OUTLET/uoYCpp2wsYUrPrSnr0sD');
+  DocumentReference? get demoOutlet => _demoOutlet;
+  set demoOutlet(DocumentReference? value) {
+    _demoOutlet = value;
+    value != null
+        ? prefs.setString('ff_demoOutlet', value.path)
+        : prefs.remove('ff_demoOutlet');
+  }
+
+  final _dealersManager = StreamRequestManager<List<DealersRecord>>();
+  Stream<List<DealersRecord>> dealers({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Stream<List<DealersRecord>> Function() requestFn,
+  }) =>
+      _dealersManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearDealersCache() => _dealersManager.clear();
+  void clearDealersCacheKey(String? uniqueKey) =>
+      _dealersManager.clearRequest(uniqueKey);
 }
 
 void _safeInit(Function() initializeField) {

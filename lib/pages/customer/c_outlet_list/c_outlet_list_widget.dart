@@ -191,12 +191,10 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                       context)
                                                                   .headlineLargeFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -373,7 +371,7 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                     style: FlutterFlowTheme.of(context).displayMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).displayMediumFamily,
                                                                                           letterSpacing: 0.0,
-                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).displayMediumFamily),
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).displayMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -414,22 +412,20 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                 0.0, 10.0),
                                                     child: Text(
                                                       'Outlet List',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .headlineLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .headlineLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Expanded(
@@ -517,6 +513,23 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                             outletId:
                                                                                 FFAppState().outletId,
                                                                           ));
+                                                                          _model.teamTreeDocs =
+                                                                              await queryTeamTreeRecordCount(
+                                                                            parent:
+                                                                                list1Item.reference,
+                                                                          );
+                                                                          if (_model.teamTreeDocs! <=
+                                                                              0) {
+                                                                            context.pushNamed(
+                                                                              TeamTreeMasterWidget.routeName,
+                                                                              queryParameters: {
+                                                                                'list': serializeParam(
+                                                                                  '',
+                                                                                  ParamType.String,
+                                                                                ),
+                                                                              }.withoutNulls,
+                                                                            );
+                                                                          }
                                                                           if (FFAppState().billingType ==
                                                                               'CRM') {
                                                                             _model.teamTREE =
@@ -528,6 +541,22 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                               ),
                                                                               singleRecord: true,
                                                                             ).then((s) => s.firstOrNull);
+                                                                            _model.categoryDocs =
+                                                                                await queryCategoryRecordOnce(
+                                                                              parent: FFAppState().outletRef,
+                                                                              queryBuilder: (categoryRecord) => categoryRecord.where(
+                                                                                'isDeleted',
+                                                                                isEqualTo: false,
+                                                                              ),
+                                                                            );
+                                                                            _model.productDocs =
+                                                                                await queryProductRecordOnce(
+                                                                              parent: FFAppState().outletRef,
+                                                                              queryBuilder: (productRecord) => productRecord.where(
+                                                                                'isDeleted',
+                                                                                isEqualTo: false,
+                                                                              ),
+                                                                            );
                                                                             FFAppState().zone =
                                                                                 _model.teamTREE!.zone;
                                                                             FFAppState().currentUserZoneList =
@@ -535,6 +564,11 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                             FFAppState().stageListPermissionState =
                                                                                 _model.teamTREE!.stageAccessList.toList().cast<StageAccessDataTypeStruct>();
                                                                             safeSetState(() {});
+                                                                            FFAppState().categoryList =
+                                                                                functions.addCategoryList(_model.categoryDocs!.toList()).toList().cast<CategoryDataTypeStruct>();
+                                                                            FFAppState().productsList =
+                                                                                functions.addProductLis(_model.productDocs!.toList()).toList().cast<ProductDataTypeStruct>();
+                                                                            FFAppState().update(() {});
                                                                             if (FFAppState().loggedInUserPermisions.elementAtOrNull(16)?.value ==
                                                                                 4) {
                                                                               context.pushNamed(DeyeDashboardSupportWidget.routeName);
@@ -543,11 +577,9 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                 (_model.teamTREE?.roleInZone == 'manager')) {
                                                                               FFAppState().readOnlyAccess = true;
                                                                               safeSetState(() {});
-
-                                                                              context.pushNamed(DeyeDashboardEXPANDWidget.routeName);
-                                                                            } else {
-                                                                              context.pushNamed(DeyeDashboardEXPANDWidget.routeName);
                                                                             }
+
+                                                                            context.pushNamed(DeyeDashboardCopyWidget.routeName);
                                                                           } else {
                                                                             context.pushNamed(
                                                                               CDashWidget.routeName,
@@ -621,7 +653,7 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                                                           letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ],
@@ -653,7 +685,7 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -664,7 +696,7 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -682,7 +714,7 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                       Padding(
@@ -692,7 +724,7 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 letterSpacing: 0.0,
-                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -708,7 +740,7 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                     Padding(
@@ -718,7 +750,7 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -727,7 +759,7 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                   ],

@@ -158,13 +158,14 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                               width: 100.0,
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: Image.asset(
-                                    'assets/images/5500876_2648569.jpg',
-                                  ).image,
+                                gradient: LinearGradient(
+                                  colors: [
+                                    FlutterFlowTheme.of(context).customColor6,
+                                    FlutterFlowTheme.of(context).secondary
+                                  ],
+                                  stops: [0.0, 1.0],
+                                  begin: AlignmentDirectional(0.0, -1.0),
+                                  end: AlignmentDirectional(0, 1.0),
                                 ),
                               ),
                               child: Padding(
@@ -191,8 +192,7 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                           ),
                                           onPressed: () async {
                                             context.pushNamed(
-                                                DeyeDashboardEXPANDWidget
-                                                    .routeName);
+                                                DeyeDashboardWidget.routeName);
                                           },
                                         ),
                                         Text(
@@ -207,11 +207,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBtnText,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(FlutterFlowTheme
-                                                            .of(context)
-                                                        .headlineLargeFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLargeIsCustom,
                                               ),
                                         ),
                                       ],
@@ -268,12 +267,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                   .of(context)
                                                               .primaryBackground,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                               ),
                                               Text(
@@ -297,12 +294,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w300,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                               ),
                                               StreamBuilder<
@@ -370,12 +365,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w300,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLargeFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
                                                         ),
                                                   );
                                                 },
@@ -450,11 +443,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                     .labelLargeFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLargeIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -481,11 +473,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 fontSize: 20.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -513,11 +504,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                     .bodySmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmallIsCustom,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -589,16 +579,30 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       context)
                                                                   .titleMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                     validator: _model
                                                         .usernameTextControllerValidator
                                                         .asValidator(context),
+                                                    inputFormatters: [
+                                                      if (!isAndroid && !isiOS)
+                                                        TextInputFormatter
+                                                            .withFunction(
+                                                                (oldValue,
+                                                                    newValue) {
+                                                          return TextEditingValue(
+                                                            selection: newValue
+                                                                .selection,
+                                                            text: newValue.text
+                                                                .toCapitalization(
+                                                                    TextCapitalization
+                                                                        .characters),
+                                                          );
+                                                        }),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
@@ -632,11 +636,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                     .labelLargeFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLargeIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -663,11 +666,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 fontSize: 20.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -692,11 +694,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                     .bodySmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmallIsCustom,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -768,12 +769,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       context)
                                                                   .titleMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
                                                         ),
                                                     maxLength: 10,
                                                     maxLengthEnforcement:
@@ -839,11 +838,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                     .bodyLargeFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyLargeFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLargeIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -875,10 +873,9 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                               .bodySmallFamily,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodySmallIsCustom,
                                                                     ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
@@ -958,11 +955,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                     .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                           keyboardType:
                                                               TextInputType
@@ -1008,11 +1004,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .labelLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLargeIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -1036,11 +1031,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .bodySmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmallIsCustom,
                                                                 ),
                                                         enabledBorder:
                                                             OutlineInputBorder(
@@ -1110,22 +1104,20 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                           size: 20.0,
                                                         ),
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .titleMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleMediumFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumIsCustom,
+                                                          ),
                                                       keyboardType:
                                                           TextInputType
                                                               .emailAddress,
@@ -1166,11 +1158,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                     .labelLargeFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLargeIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -1197,11 +1188,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 fontSize: 20.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -1211,23 +1201,14 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                     child: StreamBuilder<
                                                         List<StateRecord>>(
                                                       stream: queryStateRecord(
-                                                        queryBuilder:
-                                                            (stateRecord) =>
-                                                                stateRecord
-                                                                    .where(
-                                                          'zone',
-                                                          isEqualTo: FFAppState()
-                                                                      .zone ==
-                                                                  'SOUTH'
-                                                              ? 'NORTH'
-                                                              : 'WEST' != ''
-                                                                  ? FFAppState()
-                                                                              .zone ==
-                                                                          'SOUTH'
-                                                                      ? 'NORTH'
-                                                                      : 'WEST'
-                                                                  : null,
-                                                        ),
+                                                        queryBuilder: (stateRecord) =>
+                                                            stateRecord.whereIn(
+                                                                'zone',
+                                                                FFAppState().currentUserZoneList !=
+                                                                        ''
+                                                                    ? FFAppState()
+                                                                        .currentUserZoneList
+                                                                    : null),
                                                       ),
                                                       builder:
                                                           (context, snapshot) {
@@ -1266,18 +1247,27 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                   controller: _model
                                                                           .dropDownstateValueController ??=
                                                                       FormFieldController<
-                                                                          String>(
-                                                                    _model.dropDownstateValue ??=
-                                                                        'Select State',
-                                                                  ),
+                                                                              String>(
+                                                                          null),
                                                                   options: containerStateRecordList
                                                                       .map((e) =>
                                                                           e.name)
                                                                       .toList(),
-                                                                  onChanged: (val) =>
-                                                                      safeSetState(() =>
-                                                                          _model.dropDownstateValue =
-                                                                              val),
+                                                                  onChanged:
+                                                                      (val) async {
+                                                                    safeSetState(() =>
+                                                                        _model.dropDownstateValue =
+                                                                            val);
+                                                                    _model.selectedZone = containerStateRecordList
+                                                                        .where((e) =>
+                                                                            e.name ==
+                                                                            _model.dropDownstateValue)
+                                                                        .toList()
+                                                                        .firstOrNull!
+                                                                        .zone;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
                                                                   width: 90.0,
                                                                   height: 50.0,
                                                                   searchHintTextStyle:
@@ -1291,7 +1281,7 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                   textStyle: FlutterFlowTheme.of(
                                                                           context)
@@ -1304,7 +1294,7 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                   searchHintText:
                                                                       'Search State Here...',
@@ -1337,6 +1327,8 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                           12.0),
                                                                   hidesUnderline:
                                                                       true,
+                                                                  isOverButton:
+                                                                      false,
                                                                   isSearchable:
                                                                       true,
                                                                   isMultiSelect:
@@ -1429,7 +1421,7 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                           fontWeight:
                                                                               FontWeight.w600,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                         ),
                                                                     elevation:
                                                                         0.0,
@@ -1500,11 +1492,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .labelLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLargeIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -1582,7 +1573,7 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                            !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                       ),
                                                                   searchTextStyle: FlutterFlowTheme.of(
                                                                           context)
@@ -1593,7 +1584,7 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                   textStyle: FlutterFlowTheme.of(
                                                                           context)
@@ -1606,7 +1597,7 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
                                                                   searchHintText:
                                                                       'Search city here...',
@@ -1639,6 +1630,8 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                           12.0),
                                                                   hidesUnderline:
                                                                       true,
+                                                                  isOverButton:
+                                                                      false,
                                                                   isSearchable:
                                                                       true,
                                                                   isMultiSelect:
@@ -1653,8 +1646,9 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       () async {
                                                                     _model.len =
                                                                         await actions
-                                                                            .genarateCityCode(
-                                                                      containerCitiesRecordList
+                                                                            .genarateCityListCode(
+                                                                      FFAppState()
+                                                                          .cities
                                                                           .toList(),
                                                                     );
                                                                     await showDialog(
@@ -1731,7 +1725,7 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                           fontWeight:
                                                                               FontWeight.w600,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                         ),
                                                                     elevation:
                                                                         0.0,
@@ -1772,22 +1766,20 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 0.0, 4.0),
                                                     child: Text(
                                                       'Area',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   Container(
@@ -1812,11 +1804,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .bodySmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmallIsCustom,
                                                                 ),
                                                         enabledBorder:
                                                             OutlineInputBorder(
@@ -1886,22 +1877,20 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                           size: 20.0,
                                                         ),
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMediumFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                       validator: _model
                                                           .areaTextControllerValidator
                                                           .asValidator(context),
@@ -1950,11 +1939,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .labelLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLargeIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -1978,11 +1966,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .bodySmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmallIsCustom,
                                                                 ),
                                                         enabledBorder:
                                                             OutlineInputBorder(
@@ -2045,22 +2032,20 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMediumFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                       validator: _model
                                                           .purchasefromTextControllerValidator
                                                           .asValidator(context),
@@ -2098,11 +2083,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                     .labelLargeFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLargeIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -2129,156 +2113,118 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 fontSize: 20.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
                                                     ],
                                                   ),
-                                                  StreamBuilder<
-                                                      List<CategoryRecord>>(
-                                                    stream: queryCategoryRecord(
-                                                      parent: FFAppState()
-                                                          .outletRef,
-                                                      queryBuilder:
-                                                          (categoryRecord) =>
-                                                              categoryRecord
-                                                                  .orderBy(
-                                                                      'name'),
+                                                  FlutterFlowDropDown<String>(
+                                                    controller: _model
+                                                            .dropDownProductNameValueController ??=
+                                                        FormFieldController<
+                                                            String>(
+                                                      _model.dropDownProductNameValue ??=
+                                                          '',
                                                     ),
-                                                    builder:
-                                                        (context, snapshot) {
-                                                      // Customize what your widget looks like when it's loading.
-                                                      if (!snapshot.hasData) {
-                                                        return Center(
-                                                          child: SizedBox(
-                                                            width: 30.0,
-                                                            height: 30.0,
-                                                            child: SpinKitRing(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              size: 30.0,
-                                                            ),
-                                                          ),
-                                                        );
-                                                      }
-                                                      List<CategoryRecord>
-                                                          dropDownProductNameCategoryRecordList =
-                                                          snapshot.data!;
-
-                                                      return FlutterFlowDropDown<
-                                                          String>(
-                                                        controller: _model
-                                                                .dropDownProductNameValueController ??=
-                                                            FormFieldController<
-                                                                String>(
-                                                          _model.dropDownProductNameValue ??=
-                                                              '',
-                                                        ),
-                                                        options: List<
-                                                                String>.from(
-                                                            dropDownProductNameCategoryRecordList
-                                                                .map(
-                                                                    (e) => e.id)
-                                                                .toList()),
-                                                        optionLabels:
-                                                            dropDownProductNameCategoryRecordList
-                                                                .map((e) =>
-                                                                    e.name)
-                                                                .toList(),
-                                                        onChanged: (val) =>
-                                                            safeSetState(() =>
-                                                                _model.dropDownProductNameValue =
-                                                                    val),
-                                                        width: double.infinity,
-                                                        height: 50.0,
-                                                        searchHintTextStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
+                                                    options: List<String>.from(
+                                                        FFAppState()
+                                                            .categoryList
+                                                            .map((e) => e.id)
+                                                            .toList()),
+                                                    optionLabels: FFAppState()
+                                                        .categoryList
+                                                        .map((e) => e.name)
+                                                        .toList(),
+                                                    onChanged: (val) =>
+                                                        safeSetState(() => _model
+                                                                .dropDownProductNameValue =
+                                                            val),
+                                                    width: double.infinity,
+                                                    height: 50.0,
+                                                    searchHintTextStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleSmallFamily,
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleSmallFamily),
-                                                                ),
-                                                        searchTextStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
+                                                              fontSize: 16.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallIsCustom,
+                                                            ),
+                                                    searchTextStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodySmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumIsCustom,
+                                                            ),
+                                                    textStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodySmallFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily),
-                                                                ),
-                                                        searchHintText:
-                                                            'Search Product....',
-                                                        icon: Icon(
-                                                          Icons
-                                                              .keyboard_arrow_down,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmallIsCustom,
+                                                            ),
+                                                    searchHintText:
+                                                        'Search Product....',
+                                                    icon: Icon(
+                                                      Icons.keyboard_arrow_down,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primary,
-                                                          size: 25.0,
-                                                        ),
-                                                        fillColor: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        elevation: 2.0,
-                                                        borderColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .customColor1,
-                                                        borderWidth: 0.0,
-                                                        borderRadius: 10.0,
-                                                        margin:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    20.0,
-                                                                    12.0,
-                                                                    20.0,
-                                                                    12.0),
-                                                        hidesUnderline: true,
-                                                        isSearchable: true,
-                                                        isMultiSelect: false,
-                                                      );
-                                                    },
+                                                      size: 25.0,
+                                                    ),
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                    elevation: 2.0,
+                                                    borderColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .customColor1,
+                                                    borderWidth: 0.0,
+                                                    borderRadius: 10.0,
+                                                    margin:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                20.0,
+                                                                12.0,
+                                                                20.0,
+                                                                12.0),
+                                                    hidesUnderline: true,
+                                                    isOverButton: false,
+                                                    isSearchable: true,
+                                                    isMultiSelect: false,
                                                   ),
                                                 ],
                                               ),
@@ -2311,11 +2257,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .bodyLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLargeIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -2347,10 +2292,9 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                             .bodySmallFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodySmallIsCustom,
                                                                   ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
@@ -2430,11 +2374,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .bodyMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                         keyboardType:
                                                             TextInputType
@@ -2491,11 +2434,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .labelLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLargeIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -2523,162 +2465,133 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       20.0,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
                                                       ],
                                                     ),
-                                                    StreamBuilder<
-                                                        List<ProductRecord>>(
-                                                      stream:
-                                                          queryProductRecord(
-                                                        parent: FFAppState()
-                                                            .outletRef,
-                                                        queryBuilder:
-                                                            (productRecord) =>
-                                                                productRecord
-                                                                    .where(
-                                                                      'category',
-                                                                      isEqualTo:
-                                                                          _model
-                                                                              .dropDownProductNameValue,
-                                                                    )
-                                                                    .orderBy(
-                                                                        'name'),
+                                                    FlutterFlowDropDown<String>(
+                                                      controller: _model
+                                                              .dropDownProductionCapacityValueController ??=
+                                                          FormFieldController<
+                                                              String>(
+                                                        _model.dropDownProductionCapacityValue ??=
+                                                            '',
                                                       ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 30.0,
-                                                              height: 30.0,
-                                                              child:
-                                                                  SpinKitRing(
-                                                                color: FlutterFlowTheme.of(
+                                                      options: List<String>.from(FFAppState()
+                                                          .productsList
+                                                          .where((e) =>
+                                                              (_model.dropDownProductNameValue !=
+                                                                      null &&
+                                                                  _model.dropDownProductNameValue !=
+                                                                      '') &&
+                                                              (e.category ==
+                                                                  _model
+                                                                      .dropDownProductNameValue))
+                                                          .toList()
+                                                          .map((e) => e.id)
+                                                          .toList()),
+                                                      optionLabels: FFAppState()
+                                                          .productsList
+                                                          .where((e) =>
+                                                              (_model.dropDownProductNameValue !=
+                                                                      null &&
+                                                                  _model.dropDownProductNameValue !=
+                                                                      '') &&
+                                                              (e.category ==
+                                                                  _model
+                                                                      .dropDownProductNameValue))
+                                                          .toList()
+                                                          .map((e) => e.name)
+                                                          .toList(),
+                                                      onChanged: (val) =>
+                                                          safeSetState(() =>
+                                                              _model.dropDownProductionCapacityValue =
+                                                                  val),
+                                                      width: double.infinity,
+                                                      height: 50.0,
+                                                      searchHintTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primary,
-                                                                size: 30.0,
+                                                                    .titleSmallFamily,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmallIsCustom,
                                                               ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        List<ProductRecord>
-                                                            dropDownProductionCapacityProductRecordList =
-                                                            snapshot.data!;
-
-                                                        return FlutterFlowDropDown<
-                                                            String>(
-                                                          controller: _model
-                                                                  .dropDownProductionCapacityValueController ??=
-                                                              FormFieldController<
-                                                                  String>(
-                                                            _model.dropDownProductionCapacityValue ??=
-                                                                '',
-                                                          ),
-                                                          options: List<
-                                                                  String>.from(
-                                                              dropDownProductionCapacityProductRecordList
-                                                                  .map((e) =>
-                                                                      e.id)
-                                                                  .toList()),
-                                                          optionLabels:
-                                                              dropDownProductionCapacityProductRecordList
-                                                                  .map((e) =>
-                                                                      e.name)
-                                                                  .toList(),
-                                                          onChanged: (val) =>
-                                                              safeSetState(() =>
-                                                                  _model.dropDownProductionCapacityValue =
-                                                                      val),
-                                                          width:
-                                                              double.infinity,
-                                                          height: 50.0,
-                                                          searchHintTextStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleSmallFamily,
-                                                                    fontSize:
-                                                                        16.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                  ),
-                                                          searchTextStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                  ),
-                                                          textStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                  ),
-                                                          searchHintText:
-                                                              'Search Product capacity...',
-                                                          icon: Icon(
-                                                            Icons
-                                                                .keyboard_arrow_down,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
+                                                      searchTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
+                                                              ),
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmallIsCustom,
+                                                              ),
+                                                      searchHintText:
+                                                          'Search Product capacity...',
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
                                                                 .primary,
-                                                            size: 25.0,
-                                                          ),
-                                                          fillColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          elevation: 2.0,
-                                                          borderColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .customColor1,
-                                                          borderWidth: 0.0,
-                                                          borderRadius: 10.0,
-                                                          margin:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      20.0,
-                                                                      12.0,
-                                                                      20.0,
-                                                                      12.0),
-                                                          hidesUnderline: true,
-                                                          isSearchable: true,
-                                                          isMultiSelect: false,
-                                                        );
-                                                      },
+                                                        size: 25.0,
+                                                      ),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      elevation: 2.0,
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .customColor1,
+                                                      borderWidth: 0.0,
+                                                      borderRadius: 10.0,
+                                                      margin:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  20.0,
+                                                                  12.0,
+                                                                  20.0,
+                                                                  12.0),
+                                                      hidesUnderline: true,
+                                                      isOverButton: false,
+                                                      isSearchable: true,
+                                                      isMultiSelect: false,
                                                     ),
                                                   ],
                                                 ),
@@ -2697,22 +2610,20 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 0.0, 4.0),
                                                     child: Text(
                                                       'Serial Number',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeIsCustom,
+                                                          ),
                                                     ),
                                                   ),
                                                   TextFormField(
@@ -2734,11 +2645,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                     .bodySmallFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmallIsCustom,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -2802,12 +2712,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       context)
                                                                   .bodyMediumFamily,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                     validator: _model
                                                         .serialNumberTextControllerValidator
@@ -2844,11 +2752,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .bodyLargeFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyLargeFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLargeIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -2880,10 +2787,9 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                             .bodySmallFamily,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodySmallIsCustom,
                                                                   ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
@@ -2963,11 +2869,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .bodyMediumFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                         keyboardType:
                                                             TextInputType
@@ -3019,11 +2924,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                     .labelLargeFamily,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLargeIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -3050,11 +2954,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 fontSize: 20.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -3082,11 +2985,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       .bodySmallFamily,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmallIsCustom,
                                                                 ),
                                                         enabledBorder:
                                                             OutlineInputBorder(
@@ -3149,22 +3051,20 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMediumFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                       maxLines: 5,
                                                       validator: _model
                                                           .requirementTextControllerValidator
@@ -3343,7 +3243,8 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                         yearId: functions
                                                             .getYearId(),
                                                         comments: '',
-                                                        zone: FFAppState().zone,
+                                                        zone:
+                                                            _model.selectedZone,
                                                         customFields:
                                                             createCustomFieldsStruct(
                                                           capacity: _model
@@ -3353,10 +3254,9 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                           purchasedFrom: _model
                                                               .purchasefromTextController
                                                               .text,
-                                                          serial: int.tryParse(
-                                                              _model
-                                                                  .serialNumberTextController
-                                                                  .text),
+                                                          serial: _model
+                                                              .serialNumberTextController
+                                                              .text,
                                                           clearUnsetFields:
                                                               false,
                                                           create: true,
@@ -3445,9 +3345,8 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 yearId: functions
                                                                     .getYearId(),
                                                                 comments: '',
-                                                                zone:
-                                                                    FFAppState()
-                                                                        .zone,
+                                                                zone: _model
+                                                                    .selectedZone,
                                                                 customFields:
                                                                     createCustomFieldsStruct(
                                                                   capacity: _model
@@ -3459,10 +3358,9 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                       _model
                                                                           .purchasefromTextController
                                                                           .text,
-                                                                  serial: int
-                                                                      .tryParse(_model
-                                                                          .serialNumberTextController
-                                                                          .text),
+                                                                  serial: _model
+                                                                      .serialNumberTextController
+                                                                      .text,
                                                                   clearUnsetFields:
                                                                       false,
                                                                   create: true,
@@ -3570,7 +3468,7 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                       });
 
                                                       context.pushNamed(
-                                                          DeyeDashboardEXPANDWidget
+                                                          DeyeDashboardWidget
                                                               .routeName);
 
                                                       if (_shouldSetState)
@@ -3626,7 +3524,7 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                                 15.0, 0.0),
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primary,
+                                                        .customColor6,
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .headlineMedium
@@ -3641,12 +3539,10 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMediumFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineMediumIsCustom,
                                                         ),
                                                     elevation: 2.0,
                                                     borderSide: BorderSide(

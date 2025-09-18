@@ -64,8 +64,8 @@ class _UrlImageWidgetState extends State<UrlImageWidget> {
                       color: Colors.white,
                       fontSize: 22.0,
                       letterSpacing: 0.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).headlineMediumFamily),
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                     ),
               ),
               actions: [],
@@ -94,7 +94,8 @@ class _UrlImageWidgetState extends State<UrlImageWidget> {
                           if (selectedMedia != null &&
                               selectedMedia.every((m) =>
                                   validateFileFormat(m.storagePath, context))) {
-                            safeSetState(() => _model.isDataUploading = true);
+                            safeSetState(() =>
+                                _model.isDataUploading_uploadDataI8w = true);
                             var selectedUploadedFiles = <FFUploadedFile>[];
 
                             try {
@@ -108,12 +109,12 @@ class _UrlImageWidgetState extends State<UrlImageWidget> {
                                       ))
                                   .toList();
                             } finally {
-                              _model.isDataUploading = false;
+                              _model.isDataUploading_uploadDataI8w = false;
                             }
                             if (selectedUploadedFiles.length ==
                                 selectedMedia.length) {
                               safeSetState(() {
-                                _model.uploadedLocalFile =
+                                _model.uploadedLocalFile_uploadDataI8w =
                                     selectedUploadedFiles.first;
                               });
                             } else {
@@ -125,7 +126,7 @@ class _UrlImageWidgetState extends State<UrlImageWidget> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.memory(
-                            _model.uploadedLocalFile.bytes ??
+                            _model.uploadedLocalFile_uploadDataI8w.bytes ??
                                 Uint8List.fromList([]),
                             width: 300.0,
                             height: 200.0,

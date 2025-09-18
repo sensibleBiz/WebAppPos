@@ -129,8 +129,6 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                     text: '',
                                     icon: Icon(
                                       Icons.chevron_left,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
                                       size: 32.0,
                                     ),
                                     options: FFButtonOptions(
@@ -140,6 +138,8 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                       iconPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
+                                      iconColor:
+                                          FlutterFlowTheme.of(context).primary,
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       textStyle: FlutterFlowTheme.of(context)
@@ -150,10 +150,9 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                     .titleSmallFamily,
                                             color: Colors.white,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmallFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleSmallIsCustom,
                                           ),
                                       borderSide: BorderSide(
                                         color: Colors.transparent,
@@ -182,10 +181,9 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .headlineLargeFamily,
                                             letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineLargeFamily),
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .headlineLargeIsCustom,
                                           ),
                                     ),
                                   ),
@@ -343,10 +341,9 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                                         16.0,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -400,10 +397,9 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                                           .primaryText,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .headlineMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -506,10 +502,9 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                                         16.0,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -572,7 +567,7 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                              !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -677,10 +672,9 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                                         16.0,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -733,10 +727,9 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                                           .primaryText,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .headlineMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -837,11 +830,10 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                                       16.0,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ],
@@ -895,10 +887,9 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                                         .primaryText,
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ],
@@ -989,12 +980,10 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                           color: Colors.white,
                                                           fontSize: 10.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmallIsCustom,
                                                         ),
                                                 elevation: 3.0,
                                                 borderSide: BorderSide(
@@ -1050,12 +1039,10 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                           color: Colors.white,
                                                           fontSize: 10.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmallIsCustom,
                                                         ),
                                                 elevation: 3.0,
                                                 borderSide: BorderSide(
@@ -1100,12 +1087,10 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                           color: Colors.white,
                                                           fontSize: 10.0,
                                                           letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmallFamily),
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmallIsCustom,
                                                         ),
                                                 elevation: 3.0,
                                                 borderSide: BorderSide(
@@ -1143,12 +1128,10 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                                     context)
                                                                 .bodyMediumFamily,
                                                         letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                             ),
                                           ),
@@ -1276,11 +1259,10 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily),
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMediumIsCustom,
                                                               ),
                                                       hintText:
                                                           'Please select...',
@@ -1387,15 +1369,12 @@ class _DealerDasboardCopyWidgetState extends State<DealerDasboardCopyWidget> {
                                                   yAxisLabelInfo: AxisLabelInfo(
                                                     title: 'Count',
                                                     titleTextStyle:
-                                                        GoogleFonts.getFont(
-                                                      'Roboto',
+                                                        GoogleFonts.roboto(
                                                       fontSize: 14.0,
                                                     ),
                                                     showLabels: true,
                                                     labelTextStyle:
-                                                        GoogleFonts.getFont(
-                                                      'Roboto',
-                                                    ),
+                                                        GoogleFonts.roboto(),
                                                     labelInterval: 2.0,
                                                     reservedSize: 42.0,
                                                   ),

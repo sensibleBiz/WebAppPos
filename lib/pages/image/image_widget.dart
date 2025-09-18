@@ -69,8 +69,8 @@ class _ImageWidgetState extends State<ImageWidget> {
                       color: Colors.white,
                       fontSize: 22.0,
                       letterSpacing: 0.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).headlineMediumFamily),
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                     ),
               ),
               actions: [],
@@ -108,7 +108,8 @@ class _ImageWidgetState extends State<ImageWidget> {
                           if (selectedMedia != null &&
                               selectedMedia.every((m) =>
                                   validateFileFormat(m.storagePath, context))) {
-                            safeSetState(() => _model.isDataUploading = true);
+                            safeSetState(() =>
+                                _model.isDataUploading_uploadDataIui = true);
                             var selectedUploadedFiles = <FFUploadedFile>[];
 
                             var downloadUrls = <String>[];
@@ -133,15 +134,16 @@ class _ImageWidgetState extends State<ImageWidget> {
                                   .map((u) => u!)
                                   .toList();
                             } finally {
-                              _model.isDataUploading = false;
+                              _model.isDataUploading_uploadDataIui = false;
                             }
                             if (selectedUploadedFiles.length ==
                                     selectedMedia.length &&
                                 downloadUrls.length == selectedMedia.length) {
                               safeSetState(() {
-                                _model.uploadedLocalFile =
+                                _model.uploadedLocalFile_uploadDataIui =
                                     selectedUploadedFiles.first;
-                                _model.uploadedFileUrl = downloadUrls.first;
+                                _model.uploadedFileUrl_uploadDataIui =
+                                    downloadUrls.first;
                               });
                             } else {
                               safeSetState(() {});
@@ -152,7 +154,7 @@ class _ImageWidgetState extends State<ImageWidget> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.network(
-                            _model.uploadedFileUrl,
+                            _model.uploadedFileUrl_uploadDataIui,
                             width: double.infinity,
                             height: 50.0,
                             fit: BoxFit.cover,
@@ -167,12 +169,12 @@ class _ImageWidgetState extends State<ImageWidget> {
                           CategoryMasterRecord.collection.doc();
                       await categoryMasterRecordReference
                           .set(createCategoryMasterRecordData(
-                        imageUrl: _model.uploadedFileUrl,
+                        imageUrl: _model.uploadedFileUrl_uploadDataIui,
                       ));
                       _model.imageDoc =
                           CategoryMasterRecord.getDocumentFromData(
                               createCategoryMasterRecordData(
-                                imageUrl: _model.uploadedFileUrl,
+                                imageUrl: _model.uploadedFileUrl_uploadDataIui,
                               ),
                               categoryMasterRecordReference);
 
@@ -215,8 +217,8 @@ class _ImageWidgetState extends State<ImageWidget> {
                                 FlutterFlowTheme.of(context).titleSmallFamily,
                             color: Colors.white,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).titleSmallFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleSmallIsCustom,
                           ),
                       elevation: 3.0,
                       borderSide: BorderSide(

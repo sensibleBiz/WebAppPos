@@ -60,10 +60,11 @@ Future<String> genExcelForComplaintReport(
     TextCellValue('Status'),
     TextCellValue('Remark'),
     TextCellValue('Comments'),
+    TextCellValue('Closed Date'),
   ]);
 
   List<int> boldColumns = [0, 1, 2];
-  List<int> boldRows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  List<int> boldRows = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   for (int columnIndex in boldColumns) {
     var cell = sheet.cell(
@@ -94,6 +95,28 @@ Future<String> genExcelForComplaintReport(
         .where('id', isEqualTo: product.assignedTo)
         .get();
 
+    var querySnapshot3 = await FirebaseFirestore.instance
+        .collection('OUTLET')
+        .doc(FFAppState().outletRef?.id)
+        .collection('CATEGORY')
+        .where('id', isEqualTo: product.customFields.productType)
+        .get();
+
+    var querySnapshot4 = await FirebaseFirestore.instance
+        .collection('OUTLET')
+        .doc(FFAppState().outletRef?.id)
+        .collection('PRODUCT')
+        .where('id', isEqualTo: product.customFields.capacity)
+        .get();
+
+    String capacity = querySnapshot4.docs.isNotEmpty
+        ? querySnapshot4.docs.map((doc) => doc['name']).join(', ')
+        : 'N/A';
+
+    String productType = querySnapshot3.docs.isNotEmpty
+        ? querySnapshot3.docs.map((doc) => doc['name']).join(', ')
+        : 'N/A';
+
     String userName = querySnapshot2.docs.isNotEmpty
         ? querySnapshot2.docs.map((doc) => doc['name']).join(', ')
         : 'N/A';
@@ -105,8 +128,8 @@ Future<String> genExcelForComplaintReport(
       TextCellValue(product.state),
       TextCellValue(product.city),
       TextCellValue(product.customFields.purchasedFrom),
-      TextCellValue(product.customFields.productType),
-      TextCellValue(product.customFields.capacity),
+      TextCellValue(productType),
+      TextCellValue(capacity),
       TextCellValue(product.customFields.serial.toString()),
       TextCellValue(product.requirement),
       TextCellValue(userName),
@@ -114,6 +137,7 @@ Future<String> genExcelForComplaintReport(
       TextCellValue(product.status),
       TextCellValue(product.remarks),
       TextCellValue(product.comments),
+      TextCellValue(product.closeDate),
     ]);
   }
 

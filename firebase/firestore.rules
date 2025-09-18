@@ -583,5 +583,77 @@ service cloud.firestore {
       allow write: if true;
       allow delete: if true;
     }
+
+    match /OUTLET/{parent}/FEEDBACK_FORM/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/FEEDBACK_FORM/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/CUSTOMER_FEEDBACK/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/CUSTOMER_FEEDBACK/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/DEALER_ACTIVITY/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/DEALER_ACTIVITY/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/CHECKIN_STATUS/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/CHECKIN_STATUS/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/LEAVE_APPLICATION/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/LEAVE_APPLICATION/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/LEAVE_TYPE/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/LEAVE_TYPE/{document} {
+      allow read: if true;
+    }
+
   }
 }

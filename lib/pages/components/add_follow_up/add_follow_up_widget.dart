@@ -109,9 +109,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .headlineLargeFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineLargeFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .headlineLargeIsCustom,
                               ),
                     ),
                   ),
@@ -123,8 +122,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ),
@@ -161,7 +160,6 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                           text: dateTimeFormat("yMMMd", _model.datePicked1),
                           icon: Icon(
                             Icons.calendar_today,
-                            color: FlutterFlowTheme.of(context).primary,
                             size: 15.0,
                           ),
                           options: FFButtonOptions(
@@ -171,6 +169,7 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
+                            iconColor: FlutterFlowTheme.of(context).primary,
                             color: FlutterFlowTheme.of(context).customColor1,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
@@ -178,9 +177,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .titleMediumFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleMediumIsCustom,
                                 ),
                             elevation: 2.0,
                             borderSide: BorderSide(
@@ -201,8 +199,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ),
@@ -239,7 +237,6 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                           text: dateTimeFormat("jm", _model.datePicked2),
                           icon: Icon(
                             Icons.access_time,
-                            color: FlutterFlowTheme.of(context).primary,
                             size: 15.0,
                           ),
                           options: FFButtonOptions(
@@ -249,6 +246,7 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
+                            iconColor: FlutterFlowTheme.of(context).primary,
                             color: FlutterFlowTheme.of(context).customColor1,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
@@ -256,9 +254,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .titleMediumFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleMediumIsCustom,
                                 ),
                             elevation: 2.0,
                             borderSide: BorderSide(
@@ -279,8 +276,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ),
@@ -301,8 +298,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodySmallFamily,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodySmallFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodySmallIsCustom,
                             ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -338,8 +335,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                       validator: _model
                           .textFieldfollowUpNameTextControllerValidator
@@ -354,8 +351,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ),
@@ -377,8 +374,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             color: Colors.black,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                       hintText: 'Please select...',
                       icon: Icon(
@@ -405,8 +402,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ),
@@ -464,9 +461,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                     .bodyMediumFamily,
                                 color: Colors.black,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                           hintText: 'Select Executive',
                           icon: Icon(
@@ -496,8 +492,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ),
@@ -516,8 +512,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodySmallFamily,
                               letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodySmallFamily),
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodySmallIsCustom,
                             ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -552,8 +548,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                             fontFamily:
                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                       maxLines: 4,
                       validator: _model
@@ -591,10 +587,9 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleSmallFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
                                   ),
                               elevation: 2.0,
                               borderSide: BorderSide(
@@ -693,9 +688,8 @@ class _AddFollowUpWidgetState extends State<AddFollowUpWidget> {
                                   color: Colors.white,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleSmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleSmallIsCustom,
                                 ),
                             elevation: 2.0,
                             borderSide: BorderSide(

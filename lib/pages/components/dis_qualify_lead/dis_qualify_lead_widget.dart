@@ -210,10 +210,9 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .titleMediumFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleMediumIsCustom,
                                       ),
                                 ),
                               ),
@@ -258,12 +257,9 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         textHighlightStyle: TextStyle(),
                                         elevation: 4.0,
@@ -337,12 +333,10 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLargeFamily,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyLargeFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLargeIsCustom,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -397,12 +391,9 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .titleMediumFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMediumFamily),
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .titleMediumIsCustom,
                                             ),
                                         maxLines: null,
                                         validator: _model
@@ -483,10 +474,9 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmallFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleSmallIsCustom,
                                       ),
                                   elevation: 2.0,
                                   borderSide: BorderSide(
@@ -527,23 +517,22 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                         5.0, 0.0, 0.0, 0.0),
                                                 child: Text(
                                                   'Default Tags',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodySmallFamily,
-                                                        fontSize: 10.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodySmall
+                                                          .override(
+                                                            fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodySmallFamily),
-                                                      ),
+                                                                    .bodySmallFamily,
+                                                            fontSize: 10.0,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallIsCustom,
+                                                          ),
                                                 ),
                                               ),
                                             ],
@@ -689,7 +678,7 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                                                             fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                             fontSize: 11.0,
                                                                                             letterSpacing: 0.0,
-                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -817,7 +806,7 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                                                               fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                               fontSize: 11.0,
                                                                                               letterSpacing: 0.0,
-                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -866,23 +855,22 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                         5.0, 0.0, 0.0, 0.0),
                                                 child: Text(
                                                   'Selected Tags',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodySmallFamily,
-                                                        fontSize: 10.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodySmall
+                                                          .override(
+                                                            fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodySmallFamily),
-                                                      ),
+                                                                    .bodySmallFamily,
+                                                            fontSize: 10.0,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallIsCustom,
+                                                          ),
                                                 ),
                                               ),
                                             ],
@@ -992,7 +980,7 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                                                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 fontSize: 11.0,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -1029,7 +1017,7 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                                                       fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
                                                                                       color: Color(0x00000000),
                                                                                       letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).headlineSmallIsCustom,
                                                                                     ),
                                                                               ),
                                                                               duration: Duration(milliseconds: 4000),
@@ -1144,11 +1132,10 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                                       11.0,
                                                                   letterSpacing:
                                                                       0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -1359,6 +1346,10 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                 businessType:
                                                     widget!.businessType,
                                                 isDealerLead: false,
+                                                leadCampaign:
+                                                    (rowOutletLeadsRecord !=
+                                                            null)
+                                                        .toString(),
                                               ),
                                               ...mapToFirestore(
                                                 {
@@ -1434,6 +1425,10 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                 businessType:
                                                     widget!.businessType,
                                                 isDealerLead: false,
+                                                leadCampaign:
+                                                    (rowOutletLeadsRecord !=
+                                                            null)
+                                                        .toString(),
                                               ),
                                               ...mapToFirestore(
                                                 {
@@ -1503,8 +1498,11 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                 ));
                                             FFAppState().tagList = [];
                                             safeSetState(() {});
-                                            await Future.delayed(const Duration(
-                                                milliseconds: 2000));
+                                            await Future.delayed(
+                                              Duration(
+                                                milliseconds: 2000,
+                                              ),
+                                            );
 
                                             context.pushNamed(
                                                 LeadsDashboardFinalWidget
@@ -1561,12 +1559,10 @@ class _DisQualifyLeadWidgetState extends State<DisQualifyLeadWidget> {
                                                         .titleSmallFamily,
                                                 color: Colors.white,
                                                 letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmallFamily),
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmallIsCustom,
                                               ),
                                           elevation: 3.0,
                                           borderSide: BorderSide(

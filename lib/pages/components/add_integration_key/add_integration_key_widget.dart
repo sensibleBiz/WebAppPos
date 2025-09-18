@@ -3,12 +3,14 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -56,6 +58,8 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -96,9 +100,8 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .headlineLargeFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineLargeFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .headlineLargeIsCustom,
                               ),
                         ),
                       ],
@@ -121,9 +124,8 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                       .bodySmallFamily,
                                   fontSize: 12.0,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodySmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodySmallIsCustom,
                                 ),
                           ),
                         ),
@@ -162,9 +164,8 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .titleSmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .titleSmallIsCustom,
                               ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -212,9 +213,8 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .titleMediumFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleMediumIsCustom,
                                 ),
                         textAlign: TextAlign.start,
                         validator: _model.titleTextControllerValidator
@@ -239,9 +239,8 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                       .bodySmallFamily,
                                   fontSize: 12.0,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodySmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodySmallIsCustom,
                                 ),
                           ),
                         ),
@@ -281,9 +280,8 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .titleSmallFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .titleSmallIsCustom,
                               ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -331,13 +329,23 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .titleMediumFamily,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleMediumIsCustom,
                                 ),
                         textAlign: TextAlign.start,
                         validator: _model.displayTextControllerValidator
                             .asValidator(context),
+                        inputFormatters: [
+                          if (!isAndroid && !isiOS)
+                            TextInputFormatter.withFunction(
+                                (oldValue, newValue) {
+                              return TextEditingValue(
+                                selection: newValue.selection,
+                                text: newValue.text
+                                    .toCapitalization(TextCapitalization.words),
+                              );
+                            }),
+                        ],
                       ),
                     ),
                   ),
@@ -359,9 +367,8 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                       .bodySmallFamily,
                                   fontSize: 12.0,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodySmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodySmallIsCustom,
                                 ),
                           ),
                         ),
@@ -377,9 +384,8 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                       .bodySmallFamily,
                                   fontSize: 12.0,
                                   letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodySmallFamily),
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodySmallIsCustom,
                                 ),
                           ),
                         ),
@@ -406,9 +412,8 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodyMediumFamily,
                                 letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                           hintText: 'Select...',
                           icon: Icon(
@@ -448,10 +453,14 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                               safeSetState(
                                   () => _model.checkboxValue = newValue!);
                             },
-                            side: BorderSide(
-                              width: 2,
-                              color: FlutterFlowTheme.of(context).alternate,
-                            ),
+                            side: (FlutterFlowTheme.of(context).alternate !=
+                                    null)
+                                ? BorderSide(
+                                    width: 2,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate!,
+                                  )
+                                : null,
                             activeColor: FlutterFlowTheme.of(context).primary,
                             checkColor: FlutterFlowTheme.of(context).secondary,
                           ),
@@ -498,10 +507,9 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .titleMediumFamily,
                                         letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily),
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleMediumIsCustom,
                                       ),
                                 ),
                               ],
@@ -542,6 +550,7 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                 modifiedDate:
                                     getCurrentTimestamp.millisecondsSinceEpoch,
                                 type: _model.dropDownValue,
+                                outletId: FFAppState().outletRef?.id,
                               ));
                               _model.intgrationDoc =
                                   IntegrationRecord.getDocumentFromData(
@@ -555,6 +564,7 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                         modifiedDate: getCurrentTimestamp
                                             .millisecondsSinceEpoch,
                                         type: _model.dropDownValue,
+                                        outletId: FFAppState().outletRef?.id,
                                       ),
                                       integrationRecordReference);
                               _shouldSetState = true;
@@ -619,10 +629,9 @@ class _AddIntegrationKeyWidgetState extends State<AddIntegrationKeyWidget> {
                                               .primaryBtnText,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .headlineMediumIsCustom,
                                         ),
                                   ),
                                 ],

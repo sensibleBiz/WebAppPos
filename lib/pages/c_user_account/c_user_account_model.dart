@@ -3,7 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/components/c_add_user/c_add_user_widget.dart';
+import '/pages/components/add_user_acount/add_user_acount_widget.dart';
 import '/pages/components/c_edit_user/c_edit_user_widget.dart';
 import '/pages/components/c_header/c_header_widget.dart';
 import '/pages/components/cstm_side_nav_bar/cstm_side_nav_bar_widget.dart';

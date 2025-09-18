@@ -95,13 +95,11 @@ class _DemosWidgetState extends State<DemosWidget> {
                             FFButtonWidget(
                               onPressed: () async {
                                 context.pushNamed(
-                                    LeadsDashboardFinalWidget.routeName);
+                                    LeadsDashboardNewWidget.routeName);
                               },
                               text: '',
                               icon: Icon(
                                 Icons.chevron_left,
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
                                 size: 32.0,
                               ),
                               options: FFButtonOptions(
@@ -110,6 +108,8 @@ class _DemosWidgetState extends State<DemosWidget> {
                                     0.0, 0.0, 0.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
+                                iconColor:
+                                    FlutterFlowTheme.of(context).primaryBtnText,
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
@@ -118,10 +118,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                           .titleSmallFamily,
                                       color: Colors.white,
                                       letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleSmallIsCustom,
                                     ),
                                 elevation: 2.0,
                                 borderSide: BorderSide(
@@ -141,10 +140,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                         .primaryBtnText,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineMediumFamily),
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineMediumIsCustom,
                                   ),
                             ),
                             Column(
@@ -228,6 +226,28 @@ class _DemosWidgetState extends State<DemosWidget> {
                                         ),
                                       ),
                                     ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 15.0, 0.0),
+                                      child: FlutterFlowIconButton(
+                                        borderRadius: 10.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        icon: Icon(
+                                          Icons.pending_actions,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          size: 20.0,
+                                        ),
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                              UsersAllActivitiesWidget
+                                                  .routeName);
+                                        },
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ],
@@ -260,10 +280,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                       color: FlutterFlowTheme.of(context).info,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .labelSmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelSmallIsCustom,
                                     ),
                               ),
                               Text(
@@ -279,10 +298,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                       color: FlutterFlowTheme.of(context).info,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .labelSmallFamily),
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .labelSmallIsCustom,
                                     ),
                               ),
                               Padding(
@@ -361,12 +379,10 @@ class _DemosWidgetState extends State<DemosWidget> {
                                                                 .headlineLargeFamily,
                                                         fontSize: 18.0,
                                                         letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineLargeFamily),
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineLargeIsCustom,
                                                       ),
                                             ),
                                           ],
@@ -417,10 +433,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .lineColor,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleMediumIsCustom,
                                         ),
                                   ),
                                 ],
@@ -443,10 +458,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .lineColor,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleMediumIsCustom,
                                         ),
                                   ),
                                 ],
@@ -469,10 +483,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .lineColor,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleMediumIsCustom,
                                         ),
                                   ),
                                 ],
@@ -496,10 +509,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .lineColor,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleMediumIsCustom,
                                         ),
                                   ),
                                 ],
@@ -522,10 +534,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .lineColor,
                                           letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMediumFamily),
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleMediumIsCustom,
                                         ),
                                   ),
                                 ],
@@ -661,10 +672,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                                                               .titleMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleMediumIsCustom,
                                                                     ),
                                                               ),
                                                               Text(
@@ -681,10 +691,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                                                           0xFF1414B6),
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelSmallIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -724,7 +733,7 @@ class _DemosWidgetState extends State<DemosWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                              !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                         ),
                                                                   ),
                                                                   Align(
@@ -746,7 +755,7 @@ class _DemosWidgetState extends State<DemosWidget> {
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                !FlutterFlowTheme.of(context).labelLargeIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -830,7 +839,7 @@ class _DemosWidgetState extends State<DemosWidget> {
                                                                               .override(
                                                                                 fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                 letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                               ),
                                                                         );
                                                                       },
@@ -869,10 +878,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                                                           .info,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelLargeIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -904,10 +912,9 @@ class _DemosWidgetState extends State<DemosWidget> {
                                                                               .labelLargeFamily,
                                                                       letterSpacing:
                                                                           0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelLargeIsCustom,
                                                                     ),
                                                               ),
                                                             ],

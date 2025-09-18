@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -121,8 +122,7 @@ class _TestDropdownWidgetState extends State<TestDropdownWidget> {
         textStyle: FlutterFlowTheme.of(context).labelLarge.override(
               fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
               letterSpacing: 0.0,
-              useGoogleFonts: GoogleFonts.asMap()
-                  .containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+              useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
             ),
         fillColor: FlutterFlowTheme.of(context).secondaryBackground,
         elevation: 2.0,

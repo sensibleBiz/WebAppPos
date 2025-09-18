@@ -96,6 +96,36 @@ class DealersRecord extends FirestoreRecord {
   String get name => _name ?? '';
   bool hasName() => _name != null;
 
+  // "alternateMobNo" field.
+  String? _alternateMobNo;
+  String get alternateMobNo => _alternateMobNo ?? '';
+  bool hasAlternateMobNo() => _alternateMobNo != null;
+
+  // "isOnBoarded" field.
+  bool? _isOnBoarded;
+  bool get isOnBoarded => _isOnBoarded ?? false;
+  bool hasIsOnBoarded() => _isOnBoarded != null;
+
+  // "partnerName" field.
+  String? _partnerName;
+  String get partnerName => _partnerName ?? '';
+  bool hasPartnerName() => _partnerName != null;
+
+  // "partnerMobNo" field.
+  String? _partnerMobNo;
+  String get partnerMobNo => _partnerMobNo ?? '';
+  bool hasPartnerMobNo() => _partnerMobNo != null;
+
+  // "dealsIn" field.
+  String? _dealsIn;
+  String get dealsIn => _dealsIn ?? '';
+  bool hasDealsIn() => _dealsIn != null;
+
+  // "status" field.
+  String? _status;
+  String get status => _status ?? '';
+  bool hasStatus() => _status != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -115,6 +145,12 @@ class DealersRecord extends FirestoreRecord {
     _outletId = snapshotData['outletId'] as String?;
     _area = snapshotData['area'] as String?;
     _name = snapshotData['name'] as String?;
+    _alternateMobNo = snapshotData['alternateMobNo'] as String?;
+    _isOnBoarded = snapshotData['isOnBoarded'] as bool?;
+    _partnerName = snapshotData['partnerName'] as String?;
+    _partnerMobNo = snapshotData['partnerMobNo'] as String?;
+    _dealsIn = snapshotData['dealsIn'] as String?;
+    _status = snapshotData['status'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -173,6 +209,12 @@ Map<String, dynamic> createDealersRecordData({
   String? outletId,
   String? area,
   String? name,
+  String? alternateMobNo,
+  bool? isOnBoarded,
+  String? partnerName,
+  String? partnerMobNo,
+  String? dealsIn,
+  String? status,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -192,6 +234,12 @@ Map<String, dynamic> createDealersRecordData({
       'outletId': outletId,
       'area': area,
       'name': name,
+      'alternateMobNo': alternateMobNo,
+      'isOnBoarded': isOnBoarded,
+      'partnerName': partnerName,
+      'partnerMobNo': partnerMobNo,
+      'dealsIn': dealsIn,
+      'status': status,
     }.withoutNulls,
   );
 
@@ -218,7 +266,13 @@ class DealersRecordDocumentEquality implements Equality<DealersRecord> {
         e1?.pincode == e2?.pincode &&
         e1?.outletId == e2?.outletId &&
         e1?.area == e2?.area &&
-        e1?.name == e2?.name;
+        e1?.name == e2?.name &&
+        e1?.alternateMobNo == e2?.alternateMobNo &&
+        e1?.isOnBoarded == e2?.isOnBoarded &&
+        e1?.partnerName == e2?.partnerName &&
+        e1?.partnerMobNo == e2?.partnerMobNo &&
+        e1?.dealsIn == e2?.dealsIn &&
+        e1?.status == e2?.status;
   }
 
   @override
@@ -238,7 +292,13 @@ class DealersRecordDocumentEquality implements Equality<DealersRecord> {
         e?.pincode,
         e?.outletId,
         e?.area,
-        e?.name
+        e?.name,
+        e?.alternateMobNo,
+        e?.isOnBoarded,
+        e?.partnerName,
+        e?.partnerMobNo,
+        e?.dealsIn,
+        e?.status
       ]);
 
   @override
