@@ -47,15 +47,18 @@ class DeyeComplaintReportModel
   String? base64Link232;
   // Stores action output result for [Backend Call - API (sendMail)] action in Icon widget.
   ApiCallResponse? apiResult88g;
-  // State field(s) for DropDownZoneAll widget.
-  String? dropDownZoneAllValue;
-  FormFieldController<String>? dropDownZoneAllValueController;
+  // State field(s) for DropDownExecutiveZoneAll widget.
+  String? dropDownExecutiveZoneAllValue;
+  FormFieldController<String>? dropDownExecutiveZoneAllValueController;
   // State field(s) for DropDownRemarkAll widget.
   String? dropDownRemarkAllValue;
   FormFieldController<String>? dropDownRemarkAllValueController;
   // State field(s) for DropDownSolutionAll widget.
   String? dropDownSolutionAllValue;
   FormFieldController<String>? dropDownSolutionAllValueController;
+  // State field(s) for DropDownZoneAll widget.
+  String? dropDownZoneAllValue;
+  FormFieldController<String>? dropDownZoneAllValueController;
   // State field(s) for DropDownAll widget.
   String? dropDownAllValue;
   FormFieldController<String>? dropDownAllValueController;
@@ -64,9 +67,9 @@ class DeyeComplaintReportModel
   TextEditingController? textFieldAllTextController;
   String? Function(BuildContext, String?)? textFieldAllTextControllerValidator;
   // Stores action output result for [Custom Action - genExcelForComplaintReport] action in Icon widget.
-  String? base64Link2322;
+  String? base64Link232Report;
   // Stores action output result for [Backend Call - API (sendMail)] action in Icon widget.
-  ApiCallResponse? apiResult88gt;
+  ApiCallResponse? apiResult88gReport;
   // State field(s) for DropDownStageReport widget.
   String? dropDownStageReportValue;
   FormFieldController<String>? dropDownStageReportValueController;
@@ -76,6 +79,9 @@ class DeyeComplaintReportModel
   // State field(s) for DropDownSolutionReport widget.
   String? dropDownSolutionReportValue;
   FormFieldController<String>? dropDownSolutionReportValueController;
+  // State field(s) for DropDownZoneReport widget.
+  String? dropDownZoneReportValue;
+  FormFieldController<String>? dropDownZoneReportValueController;
   // State field(s) for DropDownReport widget.
   String? dropDownReportValue;
   FormFieldController<String>? dropDownReportValueController;

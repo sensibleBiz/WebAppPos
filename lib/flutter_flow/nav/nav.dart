@@ -7,6 +7,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -1093,9 +1094,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LeadReportMonthlSourceWiseWidget(),
             ),
             FFRoute(
-              name: DeyeAddComplaintsWidget.routeName,
-              path: DeyeAddComplaintsWidget.routePath,
-              builder: (context, params) => DeyeAddComplaintsWidget(),
+              name: DeyeAddComplaintsNotUsingWidget.routeName,
+              path: DeyeAddComplaintsNotUsingWidget.routePath,
+              builder: (context, params) => DeyeAddComplaintsNotUsingWidget(),
             ),
             FFRoute(
               name: ZoneWidget.routeName,
@@ -1162,9 +1163,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LeadEmployeeReportFinalCRMWidget(),
             ),
             FFRoute(
-              name: DeyeDashboard2Widget.routeName,
-              path: DeyeDashboard2Widget.routePath,
-              builder: (context, params) => DeyeDashboard2Widget(),
+              name: DeyeDashboard2NotUsingWidget.routeName,
+              path: DeyeDashboard2NotUsingWidget.routePath,
+              builder: (context, params) => DeyeDashboard2NotUsingWidget(),
             ),
             FFRoute(
               name: RegisterComplaint1Widget.routeName,
@@ -1268,9 +1269,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: DeyeDashboardWidget.routeName,
-              path: DeyeDashboardWidget.routePath,
-              builder: (context, params) => DeyeDashboardWidget(),
+              name: DeyeDashboardNotUsingWidget.routeName,
+              path: DeyeDashboardNotUsingWidget.routePath,
+              builder: (context, params) => DeyeDashboardNotUsingWidget(),
             ),
             FFRoute(
               name: DeyeEditProfileAdminWidget.routeName,
@@ -1397,14 +1398,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: DeyeAddComplaintsCopyWidget.routeName,
-              path: DeyeAddComplaintsCopyWidget.routePath,
-              builder: (context, params) => DeyeAddComplaintsCopyWidget(),
+              name: DeyeAddComplaintsWidget.routeName,
+              path: DeyeAddComplaintsWidget.routePath,
+              builder: (context, params) => DeyeAddComplaintsWidget(),
             ),
             FFRoute(
-              name: DeyeDashboardCopyWidget.routeName,
-              path: DeyeDashboardCopyWidget.routePath,
-              builder: (context, params) => DeyeDashboardCopyWidget(),
+              name: DeyeDashboardWidget.routeName,
+              path: DeyeDashboardWidget.routePath,
+              builder: (context, params) => DeyeDashboardWidget(),
             ),
             FFRoute(
               name: DeyeNewComplaintEditWidget.routeName,
@@ -1518,6 +1519,35 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   collectionNamePath: ['OUTLET'],
                 ),
               ),
+            ),
+            FFRoute(
+              name: CRMLoginCopyWidget.routeName,
+              path: CRMLoginCopyWidget.routePath,
+              builder: (context, params) => CRMLoginCopyWidget(),
+            ),
+            FFRoute(
+              name: CallLogsDashboardOldWidget.routeName,
+              path: CallLogsDashboardOldWidget.routePath,
+              builder: (context, params) => CallLogsDashboardOldWidget(),
+            ),
+            FFRoute(
+              name: CallLogsDetailsWidget.routeName,
+              path: CallLogsDetailsWidget.routePath,
+              builder: (context, params) => CallLogsDetailsWidget(
+                depName: params.getParam(
+                  'depName',
+                  ParamType.String,
+                ),
+                empName: params.getParam(
+                  'empName',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: CallLogsDashBoardWidget.routeName,
+              path: CallLogsDashBoardWidget.routePath,
+              builder: (context, params) => CallLogsDashBoardWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

@@ -210,7 +210,7 @@ class _DeyeEmployeeDetailReportWidgetState
                                                   child: FlutterFlowDropDown<
                                                       String>(
                                                     controller: _model
-                                                            .dropDownValueController ??=
+                                                            .remarkDropDownValueController ??=
                                                         FormFieldController<
                                                             String>(null),
                                                     options: [
@@ -222,7 +222,7 @@ class _DeyeEmployeeDetailReportWidgetState
                                                     ],
                                                     onChanged: (val) =>
                                                         safeSetState(() => _model
-                                                                .dropDownValue =
+                                                                .remarkDropDownValue =
                                                             val),
                                                     width: 250.0,
                                                     height: 35.0,
@@ -307,6 +307,101 @@ class _DeyeEmployeeDetailReportWidgetState
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 5.0, 0.0),
+                                                  child: FlutterFlowDropDown<
+                                                      String>(
+                                                    controller: _model
+                                                            .solutionDropDownValueController ??=
+                                                        FormFieldController<
+                                                            String>(null),
+                                                    options: FFAppConstants
+                                                        .DeyeActionItems,
+                                                    onChanged: (val) =>
+                                                        safeSetState(() => _model
+                                                                .solutionDropDownValue =
+                                                            val),
+                                                    width: 250.0,
+                                                    height: 35.0,
+                                                    searchHintTextStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMediumFamily,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMediumIsCustom,
+                                                            ),
+                                                    searchTextStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumIsCustom,
+                                                            ),
+                                                    textStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumIsCustom,
+                                                            ),
+                                                    hintText: 'Solution',
+                                                    searchHintText: 'Search...',
+                                                    icon: Icon(
+                                                      Icons
+                                                          .keyboard_arrow_down_rounded,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 24.0,
+                                                    ),
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                    elevation: 2.0,
+                                                    borderColor:
+                                                        Colors.transparent,
+                                                    borderWidth: 0.0,
+                                                    borderRadius: 8.0,
+                                                    margin:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(12.0, 0.0,
+                                                                12.0, 0.0),
+                                                    hidesUnderline: true,
+                                                    isOverButton: false,
+                                                    isSearchable: true,
+                                                    isMultiSelect: false,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 5.0, 0.0),
                                                   child: FlutterFlowIconButton(
                                                     borderRadius: 8.0,
                                                     buttonSize: 35.0,
@@ -324,7 +419,10 @@ class _DeyeEmployeeDetailReportWidgetState
                                                     onPressed: () async {
                                                       safeSetState(() {
                                                         _model
-                                                            .dropDownValueController
+                                                            .remarkDropDownValueController
+                                                            ?.reset();
+                                                        _model
+                                                            .solutionDropDownValueController
                                                             ?.reset();
                                                       });
                                                     },
@@ -1117,9 +1215,11 @@ class _DeyeEmployeeDetailReportWidgetState
                                                                 child: Builder(
                                                                   builder:
                                                                       (context) {
-                                                                    final containerVar = (_model.dropDownValue != null &&
-                                                                                _model.dropDownValue != ''
-                                                                            ? container1LeadsManagementRecordList.where((e) => e.remarks == _model.dropDownValue).toList()
+                                                                    final containerVar = ((_model.remarkDropDownValue != null && _model.remarkDropDownValue != '') || (_model.solutionDropDownValue != null && _model.solutionDropDownValue != '')
+                                                                            ? functions.filteredEmployeesForReports(
+                                                                                container1LeadsManagementRecordList.toList(),
+                                                                                _model.remarkDropDownValue != null && _model.remarkDropDownValue != '' ? _model.remarkDropDownValue : '',
+                                                                                _model.solutionDropDownValue != null && _model.solutionDropDownValue != '' ? _model.solutionDropDownValue : '')
                                                                             : container1LeadsManagementRecordList)
                                                                         .toList();
                                                                     if (containerVar
@@ -2159,9 +2259,9 @@ class _DeyeEmployeeDetailReportWidgetState
                                                                 child: Builder(
                                                                   builder:
                                                                       (context) {
-                                                                    final containerVar = (_model.dropDownValue != null &&
-                                                                                _model.dropDownValue != ''
-                                                                            ? container2LeadsManagementRecordList.where((e) => e.remarks == _model.dropDownValue).toList()
+                                                                    final containerVar = (_model.remarkDropDownValue != null &&
+                                                                                _model.remarkDropDownValue != ''
+                                                                            ? container2LeadsManagementRecordList.where((e) => e.remarks == _model.remarkDropDownValue).toList()
                                                                             : container2LeadsManagementRecordList)
                                                                         .toList();
                                                                     if (containerVar

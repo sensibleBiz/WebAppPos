@@ -657,6 +657,24 @@
       ]
     },
     {
+      "collectionGroup": "CALL_LOGS",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "department",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "receiverName",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "LEADS_MANAGEMENT",
       "queryScope": "COLLECTION",
       "fields": [

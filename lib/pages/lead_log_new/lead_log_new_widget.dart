@@ -3039,26 +3039,20 @@ class _LeadLogNewWidgetState extends State<LeadLogNewWidget>
                                                                         0.0),
                                                             child: StreamBuilder<
                                                                 List<
-                                                                    LeadCallLogsRecord>>(
+                                                                    CallLogsRecord>>(
                                                               stream:
-                                                                  queryLeadCallLogsRecord(
+                                                                  queryCallLogsRecord(
                                                                 parent:
                                                                     FFAppState()
                                                                         .outletRef,
-                                                                queryBuilder:
-                                                                    (leadCallLogsRecord) =>
-                                                                        leadCallLogsRecord
-                                                                            .where(
-                                                                  'leadMId',
-                                                                  isEqualTo: widget!
-                                                                              .leadDoc
-                                                                              ?.id !=
-                                                                          ''
-                                                                      ? widget!
-                                                                          .leadDoc
-                                                                          ?.id
-                                                                      : null,
-                                                                ),
+                                                                queryBuilder: (callLogsRecord) => callLogsRecord.whereIn(
+                                                                    'number',
+                                                                    functions.leadMobileNumberParser(widget!.leadDoc?.mobile) !=
+                                                                            ''
+                                                                        ? functions.leadMobileNumberParser(widget!
+                                                                            .leadDoc
+                                                                            ?.mobile)
+                                                                        : null),
                                                               ),
                                                               builder: (context,
                                                                   snapshot) {
@@ -3082,11 +3076,11 @@ class _LeadLogNewWidgetState extends State<LeadLogNewWidget>
                                                                     ),
                                                                   );
                                                                 }
-                                                                List<LeadCallLogsRecord>
-                                                                    listViewLeadCallLogsRecordList =
+                                                                List<CallLogsRecord>
+                                                                    listViewCallLogsRecordList =
                                                                     snapshot
                                                                         .data!;
-                                                                if (listViewLeadCallLogsRecordList
+                                                                if (listViewCallLogsRecordList
                                                                     .isEmpty) {
                                                                   return ListViewMsgWidget();
                                                                 }
@@ -3099,13 +3093,13 @@ class _LeadLogNewWidgetState extends State<LeadLogNewWidget>
                                                                   scrollDirection:
                                                                       Axis.vertical,
                                                                   itemCount:
-                                                                      listViewLeadCallLogsRecordList
+                                                                      listViewCallLogsRecordList
                                                                           .length,
                                                                   itemBuilder:
                                                                       (context,
                                                                           listViewIndex) {
-                                                                    final listViewLeadCallLogsRecord =
-                                                                        listViewLeadCallLogsRecordList[
+                                                                    final listViewCallLogsRecord =
+                                                                        listViewCallLogsRecordList[
                                                                             listViewIndex];
                                                                     return Padding(
                                                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -3145,92 +3139,29 @@ class _LeadLogNewWidgetState extends State<LeadLogNewWidget>
                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                         children: [
-                                                                                          Expanded(
-                                                                                            child: Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                                                              children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                                  child: Text(
-                                                                                                    functions.milisecToTimestamp(listViewLeadCallLogsRecord.date),
-                                                                                                    style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
-                                                                                                        ),
-                                                                                                  ),
+                                                                                          Text(
+                                                                                            dateTimeFormat("dd-MMM-yyyy hh:mm:ss a", DateTime.fromMillisecondsSinceEpoch(listViewCallLogsRecord.timestamp)),
+                                                                                            style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                  letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                 ),
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                                  child: Text(
-                                                                                                    functions.dateToTime(listViewLeadCallLogsRecord.time),
-                                                                                                    style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
                                                                                           ),
-                                                                                          Row(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            children: [
-                                                                                              Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                                child: Text(
-                                                                                                  listViewLeadCallLogsRecord.minute.toString(),
-                                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
-                                                                                                      ),
+                                                                                          Text(
+                                                                                            listViewCallLogsRecord.receiverName,
+                                                                                            style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                  letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                                                 ),
-                                                                                              ),
-                                                                                              Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                                child: Text(
-                                                                                                  'min',
-                                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
-                                                                                                      ),
+                                                                                          ),
+                                                                                          Text(
+                                                                                            functions.formatCallDurationToHHMMSS(listViewCallLogsRecord.durationSeconds),
+                                                                                            style: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                                  letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                 ),
-                                                                                              ),
-                                                                                              Text(
-                                                                                                ':',
-                                                                                                style: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                      fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                      letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
-                                                                                                    ),
-                                                                                              ),
-                                                                                              Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                                child: Text(
-                                                                                                  listViewLeadCallLogsRecord.sec.toString(),
-                                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
-                                                                                                      ),
-                                                                                                ),
-                                                                                              ),
-                                                                                              Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                                                                                child: Text(
-                                                                                                  'sec',
-                                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
-                                                                                                      ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ],
                                                                                           ),
                                                                                         ],
                                                                                       ),
@@ -3249,7 +3180,7 @@ class _LeadLogNewWidgetState extends State<LeadLogNewWidget>
                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                                                 children: [
                                                                                   Text(
-                                                                                    listViewLeadCallLogsRecord.callNote,
+                                                                                    'NA',
                                                                                     style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                           letterSpacing: 0.0,
@@ -3289,73 +3220,71 @@ class _LeadLogNewWidgetState extends State<LeadLogNewWidget>
                                                                     CrossAxisAlignment
                                                                         .center,
                                                                 children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            25.0),
-                                                                    child:
-                                                                        FlutterFlowIconButton(
-                                                                      borderColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      borderRadius:
-                                                                          30.0,
-                                                                      borderWidth:
-                                                                          1.0,
-                                                                      buttonSize:
-                                                                          60.0,
-                                                                      fillColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .tertiary,
-                                                                      icon:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .call,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                        size:
-                                                                            24.0,
-                                                                      ),
-                                                                      onPressed:
-                                                                          () async {
-                                                                        await showModalBottomSheet(
-                                                                          isScrollControlled:
-                                                                              true,
-                                                                          backgroundColor:
-                                                                              Colors.transparent,
-                                                                          barrierColor:
-                                                                              Color(0x00000000),
-                                                                          enableDrag:
-                                                                              false,
-                                                                          context:
-                                                                              context,
-                                                                          builder:
-                                                                              (context) {
-                                                                            return WebViewAware(
-                                                                              child: GestureDetector(
-                                                                                onTap: () {
-                                                                                  FocusScope.of(context).unfocus();
-                                                                                  FocusManager.instance.primaryFocus?.unfocus();
-                                                                                },
-                                                                                child: Padding(
-                                                                                  padding: MediaQuery.viewInsetsOf(context),
-                                                                                  child: CallDetailsWidget(
-                                                                                    id: widget!.leadDoc?.reference.id,
-                                                                                    username: widget!.leadDoc?.username,
-                                                                                    mobile: widget!.leadDoc?.mobile,
+                                                                  if (false)
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          25.0),
+                                                                      child:
+                                                                          FlutterFlowIconButton(
+                                                                        borderColor:
+                                                                            Colors.transparent,
+                                                                        borderRadius:
+                                                                            30.0,
+                                                                        borderWidth:
+                                                                            1.0,
+                                                                        buttonSize:
+                                                                            60.0,
+                                                                        fillColor:
+                                                                            FlutterFlowTheme.of(context).tertiary,
+                                                                        icon:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .call,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          size:
+                                                                              24.0,
+                                                                        ),
+                                                                        onPressed:
+                                                                            () async {
+                                                                          await showModalBottomSheet(
+                                                                            isScrollControlled:
+                                                                                true,
+                                                                            backgroundColor:
+                                                                                Colors.transparent,
+                                                                            barrierColor:
+                                                                                Color(0x00000000),
+                                                                            enableDrag:
+                                                                                false,
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (context) {
+                                                                              return WebViewAware(
+                                                                                child: GestureDetector(
+                                                                                  onTap: () {
+                                                                                    FocusScope.of(context).unfocus();
+                                                                                    FocusManager.instance.primaryFocus?.unfocus();
+                                                                                  },
+                                                                                  child: Padding(
+                                                                                    padding: MediaQuery.viewInsetsOf(context),
+                                                                                    child: CallDetailsWidget(
+                                                                                      id: widget!.leadDoc?.reference.id,
+                                                                                      username: widget!.leadDoc?.username,
+                                                                                      mobile: widget!.leadDoc?.mobile,
+                                                                                    ),
                                                                                   ),
                                                                                 ),
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        ).then((value) =>
-                                                                            safeSetState(() {}));
-                                                                      },
+                                                                              );
+                                                                            },
+                                                                          ).then((value) =>
+                                                                              safeSetState(() {}));
+                                                                        },
+                                                                      ),
                                                                     ),
-                                                                  ),
                                                                 ],
                                                               ),
                                                             ],

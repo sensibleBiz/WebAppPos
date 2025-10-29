@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/components/popup_loading_widget.dart';
 import '/deye_c_r_m/deye_activity_update/deye_activity_update_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
@@ -44,6 +43,8 @@ class DeyeDashboardModel extends FlutterFlowModel<DeyeDashboardWidget> {
   String selectedStage = 'Unread';
 
   bool isSearched = false;
+
+  bool clearQuery = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -111,21 +112,6 @@ class DeyeDashboardModel extends FlutterFlowModel<DeyeDashboardWidget> {
   void clearNewLeadCacheKey(String? uniqueKey) =>
       _newLeadManager.clearRequest(uniqueKey);
 
-  final _leadMainManager = StreamRequestManager<List<LeadsManagementRecord>>();
-  Stream<List<LeadsManagementRecord>> leadMain({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Stream<List<LeadsManagementRecord>> Function() requestFn,
-  }) =>
-      _leadMainManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearLeadMainCache() => _leadMainManager.clear();
-  void clearLeadMainCacheKey(String? uniqueKey) =>
-      _leadMainManager.clearRequest(uniqueKey);
-
   @override
   void initState(BuildContext context) {
     deyeHeaderModel = createModel(context, () => DeyeHeaderModel());
@@ -147,7 +133,5 @@ class DeyeDashboardModel extends FlutterFlowModel<DeyeDashboardWidget> {
     clearLeadMangCache();
 
     clearNewLeadCache();
-
-    clearLeadMainCache();
   }
 }

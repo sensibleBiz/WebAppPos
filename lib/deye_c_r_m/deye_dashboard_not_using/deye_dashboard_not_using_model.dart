@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/popup_loading_widget.dart';
 import '/deye_c_r_m/deye_activity_update/deye_activity_update_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
@@ -22,7 +23,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/request_manager.dart';
 
 import '/index.dart';
-import 'deye_dashboard_copy_widget.dart' show DeyeDashboardCopyWidget;
+import 'deye_dashboard_not_using_widget.dart' show DeyeDashboardNotUsingWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class DeyeDashboardCopyModel extends FlutterFlowModel<DeyeDashboardCopyWidget> {
+class DeyeDashboardNotUsingModel
+    extends FlutterFlowModel<DeyeDashboardNotUsingWidget> {
   ///  Local state fields for this page.
 
   bool showMore = false;
@@ -43,8 +45,6 @@ class DeyeDashboardCopyModel extends FlutterFlowModel<DeyeDashboardCopyWidget> {
   String selectedStage = 'Unread';
 
   bool isSearched = false;
-
-  bool clearQuery = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -112,6 +112,21 @@ class DeyeDashboardCopyModel extends FlutterFlowModel<DeyeDashboardCopyWidget> {
   void clearNewLeadCacheKey(String? uniqueKey) =>
       _newLeadManager.clearRequest(uniqueKey);
 
+  final _leadMainManager = StreamRequestManager<List<LeadsManagementRecord>>();
+  Stream<List<LeadsManagementRecord>> leadMain({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Stream<List<LeadsManagementRecord>> Function() requestFn,
+  }) =>
+      _leadMainManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearLeadMainCache() => _leadMainManager.clear();
+  void clearLeadMainCacheKey(String? uniqueKey) =>
+      _leadMainManager.clearRequest(uniqueKey);
+
   @override
   void initState(BuildContext context) {
     deyeHeaderModel = createModel(context, () => DeyeHeaderModel());
@@ -133,5 +148,7 @@ class DeyeDashboardCopyModel extends FlutterFlowModel<DeyeDashboardCopyWidget> {
     clearLeadMangCache();
 
     clearNewLeadCache();
+
+    clearLeadMainCache();
   }
 }

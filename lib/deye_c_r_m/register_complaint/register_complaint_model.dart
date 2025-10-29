@@ -25,6 +25,8 @@ class RegisterComplaintModel extends FlutterFlowModel<RegisterComplaintWidget> {
 
   bool wait = true;
 
+  bool isDisable = false;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();

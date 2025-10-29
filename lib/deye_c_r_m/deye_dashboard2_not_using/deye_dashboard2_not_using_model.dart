@@ -12,7 +12,8 @@ import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
-import 'deye_dashboard2_widget.dart' show DeyeDashboard2Widget;
+import 'deye_dashboard2_not_using_widget.dart'
+    show DeyeDashboard2NotUsingWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -22,16 +23,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class DeyeDashboard2Model extends FlutterFlowModel<DeyeDashboard2Widget> {
+class DeyeDashboard2NotUsingModel
+    extends FlutterFlowModel<DeyeDashboard2NotUsingWidget> {
   ///  Local state fields for this page.
 
   bool showMore = false;
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Custom Action - leadDocRefCopy] action in DeyeDashboard2 widget.
+  // Stores action output result for [Custom Action - leadDocRefCopy] action in DeyeDashboard2NotUsing widget.
   List<dynamic>? leadDetailsCopy1;
-  // Stores action output result for [Custom Action - leadDocRefCopy] action in DeyeDashboard2 widget.
+  // Stores action output result for [Custom Action - leadDocRefCopy] action in DeyeDashboard2NotUsing widget.
   List<dynamic>? leadDetailsCopy2;
   // Stores action output result for [Custom Action - leadDocRefCopy] action in Container widget.
   List<dynamic>? res333;

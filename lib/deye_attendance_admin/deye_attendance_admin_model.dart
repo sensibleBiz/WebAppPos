@@ -72,6 +72,18 @@ class DeyeAttendanceAdminModel
   // State field(s) for DropDownSuperAdmin widget.
   List<String>? dropDownSuperAdminValue;
   FormFieldController<List<String>>? dropDownSuperAdminValueController;
+  // Stores action output result for [Firestore Query - Query a collection] action in Text widget.
+  List<AttendanceRecord>? allAttendence1Copy;
+  // Stores action output result for [Custom Action - genExcelForEmployeeAttendanceReport] action in Text widget.
+  String? base64Link2321Copy;
+  // Stores action output result for [Backend Call - API (sendMail)] action in Text widget.
+  ApiCallResponse? apiResult88g1Copy;
+  // Stores action output result for [Firestore Query - Query a collection] action in Text widget.
+  List<AttendanceRecord>? allAttendence1Copy2;
+  // Stores action output result for [Custom Action - genExcelForEmployeeAttendanceReport] action in Text widget.
+  String? base64Link2321Copy2;
+  // Stores action output result for [Backend Call - API (sendMail)] action in Text widget.
+  ApiCallResponse? apiResult88g1Copy2;
   // Model for DeyeMenu component.
   late DeyeMenuModel deyeMenuModel;
 

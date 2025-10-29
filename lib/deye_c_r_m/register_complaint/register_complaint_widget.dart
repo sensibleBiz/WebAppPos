@@ -274,9 +274,8 @@ class _RegisterComplaintWidgetState extends State<RegisterComplaintWidget> {
                                   clearUnsetFields: false,
                                   create: true,
                                 ),
-                                ticket: functions.genComplaintNum(
-                                    _model.countDocCopy!.length,
-                                    FFAppState().zone),
+                                ticket: functions.genComplaintTicket(
+                                    _model.countDocCopy!.toList()),
                                 source: 'QR',
                               ));
                               _model.outputCopy =
@@ -341,9 +340,8 @@ class _RegisterComplaintWidgetState extends State<RegisterComplaintWidget> {
                                           clearUnsetFields: false,
                                           create: true,
                                         ),
-                                        ticket: functions.genComplaintNum(
-                                            _model.countDocCopy!.length,
-                                            FFAppState().zone),
+                                        ticket: functions.genComplaintTicket(
+                                            _model.countDocCopy!.toList()),
                                         source: 'QR',
                                       ),
                                       outletLeadsRecordReference);
@@ -1073,6 +1071,8 @@ class _RegisterComplaintWidgetState extends State<RegisterComplaintWidget> {
                                                         decoration:
                                                             InputDecoration(
                                                           isDense: true,
+                                                          hintText:
+                                                              'Enter 10 digit valid number',
                                                           hintStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1081,6 +1081,11 @@ class _RegisterComplaintWidgetState extends State<RegisterComplaintWidget> {
                                                                     fontFamily:
                                                                         FlutterFlowTheme.of(context)
                                                                             .titleMediumFamily,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    fontSize:
+                                                                        10.0,
                                                                     letterSpacing:
                                                                         0.0,
                                                                     useGoogleFonts:

@@ -579,7 +579,7 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                               safeSetState(() {});
                                                                             }
 
-                                                                            context.pushNamed(DeyeDashboardCopyWidget.routeName);
+                                                                            context.pushNamed(DeyeDashboardWidget.routeName);
                                                                           } else {
                                                                             context.pushNamed(
                                                                               CDashWidget.routeName,

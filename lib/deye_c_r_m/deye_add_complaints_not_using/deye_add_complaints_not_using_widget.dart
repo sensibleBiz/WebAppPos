@@ -22,30 +22,30 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'deye_add_complaints_copy_model.dart';
-export 'deye_add_complaints_copy_model.dart';
+import 'deye_add_complaints_not_using_model.dart';
+export 'deye_add_complaints_not_using_model.dart';
 
-class DeyeAddComplaintsCopyWidget extends StatefulWidget {
-  const DeyeAddComplaintsCopyWidget({super.key});
+class DeyeAddComplaintsNotUsingWidget extends StatefulWidget {
+  const DeyeAddComplaintsNotUsingWidget({super.key});
 
-  static String routeName = 'DeyeAddComplaintsCopy';
-  static String routePath = 'deyeAddComplaintsCopy';
+  static String routeName = 'DeyeAddComplaintsNotUsing';
+  static String routePath = 'deyeAddComplaintsNotUsing';
 
   @override
-  State<DeyeAddComplaintsCopyWidget> createState() =>
-      _DeyeAddComplaintsCopyWidgetState();
+  State<DeyeAddComplaintsNotUsingWidget> createState() =>
+      _DeyeAddComplaintsNotUsingWidgetState();
 }
 
-class _DeyeAddComplaintsCopyWidgetState
-    extends State<DeyeAddComplaintsCopyWidget> {
-  late DeyeAddComplaintsCopyModel _model;
+class _DeyeAddComplaintsNotUsingWidgetState
+    extends State<DeyeAddComplaintsNotUsingWidget> {
+  late DeyeAddComplaintsNotUsingModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DeyeAddComplaintsCopyModel());
+    _model = createModel(context, () => DeyeAddComplaintsNotUsingModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {});
@@ -95,7 +95,7 @@ class _DeyeAddComplaintsCopyWidgetState
     context.watch<FFAppState>();
 
     return Title(
-        title: 'DeyeAddComplaintsCopy',
+        title: 'DeyeAddComplaintsNotUsing',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {
@@ -125,147 +125,266 @@ class _DeyeAddComplaintsCopyWidgetState
                     children: [
                       Expanded(
                         flex: 6,
-                        child: Container(
-                          width: 100.0,
-                          height: double.infinity,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                FlutterFlowTheme.of(context).customColor6,
-                                FlutterFlowTheme.of(context).secondary
-                              ],
-                              stops: [0.0, 1.0],
-                              begin: AlignmentDirectional(0.0, -1.0),
-                              end: AlignmentDirectional(0, 1.0),
+                        child: StreamBuilder<List<UserProfileRecord>>(
+                          stream: queryUserProfileRecord(
+                            queryBuilder: (userProfileRecord) =>
+                                userProfileRecord.where(
+                              'email',
+                              isEqualTo: FFAppState().currentEmail,
                             ),
+                            singleRecord: true,
                           ),
-                          child: Padding(
-                            padding: EdgeInsets.all(25.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 30.0,
+                                  height: 30.0,
+                                  child: SpinKitRing(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 30.0,
+                                  ),
+                                ),
+                              );
+                            }
+                            List<UserProfileRecord>
+                                containerUserProfileRecordList = snapshot.data!;
+                            final containerUserProfileRecord =
+                                containerUserProfileRecordList.isNotEmpty
+                                    ? containerUserProfileRecordList.first
+                                    : null;
+
+                            return Container(
+                              width: 100.0,
+                              height: double.infinity,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    FlutterFlowTheme.of(context).customColor6,
+                                    FlutterFlowTheme.of(context).secondary
+                                  ],
+                                  stops: [0.0, 1.0],
+                                  begin: AlignmentDirectional(0.0, -1.0),
+                                  end: AlignmentDirectional(0, 1.0),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(25.0),
+                                child: Column(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 60.0,
-                                      icon: Icon(
-                                        Icons.chevron_left,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        size: 30.0,
-                                      ),
-                                      onPressed: () async {
-                                        context.pushNamed(
-                                            DeyeDashboardCopyWidget.routeName);
-                                      },
-                                    ),
-                                    Text(
-                                      'Generate Complaint',
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineLarge
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineLargeFamily,
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 30.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 60.0,
+                                          icon: Icon(
+                                            Icons.chevron_left,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBtnText,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts:
-                                                !FlutterFlowTheme.of(context)
-                                                    .headlineLargeIsCustom,
+                                            size: 30.0,
                                           ),
+                                          onPressed: () async {
+                                            context.pushNamed(
+                                                DeyeDashboardNotUsingWidget
+                                                    .routeName);
+                                          },
+                                        ),
+                                        Text(
+                                          'Generate Complaint',
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineLarge
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineLargeFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBtnText,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLargeIsCustom,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 10.0),
+                                          child: Container(
+                                            width: 80.0,
+                                            height: 80.0,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x43B0C4FF),
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Icon(
+                                              Icons.person,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBtnText,
+                                              size: 40.0,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 20.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                valueOrDefault<String>(
+                                                  containerUserProfileRecord
+                                                      ?.name,
+                                                  '-',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineLargeFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
+                                                        ),
+                                              ),
+                                              Text(
+                                                valueOrDefault<String>(
+                                                  containerUserProfileRecord
+                                                      ?.role,
+                                                  '-',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineLargeFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
+                                                        ),
+                                              ),
+                                              StreamBuilder<
+                                                  List<TeamTreeRecord>>(
+                                                stream: queryTeamTreeRecord(
+                                                  parent:
+                                                      FFAppState().outletRef,
+                                                  queryBuilder:
+                                                      (teamTreeRecord) =>
+                                                          teamTreeRecord.where(
+                                                    'userProfileId',
+                                                    isEqualTo:
+                                                        containerUserProfileRecord
+                                                            ?.id,
+                                                  ),
+                                                  singleRecord: true,
+                                                ),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 30.0,
+                                                        height: 30.0,
+                                                        child: SpinKitRing(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          size: 30.0,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  List<TeamTreeRecord>
+                                                      textTeamTreeRecordList =
+                                                      snapshot.data!;
+                                                  // Return an empty Container when the item does not exist.
+                                                  if (snapshot.data!.isEmpty) {
+                                                    return Container();
+                                                  }
+                                                  final textTeamTreeRecord =
+                                                      textTeamTreeRecordList
+                                                              .isNotEmpty
+                                                          ? textTeamTreeRecordList
+                                                              .first
+                                                          : null;
+
+                                                  return Text(
+                                                    valueOrDefault<String>(
+                                                      textTeamTreeRecord?.zone,
+                                                      '-',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineLargeFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineLargeIsCustom,
+                                                        ),
+                                                  );
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ].divide(SizedBox(width: 15.0)),
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 10.0),
-                                      child: Container(
-                                        width: 80.0,
-                                        height: 80.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0x43B0C4FF),
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Icon(
-                                          Icons.person,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
-                                          size: 40.0,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 20.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            FFAppState().curUserName,
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineLarge
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineLargeFamily,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .customColor5,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts:
-                                                      !FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineLargeIsCustom,
-                                                ),
-                                          ),
-                                          Text(
-                                            '${valueOrDefault<String>(
-                                              FFAppState()
-                                                  .currentUserZoneList
-                                                  .firstOrNull,
-                                              '-',
-                                            )}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineLarge
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineLargeFamily,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .customColor5,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w300,
-                                                  useGoogleFonts:
-                                                      !FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineLargeIsCustom,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ].divide(SizedBox(width: 15.0)),
-                                ),
-                              ],
-                            ),
-                          ),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       Expanded(
@@ -1081,51 +1200,81 @@ class _DeyeAddComplaintsCopyWidgetState
                                                     ],
                                                   ),
                                                   Expanded(
-                                                    child: Container(
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            child:
-                                                                FlutterFlowDropDown<
-                                                                    String>(
-                                                              controller: _model
-                                                                      .dropDownstateValueController ??=
-                                                                  FormFieldController<
-                                                                          String>(
-                                                                      null),
-                                                              options:
-                                                                  FFAppState()
-                                                                      .states
+                                                    child: StreamBuilder<
+                                                        List<StateRecord>>(
+                                                      stream: queryStateRecord(
+                                                        queryBuilder: (stateRecord) =>
+                                                            stateRecord.whereIn(
+                                                                'zone',
+                                                                FFAppState().currentUserZoneList !=
+                                                                        ''
+                                                                    ? FFAppState()
+                                                                        .currentUserZoneList
+                                                                    : null),
+                                                      ),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 30.0,
+                                                              height: 30.0,
+                                                              child:
+                                                                  SpinKitRing(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                size: 30.0,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<StateRecord>
+                                                            containerStateRecordList =
+                                                            snapshot.data!;
+
+                                                        return Container(
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Expanded(
+                                                                child:
+                                                                    FlutterFlowDropDown<
+                                                                        String>(
+                                                                  controller: _model
+                                                                          .dropDownstateValueController ??=
+                                                                      FormFieldController<
+                                                                              String>(
+                                                                          null),
+                                                                  options: containerStateRecordList
                                                                       .map((e) =>
                                                                           e.name)
                                                                       .toList(),
-                                                              onChanged:
-                                                                  (val) async {
-                                                                safeSetState(() =>
-                                                                    _model.dropDownstateValue =
-                                                                        val);
-                                                                _model.selectedZone = FFAppState()
-                                                                    .states
-                                                                    .where((e) =>
-                                                                        e.name ==
-                                                                        _model
-                                                                            .dropDownstateValue)
-                                                                    .toList()
-                                                                    .firstOrNull!
-                                                                    .zone;
-                                                                safeSetState(
-                                                                    () {});
-                                                              },
-                                                              width: 90.0,
-                                                              height: 50.0,
-                                                              searchHintTextStyle:
-                                                                  TextStyle(),
-                                                              searchTextStyle:
-                                                                  FlutterFlowTheme.of(
+                                                                  onChanged:
+                                                                      (val) async {
+                                                                    safeSetState(() =>
+                                                                        _model.dropDownstateValue =
+                                                                            val);
+                                                                    _model.selectedZone = containerStateRecordList
+                                                                        .where((e) =>
+                                                                            e.name ==
+                                                                            _model.dropDownstateValue)
+                                                                        .toList()
+                                                                        .firstOrNull!
+                                                                        .zone;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
+                                                                  width: 90.0,
+                                                                  height: 50.0,
+                                                                  searchHintTextStyle:
+                                                                      TextStyle(),
+                                                                  searchTextStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
@@ -1136,8 +1285,7 @@ class _DeyeAddComplaintsCopyWidgetState
                                                                         useGoogleFonts:
                                                                             !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
+                                                                  textStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleMedium
                                                                       .override(
@@ -1150,161 +1298,154 @@ class _DeyeAddComplaintsCopyWidgetState
                                                                         useGoogleFonts:
                                                                             !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
-                                                              searchHintText:
-                                                                  'Search State Here...',
-                                                              icon: Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_down,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                size: 25.0,
-                                                              ),
-                                                              fillColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              elevation: 2.0,
-                                                              borderColor:
-                                                                  FlutterFlowTheme.of(
+                                                                  searchHintText:
+                                                                      'Search State Here...',
+                                                                  icon: Icon(
+                                                                    Icons
+                                                                        .keyboard_arrow_down,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    size: 25.0,
+                                                                  ),
+                                                                  fillColor: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .customColor1,
-                                                              borderWidth: 0.0,
-                                                              borderRadius:
-                                                                  10.0,
-                                                              margin:
-                                                                  EdgeInsetsDirectional
+                                                                      .secondaryBackground,
+                                                                  elevation:
+                                                                      2.0,
+                                                                  borderColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .customColor1,
+                                                                  borderWidth:
+                                                                      0.0,
+                                                                  borderRadius:
+                                                                      10.0,
+                                                                  margin: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           12.0,
                                                                           20.0,
                                                                           12.0),
-                                                              hidesUnderline:
-                                                                  true,
-                                                              isOverButton:
-                                                                  false,
-                                                              isSearchable:
-                                                                  true,
-                                                              isMultiSelect:
-                                                                  false,
-                                                            ),
-                                                          ),
-                                                          Builder(
-                                                            builder: (context) =>
-                                                                FFButtonWidget(
-                                                              onPressed:
-                                                                  () async {
-                                                                _model.lensCopy =
-                                                                    await actions
-                                                                        .genarateStateListCode(
-                                                                  FFAppState()
-                                                                      .states
-                                                                      .toList(),
-                                                                );
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (dialogContext) {
-                                                                    return Dialog(
-                                                                      elevation:
-                                                                          0,
-                                                                      insetPadding:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      child:
-                                                                          WebViewAware(
-                                                                        child:
-                                                                            GestureDetector(
-                                                                          onTap:
-                                                                              () {
-                                                                            FocusScope.of(dialogContext).unfocus();
-                                                                            FocusManager.instance.primaryFocus?.unfocus();
-                                                                          },
-                                                                          child:
-                                                                              AddStateWidget(
-                                                                            codeLen:
-                                                                                _model.lensCopy,
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
-
-                                                                safeSetState(
-                                                                    () {});
-                                                              },
-                                                              text: 'Add State',
-                                                              icon: Icon(
-                                                                Icons.add,
-                                                                size: 18.0,
+                                                                  hidesUnderline:
+                                                                      true,
+                                                                  isOverButton:
+                                                                      false,
+                                                                  isSearchable:
+                                                                      true,
+                                                                  isMultiSelect:
+                                                                      false,
+                                                                ),
                                                               ),
-                                                              options:
-                                                                  FFButtonOptions(
-                                                                height: 50.0,
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        16.0,
-                                                                        0.0,
-                                                                        16.0,
-                                                                        0.0),
-                                                                iconPadding:
-                                                                    EdgeInsetsDirectional
+                                                              Builder(
+                                                                builder:
+                                                                    (context) =>
+                                                                        FFButtonWidget(
+                                                                  onPressed:
+                                                                      () async {
+                                                                    _model.lensCopy =
+                                                                        await actions
+                                                                            .genarateStateCode(
+                                                                      containerStateRecordList
+                                                                          .toList(),
+                                                                    );
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (dialogContext) {
+                                                                        return Dialog(
+                                                                          elevation:
+                                                                              0,
+                                                                          insetPadding:
+                                                                              EdgeInsets.zero,
+                                                                          backgroundColor:
+                                                                              Colors.transparent,
+                                                                          alignment:
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          child:
+                                                                              WebViewAware(
+                                                                            child:
+                                                                                GestureDetector(
+                                                                              onTap: () {
+                                                                                FocusScope.of(dialogContext).unfocus();
+                                                                                FocusManager.instance.primaryFocus?.unfocus();
+                                                                              },
+                                                                              child: AddStateWidget(
+                                                                                codeLen: _model.lensCopy,
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    );
+
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
+                                                                  text:
+                                                                      'Add State',
+                                                                  icon: Icon(
+                                                                    Icons.add,
+                                                                    size: 18.0,
+                                                                  ),
+                                                                  options:
+                                                                      FFButtonOptions(
+                                                                    height:
+                                                                        50.0,
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
+                                                                            16.0,
+                                                                            0.0,
+                                                                            16.0,
+                                                                            0.0),
+                                                                    iconPadding:
+                                                                        EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleSmallFamily,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    textStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).info,
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                        ),
+                                                                    elevation:
+                                                                        0.0,
+                                                                    borderSide:
+                                                                        BorderSide(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .info,
-                                                                      fontSize:
-                                                                          15.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      useGoogleFonts:
-                                                                          !FlutterFlowTheme.of(context)
-                                                                              .titleSmallIsCustom,
+                                                                      width:
+                                                                          0.5,
                                                                     ),
-                                                                elevation: 0.0,
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                                  width: 0.5,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
                                                                             8.0),
+                                                                  ),
+                                                                ),
                                                               ),
-                                                            ),
+                                                            ].divide(SizedBox(
+                                                                width: 5.0)),
                                                           ),
-                                                        ].divide(SizedBox(
-                                                            width: 5.0)),
-                                                      ),
+                                                        );
+                                                      },
                                                     ),
                                                   ),
                                                 ],
@@ -1362,40 +1503,68 @@ class _DeyeAddComplaintsCopyWidgetState
                                                         ),
                                                       ],
                                                     ),
-                                                    Container(
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            child:
-                                                                FlutterFlowDropDown<
-                                                                    String>(
-                                                              controller: _model
-                                                                      .dropDownCitiesValueController ??=
-                                                                  FormFieldController<
-                                                                          String>(
-                                                                      null),
-                                                              options: FFAppState()
-                                                                  .cities
-                                                                  .where((e) =>
-                                                                      e.state ==
-                                                                      _model
-                                                                          .dropDownstateValue)
-                                                                  .toList()
-                                                                  .map((e) => e
-                                                                      .cityName)
-                                                                  .toList(),
-                                                              onChanged: (val) =>
-                                                                  safeSetState(() =>
-                                                                      _model.dropDownCitiesValue =
-                                                                          val),
-                                                              width: 90.0,
-                                                              height: 50.0,
-                                                              searchHintTextStyle:
-                                                                  FlutterFlowTheme.of(
+                                                    StreamBuilder<
+                                                        List<CitiesRecord>>(
+                                                      stream: queryCitiesRecord(
+                                                        queryBuilder:
+                                                            (citiesRecord) =>
+                                                                citiesRecord
+                                                                    .where(
+                                                          'state',
+                                                          isEqualTo: _model
+                                                              .dropDownstateValue,
+                                                        ),
+                                                      ),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 30.0,
+                                                              height: 30.0,
+                                                              child:
+                                                                  SpinKitRing(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                size: 30.0,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<CitiesRecord>
+                                                            containerCitiesRecordList =
+                                                            snapshot.data!;
+
+                                                        return Container(
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Expanded(
+                                                                child:
+                                                                    FlutterFlowDropDown<
+                                                                        String>(
+                                                                  controller: _model
+                                                                          .dropDownCitiesValueController ??=
+                                                                      FormFieldController<
+                                                                              String>(
+                                                                          null),
+                                                                  options: containerCitiesRecordList
+                                                                      .map((e) =>
+                                                                          e.cityName)
+                                                                      .toList(),
+                                                                  onChanged: (val) =>
+                                                                      safeSetState(() =>
+                                                                          _model.dropDownCitiesValue =
+                                                                              val),
+                                                                  width: 90.0,
+                                                                  height: 50.0,
+                                                                  searchHintTextStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyLarge
                                                                       .override(
@@ -1408,8 +1577,7 @@ class _DeyeAddComplaintsCopyWidgetState
                                                                         useGoogleFonts:
                                                                             !FlutterFlowTheme.of(context).bodyLargeIsCustom,
                                                                       ),
-                                                              searchTextStyle:
-                                                                  FlutterFlowTheme.of(
+                                                                  searchTextStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
@@ -1420,8 +1588,7 @@ class _DeyeAddComplaintsCopyWidgetState
                                                                         useGoogleFonts:
                                                                             !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
+                                                                  textStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleMedium
                                                                       .override(
@@ -1434,161 +1601,155 @@ class _DeyeAddComplaintsCopyWidgetState
                                                                         useGoogleFonts:
                                                                             !FlutterFlowTheme.of(context).titleMediumIsCustom,
                                                                       ),
-                                                              searchHintText:
-                                                                  'Search city here...',
-                                                              icon: Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_down_rounded,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                size: 25.0,
-                                                              ),
-                                                              fillColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              elevation: 2.0,
-                                                              borderColor:
-                                                                  FlutterFlowTheme.of(
+                                                                  searchHintText:
+                                                                      'Search city here...',
+                                                                  icon: Icon(
+                                                                    Icons
+                                                                        .keyboard_arrow_down_rounded,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    size: 25.0,
+                                                                  ),
+                                                                  fillColor: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .customColor1,
-                                                              borderWidth: 0.0,
-                                                              borderRadius:
-                                                                  10.0,
-                                                              margin:
-                                                                  EdgeInsetsDirectional
+                                                                      .secondaryBackground,
+                                                                  elevation:
+                                                                      2.0,
+                                                                  borderColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .customColor1,
+                                                                  borderWidth:
+                                                                      0.0,
+                                                                  borderRadius:
+                                                                      10.0,
+                                                                  margin: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           12.0,
                                                                           20.0,
                                                                           12.0),
-                                                              hidesUnderline:
-                                                                  true,
-                                                              isOverButton:
-                                                                  false,
-                                                              isSearchable:
-                                                                  true,
-                                                              isMultiSelect:
-                                                                  false,
-                                                            ),
-                                                          ),
-                                                          Builder(
-                                                            builder: (context) =>
-                                                                FFButtonWidget(
-                                                              onPressed:
-                                                                  () async {
-                                                                _model.len =
-                                                                    await actions
-                                                                        .genarateCityListCode(
-                                                                  FFAppState()
-                                                                      .cities
-                                                                      .toList(),
-                                                                );
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (dialogContext) {
-                                                                    return Dialog(
-                                                                      elevation:
-                                                                          0,
-                                                                      insetPadding:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      child:
-                                                                          WebViewAware(
-                                                                        child:
-                                                                            GestureDetector(
-                                                                          onTap:
-                                                                              () {
-                                                                            FocusScope.of(dialogContext).unfocus();
-                                                                            FocusManager.instance.primaryFocus?.unfocus();
-                                                                          },
-                                                                          child:
-                                                                              AddCityWidget(
-                                                                            codeLen:
-                                                                                _model.len,
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
-
-                                                                safeSetState(
-                                                                    () {});
-                                                              },
-                                                              text: 'Add City',
-                                                              icon: Icon(
-                                                                Icons.add,
-                                                                size: 18.0,
+                                                                  hidesUnderline:
+                                                                      true,
+                                                                  isOverButton:
+                                                                      false,
+                                                                  isSearchable:
+                                                                      true,
+                                                                  isMultiSelect:
+                                                                      false,
+                                                                ),
                                                               ),
-                                                              options:
-                                                                  FFButtonOptions(
-                                                                height: 50.0,
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        16.0,
-                                                                        0.0,
-                                                                        16.0,
-                                                                        0.0),
-                                                                iconPadding:
-                                                                    EdgeInsetsDirectional
+                                                              Builder(
+                                                                builder:
+                                                                    (context) =>
+                                                                        FFButtonWidget(
+                                                                  onPressed:
+                                                                      () async {
+                                                                    _model.len =
+                                                                        await actions
+                                                                            .genarateCityListCode(
+                                                                      FFAppState()
+                                                                          .cities
+                                                                          .toList(),
+                                                                    );
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (dialogContext) {
+                                                                        return Dialog(
+                                                                          elevation:
+                                                                              0,
+                                                                          insetPadding:
+                                                                              EdgeInsets.zero,
+                                                                          backgroundColor:
+                                                                              Colors.transparent,
+                                                                          alignment:
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          child:
+                                                                              WebViewAware(
+                                                                            child:
+                                                                                GestureDetector(
+                                                                              onTap: () {
+                                                                                FocusScope.of(dialogContext).unfocus();
+                                                                                FocusManager.instance.primaryFocus?.unfocus();
+                                                                              },
+                                                                              child: AddCityWidget(
+                                                                                codeLen: _model.len,
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    );
+
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
+                                                                  text:
+                                                                      'Add City',
+                                                                  icon: Icon(
+                                                                    Icons.add,
+                                                                    size: 18.0,
+                                                                  ),
+                                                                  options:
+                                                                      FFButtonOptions(
+                                                                    height:
+                                                                        50.0,
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
+                                                                            16.0,
+                                                                            0.0,
+                                                                            16.0,
+                                                                            0.0),
+                                                                    iconPadding:
+                                                                        EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleSmallFamily,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    textStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).info,
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                        ),
+                                                                    elevation:
+                                                                        0.0,
+                                                                    borderSide:
+                                                                        BorderSide(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .info,
-                                                                      fontSize:
-                                                                          15.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      useGoogleFonts:
-                                                                          !FlutterFlowTheme.of(context)
-                                                                              .titleSmallIsCustom,
+                                                                      width:
+                                                                          0.5,
                                                                     ),
-                                                                elevation: 0.0,
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                                  width: 0.5,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
                                                                             8.0),
+                                                                  ),
+                                                                ),
                                                               ),
-                                                            ),
+                                                            ].divide(SizedBox(
+                                                                width: 5.0)),
                                                           ),
-                                                        ].divide(SizedBox(
-                                                            width: 5.0)),
-                                                      ),
+                                                        );
+                                                      },
                                                     ),
                                                   ],
                                                 ),
@@ -2971,6 +3132,16 @@ class _DeyeAddComplaintsCopyWidgetState
                                                       );
                                                       return;
                                                     }
+                                                    if (_model
+                                                            .dropDownProductNameValue ==
+                                                        null) {
+                                                      return;
+                                                    }
+                                                    if (_model
+                                                            .dropDownProductionCapacityValue ==
+                                                        null) {
+                                                      return;
+                                                    }
                                                     _model.checkTrue = await actions
                                                         .newLeadValidationAction(
                                                       int.parse(_model
@@ -3287,9 +3458,19 @@ class _DeyeAddComplaintsCopyWidgetState
                                                                 ?.value =
                                                             'Select  City';
                                                       });
+                                                      safeSetState(() {
+                                                        _model.dropDownProductNameValueController
+                                                                ?.value =
+                                                            'Select Product ';
+                                                      });
+                                                      safeSetState(() {
+                                                        _model.dropDownProductionCapacityValueController
+                                                                ?.value =
+                                                            'Select Product Capacity';
+                                                      });
 
                                                       context.pushNamed(
-                                                          DeyeDashboardCopyWidget
+                                                          DeyeDashboardNotUsingWidget
                                                               .routeName);
 
                                                       if (_shouldSetState)

@@ -275,9 +275,8 @@ class _RegisterComplaintDemoWidgetState
                                   clearUnsetFields: false,
                                   create: true,
                                 ),
-                                ticket: functions.genComplaintNum(
-                                    _model.countDocCopy!.length,
-                                    FFAppState().zone),
+                                ticket: functions.genComplaintTicket(
+                                    _model.countDocCopy!.toList()),
                                 source: 'QR',
                               ));
                               _model.outputCopy =
@@ -342,9 +341,8 @@ class _RegisterComplaintDemoWidgetState
                                           clearUnsetFields: false,
                                           create: true,
                                         ),
-                                        ticket: functions.genComplaintNum(
-                                            _model.countDocCopy!.length,
-                                            FFAppState().zone),
+                                        ticket: functions.genComplaintTicket(
+                                            _model.countDocCopy!.toList()),
                                         source: 'QR',
                                       ),
                                       outletLeadsRecordReference);

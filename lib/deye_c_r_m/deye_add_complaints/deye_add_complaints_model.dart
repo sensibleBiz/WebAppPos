@@ -74,7 +74,7 @@ class DeyeAddComplaintsModel extends FlutterFlowModel<DeyeAddComplaintsWidget> {
   // State field(s) for DropDownstate widget.
   String? dropDownstateValue;
   FormFieldController<String>? dropDownstateValueController;
-  // Stores action output result for [Custom Action - genarateStateCode] action in Button widget.
+  // Stores action output result for [Custom Action - genarateStateListCode] action in Button widget.
   int? lensCopy;
   // State field(s) for DropDownCities widget.
   String? dropDownCitiesValue;

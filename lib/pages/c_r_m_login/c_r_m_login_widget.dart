@@ -8,6 +8,7 @@ import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -103,712 +104,767 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                               fill: Fill.fillBack,
                               direction: FlipDirection.HORIZONTAL,
                               speed: 400,
-                              front: Container(
-                                width: MediaQuery.sizeOf(context).width * 0.35,
-                                height: double.infinity,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(0.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 100.0, 20.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 50.0),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  context.pushNamed(
-                                                      RegisterComplaintDemoWidget
-                                                          .routeName);
-                                                },
-                                                child: Container(
-                                                  width: 180.0,
-                                                  height: 110.0,
-                                                  decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      fit: BoxFit.contain,
-                                                      image: Image.asset(
-                                                        'assets/images/Sensible_Logo_Large.png',
-                                                      ).image,
+                              front: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {},
+                                child: Container(
+                                  width:
+                                      MediaQuery.sizeOf(context).width * 0.35,
+                                  height: double.infinity,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(0.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 100.0, 20.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 50.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    context.pushNamed(
+                                                        RegisterComplaintDemoWidget
+                                                            .routeName);
+                                                  },
+                                                  child: Container(
+                                                    width: 180.0,
+                                                    height: 110.0,
+                                                    decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                        fit: BoxFit.contain,
+                                                        image: Image.asset(
+                                                          'assets/images/Sensible_Logo_Large.png',
+                                                        ).image,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 15.0),
-                                              child: TextFormField(
-                                                controller: _model
-                                                    .textFieldEmailTextController,
-                                                focusNode: _model
-                                                    .textFieldEmailFocusNode,
-                                                onChanged: (_) =>
-                                                    EasyDebounce.debounce(
-                                                  '_model.textFieldEmailTextController',
-                                                  Duration(milliseconds: 2000),
-                                                  () => safeSetState(() {}),
-                                                ),
-                                                autofocus: true,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  isDense: false,
-                                                  hintText: 'Email id',
-                                                  hintStyle:
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 15.0),
+                                                child: TextFormField(
+                                                  controller: _model
+                                                      .textFieldEmailTextController,
+                                                  focusNode: _model
+                                                      .textFieldEmailFocusNode,
+                                                  onChanged: (_) =>
+                                                      EasyDebounce.debounce(
+                                                    '_model.textFieldEmailTextController',
+                                                    Duration(
+                                                        milliseconds: 2000),
+                                                    () => safeSetState(() {}),
+                                                  ),
+                                                  autofocus: true,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    isDense: false,
+                                                    hintText: 'Email id',
+                                                    hintStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmallFamily,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmallIsCustom,
+                                                            ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .customColor1,
+                                                        width: 0.75,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                        width: 0.75,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 0.75,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 0.75,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  style:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodySmall
+                                                          .titleMedium
                                                           .override(
                                                             fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodySmallFamily,
+                                                                    .titleMediumFamily,
                                                             letterSpacing: 0.0,
                                                             useGoogleFonts:
                                                                 !FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodySmallIsCustom,
+                                                                    .titleMediumIsCustom,
                                                           ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .customColor1,
-                                                      width: 0.75,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10.0),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                      width: 0.75,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10.0),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 0.75,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10.0),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 0.75,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10.0),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
+                                                  validator: _model
+                                                      .textFieldEmailTextControllerValidator
+                                                      .asValidator(context),
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleMediumFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts:
-                                                              !FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .titleMediumIsCustom,
-                                                        ),
-                                                validator: _model
-                                                    .textFieldEmailTextControllerValidator
-                                                    .asValidator(context),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 30.0),
-                                              child: TextFormField(
-                                                controller: _model
-                                                    .textFieldPwdTextController,
-                                                focusNode: _model
-                                                    .textFieldPwdFocusNode,
-                                                onChanged: (_) =>
-                                                    EasyDebounce.debounce(
-                                                  '_model.textFieldPwdTextController',
-                                                  Duration(milliseconds: 2000),
-                                                  () => safeSetState(() {}),
-                                                ),
-                                                autofocus: true,
-                                                obscureText: !_model
-                                                    .textFieldPwdVisibility,
-                                                decoration: InputDecoration(
-                                                  isDense: false,
-                                                  hintText: 'Password',
-                                                  hintStyle:
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 30.0),
+                                                child: TextFormField(
+                                                  controller: _model
+                                                      .textFieldPwdTextController,
+                                                  focusNode: _model
+                                                      .textFieldPwdFocusNode,
+                                                  onChanged: (_) =>
+                                                      EasyDebounce.debounce(
+                                                    '_model.textFieldPwdTextController',
+                                                    Duration(
+                                                        milliseconds: 2000),
+                                                    () => safeSetState(() {}),
+                                                  ),
+                                                  autofocus: true,
+                                                  obscureText: !_model
+                                                      .textFieldPwdVisibility,
+                                                  decoration: InputDecoration(
+                                                    isDense: false,
+                                                    hintText: 'Password',
+                                                    hintStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmallFamily,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  !FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmallIsCustom,
+                                                            ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .customColor1,
+                                                        width: 0.75,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                        width: 0.75,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 0.75,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 0.75,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                    suffixIcon: InkWell(
+                                                      onTap: () => safeSetState(
+                                                        () => _model
+                                                                .textFieldPwdVisibility =
+                                                            !_model
+                                                                .textFieldPwdVisibility,
+                                                      ),
+                                                      focusNode: FocusNode(
+                                                          skipTraversal: true),
+                                                      child: Icon(
+                                                        _model.textFieldPwdVisibility
+                                                            ? Icons
+                                                                .visibility_outlined
+                                                            : Icons
+                                                                .visibility_off_outlined,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 22.0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  style:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodySmall
+                                                          .titleMedium
                                                           .override(
                                                             fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodySmallFamily,
+                                                                    .titleMediumFamily,
                                                             letterSpacing: 0.0,
                                                             useGoogleFonts:
                                                                 !FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodySmallIsCustom,
+                                                                    .titleMediumIsCustom,
                                                           ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .customColor1,
-                                                      width: 0.75,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10.0),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                      width: 0.75,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10.0),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 0.75,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10.0),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 0.75,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10.0),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
-                                                  suffixIcon: InkWell(
-                                                    onTap: () => safeSetState(
-                                                      () => _model
-                                                              .textFieldPwdVisibility =
-                                                          !_model
-                                                              .textFieldPwdVisibility,
-                                                    ),
-                                                    focusNode: FocusNode(
-                                                        skipTraversal: true),
-                                                    child: Icon(
-                                                      _model.textFieldPwdVisibility
-                                                          ? Icons
-                                                              .visibility_outlined
-                                                          : Icons
-                                                              .visibility_off_outlined,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      size: 22.0,
-                                                    ),
-                                                  ),
+                                                  validator: _model
+                                                      .textFieldPwdTextControllerValidator
+                                                      .asValidator(context),
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleMediumFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts:
-                                                              !FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .titleMediumIsCustom,
-                                                        ),
-                                                validator: _model
-                                                    .textFieldPwdTextControllerValidator
-                                                    .asValidator(context),
                                               ),
-                                            ),
-                                            FFButtonWidget(
-                                              onPressed: () async {
-                                                var _shouldSetState = false;
-                                                if (_model.textFieldEmailTextController
-                                                            .text !=
-                                                        null &&
-                                                    _model.textFieldEmailTextController
-                                                            .text !=
-                                                        '') {
-                                                  _model.fetchedRecordUserProfile =
-                                                      await queryUserProfileRecordOnce(
-                                                    queryBuilder:
-                                                        (userProfileRecord) =>
-                                                            userProfileRecord
-                                                                .where(
-                                                                  'email',
-                                                                  isEqualTo: _model
-                                                                      .textFieldEmailTextController
-                                                                      .text,
-                                                                )
-                                                                .where(
-                                                                  'password',
-                                                                  isEqualTo: _model
-                                                                      .textFieldPwdTextController
-                                                                      .text,
-                                                                ),
-                                                    singleRecord: true,
-                                                  ).then((s) => s.firstOrNull);
-                                                  _shouldSetState = true;
-                                                  if (_model
-                                                          .fetchedRecordUserProfile !=
-                                                      null) {
-                                                    _model.cities =
-                                                        await queryCitiesRecordOnce(
+                                              FFButtonWidget(
+                                                onPressed: () async {
+                                                  var _shouldSetState = false;
+                                                  if (_model.textFieldEmailTextController
+                                                              .text !=
+                                                          null &&
+                                                      _model.textFieldEmailTextController
+                                                              .text !=
+                                                          '') {
+                                                    _model.fetchedRecordUserProfile =
+                                                        await queryUserProfileRecordOnce(
                                                       queryBuilder:
-                                                          (citiesRecord) =>
-                                                              citiesRecord
-                                                                  .orderBy(
-                                                                      'cityName'),
-                                                    );
+                                                          (userProfileRecord) =>
+                                                              userProfileRecord
+                                                                  .where(
+                                                                    'email',
+                                                                    isEqualTo: _model
+                                                                        .textFieldEmailTextController
+                                                                        .text,
+                                                                  )
+                                                                  .where(
+                                                                    'password',
+                                                                    isEqualTo: _model
+                                                                        .textFieldPwdTextController
+                                                                        .text,
+                                                                  ),
+                                                      singleRecord: true,
+                                                    ).then((s) =>
+                                                            s.firstOrNull);
                                                     _shouldSetState = true;
-                                                    _model.states =
-                                                        await queryStateRecordOnce(
-                                                      queryBuilder:
-                                                          (stateRecord) =>
-                                                              stateRecord
-                                                                  .orderBy(
-                                                                      'name'),
-                                                    );
-                                                    _shouldSetState = true;
-                                                    FFAppState().outletId = _model
-                                                        .fetchedRecordUserProfile!
-                                                        .outletId;
-                                                    FFAppState().role = _model
-                                                        .fetchedRecordUserProfile!
-                                                        .role;
-                                                    FFAppState()
-                                                            .userProfileRef =
-                                                        _model
-                                                            .fetchedRecordUserProfile
-                                                            ?.reference;
-                                                    FFAppState()
-                                                            .loggedInUserPermisions =
-                                                        _model
-                                                            .fetchedRecordUserProfile!
-                                                            .permissionList
-                                                            .toList()
-                                                            .cast<
-                                                                UserAccesCStruct>();
-                                                    FFAppState().currentEmail =
-                                                        _model
-                                                            .textFieldEmailTextController
-                                                            .text;
-                                                    FFAppState().userId = _model
-                                                        .fetchedRecordUserProfile!
-                                                        .id;
-                                                    FFAppState().cities =
-                                                        functions
-                                                            .addCityList(_model
-                                                                .cities!
-                                                                .toList())
-                                                            .toList()
-                                                            .cast<
-                                                                CityListStruct>();
-                                                    FFAppState().curUserName =
-                                                        _model
-                                                            .fetchedRecordUserProfile!
-                                                            .name;
-                                                    FFAppState().isLoggedIn =
-                                                        true;
-                                                    safeSetState(() {});
                                                     if (_model
-                                                            .fetchedRecordUserProfile
-                                                            ?.outlets
-                                                            ?.length ==
-                                                        1) {
-                                                      _model.outletDoc =
-                                                          await queryOutletRecordOnce(
+                                                            .fetchedRecordUserProfile !=
+                                                        null) {
+                                                      _model.cities =
+                                                          await queryCitiesRecordOnce(
                                                         queryBuilder:
-                                                            (outletRecord) =>
-                                                                outletRecord
-                                                                    .where(
-                                                          'id',
-                                                          isEqualTo: _model
+                                                            (citiesRecord) =>
+                                                                citiesRecord
+                                                                    .orderBy(
+                                                                        'cityName'),
+                                                      );
+                                                      _shouldSetState = true;
+                                                      _model.states =
+                                                          await queryStateRecordOnce(
+                                                        queryBuilder:
+                                                            (stateRecord) =>
+                                                                stateRecord
+                                                                    .orderBy(
+                                                                        'name'),
+                                                      );
+                                                      _shouldSetState = true;
+                                                      FFAppState().outletId = _model
+                                                          .fetchedRecordUserProfile!
+                                                          .outletId;
+                                                      FFAppState().role = _model
+                                                          .fetchedRecordUserProfile!
+                                                          .role;
+                                                      FFAppState()
+                                                              .userProfileRef =
+                                                          _model
                                                               .fetchedRecordUserProfile
-                                                              ?.outletId,
-                                                        ),
-                                                        singleRecord: true,
-                                                      ).then((s) =>
-                                                              s.firstOrNull);
-                                                      _shouldSetState = true;
-                                                      _model.categoryDocs =
-                                                          await queryCategoryRecordOnce(
-                                                        parent: _model.outletDoc
-                                                            ?.reference,
-                                                        queryBuilder:
-                                                            (categoryRecord) =>
-                                                                categoryRecord
-                                                                    .where(
-                                                          'isDeleted',
-                                                          isEqualTo: false,
-                                                        ),
-                                                      );
-                                                      _shouldSetState = true;
-                                                      _model.productDocs =
-                                                          await queryProductRecordOnce(
-                                                        parent: _model.outletDoc
-                                                            ?.reference,
-                                                        queryBuilder:
-                                                            (productRecord) =>
-                                                                productRecord
-                                                                    .where(
-                                                          'isDeleted',
-                                                          isEqualTo: false,
-                                                        ),
-                                                      );
-                                                      _shouldSetState = true;
-                                                      _model.teamTree =
-                                                          await queryTeamTreeRecordOnce(
-                                                        parent: _model.outletDoc
-                                                            ?.reference,
-                                                      );
-                                                      _shouldSetState = true;
-                                                      FFAppState().outletRef =
-                                                          _model.outletDoc
                                                               ?.reference;
-                                                      FFAppState().outletId =
-                                                          _model.outletDoc!.id;
-                                                      FFAppState().billingType =
-                                                          _model.outletDoc!
-                                                              .billingType;
-                                                      FFAppState().shift =
-                                                          functions.getDayId();
                                                       FFAppState()
-                                                              .categoryList =
+                                                              .loggedInUserPermisions =
+                                                          _model
+                                                              .fetchedRecordUserProfile!
+                                                              .permissionList
+                                                              .toList()
+                                                              .cast<
+                                                                  UserAccesCStruct>();
+                                                      FFAppState()
+                                                              .currentEmail =
+                                                          _model
+                                                              .textFieldEmailTextController
+                                                              .text;
+                                                      FFAppState().userId = _model
+                                                          .fetchedRecordUserProfile!
+                                                          .id;
+                                                      FFAppState().cities =
                                                           functions
-                                                              .addCategoryList(
-                                                                  _model
-                                                                      .categoryDocs!
+                                                              .addCityList(
+                                                                  _model.cities!
                                                                       .toList())
                                                               .toList()
                                                               .cast<
-                                                                  CategoryDataTypeStruct>();
-                                                      FFAppState()
-                                                              .productsList =
-                                                          functions
-                                                              .addProductLis(_model
-                                                                  .productDocs!
-                                                                  .toList())
-                                                              .toList()
-                                                              .cast<
-                                                                  ProductDataTypeStruct>();
-                                                      FFAppState()
-                                                              .TeamTreeUsers =
-                                                          functions
-                                                              .addTeamTree(
-                                                                  _model
-                                                                      .teamTree!
-                                                                      .toList())
-                                                              .toList()
-                                                              .cast<
-                                                                  TeamTreeDatatypeStruct>();
-                                                      FFAppState()
-                                                          .update(() {});
-                                                      if (_model.outletDoc
-                                                              ?.billingType ==
-                                                          'CRM') {
-                                                        _model.teamTREE =
-                                                            await queryTeamTreeRecordOnce(
-                                                          parent: FFAppState()
-                                                              .outletRef,
+                                                                  CityListStruct>();
+                                                      FFAppState().curUserName =
+                                                          _model
+                                                              .fetchedRecordUserProfile!
+                                                              .name;
+                                                      FFAppState().isLoggedIn =
+                                                          true;
+                                                      safeSetState(() {});
+                                                      if (_model
+                                                              .fetchedRecordUserProfile
+                                                              ?.outlets
+                                                              ?.length ==
+                                                          1) {
+                                                        _model.outletDoc =
+                                                            await queryOutletRecordOnce(
                                                           queryBuilder:
-                                                              (teamTreeRecord) =>
-                                                                  teamTreeRecord
+                                                              (outletRecord) =>
+                                                                  outletRecord
                                                                       .where(
-                                                            'userProfileId',
+                                                            'id',
                                                             isEqualTo: _model
                                                                 .fetchedRecordUserProfile
-                                                                ?.id,
+                                                                ?.outletId,
                                                           ),
                                                           singleRecord: true,
                                                         ).then((s) =>
                                                                 s.firstOrNull);
                                                         _shouldSetState = true;
-                                                        FFAppState().zone =
+                                                        _model.categoryDocs =
+                                                            await queryCategoryRecordOnce(
+                                                          parent: _model
+                                                              .outletDoc
+                                                              ?.reference,
+                                                          queryBuilder:
+                                                              (categoryRecord) =>
+                                                                  categoryRecord
+                                                                      .where(
+                                                            'isDeleted',
+                                                            isEqualTo: false,
+                                                          ),
+                                                        );
+                                                        _shouldSetState = true;
+                                                        _model.productDocs =
+                                                            await queryProductRecordOnce(
+                                                          parent: _model
+                                                              .outletDoc
+                                                              ?.reference,
+                                                          queryBuilder:
+                                                              (productRecord) =>
+                                                                  productRecord
+                                                                      .where(
+                                                            'isDeleted',
+                                                            isEqualTo: false,
+                                                          ),
+                                                        );
+                                                        _shouldSetState = true;
+                                                        _model.teamTree =
+                                                            await queryTeamTreeRecordOnce(
+                                                          parent: _model
+                                                              .outletDoc
+                                                              ?.reference,
+                                                        );
+                                                        _shouldSetState = true;
+                                                        FFAppState().outletRef =
+                                                            _model.outletDoc
+                                                                ?.reference;
+                                                        FFAppState().outletId =
                                                             _model
-                                                                .teamTREE!.zone;
+                                                                .outletDoc!.id;
                                                         FFAppState()
-                                                                .currentUserZoneList =
-                                                            _model.teamTREE!
-                                                                .zoneList
-                                                                .toList()
-                                                                .cast<String>();
+                                                                .billingType =
+                                                            _model.outletDoc!
+                                                                .billingType;
+                                                        FFAppState().shift =
+                                                            functions
+                                                                .getDayId();
                                                         FFAppState()
-                                                                .stageListPermissionState =
-                                                            _model.teamTREE!
-                                                                .stageAccessList
+                                                                .categoryList =
+                                                            functions
+                                                                .addCategoryList(_model
+                                                                    .categoryDocs!
+                                                                    .toList())
                                                                 .toList()
                                                                 .cast<
-                                                                    StageAccessDataTypeStruct>();
-                                                        FFAppState().states = functions
-                                                            .addStatesList(
-                                                                _model.states!
-                                                                    .toList(),
-                                                                FFAppState()
-                                                                    .currentUserZoneList
+                                                                    CategoryDataTypeStruct>();
+                                                        FFAppState()
+                                                                .productsList =
+                                                            functions
+                                                                .addProductLis(_model
+                                                                    .productDocs!
                                                                     .toList())
-                                                            .toList()
-                                                            .cast<
-                                                                StatesStruct>();
+                                                                .toList()
+                                                                .cast<
+                                                                    ProductDataTypeStruct>();
                                                         FFAppState()
-                                                                .roleInZone =
-                                                            _model.teamTREE!
-                                                                .roleInZone;
+                                                                .TeamTreeUsers =
+                                                            functions
+                                                                .addTeamTree(_model
+                                                                    .teamTree!
+                                                                    .toList())
+                                                                .toList()
+                                                                .cast<
+                                                                    TeamTreeDatatypeStruct>();
                                                         FFAppState()
-                                                                .currentLoggedInUserId =
-                                                            _model
-                                                                .fetchedRecordUserProfile!
-                                                                .id;
-                                                        safeSetState(() {});
-                                                        if (FFAppState()
-                                                                .loggedInUserPermisions
-                                                                .elementAtOrNull(
-                                                                    16)
-                                                                ?.value ==
-                                                            4) {
-                                                          context.pushNamed(
-                                                              DeyeDashboardSupportWidget
-                                                                  .routeName);
-
-                                                          if (_shouldSetState)
-                                                            safeSetState(() {});
-                                                          return;
-                                                        } else if ((FFAppState()
-                                                                    .loggedInUserPermisions
-                                                                    .elementAtOrNull(
-                                                                        16)
-                                                                    ?.value ==
-                                                                1) &&
-                                                            (FFAppState()
-                                                                    .role ==
-                                                                'user') &&
-                                                            (_model.teamTREE
-                                                                    ?.roleInZone ==
-                                                                'manager')) {
-                                                          FFAppState()
-                                                                  .readOnlyAccess =
+                                                            .update(() {});
+                                                        if (_model.outletDoc
+                                                                ?.billingType ==
+                                                            'CRM') {
+                                                          _model.teamTREE =
+                                                              await queryTeamTreeRecordOnce(
+                                                            parent: FFAppState()
+                                                                .outletRef,
+                                                            queryBuilder:
+                                                                (teamTreeRecord) =>
+                                                                    teamTreeRecord
+                                                                        .where(
+                                                              'userProfileId',
+                                                              isEqualTo: _model
+                                                                  .fetchedRecordUserProfile
+                                                                  ?.id,
+                                                            ),
+                                                            singleRecord: true,
+                                                          ).then((s) => s
+                                                                  .firstOrNull);
+                                                          _shouldSetState =
                                                               true;
+                                                          FFAppState().zone =
+                                                              _model.teamTREE!
+                                                                  .zone;
+                                                          FFAppState()
+                                                                  .currentUserZoneList =
+                                                              _model.teamTREE!
+                                                                  .zoneList
+                                                                  .toList()
+                                                                  .cast<
+                                                                      String>();
+                                                          FFAppState()
+                                                                  .stageListPermissionState =
+                                                              _model.teamTREE!
+                                                                  .stageAccessList
+                                                                  .toList()
+                                                                  .cast<
+                                                                      StageAccessDataTypeStruct>();
+                                                          FFAppState().states = functions
+                                                              .addStatesList(
+                                                                  _model.states!
+                                                                      .toList(),
+                                                                  FFAppState()
+                                                                      .currentUserZoneList
+                                                                      .toList())
+                                                              .toList()
+                                                              .cast<
+                                                                  StatesStruct>();
+                                                          FFAppState()
+                                                                  .roleInZone =
+                                                              _model.teamTREE!
+                                                                  .roleInZone;
+                                                          FFAppState()
+                                                                  .currentLoggedInUserId =
+                                                              _model
+                                                                  .fetchedRecordUserProfile!
+                                                                  .id;
                                                           safeSetState(() {});
-                                                        } else if (FFAppState()
-                                                                .loggedInUserPermisions
-                                                                .elementAtOrNull(
-                                                                    16)
-                                                                ?.value ==
-                                                            3) {
-                                                          context.pushNamed(
-                                                              DeyeAttendanceAdminWidget
-                                                                  .routeName);
+                                                          if (FFAppState()
+                                                                  .loggedInUserPermisions
+                                                                  .elementAtOrNull(
+                                                                      16)
+                                                                  ?.value ==
+                                                              4) {
+                                                            context.pushNamed(
+                                                                DeyeDashboardSupportWidget
+                                                                    .routeName);
 
-                                                          if (_shouldSetState)
+                                                            if (_shouldSetState)
+                                                              safeSetState(
+                                                                  () {});
+                                                            return;
+                                                          } else if ((FFAppState()
+                                                                      .loggedInUserPermisions
+                                                                      .elementAtOrNull(
+                                                                          16)
+                                                                      ?.value ==
+                                                                  1) &&
+                                                              (FFAppState()
+                                                                      .role ==
+                                                                  'user') &&
+                                                              (_model.teamTREE
+                                                                      ?.roleInZone ==
+                                                                  'manager')) {
+                                                            FFAppState()
+                                                                    .readOnlyAccess =
+                                                                true;
                                                             safeSetState(() {});
-                                                          return;
-                                                        } else {
-                                                          context.pushNamed(
-                                                              DeyeDashboardCopyWidget
-                                                                  .routeName);
+                                                          } else if (FFAppState()
+                                                                  .loggedInUserPermisions
+                                                                  .elementAtOrNull(
+                                                                      16)
+                                                                  ?.value ==
+                                                              3) {
+                                                            context.pushNamed(
+                                                                DeyeAttendanceAdminWidget
+                                                                    .routeName);
 
-                                                          if (_shouldSetState)
-                                                            safeSetState(() {});
-                                                          return;
-                                                        }
+                                                            if (_shouldSetState)
+                                                              safeSetState(
+                                                                  () {});
+                                                            return;
+                                                          } else {
+                                                            context.pushNamed(
+                                                                DeyeDashboardWidget
+                                                                    .routeName);
 
-                                                        context.pushNamed(
-                                                            DeyeDashboardCopyWidget
-                                                                .routeName);
-                                                      } else {
-                                                        if (FFAppState().role ==
-                                                            'admin') {
+                                                            if (_shouldSetState)
+                                                              safeSetState(
+                                                                  () {});
+                                                            return;
+                                                          }
+
                                                           context.pushNamed(
-                                                            CDashWidget
-                                                                .routeName,
-                                                            queryParameters: {
-                                                              'outletId':
-                                                                  serializeParam(
-                                                                _model.outletDoc
-                                                                    ?.reference,
-                                                                ParamType
-                                                                    .DocumentReference,
-                                                              ),
-                                                              'shiftRef':
-                                                                  serializeParam(
-                                                                FFAppState()
-                                                                    .docRef,
-                                                                ParamType
-                                                                    .DocumentReference,
-                                                              ),
-                                                              'userId':
-                                                                  serializeParam(
-                                                                _model
-                                                                    .fetchedRecordUserProfile
-                                                                    ?.id,
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
-                                                        } else if (FFAppState()
-                                                                .role ==
-                                                            'SuperAdmin') {
-                                                          context.pushNamed(
-                                                              DashboardAdminWidget
-                                                                  .routeName);
-                                                        } else if (((_model
-                                                                        .fetchedRecordUserProfile
-                                                                        ?.permissionList
-                                                                        ?.elementAtOrNull(
-                                                                            10))
-                                                                    ?.value ==
-                                                                4) ||
-                                                            ((_model.fetchedRecordUserProfile
-                                                                        ?.permissionList
-                                                                        ?.elementAtOrNull(
-                                                                            8))
-                                                                    ?.value ==
-                                                                2)) {
-                                                          context.pushNamed(
-                                                            COutletListUser4Widget
-                                                                .routeName,
-                                                            queryParameters: {
-                                                              'emailId':
-                                                                  serializeParam(
-                                                                _model
-                                                                    .textFieldEmailTextController
-                                                                    .text,
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
-                                                        } else if (FFAppState()
-                                                                .role ==
-                                                            'support') {
-                                                          context.pushNamed(
-                                                              AdminUserManualViewWidget
+                                                              DeyeDashboardWidget
                                                                   .routeName);
                                                         } else {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return WebViewAware(
-                                                                child:
-                                                                    AlertDialog(
-                                                                  title: Text(
-                                                                      'In valid  login'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
+                                                          if (FFAppState()
+                                                                  .role ==
+                                                              'admin') {
+                                                            context.pushNamed(
+                                                              CDashWidget
+                                                                  .routeName,
+                                                              queryParameters: {
+                                                                'outletId':
+                                                                    serializeParam(
+                                                                  _model
+                                                                      .outletDoc
+                                                                      ?.reference,
+                                                                  ParamType
+                                                                      .DocumentReference,
                                                                 ),
-                                                              );
-                                                            },
-                                                          );
-                                                        }
+                                                                'shiftRef':
+                                                                    serializeParam(
+                                                                  FFAppState()
+                                                                      .docRef,
+                                                                  ParamType
+                                                                      .DocumentReference,
+                                                                ),
+                                                                'userId':
+                                                                    serializeParam(
+                                                                  _model
+                                                                      .fetchedRecordUserProfile
+                                                                      ?.id,
+                                                                  ParamType
+                                                                      .String,
+                                                                ),
+                                                              }.withoutNulls,
+                                                            );
+                                                          } else if (FFAppState()
+                                                                  .role ==
+                                                              'SuperAdmin') {
+                                                            context.pushNamed(
+                                                                DashboardAdminWidget
+                                                                    .routeName);
+                                                          } else if (((_model
+                                                                          .fetchedRecordUserProfile
+                                                                          ?.permissionList
+                                                                          ?.elementAtOrNull(
+                                                                              10))
+                                                                      ?.value ==
+                                                                  4) ||
+                                                              ((_model.fetchedRecordUserProfile
+                                                                          ?.permissionList
+                                                                          ?.elementAtOrNull(
+                                                                              8))
+                                                                      ?.value ==
+                                                                  2)) {
+                                                            context.pushNamed(
+                                                              COutletListUser4Widget
+                                                                  .routeName,
+                                                              queryParameters: {
+                                                                'emailId':
+                                                                    serializeParam(
+                                                                  _model
+                                                                      .textFieldEmailTextController
+                                                                      .text,
+                                                                  ParamType
+                                                                      .String,
+                                                                ),
+                                                              }.withoutNulls,
+                                                            );
+                                                          } else if (FFAppState()
+                                                                  .role ==
+                                                              'support') {
+                                                            context.pushNamed(
+                                                                AdminUserManualViewWidget
+                                                                    .routeName);
+                                                          } else {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return WebViewAware(
+                                                                  child:
+                                                                      AlertDialog(
+                                                                    title: Text(
+                                                                        'In valid  login'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                        child: Text(
+                                                                            'Ok'),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                );
+                                                              },
+                                                            );
+                                                          }
 
-                                                        if (_shouldSetState)
-                                                          safeSetState(() {});
-                                                        return;
+                                                          if (_shouldSetState)
+                                                            safeSetState(() {});
+                                                          return;
+                                                        }
+                                                      } else {
+                                                        context.pushNamed(
+                                                          COutletListWidget
+                                                              .routeName,
+                                                          queryParameters: {
+                                                            'emailId':
+                                                                serializeParam(
+                                                              FFAppState()
+                                                                  .currentEmail,
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
                                                       }
                                                     } else {
-                                                      context.pushNamed(
-                                                        COutletListWidget
-                                                            .routeName,
-                                                        queryParameters: {
-                                                          'emailId':
-                                                              serializeParam(
-                                                            FFAppState()
-                                                                .currentEmail,
-                                                            ParamType.String,
-                                                          ),
-                                                        }.withoutNulls,
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return WebViewAware(
+                                                            child: AlertDialog(
+                                                              title: Text(
+                                                                  'Alert !'),
+                                                              content: Text(
+                                                                  'Data  Not Found'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
                                                       );
+                                                      if (_shouldSetState)
+                                                        safeSetState(() {});
+                                                      return;
                                                     }
                                                   } else {
                                                     await showDialog(
@@ -818,9 +874,9 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                         return WebViewAware(
                                                           child: AlertDialog(
                                                             title:
-                                                                Text('Alert !'),
+                                                                Text('Alert'),
                                                             content: Text(
-                                                                'Data  Not Found'),
+                                                                'Please Enter Email'),
                                                             actions: [
                                                               TextButton(
                                                                 onPressed: () =>
@@ -838,142 +894,147 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                       safeSetState(() {});
                                                     return;
                                                   }
-                                                } else {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return WebViewAware(
-                                                        child: AlertDialog(
-                                                          title: Text('Alert'),
-                                                          content: Text(
-                                                              'Please Enter Email'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: Text('Ok'),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
+
                                                   if (_shouldSetState)
                                                     safeSetState(() {});
-                                                  return;
-                                                }
-
-                                                if (_shouldSetState)
-                                                  safeSetState(() {});
-                                              },
-                                              text: 'Submit',
-                                              options: FFButtonOptions(
-                                                height: 40.0,
+                                                },
+                                                text: 'Submit',
+                                                options: FFButtonOptions(
+                                                  height: 40.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          24.0, 0.0, 24.0, 0.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallFamily,
+                                                            color: Colors.white,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallIsCustom,
+                                                          ),
+                                                  elevation: 3.0,
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                              ),
+                                              Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
+                                                        0.0, 5.0, 0.0, 0.0),
+                                                child: Text(
+                                                  '1.1.32',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .displayLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .displayLargeFamily,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .displayLargeIsCustom,
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Text(
+                                          'Switch to QR',
+                                          style: FlutterFlowTheme.of(context)
+                                              .displayLarge
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displayLargeFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmallFamily,
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts:
-                                                              !FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .titleSmallIsCustom,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                        .customColor1,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .displayLargeIsCustom,
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 5.0, 0.0, 0.0),
-                                              child: Text(
-                                                '1.1.26',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .displayLarge
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .displayLargeFamily,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                      fontSize: 12.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .displayLargeIsCustom,
-                                                    ),
-                                              ),
-                                            ),
-                                          ],
                                         ),
-                                      ),
-                                      Text(
-                                        'Switch to QR',
-                                        style: FlutterFlowTheme.of(context)
-                                            .displayLarge
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .displayLargeFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .customColor1,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .displayLargeIsCustom,
-                                            ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                              back: Container(
-                                width: MediaQuery.sizeOf(context).width * 0.35,
-                                height: double.infinity,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(0.0),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: 250.0,
-                                      height: 250.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .customColor1,
+                              back: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {},
+                                child: Container(
+                                  width:
+                                      MediaQuery.sizeOf(context).width * 0.35,
+                                  height: double.infinity,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(0.0),
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: 250.0,
+                                        height: 250.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .customColor1,
+                                        ),
+                                        child: Visibility(
+                                          visible: false,
+                                          child: BarcodeWidget(
+                                            data: 'https://flutterflow.io/',
+                                            barcode: Barcode.qrCode(),
+                                            width: 200.0,
+                                            height: 200.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            backgroundColor: Colors.transparent,
+                                            errorBuilder: (_context, _error) =>
+                                                SizedBox(
+                                              width: 200.0,
+                                              height: 200.0,
+                                            ),
+                                            drawText: true,
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

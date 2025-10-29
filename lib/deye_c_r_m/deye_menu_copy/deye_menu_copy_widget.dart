@@ -100,7 +100,7 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
                   4) {
                 context.pushNamed(DeyeDashboardSupportWidget.routeName);
               } else {
-                context.pushNamed(DeyeDashboardCopyWidget.routeName);
+                context.pushNamed(DeyeDashboardWidget.routeName);
               }
             },
             child: Container(

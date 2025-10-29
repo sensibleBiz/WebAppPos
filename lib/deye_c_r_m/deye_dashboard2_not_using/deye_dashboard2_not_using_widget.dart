@@ -20,28 +20,30 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'deye_dashboard2_model.dart';
-export 'deye_dashboard2_model.dart';
+import 'deye_dashboard2_not_using_model.dart';
+export 'deye_dashboard2_not_using_model.dart';
 
-class DeyeDashboard2Widget extends StatefulWidget {
-  const DeyeDashboard2Widget({super.key});
+class DeyeDashboard2NotUsingWidget extends StatefulWidget {
+  const DeyeDashboard2NotUsingWidget({super.key});
 
-  static String routeName = 'DeyeDashboard2';
-  static String routePath = 'DeyeDashboard2';
+  static String routeName = 'DeyeDashboard2NotUsing';
+  static String routePath = 'DeyeDashboardnotusing';
 
   @override
-  State<DeyeDashboard2Widget> createState() => _DeyeDashboard2WidgetState();
+  State<DeyeDashboard2NotUsingWidget> createState() =>
+      _DeyeDashboard2NotUsingWidgetState();
 }
 
-class _DeyeDashboard2WidgetState extends State<DeyeDashboard2Widget> {
-  late DeyeDashboard2Model _model;
+class _DeyeDashboard2NotUsingWidgetState
+    extends State<DeyeDashboard2NotUsingWidget> {
+  late DeyeDashboard2NotUsingModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DeyeDashboard2Model());
+    _model = createModel(context, () => DeyeDashboard2NotUsingModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -91,7 +93,7 @@ class _DeyeDashboard2WidgetState extends State<DeyeDashboard2Widget> {
     context.watch<FFAppState>();
 
     return Title(
-        title: 'DeyeDashboard2',
+        title: 'DeyeDashboard2NotUsing',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {
@@ -138,9 +140,8 @@ class _DeyeDashboard2WidgetState extends State<DeyeDashboard2Widget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 FFButtonWidget(
-                                  onPressed: () async {
-                                    context.pushNamed(
-                                        DeyeAddComplaintsWidget.routeName);
+                                  onPressed: () {
+                                    print('Button pressed ...');
                                   },
                                   text: 'Add New Ticket',
                                   icon: Icon(

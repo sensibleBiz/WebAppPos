@@ -13,7 +13,8 @@ import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
-import 'deye_add_complaints_copy_widget.dart' show DeyeAddComplaintsCopyWidget;
+import 'deye_add_complaints_not_using_widget.dart'
+    show DeyeAddComplaintsNotUsingWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +25,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class DeyeAddComplaintsCopyModel
-    extends FlutterFlowModel<DeyeAddComplaintsCopyWidget> {
+class DeyeAddComplaintsNotUsingModel
+    extends FlutterFlowModel<DeyeAddComplaintsNotUsingWidget> {
   ///  Local state fields for this page.
 
   String selectedZone = 'NA';
@@ -75,7 +76,7 @@ class DeyeAddComplaintsCopyModel
   // State field(s) for DropDownstate widget.
   String? dropDownstateValue;
   FormFieldController<String>? dropDownstateValueController;
-  // Stores action output result for [Custom Action - genarateStateListCode] action in Button widget.
+  // Stores action output result for [Custom Action - genarateStateCode] action in Button widget.
   int? lensCopy;
   // State field(s) for DropDownCities widget.
   String? dropDownCitiesValue;

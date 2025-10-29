@@ -837,7 +837,7 @@ class _NavigationTestWidgetState extends State<NavigationTestWidget>
                                         DeyeDashboardSupportWidget.routeName);
                                   } else {
                                     context.pushNamed(
-                                        DeyeDashboardWidget.routeName);
+                                        DeyeDashboardNotUsingWidget.routeName);
                                   }
                                 },
                                 child: Container(

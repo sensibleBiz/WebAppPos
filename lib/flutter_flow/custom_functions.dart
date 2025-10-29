@@ -11,6 +11,7 @@ import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 int getcreatedDate() {
@@ -2689,4 +2690,224 @@ String getAssingedToByState(
   }
 
   return res;
+}
+
+String genComplaintTicket(List<OutletLeadsRecord> leadsDoc) {
+  DateTime date = DateTime.now();
+  String formattedDate = DateFormat('yyMMdd').format(date);
+
+  int nextCount = 1;
+
+  if (leadsDoc.isNotEmpty) {
+    // Find the ticket with the max value
+    leadsDoc.sort((a, b) => a.ticket.compareTo(b.ticket));
+    String lastTicket = leadsDoc.last.ticket;
+
+    // Extract numeric part after yyMMdd
+    String lastCountStr = lastTicket.substring(6);
+    int lastCount = int.tryParse(lastCountStr) ?? 0;
+    nextCount = lastCount + 1;
+  }
+
+  // Always pad with 2 digits (01, 02, …)
+  String countTemp = nextCount.toString().padLeft(2, '0');
+
+  return formattedDate + countTemp;
+}
+
+DateTime getExpiryDateTime(
+  DateTime curTime,
+  int? delayInSeconds,
+) {
+  final delay = Duration(seconds: delayInSeconds ?? 0);
+  return curTime.add(delay);
+}
+
+List<CallLogSummeryStruct> callSummeryDash(List<CallLogsRecord> callLogDocs) {
+// Department order list (modify this to change output order)
+  final List<String> departmentOrder = [
+    'Total',
+    'Sales',
+    'HR',
+    'Software Support',
+    'Hardware Support',
+    'Software',
+    'Account'
+  ];
+
+  // A map to group call summaries by department
+  final Map<String, CallLogSummeryStruct> depMap = {};
+
+  // Initialize total summary
+  final totalSummary = CallLogSummeryStruct(
+    depname: 'Total',
+    total: 0,
+    incoming: 0,
+    outgoing: 0,
+    rejected: 0,
+    missed: 0,
+    names: [], // You can choose to aggregate employee stats or not
+  );
+
+  for (final depName in departmentOrder) {
+    if (depName != 'Total') {
+      depMap[depName] = CallLogSummeryStruct(
+        depname: depName,
+        total: 0,
+        incoming: 0,
+        outgoing: 0,
+        rejected: 0,
+        missed: 0,
+        names: [],
+      );
+    }
+  }
+
+  for (final log in callLogDocs) {
+    final depName = log.department;
+    final direction = log.direction ?? '';
+    final number = log.receiverMobileNo;
+    final receiverName = log.receiverName;
+
+    print('$depName + $direction + $number');
+
+    // Get or create a department summary
+    var summary = depMap[depName];
+    if (summary == null) {
+      summary = CallLogSummeryStruct(
+        depname: depName,
+        total: 0,
+        incoming: 0,
+        outgoing: 0,
+        rejected: 0,
+        missed: 0,
+        names: [], // Initialize the list of employee call logs
+      );
+    }
+
+    // Increment total calls for the department
+    summary.total += 1;
+    totalSummary.total += 1;
+
+    // Get or create a call log entry for the receiver
+    var employeeCallLog = summary.names.firstWhere(
+      (log) => log.name == receiverName,
+      orElse: () {
+        final newLog = createCallLogNameStruct(
+          name: receiverName,
+        );
+        // Initialize stats manually since constructor doesn't accept it
+        newLog.stats = [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]; // [incoming, outgoing, rejected, missed, total]
+        return newLog;
+      },
+    );
+
+    // Define the stats index mapping (order: incoming, outgoing, rejected, missed)
+    if (direction == CallLogStatus.incoming) {
+      summary.incoming =
+          summary.incoming + 1; // Total Incoming for the department
+      totalSummary.incoming = totalSummary.incoming + 1;
+      employeeCallLog.stats[0] =
+          employeeCallLog.stats[0] + 1; // Incoming for the employee
+    } else if (direction == CallLogStatus.outgoing) {
+      summary.outgoing =
+          summary.outgoing + 1; // Total Outgoing for the department
+      totalSummary.outgoing = totalSummary.outgoing + 1;
+      employeeCallLog.stats[1] =
+          employeeCallLog.stats[1] + 1; // Outgoing for the employee
+    } else if (direction == CallLogStatus.rejected) {
+      summary.rejected =
+          summary.rejected + 1; // Total Rejected for the department
+      totalSummary.rejected = totalSummary.rejected + 1;
+      employeeCallLog.stats[2] =
+          employeeCallLog.stats[2] + 1; // Rejected for the employee
+    } else if (direction == CallLogStatus.missed) {
+      summary.missed = summary.missed + 1; // Total Missed for the department
+      totalSummary.missed = totalSummary.missed + 1;
+      employeeCallLog.stats[3] =
+          employeeCallLog.stats[3] + 1; // Missed for the employee
+    }
+
+    // Increment total calls for the employee
+    employeeCallLog.stats[4] += 1;
+
+    // Add this employee's call log entry to the department's summary
+    if (!summary.names.contains(employeeCallLog)) {
+      summary.names.add(employeeCallLog);
+    }
+
+    // Save the updated summary back to the map
+    depMap[depName] = summary;
+  }
+
+  // Add the total summary to the map
+  depMap['Total'] = totalSummary;
+
+  // Create ordered list based on departmentOrder
+  final List<CallLogSummeryStruct> orderedList = [];
+  for (final depName in departmentOrder) {
+    if (depMap.containsKey(depName)) {
+      orderedList.add(depMap[depName]!);
+    }
+  }
+
+  // Add any departments not in the hardcoded order to the end
+  for (final entry in depMap.entries) {
+    if (!departmentOrder.contains(entry.key)) {
+      orderedList.add(entry.value);
+    }
+  }
+
+  // Return the list of summaries
+  return orderedList;
+}
+
+String formatCallDurationToHHMMSS(int totalSeconds) {
+  final hours = (totalSeconds ~/ 3600).toString().padLeft(2, '0');
+  final minutes = ((totalSeconds % 3600) ~/ 60).toString().padLeft(2, '0');
+  final seconds = (totalSeconds % 60).toString().padLeft(2, '0');
+  return '$hours:$minutes:$seconds';
+}
+
+List<LeadsManagementRecord> filteredEmployeesForReports(
+  List<LeadsManagementRecord> leadsDoc,
+  String? review,
+  String? solution,
+) {
+  if (review!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) => lead.remarks == review).toList();
+    //print(leadsDoc);
+  }
+
+  if (solution!.isNotEmpty) {
+    leadsDoc = leadsDoc.where((lead) {
+      final customFields = lead.customFields;
+      return customFields.hasSolution() && customFields.solution == solution;
+    }).toList();
+  }
+
+  return leadsDoc;
+}
+
+List<String> leadMobileNumberParser(String? phone) {
+  if (phone == null || phone.trim().isEmpty) {
+    return ['+91', ''];
+  }
+
+  // Remove all non-digit characters
+  final digitsOnly = phone.replaceAll(RegExp(r'\D'), '');
+
+  // Take last 10 digits if available
+  final lastTen = digitsOnly.length > 10
+      ? digitsOnly.substring(digitsOnly.length - 10)
+      : digitsOnly;
+
+  // Return list: one with +91 prefix, one without
+  return ['+91$lastTen', lastTen];
 }

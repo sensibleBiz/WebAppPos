@@ -1576,212 +1576,358 @@ class _DeyeAttendanceAdminWidgetState extends State<DeyeAttendanceAdminWidget> {
                                                             ),
                                                           ),
                                                           Expanded(
-                                                            child: Builder(
-                                                              builder:
-                                                                  (context) {
-                                                                final presentList = functions
-                                                                    .getZonewiseAtt(
-                                                                        containerAttendanceRecordList
-                                                                            .where((e) =>
-                                                                                e.checkInTime >
-                                                                                0)
-                                                                            .toList()
-                                                                            .sortedList(
-                                                                                keyOf: (e) => e.checkInTime,
-                                                                                desc: true)
-                                                                            .toList(),
-                                                                        containerTeamTreeRecordList.toList())
-                                                                    .toList();
-                                                                if (presentList
-                                                                    .isEmpty) {
-                                                                  return Container(
-                                                                    width: double
-                                                                        .infinity,
-                                                                    height: double
-                                                                        .infinity,
-                                                                    child:
-                                                                        DeyeNoDataWidget(
-                                                                      message:
-                                                                          'No check- in today',
-                                                                    ),
-                                                                  );
-                                                                }
-
-                                                                return GridView
-                                                                    .builder(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  gridDelegate:
-                                                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                                                    crossAxisCount:
-                                                                        4,
-                                                                    crossAxisSpacing:
-                                                                        10.0,
-                                                                    mainAxisSpacing:
-                                                                        12.0,
-                                                                    childAspectRatio:
-                                                                        1.1,
-                                                                  ),
-                                                                  shrinkWrap:
-                                                                      true,
-                                                                  scrollDirection:
-                                                                      Axis.vertical,
-                                                                  itemCount:
-                                                                      presentList
-                                                                          .length,
-                                                                  itemBuilder:
-                                                                      (context,
-                                                                          presentListIndex) {
-                                                                    final presentListItem =
-                                                                        presentList[
-                                                                            presentListIndex];
-                                                                    return Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(),
+                                                              child: Builder(
+                                                                builder:
+                                                                    (context) {
+                                                                  final presentList = functions
+                                                                      .getZonewiseAtt(
+                                                                          containerAttendanceRecordList
+                                                                              .where((e) => e.checkInTime > 0)
+                                                                              .toList()
+                                                                              .sortedList(keyOf: (e) => e.checkInTime, desc: true)
+                                                                              .toList(),
+                                                                          containerTeamTreeRecordList.toList())
+                                                                      .toList();
+                                                                  if (presentList
+                                                                      .isEmpty) {
+                                                                    return Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height: double
+                                                                          .infinity,
                                                                       child:
-                                                                          Container(
-                                                                        width:
-                                                                            100.0,
-                                                                        height:
-                                                                            100.0,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryBackground,
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(5.0),
-                                                                          border:
-                                                                              Border.all(
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).success,
-                                                                            width:
-                                                                                0.5,
-                                                                          ),
-                                                                        ),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.all(7.0),
-                                                                          child:
-                                                                              Column(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.spaceAround,
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.start,
-                                                                            children:
-                                                                                [
-                                                                              Row(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                children: [
-                                                                                  FlutterFlowIconButton(
-                                                                                    borderColor: Colors.transparent,
-                                                                                    borderRadius: 8.0,
-                                                                                    borderWidth: 1.0,
-                                                                                    buttonSize: 30.0,
-                                                                                    fillColor: FlutterFlowTheme.of(context).customColor5,
-                                                                                    icon: Icon(
-                                                                                      Icons.person,
-                                                                                      color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                      size: 14.0,
-                                                                                    ),
-                                                                                    onPressed: () {
-                                                                                      print('IconButton pressed ...');
-                                                                                    },
-                                                                                  ),
-                                                                                  Expanded(
-                                                                                    child: StreamBuilder<List<UserProfileRecord>>(
-                                                                                      stream: queryUserProfileRecord(
-                                                                                        queryBuilder: (userProfileRecord) => userProfileRecord.where(
-                                                                                          'id',
-                                                                                          isEqualTo: presentListItem.userId,
-                                                                                        ),
-                                                                                        singleRecord: true,
-                                                                                      ),
-                                                                                      builder: (context, snapshot) {
-                                                                                        // Customize what your widget looks like when it's loading.
-                                                                                        if (!snapshot.hasData) {
-                                                                                          return Center(
-                                                                                            child: SizedBox(
-                                                                                              width: 30.0,
-                                                                                              height: 30.0,
-                                                                                              child: SpinKitRing(
-                                                                                                color: FlutterFlowTheme.of(context).primary,
-                                                                                                size: 30.0,
-                                                                                              ),
-                                                                                            ),
-                                                                                          );
-                                                                                        }
-                                                                                        List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
-                                                                                        // Return an empty Container when the item does not exist.
-                                                                                        if (snapshot.data!.isEmpty) {
-                                                                                          return Container();
-                                                                                        }
-                                                                                        final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
+                                                                          DeyeNoDataWidget(
+                                                                        message:
+                                                                            'No check- in today',
+                                                                      ),
+                                                                    );
+                                                                  }
 
-                                                                                        return Text(
-                                                                                          valueOrDefault<String>(
-                                                                                            containerTeamTreeRecordList.where((e) => e.userProfileId == presentListItem.userId).toList().firstOrNull?.userName,
-                                                                                            '-',
-                                                                                          ),
-                                                                                          style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                letterSpacing: 1.0,
-                                                                                                fontWeight: FontWeight.w600,
-                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
-                                                                                              ),
-                                                                                        );
+                                                                  return GridView
+                                                                      .builder(
+                                                                    padding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    gridDelegate:
+                                                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                                                      crossAxisCount:
+                                                                          4,
+                                                                      crossAxisSpacing:
+                                                                          10.0,
+                                                                      mainAxisSpacing:
+                                                                          12.0,
+                                                                      childAspectRatio:
+                                                                          1.1,
+                                                                    ),
+                                                                    shrinkWrap:
+                                                                        true,
+                                                                    scrollDirection:
+                                                                        Axis.vertical,
+                                                                    itemCount:
+                                                                        presentList
+                                                                            .length,
+                                                                    itemBuilder:
+                                                                        (context,
+                                                                            presentListIndex) {
+                                                                      final presentListItem =
+                                                                          presentList[
+                                                                              presentListIndex];
+                                                                      return Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            5.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              100.0,
+                                                                          height:
+                                                                              100.0,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(5.0),
+                                                                            border:
+                                                                                Border.all(
+                                                                              color: FlutterFlowTheme.of(context).success,
+                                                                              width: 0.5,
+                                                                            ),
+                                                                          ),
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                EdgeInsets.all(7.0),
+                                                                            child:
+                                                                                Column(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  children: [
+                                                                                    FlutterFlowIconButton(
+                                                                                      borderColor: Colors.transparent,
+                                                                                      borderRadius: 8.0,
+                                                                                      borderWidth: 1.0,
+                                                                                      buttonSize: 30.0,
+                                                                                      fillColor: FlutterFlowTheme.of(context).customColor5,
+                                                                                      icon: Icon(
+                                                                                        Icons.person,
+                                                                                        color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                        size: 14.0,
+                                                                                      ),
+                                                                                      onPressed: () {
+                                                                                        print('IconButton pressed ...');
                                                                                       },
                                                                                     ),
-                                                                                  ),
-                                                                                  Icon(
-                                                                                    Icons.done_outline_rounded,
-                                                                                    color: FlutterFlowTheme.of(context).success,
-                                                                                    size: 20.0,
-                                                                                  ),
-                                                                                ].divide(SizedBox(width: 10.0)),
-                                                                              ),
-                                                                              Column(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                children: [
-                                                                                  Expanded(
-                                                                                    child: Container(
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                        borderRadius: BorderRadius.circular(10.0),
-                                                                                        border: Border.all(
-                                                                                          color: FlutterFlowTheme.of(context).customColor1,
-                                                                                          width: 1.0,
+                                                                                    Expanded(
+                                                                                      child: Builder(
+                                                                                        builder: (context) => StreamBuilder<List<UserProfileRecord>>(
+                                                                                          stream: queryUserProfileRecord(
+                                                                                            queryBuilder: (userProfileRecord) => userProfileRecord.where(
+                                                                                              'id',
+                                                                                              isEqualTo: presentListItem.userId,
+                                                                                            ),
+                                                                                            singleRecord: true,
+                                                                                          ),
+                                                                                          builder: (context, snapshot) {
+                                                                                            // Customize what your widget looks like when it's loading.
+                                                                                            if (!snapshot.hasData) {
+                                                                                              return Center(
+                                                                                                child: SizedBox(
+                                                                                                  width: 30.0,
+                                                                                                  height: 30.0,
+                                                                                                  child: SpinKitRing(
+                                                                                                    color: FlutterFlowTheme.of(context).primary,
+                                                                                                    size: 30.0,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              );
+                                                                                            }
+                                                                                            List<UserProfileRecord> textUserProfileRecordList = snapshot.data!;
+                                                                                            // Return an empty Container when the item does not exist.
+                                                                                            if (snapshot.data!.isEmpty) {
+                                                                                              return Container();
+                                                                                            }
+                                                                                            final textUserProfileRecord = textUserProfileRecordList.isNotEmpty ? textUserProfileRecordList.first : null;
+
+                                                                                            return InkWell(
+                                                                                              splashColor: Colors.transparent,
+                                                                                              focusColor: Colors.transparent,
+                                                                                              hoverColor: Colors.transparent,
+                                                                                              highlightColor: Colors.transparent,
+                                                                                              onTap: () async {
+                                                                                                await showDialog(
+                                                                                                  context: context,
+                                                                                                  builder: (dialogContext) {
+                                                                                                    return Dialog(
+                                                                                                      elevation: 0,
+                                                                                                      insetPadding: EdgeInsets.zero,
+                                                                                                      backgroundColor: Colors.transparent,
+                                                                                                      alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                                      child: WebViewAware(
+                                                                                                        child: GestureDetector(
+                                                                                                          onTap: () {
+                                                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                          },
+                                                                                                          child: CustomDateRangeWidget(),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    );
+                                                                                                  },
+                                                                                                );
+
+                                                                                                _model.allAttendence1Copy = await queryAttendanceRecordOnce(
+                                                                                                  parent: FFAppState().outletRef,
+                                                                                                  queryBuilder: (attendanceRecord) => attendanceRecord
+                                                                                                      .where(
+                                                                                                        'createdDate',
+                                                                                                        isGreaterThanOrEqualTo: functions.geStartEndDateTimeFromMilisec(FFAppState().startDate, FFAppState().endDateForAtt!.millisecondsSinceEpoch, 'start'),
+                                                                                                      )
+                                                                                                      .where(
+                                                                                                        'createdDate',
+                                                                                                        isLessThan: functions.geStartEndDateTimeFromMilisec(FFAppState().startDate, FFAppState().endDateForAtt!.millisecondsSinceEpoch, 'end'),
+                                                                                                      ),
+                                                                                                );
+                                                                                                FFAppState().emailForReport = currentUserEmail;
+                                                                                                safeSetState(() {});
+                                                                                                await showDialog(
+                                                                                                  context: context,
+                                                                                                  builder: (dialogContext) {
+                                                                                                    return Dialog(
+                                                                                                      elevation: 0,
+                                                                                                      insetPadding: EdgeInsets.zero,
+                                                                                                      backgroundColor: Colors.transparent,
+                                                                                                      alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                                      child: WebViewAware(
+                                                                                                        child: GestureDetector(
+                                                                                                          onTap: () {
+                                                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                          },
+                                                                                                          child: SendEmailWidget(),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    );
+                                                                                                  },
+                                                                                                );
+
+                                                                                                _model.base64Link2321Copy = await actions.genExcelForEmployeeAttendanceReport(
+                                                                                                  _model.allAttendence1Copy!.toList(),
+                                                                                                  FFAppState().outletRef!.id,
+                                                                                                  textUserProfileRecord!.reference.id,
+                                                                                                );
+                                                                                                _model.apiResult88g1Copy = await SendMailCall.call(
+                                                                                                  mobileNo: FFAppState().currentMobile,
+                                                                                                  outletName: '',
+                                                                                                  file: _model.base64Link2321Copy,
+                                                                                                  fileName: 'AttendanceReport',
+                                                                                                  toEmail: FFAppState().emailForReport,
+                                                                                                  branchName: '',
+                                                                                                  username: valueOrDefault(currentUserDocument?.name, ''),
+                                                                                                  reportType: 'Attendance Report',
+                                                                                                  roll: FFAppState().currentUserRole,
+                                                                                                );
+
+                                                                                                if ((_model.apiResult88g1Copy?.succeeded ?? true)) {
+                                                                                                  await showDialog(
+                                                                                                    context: context,
+                                                                                                    builder: (alertDialogContext) {
+                                                                                                      return WebViewAware(
+                                                                                                        child: AlertDialog(
+                                                                                                          content: Text('Email Sent Successfully. Wait 5-8 Minutes..'),
+                                                                                                          actions: [
+                                                                                                            TextButton(
+                                                                                                              onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                                              child: Text('Ok'),
+                                                                                                            ),
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                      );
+                                                                                                    },
+                                                                                                  );
+                                                                                                } else {
+                                                                                                  await showDialog(
+                                                                                                    context: context,
+                                                                                                    builder: (alertDialogContext) {
+                                                                                                      return WebViewAware(
+                                                                                                        child: AlertDialog(
+                                                                                                          content: Text('Email Not Sent ! Try Again'),
+                                                                                                          actions: [
+                                                                                                            TextButton(
+                                                                                                              onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                                              child: Text('Ok'),
+                                                                                                            ),
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                      );
+                                                                                                    },
+                                                                                                  );
+                                                                                                }
+
+                                                                                                safeSetState(() {});
+                                                                                              },
+                                                                                              child: Text(
+                                                                                                valueOrDefault<String>(
+                                                                                                  containerTeamTreeRecordList.where((e) => e.userProfileId == presentListItem.userId).toList().firstOrNull?.userName,
+                                                                                                  '-',
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                      letterSpacing: 1.0,
+                                                                                                      fontWeight: FontWeight.w600,
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            );
+                                                                                          },
                                                                                         ),
                                                                                       ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsets.all(5.0),
-                                                                                        child: Column(
-                                                                                          mainAxisSize: MainAxisSize.max,
-                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                          children: [
-                                                                                            Text(
-                                                                                              'Check in',
-                                                                                              style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                    color: FlutterFlowTheme.of(context).info,
-                                                                                                    letterSpacing: 0.0,
-                                                                                                    fontWeight: FontWeight.w600,
-                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                                    ),
+                                                                                    Icon(
+                                                                                      Icons.done_outline_rounded,
+                                                                                      color: FlutterFlowTheme.of(context).success,
+                                                                                      size: 20.0,
+                                                                                    ),
+                                                                                  ].divide(SizedBox(width: 10.0)),
+                                                                                ),
+                                                                                Column(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  children: [
+                                                                                    Expanded(
+                                                                                      child: Container(
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                          borderRadius: BorderRadius.circular(10.0),
+                                                                                          border: Border.all(
+                                                                                            color: FlutterFlowTheme.of(context).customColor1,
+                                                                                            width: 1.0,
+                                                                                          ),
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsets.all(5.0),
+                                                                                          child: Column(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                            children: [
+                                                                                              Text(
+                                                                                                'Check in',
+                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                      color: FlutterFlowTheme.of(context).info,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      fontWeight: FontWeight.w600,
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                                                    ),
+                                                                                              ),
+                                                                                              Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                children: [
+                                                                                                  Align(
+                                                                                                    alignment: AlignmentDirectional(1.0, 1.0),
+                                                                                                    child: Text(
+                                                                                                      'Time : ',
+                                                                                                      style: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                                            color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                            fontSize: 13.0,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            fontWeight: FontWeight.w600,
+                                                                                                            lineHeight: 1.0,
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                                                          ),
+                                                                                                    ),
                                                                                                   ),
-                                                                                            ),
-                                                                                            Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              children: [
-                                                                                                Align(
-                                                                                                  alignment: AlignmentDirectional(1.0, 1.0),
-                                                                                                  child: Text(
-                                                                                                    'Time : ',
+                                                                                                  Text(
+                                                                                                    valueOrDefault<String>(
+                                                                                                      functions.attendanceTime(presentListItem.checkInTime),
+                                                                                                      '0',
+                                                                                                    ),
+                                                                                                    style: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                                          color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                          fontSize: 13.0,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          lineHeight: 1.0,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                                                        ),
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                              Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                children: [
+                                                                                                  Text(
+                                                                                                    'Place : ',
                                                                                                     style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                           fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
@@ -1792,256 +1938,224 @@ class _DeyeAttendanceAdminWidgetState extends State<DeyeAttendanceAdminWidget> {
                                                                                                           useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                         ),
                                                                                                   ),
-                                                                                                ),
-                                                                                                Text(
-                                                                                                  valueOrDefault<String>(
-                                                                                                    functions.attendanceTime(presentListItem.checkInTime),
-                                                                                                    '0',
-                                                                                                  ),
-                                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                        fontSize: 13.0,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        lineHeight: 1.0,
-                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
-                                                                                                      ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                            Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                              children: [
-                                                                                                Text(
-                                                                                                  'Place : ',
-                                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                        fontSize: 13.0,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        fontWeight: FontWeight.w600,
-                                                                                                        lineHeight: 1.0,
-                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
-                                                                                                      ),
-                                                                                                ),
-                                                                                                Expanded(
-                                                                                                  child: Column(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                    children: [
-                                                                                                      Text(
-                                                                                                        valueOrDefault<String>(
-                                                                                                          presentListItem.checkInLocationDetails.street,
-                                                                                                          '-',
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                              fontSize: 13.0,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              lineHeight: 1.0,
-                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                      Text(
-                                                                                                        valueOrDefault<String>(
-                                                                                                          presentListItem.checkInLocationDetails.subLocality,
-                                                                                                          '-',
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                              fontSize: 13.0,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ].divide(SizedBox(height: 3.0)),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ].divide(SizedBox(height: 5.0)),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Expanded(
-                                                                                    child: Container(
-                                                                                      height: 100.0,
-                                                                                      child: Stack(
-                                                                                        children: [
-                                                                                          if (presentListItem.checkOutTime > 0)
-                                                                                            Container(
-                                                                                              decoration: BoxDecoration(
-                                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                borderRadius: BorderRadius.circular(10.0),
-                                                                                                border: Border.all(
-                                                                                                  color: FlutterFlowTheme.of(context).customColor1,
-                                                                                                  width: 1.0,
-                                                                                                ),
-                                                                                              ),
-                                                                                              child: Padding(
-                                                                                                padding: EdgeInsets.all(5.0),
-                                                                                                child: Column(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                  children: [
-                                                                                                    Text(
-                                                                                                      'Check out',
-                                                                                                      style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                            color: FlutterFlowTheme.of(context).info,
-                                                                                                            letterSpacing: 0.0,
-                                                                                                            fontWeight: FontWeight.w600,
-                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                                                                                                          ),
-                                                                                                    ),
-                                                                                                    Row(
+                                                                                                  Expanded(
+                                                                                                    child: Column(
                                                                                                       mainAxisSize: MainAxisSize.max,
+                                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                       children: [
                                                                                                         Text(
-                                                                                                          'Time : ',
-                                                                                                          style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                          valueOrDefault<String>(
+                                                                                                            presentListItem.checkInLocationDetails.street,
+                                                                                                            '-',
+                                                                                                          ),
+                                                                                                          style: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                                 fontSize: 13.0,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                fontWeight: FontWeight.w600,
                                                                                                                 lineHeight: 1.0,
-                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                                               ),
                                                                                                         ),
                                                                                                         Text(
                                                                                                           valueOrDefault<String>(
-                                                                                                            functions.attendanceTime(presentListItem.checkOutTime),
-                                                                                                            '0',
+                                                                                                            presentListItem.checkInLocationDetails.subLocality,
+                                                                                                            '-',
                                                                                                           ),
                                                                                                           style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                                                 fontSize: 13.0,
                                                                                                                 letterSpacing: 0.0,
-                                                                                                                lineHeight: 1.0,
                                                                                                                 useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                                               ),
                                                                                                         ),
-                                                                                                      ],
+                                                                                                      ].divide(SizedBox(height: 3.0)),
                                                                                                     ),
-                                                                                                    Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                      children: [
-                                                                                                        Text(
-                                                                                                          'Place : ',
-                                                                                                          style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                                fontSize: 13.0,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                fontWeight: FontWeight.w600,
-                                                                                                                lineHeight: 1.0,
-                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
-                                                                                                              ),
-                                                                                                        ),
-                                                                                                        Expanded(
-                                                                                                          child: Column(
-                                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                            children: [
-                                                                                                              Text(
-                                                                                                                valueOrDefault<String>(
-                                                                                                                  presentListItem.checkOutLocationDetails.street,
-                                                                                                                  '-',
-                                                                                                                ),
-                                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                                      fontSize: 13.0,
-                                                                                                                      letterSpacing: 0.0,
-                                                                                                                      lineHeight: 1.0,
-                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                                                                                                                    ),
-                                                                                                              ),
-                                                                                                              Text(
-                                                                                                                valueOrDefault<String>(
-                                                                                                                  presentListItem.checkOutLocationDetails.subLocality,
-                                                                                                                  '-',
-                                                                                                                ),
-                                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                                      fontSize: 13.0,
-                                                                                                                      letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                                                                                                                    ),
-                                                                                                              ),
-                                                                                                            ].divide(SizedBox(height: 3.0)),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ].divide(SizedBox(height: 5.0)),
-                                                                                                ),
+                                                                                                  ),
+                                                                                                ],
                                                                                               ),
-                                                                                            ),
-                                                                                          if (presentListItem.checkOutTime == 0)
-                                                                                            Container(
-                                                                                              decoration: BoxDecoration(
-                                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                borderRadius: BorderRadius.circular(10.0),
-                                                                                                border: Border.all(
-                                                                                                  color: FlutterFlowTheme.of(context).customColor1,
-                                                                                                  width: 1.0,
+                                                                                            ].divide(SizedBox(height: 5.0)),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Expanded(
+                                                                                      child: Container(
+                                                                                        height: 100.0,
+                                                                                        child: Stack(
+                                                                                          children: [
+                                                                                            if (presentListItem.checkOutTime > 0)
+                                                                                              Container(
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                  borderRadius: BorderRadius.circular(10.0),
+                                                                                                  border: Border.all(
+                                                                                                    color: FlutterFlowTheme.of(context).customColor1,
+                                                                                                    width: 1.0,
+                                                                                                  ),
                                                                                                 ),
-                                                                                              ),
-                                                                                              child: Padding(
-                                                                                                padding: EdgeInsets.all(5.0),
-                                                                                                child: Column(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                  children: [
-                                                                                                    Text(
-                                                                                                      'Check out',
-                                                                                                      style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                            color: FlutterFlowTheme.of(context).info,
-                                                                                                            letterSpacing: 0.0,
-                                                                                                            fontWeight: FontWeight.w600,
-                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
-                                                                                                          ),
-                                                                                                    ),
-                                                                                                    Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                                                                                                      child: Row(
+                                                                                                child: Padding(
+                                                                                                  padding: EdgeInsets.all(5.0),
+                                                                                                  child: Column(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                    children: [
+                                                                                                      Text(
+                                                                                                        'Check out',
+                                                                                                        style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              fontWeight: FontWeight.w600,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                                                            ),
+                                                                                                      ),
+                                                                                                      Row(
                                                                                                         mainAxisSize: MainAxisSize.max,
-                                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                         children: [
                                                                                                           Text(
-                                                                                                            'Check-out is yet to be logged ',
-                                                                                                            style: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                                            'Time : ',
+                                                                                                            style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                                  fontSize: 13.0,
+                                                                                                                  letterSpacing: 0.0,
+                                                                                                                  fontWeight: FontWeight.w600,
+                                                                                                                  lineHeight: 1.0,
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                                                                ),
+                                                                                                          ),
+                                                                                                          Text(
+                                                                                                            valueOrDefault<String>(
+                                                                                                              functions.attendanceTime(presentListItem.checkOutTime),
+                                                                                                              '0',
+                                                                                                            ),
+                                                                                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                                                   fontSize: 13.0,
                                                                                                                   letterSpacing: 0.0,
                                                                                                                   lineHeight: 1.0,
-                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
                                                                                                                 ),
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
-                                                                                                    ),
-                                                                                                  ].divide(SizedBox(height: 5.0)),
+                                                                                                      Row(
+                                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                        children: [
+                                                                                                          Text(
+                                                                                                            'Place : ',
+                                                                                                            style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                                  fontSize: 13.0,
+                                                                                                                  letterSpacing: 0.0,
+                                                                                                                  fontWeight: FontWeight.w600,
+                                                                                                                  lineHeight: 1.0,
+                                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                                                                ),
+                                                                                                          ),
+                                                                                                          Expanded(
+                                                                                                            child: Column(
+                                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                              children: [
+                                                                                                                Text(
+                                                                                                                  valueOrDefault<String>(
+                                                                                                                    presentListItem.checkOutLocationDetails.street,
+                                                                                                                    '-',
+                                                                                                                  ),
+                                                                                                                  style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                        fontSize: 13.0,
+                                                                                                                        letterSpacing: 0.0,
+                                                                                                                        lineHeight: 1.0,
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                                                                      ),
+                                                                                                                ),
+                                                                                                                Text(
+                                                                                                                  valueOrDefault<String>(
+                                                                                                                    presentListItem.checkOutLocationDetails.subLocality,
+                                                                                                                    '-',
+                                                                                                                  ),
+                                                                                                                  style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                        fontSize: 13.0,
+                                                                                                                        letterSpacing: 0.0,
+                                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                                                                      ),
+                                                                                                                ),
+                                                                                                              ].divide(SizedBox(height: 3.0)),
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                    ].divide(SizedBox(height: 5.0)),
+                                                                                                  ),
                                                                                                 ),
                                                                                               ),
-                                                                                            ),
-                                                                                        ],
+                                                                                            if (presentListItem.checkOutTime == 0)
+                                                                                              Container(
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                  borderRadius: BorderRadius.circular(10.0),
+                                                                                                  border: Border.all(
+                                                                                                    color: FlutterFlowTheme.of(context).customColor1,
+                                                                                                    width: 1.0,
+                                                                                                  ),
+                                                                                                ),
+                                                                                                child: Padding(
+                                                                                                  padding: EdgeInsets.all(5.0),
+                                                                                                  child: Column(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                    children: [
+                                                                                                      Text(
+                                                                                                        'Check out',
+                                                                                                        style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              fontWeight: FontWeight.w600,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                                                            ),
+                                                                                                      ),
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                                                                                                        child: Row(
+                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                          children: [
+                                                                                                            Text(
+                                                                                                              'Check-out is yet to be logged ',
+                                                                                                              style: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                                    fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                                                    fontSize: 13.0,
+                                                                                                                    letterSpacing: 0.0,
+                                                                                                                    lineHeight: 1.0,
+                                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                                                                  ),
+                                                                                                            ),
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ].divide(SizedBox(height: 5.0)),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                          ],
+                                                                                        ),
                                                                                       ),
                                                                                     ),
-                                                                                  ),
-                                                                                ].divide(SizedBox(height: 5.0)),
-                                                                              ),
-                                                                            ].divide(SizedBox(height: 7.0)),
+                                                                                  ].divide(SizedBox(height: 5.0)),
+                                                                                ),
+                                                                              ].divide(SizedBox(height: 7.0)),
+                                                                            ),
                                                                           ),
                                                                         ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
-                                                              },
+                                                                      );
+                                                                    },
+                                                                  );
+                                                                },
+                                                              ),
                                                             ),
                                                           ),
                                                         ].divide(SizedBox(
@@ -2098,110 +2212,225 @@ class _DeyeAttendanceAdminWidgetState extends State<DeyeAttendanceAdminWidget> {
                                                             ),
                                                           ),
                                                           Expanded(
-                                                            child: Builder(
-                                                              builder:
-                                                                  (context) {
-                                                                final absentList = functions
-                                                                    .returnAbsentUserList(
-                                                                        containerTeamTreeRecordList
-                                                                            .toList(),
-                                                                        containerAttendanceRecordList
-                                                                            .where((e) =>
-                                                                                e.checkInTime >
-                                                                                0)
-                                                                            .toList())
-                                                                    .toList();
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(),
+                                                              child: Builder(
+                                                                builder:
+                                                                    (context) {
+                                                                  final absentList = functions
+                                                                      .returnAbsentUserList(
+                                                                          containerTeamTreeRecordList
+                                                                              .toList(),
+                                                                          containerAttendanceRecordList
+                                                                              .where((e) => e.checkInTime > 0)
+                                                                              .toList())
+                                                                      .toList();
 
-                                                                return ListView
-                                                                    .separated(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  shrinkWrap:
-                                                                      true,
-                                                                  scrollDirection:
-                                                                      Axis.vertical,
-                                                                  itemCount:
-                                                                      absentList
-                                                                          .length,
-                                                                  separatorBuilder: (_,
-                                                                          __) =>
-                                                                      SizedBox(
-                                                                          height:
-                                                                              12.0),
-                                                                  itemBuilder:
-                                                                      (context,
-                                                                          absentListIndex) {
-                                                                    final absentListItem =
-                                                                        absentList[
-                                                                            absentListIndex];
-                                                                    return Container(
-                                                                      width:
-                                                                          100.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0),
-                                                                        border:
-                                                                            Border.all(
+                                                                  return ListView
+                                                                      .separated(
+                                                                    padding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    shrinkWrap:
+                                                                        true,
+                                                                    scrollDirection:
+                                                                        Axis.vertical,
+                                                                    itemCount:
+                                                                        absentList
+                                                                            .length,
+                                                                    separatorBuilder: (_,
+                                                                            __) =>
+                                                                        SizedBox(
+                                                                            height:
+                                                                                12.0),
+                                                                    itemBuilder:
+                                                                        (context,
+                                                                            absentListIndex) {
+                                                                      final absentListItem =
+                                                                          absentList[
+                                                                              absentListIndex];
+                                                                      return Container(
+                                                                        width:
+                                                                            100.0,
+                                                                        decoration:
+                                                                            BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).customColor4,
-                                                                          width:
-                                                                              0.5,
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(5.0),
+                                                                          border:
+                                                                              Border.all(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).customColor4,
+                                                                            width:
+                                                                                0.5,
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding:
-                                                                            EdgeInsets.all(10.0),
                                                                         child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.start,
-                                                                          children:
-                                                                              [
-                                                                            FlutterFlowIconButton(
-                                                                              borderColor: Colors.transparent,
-                                                                              borderRadius: 8.0,
-                                                                              borderWidth: 1.0,
-                                                                              buttonSize: 30.0,
-                                                                              fillColor: FlutterFlowTheme.of(context).customColor3,
-                                                                              icon: Icon(
-                                                                                Icons.person,
-                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                size: 14.0,
+                                                                            Padding(
+                                                                          padding:
+                                                                              EdgeInsets.all(10.0),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.start,
+                                                                            children:
+                                                                                [
+                                                                              FlutterFlowIconButton(
+                                                                                borderColor: Colors.transparent,
+                                                                                borderRadius: 8.0,
+                                                                                borderWidth: 1.0,
+                                                                                buttonSize: 30.0,
+                                                                                fillColor: FlutterFlowTheme.of(context).customColor3,
+                                                                                icon: Icon(
+                                                                                  Icons.person,
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  size: 14.0,
+                                                                                ),
+                                                                                onPressed: () {
+                                                                                  print('IconButton pressed ...');
+                                                                                },
                                                                               ),
-                                                                              onPressed: () {
-                                                                                print('IconButton pressed ...');
-                                                                              },
-                                                                            ),
-                                                                            InkWell(
-                                                                              splashColor: Colors.transparent,
-                                                                              focusColor: Colors.transparent,
-                                                                              hoverColor: Colors.transparent,
-                                                                              highlightColor: Colors.transparent,
-                                                                              onTap: () async {},
-                                                                              child: Text(
-                                                                                absentListItem.userName,
-                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                      letterSpacing: 1.0,
-                                                                                      fontWeight: FontWeight.w600,
-                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
-                                                                                    ),
+                                                                              Builder(
+                                                                                builder: (context) => InkWell(
+                                                                                  splashColor: Colors.transparent,
+                                                                                  focusColor: Colors.transparent,
+                                                                                  hoverColor: Colors.transparent,
+                                                                                  highlightColor: Colors.transparent,
+                                                                                  onTap: () async {
+                                                                                    await showDialog(
+                                                                                      context: context,
+                                                                                      builder: (dialogContext) {
+                                                                                        return Dialog(
+                                                                                          elevation: 0,
+                                                                                          insetPadding: EdgeInsets.zero,
+                                                                                          backgroundColor: Colors.transparent,
+                                                                                          alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                          child: WebViewAware(
+                                                                                            child: GestureDetector(
+                                                                                              onTap: () {
+                                                                                                FocusScope.of(dialogContext).unfocus();
+                                                                                                FocusManager.instance.primaryFocus?.unfocus();
+                                                                                              },
+                                                                                              child: CustomDateRangeWidget(),
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      },
+                                                                                    );
+
+                                                                                    _model.allAttendence1Copy2 = await queryAttendanceRecordOnce(
+                                                                                      parent: FFAppState().outletRef,
+                                                                                      queryBuilder: (attendanceRecord) => attendanceRecord
+                                                                                          .where(
+                                                                                            'createdDate',
+                                                                                            isGreaterThanOrEqualTo: functions.geStartEndDateTimeFromMilisec(FFAppState().startDate, FFAppState().endDateForAtt!.millisecondsSinceEpoch, 'start'),
+                                                                                          )
+                                                                                          .where(
+                                                                                            'createdDate',
+                                                                                            isLessThan: functions.geStartEndDateTimeFromMilisec(FFAppState().startDate, FFAppState().endDateForAtt!.millisecondsSinceEpoch, 'end'),
+                                                                                          ),
+                                                                                    );
+                                                                                    FFAppState().emailForReport = currentUserEmail;
+                                                                                    safeSetState(() {});
+                                                                                    await showDialog(
+                                                                                      context: context,
+                                                                                      builder: (dialogContext) {
+                                                                                        return Dialog(
+                                                                                          elevation: 0,
+                                                                                          insetPadding: EdgeInsets.zero,
+                                                                                          backgroundColor: Colors.transparent,
+                                                                                          alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                          child: WebViewAware(
+                                                                                            child: GestureDetector(
+                                                                                              onTap: () {
+                                                                                                FocusScope.of(dialogContext).unfocus();
+                                                                                                FocusManager.instance.primaryFocus?.unfocus();
+                                                                                              },
+                                                                                              child: SendEmailWidget(),
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      },
+                                                                                    );
+
+                                                                                    _model.base64Link2321Copy2 = await actions.genExcelForEmployeeAttendanceReport(
+                                                                                      _model.allAttendence1Copy2!.toList(),
+                                                                                      FFAppState().outletRef!.id,
+                                                                                      absentListItem.userProfileId,
+                                                                                    );
+                                                                                    _model.apiResult88g1Copy2 = await SendMailCall.call(
+                                                                                      mobileNo: FFAppState().currentMobile,
+                                                                                      outletName: '',
+                                                                                      file: _model.base64Link2321Copy2,
+                                                                                      fileName: 'AttendanceReport',
+                                                                                      toEmail: FFAppState().emailForReport,
+                                                                                      branchName: '',
+                                                                                      username: valueOrDefault(currentUserDocument?.name, ''),
+                                                                                      reportType: 'Attendance Report',
+                                                                                      roll: FFAppState().currentUserRole,
+                                                                                    );
+
+                                                                                    if ((_model.apiResult88g1Copy2?.succeeded ?? true)) {
+                                                                                      await showDialog(
+                                                                                        context: context,
+                                                                                        builder: (alertDialogContext) {
+                                                                                          return WebViewAware(
+                                                                                            child: AlertDialog(
+                                                                                              content: Text('Email Sent Successfully. Wait 5-8 Minutes..'),
+                                                                                              actions: [
+                                                                                                TextButton(
+                                                                                                  onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                                  child: Text('Ok'),
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          );
+                                                                                        },
+                                                                                      );
+                                                                                    } else {
+                                                                                      await showDialog(
+                                                                                        context: context,
+                                                                                        builder: (alertDialogContext) {
+                                                                                          return WebViewAware(
+                                                                                            child: AlertDialog(
+                                                                                              content: Text('Email Not Sent ! Try Again'),
+                                                                                              actions: [
+                                                                                                TextButton(
+                                                                                                  onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                                  child: Text('Ok'),
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          );
+                                                                                        },
+                                                                                      );
+                                                                                    }
+
+                                                                                    safeSetState(() {});
+                                                                                  },
+                                                                                  child: Text(
+                                                                                    absentListItem.userName,
+                                                                                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                          fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                          letterSpacing: 1.0,
+                                                                                          fontWeight: FontWeight.w600,
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                                        ),
+                                                                                  ),
+                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                          ].divide(SizedBox(width: 10.0)),
+                                                                            ].divide(SizedBox(width: 10.0)),
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
-                                                              },
+                                                                      );
+                                                                    },
+                                                                  );
+                                                                },
+                                                              ),
                                                             ),
                                                           ),
                                                         ].divide(SizedBox(

@@ -4,6 +4,8 @@ export 'app_setting_data_type_struct.dart';
 export 'app_settings_struct.dart';
 export 'assigned_to_history_struct.dart';
 export 'call_log_list_struct.dart';
+export 'call_log_name_struct.dart';
+export 'call_log_summery_struct.dart';
 export 'category_data_type_struct.dart';
 export 'city_list_struct.dart';
 export 'cust_feedback_struct.dart';

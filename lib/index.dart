@@ -44,8 +44,7 @@ export '/pages/email_login_not_in_use/email_login_not_in_use_widget.dart'
 export '/pages/customer/c_combo/c_combo_widget.dart' show CComboWidget;
 export '/pages/super_admin/contactus/contactus_widget.dart'
     show ContactusWidget;
-export '/pages/customer/c_outlet_list/c_outlet_list_widget.dart'
-    show COutletListWidget;
+export '/pages/c_outlet_list/c_outlet_list_widget.dart' show COutletListWidget;
 export '/pages/customer/c_cummulative_report/c_cummulative_report_widget.dart'
     show CCummulativeReportWidget;
 export '/pages/customer/c_subscription/c_subscription_widget.dart'
@@ -174,8 +173,8 @@ export '/pages/lead_delete_copy/lead_delete_copy_widget.dart'
     show LeadDeleteCopyWidget;
 export '/pages/lead_report_monthl_source_wise/lead_report_monthl_source_wise_widget.dart'
     show LeadReportMonthlSourceWiseWidget;
-export '/deye_c_r_m/deye_add_complaints/deye_add_complaints_widget.dart'
-    show DeyeAddComplaintsWidget;
+export '/deye_c_r_m/deye_add_complaints_not_using/deye_add_complaints_not_using_widget.dart'
+    show DeyeAddComplaintsNotUsingWidget;
 export '/pages/zone/zone_widget.dart' show ZoneWidget;
 export '/pages/team_tree_master/team_tree_master_widget.dart'
     show TeamTreeMasterWidget;
@@ -189,8 +188,8 @@ export '/pages/lead_report_monthly_c_r_m/lead_report_monthly_c_r_m_widget.dart'
     show LeadReportMonthlyCRMWidget;
 export '/pages/lead_employee_report_final_c_r_m/lead_employee_report_final_c_r_m_widget.dart'
     show LeadEmployeeReportFinalCRMWidget;
-export '/deye_c_r_m/deye_dashboard2/deye_dashboard2_widget.dart'
-    show DeyeDashboard2Widget;
+export '/deye_c_r_m/deye_dashboard2_not_using/deye_dashboard2_not_using_widget.dart'
+    show DeyeDashboard2NotUsingWidget;
 export '/deye_c_r_m/register_complaint1/register_complaint1_widget.dart'
     show RegisterComplaint1Widget;
 export '/deye_c_r_m/deye_thankyou_page/deye_thankyou_page_widget.dart'
@@ -215,8 +214,8 @@ export '/deye_c_r_m/deye_category/deye_category_widget.dart'
     show DeyeCategoryWidget;
 export '/deye_c_r_m/deye_products/deye_products_widget.dart'
     show DeyeProductsWidget;
-export '/deye_c_r_m/deye_dashboard/deye_dashboard_widget.dart'
-    show DeyeDashboardWidget;
+export '/deye_c_r_m/deye_dashboard_not_using/deye_dashboard_not_using_widget.dart'
+    show DeyeDashboardNotUsingWidget;
 export '/deye_c_r_m/deye_edit_profile_admin/deye_edit_profile_admin_widget.dart'
     show DeyeEditProfileAdminWidget;
 export '/navigation_test/navigation_test_widget.dart' show NavigationTestWidget;
@@ -238,10 +237,10 @@ export '/deye_c_r_m/deye_state_wise_report/deye_state_wise_report_widget.dart'
     show DeyeStateWiseReportWidget;
 export '/deye_c_r_m/deye_statewise_detail_report/deye_statewise_detail_report_widget.dart'
     show DeyeStatewiseDetailReportWidget;
-export '/deye_c_r_m/deye_add_complaints_copy/deye_add_complaints_copy_widget.dart'
-    show DeyeAddComplaintsCopyWidget;
-export '/deye_c_r_m/deye_dashboard_copy/deye_dashboard_copy_widget.dart'
-    show DeyeDashboardCopyWidget;
+export '/deye_c_r_m/deye_add_complaints/deye_add_complaints_widget.dart'
+    show DeyeAddComplaintsWidget;
+export '/deye_c_r_m/deye_dashboard/deye_dashboard_widget.dart'
+    show DeyeDashboardWidget;
 export '/deye_c_r_m/deye_new_complaint_edit/deye_new_complaint_edit_widget.dart'
     show DeyeNewComplaintEditWidget;
 export '/pages/ringing_leads/ringing_leads_widget.dart' show RingingLeadsWidget;
@@ -276,3 +275,11 @@ export '/deye_c_r_m/delete_lead_report/delete_lead_report_widget.dart'
 export '/dashboard_graph/dashboard_graph_widget.dart' show DashboardGraphWidget;
 export '/deye_c_r_m/all_user_account/all_user_account_widget.dart'
     show AllUserAccountWidget;
+export '/pages/c_r_m_login_copy/c_r_m_login_copy_widget.dart'
+    show CRMLoginCopyWidget;
+export '/call_logs_dashboard/call_logs_dashboard_old/call_logs_dashboard_old_widget.dart'
+    show CallLogsDashboardOldWidget;
+export '/call_logs_dashboard/call_logs_details/call_logs_details_widget.dart'
+    show CallLogsDetailsWidget;
+export '/call_logs_dashboard/call_logs_dash_board/call_logs_dash_board_widget.dart'
+    show CallLogsDashBoardWidget;

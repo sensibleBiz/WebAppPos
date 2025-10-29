@@ -165,8 +165,7 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                               context.pushNamed(
                                   DeyeDashboardSupportWidget.routeName);
                             } else {
-                              context
-                                  .pushNamed(DeyeDashboardCopyWidget.routeName);
+                              context.pushNamed(DeyeDashboardWidget.routeName);
                             }
                           },
                           child: Container(
@@ -1386,61 +1385,63 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: double.infinity,
-                          height: 45.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(3.0),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 45.0,
-                                height: 45.0,
-                                decoration: BoxDecoration(),
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Icon(
-                                    Icons.event_busy_sharp,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor5,
-                                    size: 18.0,
+                        if (false)
+                          Container(
+                            width: double.infinity,
+                            height: 45.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(3.0),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 45.0,
+                                  height: 45.0,
+                                  decoration: BoxDecoration(),
+                                  child: Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Icon(
+                                      Icons.event_busy_sharp,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor5,
+                                      size: 18.0,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                      DeleteLeadReportWidget.routeName);
-                                },
-                                child: Text(
-                                  'Delet',
-                                  textAlign: TextAlign.end,
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelLarge
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .labelLargeFamily,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts:
-                                            !FlutterFlowTheme.of(context)
-                                                .labelLargeIsCustom,
-                                      ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                        DeleteLeadReportWidget.routeName);
+                                  },
+                                  child: Text(
+                                    'Delet',
+                                    textAlign: TextAlign.end,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .labelLargeIsCustom,
+                                        ),
+                                  ),
                                 ),
-                              ),
-                            ].divide(SizedBox(width: 5.0)),
+                              ].divide(SizedBox(width: 5.0)),
+                            ),
                           ),
-                        ),
                       ].divide(SizedBox(height: 1.0)),
                     ),
                   ],

@@ -31,9 +31,12 @@ class DeyeEmployeeDetailReportModel
 
   // Model for DeyeHeader component.
   late DeyeHeaderModel deyeHeaderModel;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // State field(s) for RemarkDropDown widget.
+  String? remarkDropDownValue;
+  FormFieldController<String>? remarkDropDownValueController;
+  // State field(s) for SolutionDropDown widget.
+  String? solutionDropDownValue;
+  FormFieldController<String>? solutionDropDownValueController;
   // Stores action output result for [Custom Action - genExcelForEmployeeReport] action in Icon widget.
   String? base64Link232;
   // Stores action output result for [Backend Call - API (sendMail)] action in Icon widget.

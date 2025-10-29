@@ -459,7 +459,7 @@ class _AssignTicketWidgetState extends State<AssignTicketWidget> {
                                         Navigator.pop(context);
 
                                         context.pushNamed(
-                                            DeyeDashboardCopyWidget.routeName);
+                                            DeyeDashboardWidget.routeName);
 
                                         if (_shouldSetState)
                                           safeSetState(() {});
