@@ -3,6 +3,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/send_email_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
+import '/deye_c_r_m/deye_mail_loader/deye_mail_loader_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -1100,13 +1101,39 @@ class _DeyeEmployeeDetailReportWidgetState
                                                                             },
                                                                           );
 
-                                                                          _model.base64Link232 =
+                                                                          _model.base64Link232EmpReport =
                                                                               await actions.genExcelForEmployeeReport(
+                                                                            context,
                                                                             FFAppState().filterDate,
                                                                             deyeEmployeeDetailReportOutletRecord?.name,
                                                                             container1LeadsManagementRecordList.toList(),
                                                                             widget!.employeeName,
                                                                           );
+                                                                          showDialog(
+                                                                            barrierDismissible:
+                                                                                false,
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (dialogContext) {
+                                                                              return Dialog(
+                                                                                elevation: 0,
+                                                                                insetPadding: EdgeInsets.zero,
+                                                                                backgroundColor: Colors.transparent,
+                                                                                alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                child: WebViewAware(
+                                                                                  child: GestureDetector(
+                                                                                    onTap: () {
+                                                                                      FocusScope.of(dialogContext).unfocus();
+                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                                    },
+                                                                                    child: DeyeMailLoaderWidget(),
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                          );
+
                                                                           _model.apiResult88g =
                                                                               await SendMailCall.call(
                                                                             mobileNo:
@@ -1114,7 +1141,7 @@ class _DeyeEmployeeDetailReportWidgetState
                                                                             outletName:
                                                                                 deyeEmployeeDetailReportOutletRecord?.name,
                                                                             file:
-                                                                                _model.base64Link232,
+                                                                                _model.base64Link232EmpReport,
                                                                             fileName:
                                                                                 'EmployeeReport',
                                                                             toEmail:
@@ -1129,6 +1156,8 @@ class _DeyeEmployeeDetailReportWidgetState
                                                                                 FFAppState().currentUserRole,
                                                                           );
 
+                                                                          Navigator.pop(
+                                                                              context);
                                                                           if ((_model.apiResult88g?.succeeded ??
                                                                               true)) {
                                                                             await showDialog(

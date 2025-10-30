@@ -318,7 +318,7 @@ class _CallLogTeamDetailsWidgetState extends State<CallLogTeamDetailsWidget> {
           paginated: false,
           selectable: false,
           width: double.infinity,
-          height: ((widget!.numRows!) * 56) + 56,
+          height: ((widget!.numRows!) * 48) + 56,
           headingRowHeight: 56.0,
           dataRowHeight: 48.0,
           columnSpacing: 20.0,

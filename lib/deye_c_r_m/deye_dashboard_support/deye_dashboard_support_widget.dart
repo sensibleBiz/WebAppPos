@@ -1068,6 +1068,7 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                                   _model.base64Link232 =
                                                                       await actions
                                                                           .genExcelForComplaintReport(
+                                                                    context,
                                                                     FFAppState()
                                                                         .filterDate,
                                                                     deyeDashboardSupportOutletRecord

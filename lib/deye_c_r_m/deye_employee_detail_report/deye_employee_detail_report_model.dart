@@ -3,6 +3,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/send_email_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
+import '/deye_c_r_m/deye_mail_loader/deye_mail_loader_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -38,7 +39,7 @@ class DeyeEmployeeDetailReportModel
   String? solutionDropDownValue;
   FormFieldController<String>? solutionDropDownValueController;
   // Stores action output result for [Custom Action - genExcelForEmployeeReport] action in Icon widget.
-  String? base64Link232;
+  String? base64Link232EmpReport;
   // Stores action output result for [Backend Call - API (sendMail)] action in Icon widget.
   ApiCallResponse? apiResult88g;
 

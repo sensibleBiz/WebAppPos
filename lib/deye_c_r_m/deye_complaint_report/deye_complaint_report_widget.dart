@@ -3,6 +3,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/send_email_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
+import '/deye_c_r_m/deye_mail_loader/deye_mail_loader_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
 import '/deye_c_r_m/deye_no_data/deye_no_data_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -523,6 +524,7 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                           _model.base64Link232 =
                                                               await actions
                                                                   .genExcelForComplaintReport(
+                                                            context,
                                                             FFAppState()
                                                                 .filterDate,
                                                             deyeComplaintReportOutletRecord
@@ -2161,6 +2163,7 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                               _model.base64Link232Report =
                                                                   await actions
                                                                       .genExcelForComplaintReport(
+                                                                context,
                                                                 FFAppState()
                                                                     .filterDate,
                                                                 deyeComplaintReportOutletRecord
@@ -2183,6 +2186,48 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                         : containerZoneLeadsManagementRecordList)
                                                                     .toList(),
                                                               );
+                                                              showDialog(
+                                                                barrierDismissible:
+                                                                    false,
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (dialogContext) {
+                                                                  return Dialog(
+                                                                    elevation:
+                                                                        0,
+                                                                    insetPadding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    child:
+                                                                        WebViewAware(
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          FocusScope.of(dialogContext)
+                                                                              .unfocus();
+                                                                          FocusManager
+                                                                              .instance
+                                                                              .primaryFocus
+                                                                              ?.unfocus();
+                                                                        },
+                                                                        child:
+                                                                            DeyeMailLoaderWidget(),
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              );
+
                                                               _model.apiResult88gReport =
                                                                   await SendMailCall
                                                                       .call(
@@ -2212,6 +2257,8 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                     .currentUserRole,
                                                               );
 
+                                                              Navigator.pop(
+                                                                  context);
                                                               if ((_model
                                                                       .apiResult88gReport
                                                                       ?.succeeded ??

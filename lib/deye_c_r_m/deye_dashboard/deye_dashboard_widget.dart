@@ -36,7 +36,7 @@ class DeyeDashboardWidget extends StatefulWidget {
   const DeyeDashboardWidget({super.key});
 
   static String routeName = 'DeyeDashboard';
-  static String routePath = 'Dashboardcopy';
+  static String routePath = 'DeyeDashboard';
 
   @override
   State<DeyeDashboardWidget> createState() => _DeyeDashboardWidgetState();
@@ -1647,6 +1647,8 @@ class _DeyeDashboardWidgetState extends State<DeyeDashboardWidget>
 
                                                                   return Container(
                                                                     width: double
+                                                                        .infinity,
+                                                                    height: double
                                                                         .infinity,
                                                                     decoration:
                                                                         BoxDecoration(),
