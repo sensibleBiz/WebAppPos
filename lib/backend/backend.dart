@@ -71,6 +71,7 @@ import 'schema/checkin_status_record.dart';
 import 'schema/leave_application_record.dart';
 import 'schema/leave_type_record.dart';
 import 'schema/call_logs_record.dart';
+import 'schema/module_subscription_record.dart';
 import 'dart:async';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -147,6 +148,7 @@ export 'schema/checkin_status_record.dart';
 export 'schema/leave_application_record.dart';
 export 'schema/leave_type_record.dart';
 export 'schema/call_logs_record.dart';
+export 'schema/module_subscription_record.dart';
 
 /// Functions to query BusinessTypeRecords (as a Stream and as a Future).
 Future<int> queryBusinessTypeRecordCount({
@@ -5473,6 +5475,90 @@ Future<FFFirestorePage<CallLogsRecord>> queryCallLogsRecordPage({
       }
       return page;
     });
+
+/// Functions to query ModuleSubscriptionRecords (as a Stream and as a Future).
+Future<int> queryModuleSubscriptionRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ModuleSubscriptionRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ModuleSubscriptionRecord>> queryModuleSubscriptionRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ModuleSubscriptionRecord.collection(parent),
+      ModuleSubscriptionRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ModuleSubscriptionRecord>> queryModuleSubscriptionRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ModuleSubscriptionRecord.collection(parent),
+      ModuleSubscriptionRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+Future<FFFirestorePage<ModuleSubscriptionRecord>>
+    queryModuleSubscriptionRecordPage({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+  required PagingController<DocumentSnapshot?, ModuleSubscriptionRecord>
+      controller,
+  List<StreamSubscription?>? streamSubscriptions,
+}) =>
+        queryCollectionPage(
+          ModuleSubscriptionRecord.collection(parent),
+          ModuleSubscriptionRecord.fromSnapshot,
+          queryBuilder: queryBuilder,
+          nextPageMarker: nextPageMarker,
+          pageSize: pageSize,
+          isStream: isStream,
+        ).then((page) {
+          controller.appendPage(
+            page.data,
+            page.nextPageMarker,
+          );
+          if (isStream) {
+            final streamSubscription = (page.dataStream)
+                ?.listen((List<ModuleSubscriptionRecord> data) {
+              data.forEach((item) {
+                final itemIndexes = controller.itemList!
+                    .asMap()
+                    .map((k, v) => MapEntry(v.reference.id, k));
+                final index = itemIndexes[item.reference.id];
+                final items = controller.itemList!;
+                if (index != null) {
+                  items.replaceRange(index, index + 1, [item]);
+                  controller.itemList = {
+                    for (var item in items) item.reference: item
+                  }.values.toList();
+                }
+              });
+            });
+            streamSubscriptions?.add(streamSubscription);
+          }
+          return page;
+        });
 
 Future<int> queryCollectionCount(
   Query collection, {

@@ -243,6 +243,11 @@ class LeadsManagementRecord extends FirestoreRecord {
   String get leadCampaign => _leadCampaign ?? '';
   bool hasLeadCampaign() => _leadCampaign != null;
 
+  // "isReassigned" field.
+  bool? _isReassigned;
+  bool get isReassigned => _isReassigned ?? false;
+  bool hasIsReassigned() => _isReassigned != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -299,6 +304,7 @@ class LeadsManagementRecord extends FirestoreRecord {
     );
     _contact = snapshotData['contact'] as String?;
     _leadCampaign = snapshotData['leadCampaign'] as String?;
+    _isReassigned = snapshotData['isReassigned'] as bool?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -384,6 +390,7 @@ Map<String, dynamic> createLeadsManagementRecordData({
   int? closeDateMili,
   String? contact,
   String? leadCampaign,
+  bool? isReassigned,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -430,6 +437,7 @@ Map<String, dynamic> createLeadsManagementRecordData({
       'closeDateMili': closeDateMili,
       'contact': contact,
       'leadCampaign': leadCampaign,
+      'isReassigned': isReassigned,
     }.withoutNulls,
   );
 
@@ -490,7 +498,8 @@ class LeadsManagementRecordDocumentEquality
         e1?.closeDateMili == e2?.closeDateMili &&
         listEquality.equals(e1?.assignedToHistory, e2?.assignedToHistory) &&
         e1?.contact == e2?.contact &&
-        e1?.leadCampaign == e2?.leadCampaign;
+        e1?.leadCampaign == e2?.leadCampaign &&
+        e1?.isReassigned == e2?.isReassigned;
   }
 
   @override
@@ -539,7 +548,8 @@ class LeadsManagementRecordDocumentEquality
         e?.closeDateMili,
         e?.assignedToHistory,
         e?.contact,
-        e?.leadCampaign
+        e?.leadCampaign,
+        e?.isReassigned
       ]);
 
   @override

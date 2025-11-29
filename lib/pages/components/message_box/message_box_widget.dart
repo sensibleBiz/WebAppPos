@@ -277,6 +277,8 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                               height: m.dimensions?.height,
                                               width: m.dimensions?.width,
                                               blurHash: m.blurHash,
+                                              originalFilename:
+                                                  m.originalFilename,
                                             ))
                                         .toList();
 
@@ -507,6 +509,8 @@ class _MessageBoxWidgetState extends State<MessageBoxWidget> {
                                               height: m.dimensions?.height,
                                               width: m.dimensions?.width,
                                               blurHash: m.blurHash,
+                                              originalFilename:
+                                                  m.originalFilename,
                                             ))
                                         .toList();
 

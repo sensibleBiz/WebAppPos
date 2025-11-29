@@ -1925,11 +1925,8 @@ class _LeadLogNewWidgetState extends State<LeadLogNewWidget>
                                                                               List<LeadStagesRecord> dropDownStageLeadStagesRecordList = snapshot.data!;
 
                                                                               return FlutterFlowDropDown<String>(
-                                                                                controller: _model.dropDownStageValueController ??= FormFieldController<String>(
-                                                                                  _model.dropDownStageValue ??= '',
-                                                                                ),
-                                                                                options: List<String>.from(dropDownStageLeadStagesRecordList.map((e) => e.id).toList()),
-                                                                                optionLabels: dropDownStageLeadStagesRecordList.map((e) => e.name).toList(),
+                                                                                controller: _model.dropDownStageValueController ??= FormFieldController<String>(null),
+                                                                                options: dropDownStageLeadStagesRecordList.map((e) => e.name).toList(),
                                                                                 onChanged: (val) => safeSetState(() => _model.dropDownStageValue = val),
                                                                                 width: double.infinity,
                                                                                 height: 36.0,

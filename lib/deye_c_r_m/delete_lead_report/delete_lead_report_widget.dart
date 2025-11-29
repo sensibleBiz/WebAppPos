@@ -929,15 +929,23 @@ class _DeleteLeadReportWidgetState extends State<DeleteLeadReportWidget> {
                                                     _model
                                                         .dropDownAllValueController
                                                         ?.reset();
+                                                    _model.dropDownAllValue =
+                                                        null;
                                                     _model
                                                         .dropDownRemarkAllValueController
                                                         ?.reset();
+                                                    _model.dropDownRemarkAllValue =
+                                                        null;
                                                     _model
                                                         .dropDownZoneAllValueController
                                                         ?.reset();
+                                                    _model.dropDownZoneAllValue =
+                                                        null;
                                                     _model
                                                         .dropDownSolutionAllValueController
                                                         ?.reset();
+                                                    _model.dropDownSolutionAllValue =
+                                                        null;
                                                   });
                                                 },
                                               ),

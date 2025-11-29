@@ -1,4 +1,7 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
+import '/components/deye_subscription_popup_widget.dart';
 import '/deye_c_r_m/deye_activity_update/deye_activity_update_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
@@ -24,6 +27,8 @@ import '/flutter_flow/request_manager.dart';
 import '/index.dart';
 import 'deye_dashboard_widget.dart' show DeyeDashboardWidget;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -48,6 +53,8 @@ class DeyeDashboardModel extends FlutterFlowModel<DeyeDashboardWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in DeyeDashboard widget.
+  ModuleSubscriptionRecord? moduleDoc;
   // Model for DeyeHeader component.
   late DeyeHeaderModel deyeHeaderModel;
   // State field(s) for DropDownAssigned widget.
@@ -60,6 +67,8 @@ class DeyeDashboardModel extends FlutterFlowModel<DeyeDashboardWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for Switch widget.
+  bool? switchValue;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in Text widget.
   String? stage1;
   // Model for DeyeMenu component.

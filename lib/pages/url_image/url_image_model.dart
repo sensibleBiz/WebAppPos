@@ -14,7 +14,7 @@ class UrlImageModel extends FlutterFlowModel<UrlImageWidget> {
 
   bool isDataUploading_uploadDataI8w = false;
   FFUploadedFile uploadedLocalFile_uploadDataI8w =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
 
   @override
   void initState(BuildContext context) {}

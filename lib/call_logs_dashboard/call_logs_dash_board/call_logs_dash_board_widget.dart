@@ -2926,7 +2926,7 @@ class _CallLogsDashBoardWidgetState extends State<CallLogsDashBoardWidget> {
                                         0,
                                         0,
                                         0,
-                                        50.0,
+                                        0.0,
                                       ),
                                       gridDelegate:
                                           SliverGridDelegateWithFixedCrossAxisCount(

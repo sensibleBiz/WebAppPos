@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/deye_duplicate_serial_history_new_widget.dart';
 import '/components/popup_success_copy_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -2979,6 +2980,86 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                     _shouldSetState = true;
                                                     if (_model.checkTrue ==
                                                         true) {
+                                                      _model.docExistsCheck =
+                                                          await queryLeadsManagementRecordCount(
+                                                        parent: FFAppState()
+                                                            .outletRef,
+                                                        queryBuilder:
+                                                            (leadsManagementRecord) =>
+                                                                leadsManagementRecord
+                                                                    .where(
+                                                          'customFields.serial',
+                                                          isEqualTo: _model
+                                                              .serialNumberTextController
+                                                              .text,
+                                                        ),
+                                                      );
+                                                      _shouldSetState = true;
+                                                      if ((_model.docExistsCheck! >
+                                                              0) &&
+                                                          (_model.serialNumberTextController
+                                                                      .text !=
+                                                                  null &&
+                                                              _model.serialNumberTextController
+                                                                      .text !=
+                                                                  '')) {
+                                                        await showDialog(
+                                                          barrierDismissible:
+                                                              false,
+                                                          context: context,
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Dialog(
+                                                              elevation: 0,
+                                                              insetPadding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              alignment: AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                              child:
+                                                                  WebViewAware(
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () {
+                                                                    FocusScope.of(
+                                                                            dialogContext)
+                                                                        .unfocus();
+                                                                    FocusManager
+                                                                        .instance
+                                                                        .primaryFocus
+                                                                        ?.unfocus();
+                                                                  },
+                                                                  child:
+                                                                      Container(
+                                                                    width:
+                                                                        500.0,
+                                                                    child:
+                                                                        DeyeDuplicateSerialHistoryNewWidget(
+                                                                      serial: _model
+                                                                          .serialNumberTextController
+                                                                          .text,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+
+                                                        if (FFAppState()
+                                                                .canRegisterNewComplaintManual !=
+                                                            true) {
+                                                          if (_shouldSetState)
+                                                            safeSetState(() {});
+                                                          return;
+                                                        }
+                                                      }
                                                       _model.countDoc =
                                                           await queryOutletLeadsRecordOnce(
                                                         parent: FFAppState()
@@ -3276,10 +3357,14 @@ class _DeyeAddComplaintsWidgetState extends State<DeyeAddComplaintsWidget> {
                                                         _model.dropDownstateValueController
                                                                 ?.value =
                                                             'Select State';
+                                                        _model.dropDownstateValue =
+                                                            'Select State';
                                                       });
                                                       safeSetState(() {
                                                         _model.dropDownCitiesValueController
                                                                 ?.value =
+                                                            'Select  City';
+                                                        _model.dropDownCitiesValue =
                                                             'Select  City';
                                                       });
 

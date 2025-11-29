@@ -111,8 +111,11 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
         });
         safeSetState(() {
           _model.dropDownAssignedToValueController?.reset();
+          _model.dropDownAssignedToValue = null;
           _model.dropDownSourceValueController?.reset();
+          _model.dropDownSourceValue = null;
           _model.dropDownStatusSValueController?.reset();
+          _model.dropDownStatusSValue = null;
         });
       },
     );
@@ -125,7 +128,9 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
         });
         safeSetState(() {
           _model.dropDownAssignedToValueController?.reset();
+          _model.dropDownAssignedToValue = null;
           _model.dropDownSourceValueController?.reset();
+          _model.dropDownSourceValue = null;
         });
       },
     );
@@ -3149,8 +3154,11 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     });
                                                                                     safeSetState(() {
                                                                                       _model.dropDownAssignedToValueController?.reset();
+                                                                                      _model.dropDownAssignedToValue = null;
                                                                                       _model.dropDownSourceValueController?.reset();
+                                                                                      _model.dropDownSourceValue = null;
                                                                                       _model.dropDownStatusSValueController?.reset();
+                                                                                      _model.dropDownStatusSValue = null;
                                                                                     });
                                                                                     _model.resCity13 = await queryLeadsManagementRecordOnce(
                                                                                       parent: FFAppState().outletRef,
@@ -3296,8 +3304,11 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                                     });
                                                                                     safeSetState(() {
                                                                                       _model.dropDownAssignedToValueController?.reset();
+                                                                                      _model.dropDownAssignedToValue = null;
                                                                                       _model.dropDownSourceValueController?.reset();
+                                                                                      _model.dropDownSourceValue = null;
                                                                                       _model.dropDownStatusSValueController?.reset();
+                                                                                      _model.dropDownStatusSValue = null;
                                                                                     });
                                                                                     _model.res12 = await queryLeadsManagementRecordOnce(
                                                                                       parent: FFAppState().outletRef,
@@ -3433,12 +3444,18 @@ class _LeadsDashboardFinalWidgetState extends State<LeadsDashboardFinalWidget>
                                                                 _model
                                                                     .dropDownAssignedToValueController
                                                                     ?.reset();
+                                                                _model.dropDownAssignedToValue =
+                                                                    null;
                                                                 _model
                                                                     .dropDownSourceValueController
                                                                     ?.reset();
+                                                                _model.dropDownSourceValue =
+                                                                    null;
                                                                 _model
                                                                     .dropDownStatusSValueController
                                                                     ?.reset();
+                                                                _model.dropDownStatusSValue =
+                                                                    null;
                                                               });
                                                               FFAppState()
                                                                       .isSearching =

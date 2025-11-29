@@ -50,9 +50,11 @@ class _DeyeEditUserWidgetState extends State<DeyeEditUserWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       safeSetState(() {
         _model.dropDownStateValueController?.value = widget!.userRef!.state;
+        _model.dropDownStateValue = widget!.userRef!.state;
       });
       safeSetState(() {
         _model.dropDownCityValueController?.value = widget!.userRef!.city;
+        _model.dropDownCityValue = widget!.userRef!.city;
       });
     });
 
@@ -591,7 +593,7 @@ class _DeyeEditUserWidgetState extends State<DeyeEditUserWidget> {
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         InkWell(
                           splashColor: Colors.transparent,

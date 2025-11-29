@@ -25,7 +25,7 @@ class RegisterComplaintModel extends FlutterFlowModel<RegisterComplaintWidget> {
 
   bool wait = true;
 
-  bool isDisable = false;
+  bool isBtnDisabled = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -122,7 +122,9 @@ class RegisterComplaintModel extends FlutterFlowModel<RegisterComplaintWidget> {
   OutletLeadsRecord? outputCopy;
   // Stores action output result for [Firestore Query - Query a collection] action in FloatingActionButton widget.
   List<LeaveApplicationRecord>? leaveDocs;
-  // Stores action output result for [Custom Action - getAssingedToIfNotAbs] action in FloatingActionButton widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in FloatingActionButton widget.
+  List<LeadsManagementRecord>? leadDocs;
+  // Stores action output result for [Custom Action - getAssingedToIfNotAbsCopy] action in FloatingActionButton widget.
   dynamic? isonLeave;
   // Stores action output result for [Backend Call - Create Document] action in FloatingActionButton widget.
   LeadsManagementRecord? leadMg;

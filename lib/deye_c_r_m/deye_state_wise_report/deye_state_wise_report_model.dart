@@ -1,4 +1,7 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
+import '/components/deye_subscription_popup_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -12,6 +15,8 @@ import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'deye_state_wise_report_widget.dart' show DeyeStateWiseReportWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -23,6 +28,8 @@ class DeyeStateWiseReportModel
     extends FlutterFlowModel<DeyeStateWiseReportWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in DeyeStateWiseReport widget.
+  ModuleSubscriptionRecord? moduleDoc;
   // Model for DeyeHeader component.
   late DeyeHeaderModel deyeHeaderModel;
   // State field(s) for DropDownZone widget.

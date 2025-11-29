@@ -54,7 +54,7 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
     context.watch<FFAppState>();
 
     return Container(
-      width: 300.0,
+      width: 350.0,
       height: double.infinity,
       decoration: BoxDecoration(),
       child: Row(
@@ -1316,6 +1316,114 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                               ),
                             ),
                           ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(DeyeSubscriptionWidget.routeName);
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 45.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(3.0),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 45.0,
+                                  height: 45.0,
+                                  decoration: BoxDecoration(),
+                                  child: Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Icon(
+                                      Icons.receipt_long,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor5,
+                                      size: 18.0,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  'Subscription',
+                                  textAlign: TextAlign.end,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelLargeFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .text2nd,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelLargeIsCustom,
+                                      ),
+                                ),
+                              ].divide(SizedBox(width: 5.0)),
+                            ),
+                          ),
+                        ),
+                        if ((FFAppState().roleInZone == 'manager') ||
+                            (FFAppState().roleInZone == 'admin'))
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                  DeyePermissionDashboardWidget.routeName);
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 45.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(3.0),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 45.0,
+                                    height: 45.0,
+                                    decoration: BoxDecoration(),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Icon(
+                                        Icons.person,
+                                        color: FlutterFlowTheme.of(context)
+                                            .customColor5,
+                                        size: 18.0,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Permissions Dashboard',
+                                    textAlign: TextAlign.end,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .text2nd,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .labelLargeIsCustom,
+                                        ),
+                                  ),
+                                ].divide(SizedBox(width: 5.0)),
+                              ),
+                            ),
+                          ),
                         Builder(
                           builder: (context) => InkWell(
                             splashColor: Colors.transparent,
@@ -1422,7 +1530,7 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                         DeleteLeadReportWidget.routeName);
                                   },
                                   child: Text(
-                                    'Delet',
+                                    'Delete',
                                     textAlign: TextAlign.end,
                                     style: FlutterFlowTheme.of(context)
                                         .labelLarge

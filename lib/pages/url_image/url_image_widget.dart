@@ -106,6 +106,7 @@ class _UrlImageWidgetState extends State<UrlImageWidget> {
                                         height: m.dimensions?.height,
                                         width: m.dimensions?.width,
                                         blurHash: m.blurHash,
+                                        originalFilename: m.originalFilename,
                                       ))
                                   .toList();
                             } finally {

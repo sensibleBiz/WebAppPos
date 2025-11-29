@@ -14,6 +14,11 @@ enum CallLogStatus {
   rejected,
 }
 
+enum SubscriptionModules {
+  Attendance,
+  ComplaintsManagement,
+}
+
 extension FFEnumExtensions<T extends Enum> on T {
   String serialize() => name;
 }
@@ -29,6 +34,8 @@ T? deserializeEnum<T>(String? value) {
       return LoginStatus.values.deserialize(value) as T?;
     case (CallLogStatus):
       return CallLogStatus.values.deserialize(value) as T?;
+    case (SubscriptionModules):
+      return SubscriptionModules.values.deserialize(value) as T?;
     default:
       return null;
   }

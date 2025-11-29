@@ -19,7 +19,7 @@ class ImageModel extends FlutterFlowModel<ImageWidget> {
 
   bool isDataUploading_uploadDataIui = false;
   FFUploadedFile uploadedLocalFile_uploadDataIui =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadDataIui = '';
 
   // Stores action output result for [Backend Call - Create Document] action in Button widget.

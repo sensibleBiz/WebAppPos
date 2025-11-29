@@ -1,5 +1,6 @@
 export '/backend/schema/util/schema_util.dart';
 
+export 'app_permissions_datatype_struct.dart';
 export 'app_setting_data_type_struct.dart';
 export 'app_settings_struct.dart';
 export 'assigned_to_history_struct.dart';

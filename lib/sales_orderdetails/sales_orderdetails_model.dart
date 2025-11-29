@@ -51,7 +51,7 @@ class SalesOrderdetailsModel extends FlutterFlowModel<SalesOrderdetailsWidget> {
 
   bool isDataUploading_uploadDataHi2 = false;
   FFUploadedFile uploadedLocalFile_uploadDataHi2 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadDataHi2 = '';
 
   @override

@@ -3704,6 +3704,8 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
                                                                         ?.width,
                                                                     blurHash: m
                                                                         .blurHash,
+                                                                    originalFilename:
+                                                                        m.originalFilename,
                                                                   ))
                                                               .toList();
 

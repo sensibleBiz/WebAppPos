@@ -1026,6 +1026,9 @@ class _DeyeNewComplaintEditWidgetState extends State<DeyeNewComplaintEditWidget>
                                                                   ?.value =
                                                               compliantListItem
                                                                   .state;
+                                                          _model.dropDownStateValue =
+                                                              compliantListItem
+                                                                  .state;
                                                         });
                                                         safeSetState(() {
                                                           _model.requirementTextController
@@ -1053,6 +1056,10 @@ class _DeyeNewComplaintEditWidgetState extends State<DeyeNewComplaintEditWidget>
                                                               compliantListItem
                                                                   .customFields
                                                                   .productType;
+                                                          _model.dropDownProductNameValue =
+                                                              compliantListItem
+                                                                  .customFields
+                                                                  .productType;
                                                         });
                                                         safeSetState(() {
                                                           _model.dropDownProductionCapacityValueController
@@ -1060,10 +1067,17 @@ class _DeyeNewComplaintEditWidgetState extends State<DeyeNewComplaintEditWidget>
                                                               compliantListItem
                                                                   .customFields
                                                                   .capacity;
+                                                          _model.dropDownProductionCapacityValue =
+                                                              compliantListItem
+                                                                  .customFields
+                                                                  .capacity;
                                                         });
                                                         safeSetState(() {
                                                           _model.dropDownStateValueController
                                                                   ?.value =
+                                                              compliantListItem
+                                                                  .state;
+                                                          _model.dropDownStateValue =
                                                               compliantListItem
                                                                   .state;
                                                         });

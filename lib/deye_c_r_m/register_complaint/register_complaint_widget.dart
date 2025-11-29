@@ -150,6 +150,12 @@ class _RegisterComplaintWidgetState extends State<RegisterComplaintWidget> {
                         return FloatingActionButton.extended(
                           onPressed: () async {
                             var _shouldSetState = false;
+                            if (_model.isBtnDisabled == true) {
+                              if (_shouldSetState) safeSetState(() {});
+                              return;
+                            }
+
+                            _model.isBtnDisabled = true;
                             if (_model.formKey.currentState == null ||
                                 !_model.formKey.currentState!.validate()) {
                               return;
@@ -349,27 +355,50 @@ class _RegisterComplaintWidgetState extends State<RegisterComplaintWidget> {
                             }
 
                             if (FFAppState().stateZone == 'SOUTH') {
-                              _model.leaveDocs =
-                                  await queryLeaveApplicationRecordOnce(
-                                parent: FFAppState().deyeOutletId,
-                                queryBuilder: (leaveApplicationRecord) =>
-                                    leaveApplicationRecord
-                                        .where(
-                                          'status',
-                                          isEqualTo: 'APPROVED',
-                                        )
-                                        .where(
-                                          'monthId',
-                                          isEqualTo: functions.getMonthId(),
-                                        ),
-                              );
-                              _shouldSetState = true;
+                              await Future.wait([
+                                Future(() async {
+                                  _model.leaveDocs =
+                                      await queryLeaveApplicationRecordOnce(
+                                    parent: FFAppState().deyeOutletId,
+                                    queryBuilder: (leaveApplicationRecord) =>
+                                        leaveApplicationRecord
+                                            .where(
+                                              'status',
+                                              isEqualTo: 'APPROVED',
+                                            )
+                                            .where(
+                                              'monthId',
+                                              isEqualTo: functions.getMonthId(),
+                                            ),
+                                  );
+                                  _shouldSetState = true;
+                                }),
+                                Future(() async {
+                                  _model.leadDocs =
+                                      await queryLeadsManagementRecordOnce(
+                                    parent: FFAppState().deyeOutletId,
+                                    queryBuilder: (leadsManagementRecord) =>
+                                        leadsManagementRecord
+                                            .where(
+                                              'date',
+                                              isEqualTo: functions.dateFormat(
+                                                  getCurrentTimestamp),
+                                            )
+                                            .where(
+                                              'state',
+                                              isEqualTo: 'KERALA',
+                                            ),
+                                  );
+                                  _shouldSetState = true;
+                                }),
+                              ]);
                               _model.isonLeave =
-                                  await actions.getAssingedToIfNotAbs(
+                                  await actions.getAssingedToIfNotAbsCopy(
                                 registerComplaintTeamTreeRecordList.toList(),
                                 'CRM',
                                 _model.leaveDocs!.toList(),
                                 _model.dropDownstateValue!,
+                                _model.leadDocs!.toList(),
                               );
                               _shouldSetState = true;
                               if (!getJsonField(
@@ -618,19 +647,26 @@ class _RegisterComplaintWidgetState extends State<RegisterComplaintWidget> {
                             safeSetState(() {
                               _model.dropDownstateValueController?.value =
                                   'Select State';
+                              _model.dropDownstateValue = 'Select State';
                             });
                             safeSetState(() {
                               _model.dropDownCitiesValueController?.value =
                                   'Select  City';
+                              _model.dropDownCitiesValue = 'Select  City';
                             });
                             safeSetState(() {
                               _model.dropDownProductNameValueController?.value =
+                                  'Select Product ';
+                              _model.dropDownProductNameValue =
                                   'Select Product ';
                             });
                             safeSetState(() {
                               _model.dropDownProductionCapacityValueController
                                   ?.value = 'Select Product Capacity';
+                              _model.dropDownProductionCapacityValue =
+                                  'Select Product Capacity';
                             });
+                            _model.isBtnDisabled = false;
 
                             context.pushNamed(DeyeThankyouPageWidget.routeName);
 

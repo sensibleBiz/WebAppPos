@@ -127,6 +127,11 @@ class ServiceManagementRecord extends FirestoreRecord {
   String get yearId => _yearId ?? '';
   bool hasYearId() => _yearId != null;
 
+  // "isReassigned" field.
+  bool? _isReassigned;
+  bool get isReassigned => _isReassigned ?? false;
+  bool hasIsReassigned() => _isReassigned != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -152,6 +157,7 @@ class ServiceManagementRecord extends FirestoreRecord {
     _currentTime = snapshotData['currentTime'] as DateTime?;
     _monthId = snapshotData['monthId'] as String?;
     _yearId = snapshotData['yearId'] as String?;
+    _isReassigned = snapshotData['isReassigned'] as bool?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -217,6 +223,7 @@ Map<String, dynamic> createServiceManagementRecordData({
   DateTime? currentTime,
   String? monthId,
   String? yearId,
+  bool? isReassigned,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -242,6 +249,7 @@ Map<String, dynamic> createServiceManagementRecordData({
       'currentTime': currentTime,
       'monthId': monthId,
       'yearId': yearId,
+      'isReassigned': isReassigned,
     }.withoutNulls,
   );
 
@@ -275,7 +283,8 @@ class ServiceManagementRecordDocumentEquality
         e1?.updatedDate == e2?.updatedDate &&
         e1?.currentTime == e2?.currentTime &&
         e1?.monthId == e2?.monthId &&
-        e1?.yearId == e2?.yearId;
+        e1?.yearId == e2?.yearId &&
+        e1?.isReassigned == e2?.isReassigned;
   }
 
   @override
@@ -301,7 +310,8 @@ class ServiceManagementRecordDocumentEquality
         e?.updatedDate,
         e?.currentTime,
         e?.monthId,
-        e?.yearId
+        e?.yearId,
+        e?.isReassigned
       ]);
 
   @override

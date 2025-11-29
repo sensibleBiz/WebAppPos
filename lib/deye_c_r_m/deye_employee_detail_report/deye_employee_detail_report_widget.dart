@@ -422,9 +422,13 @@ class _DeyeEmployeeDetailReportWidgetState
                                                         _model
                                                             .remarkDropDownValueController
                                                             ?.reset();
+                                                        _model.remarkDropDownValue =
+                                                            null;
                                                         _model
                                                             .solutionDropDownValueController
                                                             ?.reset();
+                                                        _model.solutionDropDownValue =
+                                                            null;
                                                       });
                                                     },
                                                   ),

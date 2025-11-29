@@ -324,70 +324,76 @@ class _DeyeActivityUpdateWidgetState extends State<DeyeActivityUpdateWidget> {
                               null &&
                           _model.textFieldCustomerNameTextController.text !=
                               '') {
-                        await widget!.leadManagement!.reference
-                            .update(createLeadsManagementRecordData(
-                          status: widget!.status,
-                          stage: widget!.status,
-                          closeDate: widget!.status == 'completed'
-                              ? dateTimeFormat(
-                                  "dd-MM-yyyy", getCurrentTimestamp)
-                              : '0',
-                          closeDateMili: widget!.status == 'completed'
-                              ? getCurrentTimestamp.millisecondsSinceEpoch
-                              : 0,
-                          customFields: createCustomFieldsStruct(
-                            solution: _model.actionDropdownValue,
-                            clearUnsetFields: false,
-                          ),
-                        ));
+                        await Future.wait([
+                          Future(() async {
+                            await widget!.leadManagement!.reference
+                                .update(createLeadsManagementRecordData(
+                              status: widget!.status,
+                              stage: widget!.status,
+                              closeDate: widget!.status == 'completed'
+                                  ? dateTimeFormat(
+                                      "dd-MM-yyyy", getCurrentTimestamp)
+                                  : '0',
+                              closeDateMili: widget!.status == 'completed'
+                                  ? getCurrentTimestamp.millisecondsSinceEpoch
+                                  : 0,
+                              customFields: createCustomFieldsStruct(
+                                solution: _model.actionDropdownValue,
+                                clearUnsetFields: false,
+                              ),
+                            ));
+                          }),
+                          Future(() async {
+                            var leadActivitiesRecordReference =
+                                LeadActivitiesRecord.createDoc(
+                                    FFAppState().outletRef!);
+                            await leadActivitiesRecordReference
+                                .set(createLeadActivitiesRecordData(
+                              assignedTo: widget!.leadManagement?.assignedTo,
+                              scheduledDate:
+                                  getCurrentTimestamp.millisecondsSinceEpoch,
+                              scheduledTime:
+                                  getCurrentTimestamp.millisecondsSinceEpoch,
+                              leadName: widget!.leadManagement?.followUpName,
+                              description: _model
+                                  .textFieldCustomerNameTextController.text,
+                              leadRefId: widget!.leadManagement?.id,
+                              createdDate: getCurrentTimestamp,
+                              type: _model.typeDropdownValue,
+                              status: 'completed',
+                              mode: 'ONLINE',
+                              solution: _model.actionDropdownValue,
+                            ));
+                            _model.activityDoc =
+                                LeadActivitiesRecord.getDocumentFromData(
+                                    createLeadActivitiesRecordData(
+                                      assignedTo:
+                                          widget!.leadManagement?.assignedTo,
+                                      scheduledDate: getCurrentTimestamp
+                                          .millisecondsSinceEpoch,
+                                      scheduledTime: getCurrentTimestamp
+                                          .millisecondsSinceEpoch,
+                                      leadName:
+                                          widget!.leadManagement?.followUpName,
+                                      description: _model
+                                          .textFieldCustomerNameTextController
+                                          .text,
+                                      leadRefId: widget!.leadManagement?.id,
+                                      createdDate: getCurrentTimestamp,
+                                      type: _model.typeDropdownValue,
+                                      status: 'completed',
+                                      mode: 'ONLINE',
+                                      solution: _model.actionDropdownValue,
+                                    ),
+                                    leadActivitiesRecordReference);
+                            _shouldSetState = true;
 
-                        var leadActivitiesRecordReference =
-                            LeadActivitiesRecord.createDoc(
-                                FFAppState().outletRef!);
-                        await leadActivitiesRecordReference
-                            .set(createLeadActivitiesRecordData(
-                          assignedTo: widget!.leadManagement?.assignedTo,
-                          scheduledDate:
-                              getCurrentTimestamp.millisecondsSinceEpoch,
-                          scheduledTime:
-                              getCurrentTimestamp.millisecondsSinceEpoch,
-                          leadName: widget!.leadManagement?.followUpName,
-                          description:
-                              _model.textFieldCustomerNameTextController.text,
-                          leadRefId: widget!.leadManagement?.id,
-                          createdDate: getCurrentTimestamp,
-                          type: _model.typeDropdownValue,
-                          status: 'completed',
-                          mode: 'ONLINE',
-                          solution: _model.actionDropdownValue,
-                        ));
-                        _model.activityDoc =
-                            LeadActivitiesRecord.getDocumentFromData(
-                                createLeadActivitiesRecordData(
-                                  assignedTo:
-                                      widget!.leadManagement?.assignedTo,
-                                  scheduledDate: getCurrentTimestamp
-                                      .millisecondsSinceEpoch,
-                                  scheduledTime: getCurrentTimestamp
-                                      .millisecondsSinceEpoch,
-                                  leadName:
-                                      widget!.leadManagement?.followUpName,
-                                  description: _model
-                                      .textFieldCustomerNameTextController.text,
-                                  leadRefId: widget!.leadManagement?.id,
-                                  createdDate: getCurrentTimestamp,
-                                  type: _model.typeDropdownValue,
-                                  status: 'completed',
-                                  mode: 'ONLINE',
-                                  solution: _model.actionDropdownValue,
-                                ),
-                                leadActivitiesRecordReference);
-                        _shouldSetState = true;
-
-                        await _model.activityDoc!.reference
-                            .update(createLeadActivitiesRecordData(
-                          id: _model.activityDoc?.reference.id,
-                        ));
+                            await _model.activityDoc!.reference
+                                .update(createLeadActivitiesRecordData(
+                              id: _model.activityDoc?.reference.id,
+                            ));
+                          }),
+                        ]);
                         Navigator.pop(context);
                       } else {
                         await showDialog(

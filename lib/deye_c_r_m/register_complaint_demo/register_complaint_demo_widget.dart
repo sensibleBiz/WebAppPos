@@ -151,6 +151,13 @@ class _RegisterComplaintDemoWidgetState
                         return FloatingActionButton.extended(
                           onPressed: () async {
                             var _shouldSetState = false;
+                            if (_model.btnIsDisabled == true) {
+                              if (_shouldSetState) safeSetState(() {});
+                              return;
+                            }
+
+                            _model.btnIsDisabled = true;
+                            safeSetState(() {});
                             if (_model.formKey.currentState == null ||
                                 !_model.formKey.currentState!.validate()) {
                               return;
@@ -350,28 +357,51 @@ class _RegisterComplaintDemoWidgetState
                             }
 
                             if (FFAppState().stateZone == 'SOUTH') {
-                              _model.leaves =
-                                  await queryLeaveApplicationRecordOnce(
-                                parent: FFAppState().demoOutlet,
-                                queryBuilder: (leaveApplicationRecord) =>
-                                    leaveApplicationRecord
-                                        .where(
-                                          'status',
-                                          isEqualTo: 'APPROVED',
-                                        )
-                                        .where(
-                                          'monthId',
-                                          isEqualTo: functions.getMonthId(),
-                                        ),
-                              );
-                              _shouldSetState = true;
+                              await Future.wait([
+                                Future(() async {
+                                  _model.leaves =
+                                      await queryLeaveApplicationRecordOnce(
+                                    parent: FFAppState().demoOutlet,
+                                    queryBuilder: (leaveApplicationRecord) =>
+                                        leaveApplicationRecord
+                                            .where(
+                                              'status',
+                                              isEqualTo: 'APPROVED',
+                                            )
+                                            .where(
+                                              'monthId',
+                                              isEqualTo: functions.getMonthId(),
+                                            ),
+                                  );
+                                  _shouldSetState = true;
+                                }),
+                                Future(() async {
+                                  _model.leadDocs =
+                                      await queryLeadsManagementRecordOnce(
+                                    parent: FFAppState().demoOutlet,
+                                    queryBuilder: (leadsManagementRecord) =>
+                                        leadsManagementRecord
+                                            .where(
+                                              'date',
+                                              isEqualTo: functions.dateFormat(
+                                                  getCurrentTimestamp),
+                                            )
+                                            .where(
+                                              'state',
+                                              isEqualTo: 'KERALA',
+                                            ),
+                                  );
+                                  _shouldSetState = true;
+                                }),
+                              ]);
                               _model.isOnLeave =
-                                  await actions.getAssingedToIfNotAbs(
+                                  await actions.getAssingedToIfNotAbsCopy(
                                 registerComplaintDemoTeamTreeRecordList
                                     .toList(),
                                 'demo',
                                 _model.leaves!.toList(),
                                 _model.dropDownstateValue!,
+                                _model.leadDocs!.toList(),
                               );
                               _shouldSetState = true;
                               if (!getJsonField(
@@ -622,19 +652,27 @@ class _RegisterComplaintDemoWidgetState
                             safeSetState(() {
                               _model.dropDownstateValueController?.value =
                                   'Select State';
+                              _model.dropDownstateValue = 'Select State';
                             });
                             safeSetState(() {
                               _model.dropDownCitiesValueController?.value =
                                   'Select  City';
+                              _model.dropDownCitiesValue = 'Select  City';
                             });
                             safeSetState(() {
                               _model.dropDownProductNameValueController?.value =
+                                  'Select Product ';
+                              _model.dropDownProductNameValue =
                                   'Select Product ';
                             });
                             safeSetState(() {
                               _model.dropDownProductionCapacityValueController
                                   ?.value = 'Select Product Capacity';
+                              _model.dropDownProductionCapacityValue =
+                                  'Select Product Capacity';
                             });
+                            _model.btnIsDisabled = false;
+                            safeSetState(() {});
 
                             context.pushNamed(DeyeThankyouPageWidget.routeName);
 

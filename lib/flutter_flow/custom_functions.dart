@@ -251,47 +251,47 @@ List<LeadsManagementRecord> filteredComplaintsForReports(
 }
 
 List<dynamic> groupByStateReport(List<LeadsManagementRecord> listLeadMange) {
-  List<dynamic> returnList = [];
-  // print("*********");
-  // print(listLeadMange);
-  for (var record in listLeadMange) {
-    // print("------------------------------------------ 1");
-    // print(record.mobile);
-    // print(record.city);
-    // print("------------------------------------------1");
-    if (returnList.length > 0) {
-      int count = 0;
-      bool flag = false;
+  // List<dynamic> returnList = [];
+  // // print("*********");
+  // // print(listLeadMange);
+  // for (var record in listLeadMange) {
+  //   // print("------------------------------------------ 1");
+  //   // print(record.mobile);
+  //   // print(record.city);
+  //   // print("------------------------------------------1");
+  //   if (returnList.length > 0) {
+  //     int count = 0;
+  //     bool flag = false;
 
-      for (int i = 0; i < returnList.length; i++) {
-        count++;
-        if (record.state == returnList[i]["state"]) {
-          flag = true;
-          break;
-        } else {
-          if (count == returnList.length && flag == false) {
-            returnList.add({
-              "city": record.city,
-              "stage": record.stage,
-              "status": record.status,
-              "id": record.id,
-              "state": record.state
-            });
-            // returnList.add(record);
-          }
-        }
-      }
-    } else {
-      //returnList.add(record);
-      returnList.add({
-        "city": record.city,
-        "stage": record.stage,
-        "status": record.status,
-        "id": record.id,
-        "state": record.state
-      });
-    }
-  }
+  //     for (int i = 0; i < returnList.length; i++) {
+  //       count++;
+  //       if (record.state == returnList[i]["state"]) {
+  //         flag = true;
+  //         break;
+  //       } else {
+  //         if (count == returnList.length && flag == false) {
+  //           returnList.add({
+  //             "city": record.city,
+  //             "stage": record.stage,
+  //             "status": record.status,
+  //             "id": record.id,
+  //             "state": record.state
+  //           });
+  //           // returnList.add(record);
+  //         }
+  //       }
+  //     }
+  //   } else {
+  //     //returnList.add(record);
+  //     returnList.add({
+  //       "city": record.city,
+  //       "stage": record.stage,
+  //       "status": record.status,
+  //       "id": record.id,
+  //       "state": record.state
+  //     });
+  //   }
+  // }
   // print("&&&&&&&&&&&&&&&&&&&&&&&&&&");
   // print(listLead);
 
@@ -337,6 +337,51 @@ List<dynamic> groupByStateReport(List<LeadsManagementRecord> listLeadMange) {
   // print(returnList);
   // returnList.sort((a, b) => a.city.compareTo(b.city));
   //print(returnList);
+  // return returnList;
+
+  // Same logic condensed and Sorting based on total complaint per state added
+  List<dynamic> returnList = [];
+  Map<String, int> stateComplaintCount =
+      {}; // To store the complaint count for each state
+
+  // First pass: Group by state and count complaints
+  for (var record in listLeadMange) {
+    bool stateExists = false;
+
+    // Check if the state already exists in returnList
+    for (var entry in returnList) {
+      if (entry["state"] == record.state) {
+        stateExists = true;
+        break;
+      }
+    }
+
+    // If the state doesn't exist, add it
+    if (!stateExists) {
+      returnList.add({
+        "city": record.city,
+        "stage": record.stage,
+        "status": record.status,
+        "id": record.id,
+        "state": record.state
+      });
+
+      // Track the number of complaints for each state
+      stateComplaintCount[record.state] = 0;
+    }
+
+    // Increment the complaint count for the state
+    stateComplaintCount[record.state] =
+        (stateComplaintCount[record.state] ?? 0) + 1;
+  }
+
+  // Sort returnList based on the complaint count in descending order
+  returnList.sort((a, b) {
+    final countA = stateComplaintCount[a["state"]] ?? 0;
+    final countB = stateComplaintCount[b["state"]] ?? 0;
+    return countB.compareTo(countA); // Descending order
+  });
+
   return returnList;
 }
 
@@ -345,8 +390,16 @@ List<LeadsManagementRecord> filteredComplaints(
   String filterExce,
   String filterNum,
   String filterField,
+  bool isReassignedActive,
 ) {
-  print(filterExce);
+  // Filter by reassigned flag if active
+  if (isReassignedActive) {
+    leadsDoc = leadsDoc
+        .where((lead) => lead.isReassigned != null && lead.isReassigned == true)
+        .toList();
+  }
+
+  // print(filterExce);
   if (filterExce.isNotEmpty) {
     leadsDoc = leadsDoc.where((lead) => lead.assignedTo == filterExce).toList();
     //print(leadsDoc);
@@ -1069,7 +1122,7 @@ String getDocIdFromDocRefUserAccount(DocumentReference? docRef) {
   return id;
 }
 
-String subscriptionDays(
+int subscriptionDays(
   DateTime? dateParameter1,
   int? dateParameter2,
 ) {
@@ -1084,9 +1137,16 @@ String subscriptionDays(
   final DateTime _rDate = DateTime.fromMillisecondsSinceEpoch(dateParameter2!);
 
   var difference = _rDate.difference(_today).inDays;
-  String value = difference.toString();
 
-  return value;
+  // If the difference is negative, set it to 0
+  if (difference < 0) {
+    difference = 0;
+  }
+
+  // String value = difference.toString();
+
+  // return value;
+  return difference;
 }
 
 String milisecToTimestamp(int? dateInNumber) {
@@ -2910,4 +2970,78 @@ List<String> leadMobileNumberParser(String? phone) {
 
   // Return list: one with +91 prefix, one without
   return ['+91$lastTen', lastTen];
+}
+
+List<TeamTreeRecord> getComplaintSortedArray(
+  List<LeadsManagementRecord> leadDocs,
+  List<TeamTreeRecord> userDocs,
+) {
+  // Sort the userDocs list based on the number of complaints assigned to each user
+  userDocs.sort((userDocA, userDocB) {
+    // Get the user's profile ID from the team record
+    final userIdA = userDocA.userProfileId;
+    final userIdB = userDocB.userProfileId;
+
+    // Count how many complaints are assigned to each user
+    final countA = leadDocs.where((lead) => lead.assignedTo == userIdA).length;
+    final countB = leadDocs.where((lead) => lead.assignedTo == userIdB).length;
+
+    // Sort in descending order (highest number of complaints first)
+    return countB.compareTo(countA);
+  });
+
+  return userDocs;
+}
+
+double subscriptionDaysProgress(
+  int activationDate,
+  int expiryDate,
+) {
+  // Get the current time in milliseconds
+  final int currDate = DateTime.now().millisecondsSinceEpoch;
+
+  // Prevent division by zero
+  if (expiryDate == activationDate) {
+    return 0.0;
+  }
+
+  // Calculate normalized progress
+  double progress = (expiryDate - currDate) / (expiryDate - activationDate);
+
+  // Clamp progress between 0 and 1
+  if (progress < 0) progress = 0;
+  if (progress > 1) progress = 1;
+
+  return progress;
+}
+
+/// Calculates the Time it took to resolve a Complaint should only run when
+/// Complaint is in Completed Stage else closedDateMilli is always 0
+String calculateComplaintResolutionDuration(
+  int createdDateMilli,
+  int closedDateMilli,
+) {
+  // If ticket or item is still open
+  if (closedDateMilli == 0) {
+    return 'Active';
+  }
+
+  int diffMillis = closedDateMilli - createdDateMilli;
+  int totalSeconds = diffMillis ~/ 1000;
+
+  if (totalSeconds < 60) {
+    return '${totalSeconds}s';
+  }
+
+  int days = totalSeconds ~/ (24 * 3600);
+  int hours = (totalSeconds % (24 * 3600)) ~/ 3600;
+  int minutes = (totalSeconds % 3600) ~/ 60;
+
+  List<String> parts = [];
+
+  if (days > 0) parts.add('${days}d');
+  if (hours > 0) parts.add('${hours}h');
+  parts.add('${minutes}m'); // always include minutes
+
+  return parts.join(' ');
 }

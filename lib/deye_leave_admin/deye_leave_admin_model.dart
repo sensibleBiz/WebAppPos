@@ -1,6 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/deye_leave_remark_widget.dart';
+import '/components/deye_subscription_popup_widget.dart';
 import '/components/popup_success_copy_widget.dart';
 import '/components/popup_warning_widget.dart';
 import '/deye_c_r_m/deye_header_h_r/deye_header_h_r_widget.dart';
@@ -16,6 +18,7 @@ import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'deye_leave_admin_widget.dart' show DeyeLeaveAdminWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -45,6 +48,8 @@ class DeyeLeaveAdminModel extends FlutterFlowModel<DeyeLeaveAdminWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in DeyeLeaveAdmin widget.
+  ModuleSubscriptionRecord? moduleDoc;
   // Model for DeyeHeaderHR component.
   late DeyeHeaderHRModel deyeHeaderHRModel;
   DateTime? datePicked;

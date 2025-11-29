@@ -3452,20 +3452,28 @@ class _DeyeAddComplaintsNotUsingWidgetState
                                                         _model.dropDownstateValueController
                                                                 ?.value =
                                                             'Select State';
+                                                        _model.dropDownstateValue =
+                                                            'Select State';
                                                       });
                                                       safeSetState(() {
                                                         _model.dropDownCitiesValueController
                                                                 ?.value =
+                                                            'Select  City';
+                                                        _model.dropDownCitiesValue =
                                                             'Select  City';
                                                       });
                                                       safeSetState(() {
                                                         _model.dropDownProductNameValueController
                                                                 ?.value =
                                                             'Select Product ';
+                                                        _model.dropDownProductNameValue =
+                                                            'Select Product ';
                                                       });
                                                       safeSetState(() {
                                                         _model.dropDownProductionCapacityValueController
                                                                 ?.value =
+                                                            'Select Product Capacity';
+                                                        _model.dropDownProductionCapacityValue =
                                                             'Select Product Capacity';
                                                       });
 

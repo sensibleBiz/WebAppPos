@@ -283,3 +283,12 @@ export '/call_logs_dashboard/call_logs_details/call_logs_details_widget.dart'
     show CallLogsDetailsWidget;
 export '/call_logs_dashboard/call_logs_dash_board/call_logs_dash_board_widget.dart'
     show CallLogsDashBoardWidget;
+export '/call_logs_dashboard/call_logs_dash_board_copy/call_logs_dash_board_copy_widget.dart'
+    show CallLogsDashBoardCopyWidget;
+export '/call_logs_dashboard/call_logs_details_copy/call_logs_details_copy_widget.dart'
+    show CallLogsDetailsCopyWidget;
+export '/deye_permission_dashboard/deye_permission_dashboard_widget.dart'
+    show DeyePermissionDashboardWidget;
+export '/deye_subscription/deye_subscription_widget.dart'
+    show DeyeSubscriptionWidget;
+export '/response_page/response_page_widget.dart' show ResponsePageWidget;

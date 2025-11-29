@@ -3506,6 +3506,17 @@ class FFAppState extends ChangeNotifier {
         : prefs.remove('ff_demoOutlet');
   }
 
+  /// When registering a new complaint manually this Boolean is set on the basis
+  /// of the Latest Complaint's stage.
+  ///
+  /// If the complaint is Completed i.e. No ongoing Complaints let the user
+  /// register a new complaint.
+  bool _canRegisterNewComplaintManual = true;
+  bool get canRegisterNewComplaintManual => _canRegisterNewComplaintManual;
+  set canRegisterNewComplaintManual(bool value) {
+    _canRegisterNewComplaintManual = value;
+  }
+
   final _dealersManager = StreamRequestManager<List<DealersRecord>>();
   Stream<List<DealersRecord>> dealers({
     String? uniqueQueryKey,
@@ -3520,6 +3531,21 @@ class FFAppState extends ChangeNotifier {
   void clearDealersCache() => _dealersManager.clear();
   void clearDealersCacheKey(String? uniqueKey) =>
       _dealersManager.clearRequest(uniqueKey);
+
+  final _renewalDateQueryManager = StreamRequestManager<OutletRecord>();
+  Stream<OutletRecord> renewalDateQuery({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Stream<OutletRecord> Function() requestFn,
+  }) =>
+      _renewalDateQueryManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearRenewalDateQueryCache() => _renewalDateQueryManager.clear();
+  void clearRenewalDateQueryCacheKey(String? uniqueKey) =>
+      _renewalDateQueryManager.clearRequest(uniqueKey);
 }
 
 void _safeInit(Function() initializeField) {

@@ -98,6 +98,12 @@ class TeamTreeRecord extends FirestoreRecord {
   bool get onRole => _onRole ?? false;
   bool hasOnRole() => _onRole != null;
 
+  // "appPermissionsList" field.
+  AppPermissionsDatatypeStruct? _appPermissionsList;
+  AppPermissionsDatatypeStruct get appPermissionsList =>
+      _appPermissionsList ?? AppPermissionsDatatypeStruct();
+  bool hasAppPermissionsList() => _appPermissionsList != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -120,6 +126,11 @@ class TeamTreeRecord extends FirestoreRecord {
     _isOnPayRoll = snapshotData['isOnPayRoll'] as bool?;
     _code = snapshotData['code'] as String?;
     _onRole = snapshotData['onRole'] as bool?;
+    _appPermissionsList =
+        snapshotData['appPermissionsList'] is AppPermissionsDatatypeStruct
+            ? snapshotData['appPermissionsList']
+            : AppPermissionsDatatypeStruct.maybeFromMap(
+                snapshotData['appPermissionsList']);
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -176,6 +187,7 @@ Map<String, dynamic> createTeamTreeRecordData({
   bool? isOnPayRoll,
   String? code,
   bool? onRole,
+  AppPermissionsDatatypeStruct? appPermissionsList,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -193,8 +205,13 @@ Map<String, dynamic> createTeamTreeRecordData({
       'isOnPayRoll': isOnPayRoll,
       'code': code,
       'onRole': onRole,
+      'appPermissionsList': AppPermissionsDatatypeStruct().toMap(),
     }.withoutNulls,
   );
+
+  // Handle nested data for "appPermissionsList" field.
+  addAppPermissionsDatatypeStructData(
+      firestoreData, appPermissionsList, 'appPermissionsList');
 
   return firestoreData;
 }
@@ -220,7 +237,8 @@ class TeamTreeRecordDocumentEquality implements Equality<TeamTreeRecord> {
         e1?.team == e2?.team &&
         e1?.isOnPayRoll == e2?.isOnPayRoll &&
         e1?.code == e2?.code &&
-        e1?.onRole == e2?.onRole;
+        e1?.onRole == e2?.onRole &&
+        e1?.appPermissionsList == e2?.appPermissionsList;
   }
 
   @override
@@ -240,7 +258,8 @@ class TeamTreeRecordDocumentEquality implements Equality<TeamTreeRecord> {
         e?.team,
         e?.isOnPayRoll,
         e?.code,
-        e?.onRole
+        e?.onRole,
+        e?.appPermissionsList
       ]);
 
   @override

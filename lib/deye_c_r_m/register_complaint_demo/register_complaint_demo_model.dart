@@ -26,6 +26,8 @@ class RegisterComplaintDemoModel
 
   bool wait = true;
 
+  bool btnIsDisabled = false;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -121,7 +123,9 @@ class RegisterComplaintDemoModel
   OutletLeadsRecord? outputCopy;
   // Stores action output result for [Firestore Query - Query a collection] action in FloatingActionButton widget.
   List<LeaveApplicationRecord>? leaves;
-  // Stores action output result for [Custom Action - getAssingedToIfNotAbs] action in FloatingActionButton widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in FloatingActionButton widget.
+  List<LeadsManagementRecord>? leadDocs;
+  // Stores action output result for [Custom Action - getAssingedToIfNotAbsCopy] action in FloatingActionButton widget.
   dynamic? isOnLeave;
   // Stores action output result for [Backend Call - Create Document] action in FloatingActionButton widget.
   LeadsManagementRecord? leadMg;

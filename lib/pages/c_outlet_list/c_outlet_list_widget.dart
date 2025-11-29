@@ -563,6 +563,8 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                 _model.teamTREE!.zoneList.toList().cast<String>();
                                                                             FFAppState().stageListPermissionState =
                                                                                 _model.teamTREE!.stageAccessList.toList().cast<StageAccessDataTypeStruct>();
+                                                                            FFAppState().roleInZone =
+                                                                                _model.teamTREE!.roleInZone;
                                                                             safeSetState(() {});
                                                                             FFAppState().categoryList =
                                                                                 functions.addCategoryList(_model.categoryDocs!.toList()).toList().cast<CategoryDataTypeStruct>();
@@ -746,7 +748,7 @@ class _COutletListWidgetState extends State<COutletListWidget> {
                                                                                     Padding(
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                       child: Text(
-                                                                                        functions.subscriptionDays(getCurrentTimestamp, list1Item.renewalDate),
+                                                                                        functions.subscriptionDays(getCurrentTimestamp, list1Item.renewalDate).toString(),
                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                               letterSpacing: 0.0,

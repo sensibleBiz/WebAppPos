@@ -1422,6 +1422,8 @@ class _AttendanceAdminWidgetState extends State<AttendanceAdminWidget> {
                                                                     _model
                                                                         .dropDownSuperAdminValueController
                                                                         ?.reset();
+                                                                    _model.dropDownSuperAdminValue =
+                                                                        null;
                                                                   });
                                                                   _model.selectedUserZoneList = FFAppState()
                                                                       .currentUserZoneList

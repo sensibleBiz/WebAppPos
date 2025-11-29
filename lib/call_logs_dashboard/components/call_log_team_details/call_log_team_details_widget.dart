@@ -73,6 +73,7 @@ class _CallLogTeamDetailsWidgetState extends State<CallLogTeamDetailsWidget> {
                         fontFamily:
                             FlutterFlowTheme.of(context).labelLargeFamily,
                         color: FlutterFlowTheme.of(context).primaryBackground,
+                        fontSize: 12.0,
                         letterSpacing: 0.0,
                         useGoogleFonts:
                             !FlutterFlowTheme.of(context).labelLargeIsCustom,
@@ -92,7 +93,7 @@ class _CallLogTeamDetailsWidgetState extends State<CallLogTeamDetailsWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).labelSmallFamily,
                           color: FlutterFlowTheme.of(context).primaryBtnText,
-                          fontSize: 11.0,
+                          fontSize: 10.0,
                           letterSpacing: 0.0,
                           useGoogleFonts:
                               !FlutterFlowTheme.of(context).labelSmallIsCustom,
@@ -112,7 +113,7 @@ class _CallLogTeamDetailsWidgetState extends State<CallLogTeamDetailsWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).labelLargeFamily,
                           color: FlutterFlowTheme.of(context).primaryBackground,
-                          fontSize: 11.0,
+                          fontSize: 10.0,
                           letterSpacing: 0.0,
                           useGoogleFonts:
                               !FlutterFlowTheme.of(context).labelLargeIsCustom,
@@ -132,7 +133,7 @@ class _CallLogTeamDetailsWidgetState extends State<CallLogTeamDetailsWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).labelLargeFamily,
                           color: FlutterFlowTheme.of(context).primaryBackground,
-                          fontSize: 11.0,
+                          fontSize: 10.0,
                           letterSpacing: 0.0,
                           useGoogleFonts:
                               !FlutterFlowTheme.of(context).labelLargeIsCustom,
@@ -152,7 +153,7 @@ class _CallLogTeamDetailsWidgetState extends State<CallLogTeamDetailsWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).labelLargeFamily,
                           color: FlutterFlowTheme.of(context).primaryBackground,
-                          fontSize: 11.0,
+                          fontSize: 10.0,
                           letterSpacing: 0.0,
                           useGoogleFonts:
                               !FlutterFlowTheme.of(context).labelLargeIsCustom,
@@ -172,7 +173,7 @@ class _CallLogTeamDetailsWidgetState extends State<CallLogTeamDetailsWidget> {
                           fontFamily:
                               FlutterFlowTheme.of(context).labelLargeFamily,
                           color: FlutterFlowTheme.of(context).primaryBackground,
-                          fontSize: 11.0,
+                          fontSize: 10.0,
                           letterSpacing: 0.0,
                           useGoogleFonts:
                               !FlutterFlowTheme.of(context).labelLargeIsCustom,
@@ -224,7 +225,9 @@ class _CallLogTeamDetailsWidgetState extends State<CallLogTeamDetailsWidget> {
                     style: FlutterFlowTheme.of(context).labelLarge.override(
                           fontFamily:
                               FlutterFlowTheme.of(context).labelLargeFamily,
+                          fontSize: 12.0,
                           letterSpacing: 0.0,
+                          fontWeight: FontWeight.bold,
                           useGoogleFonts:
                               !FlutterFlowTheme.of(context).labelLargeIsCustom,
                         ),

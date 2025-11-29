@@ -121,7 +121,14 @@ class _DeyeOverDuePopupWidgetState extends State<DeyeOverDuePopupWidget> {
                                   listItem.reference.id,
                                   ParamType.String,
                                 ),
+                                'leadManagementDoc': serializeParam(
+                                  listItem,
+                                  ParamType.Document,
+                                ),
                               }.withoutNulls,
+                              extra: <String, dynamic>{
+                                'leadManagementDoc': listItem,
+                              },
                             );
                           } else {
                             context.pushNamed(
@@ -166,16 +173,6 @@ class _DeyeOverDuePopupWidgetState extends State<DeyeOverDuePopupWidget> {
                               }.withoutNulls,
                             );
                           }
-
-                          context.pushNamed(
-                            DeyeComplaintDetailViewWidget.routeName,
-                            queryParameters: {
-                              'leadManagementDocId': serializeParam(
-                                listItem.reference.id,
-                                ParamType.String,
-                              ),
-                            }.withoutNulls,
-                          );
                         },
                         child: Container(
                           decoration: BoxDecoration(

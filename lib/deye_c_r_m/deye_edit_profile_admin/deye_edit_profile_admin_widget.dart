@@ -375,6 +375,8 @@ class _DeyeEditProfileAdminWidgetState
                                                                       ?.width,
                                                                   blurHash: m
                                                                       .blurHash,
+                                                                  originalFilename:
+                                                                      m.originalFilename,
                                                                 ))
                                                             .toList();
 

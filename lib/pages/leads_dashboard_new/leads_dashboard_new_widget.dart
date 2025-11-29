@@ -2021,9 +2021,13 @@ class _LeadsDashboardNewWidgetState extends State<LeadsDashboardNewWidget>
                                                                                 () async {
                                                                               safeSetState(() {
                                                                                 _model.dropDownRemarksValueController?.reset();
+                                                                                _model.dropDownRemarksValue = null;
                                                                                 _model.dropDownAssignedToValueController?.reset();
+                                                                                _model.dropDownAssignedToValue = null;
                                                                                 _model.dropDownSourceValueController?.reset();
+                                                                                _model.dropDownSourceValue = null;
                                                                                 _model.dropDownValueController?.reset();
+                                                                                _model.dropDownValue = null;
                                                                               });
                                                                               safeSetState(() {
                                                                                 _model.textController?.clear();

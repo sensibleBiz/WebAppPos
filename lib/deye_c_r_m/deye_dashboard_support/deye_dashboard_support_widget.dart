@@ -1013,12 +1013,18 @@ class _DeyeDashboardSupportWidgetState extends State<DeyeDashboardSupportWidget>
                                                                   _model
                                                                       .dropDownValueController
                                                                       ?.reset();
+                                                                  _model.dropDownValue =
+                                                                      null;
                                                                   _model
                                                                       .dropDownZoneAllValueController
                                                                       ?.reset();
+                                                                  _model.dropDownZoneAllValue =
+                                                                      null;
                                                                   _model
                                                                       .dropDownRemarkAllValueController
                                                                       ?.reset();
+                                                                  _model.dropDownRemarkAllValue =
+                                                                      null;
                                                                 });
                                                               },
                                                             ),

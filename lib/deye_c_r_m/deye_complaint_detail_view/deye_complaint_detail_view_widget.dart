@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/deye_reassign_history_widget.dart';
 import '/components/popup_success_copy_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -2020,161 +2021,270 @@ class _DeyeComplaintDetailViewWidgetState
                                                         ),
                                                       ),
                                                     ),
-                                                    if (FFAppState()
-                                                            .loggedInUserPermisions
-                                                            .elementAtOrNull(16)
-                                                            ?.value ==
-                                                        4)
-                                                      Builder(
-                                                        builder: (context) =>
-                                                            FFButtonWidget(
-                                                          onPressed: () async {
-                                                            await widget!
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        if (widget!
                                                                 .leadManagementDoc!
-                                                                .reference
-                                                                .update(
-                                                                    createLeadsManagementRecordData(
-                                                              comments: _model
-                                                                  .textFieldCommentsTextController
-                                                                  .text,
-                                                              remarks: _model.dropDownRemarkValue ==
-                                                                          null ||
-                                                                      _model.dropDownRemarkValue ==
-                                                                          ''
-                                                                  ? widget!
-                                                                      .leadManagementDoc
-                                                                      ?.remarks
-                                                                  : _model
-                                                                      .dropDownRemarkValue,
-                                                              stage: _model
-                                                                              .dropDownStageValue ==
-                                                                          null ||
-                                                                      _model.dropDownStageValue ==
-                                                                          ''
-                                                                  ? widget!
-                                                                      .leadManagementDoc
-                                                                      ?.stage
-                                                                  : _model
-                                                                      .dropDownStageValue,
-                                                              status: _model
-                                                                              .dropDownStageValue ==
-                                                                          null ||
-                                                                      _model
-                                                                              .dropDownStageValue ==
-                                                                          ''
-                                                                  ? widget!
-                                                                      .leadManagementDoc
-                                                                      ?.stage
-                                                                  : _model
-                                                                      .dropDownStageValue,
-                                                              updatedDate:
-                                                                  getCurrentTimestamp
-                                                                      .millisecondsSinceEpoch,
-                                                            ));
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (dialogContext) {
-                                                                return Dialog(
-                                                                  elevation: 0,
-                                                                  insetPadding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  alignment: AlignmentDirectional(
+                                                                .assignedToHistory
+                                                                .length >
+                                                            1)
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    -1.0, 0.0),
+                                                            child: Builder(
+                                                              builder: (context) =>
+                                                                  FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                        child:
+                                                                            WebViewAware(
+                                                                          child:
+                                                                              GestureDetector(
+                                                                            onTap:
+                                                                                () {
+                                                                              FocusScope.of(dialogContext).unfocus();
+                                                                              FocusManager.instance.primaryFocus?.unfocus();
+                                                                            },
+                                                                            child:
+                                                                                Container(
+                                                                              width: 500.0,
+                                                                              child: DeyeReassignHistoryWidget(
+                                                                                leadDoc: widget!.leadManagementDoc!,
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  );
+                                                                },
+                                                                text:
+                                                                    'Reassign History',
+                                                                icon: Icon(
+                                                                  Icons.history,
+                                                                  size: 25.0,
+                                                                ),
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  width: 200.0,
+                                                                  height: 45.0,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  child:
-                                                                      WebViewAware(
-                                                                    child:
-                                                                        GestureDetector(
-                                                                      onTap:
-                                                                          () {
-                                                                        FocusScope.of(dialogContext)
-                                                                            .unfocus();
-                                                                        FocusManager
-                                                                            .instance
-                                                                            .primaryFocus
-                                                                            ?.unfocus();
-                                                                      },
-                                                                      child:
-                                                                          PopupSuccessCopyWidget(
-                                                                        title:
-                                                                            'Update Successfull!',
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  iconAlignment:
+                                                                      IconAlignment
+                                                                          .start,
+                                                                  iconPadding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          2.0),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor5,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryBtnText,
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                                                                       ),
-                                                                    ),
+                                                                  elevation:
+                                                                      2.0,
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    width: 1.0,
                                                                   ),
-                                                                );
-                                                              },
-                                                            );
-                                                          },
-                                                          text: 'Update',
-                                                          icon: Icon(
-                                                            Icons.done,
-                                                            size: 20.0,
-                                                          ),
-                                                          options:
-                                                              FFButtonOptions(
-                                                            width: 200.0,
-                                                            height: 45.0,
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            iconPadding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        15.0,
-                                                                        0.0),
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .customColor5,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineMediumFamily,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryBtnText,
-                                                                      fontSize:
-                                                                          17.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      useGoogleFonts:
-                                                                          !FlutterFlowTheme.of(context)
-                                                                              .headlineMediumIsCustom,
-                                                                    ),
-                                                            elevation: 2.0,
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              width: 1.0,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              3.0),
+                                                                ),
+                                                              ),
                                                             ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        3.0),
                                                           ),
-                                                        ),
-                                                      ),
+                                                        if (FFAppState()
+                                                                .loggedInUserPermisions
+                                                                .elementAtOrNull(
+                                                                    16)
+                                                                ?.value ==
+                                                            4)
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    1.0, 0.0),
+                                                            child: Builder(
+                                                              builder: (context) =>
+                                                                  FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  await widget!
+                                                                      .leadManagementDoc!
+                                                                      .reference
+                                                                      .update(
+                                                                          createLeadsManagementRecordData(
+                                                                    comments: _model
+                                                                        .textFieldCommentsTextController
+                                                                        .text,
+                                                                    remarks: _model.dropDownRemarkValue ==
+                                                                                null ||
+                                                                            _model.dropDownRemarkValue ==
+                                                                                ''
+                                                                        ? widget!
+                                                                            .leadManagementDoc
+                                                                            ?.remarks
+                                                                        : _model
+                                                                            .dropDownRemarkValue,
+                                                                    stage: _model.dropDownStageValue ==
+                                                                                null ||
+                                                                            _model.dropDownStageValue ==
+                                                                                ''
+                                                                        ? widget!
+                                                                            .leadManagementDoc
+                                                                            ?.stage
+                                                                        : _model
+                                                                            .dropDownStageValue,
+                                                                    status: _model.dropDownStageValue ==
+                                                                                null ||
+                                                                            _model.dropDownStageValue ==
+                                                                                ''
+                                                                        ? widget!
+                                                                            .leadManagementDoc
+                                                                            ?.stage
+                                                                        : _model
+                                                                            .dropDownStageValue,
+                                                                    updatedDate:
+                                                                        getCurrentTimestamp
+                                                                            .millisecondsSinceEpoch,
+                                                                  ));
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                        child:
+                                                                            WebViewAware(
+                                                                          child:
+                                                                              GestureDetector(
+                                                                            onTap:
+                                                                                () {
+                                                                              FocusScope.of(dialogContext).unfocus();
+                                                                              FocusManager.instance.primaryFocus?.unfocus();
+                                                                            },
+                                                                            child:
+                                                                                PopupSuccessCopyWidget(
+                                                                              title: 'Update Successfull!',
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  );
+                                                                },
+                                                                text: 'Update',
+                                                                icon: Icon(
+                                                                  Icons.done,
+                                                                  size: 25.0,
+                                                                ),
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  width: 200.0,
+                                                                  height: 45.0,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  iconPadding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          2.0),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor5,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryBtnText,
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).headlineMediumIsCustom,
+                                                                      ),
+                                                                  elevation:
+                                                                      2.0,
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    width: 1.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              3.0),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                      ],
+                                                    ),
                                                   ].divide(
                                                       SizedBox(height: 5.0)),
                                                 ),

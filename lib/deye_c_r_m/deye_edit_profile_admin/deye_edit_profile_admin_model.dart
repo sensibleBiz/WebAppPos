@@ -32,7 +32,7 @@ class DeyeEditProfileAdminModel
   late DeyeHeaderModel deyeHeaderModel;
   bool isDataUploading_uploadDataY8l = false;
   FFUploadedFile uploadedLocalFile_uploadDataY8l =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadDataY8l = '';
 
   // State field(s) for TextField widget.

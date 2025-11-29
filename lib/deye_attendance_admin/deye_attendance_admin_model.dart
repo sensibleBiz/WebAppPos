@@ -1,6 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
+import '/components/deye_subscription_popup_widget.dart';
 import '/components/send_email_widget.dart';
 import '/deye_c_r_m/deye_header_h_r/deye_header_h_r_widget.dart';
 import '/deye_c_r_m/deye_menu/deye_menu_widget.dart';
@@ -48,6 +50,8 @@ class DeyeAttendanceAdminModel
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in DeyeAttendanceAdmin widget.
+  ModuleSubscriptionRecord? moduleDoc;
   // Model for DeyeHeaderHR component.
   late DeyeHeaderHRModel deyeHeaderHRModel;
   DateTime? datePicked;

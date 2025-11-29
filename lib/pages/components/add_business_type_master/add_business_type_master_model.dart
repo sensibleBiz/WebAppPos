@@ -44,7 +44,7 @@ class AddBusinessTypeMasterModel
 
   bool isDataUploading_uploadMediaJ1b = false;
   FFUploadedFile uploadedLocalFile_uploadMediaJ1b =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadMediaJ1b = '';
 
   // State field(s) for TextBusinessTypeCode widget.

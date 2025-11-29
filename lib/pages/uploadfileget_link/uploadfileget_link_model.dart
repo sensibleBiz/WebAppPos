@@ -18,7 +18,7 @@ class UploadfilegetLinkModel extends FlutterFlowModel<UploadfilegetLinkWidget> {
 
   bool isDataUploading_uploadData48g = false;
   FFUploadedFile uploadedLocalFile_uploadData48g =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadData48g = '';
 
   @override

@@ -576,7 +576,7 @@ class _CSubscriptionWidgetState extends State<CSubscriptionWidget> {
                                                                                   ),
                                                                                 ),
                                                                                 Text(
-                                                                                  functions.subscriptionDays(getCurrentTimestamp, containerOutletRecord?.renewalDate),
+                                                                                  functions.subscriptionDays(getCurrentTimestamp, containerOutletRecord?.renewalDate).toString(),
                                                                                   textAlign: TextAlign.center,
                                                                                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,

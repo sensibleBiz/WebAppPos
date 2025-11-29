@@ -506,6 +506,8 @@ class _AddCategoryMasterWidgetState extends State<AddCategoryMasterWidget> {
                                                                       ?.width,
                                                                   blurHash: m
                                                                       .blurHash,
+                                                                  originalFilename:
+                                                                      m.originalFilename,
                                                                 ))
                                                             .toList();
 

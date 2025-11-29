@@ -29,14 +29,14 @@ class MessageBoxModel extends FlutterFlowModel<MessageBoxWidget> {
   ApiCallResponse? apiResultuav;
   bool isDataUploading_uploadDataG6q = false;
   FFUploadedFile uploadedLocalFile_uploadDataG6q =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadDataG6q = '';
 
   // Stores action output result for [Backend Call - API (sendImage)] action in Button widget.
   ApiCallResponse? imageresult;
   bool isDataUploading_uploadData1 = false;
   FFUploadedFile uploadedLocalFile_uploadData1 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadData1 = '';
 
   // Stores action output result for [Backend Call - API (sendVideo)] action in Button widget.

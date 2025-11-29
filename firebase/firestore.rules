@@ -659,11 +659,23 @@ service cloud.firestore {
     match /OUTLET/{parent}/CALL_LOGS/{document} {
       allow create: if true;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
     }
 
     match /{path=**}/CALL_LOGS/{document} {
+      allow read: if true;
+    }
+
+
+    match /OUTLET/{parent}/MODULE_SUBSCRIPTION/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/MODULE_SUBSCRIPTION/{document} {
       allow read: if true;
     }
 

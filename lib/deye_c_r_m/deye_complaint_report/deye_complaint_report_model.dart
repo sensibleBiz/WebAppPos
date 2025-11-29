@@ -1,6 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
+import '/components/deye_subscription_popup_widget.dart';
 import '/components/send_email_widget.dart';
 import '/deye_c_r_m/deye_header/deye_header_widget.dart';
 import '/deye_c_r_m/deye_mail_loader/deye_mail_loader_widget.dart';
@@ -18,6 +20,8 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'deye_complaint_report_widget.dart' show DeyeComplaintReportWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -42,6 +46,8 @@ class DeyeComplaintReportModel
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Firestore Query - Query a collection] action in DeyeComplaintReport widget.
+  ModuleSubscriptionRecord? moduleDoc;
   // Model for DeyeHeader component.
   late DeyeHeaderModel deyeHeaderModel;
   // Stores action output result for [Custom Action - genExcelForComplaintReport] action in Icon widget.

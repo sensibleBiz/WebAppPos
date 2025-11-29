@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/deye_duplicate_serial_history_new_widget.dart';
 import '/components/popup_success_copy_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -122,6 +123,8 @@ class DeyeAddComplaintsModel extends FlutterFlowModel<DeyeAddComplaintsWidget> {
 
   // Stores action output result for [Custom Action - newLeadValidationAction] action in Button widget.
   bool? checkTrue;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  int? docExistsCheck;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<OutletLeadsRecord>? countDoc;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.

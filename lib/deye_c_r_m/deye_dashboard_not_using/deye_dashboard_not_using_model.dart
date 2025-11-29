@@ -60,6 +60,8 @@ class DeyeDashboardNotUsingModel
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for Switch widget.
+  bool? switchValue;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in Text widget.
   String? stage1;
   // Model for DeyeMenu component.

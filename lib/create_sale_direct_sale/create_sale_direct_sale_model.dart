@@ -99,7 +99,7 @@ class CreateSaleDirectSaleModel
 
   bool isDataUploading_uploadDataR0 = false;
   FFUploadedFile uploadedLocalFile_uploadDataR0 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadDataR0 = '';
 
   @override

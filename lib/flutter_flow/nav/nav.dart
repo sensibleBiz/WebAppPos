@@ -1548,6 +1548,40 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: CallLogsDashBoardWidget.routeName,
               path: CallLogsDashBoardWidget.routePath,
               builder: (context, params) => CallLogsDashBoardWidget(),
+            ),
+            FFRoute(
+              name: CallLogsDashBoardCopyWidget.routeName,
+              path: CallLogsDashBoardCopyWidget.routePath,
+              builder: (context, params) => CallLogsDashBoardCopyWidget(),
+            ),
+            FFRoute(
+              name: CallLogsDetailsCopyWidget.routeName,
+              path: CallLogsDetailsCopyWidget.routePath,
+              builder: (context, params) => CallLogsDetailsCopyWidget(
+                depName: params.getParam(
+                  'depName',
+                  ParamType.String,
+                ),
+                empName: params.getParam(
+                  'empName',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyePermissionDashboardWidget.routeName,
+              path: DeyePermissionDashboardWidget.routePath,
+              builder: (context, params) => DeyePermissionDashboardWidget(),
+            ),
+            FFRoute(
+              name: DeyeSubscriptionWidget.routeName,
+              path: DeyeSubscriptionWidget.routePath,
+              builder: (context, params) => DeyeSubscriptionWidget(),
+            ),
+            FFRoute(
+              name: ResponsePageWidget.routeName,
+              path: ResponsePageWidget.routePath,
+              builder: (context, params) => ResponsePageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

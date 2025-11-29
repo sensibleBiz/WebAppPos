@@ -296,6 +296,8 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                         milliseconds: 2000),
                                                     () => safeSetState(() {}),
                                                   ),
+                                                  onFieldSubmitted:
+                                                      (_) async {},
                                                   autofocus: true,
                                                   obscureText: !_model
                                                       .textFieldPwdVisibility,
@@ -942,7 +944,7 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                     .fromSTEB(
                                                         0.0, 5.0, 0.0, 0.0),
                                                 child: Text(
-                                                  '1.1.32',
+                                                  '1.1.36',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .displayLarge

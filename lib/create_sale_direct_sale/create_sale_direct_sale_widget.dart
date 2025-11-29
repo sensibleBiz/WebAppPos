@@ -165,6 +165,7 @@ class _CreateSaleDirectSaleWidgetState
                                     });
                                     safeSetState(() {
                                       _model.dropDownValueController?.reset();
+                                      _model.dropDownValue = null;
                                     });
                                     safeSetState(() {
                                       _model.radioButtonValueController
@@ -3493,6 +3494,7 @@ class _CreateSaleDirectSaleWidgetState
                                                                             });
                                                                             safeSetState(() {
                                                                               _model.dropDownValueController?.reset();
+                                                                              _model.dropDownValue = null;
                                                                             });
                                                                             safeSetState(() {
                                                                               _model.radioButtonValueController?.reset();
@@ -3699,6 +3701,8 @@ class _CreateSaleDirectSaleWidgetState
                                                                           ?.width,
                                                                       blurHash:
                                                                           m.blurHash,
+                                                                      originalFilename:
+                                                                          m.originalFilename,
                                                                     ))
                                                                 .toList();
 

@@ -72,6 +72,7 @@ class _DeyeDashboardNotUsingWidgetState
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
+    _model.switchValue = true;
     animationsMap.addAll({
       'containerOnActionTriggerAnimation': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
@@ -1133,11 +1134,64 @@ class _DeyeDashboardNotUsingWidgetState
                                                                   _model
                                                                       .dropDownValueController
                                                                       ?.reset();
+                                                                  _model.dropDownValue =
+                                                                      null;
                                                                   _model
                                                                       .dropDownAssignedValueController
                                                                       ?.reset();
+                                                                  _model.dropDownAssignedValue =
+                                                                      null;
                                                                 });
                                                               },
+                                                            ),
+                                                            Text(
+                                                              'Reassigned',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelSmallFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .labelSmallIsCustom,
+                                                                  ),
+                                                            ),
+                                                            Switch.adaptive(
+                                                              value: _model
+                                                                  .switchValue!,
+                                                              onChanged:
+                                                                  (newValue) async {
+                                                                safeSetState(() =>
+                                                                    _model.switchValue =
+                                                                        newValue!);
+                                                                if (newValue!) {
+                                                                  safeSetState(
+                                                                      () {});
+                                                                } else {
+                                                                  safeSetState(
+                                                                      () {});
+                                                                }
+                                                              },
+                                                              activeColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                              activeTrackColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                              inactiveTrackColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor5,
+                                                              inactiveThumbColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
                                                             ),
                                                           ].divide(SizedBox(
                                                               width: 5.0)),
@@ -2344,7 +2398,8 @@ class _DeyeDashboardNotUsingWidgetState
                                                                                 containerLeadsManagementRecordList.toList(),
                                                                                 _model.dropDownAssignedValue!,
                                                                                 _model.textController.text,
-                                                                                _model.dropDownValue == null || _model.dropDownValue == '' ? '' : _model.dropDownValue!)
+                                                                                _model.dropDownValue == null || _model.dropDownValue == '' ? '' : _model.dropDownValue!,
+                                                                                _model.switchValue!)
                                                                             : containerLeadsManagementRecordList)
                                                                         .toList();
                                                                     if (containerVar

@@ -720,7 +720,7 @@ class _COutletListUser4WidgetState extends State<COutletListUser4Widget> {
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                 child: Text(
-                                                                                  functions.subscriptionDays(getCurrentTimestamp, gridViewOutletRecord.renewalDate),
+                                                                                  functions.subscriptionDays(getCurrentTimestamp, gridViewOutletRecord.renewalDate).toString(),
                                                                                   style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                         letterSpacing: 0.0,
