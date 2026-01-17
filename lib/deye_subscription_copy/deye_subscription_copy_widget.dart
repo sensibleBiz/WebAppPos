@@ -13,28 +13,30 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'deye_subscription_model.dart';
-export 'deye_subscription_model.dart';
+import 'deye_subscription_copy_model.dart';
+export 'deye_subscription_copy_model.dart';
 
-class DeyeSubscriptionWidget extends StatefulWidget {
-  const DeyeSubscriptionWidget({super.key});
+class DeyeSubscriptionCopyWidget extends StatefulWidget {
+  const DeyeSubscriptionCopyWidget({super.key});
 
-  static String routeName = 'DeyeSubscription';
-  static String routePath = 'deyeSubscription';
+  static String routeName = 'DeyeSubscriptionCopy';
+  static String routePath = 'deyeSubscriptionCopy';
 
   @override
-  State<DeyeSubscriptionWidget> createState() => _DeyeSubscriptionWidgetState();
+  State<DeyeSubscriptionCopyWidget> createState() =>
+      _DeyeSubscriptionCopyWidgetState();
 }
 
-class _DeyeSubscriptionWidgetState extends State<DeyeSubscriptionWidget> {
-  late DeyeSubscriptionModel _model;
+class _DeyeSubscriptionCopyWidgetState
+    extends State<DeyeSubscriptionCopyWidget> {
+  late DeyeSubscriptionCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DeyeSubscriptionModel());
+    _model = createModel(context, () => DeyeSubscriptionCopyModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -75,14 +77,15 @@ class _DeyeSubscriptionWidgetState extends State<DeyeSubscriptionWidget> {
             ),
           );
         }
-        List<OutletRecord> deyeSubscriptionOutletRecordList = snapshot.data!;
-        final deyeSubscriptionOutletRecord =
-            deyeSubscriptionOutletRecordList.isNotEmpty
-                ? deyeSubscriptionOutletRecordList.first
+        List<OutletRecord> deyeSubscriptionCopyOutletRecordList =
+            snapshot.data!;
+        final deyeSubscriptionCopyOutletRecord =
+            deyeSubscriptionCopyOutletRecordList.isNotEmpty
+                ? deyeSubscriptionCopyOutletRecordList.first
                 : null;
 
         return Title(
-            title: 'DeyeSubscription',
+            title: 'DeyeSubscriptionCopy',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
               onTap: () {
@@ -94,7 +97,7 @@ class _DeyeSubscriptionWidgetState extends State<DeyeSubscriptionWidget> {
                 backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
                 floatingActionButton: Visibility(
                   visible: (functions.subscriptionDays(getCurrentTimestamp,
-                              deyeSubscriptionOutletRecord?.renewalDate) ==
+                              deyeSubscriptionCopyOutletRecord?.renewalDate) ==
                           0) &&
                       ((FFAppState().roleInZone == 'superAdmin') ||
                           (FFAppState().roleInZone == 'admin')) &&
@@ -124,11 +127,12 @@ class _DeyeSubscriptionWidgetState extends State<DeyeSubscriptionWidget> {
                             await SubscriptionPaymentPGCall.call(
                           merchantTransactionId:
                               FFAppState().merchantTransactionId,
-                          merchantUserId: FFAppState().currentLoggedInUserId,
+                          merchantUserId: FFAppState().userId,
                           outletId: FFAppState().outletId,
                           isProd: false,
                           isModule:
-                              deyeSubscriptionOutletRecord?.billingType == 'CRM'
+                              deyeSubscriptionCopyOutletRecord?.billingType ==
+                                      'CRM'
                                   ? true
                                   : false,
                           subRefId: '2jc8lax80Fl7HveUVWFf',
@@ -514,7 +518,7 @@ class _DeyeSubscriptionWidgetState extends State<DeyeSubscriptionWidget> {
                                                                                         ),
                                                                                       ),
                                                                                       Text(
-                                                                                        functions.milisecToTimestamp(deyeSubscriptionOutletRecord?.createdDate),
+                                                                                        functions.milisecToTimestamp(deyeSubscriptionCopyOutletRecord?.createdDate),
                                                                                         style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                               letterSpacing: 0.0,
@@ -558,7 +562,7 @@ class _DeyeSubscriptionWidgetState extends State<DeyeSubscriptionWidget> {
                                                                                               ),
                                                                                             ),
                                                                                             Text(
-                                                                                              functions.milisecToTimestamp(deyeSubscriptionOutletRecord?.renewalDate),
+                                                                                              functions.milisecToTimestamp(deyeSubscriptionCopyOutletRecord?.renewalDate),
                                                                                               style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                     fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                     color: FlutterFlowTheme.of(context).customColor5,
@@ -628,7 +632,7 @@ class _DeyeSubscriptionWidgetState extends State<DeyeSubscriptionWidget> {
                                                                                         ),
                                                                                       ),
                                                                                       Text(
-                                                                                        functions.subscriptionDays(getCurrentTimestamp, deyeSubscriptionOutletRecord?.renewalDate).toString(),
+                                                                                        functions.subscriptionDays(getCurrentTimestamp, deyeSubscriptionCopyOutletRecord?.renewalDate).toString(),
                                                                                         textAlign: TextAlign.center,
                                                                                         style: FlutterFlowTheme.of(context).headlineMedium.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
@@ -645,7 +649,7 @@ class _DeyeSubscriptionWidgetState extends State<DeyeSubscriptionWidget> {
                                                                               ),
                                                                             ),
                                                                             CircularPercentIndicator(
-                                                                              percent: functions.subscriptionDaysProgress(deyeSubscriptionOutletRecord!.createdDate, deyeSubscriptionOutletRecord!.renewalDate),
+                                                                              percent: functions.subscriptionDaysProgress(deyeSubscriptionCopyOutletRecord!.createdDate, deyeSubscriptionCopyOutletRecord!.renewalDate),
                                                                               radius: 35.0,
                                                                               lineWidth: 9.0,
                                                                               animation: true,
@@ -653,7 +657,7 @@ class _DeyeSubscriptionWidgetState extends State<DeyeSubscriptionWidget> {
                                                                               progressColor: FlutterFlowTheme.of(context).tertiary,
                                                                               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
                                                                               center: Text(
-                                                                                (functions.subscriptionDaysProgress(deyeSubscriptionOutletRecord!.createdDate, deyeSubscriptionOutletRecord!.renewalDate) * 100).round().toString(),
+                                                                                (functions.subscriptionDaysProgress(deyeSubscriptionCopyOutletRecord!.createdDate, deyeSubscriptionCopyOutletRecord!.renewalDate) * 100).round().toString(),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       letterSpacing: 0.0,
@@ -731,182 +735,218 @@ class _DeyeSubscriptionWidgetState extends State<DeyeSubscriptionWidget> {
                                                                           BorderRadius.circular(
                                                                               10.0),
                                                                     ),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceBetween,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        if ((FFAppState().roleInZone ==
-                                                                                'superAdmin') ||
-                                                                            (FFAppState().roleInZone ==
-                                                                                'admin'))
-                                                                          Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.start,
-                                                                            children: [
-                                                                              Expanded(
-                                                                                flex: 3,
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                                                                                  child: Material(
-                                                                                    color: Colors.transparent,
-                                                                                    elevation: 3.0,
-                                                                                    shape: RoundedRectangleBorder(
-                                                                                      borderRadius: BorderRadius.circular(10.0),
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      height: MediaQuery.sizeOf(context).height * 0.14,
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                        borderRadius: BorderRadius.circular(10.0),
-                                                                                      ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsets.all(10.0),
-                                                                                        child: Column(
-                                                                                          mainAxisSize: MainAxisSize.max,
-                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                          children: [
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                              child: Text(
-                                                                                                'Current Plan',
-                                                                                                style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                      letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
-                                                                                                    ),
-                                                                                              ),
-                                                                                            ),
-                                                                                            Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              mainAxisAlignment: MainAxisAlignment.center,
-                                                                                              children: [
-                                                                                                Text(
-                                                                                                  '₹ ',
-                                                                                                  style: FlutterFlowTheme.of(context).displaySmall.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).displaySmallFamily,
-                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                        fontSize: 22.0,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        fontWeight: FontWeight.normal,
-                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).displaySmallIsCustom,
-                                                                                                      ),
-                                                                                                ),
-                                                                                                Text(
-                                                                                                  containerSubscriptionRecord!.amount.toString(),
-                                                                                                  style: FlutterFlowTheme.of(context).displaySmall.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).displaySmallFamily,
-                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                        fontSize: 24.0,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        fontWeight: FontWeight.normal,
-                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).displaySmallIsCustom,
-                                                                                                      ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-                                                                                              child: Text(
-                                                                                                containerSubscriptionRecord!.planName,
-                                                                                                style: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                      fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                                      color: FlutterFlowTheme.of(context).customColor5,
-                                                                                                      fontSize: 20.0,
-                                                                                                      letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
-                                                                                                    ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ],
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
+                                                                    child: StreamBuilder<
+                                                                        List<
+                                                                            ModuleSubscriptionRecord>>(
+                                                                      stream:
+                                                                          queryModuleSubscriptionRecord(
+                                                                        parent:
+                                                                            FFAppState().outletRef,
+                                                                      ),
+                                                                      builder:
+                                                                          (context,
+                                                                              snapshot) {
+                                                                        // Customize what your widget looks like when it's loading.
+                                                                        if (!snapshot
+                                                                            .hasData) {
+                                                                          return Center(
+                                                                            child:
+                                                                                SizedBox(
+                                                                              width: 30.0,
+                                                                              height: 30.0,
+                                                                              child: SpinKitRing(
+                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                size: 30.0,
                                                                               ),
-                                                                              Expanded(
-                                                                                flex: 7,
-                                                                                child: StreamBuilder<List<SubscriptionRecord>>(
-                                                                                  stream: querySubscriptionRecord(
-                                                                                    singleRecord: true,
-                                                                                  ),
-                                                                                  builder: (context, snapshot) {
-                                                                                    // Customize what your widget looks like when it's loading.
-                                                                                    if (!snapshot.hasData) {
-                                                                                      return Center(
-                                                                                        child: SizedBox(
-                                                                                          width: 30.0,
-                                                                                          height: 30.0,
-                                                                                          child: SpinKitRing(
-                                                                                            color: FlutterFlowTheme.of(context).primary,
-                                                                                            size: 30.0,
-                                                                                          ),
-                                                                                        ),
-                                                                                      );
-                                                                                    }
-                                                                                    List<SubscriptionRecord> containerSubscriptionRecordList = snapshot.data!;
-                                                                                    final containerSubscriptionRecord = containerSubscriptionRecordList.isNotEmpty ? containerSubscriptionRecordList.first : null;
+                                                                            ),
+                                                                          );
+                                                                        }
+                                                                        List<ModuleSubscriptionRecord>
+                                                                            listViewModuleSubscriptionRecordList =
+                                                                            snapshot.data!;
 
-                                                                                    return Material(
-                                                                                      color: Colors.transparent,
-                                                                                      elevation: 3.0,
-                                                                                      shape: RoundedRectangleBorder(
-                                                                                        borderRadius: BorderRadius.circular(10.0),
-                                                                                      ),
-                                                                                      child: Container(
-                                                                                        height: MediaQuery.sizeOf(context).height * 0.14,
-                                                                                        decoration: BoxDecoration(
-                                                                                          color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                          borderRadius: BorderRadius.circular(10.0),
-                                                                                        ),
+                                                                        return ListView
+                                                                            .builder(
+                                                                          padding:
+                                                                              EdgeInsets.zero,
+                                                                          shrinkWrap:
+                                                                              true,
+                                                                          scrollDirection:
+                                                                              Axis.vertical,
+                                                                          itemCount:
+                                                                              listViewModuleSubscriptionRecordList.length,
+                                                                          itemBuilder:
+                                                                              (context, listViewIndex) {
+                                                                            final listViewModuleSubscriptionRecord =
+                                                                                listViewModuleSubscriptionRecordList[listViewIndex];
+                                                                            return Column(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                if ((FFAppState().roleInZone == 'superAdmin') || (FFAppState().roleInZone == 'admin'))
+                                                                                  Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                                                    children: [
+                                                                                      Expanded(
+                                                                                        flex: 3,
                                                                                         child: Padding(
-                                                                                          padding: EdgeInsets.all(10.0),
-                                                                                          child: Column(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            mainAxisAlignment: MainAxisAlignment.start,
-                                                                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                            children: [
-                                                                                              Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                                child: Text(
-                                                                                                  'Plan Description',
-                                                                                                  style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                                                                                          child: Material(
+                                                                                            color: Colors.transparent,
+                                                                                            elevation: 3.0,
+                                                                                            shape: RoundedRectangleBorder(
+                                                                                              borderRadius: BorderRadius.circular(10.0),
+                                                                                            ),
+                                                                                            child: Container(
+                                                                                              height: MediaQuery.sizeOf(context).height * 0.14,
+                                                                                              decoration: BoxDecoration(
+                                                                                                color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                borderRadius: BorderRadius.circular(10.0),
+                                                                                              ),
+                                                                                              child: Padding(
+                                                                                                padding: EdgeInsets.all(10.0),
+                                                                                                child: Column(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                      child: Text(
+                                                                                                        'Current Plan',
+                                                                                                        style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
+                                                                                                            ),
                                                                                                       ),
+                                                                                                    ),
+                                                                                                    Row(
+                                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                      children: [
+                                                                                                        Text(
+                                                                                                          '₹ ',
+                                                                                                          style: FlutterFlowTheme.of(context).displaySmall.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).displaySmallFamily,
+                                                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                                fontSize: 22.0,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                fontWeight: FontWeight.normal,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).displaySmallIsCustom,
+                                                                                                              ),
+                                                                                                        ),
+                                                                                                        Text(
+                                                                                                          containerSubscriptionRecord!.amount.toString(),
+                                                                                                          style: FlutterFlowTheme.of(context).displaySmall.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).displaySmallFamily,
+                                                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                                fontSize: 24.0,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                fontWeight: FontWeight.normal,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).displaySmallIsCustom,
+                                                                                                              ),
+                                                                                                        ),
+                                                                                                      ],
+                                                                                                    ),
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                                                                                      child: Text(
+                                                                                                        containerSubscriptionRecord!.planName,
+                                                                                                        style: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).customColor5,
+                                                                                                              fontSize: 20.0,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
+                                                                                                            ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ],
                                                                                                 ),
                                                                                               ),
-                                                                                              Text(
-                                                                                                containerSubscriptionRecord!.description,
-                                                                                                textAlign: TextAlign.start,
-                                                                                                style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                      fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                      letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
-                                                                                                    ),
-                                                                                              ),
-                                                                                            ],
+                                                                                            ),
                                                                                           ),
                                                                                         ),
                                                                                       ),
-                                                                                    );
-                                                                                  },
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                      ],
+                                                                                      Expanded(
+                                                                                        flex: 7,
+                                                                                        child: StreamBuilder<List<SubscriptionRecord>>(
+                                                                                          stream: querySubscriptionRecord(
+                                                                                            singleRecord: true,
+                                                                                          ),
+                                                                                          builder: (context, snapshot) {
+                                                                                            // Customize what your widget looks like when it's loading.
+                                                                                            if (!snapshot.hasData) {
+                                                                                              return Center(
+                                                                                                child: SizedBox(
+                                                                                                  width: 30.0,
+                                                                                                  height: 30.0,
+                                                                                                  child: SpinKitRing(
+                                                                                                    color: FlutterFlowTheme.of(context).primary,
+                                                                                                    size: 30.0,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              );
+                                                                                            }
+                                                                                            List<SubscriptionRecord> containerSubscriptionRecordList = snapshot.data!;
+                                                                                            final containerSubscriptionRecord = containerSubscriptionRecordList.isNotEmpty ? containerSubscriptionRecordList.first : null;
+
+                                                                                            return Material(
+                                                                                              color: Colors.transparent,
+                                                                                              elevation: 3.0,
+                                                                                              shape: RoundedRectangleBorder(
+                                                                                                borderRadius: BorderRadius.circular(10.0),
+                                                                                              ),
+                                                                                              child: Container(
+                                                                                                height: MediaQuery.sizeOf(context).height * 0.14,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                  borderRadius: BorderRadius.circular(10.0),
+                                                                                                ),
+                                                                                                child: Padding(
+                                                                                                  padding: EdgeInsets.all(10.0),
+                                                                                                  child: Column(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                    children: [
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                        child: Text(
+                                                                                                          'Plan Description',
+                                                                                                          style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
+                                                                                                              ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      Text(
+                                                                                                        containerSubscriptionRecord!.description,
+                                                                                                        textAlign: TextAlign.start,
+                                                                                                        style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).titleMediumIsCustom,
+                                                                                                            ),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            );
+                                                                                          },
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                              ],
+                                                                            );
+                                                                          },
+                                                                        );
+                                                                      },
                                                                     ),
                                                                   );
                                                                 },

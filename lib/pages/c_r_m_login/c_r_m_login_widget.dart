@@ -152,6 +152,11 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                         RegisterComplaintDemoWidget
                                                             .routeName);
                                                   },
+                                                  onLongPress: () async {
+                                                    context.pushNamed(
+                                                        RegisterComplaintDemoOldWidget
+                                                            .routeName);
+                                                  },
                                                   child: Container(
                                                     width: 180.0,
                                                     height: 110.0,
@@ -511,6 +516,16 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                               .name;
                                                       FFAppState().isLoggedIn =
                                                           true;
+                                                      FFAppState()
+                                                              .currentMobile =
+                                                          _model
+                                                              .fetchedRecordUserProfile!
+                                                              .mobile;
+                                                      FFAppState()
+                                                              .currentLoggedInUserId =
+                                                          _model
+                                                              .fetchedRecordUserProfile!
+                                                              .id;
                                                       safeSetState(() {});
                                                       if (_model
                                                               .fetchedRecordUserProfile
@@ -944,7 +959,7 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                     .fromSTEB(
                                                         0.0, 5.0, 0.0, 0.0),
                                                 child: Text(
-                                                  '1.1.36',
+                                                  '1.1.41',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .displayLarge

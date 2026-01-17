@@ -88,6 +88,12 @@ class DeyeAttendanceAdminModel
   String? base64Link2321Copy2;
   // Stores action output result for [Backend Call - API (sendMail)] action in Text widget.
   ApiCallResponse? apiResult88g1Copy2;
+  // Stores action output result for [Firestore Query - Query a collection] action in Text widget.
+  List<AttendanceRecord>? allAttendence1Copy3;
+  // Stores action output result for [Custom Action - genExcelForEmployeeAttendanceReport] action in Text widget.
+  String? base64Link2321Copy3;
+  // Stores action output result for [Backend Call - API (sendMail)] action in Text widget.
+  ApiCallResponse? apiResult88g1Copy3;
   // Model for DeyeMenu component.
   late DeyeMenuModel deyeMenuModel;
 

@@ -8,14 +8,15 @@ import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
-import 'deye_subscription_widget.dart' show DeyeSubscriptionWidget;
+import 'deye_subscription_copy_widget.dart' show DeyeSubscriptionCopyWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 
-class DeyeSubscriptionModel extends FlutterFlowModel<DeyeSubscriptionWidget> {
+class DeyeSubscriptionCopyModel
+    extends FlutterFlowModel<DeyeSubscriptionCopyWidget> {
   ///  Local state fields for this page.
 
   String? pgURL;

@@ -72,6 +72,7 @@ import 'schema/leave_application_record.dart';
 import 'schema/leave_type_record.dart';
 import 'schema/call_logs_record.dart';
 import 'schema/module_subscription_record.dart';
+import 'schema/auto_assign_record.dart';
 import 'dart:async';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -149,6 +150,7 @@ export 'schema/leave_application_record.dart';
 export 'schema/leave_type_record.dart';
 export 'schema/call_logs_record.dart';
 export 'schema/module_subscription_record.dart';
+export 'schema/auto_assign_record.dart';
 
 /// Functions to query BusinessTypeRecords (as a Stream and as a Future).
 Future<int> queryBusinessTypeRecordCount({
@@ -5559,6 +5561,88 @@ Future<FFFirestorePage<ModuleSubscriptionRecord>>
           }
           return page;
         });
+
+/// Functions to query AutoAssignRecords (as a Stream and as a Future).
+Future<int> queryAutoAssignRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      AutoAssignRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<AutoAssignRecord>> queryAutoAssignRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      AutoAssignRecord.collection(parent),
+      AutoAssignRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<AutoAssignRecord>> queryAutoAssignRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      AutoAssignRecord.collection(parent),
+      AutoAssignRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+Future<FFFirestorePage<AutoAssignRecord>> queryAutoAssignRecordPage({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+  required PagingController<DocumentSnapshot?, AutoAssignRecord> controller,
+  List<StreamSubscription?>? streamSubscriptions,
+}) =>
+    queryCollectionPage(
+      AutoAssignRecord.collection(parent),
+      AutoAssignRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    ).then((page) {
+      controller.appendPage(
+        page.data,
+        page.nextPageMarker,
+      );
+      if (isStream) {
+        final streamSubscription =
+            (page.dataStream)?.listen((List<AutoAssignRecord> data) {
+          data.forEach((item) {
+            final itemIndexes = controller.itemList!
+                .asMap()
+                .map((k, v) => MapEntry(v.reference.id, k));
+            final index = itemIndexes[item.reference.id];
+            final items = controller.itemList!;
+            if (index != null) {
+              items.replaceRange(index, index + 1, [item]);
+              controller.itemList = {
+                for (var item in items) item.reference: item
+              }.values.toList();
+            }
+          });
+        });
+        streamSubscriptions?.add(streamSubscription);
+      }
+      return page;
+    });
 
 Future<int> queryCollectionCount(
   Query collection, {

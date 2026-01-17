@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/popup_success_copy_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -7,8 +8,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
-import 'register_complaint_demo_widget.dart' show RegisterComplaintDemoWidget;
+import 'register_complaint_demo_old_widget.dart'
+    show RegisterComplaintDemoOldWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -16,13 +21,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class RegisterComplaintDemoModel
-    extends FlutterFlowModel<RegisterComplaintDemoWidget> {
+class RegisterComplaintDemoOldModel
+    extends FlutterFlowModel<RegisterComplaintDemoOldWidget> {
   ///  Local state fields for this page.
 
   bool wait = true;
 
-  bool btnIsDisabled = false;
+  bool isBtnDisabled = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -111,8 +116,20 @@ class RegisterComplaintDemoModel
     return null;
   }
 
-  // Stores action output result for [Custom Action - getAssingedToIfNotAbsCopyCopy] action in FloatingActionButton widget.
-  String? result;
+  // Stores action output result for [Firestore Query - Query a collection] action in FloatingActionButton widget.
+  List<OutletLeadsRecord>? countDocCopy;
+  // Stores action output result for [Custom Action - blockForSometime] action in FloatingActionButton widget.
+  bool? isBlocked;
+  // Stores action output result for [Backend Call - Create Document] action in FloatingActionButton widget.
+  OutletLeadsRecord? outputCopy;
+  // Stores action output result for [Firestore Query - Query a collection] action in FloatingActionButton widget.
+  List<LeaveApplicationRecord>? leaveDocs;
+  // Stores action output result for [Firestore Query - Query a collection] action in FloatingActionButton widget.
+  List<LeadsManagementRecord>? leadDocs;
+  // Stores action output result for [Custom Action - getAssingedToIfNotAbsCopy] action in FloatingActionButton widget.
+  dynamic? isonLeave;
+  // Stores action output result for [Backend Call - Create Document] action in FloatingActionButton widget.
+  LeadsManagementRecord? leadMg;
 
   @override
   void initState(BuildContext context) {

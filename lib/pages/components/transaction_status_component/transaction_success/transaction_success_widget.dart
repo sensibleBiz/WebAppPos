@@ -38,7 +38,13 @@ class _TransactionSuccessWidgetState extends State<TransactionSuccessWidget> {
     _model = createModel(context, () => TransactionSuccessModel());
 
     // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {});
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(
+        Duration(
+          milliseconds: 2000,
+        ),
+      );
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }

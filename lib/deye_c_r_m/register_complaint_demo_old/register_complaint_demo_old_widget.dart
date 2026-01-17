@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/popup_success_copy_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -7,37 +8,40 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'register_complaint_demo_model.dart';
-export 'register_complaint_demo_model.dart';
+import 'register_complaint_demo_old_model.dart';
+export 'register_complaint_demo_old_model.dart';
 
-class RegisterComplaintDemoWidget extends StatefulWidget {
-  const RegisterComplaintDemoWidget({super.key});
+class RegisterComplaintDemoOldWidget extends StatefulWidget {
+  const RegisterComplaintDemoOldWidget({super.key});
 
-  static String routeName = 'RegisterComplaintDemo';
-  static String routePath = 'registerComplaintDemo';
+  static String routeName = 'RegisterComplaintDemoOld';
+  static String routePath = 'registerComplaintDemoOld';
 
   @override
-  State<RegisterComplaintDemoWidget> createState() =>
-      _RegisterComplaintDemoWidgetState();
+  State<RegisterComplaintDemoOldWidget> createState() =>
+      _RegisterComplaintDemoOldWidgetState();
 }
 
-class _RegisterComplaintDemoWidgetState
-    extends State<RegisterComplaintDemoWidget> {
-  late RegisterComplaintDemoModel _model;
+class _RegisterComplaintDemoOldWidgetState
+    extends State<RegisterComplaintDemoOldWidget> {
+  late RegisterComplaintDemoOldModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RegisterComplaintDemoModel());
+    _model = createModel(context, () => RegisterComplaintDemoOldModel());
 
     _model.usernameTextController ??= TextEditingController();
     _model.usernameFocusNode ??= FocusNode();
@@ -85,7 +89,7 @@ class _RegisterComplaintDemoWidgetState
 
     return StreamBuilder<List<TeamTreeRecord>>(
       stream: queryTeamTreeRecord(
-        parent: FFAppState().demoOutlet,
+        parent: FFAppState().deyeOutletId,
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -104,11 +108,11 @@ class _RegisterComplaintDemoWidgetState
             ),
           );
         }
-        List<TeamTreeRecord> registerComplaintDemoTeamTreeRecordList =
+        List<TeamTreeRecord> registerComplaintDemoOldTeamTreeRecordList =
             snapshot.data!;
 
         return Title(
-            title: 'RegisterComplaintDemo',
+            title: 'registerComplaintDemoOld',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
               onTap: () {
@@ -147,14 +151,57 @@ class _RegisterComplaintDemoWidgetState
                         return FloatingActionButton.extended(
                           onPressed: () async {
                             var _shouldSetState = false;
-                            if (_model.btnIsDisabled == true) {
+                            if (_model.isBtnDisabled == true) {
                               if (_shouldSetState) safeSetState(() {});
                               return;
                             }
 
-                            _model.btnIsDisabled = true;
-                            safeSetState(() {});
-                            if (false) {
+                            _model.isBtnDisabled = true;
+                            if (_model.formKey.currentState == null ||
+                                !_model.formKey.currentState!.validate()) {
+                              return;
+                            }
+                            if (_model.dropDownstateValue == null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Field is required...!(State)',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context).error,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 1000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).customColor2,
+                                ),
+                              );
+                              return;
+                            }
+                            if (_model.dropDownProductNameValue == null) {
+                              return;
+                            }
+                            if (_model.dropDownProductionCapacityValue ==
+                                null) {
+                              return;
+                            }
+                            _model.countDocCopy =
+                                await queryOutletLeadsRecordOnce(
+                              parent: FFAppState().demoOutlet,
+                              queryBuilder: (outletLeadsRecord) =>
+                                  outletLeadsRecord.where(
+                                'date',
+                                isEqualTo:
+                                    functions.dateFormat(getCurrentTimestamp),
+                              ),
+                            );
+                            _shouldSetState = true;
+                            _model.isBlocked = await actions.blockForSometime(
+                              _model.countDocCopy!.toList(),
+                              _model.mobileTextController.text,
+                              60,
+                            );
+                            _shouldSetState = true;
+                            if (_model.isBlocked!) {
                               await showDialog(
                                 context: context,
                                 builder: (alertDialogContext) {
@@ -177,11 +224,13 @@ class _RegisterComplaintDemoWidgetState
                               if (_shouldSetState) safeSetState(() {});
                               return;
                             } else {
-                              _model.result =
-                                  await actions.getAssingedToIfNotAbsCopyCopy(
-                                true,
-                                _model.areaTextController.text,
-                                _model.dropDownCitiesValue == null ||
+                              var outletLeadsRecordReference =
+                                  OutletLeadsRecord.createDoc(
+                                      FFAppState().demoOutlet!);
+                              await outletLeadsRecordReference
+                                  .set(createOutletLeadsRecordData(
+                                area: _model.areaTextController.text,
+                                city: _model.dropDownCitiesValue == null ||
                                         _model.dropDownCitiesValue == ''
                                     ? valueOrDefault<String>(
                                         '',
@@ -191,12 +240,19 @@ class _RegisterComplaintDemoWidgetState
                                         _model.dropDownCitiesValue,
                                         'Not Available',
                                       ),
-                                _model.emailTextController.text,
-                                _model.mobileTextController.text,
-                                _model.mobileAltTextController.text,
-                                _model.phoneTextController1.text,
-                                _model.requirementTextController.text,
-                                _model.dropDownstateValue == null ||
+                                createdDateTime: getCurrentTimestamp,
+                                date: functions.dateFormat(getCurrentTimestamp),
+                                email: _model.emailTextController.text,
+                                id: functions
+                                    .timestampToMili(getCurrentTimestamp),
+                                logId: functions
+                                    .timestampToMili(getCurrentTimestamp),
+                                mobile: _model.mobileTextController.text,
+                                mobileAlt: _model.mobileAltTextController.text,
+                                phone: _model.phoneTextController1.text,
+                                requirement:
+                                    _model.requirementTextController.text,
+                                state: _model.dropDownstateValue == null ||
                                         _model.dropDownstateValue == ''
                                     ? valueOrDefault<String>(
                                         '',
@@ -206,38 +262,352 @@ class _RegisterComplaintDemoWidgetState
                                         _model.dropDownstateValue,
                                         'Not Available',
                                       ),
-                                _model.usernameTextController.text,
-                                _model.dropDownProductionCapacityValue!,
-                                _model.dropDownProductNameValue!,
-                                _model.purchasefromTextController.text,
-                                _model.serialNumberTextController.text,
-                              );
-                              _shouldSetState = true;
-                              if (_model.result == 'BLOCKED') {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return WebViewAware(
-                                      child: AlertDialog(
-                                        title: Text('Notification'),
-                                        content: Text(
-                                            'This number was already added recently. Please try again after sometime !!'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Ok'),
-                                          ),
-                                        ],
+                                status: 'Unread',
+                                time:
+                                    dateTimeFormat("jms", getCurrentTimestamp),
+                                username: _model.usernameTextController.text,
+                                monthId: functions.getMonthId(),
+                                yearId: functions.getYearId(),
+                                comments: '',
+                                zone: FFAppState().stateZone,
+                                customFields: createCustomFieldsStruct(
+                                  capacity:
+                                      _model.dropDownProductionCapacityValue,
+                                  productType: _model.dropDownProductNameValue,
+                                  purchasedFrom:
+                                      _model.purchasefromTextController.text,
+                                  serial:
+                                      _model.serialNumberTextController.text,
+                                  clearUnsetFields: false,
+                                  create: true,
+                                ),
+                                ticket: functions.genComplaintTicket(
+                                    _model.countDocCopy!.toList()),
+                                source: 'QR',
+                              ));
+                              _model.outputCopy =
+                                  OutletLeadsRecord.getDocumentFromData(
+                                      createOutletLeadsRecordData(
+                                        area: _model.areaTextController.text,
+                                        city: _model.dropDownCitiesValue ==
+                                                    null ||
+                                                _model.dropDownCitiesValue == ''
+                                            ? valueOrDefault<String>(
+                                                '',
+                                                'city',
+                                              )
+                                            : valueOrDefault<String>(
+                                                _model.dropDownCitiesValue,
+                                                'Not Available',
+                                              ),
+                                        createdDateTime: getCurrentTimestamp,
+                                        date: functions
+                                            .dateFormat(getCurrentTimestamp),
+                                        email: _model.emailTextController.text,
+                                        id: functions.timestampToMili(
+                                            getCurrentTimestamp),
+                                        logId: functions.timestampToMili(
+                                            getCurrentTimestamp),
+                                        mobile:
+                                            _model.mobileTextController.text,
+                                        mobileAlt:
+                                            _model.mobileAltTextController.text,
+                                        phone: _model.phoneTextController1.text,
+                                        requirement: _model
+                                            .requirementTextController.text,
+                                        state: _model.dropDownstateValue ==
+                                                    null ||
+                                                _model.dropDownstateValue == ''
+                                            ? valueOrDefault<String>(
+                                                '',
+                                                'state',
+                                              )
+                                            : valueOrDefault<String>(
+                                                _model.dropDownstateValue,
+                                                'Not Available',
+                                              ),
+                                        status: 'Unread',
+                                        time: dateTimeFormat(
+                                            "jms", getCurrentTimestamp),
+                                        username:
+                                            _model.usernameTextController.text,
+                                        monthId: functions.getMonthId(),
+                                        yearId: functions.getYearId(),
+                                        comments: '',
+                                        zone: FFAppState().stateZone,
+                                        customFields: createCustomFieldsStruct(
+                                          capacity: _model
+                                              .dropDownProductionCapacityValue,
+                                          productType:
+                                              _model.dropDownProductNameValue,
+                                          purchasedFrom: _model
+                                              .purchasefromTextController.text,
+                                          serial: _model
+                                              .serialNumberTextController.text,
+                                          clearUnsetFields: false,
+                                          create: true,
+                                        ),
+                                        ticket: functions.genComplaintTicket(
+                                            _model.countDocCopy!.toList()),
+                                        source: 'QR',
                                       ),
-                                    );
-                                  },
-                                );
-                                if (_shouldSetState) safeSetState(() {});
-                                return;
-                              }
+                                      outletLeadsRecordReference);
+                              _shouldSetState = true;
                             }
 
+                            if (FFAppState().stateZone == 'SOUTH') {
+                              await Future.wait([
+                                Future(() async {
+                                  _model.leaveDocs =
+                                      await queryLeaveApplicationRecordOnce(
+                                    parent: FFAppState().demoOutlet,
+                                    queryBuilder: (leaveApplicationRecord) =>
+                                        leaveApplicationRecord
+                                            .where(
+                                              'status',
+                                              isEqualTo: 'APPROVED',
+                                            )
+                                            .where(
+                                              'monthId',
+                                              isEqualTo: functions.getMonthId(),
+                                            ),
+                                  );
+                                  _shouldSetState = true;
+                                }),
+                                Future(() async {
+                                  _model.leadDocs =
+                                      await queryLeadsManagementRecordOnce(
+                                    parent: FFAppState().demoOutlet,
+                                    queryBuilder: (leadsManagementRecord) =>
+                                        leadsManagementRecord
+                                            .where(
+                                              'date',
+                                              isEqualTo: functions.dateFormat(
+                                                  getCurrentTimestamp),
+                                            )
+                                            .where(
+                                              'state',
+                                              isEqualTo: 'KERALA',
+                                            ),
+                                  );
+                                  _shouldSetState = true;
+                                }),
+                              ]);
+                              _model.isonLeave =
+                                  await actions.getAssingedToIfNotAbsCopy(
+                                registerComplaintDemoOldTeamTreeRecordList
+                                    .toList(),
+                                'CRM',
+                                _model.leaveDocs!.toList(),
+                                _model.dropDownstateValue!,
+                                _model.leadDocs!.toList(),
+                              );
+                              _shouldSetState = true;
+                              if (!getJsonField(
+                                _model.isonLeave,
+                                r'''$.flag''',
+                              )) {
+                                var leadsManagementRecordReference =
+                                    LeadsManagementRecord.createDoc(
+                                        FFAppState().demoOutlet!);
+                                await leadsManagementRecordReference.set({
+                                  ...createLeadsManagementRecordData(
+                                    status: 'assigned',
+                                    stage: 'assigned',
+                                    createdDate: functions
+                                        .timestampToMili(getCurrentTimestamp),
+                                    assignedTo: getJsonField(
+                                      _model.isonLeave,
+                                      r'''$.userProfileId''',
+                                    ).toString(),
+                                    isCustomer: false,
+                                    followUpName: _model.outputCopy?.username,
+                                    area: _model.outputCopy?.area,
+                                    city: _model.outputCopy?.city,
+                                    comments: _model.outputCopy?.comments,
+                                    date: _model.outputCopy?.date,
+                                    email: _model.outputCopy?.email,
+                                    logId: _model.outputCopy?.logId,
+                                    mobile: _model.outputCopy?.mobile,
+                                    mobileAlt: _model.outputCopy?.mobileAlt,
+                                    phone: '0',
+                                    requirement: _model.outputCopy?.requirement,
+                                    source: 'QR',
+                                    time: _model.outputCopy?.time,
+                                    username: _model.outputCopy?.username,
+                                    state: _model.outputCopy?.state,
+                                    remarks: '#',
+                                    leadRefId: _model.outputCopy?.reference.id,
+                                    updatedBy: '',
+                                    updatedDate: getCurrentTimestamp
+                                        .millisecondsSinceEpoch,
+                                    priority: _model.outputCopy?.priority,
+                                    leadDate: _model.outputCopy?.date,
+                                    leadCreatedDate: _model
+                                        .outputCopy
+                                        ?.createdDateTime
+                                        ?.millisecondsSinceEpoch,
+                                    businessName:
+                                        _model.outputCopy?.businessName,
+                                    businessType:
+                                        _model.outputCopy?.businessType,
+                                    isDealerLead: false,
+                                    ticket: _model.outputCopy?.ticket,
+                                    customFields: createCustomFieldsStruct(
+                                      capacity: _model
+                                          .outputCopy?.customFields?.capacity,
+                                      productType: _model.outputCopy
+                                          ?.customFields?.productType,
+                                      purchasedFrom: _model.outputCopy
+                                          ?.customFields?.purchasedFrom,
+                                      clearUnsetFields: false,
+                                      create: true,
+                                    ),
+                                    assignedBy: '0',
+                                    closeDate: '0',
+                                    closeDateMili: 0,
+                                    zone: FFAppState().stateZone,
+                                  ),
+                                  ...mapToFirestore(
+                                    {
+                                      'leadTag': [
+                                        getLeadTagListFirestoreData(
+                                          createLeadTagListStruct(
+                                            code: 0,
+                                            isDeleted: false,
+                                            leadTagName: '',
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          true,
+                                        )
+                                      ],
+                                      'assignedToHistory': [
+                                        getAssignedToHistoryFirestoreData(
+                                          createAssignedToHistoryStruct(
+                                            userProfileId: getJsonField(
+                                              _model.isonLeave,
+                                              r'''$.userProfileId''',
+                                            ).toString(),
+                                            assignedDate: getCurrentTimestamp
+                                                .millisecondsSinceEpoch,
+                                            assignedDateTime:
+                                                getCurrentTimestamp,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          true,
+                                        )
+                                      ],
+                                    },
+                                  ),
+                                });
+                                _model.leadMg =
+                                    LeadsManagementRecord.getDocumentFromData({
+                                  ...createLeadsManagementRecordData(
+                                    status: 'assigned',
+                                    stage: 'assigned',
+                                    createdDate: functions
+                                        .timestampToMili(getCurrentTimestamp),
+                                    assignedTo: getJsonField(
+                                      _model.isonLeave,
+                                      r'''$.userProfileId''',
+                                    ).toString(),
+                                    isCustomer: false,
+                                    followUpName: _model.outputCopy?.username,
+                                    area: _model.outputCopy?.area,
+                                    city: _model.outputCopy?.city,
+                                    comments: _model.outputCopy?.comments,
+                                    date: _model.outputCopy?.date,
+                                    email: _model.outputCopy?.email,
+                                    logId: _model.outputCopy?.logId,
+                                    mobile: _model.outputCopy?.mobile,
+                                    mobileAlt: _model.outputCopy?.mobileAlt,
+                                    phone: '0',
+                                    requirement: _model.outputCopy?.requirement,
+                                    source: 'QR',
+                                    time: _model.outputCopy?.time,
+                                    username: _model.outputCopy?.username,
+                                    state: _model.outputCopy?.state,
+                                    remarks: '#',
+                                    leadRefId: _model.outputCopy?.reference.id,
+                                    updatedBy: '',
+                                    updatedDate: getCurrentTimestamp
+                                        .millisecondsSinceEpoch,
+                                    priority: _model.outputCopy?.priority,
+                                    leadDate: _model.outputCopy?.date,
+                                    leadCreatedDate: _model
+                                        .outputCopy
+                                        ?.createdDateTime
+                                        ?.millisecondsSinceEpoch,
+                                    businessName:
+                                        _model.outputCopy?.businessName,
+                                    businessType:
+                                        _model.outputCopy?.businessType,
+                                    isDealerLead: false,
+                                    ticket: _model.outputCopy?.ticket,
+                                    customFields: createCustomFieldsStruct(
+                                      capacity: _model
+                                          .outputCopy?.customFields?.capacity,
+                                      productType: _model.outputCopy
+                                          ?.customFields?.productType,
+                                      purchasedFrom: _model.outputCopy
+                                          ?.customFields?.purchasedFrom,
+                                      clearUnsetFields: false,
+                                      create: true,
+                                    ),
+                                    assignedBy: '0',
+                                    closeDate: '0',
+                                    closeDateMili: 0,
+                                    zone: FFAppState().stateZone,
+                                  ),
+                                  ...mapToFirestore(
+                                    {
+                                      'leadTag': [
+                                        getLeadTagListFirestoreData(
+                                          createLeadTagListStruct(
+                                            code: 0,
+                                            isDeleted: false,
+                                            leadTagName: '',
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          true,
+                                        )
+                                      ],
+                                      'assignedToHistory': [
+                                        getAssignedToHistoryFirestoreData(
+                                          createAssignedToHistoryStruct(
+                                            userProfileId: getJsonField(
+                                              _model.isonLeave,
+                                              r'''$.userProfileId''',
+                                            ).toString(),
+                                            assignedDate: getCurrentTimestamp
+                                                .millisecondsSinceEpoch,
+                                            assignedDateTime:
+                                                getCurrentTimestamp,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          true,
+                                        )
+                                      ],
+                                    },
+                                  ),
+                                }, leadsManagementRecordReference);
+                                _shouldSetState = true;
+
+                                await _model.leadMg!.reference
+                                    .update(createLeadsManagementRecordData(
+                                  id: _model.leadMg?.reference.id,
+                                ));
+
+                                await _model.outputCopy!.reference
+                                    .update(createOutletLeadsRecordData(
+                                  status: 'assigned',
+                                ));
+                              }
+                            }
                             await showDialog(
                               context: context,
                               builder: (dialogContext) {
@@ -256,7 +626,7 @@ class _RegisterComplaintDemoWidgetState
                                       },
                                       child: PopupSuccessCopyWidget(
                                         title:
-                                            'Complaint - ${_model.result} is created ',
+                                            'Complaint - ${_model.outputCopy?.ticket} is created ',
                                       ),
                                     ),
                                   ),
@@ -298,8 +668,7 @@ class _RegisterComplaintDemoWidgetState
                               _model.dropDownProductionCapacityValue =
                                   'Select Product Capacity';
                             });
-                            _model.btnIsDisabled = false;
-                            safeSetState(() {});
+                            _model.isBtnDisabled = false;
 
                             context.pushNamed(DeyeThankyouPageWidget.routeName);
 
@@ -677,128 +1046,184 @@ class _RegisterComplaintDemoWidgetState
                                                     ],
                                                   ),
                                                 ),
-                                                TextFormField(
-                                                  controller: _model
-                                                      .mobileTextController,
-                                                  focusNode:
-                                                      _model.mobileFocusNode,
-                                                  autofocus: true,
-                                                  obscureText: false,
-                                                  decoration: InputDecoration(
-                                                    isDense: true,
-                                                    hintStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  FlutterFlowTheme.of(
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        '+91',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .mobileTextController,
+                                                        focusNode: _model
+                                                            .mobileFocusNode,
+                                                        autofocus: true,
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          isDense: true,
+                                                          hintText:
+                                                              'Enter 10 digit valid number',
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleMediumFamily,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    fontSize:
+                                                                        10.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleMediumIsCustom,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .customColor1,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10.0),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10.0),
+                                                          ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10.0),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10.0),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          prefixIcon: Icon(
+                                                            Icons
+                                                                .mobile_friendly,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .text2nd,
+                                                            size: 20.0,
+                                                          ),
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleMediumFamily,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              useGoogleFonts:
-                                                                  !FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumIsCustom,
-                                                            ),
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .customColor1,
-                                                        width: 1.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMediumIsCustom,
+                                                                ),
+                                                        maxLength: 10,
+                                                        maxLengthEnforcement:
+                                                            MaxLengthEnforcement
+                                                                .enforced,
+                                                        buildCounter: (context,
+                                                                {required currentLength,
+                                                                required isFocused,
+                                                                maxLength}) =>
+                                                            null,
+                                                        keyboardType:
+                                                            TextInputType
+                                                                .number,
+                                                        validator: _model
+                                                            .mobileTextControllerValidator
+                                                            .asValidator(
+                                                                context),
+                                                        inputFormatters: [
+                                                          FilteringTextInputFormatter
+                                                              .allow(RegExp(
+                                                                  '[0-9]'))
+                                                        ],
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
                                                     ),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
-                                                    ),
-                                                    errorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
-                                                    ),
-                                                    focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
-                                                    ),
-                                                    filled: true,
-                                                    fillColor: FlutterFlowTheme
-                                                            .of(context)
-                                                        .secondaryBackground,
-                                                    prefixIcon: Icon(
-                                                      Icons.mobile_friendly,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .text2nd,
-                                                      size: 20.0,
-                                                    ),
-                                                  ),
-                                                  style:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMediumFamily,
-                                                            letterSpacing: 0.0,
-                                                            useGoogleFonts:
-                                                                !FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMediumIsCustom,
-                                                          ),
-                                                  maxLength: 10,
-                                                  maxLengthEnforcement:
-                                                      MaxLengthEnforcement
-                                                          .enforced,
-                                                  buildCounter: (context,
-                                                          {required currentLength,
-                                                          required isFocused,
-                                                          maxLength}) =>
-                                                      null,
-                                                  keyboardType:
-                                                      TextInputType.number,
-                                                  validator: _model
-                                                      .mobileTextControllerValidator
-                                                      .asValidator(context),
-                                                  inputFormatters: [
-                                                    FilteringTextInputFormatter
-                                                        .allow(RegExp('[0-9]'))
                                                   ],
                                                 ),
                                               ],

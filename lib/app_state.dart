@@ -3517,6 +3517,12 @@ class FFAppState extends ChangeNotifier {
     _canRegisterNewComplaintManual = value;
   }
 
+  String _merchantTransactionId = '';
+  String get merchantTransactionId => _merchantTransactionId;
+  set merchantTransactionId(String value) {
+    _merchantTransactionId = value;
+  }
+
   final _dealersManager = StreamRequestManager<List<DealersRecord>>();
   Stream<List<DealersRecord>> dealers({
     String? uniqueQueryKey,

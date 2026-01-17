@@ -19,6 +19,12 @@ enum SubscriptionModules {
   ComplaintsManagement,
 }
 
+enum PaymentStatus {
+  SUCCESS,
+  PENDING,
+  FAILED,
+}
+
 extension FFEnumExtensions<T extends Enum> on T {
   String serialize() => name;
 }
@@ -36,6 +42,8 @@ T? deserializeEnum<T>(String? value) {
       return CallLogStatus.values.deserialize(value) as T?;
     case (SubscriptionModules):
       return SubscriptionModules.values.deserialize(value) as T?;
+    case (PaymentStatus):
+      return PaymentStatus.values.deserialize(value) as T?;
     default:
       return null;
   }

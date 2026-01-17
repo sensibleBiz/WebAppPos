@@ -617,7 +617,7 @@ class _DeyeAttendanceAdminWidgetState extends State<DeyeAttendanceAdminWidget> {
                                                                         String>(
                                                                       functions
                                                                           .getZonewise(
-                                                                              deyeAttendanceAdminLeaveApplicationRecordList.where((e) => e.toDate == functions.getTodayDateInMili(getCurrentTimestamp)).toList(),
+                                                                              deyeAttendanceAdminLeaveApplicationRecordList.where((e) => e.toDate >= functions.getTodayDateInMili(_model.selectedDate!)).toList(),
                                                                               containerAttendanceRecordList.where((e) => e.checkInTime > 0).toList(),
                                                                               'Leave',
                                                                               containerTeamTreeRecordList.toList())
@@ -2208,7 +2208,8 @@ class _DeyeAttendanceAdminWidgetState extends State<DeyeAttendanceAdminWidget> {
                                                                     final absentList = functions
                                                                         .returnAbsentUserList(
                                                                             containerTeamTreeRecordList.toList(),
-                                                                            containerAttendanceRecordList.where((e) => e.checkInTime > 0).toList())
+                                                                            containerAttendanceRecordList.where((e) => e.checkInTime > 0).toList(),
+                                                                            deyeAttendanceAdminLeaveApplicationRecordList.where((e) => e.toDate >= functions.getTodayDateInMili(_model.selectedDate!)).toList())
                                                                         .toList();
 
                                                                     return ListView
@@ -2391,6 +2392,263 @@ class _DeyeAttendanceAdminWidgetState extends State<DeyeAttendanceAdminWidget> {
                                                                                     },
                                                                                     child: Text(
                                                                                       absentListItem.userName,
+                                                                                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                            letterSpacing: 1.0,
+                                                                                            fontWeight: FontWeight.w600,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ].divide(SizedBox(width: 10.0)),
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              width: double
+                                                                  .infinity,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Color(
+                                                                    0xFFCDDDFC),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5.0),
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .all(
+                                                                            7.0),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    Text(
+                                                                      'Leave',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                            color:
+                                                                                Color(0xFF2D68DA),
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                          ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Expanded(
+                                                              child: Container(
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    final leaveList = functions
+                                                                        .returnOnLeaveUserList(
+                                                                            containerTeamTreeRecordList.toList(),
+                                                                            deyeAttendanceAdminLeaveApplicationRecordList.where((e) => e.toDate >= functions.getTodayDateInMili(_model.selectedDate!)).toList())
+                                                                        .toList();
+
+                                                                    return ListView
+                                                                        .separated(
+                                                                      padding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      shrinkWrap:
+                                                                          true,
+                                                                      scrollDirection:
+                                                                          Axis.vertical,
+                                                                      itemCount:
+                                                                          leaveList
+                                                                              .length,
+                                                                      separatorBuilder: (_,
+                                                                              __) =>
+                                                                          SizedBox(
+                                                                              height: 12.0),
+                                                                      itemBuilder:
+                                                                          (context,
+                                                                              leaveListIndex) {
+                                                                        final leaveListItem =
+                                                                            leaveList[leaveListIndex];
+                                                                        return Container(
+                                                                          width:
+                                                                              100.0,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(5.0),
+                                                                            border:
+                                                                                Border.all(
+                                                                              color: FlutterFlowTheme.of(context).customColor4,
+                                                                              width: 0.5,
+                                                                            ),
+                                                                          ),
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                EdgeInsets.all(10.0),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                                              children: [
+                                                                                FlutterFlowIconButton(
+                                                                                  borderColor: Colors.transparent,
+                                                                                  borderRadius: 8.0,
+                                                                                  borderWidth: 1.0,
+                                                                                  buttonSize: 30.0,
+                                                                                  fillColor: FlutterFlowTheme.of(context).customColor3,
+                                                                                  icon: Icon(
+                                                                                    Icons.person,
+                                                                                    color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                    size: 14.0,
+                                                                                  ),
+                                                                                  onPressed: () {
+                                                                                    print('IconButton pressed ...');
+                                                                                  },
+                                                                                ),
+                                                                                Builder(
+                                                                                  builder: (context) => InkWell(
+                                                                                    splashColor: Colors.transparent,
+                                                                                    focusColor: Colors.transparent,
+                                                                                    hoverColor: Colors.transparent,
+                                                                                    highlightColor: Colors.transparent,
+                                                                                    onTap: () async {
+                                                                                      await showDialog(
+                                                                                        context: context,
+                                                                                        builder: (dialogContext) {
+                                                                                          return Dialog(
+                                                                                            elevation: 0,
+                                                                                            insetPadding: EdgeInsets.zero,
+                                                                                            backgroundColor: Colors.transparent,
+                                                                                            alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                            child: WebViewAware(
+                                                                                              child: GestureDetector(
+                                                                                                onTap: () {
+                                                                                                  FocusScope.of(dialogContext).unfocus();
+                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                },
+                                                                                                child: CustomDateRangeWidget(),
+                                                                                              ),
+                                                                                            ),
+                                                                                          );
+                                                                                        },
+                                                                                      );
+
+                                                                                      _model.allAttendence1Copy3 = await queryAttendanceRecordOnce(
+                                                                                        parent: FFAppState().outletRef,
+                                                                                        queryBuilder: (attendanceRecord) => attendanceRecord
+                                                                                            .where(
+                                                                                              'createdDate',
+                                                                                              isGreaterThanOrEqualTo: functions.geStartEndDateTimeFromMilisec(FFAppState().startDate, FFAppState().endDateForAtt!.millisecondsSinceEpoch, 'start'),
+                                                                                            )
+                                                                                            .where(
+                                                                                              'createdDate',
+                                                                                              isLessThan: functions.geStartEndDateTimeFromMilisec(FFAppState().startDate, FFAppState().endDateForAtt!.millisecondsSinceEpoch, 'end'),
+                                                                                            ),
+                                                                                      );
+                                                                                      FFAppState().emailForReport = currentUserEmail;
+                                                                                      safeSetState(() {});
+                                                                                      await showDialog(
+                                                                                        context: context,
+                                                                                        builder: (dialogContext) {
+                                                                                          return Dialog(
+                                                                                            elevation: 0,
+                                                                                            insetPadding: EdgeInsets.zero,
+                                                                                            backgroundColor: Colors.transparent,
+                                                                                            alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                            child: WebViewAware(
+                                                                                              child: GestureDetector(
+                                                                                                onTap: () {
+                                                                                                  FocusScope.of(dialogContext).unfocus();
+                                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                                },
+                                                                                                child: SendEmailWidget(),
+                                                                                              ),
+                                                                                            ),
+                                                                                          );
+                                                                                        },
+                                                                                      );
+
+                                                                                      _model.base64Link2321Copy3 = await actions.genExcelForEmployeeAttendanceReport(
+                                                                                        _model.allAttendence1Copy3!.toList(),
+                                                                                        FFAppState().outletRef!.id,
+                                                                                        leaveListItem.userProfileId,
+                                                                                      );
+                                                                                      _model.apiResult88g1Copy3 = await SendMailCall.call(
+                                                                                        mobileNo: FFAppState().currentMobile,
+                                                                                        outletName: '',
+                                                                                        file: _model.base64Link2321Copy3,
+                                                                                        fileName: 'AttendanceReport',
+                                                                                        toEmail: FFAppState().emailForReport,
+                                                                                        branchName: '',
+                                                                                        username: valueOrDefault(currentUserDocument?.name, ''),
+                                                                                        reportType: 'Attendance Report',
+                                                                                        roll: FFAppState().currentUserRole,
+                                                                                      );
+
+                                                                                      if ((_model.apiResult88g1Copy3?.succeeded ?? true)) {
+                                                                                        await showDialog(
+                                                                                          context: context,
+                                                                                          builder: (alertDialogContext) {
+                                                                                            return WebViewAware(
+                                                                                              child: AlertDialog(
+                                                                                                content: Text('Email Sent Successfully. Wait 5-8 Minutes..'),
+                                                                                                actions: [
+                                                                                                  TextButton(
+                                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                                    child: Text('Ok'),
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            );
+                                                                                          },
+                                                                                        );
+                                                                                      } else {
+                                                                                        await showDialog(
+                                                                                          context: context,
+                                                                                          builder: (alertDialogContext) {
+                                                                                            return WebViewAware(
+                                                                                              child: AlertDialog(
+                                                                                                content: Text('Email Not Sent ! Try Again'),
+                                                                                                actions: [
+                                                                                                  TextButton(
+                                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                                    child: Text('Ok'),
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            );
+                                                                                          },
+                                                                                        );
+                                                                                      }
+
+                                                                                      safeSetState(() {});
+                                                                                    },
+                                                                                    child: Text(
+                                                                                      leaveListItem.userName,
                                                                                       style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                             fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                             letterSpacing: 1.0,

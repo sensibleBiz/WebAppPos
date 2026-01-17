@@ -2610,6 +2610,7 @@ String attendanceTime(int? dateInNumber) {
 List<TeamTreeRecord> returnAbsentUserList(
   List<TeamTreeRecord> teamTree,
   List<AttendanceRecord> attendance,
+  List<LeaveApplicationRecord> leave,
 ) {
   List<TeamTreeRecord> absentUsers = [];
 
@@ -2618,7 +2619,11 @@ List<TeamTreeRecord> returnAbsentUserList(
       (att) => att.userId == member.userProfileId,
     );
 
-    if (!isPresent) {
+    final isOnLeave = leave.any(
+      (l) => l.userProfileId == member.userProfileId,
+    );
+
+    if (!isPresent && !isOnLeave) {
       absentUsers.add(member);
     }
   }
@@ -3044,4 +3049,23 @@ String calculateComplaintResolutionDuration(
   parts.add('${minutes}m'); // always include minutes
 
   return parts.join(' ');
+}
+
+List<TeamTreeRecord> returnOnLeaveUserList(
+  List<TeamTreeRecord> teamTree,
+  List<LeaveApplicationRecord> leave,
+) {
+  List<TeamTreeRecord> onLeaveUsers = [];
+
+  for (var member in teamTree) {
+    final isOnLeave = leave.any(
+      (l) => l.userProfileId == member.userProfileId,
+    );
+
+    if (isOnLeave) {
+      onLeaveUsers.add(member);
+    }
+  }
+
+  return onLeaveUsers;
 }

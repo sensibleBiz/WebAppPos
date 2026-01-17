@@ -1,12 +1,18 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/instant_timer.dart';
 import '/pages/components/transaction_status_component/transaction_failed/transaction_failed_widget.dart';
 import '/pages/components/transaction_status_component/transaction_pending/transaction_pending_widget.dart';
 import '/pages/components/transaction_status_component/transaction_success/transaction_success_widget.dart';
 import 'dart:math';
 import 'dart:ui';
+import '/backend/schema/structs/index.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -17,7 +23,12 @@ import 'response_page_model.dart';
 export 'response_page_model.dart';
 
 class ResponsePageWidget extends StatefulWidget {
-  const ResponsePageWidget({super.key});
+  const ResponsePageWidget({
+    super.key,
+    required this.merchantTransactionId,
+  });
+
+  final String? merchantTransactionId;
 
   static String routeName = 'responsePage';
   static String routePath = 'responsePage';
@@ -38,6 +49,43 @@ class _ResponsePageWidgetState extends State<ResponsePageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => ResponsePageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.paymentStatusTimer = InstantTimer.periodic(
+        duration: Duration(milliseconds: 1000),
+        callback: (timer) async {
+          _model.apiResultjah = await SubscriptionPaymentPGStatusCall.call(
+            merchantTransactionId: widget!.merchantTransactionId,
+            outletId: FFAppState().outletId,
+            userId: FFAppState().currentLoggedInUserId,
+            deviceId:
+                FFAppState().billingType == 'CRM' ? '0' : FFAppState().deviceId,
+            duration: 12,
+            isProd: false,
+          );
+
+          if (PaymentStatusStruct.maybeFromMap(
+                      (_model.apiResultjah?.jsonBody ?? ''))
+                  ?.status !=
+              PaymentStatus.PENDING) {
+            _model.paymentStatusTimer?.cancel();
+            _model.paymentStatus = PaymentStatusStruct.maybeFromMap(
+                    (_model.apiResultjah?.jsonBody ?? ''))
+                ?.status;
+            safeSetState(() {});
+            await Future.delayed(
+              Duration(
+                milliseconds: 2000,
+              ),
+            );
+
+            context.goNamed(DeyeSubscriptionWidget.routeName);
+          }
+        },
+        startImmediately: true,
+      );
+    });
 
     animationsMap.addAll({
       'textOnPageLoadAnimation': AnimationInfo(
@@ -102,6 +150,8 @@ class _ResponsePageWidgetState extends State<ResponsePageWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Title(
         title: 'responsePage',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -118,7 +168,7 @@ class _ResponsePageWidgetState extends State<ResponsePageWidget>
               body: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (true)
+                  if (_model.paymentStatus == PaymentStatus.SUCCESS)
                     Expanded(
                       flex: 7,
                       child: Padding(
@@ -178,7 +228,7 @@ class _ResponsePageWidgetState extends State<ResponsePageWidget>
                         ),
                       ),
                     ),
-                  if (false)
+                  if (_model.paymentStatus == PaymentStatus.FAILED)
                     Expanded(
                       flex: 7,
                       child: Padding(
@@ -216,7 +266,7 @@ class _ResponsePageWidgetState extends State<ResponsePageWidget>
                         ),
                       ),
                     ),
-                  if (false)
+                  if (_model.paymentStatus == PaymentStatus.PENDING)
                     Expanded(
                       flex: 7,
                       child: Padding(

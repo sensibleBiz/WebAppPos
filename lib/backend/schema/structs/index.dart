@@ -18,6 +18,7 @@ export 'lead_count_struct.dart';
 export 'lead_tag_list_struct.dart';
 export 'location_details_struct.dart';
 export 'payment_mode_struct.dart';
+export 'payment_status_struct.dart';
 export 'product_data_type_struct.dart';
 export 'product_sale_list_struct.dart';
 export 'purchase_sale_item_list_struct.dart';

@@ -119,8 +119,8 @@ class _DeyeLeaveAdminWidgetState extends State<DeyeLeaveAdminWidget>
           parent: FFAppState().outletRef,
           queryBuilder: (leaveApplicationRecord) =>
               leaveApplicationRecord.where(
-            'monthId',
-            isEqualTo: functions.getMonthId(),
+            'toDate',
+            isGreaterThanOrEqualTo: functions.lastDays(15),
           ),
         ),
         builder: (context, snapshot) {
@@ -1186,6 +1186,7 @@ class _DeyeLeaveAdminWidgetState extends State<DeyeLeaveAdminWidget>
                                                                         final requestedList = functions
                                                                             .getZonewiseLeave(deyeLeaveAdminLeaveApplicationRecordList.where((e) => e.status == 'REQUESTED').toList(),
                                                                                 containerTeamTreeRecordList.toList())
+                                                                            .sortedList(keyOf: (e) => e.fromDate, desc: true)
                                                                             .toList();
                                                                         if (requestedList
                                                                             .isEmpty) {
@@ -1653,6 +1654,7 @@ class _DeyeLeaveAdminWidgetState extends State<DeyeLeaveAdminWidget>
                                                                         final approvedList = functions
                                                                             .getZonewiseLeave(deyeLeaveAdminLeaveApplicationRecordList.where((e) => e.status == 'APPROVED').toList(),
                                                                                 containerTeamTreeRecordList.toList())
+                                                                            .sortedList(keyOf: (e) => e.fromDate, desc: true)
                                                                             .toList();
                                                                         if (approvedList
                                                                             .isEmpty) {
@@ -1969,6 +1971,7 @@ class _DeyeLeaveAdminWidgetState extends State<DeyeLeaveAdminWidget>
                                                                         final rejectedList = functions
                                                                             .getZonewiseLeave(deyeLeaveAdminLeaveApplicationRecordList.where((e) => e.status == 'REJECTED').toList(),
                                                                                 containerTeamTreeRecordList.toList())
+                                                                            .sortedList(keyOf: (e) => e.fromDate, desc: true)
                                                                             .toList();
                                                                         if (rejectedList
                                                                             .isEmpty) {

@@ -292,3 +292,7 @@ export '/deye_permission_dashboard/deye_permission_dashboard_widget.dart'
 export '/deye_subscription/deye_subscription_widget.dart'
     show DeyeSubscriptionWidget;
 export '/response_page/response_page_widget.dart' show ResponsePageWidget;
+export '/deye_subscription_copy/deye_subscription_copy_widget.dart'
+    show DeyeSubscriptionCopyWidget;
+export '/deye_c_r_m/register_complaint_demo_old/register_complaint_demo_old_widget.dart'
+    show RegisterComplaintDemoOldWidget;

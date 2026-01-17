@@ -18,13 +18,30 @@ Future<dynamic> getAssingedToIfNotAbsCopy(
   List<LeadsManagementRecord> leadDocs,
 ) async {
   // Add your function code here!
+  final snapshot = await FFAppState()
+      .deyeOutletId!
+      .collection('AUTO_ASSIGN')
+      .where('isActive', isEqualTo: true)
+      .limit(1)
+      .get();
+
+  final userIds = snapshot.docs.first.data();
 
   // UPDATED
   // Declare the IDs manually (you will fill these values)
-  String elsonId = 'AlCjRjYMKDZ4Jgjhg3Jep0R28g02';
-  String ananduId = '6umnbcLyCvfr2XNPJDLvStQp82Z2';
-  String bhuvanId = 'O677R5NSRsNEFtmOwNWuTECHbBy1';
-  String testUserId = 'sjzNMQQPVszp31iocnmN';
+  // String elsonId = 'Zidktay5v9R2lrjMeHgF3gHfm6g1';
+  // String ananduId = '6umnbcLyCvfr2XNPJDLvStQp82Z2';
+  // String bhuvanId = 'O677R5NSRsNEFtmOwNWuTECHbBy1';
+  // String testUserId = 'sjzNMQQPVszp31iocnmN';
+  String elsonId = userIds['user1Id'];
+  String elsonName = userIds['user1Name'];
+  String ananduId = userIds['user2Id'];
+  String ananduName = userIds['user2Name'];
+  String bhuvanId = userIds['managerId'];
+  String bhuvanName = userIds['managerName'];
+  String testUserId = userIds['testUserId'];
+  String testUserName = userIds['testUserName'];
+  String testManagerName = userIds['testManagerName'];
 
   String targetName = "";
   print(state);
@@ -32,7 +49,7 @@ Future<dynamic> getAssingedToIfNotAbsCopy(
   if (index == "CRM") {
     if (state == "KERALA") {
       // CHECK BELOW BEFORE CHANGING ORDER OF ASSIGNMENT
-      targetName = "ELSON ELDHO";
+      targetName = elsonName;
     } else if (state == "ANDRA PRADESH" ||
         state == "KARNATAKA" ||
         state == "TELANGANA") {
@@ -43,10 +60,10 @@ Future<dynamic> getAssingedToIfNotAbsCopy(
   } else if (index == "demo") {
     if (state == "KERALA") {
       print(state);
-      targetName = "Test User 1";
+      targetName = testUserName;
     } else if (state == "ANDRA PRADESH" || state == "KARNATAKA") {
       // CHECK BELOW BEFORE CHANGING ORDER OF ASSIGNMENT
-      targetName = "Test User 1";
+      targetName = testUserName;
     }
   }
 
@@ -144,9 +161,9 @@ Future<dynamic> getAssingedToIfNotAbsCopy(
     // UPDATED
     if (isOnLeave || elsonCount >= 4) {
       // ✅ Special case: if Elson is on leave, fallback to Anandu first
-      if (targetName.toLowerCase() == "elson eldho") {
+      if (targetName.toLowerCase() == elsonName.toLowerCase()) {
         final anandu = teamTree.where(
-          (t) => (t.userName ?? "").toLowerCase() == "anandhu",
+          (t) => (t.userName ?? "").toLowerCase() == ananduName.toLowerCase(),
         );
 
         if (anandu.isNotEmpty &&
@@ -164,7 +181,7 @@ Future<dynamic> getAssingedToIfNotAbsCopy(
 
       // 🔄 Otherwise fallback to Bhuvan
       final manager = teamTree.where(
-        (t) => (t.userName ?? "").toLowerCase() == "bhuvan",
+        (t) => (t.userName ?? "").toLowerCase() == bhuvanName.toLowerCase(),
       );
 
       if (manager.isEmpty ||
@@ -190,7 +207,8 @@ Future<dynamic> getAssingedToIfNotAbsCopy(
     if (isOnLeave || testUserCount >= 4) {
       // Find manager Test Manager1 safely
       final manager = teamTree.where(
-        (t) => (t.userName ?? "").toLowerCase() == "test manager1",
+        (t) =>
+            (t.userName ?? "").toLowerCase() == testManagerName.toLowerCase(),
       );
 
       if (manager.isEmpty ||

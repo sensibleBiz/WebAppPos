@@ -1581,7 +1581,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: ResponsePageWidget.routeName,
               path: ResponsePageWidget.routePath,
-              builder: (context, params) => ResponsePageWidget(),
+              builder: (context, params) => ResponsePageWidget(
+                merchantTransactionId: params.getParam(
+                  'merchantTransactionId',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: DeyeSubscriptionCopyWidget.routeName,
+              path: DeyeSubscriptionCopyWidget.routePath,
+              builder: (context, params) => DeyeSubscriptionCopyWidget(),
+            ),
+            FFRoute(
+              name: RegisterComplaintDemoOldWidget.routeName,
+              path: RegisterComplaintDemoOldWidget.routePath,
+              builder: (context, params) => RegisterComplaintDemoOldWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

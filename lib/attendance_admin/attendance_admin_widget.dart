@@ -569,7 +569,7 @@ class _AttendanceAdminWidgetState extends State<AttendanceAdminWidget> {
                                                                       String>(
                                                                     functions
                                                                         .getZonewise(
-                                                                            attendanceAdminLeaveApplicationRecordList.where((e) => e.toDate == functions.getTodayDateInMili(getCurrentTimestamp)).toList(),
+                                                                            attendanceAdminLeaveApplicationRecordList.where((e) => e.toDate >= functions.getTodayDateInMili(_model.selectedDate!)).toList(),
                                                                             containerAttendanceRecordList.where((e) => e.checkInTime > 0).toList(),
                                                                             'Leave',
                                                                             containerTeamTreeRecordList.toList())
@@ -2090,6 +2090,162 @@ class _AttendanceAdminWidgetState extends State<AttendanceAdminWidget> {
                                                                         containerTeamTreeRecordList
                                                                             .toList(),
                                                                         containerAttendanceRecordList
+                                                                            .toList(),
+                                                                        attendanceAdminLeaveApplicationRecordList
+                                                                            .where((e) =>
+                                                                                e.toDate >=
+                                                                                functions.getTodayDateInMili(_model.selectedDate!))
+                                                                            .toList())
+                                                                    .toList();
+
+                                                                return ListView
+                                                                    .separated(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  shrinkWrap:
+                                                                      true,
+                                                                  scrollDirection:
+                                                                      Axis.vertical,
+                                                                  itemCount:
+                                                                      absentList
+                                                                          .length,
+                                                                  separatorBuilder: (_,
+                                                                          __) =>
+                                                                      SizedBox(
+                                                                          height:
+                                                                              12.0),
+                                                                  itemBuilder:
+                                                                      (context,
+                                                                          absentListIndex) {
+                                                                    final absentListItem =
+                                                                        absentList[
+                                                                            absentListIndex];
+                                                                    return Container(
+                                                                      width:
+                                                                          100.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5.0),
+                                                                        border:
+                                                                            Border.all(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).customColor4,
+                                                                          width:
+                                                                              0.5,
+                                                                        ),
+                                                                      ),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            EdgeInsets.all(10.0),
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.start,
+                                                                          children:
+                                                                              [
+                                                                            FlutterFlowIconButton(
+                                                                              borderColor: Colors.transparent,
+                                                                              borderRadius: 8.0,
+                                                                              borderWidth: 1.0,
+                                                                              buttonSize: 30.0,
+                                                                              fillColor: FlutterFlowTheme.of(context).customColor3,
+                                                                              icon: Icon(
+                                                                                Icons.person,
+                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                size: 14.0,
+                                                                              ),
+                                                                              onPressed: () {
+                                                                                print('IconButton pressed ...');
+                                                                              },
+                                                                            ),
+                                                                            InkWell(
+                                                                              splashColor: Colors.transparent,
+                                                                              focusColor: Colors.transparent,
+                                                                              hoverColor: Colors.transparent,
+                                                                              highlightColor: Colors.transparent,
+                                                                              onTap: () async {},
+                                                                              child: Text(
+                                                                                absentListItem.userName,
+                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                      letterSpacing: 1.0,
+                                                                                      fontWeight: FontWeight.w600,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).labelLargeIsCustom,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                          ].divide(SizedBox(width: 10.0)),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                );
+                                                              },
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width:
+                                                                double.infinity,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Color(
+                                                                  0xFFCDDDFC),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5.0),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(7.0),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Text(
+                                                                    'Leave',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                          color:
+                                                                              Color(0xFF2D68DA),
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).labelSmallIsCustom,
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            child: Builder(
+                                                              builder:
+                                                                  (context) {
+                                                                final absentList = functions
+                                                                    .returnOnLeaveUserList(
+                                                                        containerTeamTreeRecordList
+                                                                            .toList(),
+                                                                        attendanceAdminLeaveApplicationRecordList
+                                                                            .where((e) =>
+                                                                                e.toDate >=
+                                                                                functions.getTodayDateInMili(_model.selectedDate!))
                                                                             .toList())
                                                                     .toList();
 

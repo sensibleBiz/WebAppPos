@@ -116,3 +116,4 @@ export 'gen_excel_for_employee_attendance_report.dart'
     show genExcelForEmployeeAttendanceReport;
 export 'get_sorted_complaints_assigned_date_time.dart'
     show getSortedComplaintsAssignedDateTime;
+export 'open_url_same_tab.dart' show openUrlSameTab;
