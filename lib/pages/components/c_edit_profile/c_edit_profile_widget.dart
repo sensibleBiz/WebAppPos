@@ -828,12 +828,12 @@ class _CEditProfileWidgetState extends State<CEditProfileWidget> {
                                                 ),
                                               ),
                                               suffixIcon: InkWell(
-                                                onTap: () => safeSetState(
-                                                  () => _model
+                                                onTap: () async {
+                                                  safeSetState(() => _model
                                                           .passwordVisibility =
                                                       !_model
-                                                          .passwordVisibility,
-                                                ),
+                                                          .passwordVisibility);
+                                                },
                                                 focusNode: FocusNode(
                                                     skipTraversal: true),
                                                 child: Icon(

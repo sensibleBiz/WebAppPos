@@ -546,13 +546,12 @@ class _EmailLoginNotInUseWidgetState extends State<EmailLoginNotInUseWidget> {
                                                                           10.0),
                                                             ),
                                                             suffixIcon: InkWell(
-                                                              onTap: () =>
-                                                                  safeSetState(
-                                                                () => _model
-                                                                        .textFieldPwdVisibility =
-                                                                    !_model
-                                                                        .textFieldPwdVisibility,
-                                                              ),
+                                                              onTap: () async {
+                                                                safeSetState(() =>
+                                                                    _model.textFieldPwdVisibility =
+                                                                        !_model
+                                                                            .textFieldPwdVisibility);
+                                                              },
                                                               focusNode: FocusNode(
                                                                   skipTraversal:
                                                                       true),

@@ -35,9 +35,11 @@ class _DeyeMenuWidgetState extends State<DeyeMenuWidget> {
     _model = createModel(context, () => DeyeMenuModel());
 
     _model.expandableExpandableController1 =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     _model.expandableExpandableController2 =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 

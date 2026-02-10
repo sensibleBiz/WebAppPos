@@ -35,9 +35,11 @@ class _DeyeMenuCopyWidgetState extends State<DeyeMenuCopyWidget> {
     _model = createModel(context, () => DeyeMenuCopyModel());
 
     _model.expandableExpandableController1 =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     _model.expandableExpandableController2 =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 

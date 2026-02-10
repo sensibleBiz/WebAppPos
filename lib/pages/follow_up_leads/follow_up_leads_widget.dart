@@ -436,7 +436,8 @@ class _FollowUpLeadsWidgetState extends State<FollowUpLeadsWidget>
                                         context.pushNamed(
                                           AddNewLeadWidget.routeName,
                                           extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
+                                            '__transition_info__':
+                                                TransitionInfo(
                                               hasTransition: true,
                                               transitionType: PageTransitionType
                                                   .leftToRight,

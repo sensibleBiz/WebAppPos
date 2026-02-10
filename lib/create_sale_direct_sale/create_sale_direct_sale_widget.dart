@@ -91,7 +91,8 @@ class _CreateSaleDirectSaleWidgetState
     _model.textFieldPaidAmountFocusNode ??= FocusNode();
 
     _model.expandableExpandableController =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 

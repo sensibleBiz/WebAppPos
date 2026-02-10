@@ -78,7 +78,8 @@ class _SalesOrderdetailsWidgetState extends State<SalesOrderdetailsWidget> {
     _model.textFieldFocusNode2 ??= FocusNode();
 
     _model.expandableExpandableController =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 

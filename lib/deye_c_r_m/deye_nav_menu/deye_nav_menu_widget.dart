@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -36,9 +37,11 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
     _model = createModel(context, () => DeyeNavMenuModel());
 
     _model.expandableExpandableController1 =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     _model.expandableExpandableController2 =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -84,22 +87,68 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 10.0),
-                      child: Container(
-                        width: 120.0,
-                        height: 80.0,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.fitWidth,
-                            image: Image.asset(
-                              'assets/images/logo.png',
-                            ).image,
+                    if (FFAppState().outletRef == FFAppState().deyeOutletId)
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 0.0, 10.0),
+                        child: Container(
+                          width: 120.0,
+                          height: 80.0,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.fitWidth,
+                              image: Image.asset(
+                                'assets/images/logo.png',
+                              ).image,
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    if (FFAppState().outletRef != FFAppState().deyeOutletId)
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: StreamBuilder<OutletRecord>(
+                          stream:
+                              OutletRecord.getDocument(FFAppState().outletRef!),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 30.0,
+                                  height: 30.0,
+                                  child: SpinKitRing(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 30.0,
+                                  ),
+                                ),
+                              );
+                            }
+
+                            final textOutletRecord = snapshot.data!;
+
+                            return Text(
+                              textOutletRecord.name,
+                              style: FlutterFlowTheme.of(context)
+                                  .displayLarge
+                                  .override(
+                                    font: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .displayLarge
+                                          .fontStyle,
+                                    ),
+                                    color: FlutterFlowTheme.of(context).info,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .displayLarge
+                                        .fontStyle,
+                                  ),
+                            );
+                          },
+                        ),
+                      ),
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [

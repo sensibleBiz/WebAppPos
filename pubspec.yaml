@@ -40,6 +40,7 @@ dependencies:
   cloud_firestore_platform_interface: 6.6.9
   cloud_firestore_web: 4.4.9
   collection: ^1.17.0
+  cross_file: 0.3.4+2
   csslib: 1.0.2
   csv: 5.0.2
   custom_date_range_picker:
@@ -66,8 +67,8 @@ dependencies:
   flutter_animate: 4.5.0
   flutter_barcode_scanner: 
     git:
-      url: https://github.com/decodevM/flutter_barcode_scanner
-      ref: flutter-3.29
+      url: https://github.com/FlutterFlow/flutter_barcode_scanner
+      ref: 3b315cdeb48e06d1758c5110b3d2dbc3e922a7ce
   flutter_cache_manager: 3.4.1
   flutter_html: 3.0.0
   flutter_plugin_android_lifecycle: 2.0.28
@@ -81,7 +82,7 @@ dependencies:
   geocoding: ^2.1.0
   geolocator: ^13.0.4
   go_router: 12.1.3
-  google_fonts: 6.1.0
+  google_fonts: 6.3.3
   google_sign_in: 6.3.0
   google_sign_in_android: 6.2.1
   google_sign_in_ios: 5.9.0

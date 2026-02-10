@@ -126,18 +126,38 @@ class _DeyeHeaderWidgetState extends State<DeyeHeaderWidget> {
                         ),
                       ),
                     ),
-                    Container(
-                      width: 100.0,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.fitWidth,
-                          image: Image.asset(
-                            'assets/images/logo.png',
-                          ).image,
+                    if (FFAppState().outletRef == FFAppState().deyeOutletId)
+                      Container(
+                        width: 100.0,
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.fitWidth,
+                            image: Image.asset(
+                              'assets/images/logo.png',
+                            ).image,
+                          ),
                         ),
                       ),
-                    ),
+                    if (FFAppState().outletRef != FFAppState().deyeOutletId)
+                      Text(
+                        containerOutletRecord.name,
+                        style:
+                            FlutterFlowTheme.of(context).displayLarge.override(
+                                  font: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .displayLarge
+                                        .fontStyle,
+                                  ),
+                                  color: FlutterFlowTheme.of(context).info,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .displayLarge
+                                      .fontStyle,
+                                ),
+                      ),
                   ],
                 ),
                 StreamBuilder<List<UserProfileRecord>>(

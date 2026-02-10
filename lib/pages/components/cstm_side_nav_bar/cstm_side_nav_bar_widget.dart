@@ -38,7 +38,8 @@ class _CstmSideNavBarWidgetState extends State<CstmSideNavBarWidget> {
     _model = createModel(context, () => CstmSideNavBarModel());
 
     _model.expandableExpandableController =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -1900,7 +1901,7 @@ class _CstmSideNavBarWidgetState extends State<CstmSideNavBarWidget> {
                                     context.pushNamed(
                                       AdminUserManualViewWidget.routeName,
                                       extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
+                                        '__transition_info__': TransitionInfo(
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.bottomToTop,

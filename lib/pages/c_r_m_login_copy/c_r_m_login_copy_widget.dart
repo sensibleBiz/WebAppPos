@@ -361,12 +361,12 @@ class _CRMLoginCopyWidgetState extends State<CRMLoginCopyWidget> {
                                                               context)
                                                           .secondaryBackground,
                                                   suffixIcon: InkWell(
-                                                    onTap: () => safeSetState(
-                                                      () => _model
+                                                    onTap: () async {
+                                                      safeSetState(() => _model
                                                               .textFieldPwdVisibility =
                                                           !_model
-                                                              .textFieldPwdVisibility,
-                                                    ),
+                                                              .textFieldPwdVisibility);
+                                                    },
                                                     focusNode: FocusNode(
                                                         skipTraversal: true),
                                                     child: Icon(

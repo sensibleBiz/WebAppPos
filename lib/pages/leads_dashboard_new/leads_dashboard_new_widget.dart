@@ -70,7 +70,8 @@ class _LeadsDashboardNewWidgetState extends State<LeadsDashboardNewWidget>
     });
 
     _model.expandableExpandableController1 =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 

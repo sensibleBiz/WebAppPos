@@ -391,10 +391,11 @@ class _AddUserAcountWidgetState extends State<AddUserAcountWidget> {
                       fillColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
                       suffixIcon: InkWell(
-                        onTap: () => safeSetState(
-                          () => _model.textFieldPasswordVisibility =
-                              !_model.textFieldPasswordVisibility,
-                        ),
+                        onTap: () async {
+                          safeSetState(() =>
+                              _model.textFieldPasswordVisibility =
+                                  !_model.textFieldPasswordVisibility);
+                        },
                         focusNode: FocusNode(skipTraversal: true),
                         child: Icon(
                           _model.textFieldPasswordVisibility

@@ -116,7 +116,7 @@ Future<dynamic> getAssingedToIfNotAbsCopy(
 
   // UPDATED
   print(
-      'Current workload -> Elson: $elsonCount | Anandu: $ananduCount | Bhuvan: $bhuvanCount');
+      'Current workload -> $elsonName: $elsonCount | $ananduName: $ananduCount | $bhuvanName: $bhuvanCount');
 
   // ✅ If no leave records, assign employee directly
   if (leaveDocs.isEmpty) {

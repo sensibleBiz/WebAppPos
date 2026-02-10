@@ -51,9 +51,11 @@ class _AdmSideNavBarWidgetState extends State<AdmSideNavBarWidget> {
     });
 
     _model.expandableExpandableController1 =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     _model.expandableExpandableController2 =
-        ExpandableController(initialExpanded: false);
+        ExpandableController(initialExpanded: false)
+          ..addListener(() => safeSetState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -1732,7 +1734,7 @@ class _AdmSideNavBarWidgetState extends State<AdmSideNavBarWidget> {
                           context.pushNamed(
                             AdminUserManualViewWidget.routeName,
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
+                              '__transition_info__': TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.bottomToTop,
                               ),

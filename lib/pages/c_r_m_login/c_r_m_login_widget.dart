@@ -382,12 +382,12 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                             .of(context)
                                                         .secondaryBackground,
                                                     suffixIcon: InkWell(
-                                                      onTap: () => safeSetState(
-                                                        () => _model
+                                                      onTap: () async {
+                                                        safeSetState(() => _model
                                                                 .textFieldPwdVisibility =
                                                             !_model
-                                                                .textFieldPwdVisibility,
-                                                      ),
+                                                                .textFieldPwdVisibility);
+                                                      },
                                                       focusNode: FocusNode(
                                                           skipTraversal: true),
                                                       child: Icon(
@@ -959,7 +959,7 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                     .fromSTEB(
                                                         0.0, 5.0, 0.0, 0.0),
                                                 child: Text(
-                                                  '1.1.41',
+                                                  '1.1.42',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .displayLarge
