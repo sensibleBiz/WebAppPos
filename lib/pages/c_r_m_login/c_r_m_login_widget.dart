@@ -959,7 +959,7 @@ class _CRMLoginWidgetState extends State<CRMLoginWidget> {
                                                     .fromSTEB(
                                                         0.0, 5.0, 0.0, 0.0),
                                                 child: Text(
-                                                  '1.1.42',
+                                                  '1.1.43',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .displayLarge

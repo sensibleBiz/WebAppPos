@@ -150,7 +150,8 @@ class _DeyeHeaderWidgetState extends State<DeyeHeaderWidget> {
                                         .displayLarge
                                         .fontStyle,
                                   ),
-                                  color: FlutterFlowTheme.of(context).info,
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
                                   fontStyle: FlutterFlowTheme.of(context)

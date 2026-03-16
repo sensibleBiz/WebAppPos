@@ -204,7 +204,7 @@ List<LeadsManagementRecord> filteredComplaintsForReports(
   // print(zone);
   // print(stage);
   // print("***********");
-  if (filterExce!.isNotEmpty) {
+  if (filterExce != null && filterExce.isNotEmpty) {
     leadsDoc = leadsDoc.where((lead) => lead.assignedTo == filterExce).toList();
     // print(leadsDoc);
   }
@@ -216,7 +216,7 @@ List<LeadsManagementRecord> filteredComplaintsForReports(
     leadsDoc = leadsDoc.where((lead) => lead.stage == stage).toList();
     //print(leadsDoc);
   }
-  if (zoneList!.isNotEmpty) {
+  if (zoneList != null && zoneList.isNotEmpty) {
     print(zoneList);
     leadsDoc = leadsDoc.where((lead) => zoneList.contains(lead.zone)).toList();
   } else {
@@ -225,22 +225,30 @@ List<LeadsManagementRecord> filteredComplaintsForReports(
       // print(leadsDoc);
     }
   }
-  if (solution!.isNotEmpty) {
+  if (solution != null && solution.isNotEmpty) {
     leadsDoc = leadsDoc.where((lead) {
       final customFields = lead.customFields;
-      return customFields.hasSolution() && customFields.solution == solution;
+      if (customFields == null) return false;
+      return customFields.solution == solution;
     }).toList();
   }
 
-  if (filterField!.isNotEmpty && filterNum!.isNotEmpty) {
+  // Filter by Field + Number
+  if (filterField != null &&
+      filterField.isNotEmpty &&
+      filterNum != null &&
+      filterNum.isNotEmpty) {
     leadsDoc = leadsDoc.where((lead) {
       switch (filterField) {
         case "Mobile":
           return lead.mobile == filterNum;
+
         case "Serial":
-          return lead.customFields.serial.toString() == filterNum;
+          return lead.customFields?.serial?.toString() == filterNum;
+
         case "Complaint":
           return lead.ticket == filterNum;
+
         default:
           return false;
       }
@@ -248,6 +256,93 @@ List<LeadsManagementRecord> filteredComplaintsForReports(
   }
 
   return leadsDoc;
+}
+
+List<LeadsManagementRecord> filteredComplaintsForReportsCopy(
+  List<LeadsManagementRecord> leadsDoc,
+  String? filterExce,
+  String? filterNum,
+  String? filterField,
+  String? review,
+  String? zone,
+  String? stage,
+  List<String>? zoneList,
+  String? solution,
+) {
+  // print("***********");
+  // print(filterExce);
+  // print(filterNum);
+  // print(filterField);
+  // print(review);
+  // print(zone);
+  // print(stage);
+  // print("***********");
+  List<LeadsManagementRecord> filteredLeads = List.from(leadsDoc);
+
+  // Filter by Assigned Executive
+  if (filterExce != null && filterExce.isNotEmpty) {
+    filteredLeads =
+        filteredLeads.where((lead) => lead.assignedTo == filterExce).toList();
+  }
+
+  // Filter by Review / Remarks
+  if (review != null && review.isNotEmpty) {
+    filteredLeads =
+        filteredLeads.where((lead) => lead.remarks == review).toList();
+  }
+
+  // Filter by Stage
+  if (stage != null && stage.isNotEmpty) {
+    filteredLeads = filteredLeads.where((lead) => lead.stage == stage).toList();
+  }
+
+  // Filter by Zone List
+  if (zoneList != null && zoneList.isNotEmpty) {
+    filteredLeads =
+        filteredLeads.where((lead) => zoneList.contains(lead.zone)).toList();
+  }
+  // Filter by Single Zone
+  else if (zone != null && zone.isNotEmpty) {
+    filteredLeads = filteredLeads.where((lead) => lead.zone == zone).toList();
+  }
+
+  // Filter by Solution
+  if (solution != null && solution.isNotEmpty) {
+    filteredLeads = filteredLeads.where((lead) {
+      final customFields = lead.customFields;
+      if (customFields == null) return false;
+
+      if (customFields.hasSolution()) {
+        return customFields.solution == solution;
+      }
+
+      return false;
+    }).toList();
+  }
+
+  // Filter by Field + Number
+  if (filterField != null &&
+      filterField.isNotEmpty &&
+      filterNum != null &&
+      filterNum.isNotEmpty) {
+    filteredLeads = filteredLeads.where((lead) {
+      switch (filterField) {
+        case "Mobile":
+          return lead.mobile == filterNum;
+
+        case "Serial":
+          return lead.customFields?.serial?.toString() == filterNum;
+
+        case "Complaint":
+          return lead.ticket == filterNum;
+
+        default:
+          return false;
+      }
+    }).toList();
+  }
+
+  return filteredLeads;
 }
 
 List<dynamic> groupByStateReport(List<LeadsManagementRecord> listLeadMange) {

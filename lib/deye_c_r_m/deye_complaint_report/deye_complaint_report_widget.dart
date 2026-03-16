@@ -1395,10 +1395,12 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                         onPressed: () async {
                                                           _model.isSearched =
                                                               false;
-                                                          safeSetState(() {});
                                                           safeSetState(() {
                                                             _model
                                                                 .textFieldAllTextController
+                                                                ?.clear();
+                                                            _model
+                                                                .textFieldReportTextController
                                                                 ?.clear();
                                                           });
                                                           safeSetState(() {
@@ -1426,6 +1428,31 @@ class _DeyeComplaintReportWidgetState extends State<DeyeComplaintReportWidget> {
                                                                 .dropDownZoneAllValueController
                                                                 ?.reset();
                                                             _model.dropDownZoneAllValue =
+                                                                null;
+                                                            _model
+                                                                .dropDownStageReportValueController
+                                                                ?.reset();
+                                                            _model.dropDownStageReportValue =
+                                                                null;
+                                                            _model
+                                                                .dropDownRemarkReportValueController
+                                                                ?.reset();
+                                                            _model.dropDownRemarkReportValue =
+                                                                null;
+                                                            _model
+                                                                .dropDownReportValueController
+                                                                ?.reset();
+                                                            _model.dropDownReportValue =
+                                                                null;
+                                                            _model
+                                                                .dropDownZoneReportValueController
+                                                                ?.reset();
+                                                            _model.dropDownZoneReportValue =
+                                                                null;
+                                                            _model
+                                                                .dropDownSolutionReportValueController
+                                                                ?.reset();
+                                                            _model.dropDownSolutionReportValue =
                                                                 null;
                                                           });
                                                         },

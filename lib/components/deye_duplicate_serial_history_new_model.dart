@@ -7,8 +7,10 @@ import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'deye_duplicate_serial_history_new_widget.dart'
     show DeyeDuplicateSerialHistoryNewWidget;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

@@ -2375,7 +2375,7 @@ class _DeyeDashboardWidgetState extends State<DeyeDashboardWidget>
                                                                           child:
                                                                               DeyeNoDataWidget(
                                                                             message:
-                                                                                'No active Deye complaints in your ${FFAppState().leadCreateValue}  queue !',
+                                                                                '${'No active  ${FFAppState().outletRef == FFAppState().deyeOutletId ? 'Deye ' : ''}complaints in your'}${FFAppState().leadCreateValue} queue !',
                                                                           ),
                                                                         );
                                                                       }

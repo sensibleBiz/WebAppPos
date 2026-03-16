@@ -107,9 +107,9 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                     if (FFAppState().outletRef != FFAppState().deyeOutletId)
                       Align(
                         alignment: AlignmentDirectional(0.0, 0.0),
-                        child: StreamBuilder<OutletRecord>(
-                          stream:
-                              OutletRecord.getDocument(FFAppState().outletRef!),
+                        child: FutureBuilder<OutletRecord>(
+                          future: OutletRecord.getDocumentOnce(
+                              FFAppState().outletRef!),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -138,7 +138,8 @@ class _DeyeNavMenuWidgetState extends State<DeyeNavMenuWidget> {
                                           .displayLarge
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context).info,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
